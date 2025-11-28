@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kayako Control Center</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 16px; }
+      h1 { margin: 0 0 12px; font-size: 20px; }
+      fieldset { border: 1px solid #ddd; padding: 12px; margin-bottom: 16px; }
+      legend { padding: 0 6px; }
+      label { display: block; margin: 6px 0 4px; }
+      input[type="text"] { width: 100%; padding: 6px; }
+      button { padding: 8px 12px; margin-right: 8px; }
+      #log { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#0b1221; color:#d6e2ff; padding:12px; height:300px; overflow:auto; white-space:pre; border-radius:6px; }
+      .row { display:flex; gap:12px; align-items:center; flex-wrap: wrap; }
+      .muted { color:#666; }
+      .ok { color: #0a7c2e; }
+      .err { color: #b00020; }
+      a.button-link { text-decoration: none; border: 1px solid #ccc; padding: 6px 10px; border-radius: 4px; color: #0366d6; }
+    </style>
+  </head>
+  <body>
+    <h1>Kayako Control Center</h1>
+
+    <fieldset>
+      <legend>Run controls</legend>
+      <div class="row">
+        <label for="tests">Tests (comma-separated names in tests/generated/*.spec.ts; leave empty for all)</label>
+        <input id="tests" type="text" placeholder="login-and-open-inbox, open-first-conversation" />
+      </div>
+      <div class="row">
+        <label for="grep">Grep (optional)</label>
+        <input id="grep" type="text" placeholder="@smoke" />
+      </div>
+      <div class="row">
+        <label for="project">Project</label>
+        <input id="project" type="text" placeholder="chromium" />
+        <label for="workers">Workers</label>
+        <input id="workers" type="text" placeholder="50%" />
+        <label><input id="headed" type="checkbox" /> Headed</label>
+      </div>
+      <div class="row">
+        <button id="startRun">Start Run</button>
+        <button id="stopRun" disabled>Stop Run</button>
+        <a class="button-link" href="/report/index.html" target="_blank">Open HTML report</a>
+        <span id="runStatus" class="muted">No active run</span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Selectors</legend>
+      <div class="row">
+        <button id="lintSelectors">Lint selectors.jsonc</button>
+        <span id="lintStatus" class="muted"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Flow generation</legend>
+      <div class="row">
+        <label for="testId">Test ID (from storage/tests.json)</label>
+        <input id="testId" type="text" placeholder="unique-test-id" />
+        <button id="generateFlow">Generate spec from Test</button>
+        <span id="flowStatus" class="muted"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Live logs</legend>
+      <div id="log"></div>
+    </fieldset>
+
+    <script>
+      const runStatus = document.getElementById('runStatus');
+      const logEl = document.getElementById('log');
+      const startBtn = document.getElementById('startRun');
+      const stopBtn = document.getElementById('stopRun');
+      const lintBtn = document.getElementById('lintSelectors');
+      const lintStatus = document.getElementById('lintStatus');
+      const flowBtn = document.getElementById('generateFlow');
+      const flowStatus = document.getElementById('flowStatus');
+      const testsInput = document.getElementById('tests');
+      const grepInput = document.getElementById('grep');
+      const projectInput = document.getElementById('project');
+      const workersInput = document.getElementById('workers');
+      const headedInput = document.getElementById('headed');
+      const testIdInput = document.getElementById('testId');
+
+      let currentRunId = null;
+      let evtSource = null;
+
+      function appendLog(line) {
+        const atBottom = logEl.scrollTop + logEl.clientHeight >= logEl.scrollHeight - 4;
+        logEl.textContent += line + "\\n";
+        if (atBottom) logEl.scrollTop = logEl.scrollHeight;
+      }
+
+      function setRunning(running) {
+        startBtn.disabled = running;
+        stopBtn.disabled = !running;
+        runStatus.textContent = running ? 'Run: running' : 'No active run';
+      }
+
+      async function startRun() {
+        logEl.textContent = '';
+        const tests = testsInput.value.trim()
+          ? testsInput.value.split(',').map(s => s.trim()).filter(Boolean)
+          : undefined;
+        const grep = grepInput.value.trim() || undefined;
+        const project = projectInput.value.trim() || undefined;
+        const workers = workersInput.value.trim() || undefined;
+        const headed = headedInput.checked ? true : undefined;
+        const body = { target: { tests, grep }, options: { project, workers, headed } };
+        const res = await fetch('/api/runs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          appendLog('[orchestrator] Failed to start run: ' + JSON.stringify(data));
+          setRunning(false);
+          return;
+        }
+        currentRunId = data.runId;
+        setRunning(true);
+        listen(currentRunId);
+      }
+
+      function listen(runId) {
+        if (evtSource) {
+          evtSource.close();
+          evtSource = null;
+        }
+        evtSource = new EventSource(`/api/runs/${encodeURIComponent(runId)}/stream`);
+        evtSource.addEventListener('log', (ev) => {
+          try {
+            const d = JSON.parse(ev.data);
+            appendLog(d.line || '');
+          } catch {}
+        });
+        evtSource.addEventListener('begin', (ev) => {
+          appendLog('[begin] ' + ev.data);
+        });
+        evtSource.addEventListener('end', async (ev) => {
+          try {
+            const d = JSON.parse(ev.data);
+            appendLog('[end] status=' + d.status + ' summary=' + JSON.stringify(d.summary || {}));
+          } catch {}
+          setRunning(false);
+          if (evtSource) { evtSource.close(); evtSource = null; }
+        });
+        evtSource.onerror = () => {
+          appendLog('[orchestrator] stream error');
+        };
+      }
+
+      async function stopRun() {
+        if (!currentRunId) return;
+        const res = await fetch(`/api/runs/${encodeURIComponent(currentRunId)}/stop`, { method: 'POST' });
+        const data = await res.json();
+        appendLog('[orchestrator] stop requested: ' + JSON.stringify(data));
+      }
+
+      async function lintSelectors() {
+        lintStatus.textContent = 'Running...';
+        const res = await fetch('/api/selectors/lint', { method: 'POST' });
+        const data = await res.json();
+        if (data.ok) {
+          lintStatus.textContent = 'Selectors OK';
+          lintStatus.className = 'ok';
+        } else {
+          lintStatus.textContent = 'Selectors FAILED';
+          lintStatus.className = 'err';
+        }
+        appendLog('[selectors lint] exit=' + data.code + '\\n' + (data.stdout || '') + '\\n' + (data.stderr || ''));
+      }
+
+      async function generateFlow() {
+        flowStatus.textContent = 'Generating...';
+        const id = testIdInput.value.trim();
+        if (!id) { flowStatus.textContent = 'Enter a Test ID'; return; }
+        const res = await fetch('/api/flows/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ testId: id }),
+        });
+        const data = await res.json();
+        flowStatus.textContent = data.ok ? 'Generated' : 'Failed';
+        appendLog('[flow gen] ' + JSON.stringify(data));
+      }
+
+      startBtn.addEventListener('click', startRun);
+      stopBtn.addEventListener('click', stopRun);
+      lintBtn.addEventListener('click', lintSelectors);
+      flowBtn.addEventListener('click', generateFlow);
+    </script>
+  </body>
+</html>
+
+
+

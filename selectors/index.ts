@@ -710,13 +710,6 @@ export async function setCustomField(
         opened = await openDateCalendarByLabel(page, label).catch(() => false);
       }
       // 2) Fallback: open the datepicker using multiple robust triggers
-      try {
-        const focusCount = await root.locator(dateFocusSel).count().catch(() => -1 as number);
-        const containerCount = await root.locator(containerSel).count().catch(() => -1 as number);
-        logger.debug('Date open debug: focus candidates=%d, container candidates=%d', focusCount, containerCount);
-      } catch {
-        // ignore debug failure
-      }
       const dropdownSel = getSelectorCandidates('info', 'dateDropdown').join(', ');
       const containerSel = getSelectorCandidates('info', 'dateContainer').join(', ');
       const iconSel = getSelectorCandidates('info', 'dateIcon').join(', ');
@@ -727,6 +720,13 @@ export async function setCustomField(
       const dropdown = page.locator(dropdownSel).first();
       const activeSel = getSelectorCandidates('info', 'dateContainerActive').join(', ');
       const active = page.locator(activeSel).first();
+      try {
+        const focusCount = await root.locator(dateFocusSel).count().catch(() => -1 as number);
+        const containerCount = await root.locator(containerSel).count().catch(() => -1 as number);
+        logger.debug('Date open debug: focus candidates=%d, container candidates=%d', focusCount, containerCount);
+      } catch {
+        // ignore debug failure
+      }
 
       async function attemptOpenWith(locator: Locator): Promise<boolean> {
         try {
@@ -799,16 +799,16 @@ export async function setCustomField(
         // Global fallback: click the date container associated with the header label text
         try {
           const clicked = await page.evaluate(
-            (label: string, containerCss: string, headerCss: string) => {
+            (args: { label: string; containerCss: string; headerCss: string }) => {
               function visible(el: Element): boolean {
                 const s = getComputedStyle(el as HTMLElement);
                 const r = (el as HTMLElement).getBoundingClientRect();
                 return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
               }
-              const containers = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
-              const needle = (label || '').trim().toLowerCase();
+              const containers = Array.from(document.querySelectorAll<HTMLElement>(args.containerCss));
+              const needle = (args.label || '').trim().toLowerCase();
               const target = containers.find((c) => {
-                const h = c.querySelector<HTMLElement>(headerCss);
+                const h = c.querySelector<HTMLElement>(args.headerCss);
                 const text = (h?.textContent || '').trim().toLowerCase();
                 return visible(c) && (!!needle ? text === needle : true);
               }) || containers.find(visible);
@@ -824,9 +824,7 @@ export async function setCustomField(
               }
               return true;
             },
-            label,
-            containerSel,
-            headerSel,
+            { label, containerCss: containerSel, headerCss: headerSel },
           );
           if (clicked) {
             // Wait for either dropdown or active state
@@ -846,12 +844,12 @@ export async function setCustomField(
       if (!opened) {
         // Last-resort: explicitly invoke jQuery .focus() on the focus element and dispatch a native focus event
         try {
-          await page.evaluate((label: string, containerCss: string, headerCss: string) => {
+          await page.evaluate((args: { label: string; containerCss: string; headerCss: string }) => {
             const $win = (window as any).$;
-            const containers = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
-            const needle = (label || '').trim().toLowerCase();
+            const containers = Array.from(document.querySelectorAll<HTMLElement>(args.containerCss));
+            const needle = (args.label || '').trim().toLowerCase();
             const target = containers.find((c) => {
-              const h = c.querySelector<HTMLElement>(headerCss);
+              const h = c.querySelector<HTMLElement>(args.headerCss);
               const text = (h?.textContent || '').trim().toLowerCase();
               return !!needle ? text === needle : true;
             }) || containers[0];
@@ -865,7 +863,7 @@ export async function setCustomField(
               focusEl.focus();
               focusEl.dispatchEvent(new FocusEvent('focus', { bubbles: false, cancelable: false }));
             } catch {}
-          }, label, containerSel, headerSel);
+          }, { label, containerCss: containerSel, headerCss: headerSel });
           const until = Date.now() + 1200;
           while (Date.now() < until) {
             const d = await dropdown.isVisible().catch(() => false);
@@ -901,7 +899,7 @@ export async function setCustomField(
         if (!picked) {
           logger.debug('Date select: today day cell not clicked; trying Today action');
           picked = await page
-            .evaluate((actionsContainerSel: string, actionSel: string) => {
+            .evaluate((args: { actionsContainerSel: string; actionSel: string }) => {
               function visible(el: Element): boolean {
                 const s = getComputedStyle(el as HTMLElement);
                 const r = (el as HTMLElement).getBoundingClientRect();
@@ -913,8 +911,8 @@ export async function setCustomField(
                 document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-info-bar_field_date__dropdownMenu_']") ||
                 document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-datepicker__container_']");
               if (!root) return false;
-              const actionsRoot = root.querySelector<HTMLElement>(actionsContainerSel) || root;
-              const actions = Array.from(actionsRoot.querySelectorAll<HTMLElement>(actionSel));
+              const actionsRoot = root.querySelector<HTMLElement>(args.actionsContainerSel) || root;
+              const actions = Array.from(actionsRoot.querySelectorAll<HTMLElement>(args.actionSel));
               const today = actions.find((a) => visible(a) && (a.textContent || '').trim().match(/^Today$/i));
               if (today) {
                 for (const type of ['mousedown','mouseup','click'] as const) {
@@ -923,7 +921,7 @@ export async function setCustomField(
                 return true;
               }
               return false;
-            }, dateActionsContainerSel, dateActionSel)
+            }, { actionsContainerSel: dateActionsContainerSel, actionSel: dateActionSel })
             .catch(() => false);
         }
         // 2c) Fallback: click currently selected day (often today)
@@ -1095,18 +1093,48 @@ export async function setCustomField(
     }
     case 'radio': {
       const name = String(opts.value ?? '');
-      // Prefer clicking a visible label/span with the option text inside the field root
-      const clicked =
-        (await root.locator(`label:has-text(${JSON.stringify(name)})`).first().click().then(() => true).catch(() => false)) ||
-        (await root
-          .locator(`${radioSel} + label:has-text(${JSON.stringify(name)})`)
-          .first()
-          .click()
-          .then(() => true)
-          .catch(() => false)) ||
-        (await dispatchClickText(name).then(() => true).catch(() => false));
-      if (!clicked) {
-        throw new Error(`Radio option not found: ${name}`);
+      // Many "radio" fields are implemented with ember-power-select (i.e., dropdown). Try trigger first.
+      let handled = false;
+      try {
+        const trigger = root.locator(selectTriggerSel).first();
+        if (await trigger.isVisible({ timeout: 500 })) {
+          await trigger.click();
+          let ok = false;
+          if (name) {
+            ok =
+              (await dispatchClickTextInDropdown(page, name)) ||
+              (await dispatchClickText(page, name).then(() => true).catch(() => false));
+          }
+          if (!ok) {
+            // Fallback: select first visible option in the open dropdown
+            const firstOption = page.locator(dropdownOptionSel).first();
+            await firstOption.click({ timeout: 1000 });
+            ok = true;
+          }
+          handled = true;
+        }
+      } catch {
+        // fall through to classic radio handling
+      }
+      if (!handled) {
+        // Prefer clicking a visible label/span with the option text inside the field root
+        let clicked = false;
+        if (name) {
+          clicked =
+            (await root.locator(`label:has-text(${JSON.stringify(name)})`).first().click().then(() => true).catch(() => false)) ||
+            (await root
+              .locator(`${radioSel} + label:has-text(${JSON.stringify(name)})`)
+              .first()
+              .click()
+              .then(() => true)
+              .catch(() => false)) ||
+            (await dispatchClickText(page, name).then(() => true).catch(() => false));
+        }
+        if (!clicked) {
+          // Last resort: click the first radio in the container
+          const firstRadio = root.locator(radioSel).first();
+          await firstRadio.click({ timeout: 800 });
+        }
       }
       break;
     }
@@ -1114,9 +1142,17 @@ export async function setCustomField(
       const name = String(opts.value ?? '');
       const trigger = root.locator(selectTriggerSel).first();
       await trigger.click();
-      const ok = await dispatchClickTextInDropdown(page, name);
+      let ok = false;
+      if (name) {
+        ok = await dispatchClickTextInDropdown(page, name);
+        if (!ok) {
+          ok = await dispatchClickText(page, name).then(() => true).catch(() => false);
+        }
+      }
       if (!ok) {
-        await dispatchClickText(page, name);
+        // Fallback: choose the first option in the open dropdown
+        const firstOption = page.locator(dropdownOptionSel).first();
+        await firstOption.click({ timeout: 1000 });
       }
       break;
     }
@@ -1162,19 +1198,19 @@ export async function openDateCalendarByLabel(page: Page, label: string): Promis
     logger.debug('Date open (label): global container count=%d for selector "%s"', globalCount, selector);
   } catch {}
   const opened = await page.evaluate(
-    (labelText: string, containerCss: string, headerCss: string) => {
+    (args: { labelText: string; containerCss: string; headerCss: string }) => {
       function normalize(s: string): string {
         return (s || '').replace(/\s+/g, ' ').trim();
       }
       function matchesLabel(container: Element, needle: string): boolean {
-        const header = container.querySelector<HTMLElement>(headerCss);
+        const header = container.querySelector<HTMLElement>(args.headerCss);
         const text = normalize(header?.textContent || '');
         const n = normalize(needle);
         return text.localeCompare(n, undefined, { sensitivity: 'base' }) === 0 || text.toLowerCase().includes(n.toLowerCase());
       }
-      const targets = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
+      const targets = Array.from(document.querySelectorAll<HTMLElement>(args.containerCss));
       const t =
-        targets.find((c) => matchesLabel(c, labelText)) ||
+        targets.find((c) => matchesLabel(c, args.labelText)) ||
         targets[0];
       if (!t) return false;
       const props = { bubbles: true, cancelable: true, view: window } as MouseEventInit;
@@ -1184,9 +1220,7 @@ export async function openDateCalendarByLabel(page: Page, label: string): Promis
       t.dispatchEvent(new MouseEvent('click', props));
       return true;
     },
-    label,
-    selector,
-    headerSelector,
+    { labelText: label, containerCss: selector, headerCss: headerSelector },
   );
   if (!opened) {
     logger.warn('Dispatch open failed for date calendar: %s', label);
@@ -1317,6 +1351,27 @@ export async function findInfoBarFieldByName(
   return matches[idx].loc;
 }
 
+// Set a custom field by automatically detecting its type from the UI.
+// For cascading selects, provide path via opts.path; otherwise 'value' is used.
+export async function setCustomFieldAuto(
+  page: Page,
+  opts: {
+    label: string;
+    value?: string | number | boolean | string[];
+    path?: string[];
+  },
+): Promise<void> {
+  const { label } = opts;
+  const detected = await identifyInfoBarFieldType(page, label);
+  const type: CustomFieldType =
+    detected === 'unknown' || detected === null
+      ? 'text'
+      : // Treat regex the same as text for now; treat "radio" as dropdown (power-select)
+        (detected === 'radio' ? 'dropdown' : (detected as CustomFieldType));
+  logger.info('Auto-setting custom field: "%s" detected as %s', label, type);
+  await setCustomField(page, { type, label, value: opts.value, path: opts.path });
+}
+
 async function detectFieldTypeFromContainer(container: Locator): Promise<CustomFieldType | 'unknown'> {
   // Class-name based detection (fast and stable)
   try {
@@ -1330,7 +1385,9 @@ async function detectFieldTypeFromContainer(container: Locator): Promise<CustomF
       if (cls.includes('ko-info-bar_field_select__trigger')) return 'dropdown';
       if (cls.includes('ko-info-bar_field_yesno__trigger')) return 'yesno';
       if (cls.includes('ko-info-bar_field_multiline-text__textarea')) return 'textarea';
+      if (cls.includes('ko-info-bar_field_multiline-text__multiline-text')) return 'textarea';
       if (cls.includes('ko-info-bar_field_text__input')) return 'text';
+      if (cls.includes('ko-info-bar_field_text__text')) return 'text';
       if (cls.includes('ko-info-bar_field_integer__input')) return 'integer';
       if (cls.includes('ko-info-bar_field_decimal__input')) return 'decimal';
       if (cls.includes('ko-info-bar_field_checkbox')) return 'checkbox';

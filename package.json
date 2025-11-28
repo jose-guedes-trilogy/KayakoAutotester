@@ -10,7 +10,11 @@
     "validate:selectors": "ts-node scripts/validate-selectors.ts",
     "convert:flows": "ts-node scripts/flow-to-pw.ts mcp/flows/*.yml",
     "lint:selectors": "ts-node scripts/lint-selectors-folder.ts",
-    "lint:selectors:fix": "ts-node scripts/lint-selectors-folder.ts --fix"
+    "lint:selectors:fix": "ts-node scripts/lint-selectors-folder.ts --fix",
+    "control:orchestrator:dev": "npm --prefix orchestrator run dev",
+    "control:orchestrator": "npm --prefix orchestrator run start",
+    "control:ui": "npm --prefix ui run dev",
+    "control:dev": "concurrently -n ORCH,UI -c green,cyan \"npm:control:orchestrator:dev\" \"npm:control:ui\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +25,7 @@
     "@types/node": "^24.10.0",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
+    "concurrently": "^9.0.1",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "eslint": "^9.39.1",

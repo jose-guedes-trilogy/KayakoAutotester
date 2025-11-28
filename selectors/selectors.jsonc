@@ -459,16 +459,20 @@
     // Generic checkbox or switch within a field container
     "checkbox": [
       "input[type='checkbox']",
-      "[role='switch']"
+      "[role='switch']",
+      "[role='checkbox']",
+      "div[class*='ko-checkbox__checkbox_']"
     ],
     // Generic text input(s) within a field container
     "textInput": [
+      "input[class*='ko-info-bar_field_text__input_']",
       "input[type='text']",
       "input[type='search']",
       "input[type='number']"
     ],
     // Generic textarea within a field container
     "textarea": [
+      "textarea[class*='ko-info-bar_field_multiline-text__textarea_']",
       "textarea"
     ],
     // Generic date input within a field container

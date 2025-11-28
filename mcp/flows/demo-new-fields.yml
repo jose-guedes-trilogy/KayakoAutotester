@@ -1,7 +1,8 @@
-name: demo-custom-fields
-description: Demonstrate setting yes/no, cascading select (multi-level), and date fields
+name: demo-new-fields
+description: Fill all newly supported field types (radio, text, textarea, regex, integer, decimal, checkboxes)
 steps:
   - type: goto-conversation-by-env-id
+    optional: true
   - type: wait-loadstate
     state: networkidle
   # Fallback open first conversation if no ID
@@ -13,24 +14,6 @@ steps:
     selectorKey: inbox.conversationSubject
   - type: wait-loadstate
     state: networkidle
-  # Yes/No toggle -> Yes
-  - type: set-custom-field
-    fieldType: yesno
-    label: "Yes/no toggle"
-    value: true
-  # Cascading select -> choose path ["Level 1","Level 2"] (example; adjust as needed)
-  - type: set-custom-field
-    fieldType: cascading
-    label: "Cascading select"
-    path:
-      - "Category-A"
-      - "Subcategory-A"
-      - "Item-1"
-  # Date -> ISO format
-  - type: set-custom-field
-    fieldType: date
-    label: "Date of purchase"
-    value: "2025-04-05"
   # Radio (dropdown-like) -> pick first available option if unspecified
   - type: set-custom-field
     fieldType: radio
@@ -68,6 +51,6 @@ steps:
       - "Option-A-Title"
       - "Option-B-Title"
   - type: wait
-    value: "3000"
+    value: "2000"
 
 
