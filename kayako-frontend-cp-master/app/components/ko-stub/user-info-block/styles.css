@@ -1,0 +1,59 @@
+.stub {
+  padding: 0 18px;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  height: 42px;
+  width: 42px;
+  border-radius: 5px;
+  background: #EBEEF0;
+}
+
+.rows {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.title {
+  height: 15px;
+  width: 80%;
+  background: #EBEEF0;
+  margin-left: 15px;
+  border-radius: 7px;
+}
+
+.subtitle {
+  height: 10px;
+  width: 60%;
+  background: #EBEEF0;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  height: 17px;
+  width: 17px;
+  background: #EBEEF0;
+  border-radius: 50%;
+}
+
+.description {
+  width: 50%;
+  height: 10px;
+  background: #EBEEF0;
+  margin-left: 10px;
+  border-radius: 5px;
+}

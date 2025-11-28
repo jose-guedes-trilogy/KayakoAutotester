@@ -1,0 +1,9 @@
+{{ko-admin/oauth-apps/edit
+  app=model
+  editedApp=editedApp
+  schema=schema
+  isCreated=isCreated
+  onSuccess=(if (not isCreated) (action "created"))
+  onDone=(action "done")
+  onCancel=(action "canceled")
+}}

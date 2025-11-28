@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.avatar {
+  margin-right: 6px;
+}
+
+.name {
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

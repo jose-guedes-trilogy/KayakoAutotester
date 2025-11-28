@@ -1,0 +1,80 @@
+<label local-class="label"><strong>{{t "admin.messenger.tabs.customize.title_label"}}</strong></label>
+{{#if messengerPage}}
+  <div>
+    {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.title_helptext"}}{{/ko-form/field/help}}
+  </div>
+{{/if}}
+<div local-class="localized-field nudge-upward">
+  {{ko-input size="full" value=title}}
+  {{#if messengerPage}}
+    <div local-class="locale-input">
+      {{ko-admin/inline-locale-edit localeFields=titleLocaleFields}}
+    </div>
+  {{/if}}
+</div>
+
+<label local-class="label"><strong>{{t "admin.messenger.tabs.customize.welcome_label"}}</strong></label>
+{{#if messengerPage}}
+  <div>
+    {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.welcome_helptext"}}{{/ko-form/field/help}}
+  </div>
+{{/if}}
+<div local-class="localized-field nudge-upward">
+  {{ko-input size="full" multiline=true lines=3 value=welcomeMessage}}
+  {{#if messengerPage}}
+    <div local-class="locale-input">
+      {{ko-admin/inline-locale-edit localeFields=welcomeMessageLocaleFields inputType="textArea"}}
+    </div>
+  {{/if}}
+</div>
+
+<label local-class="label"><strong>{{t "admin.messenger.tabs.customize.background_label"}}</strong></label>
+<div local-class="mtop--tiny">
+  <div local-class="background-mode {{if (eq backgroundMode "gradient") "is-active"}}">
+    {{ko-radio label="Gradient" checked=(eq backgroundMode 'gradient') onChange=(action "switchBackgroundStyle" 'gradient')}}
+  </div>
+  <div local-class="background-mode {{if (eq backgroundMode "color") "is-active"}}">
+    {{ko-radio label="Color" checked=(eq backgroundMode 'color') onChange=(action "switchBackgroundStyle" 'color')}}
+  </div>
+</div>  
+
+<div local-class="color-palletes {{if (eq backgroundMode "color") "show-colors"}}">
+  <div local-class="color-palletes__wrap">
+    {{#each gradients as |gradient|}}
+      <span local-class="pallete gradient {{if (eq activeGradient gradient) "is-active"}}" onClick={{action "updateGradient" gradient}}></span>
+    {{/each}}
+  </div>
+
+  <div local-class="color-palletes__wrap">
+    {{#each solidColors as |color|}}
+      <span local-class="pallete solid-color {{if (eq activeSolidColor color) "is-active"}}" onClick={{action "updateColor" color}}></span>
+    {{/each}}
+    <span local-class="pallete solid-color">
+      <div local-class="color-selector--background">
+        {{spectrum-color-picker color=activeSolidColor showInput=true onMove=(action "updateColor") onChange=(action "updateColor")}}
+      </div>
+    </span>
+  </div>
+</div>
+
+{{#if messengerPage}}
+  <div local-class="patterns">
+    <label local-class="label"><strong>{{t "admin.messenger.tabs.customize.texture_label"}}</strong></label>
+    <div local-class="mtop--tiny">
+      {{#each patterns as |pattern|}}
+        <span local-class="pattern {{if (eq activePattern pattern) "is-active-pattern"}}" onClick={{action "updatePattern" pattern}}></span>
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
+
+<div local-class="color-input-container">
+  <label local-class="label"><strong>{{t "admin.messenger.tabs.customize.color_label"}}</strong></label>
+  <div>
+    {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.color_label_helptext"}}{{/ko-form/field/help}}
+  </div>
+  <input local-class="color-input" value={{primaryColor}} onchange={{action "primaryColorChanged" value="target.value"}}>
+  <div local-class="color-selector--primary">
+    {{spectrum-color-picker color=primaryColor onMove=(action "primaryColorChanged") onChange=(action "primaryColorChanged")}}
+  </div>
+</div>

@@ -1,0 +1,5 @@
+.error {
+  margin-top: 9px;
+  color: $color-bad;
+  font-size: 12px;
+}

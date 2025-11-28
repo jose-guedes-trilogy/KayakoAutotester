@@ -1,0 +1,95 @@
+{
+  "activity": {
+    "search": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> searched for <b>{term}</b> on the Help Center",
+    "view": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> viewed <a class='timeline-link' href='{anchor}' target=_blank rel=\"noopener noreferrer\"><strong>{articleTitle}</strong></a> on the Help Center",
+    "comment": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> commented on <a class='timeline-link' href='{articleAnchor}' target=_blank rel=\"noopener noreferrer\"><strong>{articleTitle}</strong></a> on the Help Center",
+    "reply": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> replied to <a class='timeline-link' href='{caseAnchor}'><strong>{caseTitle}</strong></a>",
+
+    "sla_update_case": "applied the SLA <b>{name}</b>",
+
+    "priority_to_nothing": "cleared the conversation priority",
+    "type_to_nothing": "cleared the conversation type",
+    "tags_to_nothing": "cleared the conversation tags",
+    "organization_to_nothing": "cleared the conversation organization",
+
+    "subject_from_nothing": "set the subject to <b>{subject}</b>",
+    "status_from_nothing": "set the status to",
+    "priority_from_nothing": "set the priority to <b>{priority}</b>",
+    "type_from_nothing": "set the type to <b>{type}</b>",
+    "tags_from_nothing": "set the tags to <b>{tags}</b>",
+    "form_from_nothing": "set the form to <b>{form}</b>",
+    "organization_from_nothing": "set the organization to <b>{field}</b>",
+    "default_from_nothing": "set {fieldName} to <b>{value}</b>",
+
+    "subject_from_something": "changed the subject to <b>{subject}</b>",
+    "requester_from_something": "changed the requester to",
+    "status_from_something": "changed the status to",
+    "priority_from_something": "changed the priority to <b>{priority}</b>",
+    "type_from_something": "changed the type to <b>{type}</b>",
+    "tags_from_something": "changed the conversation tags to <b>{tags}</b>",
+    "form_from_something": "changed the conversation form to <b>{form}</b>",
+    "brand_from_something": "changed the conversation brand to <b>{field}</b>",
+    "organization_from_something": "changed the organization to <b>{field}</b>",
+    "default_from_something": "changed {fieldName} to <b>{value}</b>",
+
+    "team": "assigned to <b>{team}</b>",
+    "agent": "assigned to",
+    "agent_unassigned": "unassigned the agent from the conversation",
+    "team_unassigned": "unassigned the team from the conversation",
+    "coerced_assignee": "assigned to <b>{team} /</b>",
+
+    "monitor_update_case": "A Monitor updated {count, plural, =0 {{count} properties} =1 {a property} other {{count} properties}}",
+
+    "trigger_update_case": "A Trigger updated {count, plural, =0 {{count} properties} =1 {a property} other {{count} properties}}",
+
+    "update_case": "{name} updated {count, plural, =0 {{count} properties} =1 {a property} other {{count} properties}}",
+    "engagement_rule": "engaged user {name}{separator}",
+    "other_items": "and {count, plural, =0 {<b>{count}</b> other items} =1 {<b>{count}</b> other item} other {<b>{count}</b> other items}}",
+
+    "event": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> triggered event {event}",
+
+    "trash_case": "Conversation trashed by",
+    "restore_case": "Conversation restored by",
+
+    "merge": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> merged <b><a class='timeline-link' href='{caseAnchor}'>{subject}</a></b> into this conversation",
+
+    "merge_with_case": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> merged <b><a class='timeline-link' href='{caseAnchor}'>{subject}</a></b> into <b><a class='timeline-link' href='{intoAnchor}'>{intoTitle}</a></b>",
+
+    "firstReplyTimeBreach": "First reply goal missed",
+    "nextReplyTimeBreach": "Next reply goal missed",
+    "resolutionTimeBreach": "Resolution goal missed",
+    "completed": "Conversation completed by",
+
+    "rating": "<a class='timeline-link' href='{userAnchor}'>{name}</a> left a {rating} rating for this conversation",
+
+    "rating_with_case": "<b><a class='timeline-link' href='{userAnchor}'>{name}</a></b> left a {rating} rating for <b><a class='timeline-link' href='{caseAnchor}'>{caseTitle}</a></b>",
+    "completed_trashed_or_restored_by_monitor_or_trigger": "the {type} {name}",
+    "added_note": "{name} added a note",
+    "on_context": "on <b><a class='timeline-link' href='{anchor}'>{name}</a></b>",
+    "article_suggestion": "These articles were suggested to <b>{name}</b> by the <b>{brand}</b> Messenger",
+    "view_suggested_article": "<b>{name}</b> viewed <b>{title}</b> from suggestions offered by <b>{brand}</b> Messenger",
+    "suggestion_helpful": "<b>{name}</b> found the suggestions helpful",
+    "suggestion_not_helpful": "<b>{name}</b> did not find the suggested articles helpful",
+    "suggestion_case_completed": "<b>Conversation completed by {name} via Messenger</b>"
+  },
+  "avatar_tooltips": {
+    "system": "The system updated this conversation",
+    "rule": "A {type} rule <strong>{name}</strong> updated this conversation",
+    "rule_user": "A {type} rule <strong>{name}</strong> updated this user",
+    "rule_org": "A {type} rule <strong>{name}</strong> updated this organization",
+    "sla": "The <strong>{name}</strong> SLA matched and applied to this conversation",
+    "engaged_user": "<strong>{name}</strong>",
+    "engagement_rule": "An engagement rule <strong>{name}</strong> updated this conversation"
+  },
+  "action": {
+    "title": "Title",
+    "name": "Name",
+    "event": "Event",
+    "invalid_event_color": "Invalid color received"
+  },
+  "property_empty_value": "Empty",
+  "assignee_empty_value": "Unassigned",
+  "tags_empty_value": "No Tags",
+  "new_messages": "new messages",
+  "past_activities": "<b>{count}+</b> past activities"
+}

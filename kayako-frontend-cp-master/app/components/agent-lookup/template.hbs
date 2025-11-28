@@ -1,0 +1,14 @@
+<div class="{{smallSlotClass}}">
+  {{#ko-select
+    disabled=disabled
+    selected=selected
+    options=options
+    search=(perform search)
+    searchEnabled=true
+    onChange=onChange
+    searchField="text"
+    onKeyDown=(action "preventSubmissionOnEnter")
+    as |opt|}}
+    {{opt.text}}
+  {{/ko-select}}
+</div>

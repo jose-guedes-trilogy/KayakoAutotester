@@ -1,0 +1,195 @@
+{
+  "greeting": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening"
+  },
+  "intro_text": "Start supporting your customers in no time, by completing the tasks below.",
+  "complete": "Complete",
+  "learn": {
+    "title": "Introduction",
+    "description": "Take a quick video tour for an introduction to Kayako's effortless, personal customer support experience.",
+    "cta": "Watch the video",
+    "video_header": "Welcome {name}, let's get started.",
+    "video_text": "Watch this two minute video to see first-hand how Kayako will work for you and your team.",
+    "slide_2_header": "Inbox",
+    "slide_2_text": "The inbox is where you’ll find conversations that need your attention.",
+    "slide_3_header": "Views",
+    "slide_3_text": "Views are like smart folders. They let you switch between specific subsets of your conversations.",
+    "slide_4_header": "Main area",
+    "slide_4_text": "The conversation brings together every message, reply, and customer activity – all in one place.",
+    "slide_5_header": "Reply box",
+    "slide_5_text": "To respond to a customer, you’ll write your reply in the text box. You can add images and formatting for rich, engaging conversations.",
+    "slide_6_header": "Sidebar",
+    "slide_6_text": "On the sidebar, you’ll set support workflow fields, fill in custom data, and assign conversations to teams or specific agents.",
+    "skip_intro": "Skip intro"
+  },
+  "experience": {
+    "title": "Experience Kayako",
+    "description": "Take the tour and find out how you reply to customers and deliver effortless and personal customer service.",
+    "cta": "Take the tour now"
+  },
+  "setup": {
+    "title": "Quick start",
+    "email_title": "Start receiving emails",
+    "email_description": "Configure your default Kayako email address, or forward an external support email address into Kayako.",
+    "email_button": "Set up email",
+    "social_title": "Link your social accounts",
+    "social_description": "Connect your Twitter and Facebook accounts to manage social support requests from Kayako.",
+    "social_button": "Link social accounts",
+    "messenger_title": "Enable Kayako Messenger",
+    "messenger_description": "Configure and enable Kayako Messenger for a better way to provide live chat support.",
+    "messenger_button": "Enable Messenger",
+    "team_title": "Set up your teams",
+    "team_description": "Group agents into functional teams – like Support, Sales, or Billing – to help keep your conversations organized.",
+    "team_button": "Create teams",
+    "agents_title": "Invite your agents",
+    "agents_description": "Get your team on board so they can start replying to your customers.",
+    "agents_button": "Invite agents",
+    "complete_cases_title": "Complete 3 conversations",
+    "complete_cases_description": "Take Kayako for a test run by having a few test conversations with your coworkers or friends.",
+    "complete_cases_button": "Start some conversations",
+    "popup": {
+      "emails": {
+        "initial": {
+          "title": "Start receiving emails",
+          "heading": "Do you receive support emails from your customers today?",
+          "primarybutton": "Yes, connect my existing address",
+          "secondarybutton": "No, create an address for me"
+        },
+        "connect": {
+          "title": "Connect your existing address",
+          "label": "Enter your current support address",
+          "inputplaceholder": "example@yourcompany.com"
+        },
+        "emailForwarding": {
+          "step1": "1. Log into your email system and go to your email forwarding settings.",
+          "step2": "2. Enter support{domain} as the forwarding email address.",
+          "instructions": "Step by step instructions",
+          "copyinstructions": "Copy instructions to send to your email administrator",
+          "instructionstext": "1. Log into your email system and go to your email forwarding settings.\n2. Enter support{domain} as the forwarding email address.\nStep by step instructions: https://support.kayako.com/article/1283-forwarding-emails-to-kayako-from-external-domains"
+        },
+        "connected": {
+          "heading": "All set!",
+          "subheading": "Kayako will send your emails on behalf of your email address.",
+          "liveconversationstitle": "Want live conversations?",
+          "liveconversationsdescription": "To ensure the best email experience for your customers, there are two more steps that we recommend you do: add SPF protection and enable DKIM authentication.",
+          "button": "Find out more",
+          "copyinstructions": "Copy instructions to send to your email and IT administrator",
+          "instructionstext": "To ensure the best email experience for our customers, there are two steps we need to complete to finish setting up Kayako, our customer service platform.\nWe need to edit our DNS records to enable SPF and DKIM authentication.\nHere is the information: https://support.kayako.com/article/1197-protecting-your-emails-from-spam-filters",
+          "nextstep": "Next: Link your social accounts →"
+        },
+        "create": {
+          "title": "Create a new support address",
+          "label": "All emails sent to this address will be turned into conversations in Kayako.",
+          "inputplaceholder": "example@yourcompany.com",
+          "primarybutton": "Create now"
+        },
+        "created": {
+          "heading": "All set!",
+          "subheading": "Emails sent to {address} will automatically become conversations in Kayako.",
+          "subheadingdefault": "Emails sent to your default email address will automatically become conversations in Kayako.",
+          "tryout": "Try it out! Send an email and watch it appear in your inbox. You can edit or add other email addresses in your <a href=\"/admin/channels/email\">admin settings</a> at any time."
+        }
+      },
+      "social": {
+        "initial": {
+          "title": "Link your social accounts",
+          "heading": "Do you use Facebook or Twitter to communicate to customers?",
+          "primarybutton": "Yes",
+          "secondarybutton": "No",
+          "fact": "Did you know that 67% of customers have used social media for support?"
+        },
+        "connect": {
+          "twitterheading": "Connect your Twitter account",
+          "twitterdescription": "Your team can have conversations with customers over Twitter. Kayako will create conversations for @ mentions and direct messages.",
+          "twitterbutton": "Connect Twitter account",
+          "twitterconnected": "Twitter account connected",
+          "facebookheading": "Connect your Facebook account",
+          "facebookdescription": "Your customers can send messages from your Facebook page. Incoming messages are captured and added as new conversations in Kayako.",
+          "facebookpages": "Connect Facebook page",
+          "facebookpagessuccess": "Facebook Page (or Pages if multiple) connected!",
+          "facebookconnected": "Facebook page(s) connected",
+          "skipbutton": "Skip",
+          "donebutton": "I'm done"
+        },
+        "done": {
+          "heading": "All set!",
+          "subheading": "Your social mentions and messages are now flowing into your Kayako inbox. You can edit and add other <a href=\"/admin/channels/twitter\">Twitter accounts</a> or <a href=\"/admin/channels/facebook\">Facebook pages</a> from the admin area at any time.",
+          "nextstep": "Next: Enable Kayako Messenger →"
+        }
+      },
+      "messenger": {
+        "initial": {
+          "title": "Customize Kayako Messenger",
+          "button": "Publish to Help Center"
+        },
+        "embedCode": {
+          "heading": "Kayako Messenger is now live on your Help Center.",
+          "subheading": "You can also add Kayako Messenger to any other website or app you own. Add the embed code below to start talking to your visitors immediately.",
+          "embedcode": "Embed code",
+          "welcomeMessage": "How can we help? We’d love to know what brought you to {brand}",
+          "helptext": "Add this code to your web pages just before the </body> tag",
+          "done": "I'm done"
+        },
+        "done": {
+          "heading": "All set!",
+          "subheading": "Your Kayako Messenger is now enabled - your customers can use its modern messaging interface to talk to your support team in real-time. You can adjust your Messenger configuration or copy the embed code anytime from the admin area.",
+          "nextstep": "Next - Create your teams →"
+        }
+      },
+      "team": {
+        "title": "Create a team",
+        "initial": {
+          "heading": "",
+          "primarybutton": "Create team now",
+          "secondarybutton": "Do later",
+          "dontwant": "I don’t want to do this"
+        },
+        "add": {
+          "team_name_label": "Enter team name",
+          "team_name_hint": "e.g. Support, General or Finance.",
+          "description": "Teams are groups of agents organized according to their function. For example you might have three separate teams for Support, Sales, and Billing.<br><br>Conversations can be assigned either to a specific agent or to the team as a whole. You can create as many teams as you like, and agents can belong to multiple teams.<br><br>Add a descriptive name for your default team here, and create additional teams, if you like.",
+          "add_more": "Add more"
+        },
+        "done": {
+          "heading": "All set!",
+          "subheading": "You can now organize your conversations according to which team should handle them. You can <a href=\"/admin/team-settings/teams\">edit or add teams</a> in the admin area whenever you need to.",
+          "nextstep": "Next: Invite your agents →"
+        }
+      },
+      "agents": {
+        "initial": {
+          "title": "Invite the gang",
+          "heading": "Bring your team onto Kayako, and help solve customer issues together.",
+          "primarybutton": "Invite team now",
+          "secondarybutton": "Do later",
+          "dontwant": "I don’t want to do this"
+        },
+        "add": {
+          "invite": "Send invites"
+        },
+        "done": {
+          "heading": "All set!",
+          "subheading": "We've created accounts for your agents on Kayako and sent emails to help them log in and get started. You can <a href=\"/admin/team-settings/agent-directory\">create additional agent accounts</a> from the admin area at any time.",
+          "nextstep": "Next: Test out some conversations →"
+        }
+      },
+      "conversations": {
+        "title": "Take a test drive",
+        "heading": "Ask a few coworkers to send you an email so you can take Kayako for a test drive. Set three conversations to 'Complete', in order to tick this item off your to-do list!",
+        "primary_button": "See conversations in your inbox",
+        "secondary_button": "Do later",
+        "dontwant": "I don’t want to do this"
+      }
+    }
+  },
+  "count": {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6"
+  }
+}

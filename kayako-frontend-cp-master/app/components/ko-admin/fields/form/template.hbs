@@ -1,0 +1,189 @@
+{{#ko-admin/page
+  title=title
+  buttonText=(t "generic.save")
+  onCancel=(action "cancel")
+  deleteText=(if canBeDeleted (t "generic.delete"))
+  onDelete=(action "deleteField")
+  showFooter=true
+  isSaving=save.isRunning
+  onSave=(perform save)
+  isValid=(not isSystemOptionsEdited)
+}}
+  {{#if (not (eq field.fieldType "MESSAGE"))}}
+    {{#ko-admin/forms/group legend=(t 'admin.casefields.edit.heading.agent_settings')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.field_title'}}{{/ko-form/field/label}}
+        {{ko-input qaClass="ko-admin_case-fields_edit__title" value=editedField.title onInput=(action (mut editedField.title) value="target.value") disabled=(or isSystemField save.isRunning)}}
+        {{ko-form/field/errors errors=editedField.errors.title}}
+        {{#ko-form/field/help}}{{t 'admin.casefields.edit.help.field_title'}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+      {{#if (and (eq field.fieldType "YESNO") (plan-has 'custom_field_tags') isCaseField)}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.field_tag'}}{{/ko-form/field/label}}
+          {{ko-input qaClass="ko-admin_case-fields_edit__title" value=editedField.tag onInput=(action (mut editedField.tag) value="target.value") disabled=(or isSystemField save.isRunning)}}
+          {{ko-form/field/errors errors=editedField.errors.tag}}
+          {{#ko-form/field/help}}{{t 'admin.casefields.edit.help.field_tag'}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#if agentCaseSettings}}
+        {{#if (not (eq field.fieldType "STATUS"))}}
+          {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.is_required_for_agents'}}{{/ko-form/field/label}}
+
+          {{#ko-form/field}}
+            {{ko-checkbox
+              label=(t 'admin.casefields.edit.label.is_required_for_agents_when_updating_case')
+              checked=editedField.isRequiredForAgents
+              disabled=(or (not isRequiredWhenCreatingEditable) save.isRunning)
+            }}
+            {{ko-form/field/errors errors=editedField.errors.isRequiredForAgents}}
+          {{/ko-form/field}}
+
+          {{#ko-form/field nogap=true}}
+            {{ko-checkbox
+              label=(t 'admin.casefields.edit.label.is_required_for_agents_when_resolving_case')
+              checked=editedField.isRequiredOnResolution
+              disabled=(or (not isRequiredWhenCreatingEditable) save.isRunning)
+            }}
+            {{ko-form/field/errors errors=editedField.errors.isRequiredOnResolution}}
+          {{/ko-form/field}}
+        {{/if}}
+      {{/if}}
+
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#if canBeVisibleByCustomers}}
+    {{#ko-admin/forms/group legend=(t 'admin.casefields.edit.heading.customer_settings')}}
+      {{#if (not (eq field.fieldType "MESSAGE"))}}
+        {{#ko-form/field}}
+          {{ko-checkbox
+            label=(t 'admin.casefields.edit.label.is_visible_to_customers')
+            checked=editedField.isVisibleToCustomers
+            disabled=(or (not isCustomerVisibleEditable) save.isRunning)
+          }}
+          {{ko-form/field/errors errors=editedField.errors.isCustomerVisibleEditable}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#if editedField.isVisibleToCustomers}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.customer_field_title'}}{{/ko-form/field/label}}
+          <div local-class="localizableGroup">
+            {{ko-input qaClass="ko-admin_case-fields_edit__customer-title" value=customerTitleLocale.translation onInput=(action "setCustomerTitle" value="target.value") disabled=(or (not isCustomerFieldTitleEditable) save.isRunning)}}
+            {{#if (not isSystemField)}}
+              {{ko-admin/inline-locale-edit localeFields=editedField.customerTitles}}
+            {{/if}}
+          </div>
+          {{ko-form/field/errors errors=editedField.errors.customerTitles}}
+        {{/ko-form/field}}
+
+        {{#if isCustomerDescriptionsVisible}}
+          {{#ko-form/field}}
+            {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.customer_field_description'}}{{/ko-form/field/label}}
+            <div local-class="localizableGroup">
+              {{ko-input qaClass="ko-admin_case-fields_edit__description" multiline=true value=descriptionLocale.translation onInput=(action "setDescription" value="target.value") disabled=save.isRunning}}
+              {{ko-admin/inline-locale-edit
+                localeFields=editedField.descriptions
+                inputType="textArea"
+              }}
+            </div>
+            {{ko-form/field/errors errors=editedField.errors.descriptions}}
+            {{#ko-form/field/help}}{{t "admin.casefields.edit.help.customer_field_description"}}{{/ko-form/field/help}}
+          {{/ko-form/field}}
+        {{/if}}
+
+        {{#if (and isCustomerEditAvailable (not (eq field.fieldType "MESSAGE")))}}
+          {{#ko-form/field}}
+            {{ko-checkbox
+              label=(t 'admin.casefields.edit.label.is_editable_by_customers')
+              checked=editedField.isCustomerEditable
+              disabled=(or (not isCustomerEditableEditable) save.isRunning)
+            }}
+            {{ko-form/field/errors errors=editedField.errors.isCustomerEditable}}
+            {{#ko-form/field/help}}{{t 'admin.casefields.edit.help.is_editable_by_customers'}}{{/ko-form/field/help}}
+          {{/ko-form/field}}
+
+          {{#if editedField.isCustomerEditable}}
+            {{#ko-form/field}}
+              {{ko-checkbox
+                label=(t 'admin.casefields.edit.label.is_required_for_customers')
+                checked=editedField.isRequiredForCustomers
+                disabled=(or (not isCustomerRequiredEditable) save.isRunning)
+              }}
+              {{ko-form/field/errors errors=editedField.errors.isRequiredForCustomers}}
+              {{#ko-form/field/help}}
+                {{#if isCaseField}}
+                  {{t 'admin.casefields.edit.help.is_required_for_customers_conversation'}}
+                {{else}}
+                  {{t 'admin.casefields.edit.help.is_required_for_customers_user_profile'}}
+                {{/if}}
+              {{/ko-form/field/help}}
+            {{/ko-form/field}}
+          {{/if}}
+        {{/if}}
+
+      {{/if}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#if (eq field.fieldType "REGEX")}}
+    {{ko-admin/fields/form/regex field=editedField}}
+  {{else if (eq field.fieldType "PRIORITY")}}
+    {{ko-admin/fields/form/priorities priorities=field.priorities onEditedChange=onSystemOptionsEdit}}
+  {{else if (eq field.fieldType "STATUS")}}
+    {{ko-admin/fields/form/statuses statuses=field.statuses onEditedChange=onSystemOptionsEdit}}
+  {{else if (eq field.fieldType "TYPE")}}
+    {{ko-admin/fields/form/types types=field.types onEditedChange=onSystemOptionsEdit}}
+  {{else if (ko-helper customFields.isChoiceField field)}}
+    {{#ko-admin/forms/group legend=(t 'admin.casefields.edit.heading.field_options')}}
+      {{#ko-form/field/help}}{{t 'admin.casefields.edit.label.field_options'}}{{/ko-form/field/help}}
+      {{#if editedField.options}}
+        {{#ko-reorderable-crud-list
+          onCreate=(action "addOption")
+          onRemove=(action "removeOption")
+          onReorder=(action "reorderList")
+          items=orderedOptionList as |option|
+        }}
+          {{ko-admin/fields/form/option option=option isCaseField=isCaseField}}
+        {{/ko-reorderable-crud-list}}
+      {{else}}
+        <a onclick={{action "addOption"}}>
+          {{t 'admin.fields.type.field_options.add_option'}}
+        </a>
+      {{/if}}
+      {{ko-form/field/errors errors=editedField.errors.options}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+
+  {{#if (not field.isSystem)}}
+    {{#if isStatusOrApiFieldAvailable}}
+      {{#ko-admin/forms/group legend=(t 'admin.casefields.edit.heading.field_settings')}}
+
+        {{#if isStatusKeyAvailable}}
+          {{#ko-form/field}}
+            {{ko-toggle
+              activated=editedField.isEnabled
+              label=(t (if editedField.isEnabled "admin.casefields.edit.description_on.is_enabled" "admin.casefields.edit.description_off.is_enabled"))
+            }}
+            {{ko-form/field/errors errors=editedField.errors.isEnabled}}
+            {{#ko-form/field/help}}{{t 'admin.casefields.edit.help.is_enabled'}}{{/ko-form/field/help}}
+          {{/ko-form/field}}
+        {{/if}}
+
+        {{#if (not isApiFieldKeyAvailable)}}
+          {{!-- hide API key when creating object, show it as disabled when editing --}}
+
+          {{#ko-form/field}}
+            {{#ko-form/field/label}}{{t 'admin.casefields.edit.label.api_key'}}{{/ko-form/field/label}}
+            {{ko-input qaClass="qa-admin_case-fields_edit__api-key" value=field.key disabled=true}}
+            {{#ko-form/field/help}}{{t 'admin.casefields.edit.help.api_key'}}{{/ko-form/field/help}}
+          {{/ko-form/field}}
+        {{/if}}
+
+      {{/ko-admin/forms/group}}
+    {{/if}}
+  {{/if}}
+{{/ko-admin/page}}

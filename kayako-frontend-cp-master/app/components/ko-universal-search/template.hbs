@@ -1,0 +1,112 @@
+{{#unless displayInline}}
+  <div local-class="overlay"></div>
+{{/unless}}
+
+<div local-class="container {{if displayInline "containerInline" "containerAbsolute"}}" id={{elementGuid}}>
+  <div local-class="input-container
+    {{if (and displayInline hasInlineInputBorder) "has-inline-input-border"}}
+    {{if displayInline "input-container-inline" "input-container-block"}}
+    {{if (and highlightInputOnFocus isFocused) "input-focused"}}
+  ">
+    <div local-class="icon-container">
+      <div local-class="search-icon">
+        {{inline-svg "icon--search"}}
+      </div>
+    </div>
+
+    <input
+      id={{inputId}}
+      type="search"
+      local-class="{{if displayInline "input-inline" "input"}}"
+      onfocus={{action (action (mut isFocused) true)}}
+      onblur={{action (action (mut isFocused) false)}}
+      oninput={{perform doSearch value="target.value"}}
+      placeholder={{if displayInline (t "search.merge.placeholder") (t "search.placeholder")}}
+      value={{searchQuery}}
+    >
+
+    <div
+      local-class="{{if displayInline "close-inline" "close-absolute"}}"
+      onclick={{action "closeSearch"}}
+      aria-label={{if displayInline (t "generic.clear")}}
+      class={{qa-cls "qa-ko-universal-search__close"}}
+    >
+      {{#if displayInline}}
+        {{#if searchActive}}
+          <div local-class="icon-container close-inline">{{ko-icon name="cross" color="#2D3138"}}</div>
+        {{/if}}
+      {{else}}
+        {{ko-icon name="searchClose" color="#838D94"}}
+        <div local-class="close-text-absolute">{{t "generic.esc"}}</div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{#if (or (not displayInline) isSearching)}}
+    <div local-class="{{if displayInline "content-inline" "content-absolute"}}">
+      <div local-class="results">
+        <div local-class="results-list {{if (and searchResults (lte searchResults.length 9)) "results-list"}}">
+          <ul local-class="list">
+            {{#each searchResults as |result|}}
+              {{#if groupSelect}}
+                {{ko-universal-search/result
+                  result=result
+                  showAppendIcon=true
+                  isHighlighted=(eq result highlightedResult)
+                  onHighlight=(action "highlightResult")
+                  onSelectHighlightedResult=(action "updateMergeList")
+                  onStopSearch=(action "closeSearch")
+                }}
+              {{else}}
+                {{ko-universal-search/result
+                  result=result
+                  isHighlighted=(eq result highlightedResult)
+                  onHighlight=(action "highlightResult")
+                  onSelectHighlightedResult=(action "selectHighlightedResult")
+                  onStopSearch=(action "closeSearch")
+                }}
+              {{/if}}
+            {{else}}
+              <p local-class="text">
+                {{#if doSearch.isRunning}}
+                  <div local-class="searching">
+                    {{ko-loader large=true}}
+                  </div>
+                {{else if searchQueryIsValid}}
+                  <div local-class="no-results">
+                    <img src="/images/empty-states/search.svg" width="462" height="262" alt="{{t 'search.noresults'}}">
+                    <div local-class="no-results-message">{{format-html-message "search.no_results_found.line1" searchQuery=searchQuery}}</div>
+                    <div local-class="no-results-message2">{{t "search.no_results_found.line2"}}</div>
+                  </div>
+                {{else if isSearching}}
+                  <div local-class="no-results">
+                    <img src="/images/empty-states/search.svg" width="462" height="262" alt="{{t 'search.noresults'}}">
+                    <div local-class="no-results-message2">{{t 'search.query_validation_error'}}</div>
+                  </div>
+                {{else}}
+                  {{#if showSearchHints}}
+                    {{ko-universal-search/search-hints
+                      recentSearches=recentSearches
+                      suggestedSearchOptions=suggestedSearchOptions
+                      highlightedSuggestion=highlightedResult
+                      onHighlight=(action "highlightResult")
+                      onSelectSuggestion=(action "selectHighlightedSearchSuggestion")
+                    }}
+                  {{/if}}
+                {{/if}}
+              </p>
+            {{/each}}
+          </ul>
+
+          {{#if (and showSeeMoreButton searchQuery searchResults.length)}}
+            <div local-class="fadeOut"></div>
+            {{ko-universal-search/result-see-more onClick=(action "navigateSeeMore")}}
+          {{/if}}
+        </div>
+      </div>
+      {{#if showHelpBlock}}
+        {{ko-universal-search/help-block}}
+      {{/if}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,224 @@
+<div local-class="activity"
+  data-connectable={{or isArticleSuggestionActivity (and (not activityFacade.isTriggerMonitorSystemOrSla) (not activityFacade.isEngagement)) activityFacade.isClosed}}
+  data-connectable-no-icon={{or (and activityFacade.isTriggerMonitorSystemOrSla (not isArticleSuggestionActivity)) activityFacade.isEngagement}}>
+  {{#if activityFacade.isSearch}}
+    <img src="/images/timeline/search.svg" width="33" height="33">
+  {{else if activityFacade.isArticleSuggestion}}
+    <img src="/images/timeline/list.svg" width="33" height="33">
+  {{else if (or activityFacade.isView activityFacade.isViewSuggestedArticle)}}
+    <img src="/images/timeline/view.svg" width="33" height="33">
+  {{else if activityFacade.isSuggestionHelpful}}
+    <img src="/images/timeline/helpful.svg" width="33" height="33">
+  {{else if activityFacade.isSuggestionNotHelpful}}
+    <img src="/images/timeline/not-helpful.svg" width="33" height="33">
+  {{else if activityFacade.isSuggestionCaseCompleted}}
+    <img src="/images/timeline/completed.svg" width="33" height="33">
+  {{else if activityFacade.isComment}}
+    <img src="/images/timeline/comment.svg" width="33" height="33">
+  {{else if activityFacade.isMerge}}
+    <img src="/images/timeline/merge.svg" width="33" height="33">
+  {{else if activityFacade.isClosed}}
+    <img src="/images/timeline/closed.svg" width="33" height="33">
+  {{else if activityFacade.isEvent}}
+    {{#if activityFacade.eventIcon}}
+      <img src="{{activityFacade.eventIcon}}" width="33" height="33">
+    {{else}}
+      {{#if activityFacade.hasValidEventColor}}
+        {{ko-event-icon color=activityFacade.eventColor}}
+      {{else}}
+        {{ko-event-icon}}
+      {{/if}}
+    {{/if}}
+    {{!-- The creator of the activity is the lowest priority when attempting to determine the icon to use --}}
+  {{else if activityFacade.isSla}}
+    <span local-class="small-dot-spacer">
+      {{#ko-tooltip title=(format-html-message "timeline.avatar_tooltips.sla" name=activityFacade.actor.title)}}
+        <img src="/images/timeline/small-dot.svg" width="17" height="17">
+      {{/ko-tooltip}}
+    </span>
+  {{else if activityFacade.isTriggerMonitorSystemOrSla}}
+    <span local-class="small-dot-spacer">
+      {{#if activityFacade.hasActor}}
+        {{#ko-tooltip title=(format-html-message localizedAutomationDesc type=activityFacade.actor.name name=activityFacade.actor.title)}}
+          <img src="/images/timeline/small-dot.svg" width="17" height="17">
+        {{/ko-tooltip}}
+      {{else}}
+        {{#ko-tooltip title=(t "timeline.avatar_tooltips.system")}}
+          <img src="/images/timeline/small-dot.svg" width="17" height="17">
+        {{/ko-tooltip}}
+      {{/if}}
+    </span>
+  {{else if activityFacade.isEngagement}}
+    <span local-class="small-dot-spacer">
+      {{#if activityFacade.isUserEngageActivity}}
+        {{#ko-tooltip title=(format-html-message "timeline.avatar_tooltips.engaged_user" name=activityFacade.actor.title)}}
+          <img src="/images/timeline/small-dot.svg" width="17" height="17">
+        {{/ko-tooltip}}
+      {{else}}
+        {{#ko-tooltip title=(format-html-message "timeline.avatar_tooltips.engagement_rule" type=activityFacade.actor.name name=activityFacade.actor.title)}}
+          <img src="/images/timeline/small-dot.svg" width="17" height="17">
+        {{/ko-tooltip}}
+      {{/if}}
+    </span>
+  {{else if activityFacade.hasAvatar}}
+    {{#ko-tooltip title=activityFacade.actor.title}}
+      <div local-class="avatar">
+        {{#ko-user-avatar size="submedium" as |avatar|}}
+          {{avatar.image url=activityFacade.actor.image type="round"}}
+        {{/ko-user-avatar}}
+      </div>
+    {{/ko-tooltip}}
+  {{else}}
+    <img src="/images/timeline/update-case.svg" width="33" height="33">
+  {{/if}}
+  <div local-class="{{if (and activityFacade.isMinor (not isArticleSuggestionActivity)) "activity-line-minor" "activity-line-major"}} {{if activityHasTokenAvatar "has-token-avatar"}}">
+    {{#ko-text-wrapper-for-button as |textWrapper|}}
+      <div local-class="activity-text">
+        {{#if activityFacade.isSearch}}
+          {{format-html-message "timeline.activity.search" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title term=(ko-helper helpers.extractSearchTerm activityFacade.summary)}}
+        {{else if activityFacade.isView}}
+          {{format-html-message "timeline.activity.view" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title articleTitle=activityFacade.object.title anchor=activityFacade.object.url}}
+        {{else if activityFacade.isComment}}
+          {{format-html-message "timeline.activity.comment" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title articleTitle=activityFacade.target.title articleAnchor=activityFacade.target.url}}
+        {{else if activityFacade.isClosed}}
+          {{format-html-message "timeline.activity.update_case" name=activityFacade.actor.title count=activityFacade.activityActions.length}}
+          {{#unless (eq timelineContext "case")}}
+            {{format-html-message "timeline.activity.on_context" name=activityFacade.object.title anchor=(ko-convert-to-relative-link activityFacade.object.url)}}
+          {{/unless}}
+        {{else if activityFacade.isSla}}
+          {{#if activityFacade.isBreach}}
+            {{ko-contextual-helper localizedMetricName this activityFacade.result.title}}
+            {{#unless (eq timelineContext "case")}}
+              {{format-html-message "timeline.activity.on_context" name=activityFacade.object.title anchor=(ko-convert-to-relative-link activityFacade.object.url)}}
+            {{/unless}}
+          {{else}}
+            {{format-html-message "timeline.activity.sla_update_case" name=activityFacade.actor.title}}
+          {{/if}}
+        {{else if (or activityFacade.isTrashed activityFacade.isUpdate activityFacade.isMonitor activityFacade.isTrigger)}}
+          {{ko-timeline-2/list/activity/standard/actions-summary-text
+            activity=activity
+            caseFields=caseFields
+            timelineContext=timelineContext
+          }}
+        {{else if activityFacade.isEngagement}}
+          {{format-html-message "timeline.activity.engagement_rule" name=activityFacade.object.title separator=(if activityFacade.hasTeamChanged "," "")}}
+          {{#if activityFacade.hasTeamChanged}}
+            {{ko-timeline-2/list/activity/standard/actions-summary-text
+              activity=activity
+              caseFields=caseFields
+              timelineContext=timelineContext}}
+          {{/if}}
+        {{else if activityFacade.isEvent}}
+          {{#if activityFacade.hasEventPropertySummary}}
+            {{activityFacade.eventPropertySummary}}
+          {{else}}
+            {{format-html-message "timeline.activity.event" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title event=activityFacade.object.title}}
+          {{/if}}
+        {{else if activityFacade.isMerge}}
+          {{#if (eq timelineContext "case")}}
+            {{format-html-message "timeline.activity.merge" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title subject=activityFacade.object.title caseAnchor=(ko-convert-to-relative-link activityFacade.object.url)}}
+          {{else}}
+            {{format-html-message "timeline.activity.merge_with_case" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title subject=activityFacade.object.title caseAnchor=(ko-convert-to-relative-link activityFacade.object.url) intoTitle=activityFacade.target.title intoAnchor=(ko-convert-to-relative-link activityFacade.target.url)}}
+          {{/if}}
+        {{else if activityFacade.isReply}}
+          {{#if activityFacade.isReplyToMessage}}
+            {{format-html-message "timeline.activity.reply" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title caseTitle=activityFacade.kase.subject caseAnchor=(href-to "session.agent.cases.case" activityFacade.kase.id)}}
+          {{else}}
+            {{format-html-message "timeline.activity.reply" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title caseTitle=activityFacade.kase.subject caseAnchor=(ko-convert-to-relative-link activityFacade.object.url)}}
+          {{/if}}
+        {{else if activityFacade.isRating}}
+          {{format-html-message "timeline.activity.rating_with_case" rating=activityFacade.object.title userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title caseTitle=activityFacade.target.title caseAnchor=(ko-convert-to-relative-link activityFacade.target.url)}}
+        {{else if activityFacade.isArticleSuggestion}}
+          {{format-html-message "timeline.activity.article_suggestion" name=articleSuggestedTo brand=articleSuggestedByBrand}}
+        {{else if activityFacade.isViewSuggestedArticle}}
+          {{format-html-message "timeline.activity.view_suggested_article" name=articleViewedBy title=articleTitle brand=articleViewedThroughBrand}}
+        {{else if activityFacade.isSuggestionHelpful}}
+          {{format-html-message "timeline.activity.suggestion_helpful" name=activityFacade.actor.title}}
+        {{else if activityFacade.isSuggestionNotHelpful}}
+          {{format-html-message "timeline.activity.suggestion_not_helpful"
+          name=activityFacade.actor.title}}
+        {{else if activityFacade.isSuggestionCaseCompleted}}
+          {{format-html-message "timeline.activity.suggestion_case_completed" name=activityFacade.actor.title}}
+        {{else}}
+          {{ko-timeline-2/list/activity/summary-text summary=activityFacade.summary activity=activityFacade model=model}}
+        {{/if}}
+      </div>
+      <div local-class="activity-time">
+        {{#ko-tooltip title=(format-time (ko-intl-datetime-format activity.createdAt) format="tooltip") local-class="time"}}
+          {{ko-from-now activity.createdAt customRelativeTime=true}}
+        {{/ko-tooltip}}
+      </div>
+      {{#if (and activityFacade.hasCard
+        (not activityFacade.isViewSuggestedArticle)
+        (not activityFacade.isSuggestionHelpful)
+        (not activityFacade.isSuggestionNotHelpful)
+        (not activityFacade.isSuggestionCaseCompleted)
+      )}}
+        {{textWrapper.showMoreButton expanded=expanded onToggle=(action "toggle")}}
+      {{/if}}
+    {{/ko-text-wrapper-for-button}}
+  </div>
+</div>
+
+{{#liquid-if (and expanded activityFacade.hasCard)}}
+  <div local-class="box">
+    <div local-class="properties">
+      {{#if activityFacade.isEvent}}
+        <div local-class="property">
+          <div local-class="property-name">{{t "timeline.action.event"}}</div>
+          <div local-class="property-value">{{activityFacade.apiEvent.event}}</div>
+        </div>
+        {{#each-in activityFacade.processedEventProperties as |key value|}}
+          {{#if (and key value)}}
+            {{#if (eq key 'url')}}
+              {{!-- show nothing --}}
+            {{else}}
+              <div local-class="property">
+                <div local-class="property-name">{{key}}</div>
+                <div local-class="property-value">{{value}}</div>
+              </div>
+            {{/if}}
+          {{/if}}
+        {{/each-in}}
+        {{#if activityFacade.hasInvalidEventColor}}
+          <div local-class="property">
+            <div local-class="property-name">{{t "timeline.action.invalid_color_received"}}</div>
+            <div local-class="property-value">{{activityFacade.eventColor}}</div>
+          </div>
+        {{/if}}
+      {{else if activityFacade.isArticleSuggestion}}
+        <div local-class="suggestions">
+          {{#each articleSuggestedActions as |action index|}}
+            <div local-class="suggestions-wrapper">
+              <span local-class="suggestion-index">{{inc index}}.</span>
+              <span local-class="suggestion-text">{{action.newValue}}</span>
+            </div>
+          {{/each}}
+        </div>
+      {{else}}
+        {{#each activityFacade.activityActions as |action|}}
+          <div local-class="property">
+            <div local-class="property-name">{{ko-contextual-helper localizedPropertyName this action.field}}</div>
+            <div local-class="property-value">
+              {{ko-timeline-2/list/activity/before-after
+                action=action
+                statusId=action.newObject.original.id
+              }}
+            </div>
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+{{/liquid-if}}
+
+{{#if activityFacade.isComment}}
+  <div local-class="comment-block-container">
+    <div local-class="comment-container">
+      <div local-class="helpcenter-comment-text-open-quote">{{t "generic.open_quotes"}}</div>
+      <div local-class="helpcenter-comment-text">
+        {{sanitize-html activity.helpcenterComment.contents "server-html-content"}}
+      </div>
+    </div>
+  </div>
+{{/if}}

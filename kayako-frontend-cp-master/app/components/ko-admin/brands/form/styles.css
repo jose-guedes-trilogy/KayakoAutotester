@@ -1,0 +1,64 @@
+.domain {
+  display: flex;
+  align-items: center;
+}
+
+.domain-input {
+  margin-right: 20px;
+}
+
+.domain-available {
+  font-size: 12px;
+  color: $color-good;
+}
+
+.domain-not-available {
+  font-size: 12px;
+  color: $color-bad;
+}
+
+.alias-container {
+  display: flex;
+  align-items: center;
+}
+
+.check-dns-button {
+  margin: 0 10px;
+}
+
+.dns-valid {
+  font-size: 12px;
+  margin-top: 5px;
+  color: $color-good;
+}
+
+.dns-invalid {
+  font-size: 12px;
+  margin-top: 5px;
+  color: $color-bad;
+}
+
+.ssl-set-icon {
+  color: $color-good;
+}
+
+.ssl-not-set-icon {
+  color: $color-bad;
+}
+
+.ssl-label {
+  display: flex;
+  align-items: center;
+}
+
+.ssl-icon {
+  margin: 0 20px 0 10px;
+}
+
+.cancel-ssl-button {
+  margin-top: 10px;
+}
+
+.textarea {
+  width: calc(100% - 120px);
+}

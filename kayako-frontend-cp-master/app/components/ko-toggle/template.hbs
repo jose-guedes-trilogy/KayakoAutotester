@@ -1,0 +1,8 @@
+<div local-class="toggle {{if isDisabled "disabled"}}" class="{{if qaClass (qa-cls qaClass)}}" onkeydown={{action "keyDown"}} onkeyup={{action "keyUp"}}>
+  <div local-class="container {{if micro "container--micro"}} {{if activated "container--activated"}}" role="radio" aria-checked="{{activated}}" tabindex="0" aria-live="assertive" id="{{uniqueId}}" onclick={{action "toggleRadio"}}>
+    <div local-class="slider {{if micro "slider--micro"}} {{if activated "slider--activated"}}"></div>
+  </div>
+  {{#if label}}
+    <label local-class="label {{if micro "label--micro"}}" for="{{uniqueId}}" onclick={{action "toggleRadio"}}>{{label}}</label>
+  {{/if}}
+</div>

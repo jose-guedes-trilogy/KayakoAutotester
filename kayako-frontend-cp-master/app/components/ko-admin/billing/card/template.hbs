@@ -1,0 +1,36 @@
+{{#if (not card.isDeleted)}}
+  <div local-class="card">
+    {{#unless card.isDefault}}
+      <div local-class="delete-handle" onclick={{action "removeCard" card}}>
+        {{ko-icon name="minusSquare" color="#BFC5D1"}}
+      </div>
+    {{/unless}}
+    <div local-class="about-card">
+      {{ko-creditcard-icon type=card.cardType}}
+      <span local-class="card-type {{if card.isDefault "isDefault"}}" onclick={{action "markAsDefault"}}>
+        <span class="i-star"></span>
+      </span>
+      <span local-class="card-type-label {{if card.isDefault "isDefault"}}">{{t "account.billing.defaultCard"}}</span>
+    </div>
+    <div local-class="card-group">
+      <div local-class="group-title">
+        <h4 local-class="group-label">{{t "account.billing.card.number"}}:</h4>
+      </div>
+      <div local-class="group-body">
+        {{#if cardNumber}}
+          **** **** **** {{cardNumber}}
+        {{else}}
+          {{t "account.billing.defaultCard"}}
+        {{/if}}
+      </div>
+    </div>
+    <div local-class="card-group">
+      <div local-class="group-title">
+        <h4 local-class="group-label">{{t "account.billing.card.expiry"}}:</h4>
+      </div>
+      <div local-class="group-body">
+        {{expiryMonth}}/{{card.expiryYear}}
+      </div>
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,19 @@
+<div local-class="buttons">
+  {{#with copyLabel as |label|}}
+    <div local-class="copy-button-wrapper">
+      {{#copy-button local-class="copy-button" clipboardText=clipboardText success=copiedToClipboard}}
+        {{label}}
+      {{/copy-button}}
+    </div>
+  {{/with}}
+
+  {{yield}}
+
+  {{#if refreshLabel}}
+    <div>
+      {{#ko-button type="default" local-class="refresh-button" onClick=onRefresh loading=isRefreshing}}
+        {{ko-icon name="refresh" color="#A1AAAF" size=18}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+</div>

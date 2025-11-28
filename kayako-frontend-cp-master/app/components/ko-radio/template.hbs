@@ -1,0 +1,22 @@
+<div
+  local-class="radio {{if disabled "radio--disabled"}}"
+  class="{{if qaClass (qa-cls qaClass)}}"
+  onkeydown={{action "keyDown"}}
+  onkeyup={{action "keyUp"}}
+  onclick={{if (not disabled) (action onChange true)}}
+>
+  <div
+    local-class="container"
+    role="radio"
+    aria-checked="{{checked}}"
+    tabindex="0"
+    aria-disabled="{{disabled}}"
+    aria-live="assertive"
+    id="{{uniqueId}}"
+  >
+    <div local-class="check {{if checked "check--on"}}"></div>
+  </div>
+  {{#if label}}
+    <label local-class="radio-label" for="{{uniqueId}}">{{label}}</label>
+  {{/if}}
+</div>

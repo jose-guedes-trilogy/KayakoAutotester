@@ -1,0 +1,65 @@
+{{#ko-form class=(local-class "filters-panel-container") isSubmitting=this.isApplying onSubmit=(action "applyFilters") as |form|}}
+  {{!-- Headings for Key (Column), Operator, Value --}}
+  <div local-class="filter-headings {{if (gt filters.length 1) 'margin-left-20'}}">
+    <span local-class="heading-column">{{t 'admin.knowledgebase.filters.column'}}</span>
+    <span local-class="heading-operator">{{t 'admin.knowledgebase.filters.operator'}}</span>
+    <span local-class="heading-value">{{t 'admin.knowledgebase.filters.value'}}</span>
+  </div>
+
+  {{!-- Each Filter Row --}}
+  {{#each filters as |filter index|}}
+    <div local-class="filter-row">
+      
+      {{#if (gt filters.length 1)}}
+        <button local-class="remove-filter" type="button" disabled={{form.isSubmitting}} {{action "removeFilter" index}}>
+          {{ko-icon name="cross" size=16}}
+        </button>
+      {{/if}}
+
+      {{#ko-form/field class=(local-class "filter-column")}}
+        {{#ko-select
+          selected=filter.key
+          options=filterColumns
+          onChange=(action "updateFilterKey" index)
+          disabled=form.isSubmitting
+          as |column|}}
+          {{title-case column}}
+        {{/ko-select}}
+        {{ko-form/field/errors errors=filter.errors.key}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field class=(local-class "filter-operator")}}
+        {{#ko-select
+          selected=filter.operator
+          options=filterOperators
+          onChange=(action "updateFilterOperator" index)
+          disabled=form.isSubmitting
+          as |operator|}}
+          {{title-case operator}}
+        {{/ko-select}}
+        {{ko-form/field/errors errors=filter.errors.operator}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field class=(local-class (if (or (eq filter.operator "isEmpty") (eq filter.operator "isNotEmpty")) "filter-value-hidden" "filter-value"))}}
+        {{ko-input
+          size="full"
+          value=filter.value
+          onInput=(action "updateFilterValue" index)
+          disabled=form.isSubmitting
+          placeholder=(t 'admin.knowledgebase.filters.value')
+        }}
+        {{ko-form/field/errors errors=filter.errors.value}}
+      {{/ko-form/field}}
+
+    </div>
+  {{/each}}
+
+  {{!-- Filter Actions --}}
+  <div local-class="filter-actions">
+    <button local-class="add-filter-btn" disabled={{form.isSubmitting}} type="button" {{action "addFilter"}}>{{t 'admin.knowledgebase.filters.add'}}</button>
+
+    <button local-class="apply-filter-btn" disabled={{form.isSubmitting}} type="submit" >{{t 'admin.knowledgebase.filters.apply'}}</button>
+
+    <button local-class="reset-filter-btn" disabled={{form.isSubmitting}} type="button" {{action "resetFilters"}}>{{t 'admin.knowledgebase.filters.reset'}}</button>
+  </div>
+{{/ko-form}}

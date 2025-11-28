@@ -1,0 +1,92 @@
+{{#ko-form onSubmit=(action "save" theTrigger) as |form|}}
+  {{#ko-admin/page
+    showFooter=true
+    title=(if theTrigger.isNew (t "admin.triggers.headings.new") (t "admin.triggers.headings.edit" title=theTrigger.title))
+    onCancel=(route-action "cancel" theTrigger)
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteTrigger")
+    buttonText=(t "generic.save")}}
+
+    {{#ko-admin/forms/group legend=(t "admin.triggers.heading.details")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.triggers.label.title"}}{{/ko-form/field/label}}
+        {{ko-input
+          name="title"
+          value=editedTrigger.title
+          oninput=(action (mut editedTrigger.title) value="target.value")
+          disabled=form.isSubmitting
+          placeholder=(t "admin.triggers.label.title_placeholder")
+        }}
+        {{ko-form/field/errors errors=editedTrigger.errors.title}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.triggers.heading.rule")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.triggers.label.rule"}}{{/ko-form/field/label}}
+        <div local-class="channel-layout">
+          <div local-class="channels">
+            {{#ko-select
+              class=(qa-cls "qa-channels")
+              selected=(find-by 'id' editedTrigger.channel channelList)
+              options=channelList
+              placeholder=(t "admin.triggers.channel.placeholder")
+              onChange=(action "setChannel")
+              disabled=form.isSubmitting
+              searchEnabled=true
+            as |channel|}}
+              {{t (concat "admin.triggers.channel." (or channel.id 'ANY'))}}
+            {{/ko-select}}
+            {{ko-form/field/errors errors=editedTrigger.errors.channel}}
+          </div>
+
+          <div local-class="events">
+            {{#if channelHasMultipleEvents}}
+              {{#ko-select
+                class=(qa-cls "qa-events")
+                selected=(find-by 'id' editedTrigger.event selectedChannelEvents)
+                options=selectedChannelEvents
+                placeholder=(t "admin.triggers.event.placeholder")
+                onChange=(action "setEvent")
+                disabled=form.isSubmitting
+                searchEnabled=true
+              as |event|}}
+                {{t (concat "admin.triggers.event." (or event.id 'ANY'))}}
+              {{/ko-select}}
+              {{ko-form/field/errors errors=editedTrigger.errors.event}}
+            {{/if}}
+          </div>
+        </div>
+
+        {{#ko-form/field/help}}
+          {{format-html-message "admin.triggers.rule.help"}}
+        {{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.triggers.conditions.heading"}}</h5>
+      {{ko-admin/forms/description small=true link="https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1" description="admin.triggers.conditions.description" linkText="admin.triggers.conditions.description_link"}}
+      {{ko-admin/predicate-builder definitions=filteredDefinitions
+        collections=editedTrigger.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "addPropositionToCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")
+      }}
+      {{ko-form/field/errors errors=editedTrigger.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.triggers.actions.heading"}}</h5>
+      {{ko-form/field/help text=(t "admin.triggers.actions.info")}}
+      {{ko-admin/automation-actions-builder
+        automationActions=editedTrigger.actions
+        definitions=automationActionDefinitions
+        type="triggers"
+        addAction=(action "addAction")
+        removeAction=(action "removeAction")}}
+    {{/ko-admin/forms/group}}
+
+  {{/ko-admin/page}}
+{{/ko-form}}

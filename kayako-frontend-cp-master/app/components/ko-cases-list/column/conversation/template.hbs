@@ -1,0 +1,65 @@
+<div local-class="conversation">
+  <div local-class="avatar">
+    {{#ko-user-avatar size="medium" user=model.requester isLoading=isLoading as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator}}
+    {{/ko-user-avatar}}
+  </div>
+  <div local-class="text">
+    <div local-class="firstRow">
+      <div local-class="requester">
+        {{#if isLoading}}
+          {{ko-loading/text-placeholder width="55px"}}
+        {{else}}
+          {{model.requester.fullName}}
+        {{/if}}
+      </div>
+      {{#if model.hasAttachments}}
+        <div local-class="attachments">
+          {{#ko-tooltip side="top" title=(t "cases.has_attachments") delay=500}}
+            {{ko-icon name="clip" color="#A1AAAF" size=12}}
+          {{/ko-tooltip}}
+        </div>
+      {{/if}}
+      <div local-class="ago">
+        {{#if isLoading}}
+          {{ko-loading/text-placeholder width="60px"}}
+        {{else}}
+          <span title={{lastRepliedAt}}>{{ko-from-now model.lastRepliedAt short=true}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div local-class="secondRow">
+      {{#if isLoading}}
+        {{ko-loading/text-placeholder width="135px"}}
+      {{else}}
+        {{#if (and (not isLoading) hasUnreadMessages)}}
+          <span local-class="unreadDot" class="{{qa-cls "qa-unread-dot"}}"> </span>
+        {{/if}}
+
+        <span local-class="subject">{{subject}}</span>
+
+        {{#if model.lastMessagePreview}}
+          <span local-class="bullet">•</span>
+
+          {{#if (and model.lastReplier.role.isAgentOrHigher model.lastPostStatus (not (eq model.lastPostStatus "NOT_SENT")))}}
+            <span local-class="status-icon">
+              {{ko-post-status-icon status=model.lastPostStatus}}
+            </span>
+          {{/if}}
+
+          <span local-class="preview">
+            {{lastMessagePreview}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+{{#with caseChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    on-presence-change=(action (mut _casePresence))
+  }}
+{{/with}}

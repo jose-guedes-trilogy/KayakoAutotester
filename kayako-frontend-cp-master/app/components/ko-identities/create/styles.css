@@ -1,0 +1,15 @@
+.trigger {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 5px 18px;
+  outline: none;
+
+  &:hover, &[aria-expanded="true"] {
+    background-color: #EBEEF0;
+  }
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-info-bar/shared';
+}

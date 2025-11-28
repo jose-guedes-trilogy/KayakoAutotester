@@ -1,0 +1,56 @@
+/**
+* Adds an ellipsis once the content has reached the width passed in.
+* Note: 100% is valid.
+*/
+@mixin truncate($max-width: 200px) {
+  max-width: $max-width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin font-size-with-line-height($font-size) {
+  font-size: $font-size;
+  line-height: ceil($font-size / 18px) * (18px / $font-size);
+}
+
+.text--left {
+  text-align: left;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.text--small {
+  font-size: 13px;
+}
+
+.text--light {
+  color: $grey-6;
+}
+
+.text--secondary {
+  color: $grey-7;
+}
+
+.text--action {
+  color: $primary-blue;
+  cursor: pointer;
+}
+
+.text--bold {
+  font-weight: 600;
+}
+
+.text--spaced {
+  line-height: 1.6;
+}
+
+.text--capitalize {
+  text-transform: capitalize;
+}

@@ -1,0 +1,37 @@
+<div local-class="trigger" id="ko-select-trigger-{{select.uniqueId}}">
+  {{#if (and extra.searchEnabled select.isOpen)}}
+    <input
+      type="search"
+      local-class="input"
+      tabindex="0"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      role="combobox"
+      aria-controls={{listboxId}}
+      placeholder={{searchPlaceholder}}
+      disabled={{select.disabled}}
+      onmousedown={{action "keepOpened"}}
+      onkeydown={{action "onKeydown"}}
+      oninput={{action select.actions.search value="target.value"}}>
+  {{else if select.selected}}
+    <span class="ember-power-select-selected-item">
+      {{#if extra.triggerField}}
+        {{get select.selected extra.triggerField}}
+      {{else}}
+        {{yield select.selected select}}
+      {{/if}}
+    </span>
+  {{else if extra.formattedValue}}
+    <span class="ember-power-select-selected-item">{{extra.formattedValue}}</span>
+  {{else if placeholder}}
+    <span class="ember-power-select-placeholder">{{placeholder}}</span>
+  {{/if}}
+
+  {{#if select.loading}}
+    <span local-class="loading"></span>
+  {{else}}
+    <span class="ember-power-select-status-icon"></span>
+  {{/if}}
+</div>

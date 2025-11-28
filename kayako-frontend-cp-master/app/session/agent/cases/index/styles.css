@@ -1,0 +1,33 @@
+.index {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  display: flex;
+  border-right: 1px solid #d1d5d7;
+  overflow: auto;
+
+  :global(.liquid-child) {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  overflow: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  display: flex;
+}

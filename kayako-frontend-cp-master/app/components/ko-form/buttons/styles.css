@@ -1,0 +1,14 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left-button {
+  margin-right: auto;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}

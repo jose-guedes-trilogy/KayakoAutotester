@@ -1,0 +1,34 @@
+.view {
+  display: flex;
+}
+
+.container {
+  flex-shrink: 1;
+
+  &--small {
+    min-width: 80px;
+  }
+
+  &--medium {
+    min-width: 285px;
+  }
+
+  &--full {
+    min-width: 100%;
+  }
+}
+
+.trigger {
+  composes: input from 'frontend-cp/components/ko-input/styles';
+  padding: 0;
+
+  :global(.ember-power-select-multiple-options) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1px 0 0 1px;
+  }
+}
+
+.trigger.trigger--focused {
+  @extend %brand-focus;
+}

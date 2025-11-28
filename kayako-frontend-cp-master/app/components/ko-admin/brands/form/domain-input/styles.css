@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  border-radius: 2px;
+  border: 1px solid #D1D5D7;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.1s, box-shadow 0.1s;
+  width: 285px;
+}
+
+.container.focused {
+  @extend %brand-focus;
+}
+
+.input {
+  line-height: 18px;
+  padding: 5px 9px;
+  border-width: 0px;
+  appearance: none;
+  outline: none;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+
+  &:disabled {
+    background-color: #eeeeee;
+    color: #A1AAAF;
+  }
+}
+
+.domain {
+  display: flex;
+  align-items: center;
+  background-color: #eeeeee;
+  padding: 0 10px;
+}

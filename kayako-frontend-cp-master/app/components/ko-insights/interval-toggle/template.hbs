@@ -1,0 +1,11 @@
+<div local-class="toggle">
+  <div onclick={{action onChange "DAY"}} local-class="item {{if (eq value "DAY") "active"}}">
+    {{t "insights.day"}}
+  </div>
+  <div onclick={{action onChange "WEEK"}} local-class="item {{if (eq value "WEEK") "active"}}">
+    {{t "insights.week"}}
+  </div>
+  <div onclick={{action onChange "MONTH"}} local-class="item {{if (eq value "MONTH") "active"}}">
+    {{t "insights.month"}}
+  </div>
+</div>

@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.trigger {
+  outline: none;
+  line-height: 2;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  min-height: 28px;
+  user-select: none;
+  position: relative;
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+  width: 300px;
+  padding-top: 0;
+  margin-top: -7px !important;
+
+  :global(.ember-power-select-search) {
+    padding: 0;
+    position: relative;
+    border-bottom: 1px solid #D1D5D7;
+
+    &::before {
+      content: "\e616"; /* HACK */
+      font-family: 'icomoon' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      @extend %u-v-center;
+      right: 9px;
+      @extend %i-color-grey;
+    }
+
+    input {
+      padding: 4.5px 9px;
+      line-height: 28px;
+      border-radius: 2px;
+      width: 100%;
+      padding-right: 18px;
+      border: none;
+      border-bottom-color: #D1D5D7 !important;
+      box-shadow: none !important;
+
+      &:focus {
+        @extend %brand-focus;
+      }
+    }
+  }
+}

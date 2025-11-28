@@ -1,0 +1,275 @@
+.time-tracking {
+  position: relative;
+  margin-right: 10px;
+}
+
+.pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 28px;
+  height: 28px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 3px;
+  color: $grey-6;
+  cursor: pointer;
+  transition: background-color 0.08s;
+
+  &:hover {
+    background-color: $grey-1;
+  }
+
+  &.active {
+    background-color: $grey-2;
+  }
+
+  &.has-worked-time {
+    border: 1px solid $grey-3;
+    background-color: transparent;
+    color: $grey-7;
+
+    .pill__icon {
+      padding: 2px 3px;
+      background-color: transparent;
+
+      path {
+        fill: $grey-7;
+      }
+    }
+
+    &:hover {
+      background-color: $grey-1;
+    }
+
+    &.active {
+      background-color: $grey-2;
+    }
+  }
+
+  &.has-active-timer {
+    border: none;
+    background-color: $color-bad;
+    color: #fff;
+
+    .pill__icon {
+      padding: 2px 3px;
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.6);
+
+      path {
+        fill: $color-bad;
+      }
+    }
+
+    &:hover,
+    &.active {
+      background-color: $color-bad;
+    }
+  }
+
+  &__time {
+    max-width: 80px;
+    margin-left: 5px;
+    font-weight: 600;
+  }
+}
+
+.timer {
+  padding-left: 4px;
+  padding-right: 2px;
+}
+
+.worked-time {
+  padding-right: 2px;
+}
+
+.dropdown {
+  width: 320px;
+  margin-top: 3px;
+  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(45, 49, 56, 0.09);
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.title {
+  padding: 15px 17px;
+  border-bottom: 1px solid $grey-3;
+  box-shadow: 0 1px 0 0 $grey-3, 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.time-entry {
+  padding: 15px 15px 12px;
+  background-color: $grey-1;
+  border-bottom: 1px solid $grey-3;
+  transition: background-color 0.12s;
+
+  &.is-editing {
+    background-color: $trivial-blue;
+  }
+
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.time-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 145px;
+  height: 48px;
+  padding-left: 5px;
+  padding-right: 12px;
+  margin-right: 15px;
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+  color: $grey-5;
+  font-weight: 600;
+}
+
+.input-labels {
+  display: flex;
+  justify-content: space-around;
+  font-size: 10px;
+  line-height: 1.4;
+  transform: translateY(1px);
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 22px;
+  padding: 0 2px 2px 4px;
+  font-size: 21px;
+
+  &.is-updating {
+    pointer-events: none;
+  }
+}
+
+.input {
+  width: 26px;
+  border: none;
+  color: $grey-8;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 0 rgba(45, 49, 56, 0.09);
+  background-color: $color-online;
+  cursor: pointer;
+  transition: background-color 0.12s;
+
+  &:hover {
+    background-color: darken($color-online, 4%);
+  }
+}
+
+.checkbox {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: $grey-7;
+}
+
+.cancel {
+  margin-left: 12px;
+  color: $grey-7;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.1s;
+
+  &.is-disabled {
+    color: $grey-4;
+    pointer-events: none;
+  }
+}
+
+.stat {
+  padding: 12px 15px 15px;
+
+  &:last-child {
+    border-top: 1px solid $grey-2;
+  }
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: $grey-6;
+  text-transform: uppercase;
+}
+
+.list {
+  max-height: 142px;
+  overflow-y: auto;
+  margin-left: -5px;
+  margin-right: -5px;
+
+  &.not-editable {
+    pointer-events: none;
+  }
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.avatar {
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.inline-icon {
+  margin-right: 5px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-right: -5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.total-worked {
+  margin-right: 5px;
+}
+
+.total-billed {
+  display: flex;
+  align-items: center;
+  padding: 1px 5px 1px 4px;
+  border-radius: 10px;
+  background-color: $trivial-blue;
+}

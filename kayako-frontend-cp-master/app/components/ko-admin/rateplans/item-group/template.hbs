@@ -1,0 +1,95 @@
+<div local-class="cell {{if isSelected "selected"}} {{unless (get rateplan selectedTerm) "disabled"}} {{if isDisabled "disabled"}}" onclick={{action attrs.switchPlan rateplan}}>
+  <div local-class="background-white">
+    
+    <div local-class="plan-item">
+      <div local-class="plan-name">{{rateplan.label}}</div>
+      {{#if (get rateplan selectedTerm)}}
+        <div local-class="plan-description">
+          <p>{{t "account.plans.placeholder"}}</p>
+        </div>
+        <div local-class="plan-maths">
+          {{#if isSelected}}
+            {{ko-admin/rateplans/units min="1" seatsLimit=seatsLimit isDisabled=isDisabled selectedNumberOfSeats=selectedNumberOfSeats seatsChanged=(action attrs.agentsChanged) focusOut=(action attrs.agentsChanged)}}
+          {{/if}}
+          {{ko-admin/rateplans/price amount=(get (get rateplan selectedTerm) "price") currency=rateplan.currency unitFee=(get (get rateplan selectedTerm) "unitFee") flatUpto=(get (get rateplan selectedTerm) "flatUpto")}}
+        </div>
+      {{else}}
+        <div local-class="plan-description">{{t "account.plans.notAvailable"}}</div>
+        <div local-class="plan-maths">
+          {{ko-admin/rateplans/price amount=0 currency=rateplan.currency unitFee=0 flatUpto=0}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div local-class="plan-item-padding-top-5">
+      <div local-class="plan-name"></div>
+      {{#if (get rateplan selectedTerm)}}
+        {{#if isSelected}}
+          <div local-class="plan-description">
+            <span local-class="plan-description-label-helper">
+              {{t "account.plans.collaborators" count=defaultNumberOfCollaborators}}
+              {{#if canAddCollaborators}}
+                <br>
+                <div local-class="plan-description-label-collaborators">{{t "account.plans.additional_collaborator"}}</div>
+              {{/if}}
+            </span>
+          </div>
+          <div local-class="plan-maths">
+            {{#if canAddCollaborators}}
+              {{ko-admin/rateplans/units min="0" seatsLimit=collaboratorsLimit isDisabled=isDisabled selectedNumberOfSeats=selectedNumberOfCollaborators seatsChanged=(action attrs.collaboratorsChanged) seatsLabel="account.trial.collaborators.input.label" focusOut=(action attrs.collaboratorsChanged)}}
+              {{ko-admin/rateplans/price amount=10 currency=rateplan.currency unitFee=(get (get rateplan selectedTerm) "unitFee") flatUpto=(get (get rateplan selectedTerm) "flatUpto") perUnit="account.plans.priceFor.perCollaborator"}}
+            {{/if}}
+          </div>
+        {{/if}}
+      {{else}}
+        <div local-class="plan-description">{{t "account.plans.notAvailable"}}</div>
+        <div local-class="plan-maths">
+          {{ko-admin/rateplans/price amount=10 currency=rateplan.currency unitFee=0 flatUpto=0}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{#if isSelected}}
+    <hr>
+
+    <div local-class="select-item">
+      <div local-class="support-plan-duration-label">{{t "account.plans.select_support_plan"}}</div>
+      <div local-class="plan-duration {{if isSelected "selected"}}">
+        {{#ko-select
+          size="small"
+          onChange=(action 'updateSubscriptionDurationValue')
+          options=mixedCaseOptions
+          local-class="adjust-me"
+          selected=selectedSubscriptionDuration
+            as |option|}}
+          {{option.text}}
+        {{/ko-select}}
+      </div>
+    </div>
+
+    <div local-class="plan-item-detail">
+      {{#each rateplanGroup as |rateplanUnit|}}
+        <div local-class="flex">
+          <div>{{ko-radio label=rateplanUnit.label onChange=(action "clicked" rateplanUnit) checked=(eq selectedPlan.label rateplanUnit.label)}}</div>
+          <div local-class="plan-minimum-amount-notification">{{rateplanUnit.minimum_amount_notification}}</div>
+          <div local-class="plan-item-description">{{zuora-plan-description rateplanUnit.description}}</div>
+        </div>
+      {{/each}}
+    </div>
+
+    {{ko-admin/rateplans/summary
+      rateplanLabel=rateplan.label
+      stickySummary=stickySummary
+      isDisabled=isDisabled
+      selectedNumberOfSeats=selectedNumberOfSeats
+      subscriptionAmount=subscriptionAmount
+      discountAmount=discountAmount
+      currency=rateplan.currency
+      calculatingSummary=calculatingSummary
+      selectedTerm=selectedTerm
+      nextChargeDate=nextChargeDate
+      grossTotal=grossTotal
+    }}
+  {{/if}}
+</div>

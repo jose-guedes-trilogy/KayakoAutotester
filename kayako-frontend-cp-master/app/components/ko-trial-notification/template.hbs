@@ -1,0 +1,29 @@
+{{#if plan.isSandbox}}
+  {{#basic-dropdown horizontalPosition="right" as |dropdown|}}
+    {{#dropdown.trigger local-class="sandbox-trigger" tabindex=-1}}
+      <p local-class="sandbox-text">
+        {{t "account.sandbox.title"}}
+        <span local-class="sandbox-days">{{t "account.sandbox.days.left" days=plan.daysLeftInTrial}}</span>
+      </p>
+    {{/dropdown.trigger}}
+
+    {{#dropdown.content local-class="sandbox-dropdown"}}
+      <div local-class="list-item">
+        {{t "account.sandbox.limitations.first"}}
+      </div>
+      <div local-class="list-item">
+        {{t "account.sandbox.limitations.second"}}
+      </div>
+    {{/dropdown.content}}
+  {{/basic-dropdown}}
+{{else if plan.isTrial}}
+  <div local-class="upgrade">
+    <span local-class="upgrade-text">
+      {{#if (lte plan.daysLeftInTrial 0)}}
+        {{t "account.trial.expired"}}
+      {{else}}
+        {{format-html-message "account.trial.days.left" days=plan.daysLeftInTrial}}
+      {{/if}}
+    </span>
+  </div>
+{{/if}}

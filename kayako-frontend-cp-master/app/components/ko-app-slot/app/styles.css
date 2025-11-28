@@ -1,0 +1,9 @@
+.app {
+  display: flex;
+}
+
+.frame {
+  padding: 0;
+  border: none;
+  width: 100%;
+}

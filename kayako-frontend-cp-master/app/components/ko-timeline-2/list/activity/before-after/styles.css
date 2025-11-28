@@ -1,0 +1,17 @@
+.property-old-value {
+  font-style: italic;
+  color: #838D94;
+}
+
+.property-avatar {
+  margin-top: -2px;
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 22px;
+}
+
+.arrow {
+  display: inline-block;
+}

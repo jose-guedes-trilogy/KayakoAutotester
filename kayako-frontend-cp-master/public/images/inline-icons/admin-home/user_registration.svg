@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="45px" viewBox="0 0 44 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--user_registration--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon--user_registration--48" transform="translate(-6.000000, -6.000000)">
+            <g transform="translate(6.000000, 6.000000)">
+                <path d="M25.4524079,44.5 L2.5,44.5 L2.5,44.5 C1.3954305,44.5 0.5,43.6045695 0.5,42.5 L0.5,2.5 L0.5,2.5 C0.5,1.3954305 1.3954305,0.5 2.5,0.5 L34.5,0.5 L34.5,0.5 C35.6045695,0.5 36.5,1.3954305 36.5,2.5 L36.5,18.5 L36,45 L25.5475382,44.5022637 L25.5475382,44.5022637 C25.5158506,44.5007548 25.4841315,44.5 25.4524079,44.5 Z" id="Shape" fill="#FFFFFF"></path>
+                <path d="M20.4707642,44.5 L2.5,44.5 L2.5,44.5 C1.3954305,44.5 0.5,43.6045695 0.5,42.5 L0.5,2.5 L0.5,2.5 C0.5,1.3954305 1.3954305,0.5 2.5,0.5 L34.5,0.5 L34.5,0.5 C35.6045695,0.5 36.5,1.3954305 36.5,2.5 L36.5,23.5" id="Shape" stroke="#838D94" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10.5,12.5 L26.5,12.5" id="Shape" stroke="#838D94" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10.5,20.5 L26.5,20.5" id="Shape" stroke="#838D94" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M10.5,28.5 L18.5,28.5" id="Shape" stroke="#838D94" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M43.5,42.172 C43.5,40.964 42.971,39.815 42.024,39.064 C40.578,37.916 38.07,36.5 34.5,36.5 C30.93,36.5 28.422,37.916 26.976,39.064 C26.029,39.815 25.5,40.964 25.5,42.172 L25.5,44.5 L43.5,44.5 L43.5,42.172 Z" id="Shape" stroke="#838D94" fill="#DADDDF" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle id="Oval" stroke="#838D94" fill="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" cx="34.5" cy="32.5" r="5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

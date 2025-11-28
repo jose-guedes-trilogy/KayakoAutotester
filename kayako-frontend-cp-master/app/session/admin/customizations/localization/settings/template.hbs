@@ -1,0 +1,46 @@
+{{#ko-form
+onSubmit=(action "save")
+onSuccess=(action "handleSuccess")
+as |form|}}
+
+  {{#ko-admin/page
+    title=(t "admin.localization.title")
+    tabs=tabs
+    buttonText=(if hasChanges (t "generic.save"))
+    onCancel=(if hasChanges (action "cancel"))
+    showFooter=true
+    isBeta=true
+  }}
+
+    {{#ko-admin/forms/group legend=(t "admin.localization.settings.heading.account_defaults")}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.localization.settings.default_language.title"}}{{/ko-form/field/label}}
+
+        {{ko-select disabled=form.isSubmitting size="medium" selected=selectedLocale searchField="nativeName" options=sortedLanguages onChange=(action "editLanguage")}}
+
+        {{#ko-form/field/help}}{{t "admin.localization.settings.default_language.description"}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.localization.settings.timezone.title"}}{{/ko-form/field/label}}
+
+        {{ko-select disabled=form.isSubmitting size="medium" selected=selectedTimezone searchField="text" options=availableTimezones onChange=(action "editTimezone")}}
+
+        {{#ko-form/field/help}}{{t "admin.localization.settings.timezone.description"}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.localization.settings.time_format.title"}}{{/ko-form/field/label}}
+
+        {{ko-select disabled=form.isSubmitting size="medium" selected=selectedTimeFormat searchField="value" options=availableTimeFormats onChange=(action "editTimeFormat")}}
+
+        {{#ko-form/field/help}}{{t "admin.localization.settings.time_format.description"}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+  {{/ko-admin/page}}
+
+{{/ko-form}}

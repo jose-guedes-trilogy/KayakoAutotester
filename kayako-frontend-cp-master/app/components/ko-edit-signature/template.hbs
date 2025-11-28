@@ -1,0 +1,28 @@
+{{#ko-modal modalStyle="width: 650px; height: 380px;" on-close=(action onClose) chromelessContent=true as |modal|}}
+  {{#if modal.isHeader}}
+    {{t "users.editsignature"}}
+  {{/if}}
+
+  {{#if modal.isMain}}
+    <textarea
+      local-class="input"
+      placeholder="{{t "users.signature_placeholder"}}"
+      autofocus=true
+      value={{editingSignature}}
+      oninput={{action (mut editingSignature) value="target.value"}}>
+    </textarea>
+  {{/if}}
+
+  {{#if modal.isFooter}}
+    <div local-class="buttons">
+      <div class="u-mright--tiny">
+        {{#ko-button type="naked" onClick=(action onClose)}}
+          {{t "generic.cancel"}}
+        {{/ko-button}}
+      </div>
+      {{#ko-button type="primary" size="medium" hasAnimation=true loading=updateSignature.isRunning onClick=(perform updateSignature)}}
+        {{t "users.update_signature"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-modal}}

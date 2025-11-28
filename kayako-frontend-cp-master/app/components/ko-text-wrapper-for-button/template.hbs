@@ -1,0 +1,9 @@
+<div local-class="toggle-wrapper">
+  {{yield
+    (hash
+      showMoreButton=(component "ko-text-wrapper-for-button/show-more-button"
+        buttonClass=(local-class "toggle")
+      )
+    )
+  }}
+</div>

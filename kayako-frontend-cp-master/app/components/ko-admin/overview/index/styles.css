@@ -1,0 +1,31 @@
+.billing-address {
+  padding: 20px 0;
+}
+
+.account-action {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.note {
+  padding: 20px 15px;
+  background: $grey-1;
+  border-radius: 2px;
+  margin-top: 9px;
+  text-align: center;
+  font-size: 16px;
+  color: $grey-6;
+}
+
+.invoices-list {
+  margin-top: 18px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.caption {
+  color: $grey-6;
+}

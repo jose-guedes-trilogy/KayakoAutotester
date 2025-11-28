@@ -1,0 +1,20 @@
+<div local-class="app">
+  <div local-class="image">
+  </div>
+  <div local-class="details">
+    <div local-class="top-line">
+      <span local-class="name">{{app.name}}</span>
+      <span local-class="version">{{app.version}}</span>
+    </div>
+
+    <div local-class="bottom-line">
+      <span local-class="description">
+        {{#if app.description}}
+          {{app.description}}
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>

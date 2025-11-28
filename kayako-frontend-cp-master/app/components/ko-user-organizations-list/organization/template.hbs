@@ -1,0 +1,18 @@
+{{#power-select
+  options=options
+  onchange=(action "selectItem")
+  triggerClass=(local-class "trigger")
+  triggerComponent="ko-user-organizations-list/organization/trigger"
+  dropdownClass=(local-class "dropdown")
+  searchEnabled=false
+  disabled=(not canUpdateUser)
+  extra=(hash
+    organization=organization
+    index=index
+    userOrg=userOrg
+    canUpdateUser=canUpdateUser
+  )
+  as |option|
+}}
+  {{option.label}}
+{{/power-select}}

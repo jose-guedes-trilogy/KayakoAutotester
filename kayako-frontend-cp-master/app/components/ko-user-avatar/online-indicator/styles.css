@@ -1,0 +1,49 @@
+.online-indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  border-radius: 50%;
+  background-color: $color-online;
+  border: 1px solid #FFF;
+
+  &--nano {
+    width: 8px;
+    height: 8px;
+  }
+
+  &--micro {
+    width: 9px;
+    height: 9px;
+  }
+
+  &--small {
+    width: 9px;
+    height: 9px;
+  }
+
+  &--submedium {
+    width: 10px;
+    height: 10px;
+  }
+
+  &--medium {
+    width: 11px;
+    height: 11px;
+  }
+
+  &--large {
+    width: 12px;
+    height: 12px;
+  }
+
+  &--xLarge {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.tooltip {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}

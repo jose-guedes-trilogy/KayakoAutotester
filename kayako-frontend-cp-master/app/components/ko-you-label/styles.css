@@ -1,0 +1,22 @@
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid $color-orange;
+  box-shadow: $box-shadow1;
+  border-radius: 3px;
+  margin-right: 5px;
+  align-self: center;
+  height: 17px;
+}
+
+.label-text {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: $color-orange;
+  text-transform: uppercase;
+  padding: 0 3px 0 4px;
+  font-size: 11px;
+  line-height: 1;
+}

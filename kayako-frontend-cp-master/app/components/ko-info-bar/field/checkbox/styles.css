@@ -1,0 +1,33 @@
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}
+
+.unset-mode-dropdown {
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 0 9px 9px;
+  box-shadow: $box-shadow2;
+  line-height: 1;
+  width: 261px;
+  margin-left: -9px;
+}
+
+.option {
+  margin-top: 9px;
+}
+
+.separator {
+  margin: 12px 0 9px;
+  border: 0;
+  height: 1px;
+  background-color: $grey-2;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

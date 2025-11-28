@@ -1,0 +1,35 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    {{#if isLoading}}
+      <div local-class="avatar-loading">
+      </div>
+    {{else}}
+      <div local-class="icon">
+        {{ko-org-logo domain=model.domains.firstObject.domain}}
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    {{#if isLoading}}
+      {{ko-loading/text-placeholder width="25px"}}
+    {{else}}
+      <div local-class="title">{{escape-html model.name}}</div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    {{#if isLoading}}
+      {{ko-loading/text-placeholder width="55px"}}
+    {{else}}
+      {{#if model.domains.length}}
+        <div local-class="domains">
+          {{#each model.domains as |domain index|}}
+            {{#if index}}<div local-class="separator">•</div>{{/if}}
+            <div local-class="domain {{if (not index) "domainFirst"}}">{{domain.domain}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+{{/ko-universal-search/result/layout}}

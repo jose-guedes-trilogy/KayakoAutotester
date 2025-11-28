@@ -1,0 +1,28 @@
+{{#ko-modal on-close=(route-action "cancel") on-confirm=(if (not saveTask.isRunning) (perform saveTask model)) width="830px" as |modal|}}
+  {{#if modal.isHeader }}
+    {{t "admin.staff.member.new"}}
+  {{/if}}
+
+  {{#if modal.isMain}}
+    {{ko-bulk-invitation
+      invitation=model
+      referenceData=referenceData
+    }}
+  {{/if}}
+
+  {{#if modal.isFooter}}
+    <div local-class="cancel">
+      {{#ko-button type="naked" onClick=(action (route-action "cancel"))}}
+        {{t "generic.cancel"}}
+      {{/ko-button}}
+    </div>
+
+    {{#ko-button type="primary" qaClass="qa-modal-save" disabled=(or (not model.users.length) saveTask.isRunning) onClick=(perform saveTask model)}}
+      {{#if saveTask.isRunning}}
+        {{ko-loader class="ko-layout_advanced__button-loading"}}
+      {{else}}
+        {{t "generic.save"}}
+      {{/if}}
+    {{/ko-button}}
+  {{/if}}
+{{/ko-modal}}

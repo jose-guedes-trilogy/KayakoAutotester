@@ -1,0 +1,62 @@
+---
+language: node_js
+
+sudo: required
+dist: trusty
+
+addons:
+  chrome: stable
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - bower_components
+    - tmp
+    - "$HOME/broccoli-cache"
+
+before_install:
+  - "npm config set spin false"
+  - "npm install -g npm@4.2.0"
+  - "curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -"
+  - "echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list"
+  - "sudo apt-get update && sudo apt-get install yarn=1.2.1-1"
+
+install:
+  - npm install -g bower
+  - /usr/bin/yarn install
+  - bower install
+
+branches:
+  only:
+    - develop
+    - staging
+    - master
+
+env:
+  global:
+    - PARTITIONS=3
+    - BROCCOLI_PERSISTENT_FILTER_CACHE_ROOT="$HOME/broccoli-cache"
+    - secure: Tci+bIdFZxc7aR+sjBI6hOn18DyUy/Y8BqY+OAiR5OQ6CxSXBhH/Eh41SudMFV6IVHXb+hGSMTFRCYI4AhApMH7nFru6NKKkwD3TW4oSrCX1yZnoxKILgQNYU95XslSiFuvDZiP3iy2Dp4wWcO2kUBY437cXCpHJwiZtJrMKTek=
+
+jobs:
+  include:
+    - script: ./travis-test.sh
+      node_js: "7.9.0"
+      env: PARTITION=1
+
+    - script: ./travis-test.sh
+      node_js: "7.9.0"
+      env: PARTITION=2
+
+    - script: ./travis-test.sh
+      node_js: "7.9.0"
+      env: PARTITION=3
+
+    - script: ./travis-test.sh
+      node_js: "7.9.0"
+      env: SANITY=true
+
+    - stage: deploy
+      node_js: "7.9.0"
+      script: ./deploy.sh

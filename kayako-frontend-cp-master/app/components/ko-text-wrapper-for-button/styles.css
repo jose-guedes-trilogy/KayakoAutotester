@@ -1,0 +1,11 @@
+.toggle-wrapper {
+  display: flex;
+  flex-shrink: 1;
+  align-items: baseline;
+}
+
+.toggle-wrapper:hover {
+  .toggle {
+    border-color: #CBCFD1;
+  }
+}

@@ -1,0 +1,21 @@
+<div local-class="container">
+  <div local-class="wrapper">
+    <main>
+      <div local-class="center" style="display: flex; justify-content: center; align-items: center; height: 85vh;">
+        {{ko-loader showSpinner=true large=true}}
+      </div>
+      {{ko-on-boarding/setup
+        invitation=invitation
+        roles=roles
+        teams=teams
+        brand=brand
+        settings=settings
+        twitterAccount=twitterAccount
+        facebookPage=facebookPage
+        agentMetrics=agentMetrics
+        cases=cases
+        params=params
+        onComplete=(action "completeStep")}}
+    </main>
+  </div>
+</div>

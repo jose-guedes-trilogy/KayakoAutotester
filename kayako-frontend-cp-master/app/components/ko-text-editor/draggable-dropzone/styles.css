@@ -1,0 +1,51 @@
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+}
+
+.border {
+  width: 100%;
+  border: 2px dashed #59B2CD;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: #F6FBFC;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /*
+    the Froala editor container gets a z-index of ~20
+    so we need to be higher up
+  */
+  z-index: $z-raised + 1;
+  animation: fade-in 0.25s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.message {
+  color: #59B2CD;
+  font-weight: 600;
+}
+
+.disabled {
+  border-color: $color-bad;
+  background-color: #FCE5E2;
+  .message {
+    color: $color-bad;
+  }
+}

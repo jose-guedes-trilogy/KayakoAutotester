@@ -1,0 +1,4 @@
+<div class="{{class}}" local-class="container {{unless nogap "gap"}}">
+  {{yield}}
+  {{#each field.errors as |error|}}<p local-class="error">{{error.message}}</p>{{/each}}
+</div>

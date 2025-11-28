@@ -1,0 +1,8 @@
+<div local-class="proposition-operator" onClick={{action "changeOperator"}}>
+  <div local-class={{if pillColor "orange-pill" "green-pill"}}>
+    {{yield selectedOperator}}
+    <div local-class="chevron">
+      {{inline-svg "chevron-down"}}
+    </div>
+  </div>
+</div>

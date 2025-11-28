@@ -1,0 +1,131 @@
+.cell {
+  background: $grey-1;
+  border: 2px solid #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+}
+
+.cell.selected {
+  background: #fff;
+  border-color: $color-good;
+  padding-bottom: 54px;
+}
+
+.cell.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.plan-item, .select-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 27px 14px 27px;
+}
+
+.plan-item-detail {
+  background-color: $grey-1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px 14px 40px;
+}
+
+.plan-item-padding-top-5, .select-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 27px 14px 27px;
+}
+
+.support-plan-duration-label {
+  color: $grey-8;
+  font-size: 14px;
+  font-weight: 600;
+  width: 450px;
+}
+
+.plan-duration {
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.plan-duration.selected {
+  padding: 20px 90px 0 0;
+}
+
+.plan-name {
+  color: $grey-8;
+  font-size: 16px;
+  font-weight: 600;
+  width: 150px;
+}
+
+.plan-description {
+  color: $grey-6;
+  font-size: 14px;
+  width: 300px;
+}
+
+.plan-item-description {
+  font-size: 12px;
+}
+
+.plan-minimum-amount-notification {
+  color: $color-bad;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.plan-maths {
+  display: flex;
+  width: 180px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.plan-description-label-helper {
+  color: $grey-8;
+  font-size: 14px;
+  margin-top: 6px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.plan-description-label-collaborators {
+  font-size: 12px;
+  padding-bottom: 15px;
+}
+
+.flex {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  flex-direction: column;
+  align-self: end;
+  padding: 10px;
+}
+
+.adjust-me {
+  top: -10px;
+  margin: 0px 10px;
+  position: relative;
+}
+
+hr {
+  margin: 0px 20px;
+}
+
+.background-white {
+  background: fff;
+}
+
+.label-helper {
+  color: $grey-6;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-left: 12px;
+  top: -11px;
+  position: relative;
+}

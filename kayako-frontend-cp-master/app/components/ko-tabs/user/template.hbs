@@ -1,0 +1,25 @@
+{{#ko-tabs as |tabs|}}
+  {{#if tabs.isTabs}}
+    {{#if (and hasOrganization (not processingOrg))}}
+      {{#ko-tabs/tab routeName="session.agent.users.user.organization"}}
+        {{model.organization.name}}
+      {{/ko-tabs/tab}}
+    {{else}}
+      {{#ko-tabs/tab click=(if (not processingOrg) (action "triggerSetOrganization"))}}
+        <span local-class="set-organization {{if processingOrg "setting-organization"}}">{{if processingOrg (or model.organization.name removedOrg) (t "organization.set_organization")}}</span>
+      {{/ko-tabs/tab}}
+    {{/if}}
+
+    {{#ko-tabs/tab routeName="session.agent.users.user.index"}}
+      {{model.fullName}}
+      {{#if (not model.isEnabled)}}
+        <span local-class="disabled">
+          {{t "users.disabled"}}
+        </span>
+      {{/if}}
+    {{/ko-tabs/tab}}
+  {{/if}}
+  {{#if tabs.isRight}}
+    {{yield}}
+  {{/if}}
+{{/ko-tabs}}

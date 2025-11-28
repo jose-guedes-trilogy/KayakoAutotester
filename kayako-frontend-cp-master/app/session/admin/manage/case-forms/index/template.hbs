@@ -1,0 +1,56 @@
+{{ko-admin/page
+  title=(t "admin.caseforms.title")
+  buttonText=(t "admin.caseforms.buttons.add_new_caseform")
+  buttonClass=(qa-cls "qa-admin_case-forms__new-button")
+  cancelButtonClass=(qa-cls "qa-admin_case-forms__cancel-button")
+  onSave=(action "transitionToNewCaseFormRoute")
+}}
+
+{{ko-admin/forms/description link="https://support.kayako.com/article/1152-customizing-case-forms?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=forms" description="admin.caseforms.description" linkText="admin.caseforms.description_link"}}
+
+{{#ko-simple-list header=(t "generic.enabled") qaClass="qa-admin_case-forms__enabled-list" as |list|}}
+  {{#ko-reorderable-list onReorder=(action "reorderForms") items=enabledForms as |form|}}
+    {{#list.row onClick=(action "editForm" form) qaClass="qa-admin_case-forms__list-row" as |row|}}
+      {{#row.cell}}
+        <div>
+          <span local-class="title">{{form.title}}</span>
+          {{#if form.brand.name}} <span local-class="caption"> ({{form.brand.name}}) </span>{{/if}}
+          {{#if form.isDefault}}<span local-class="caption"> ({{t "generic.default"}})</span>{{/if}}
+        </div>
+      {{/row.cell}}
+      {{#row.actions}}
+        <a onclick={{action "editForm" form}}>{{t "generic.edit"}}</a>
+        {{#if form.canBeDisabled}}
+          | <a onclick={{action "toggleEnabledStatus" form}}>{{t "generic.disable"}}</a>
+        {{/if}}
+        {{#if form.canBeMadeDefault}}
+          | <a onclick={{action "makeDefault" form}}>{{t "generic.make_default"}}</a>
+        {{/if}}
+        {{#if form.canBeDeleted}}
+          | <a onclick={{action "showDeleteConfirmation" form}}>{{t "generic.delete"}}</a>
+        {{/if}}
+      {{/row.actions}}
+    {{/list.row}}
+  {{/ko-reorderable-list}}
+{{/ko-simple-list}}
+
+
+{{#if disabledForms.length}}
+  {{#ko-simple-list header=(t "generic.disabled") qaClass="qa-admin_case-forms__disabled-list" as |list|}}
+    {{#each disabledForms as |form|}}
+      {{#list.row qaClass="qa-admin_case-forms__list-row" as |row|}}
+        {{#row.cell disabled=true}}
+          <span local-class="title">{{form.title}}</span>
+          {{#if form.brand.name}} <span local-class="caption"> ({{form.brand.name}}) </span>{{/if}}
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "editForm" form}}>{{t "generic.edit"}}</a> |
+          <a onclick={{action "toggleEnabledStatus" form}}>{{t "generic.enable"}}</a>
+          {{#if form.canBeDeleted}}
+            | <a onclick={{action "showDeleteConfirmation" form}}>{{t "generic.delete"}}</a>
+          {{/if}}
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

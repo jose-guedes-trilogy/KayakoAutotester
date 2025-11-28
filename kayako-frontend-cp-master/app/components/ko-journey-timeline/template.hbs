@@ -1,0 +1,64 @@
+<div local-class="container">
+  {{#if
+    (or
+      timeline.fetchMostRecent.isRunning
+      timeline.fetchPosition.isRunning
+      timeline.fetchAtTimestamp.isRunning
+    )
+  }}
+    <div local-class="loader">
+      {{ko-loader large=true}}
+    </div>
+  {{else if (not allPosts.length)}}
+    {{yield}}
+  {{else}}
+    {{#if timeline.moreOlderPosts}}
+      <div local-class={{if timeline.fetchOlder.isRunning "loader--running" "loader--idle"}}>
+        {{ko-loader large=true}}
+      </div>
+    {{else}}
+      {{yield}}
+    {{/if}}
+
+    {{#ko-timeline-2/list/days items=allPosts as |activitiesInDay|}}
+      {{#each activitiesInDay as |activity|}}
+        {{#if activity.note}}
+          <div local-class="item note" data-id="{{activity.id}}" data-created-at="{{moment-format activity.createdAt "X"}}">
+            {{ko-journey-timeline/note
+              activity=activity
+              note=activity.note
+              model=model
+            }}
+          </div>
+        {{else if (and (eq activity.activity "update_case") (eq activity.actions.length 0))}}
+          {{!-- API is currently returning case update events with no updates in them, dont render anything if thats the case --}}
+        {{else}}
+          <div local-class="item standard" data-id="{{activity.id}}">
+            <div local-class="activity-container">
+              {{ko-timeline-2/list/activity/standard
+                caseFields=caseFields
+                activity=activity
+                scroll-into-view=(action "scrollPostIntoView" activity)
+                timelineContext=timeline.parentType
+                model=model
+              }}
+            </div>
+            {{#if (or activity.apiEvent.url activity.apiEvent.properties.url)}}
+              <div local-class="event-url-container">
+                <a local-class="event-url" target="_blank" rel="noopener noreferrer" href={{or activity.apiEvent.url activity.apiEvent.properties.url}}>
+                  <img src="/images/timeline/external-link.svg" width="16" height="16">
+                </a>
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/each}}
+    {{/ko-timeline-2/list/days}}
+
+    {{#if timeline.moreNewerPosts}}
+      <div local-class={{if timeline.fetchNewer.isRunning "loader--running" "loader--idle"}}>
+        {{ko-loader large=true}}
+      </div>
+    {{/if}}
+  {{/if}}
+</div>

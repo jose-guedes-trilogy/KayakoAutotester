@@ -1,0 +1,13 @@
+<div local-class="wrapper">
+  <div local-class="image-container">
+    {{#if (not awakened)}}
+      <img onclick={{action "wakeUp"}} src="/images/errors/sleeping-cat.png" local-class="image">
+    {{/if}}
+    {{#if (or wakingUp awakened)}}
+      <img src="/images/errors/awakened-cat.png" onload={{action "didWakeUp"}} local-class="image">
+    {{/if}}
+  </div>
+  <h1 local-class="header">{{t "generic.errors.not_found.heading" name=name}}</h1>
+  <p local-class="body">{{format-html-message "generic.errors.not_found.description1"}}</p><br>
+  <p local-class="body">{{t "generic.errors.not_found.description2"}}</p>
+</div>

@@ -1,0 +1,24 @@
+<div local-class="container">
+  <div local-class="info-card">
+    {{#if hasOrg}}
+      <div local-class="organization-info">
+        <div local-class="timeline-header-image">
+          {{ko-org-logo org=org}}
+        </div>
+        <div local-class="organization-name">
+          {{yield}}
+        </div>
+      </div>
+    {{else}}
+      <div local-class="stub">
+        <div local-class="user">
+          <div local-class="avatar"></div>
+          <div local-class="rows">
+            <div local-class="title"></div>
+            <div local-class="subtitle"></div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>

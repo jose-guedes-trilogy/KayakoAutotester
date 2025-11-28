@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/images/favicon16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon96x96.png" sizes="96x96">
+    <link rel="mask-icon" href="/images/favicon-safari-pinned.svg" sizes="any" color="#40364D">
+
+    <script>window.userpilotSettings = {token: "NX-a4c20f2a"};</script>
+    <script src="https://js.userpilot.io/sdk/latest.js"></script>
+
+    {{content-for "head"}}
+
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css" crossorigin="anonymous" >
+    <link rel="stylesheet" href="{{rootURL}}assets/frontend-cp.css" crossorigin="anonymous" >
+
+    {{content-for "head-footer"}}
+    <!-- Hotjar Tracking Code for Site 5108220 (name missing) -->
+    <script>
+      (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5108220,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+  </head>
+  <body>
+    {{content-for "body"}}
+    {{content-for "conditional-polyfills"}}
+
+    <script src="{{rootURL}}assets/vendor.js" crossorigin="anonymous" defer></script>
+    <script src="{{rootURL}}assets/frontend-cp.js" crossorigin="anonymous" defer></script>
+
+    {{content-for "body-footer"}}
+
+    <div id="ember-basic-dropdown-wormhole" data-gramm="false"></div>
+
+    <div id="preboot-spinner" style="position: absolute; top: 0; right:
+      0; bottom: 0; left: 0; display: flex; align-items: center;
+      justify-content: center;">
+      <img width="39" height="39" src="{{rootURL}}images/K-loader-grey-light.gif">
+    </div>
+
+    <!-- Messenger -->
+    <div id="Kykw__app" class="k-widget"></div>
+
+    <!-- Appcues -->
+    <!-- <script src="//fast.appcues.com/21825.js"></script> -->
+  </body>
+</html>

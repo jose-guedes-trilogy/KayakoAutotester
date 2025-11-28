@@ -1,0 +1,84 @@
+<div local-class="container">
+  {{#if emailIdentities.length}}
+    <ul local-class="list" class="{{qa-cls "qa-identities__list--emails"}}">
+      {{#each emailIdentities as |emailIdentity index|}}
+        <li class="{{qa-cls (if emailIdentity.isPrimary "qa-identity-primary")}}">
+          {{ko-identities/identity
+            identity=emailIdentity
+            index=index
+            type="email"
+            onRemove=(action "removeIdentity")
+            onMakePrimary=(action "makePrimaryIdentity")
+            onValidate=(action "validateIdentity")
+            onCopyToClipboard=(action "copyToClipboard" emailIdentity.email)
+            onMarkEmailAsValidated=(action "markEmailAsValidated")
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if twitterIdentities.length}}
+    <ul local-class="list" class="{{qa-cls "qa-identities__list--twitters"}}">
+      {{#each twitterIdentities as |twitterIdentity index|}}
+        <li class="{{qa-cls (if twitterIdentity.isPrimary "qa-identity-primary")}}">
+          {{ko-identities/identity
+            identity=twitterIdentity
+            index=index
+            type="twitter"
+            onRemove=(action "removeIdentity")
+            onMakePrimary=(action "makePrimaryIdentity")
+            onCopyToClipboard=(action "copyToClipboard" twitterIdentity.screenName)
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if facebookIdentities.length}}
+    <ul local-class="list" class="{{qa-cls "qa-identities__list--facebooks"}}">
+      {{#each facebookIdentities as |facebookIdentity index|}}
+        <li class="{{qa-cls (if facebookIdentity.isPrimary "qa-identity-primary")}}">
+          {{ko-identities/identity
+            identity=facebookIdentity
+            index=index
+            type="facebook"
+            onRemove=(action "removeIdentity")
+            onMakePrimary=(action "makePrimaryIdentity")
+            onCopyToClipboard=(action "copyToClipboard" facebookIdentity.userName)
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if phoneIdentities.length}}
+    <ul local-class="list" class="{{qa-cls "qa-identities__list--phones"}}">
+      {{#each phoneIdentities as |phoneIdentity index|}}
+        <li class="{{qa-cls (if phoneIdentity.isPrimary "qa-identity-primary")}}">
+          {{ko-identities/identity
+            identity=phoneIdentity
+            index=index
+            type="mobilePhone"
+            onRemove=(action "removeIdentity")
+            onMakePrimary=(action "makePrimaryIdentity")
+            onCopyToClipboard=(action "copyToClipboard" phoneIdentity.number)
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+  {{#if canAddNewIdentity}}
+    {{ko-identities/create
+      qaClass="qa-ko-identities-create"
+      disabled=newIdentity
+      onAddEmail=(action "addEmail")
+      onAddPhone=(action "addPhone")
+      onAddTwitter=(action "addTwitter")
+    }}
+  {{/if}}
+  {{#if newIdentity}}
+    {{ko-identities/form class=(qa-cls "qa-identities__form") identity=newIdentity save=(action "saveIdentity") cancel=(action "removeNewIdentity")}}
+  {{/if}}
+</div>

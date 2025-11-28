@@ -1,0 +1,145 @@
+<div local-class="preview-container">
+
+  <div local-class="preview">
+    <div local-class="preview__content" style={{existingStyle}}>
+
+      <span local-class="preview__updated-background {{if animateBackground.isRunning "is-animating"}}" style={{backgroundStyle}}></span>
+
+      <div local-class="preview__widgets">
+
+        <div local-class="{{if preview.isLightText "preview-light-text"}}">
+          <p local-class="preview__main-text preview__title">{{preview.title}}</p>
+          <p local-class="preview__main-text preview__welcome-message">{{preview.welcomeMessage}}</p>
+        </div>
+
+        {{!-- Widget: Online presence --}}
+        {{#liquid-if preview.isOnlinePresenceEnabled class="animate-widget"}}
+          <div local-class="preview__widget">
+            <p local-class="preview__widget__title" style={{colorStyle}}>{{t "admin.messenger.preview.presence_title"}}</p>
+            <div local-class="agents">
+              {{#each agentAvatars as |avatar|}}
+                <img local-class="agent-pic" src={{avatar}} width="52" height="52">
+              {{/each}}
+            </div>
+            <p local-class="agent-names">
+              {{activeAgents}}
+              {{#if hasMultipleAgents}}
+                {{t "admin.messenger.preview.presence_online_plural"}}
+              {{else}}
+                {{t "admin.messenger.preview.presence_online"}}
+              {{/if}}
+            </p>
+          </div>
+        {{/liquid-if}}
+
+        {{!-- Widget: Help Center articles --}}
+        {{#liquid-if preview.isArticlesEnabled class="animate-widget"}}
+          <div local-class="preview__widget">
+            <p local-class="preview__widget__title" style={{colorStyle}}>{{t "admin.messenger.preview.articles_title"}}</p>
+            {{#unless preview.articles}}
+              <div local-class="content-placeholder"></div>
+            {{/unless}}
+            {{#each preview.articles as |article|}}
+              <div local-class="article">
+                <div local-class="article-author-image">
+                  <img local-class="author-pic" src="{{article.author.avatar}}" width="32" height="32">
+                </div>
+                <div>
+                  <p local-class="article__title">{{article.title}}</p>
+                  <div local-class="text--light text--small">
+                    <span local-class="article__author">{{article.author.fullName}}</span> •
+                    <span local-class="article__timestamp" title={{format-date article.createdAt format="LLL"}}>{{ko-from-now article.createdAt}}</span>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        {{/liquid-if}}
+
+        {{!-- Widget: Tweets --}}
+        {{#liquid-if preview.isTwitterEnabled class="animate-widget"}}
+          <div local-class="preview__widget">
+            <p local-class="preview__widget__title" style={{colorStyle}}>{{t "admin.messenger.preview.tweets_title"}}</p>
+            {{#if fetchingTweets}}
+              <div local-class="content-placeholder"></div>
+            {{/if}}
+            {{#each preview.tweets as |tweet|}}
+              <div local-class="article">
+                <div local-class="article-author-image">
+                  <img local-class="author-pic" src="https://twitter.com/{{tweet.screenName}}/profile_image?size=normal" width="32" height="32">
+                </div>
+                <div local-class="tweet">
+                  <p local-class="article__title">{{tweet.fullName}}</p>
+                  <div local-class="tweet__text">
+                    {{tweet.contents}}
+                  </div>
+                </div>
+              </div>
+            {{else}}
+              {{#if (not fetchingTweets)}}
+                <p local-class="no-data-message text--small text--light">{{t "admin.messenger.preview.no_tweets"}}</p>
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/liquid-if}}
+
+      </div>
+    </div>
+
+    {{!-- Messenger textarea --}}
+    <div local-class="preview__textarea">
+      <div local-class="preview__textarea__content">
+        <div local-class="preview__placeholder">
+          {{t "admin.messenger.preview.placeholder"}}
+        </div>
+        <div local-class="preview__button" style={{buttonStyle}}>
+          {{t "admin.messenger.preview.button_text"}}
+        </div>
+      </div>
+      <footer local-class="preview__textarea__footer">
+        <div>
+          <img src="/images/apps/messenger/footer-icons.png" width="48">
+        </div>
+        <p local-class="text--small">
+          {{t "admin.messenger.preview.messenger_by"}}
+          <b> {{t "admin.messenger.preview.kayako"}}</b>
+        </p>
+      </footer>
+    </div>
+  </div>
+
+  {{!-- Messenger bubble --}}
+  <div local-class="bubble">
+    <div local-class="preview__label">
+      {{t "admin.messenger.preview.label"}}
+    </div>
+    <svg local-class="bubble__icon" xmlns="http://www.w3.org/2000/svg" height="82px" width="103px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 103 82">
+      <defs>
+        <path id="path-1" d="m36.338 0c-20.069 0-36.338 5.8872-36.338 25.956s16.269 25.956 36.338 25.956 36.339-5.887 36.339-25.956-16.27-25.956-36.339-25.956"/>
+        <filter id="filter-2" height="200%" width="200%" y="-50%" x="-50%" filterUnits="objectBoundingBox">
+          <feOffset in="SourceAlpha" result="shadowOffsetOuter1" dx="0" dy="3"/>
+          <feGaussianBlur stdDeviation="7.5" result="shadowBlurOuter1" in="shadowOffsetOuter1"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" result="shadowMatrixOuter1" in="shadowBlurOuter1"/>
+          <feOffset in="SourceAlpha" result="shadowOffsetOuter2" dx="0" dy="1"/>
+          <feGaussianBlur stdDeviation="2" result="shadowBlurOuter2" in="shadowOffsetOuter2"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.07 0" result="shadowMatrixOuter2" in="shadowBlurOuter2"/>
+          <feMerge>
+            <feMergeNode in="shadowMatrixOuter1"/>
+            <feMergeNode in="shadowMatrixOuter2"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <g fill-rule="evenodd" fill="none">
+        <g transform="translate(15 12)">
+          <g>
+            <use filter="url(#filter-2)" xlink:href="#path-1" fill="black"/>
+            <use xlink:href="#path-1" fill-rule="evenodd" fill="{{preview.primaryColor}}"/>
+          </g>
+          <rect rx="4" height="8" width="8" y="21.956" x="17" fill="#fff"/>
+          <rect rx="4" height="8" width="8" y="22" x="47" fill="#fff"/>
+          <rect rx="4" height="8" width="8" y="22" x="32" fill="#fff"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>

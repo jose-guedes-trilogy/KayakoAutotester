@@ -1,0 +1,53 @@
+.avatarContainer {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.icon {
+  background: #EBEEF0;
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+}
+
+.creatorAvatarContainer {
+  border: 2px solid #FFFFFF;
+  border-radius: 2px 2px 0;
+
+  display: flex;
+  background: #FFF;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.creatorAvatar {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-right: 5px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 600px;
+  font-weight: 600;
+}
+
+.separator {
+  margin-right: 5px;
+  color: #A1AAAF;
+}
+
+.status {
+  color: #838D94;
+}
+
+.date {
+  color: #838D94;
+  margin-right: 5px;
+}

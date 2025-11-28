@@ -1,0 +1,243 @@
+{{#ko-sidebar as |sidebar|}}
+
+  {{#if (variation "release-admin-landing-page")}}
+    {{!------------------------
+    ---------- Home -----------
+    --------------------------}}
+    {{#sidebar.group as |g|}}
+      {{#g.item route='session.admin.index'}}
+        <div local-class="home-link">
+          <span local-class="home-icon">{{inline-svg "admin-home/home"}}</span>
+          {{t 'admin.navigation.home'}}
+        </div>
+      {{/g.item}}
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  -------- Channels ---------
+  --------------------------}}
+  {{#if (has-permission 'channels.manage')}}
+    {{#sidebar.group title=(t 'admin.navigation.channels') as |g|}}
+      {{#g.item route='session.admin.channels.email'}}
+        {{t 'admin.email.title'}}
+      {{/g.item}}
+
+      {{#g.item route='session.admin.channels.facebook'}}
+        {{t 'admin.facebook.headings.index'}}
+      {{/g.item}}
+
+      {{#g.item route='session.admin.channels.twitter'}}
+        {{t 'admin.twitter.title'}}
+      {{/g.item}}
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  -------- Messenger --------
+  --------------------------}}
+  {{#if shouldShowMessengerSection}}
+    {{#sidebar.group title=(t 'admin.navigation.messenger') as |g|}}
+      {{#if (has-permission 'channels.manage')}}
+        {{#g.item route='session.admin.messenger.configure'}}
+          {{t 'admin.messenger.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'automations.manage')}}
+        {{#g.item route='session.admin.messenger.engagements'}}
+          {{t 'admin.engagements.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'channels.manage')}}
+        {{#g.item route='session.admin.messenger.identity-verification'}}
+          {{t 'admin.messenger.identity_verification.title'}}
+        {{/g.item}}
+      {{/if}}
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  ------ Conversations ------
+  --------------------------}}
+  {{#sidebar.group title=(t 'admin.navigation.conversations') as |g|}}
+    {{#if (has-permission 'case_views.manage')}}
+      {{#g.item route='session.admin.manage.views'}}
+        {{t 'admin.views.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#if (and (has-permission 'case_fields.manage') (plan-has 'case_forms'))}}
+      {{#g.item route='session.admin.manage.case-forms'}}
+        {{t 'admin.caseforms.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#g.item route='session.admin.manage.time-tracking'}}
+      {{t 'admin.apps.timetracking.title'}}
+    {{/g.item}}
+  {{/sidebar.group}}
+
+  {{!------------------------
+  ----- Customizations ------
+  --------------------------}}
+  {{#if shouldShowCustomizationSection}}
+    {{#sidebar.group title=(t 'admin.navigation.customizations') as |g|}}
+      {{#if (has-permission 'brands.manage')}}
+        {{#g.item route='session.admin.customizations.brands'}}
+          {{t 'admin.brands.title'}}
+        {{/g.item}}
+
+        {{#g.item route='session.admin.customizations.email-templates'}}
+          {{t 'admin.email_templates.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'case_fields.manage')}}
+        {{#g.item route='session.admin.customizations.case-fields'}}
+          {{t 'admin.custom_fields.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'localization.manage')}}
+        {{#g.item route='session.admin.customizations.localization'}}
+          {{t 'admin.localization.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (variation 'release-privacy-policy')}}
+        {{#g.item route='session.admin.customizations.privacy'}}
+          {{t 'admin.privacy.title'}}
+        {{/g.item}}
+      {{/if}}
+    
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  ------ Team settings ------
+  --------------------------}}
+  {{#if shouldShowPeopleSection}}
+    {{#sidebar.group title=(t 'admin.navigation.team_settings') as |g|}}
+      {{#if (has-permission 'teams.manage')}}
+        {{#g.item route='session.admin.people.teams'}}
+          {{t 'admin.teams.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#g.item route='session.admin.people.staff'}}
+        {{t 'admin.staff.title'}}
+      {{/g.item}}
+
+      {{#if (has-permission 'business_hours.manage')}}
+        {{#g.item route='session.admin.people.businesshours'}}
+          {{t 'admin.businesshours.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'roles.manage')}}
+        {{#g.item route='session.admin.people.roles'}}
+          {{t 'admin.roles.title'}}
+        {{/g.item}}
+      {{/if}}
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  ------- Automations -------
+  --------------------------}}
+  {{#if shouldShowAutomationsSection}}
+    {{#sidebar.group title=(t 'admin.navigation.automation') as |g|}}
+      {{#if (has-permission 'macros.manage')}}
+        {{#g.item route='session.admin.automation.macros'}}
+          {{t 'admin.macros.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'automations.manage')}}
+        {{#g.item route='session.admin.automation.triggers'}}
+          {{t 'admin.triggers.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{!-- same permissions for triggers and monitors? --}}
+      {{#if (has-permission 'automations.manage')}}
+        {{#g.item route='session.admin.automation.monitors'}}
+          {{t 'admin.monitors.title'}}
+        {{/g.item}}
+      {{/if}}
+
+      {{#if (has-permission 'slas.manage')}}
+        {{#g.item route='session.admin.automation.sla'}}
+          {{t 'admin.sla.title'}}
+        {{/g.item}}
+      {{/if}}
+    {{/sidebar.group}}
+  {{/if}}
+
+  {{!------------------------
+  ------- Integrations ------
+  --------------------------}}
+  {{#sidebar.group title=(t 'admin.navigation.integrations') as |g|}}
+    {{#if (variation 'release-apps-management')}}
+      {{#g.item route='session.admin.apps.manage'}}
+        {{t 'admin.apps.manage.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#g.item route='session.admin.apps.zapier'}}
+      {{t 'admin.apps.zapier.title'}}
+    {{/g.item}}
+
+    {{#g.item route='session.admin.apps.salesforce'}}
+      {{t 'admin.apps.salesforce.title'}}
+    {{/g.item}}
+
+    {{#if (has-permission 'endpoints.manage')}}
+      {{#g.item route='session.admin.apps.endpoints'}}
+        {{t 'admin.apps.endpoints.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#g.item route='session.admin.apps.webhooks'}}
+      {{t 'admin.apps.webhooks.title'}}
+    {{/g.item}}
+
+    {{#g.item route='session.admin.apps.api'}}
+      {{t 'admin.apps.api.title'}}
+    {{/g.item}}
+
+    {{#if (and session.user.role.isAdminOrHigher (starts-with session.session.instanceName "doug-"))}}
+      {{#g.item route='session.admin.apps.atlasai'}}
+        {{t 'admin.apps.atlasai.title'}}
+      {{/g.item}}
+    {{/if}}
+  {{/sidebar.group}}
+
+  {{!------------------------
+  -------- Security ---------
+  --------------------------}}
+  {{#sidebar.group title=(t 'admin.navigation.security') as |g|}}
+    {{#if (has-permission 'settings.manage')}}
+      {{#g.item route='session.admin.security.authentication'}}
+        {{t 'admin.security.authentication.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#if (plan-has 'custom_security_policy')}}
+      {{#g.item route='session.admin.security.policy'}}
+        {{t 'admin.security.policy.title'}}
+      {{/g.item}}
+    {{else}}
+      {{#g.item route='session.admin.security.policy.help-center'}}
+        {{t 'admin.security.policy.title'}}
+      {{/g.item}}
+    {{/if}}
+
+    {{#g.item route='session.admin.security.settings'}}
+      {{t 'admin.security.settings.title'}}
+    {{/g.item}}
+  {{/sidebar.group}}
+
+{{/ko-sidebar}}

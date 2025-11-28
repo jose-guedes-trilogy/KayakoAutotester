@@ -1,0 +1,34 @@
+<div local-class="sidebar {{if isSomeChecked "no-padding"}}">
+  {{#if (not isSomeChecked)}}
+    {{#ko-search-sidebar/item
+      count=totalCounts.CASES
+      isActive=(eq resultGroup "CASES")
+      onClick=(action onSelect "CASES")
+    }}
+      {{t "cases.title"}}
+    {{/ko-search-sidebar/item}}
+
+    {{#ko-search-sidebar/item
+      count=totalCounts.USERS
+      isActive=(eq resultGroup "USERS")
+      onClick=(action onSelect "USERS")
+    }}
+      {{t "users.users"}}
+    {{/ko-search-sidebar/item}}
+
+    {{#ko-search-sidebar/item
+      count=totalCounts.ORGANIZATIONS
+      isActive=(eq resultGroup "ORGANIZATIONS")
+      onClick=(action onSelect "ORGANIZATIONS")
+    }}
+      {{t "organization.organizations"}}
+    {{/ko-search-sidebar/item}}
+  {{else}}
+    {{ko-bulk-sidebar
+      selectedCaseIds=_selectedCaseIds
+      teams=teams
+      onBulkUpdateCases=(action bulkUpdateComplete)
+      onCancel=(action clearSelectedCaseIds)
+    }}
+  {{/if}}
+</div>

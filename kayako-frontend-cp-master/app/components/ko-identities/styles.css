@@ -1,0 +1,19 @@
+.container {
+  margin-top: -9px;
+  border-bottom: 1px solid $grey-3;
+  padding-bottom: 12px;
+  background: #FFFFFF;
+}
+
+.list {
+  list-style: none;
+}
+
+.heading {
+  margin: 0 22px 5px;
+  text-transform: uppercase;
+  @include font-size-with-line-height(12px);
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: $grey-6;
+}

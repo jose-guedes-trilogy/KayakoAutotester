@@ -1,0 +1,18 @@
+{{#ko-select/drill-down
+  actionReceiver=actionReceiver
+  options=navigableItems
+  onValueChange=(action "itemSelected")
+  onTraversingItems=(action "traversingItems")
+  emptyLabel=emptyLabel
+  hasEmptyOption=hasEmptyOption
+  triggerComponent=(component "ko-power-select-triggers/chevron")
+  triggerClass=(local-class "trigger")
+  isDisabled=isDisabled
+  dropdownClass=(local-class "dropdown")
+  tabIndex=-1
+  matchTriggerWidth=false
+  noSanitize=true
+as |option select|
+}}
+  {{ko-agent-content/hierarchical-action-menu/select-item item=option.value isHighlighted=(eq select.highlighted option)}}
+{{/ko-select/drill-down}}

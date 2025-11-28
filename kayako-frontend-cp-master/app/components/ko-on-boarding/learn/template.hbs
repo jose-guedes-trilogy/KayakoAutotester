@@ -1,0 +1,129 @@
+<div local-class="box">
+  <span local-class="box__number">
+    {{#if isComplete}}
+      {{inline-svg "onboarding/green-tick"}}
+    {{else}}
+      {{inline-svg "onboarding/1"}}
+    {{/if}}
+  </span>
+  <div local-class="box__content {{if isComplete "is-done"}}">
+    <div>
+      <h5 local-class="box__title">{{t "onboarding.learn.title"}}</h5>
+      <img local-class="box__illustration" src="/images/welcome/learn-kayako.png" height="186">
+    </div>
+    <div local-class="box__text">
+      <p local-class="box__description">{{t "onboarding.learn.description"}}</p>
+      <span onClick={{action "show"}} class={{qa-cls "open-tutorial"}}>
+        {{#if isComplete}}
+          <span local-class="box__tick">{{t "onboarding.complete"}}</span>
+        {{else}}
+          {{#ko-button size="medium"}}
+            {{t "onboarding.learn.cta"}}
+          {{/ko-button}}
+        {{/if}}
+      </span>
+    </div>
+  </div>
+</div>
+
+{{#if showGuide}}
+  {{#transition-group transition-class="overlay"}}
+    <div local-class="container" class={{qa-cls "tutorial-window"}}>
+      <header local-class="header">
+        <div local-class="logo">
+          {{inline-svg "kayako-logo"}}
+        </div>
+        <span local-class="button button--skip" onClick={{action "close"}} class={{qa-cls "close-tutorial"}}>
+          {{t "onboarding.learn.skip_intro"}}
+        </span>
+      </header>
+
+      <main local-class="main">
+        <section local-class="images-group slide-out-left {{if (eq activeGroup 0) "is-visible"}}">
+          <figure local-class="slide {{if (eq activeStep 1) "is-visible"}}">
+            <div local-class="intro-text">
+              <h1 local-class="slide__heading">{{t "onboarding.learn.video_header" name=(first-name session.user.fullName)}}</h1>
+              <p local-class="slide__description">{{t "onboarding.learn.video_text"}}</p>
+            </div>
+            {{#if (not testingMode)}}
+              <div local-class="intro-video">
+                {{!-- Begins Wistia embed code --}}
+                <script src="https://fast.wistia.com/embed/medias/1gr5j956ux.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;border-radius:8px;overflow:hidden;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_1gr5j956ux videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
+                {{!-- Ends Wistia embed code --}}
+
+                {{!-- Start of HubSpot Embed Code --}}
+                <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/451005.js"></script>
+                {{!-- End of HubSpot Embed Code --}}
+              </div>
+            {{/if}}
+          </figure>
+        </section>
+
+        <section local-class="images-group {{if (eq activeGroup 1) "is-visible"}} {{if (eq activeGroup 0) 'slide-out-right'}} {{if (eq activeGroup 2) 'slide-out-left'}}">
+          <figure local-class="slide {{if (eq activeStep 2) "is-visible"}}">
+            <h1 local-class="slide__heading">{{t "onboarding.learn.slide_2_header"}}</h1>
+            <p local-class="slide__description">{{t "onboarding.learn.slide_2_text"}}</p>
+            <img local-class="slide__visual" src="/images/welcome/learn--inbox.png">
+          </figure>
+          <figure local-class="slide {{if (eq activeStep 3) "is-visible"}}">
+            <h1 local-class="slide__heading">{{t "onboarding.learn.slide_3_header"}}</h1>
+            <p local-class="slide__description">{{t "onboarding.learn.slide_3_text"}}</p>
+            <img local-class="slide__visual" src="/images/welcome/learn--views.png">
+          </figure>
+        </section>
+
+        <section local-class="images-group slide-out-right {{if (eq activeGroup 2) "is-visible"}}">
+          <figure local-class="slide {{if (eq activeStep 4) "is-visible"}}">
+            <h1 local-class="slide__heading">{{t "onboarding.learn.slide_4_header"}}</h1>
+            <p local-class="slide__description">{{t "onboarding.learn.slide_4_text"}}</p>
+            <img local-class="slide__visual" src="/images/welcome/learn--main-area.png">
+          </figure>
+          <figure local-class="slide {{if (eq activeStep 5) "is-visible"}}">
+            <h1 local-class="slide__heading">{{t "onboarding.learn.slide_5_header"}}</h1>
+            <p local-class="slide__description">{{t "onboarding.learn.slide_5_text"}}</p>
+            <img local-class="slide__visual" src="/images/welcome/learn--reply.png">
+          </figure>
+          <figure local-class="slide {{if (eq activeStep 6) "is-visible"}}">
+            <h1 local-class="slide__heading">{{t "onboarding.learn.slide_6_header"}}</h1>
+            <p local-class="slide__description">{{t "onboarding.learn.slide_6_text"}}</p>
+            <img local-class="slide__visual" src="/images/welcome/learn--sidebar.png">
+          </figure>
+        </section>
+      </main>
+
+      <footer local-class="footer">
+        <span local-class="button button--previous {{if (eq activeStep 1) "is-hidden"}}" onClick={{action "previousStep"}}>
+          {{inline-svg "arrow-left" local-class="arrow-previous"}}
+          {{t "generic.previous"}}
+        </span>
+        <div local-class="pagination">
+          <span local-class="step-number {{if (eq activeStep 1) "is-active"}}" onClick={{action "changeStep" 1}}>
+            {{t "onboarding.count.1"}}
+          </span>
+          <span local-class="step-number {{if (eq activeStep 2) "is-active"}}" onClick={{action "changeStep" 2}}>
+            {{t "onboarding.count.2"}}
+          </span>
+          <span local-class="step-number {{if (eq activeStep 3) "is-active"}}" onClick={{action "changeStep" 3}}>
+            {{t "onboarding.count.3"}}
+          </span>
+          <span local-class="step-number {{if (eq activeStep 4) "is-active"}}" onClick={{action "changeStep" 4}}>
+            {{t "onboarding.count.4"}}
+          </span>
+          <span local-class="step-number {{if (eq activeStep 5) "is-active"}}" onClick={{action "changeStep" 5}}>
+            {{t "onboarding.count.5"}}
+          </span>
+          <span local-class="step-number {{if (eq activeStep 6) "is-active"}}" onClick={{action "changeStep" 6}}>
+            {{t "onboarding.count.6"}}
+          </span>
+        </div>
+        <span local-class="button button--next" onClick={{action "nextStep"}}>
+          {{#if (eq activeStep 6)}}
+            {{t "generic.continue_button"}}
+          {{else}}
+            {{t "generic.next"}} {{inline-svg "arrow-right" local-class="arrow-next"}}
+          {{/if}}
+        </span>
+      </footer>
+    </div>
+  {{/transition-group}}
+{{/if}}

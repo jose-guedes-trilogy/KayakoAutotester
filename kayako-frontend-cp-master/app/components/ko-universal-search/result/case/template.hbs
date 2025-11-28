@@ -1,0 +1,82 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    <div local-class="avatarContainer">
+      <img local-class="avatar {{if (not agentAvatar) "avatarUnassigned"}}" src={{requesterAvatar}}>
+
+      {{#if agentAvatar}}
+        <div local-class="agentAvatarContainer">
+          <img local-class="agentAvatar" src={{agentAvatar}}>
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    {{#if result.title}}
+      <div local-class="title" title={{escape-html result.title}}>{{escape-html result.title}}</div>
+    {{else}}
+      <div local-class="title" title={{escape-html result.resultData.subject}}>{{escape-html result.resultData.subject}}</div>
+    {{/if}}
+
+    {{#if requesterFullName}}
+      <div local-class="separator">•</div>
+      <div local-class="requesterFullName">{{requesterFullName}}</div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    <div local-class="status">
+      {{ko-status-pill
+        type=status.statusType
+        label=status.label
+      }}
+    </div>
+
+    <div local-class="bottom-text">
+      <span title={{updatedAt}}>
+        {{t "generic.updated"}} {{ko-datetime-format updatedAt}}
+      </span>
+
+      <span local-class="bullet">•</span>
+
+      {{#if (and
+        result.resultData.lastReplier.role.isAgentOrHigher
+        result.resultData.lastPostStatus
+        (not (eq result.resultData.lastPostStatus "NOT_SENT"))
+      )}}
+        <span local-class="status-icon">
+          {{ko-post-status-icon status=result.resultData.lastPostStatus}}
+        </span>
+      {{/if}}
+
+      {{#if result.resultData.lastMessagePreview}}
+        <span local-class="preview">
+          {{result.resultData.lastMessagePreview}}
+        </span>
+      {{/if}}
+    </div>
+  {{/if}}
+  {{#if (eq block 'right')}}
+    {{#if showAppendIcon}}
+      {{#if appended}}
+        <button local-class="appended-button" title={{t "cases.merge_conversation.modal.deselect_conversation" name=result.title}}>
+          {{ko-icon name="check" color="#3ea9c9" size=11}}
+        </button>
+      {{else}}
+        <button local-class="append-button" title={{t "cases.merge_conversation.modal.select_conversation" name=result.title}}>
+          {{ko-icon name="plus" color="#838D94" size=24}}
+        </button>
+      {{/if}}
+    {{/if}}
+    {{#if showRemoveIcon}}
+      <button local-class="remove-button" onClick={{action 'onClickRemoveIcon'}}>
+        {{ko-icon name="plus" color="#838D94" size=24}}
+      </button>
+    {{/if}}
+    {{#if showPrimaryBadge}}
+      <div local-class="primary-badge">
+        {{ko-status-pill label=(t "generic.primary") type='primary'}}
+      </div>
+    {{/if}}
+  {{/if}}
+{{/ko-universal-search/result/layout}}

@@ -1,0 +1,44 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    <img local-class="avatar" src={{avatar}}>
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    <div local-class="title">{{escape-html result.title}}</div>
+    {{#if role.isAgentOrHigher}}
+      <div local-class="role">
+        {{#if isMe}}
+          {{ko-you-label}}
+        {{else}}
+          {{ko-role-pill}}
+        {{/if}}
+      </div>
+    {{/if}}
+    {{#if organization.name}}
+      <div local-class="separator">•</div>
+      <div local-class="company">{{organization.name}}</div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    {{#each identities as |identity index|}}
+      {{#if index}}
+        <div local-class="separator">•</div>
+      {{/if}}
+
+      {{#if (eq identity.type "twitter")}}
+        <div local-class="icon">
+          {{ko-icon color="#D1D5D7" size=16 name="twitter"}}
+        </div>
+      {{/if}}
+
+      {{#if (eq identity.type "facebook")}}
+        <div local-class="icon">
+          {{ko-icon color="#D1D5D7" size=14 name="facebook"}}
+        </div>
+      {{/if}}
+
+      <div local-class="identity {{if (not index) "identityMain"}}">{{identity.value}}</div>
+    {{/each}}
+  {{/if}}
+{{/ko-universal-search/result/layout}}

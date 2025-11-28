@@ -1,0 +1,39 @@
+{{ko-admin/page
+  title=(t "admin.businesshours.headings.index")
+  buttonText=(t "admin.businesshours.buttons.add")
+  onSave=(action "transitionToAddNewBusinessHour")
+  needsPlanUpgrade=reachedLimit
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.businesshours.description"}}</p>
+  <p><strong>{{format-html-message "admin.businesshours.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1160-setting-your-teams-working-hours?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=businesshours" "admin.businesshours.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="business-hours"}}
+{{/if}}
+
+{{#ko-simple-list as |list|}}
+  {{#each model as |businessHour|}}
+    {{#list.row onClick=(action "editBusinessHour" businessHour) as |row|}}
+      {{#row.cell}}
+        <span local-class="title">{{businessHour.title}}</span>
+        {{#if businessHour.isDefault}}
+          <span local-class="caption">&nbsp;({{t "generic.default"}})</span>
+        {{/if}}
+      {{/row.cell}}
+      {{#row.actions}}
+        {{#if (not businessHour.isDefault)}}
+          <a onclick={{action "makeDefault" businessHour}}>{{t "generic.make_default"}}</a>
+          <span local-class="caption">|</span>
+        {{/if}}
+        <a onclick={{action "editBusinessHour" businessHour}}>{{t "generic.edit"}}</a>
+        {{#if (not businessHour.isDefault)}}
+          <span local-class="caption">|</span>
+          <a onclick={{action "deleteBusinessHour" businessHour}}>{{t "generic.delete"}}</a>
+        {{/if}}
+      {{/row.actions}}
+    {{/list.row}}
+  {{/each}}
+{{/ko-simple-list}}

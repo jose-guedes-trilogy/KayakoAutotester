@@ -1,0 +1,137 @@
+<div local-class={{if this.isHidden "hidden" "articles-view-list"}}>
+
+  {{!-- Loading Overlay --}}
+  {{#if isLoading}}
+    <div local-class="loading-overlay">
+      <div local-class="loading-message">
+        {{ko-loader size='L'}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div local-class="header">
+    <h4>
+      {{#if (eq this.selectedStatus "ALL")}}
+        {{t 'admin.knowledgebase.all_articles'}}
+      {{else if (eq this.selectedStatus "PUBLISHED")}}
+        {{t 'admin.knowledgebase.my_published_articles'}}
+      {{else if (eq this.selectedStatus "DRAFT")}}
+        {{t 'admin.knowledgebase.drafts'}}
+      {{/if}}
+    </h4>
+    <div local-class="bulk-actions">
+      {{#if (gt selectedArticleIds.length 0)}}
+        <div local-class="trash-button">
+          {{#ko-button type="alert" onClick=(perform trashArticles) disabled=isDeletingArticles}}
+            {{#if isDeletingArticles}}
+              {{ko-loader}}
+            {{else}}
+              {{t "admin.knowledgebase.trasharticles.button"}}
+            {{/if}}
+          {{/ko-button}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  <div>
+    <button local-class="show-filters-btn" onclick={{action (mut this.showFilters) (not this.showFilters)}}>
+      {{if this.showFilters "Hide Filters" "Show Filters"}}
+    </button>
+    <div local-class={{if this.showFilters "" "hidden"}}>
+      {{article-filters-panel initialFilters=this.initialFilters filters=this.filters onApply=(action "handleApplyFilters")}}
+    </div>
+    <table local-class="articles-table">
+      <thead>
+        <tr>
+          <th>{{ko-checkbox checked=allRowsSelected onCheck=(action "handleAllRowsSelection")}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.id'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.title'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.section'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.category'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.brand'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.created_by'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.status'}}</th>
+          <th>{{t 'admin.knowledgebase.table_headings.last_modified'}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if (eq this.articles.length 0)}}
+          <tr>
+            <td colspan="9" local-class="no-articles-message">
+              {{#if this.isLoading}}
+                {{t 'admin.knowledgebase.loading_articles'}}
+              {{else}}
+                {{t 'admin.knowledgebase.no_articles'}}
+              {{/if}}
+            </td>
+          </tr>
+        {{else}}
+          {{#each this.articles as |article|}}
+            <tr local-class="article-row" {{action "openArticle" article.id on="click"}}>
+              <td>{{ko-checkbox checked=(contains article.id selectedArticleIds) onCheck=(action "handleRowSelection" article.id)}}</td>
+              <td>{{article.id}}</td>
+              <td>{{article.title}}</td>
+              <td>{{article.section}}</td>
+              <td>{{article.category}}</td>
+              <td>{{article.brand}}</td>
+              <td>{{article.author.full_name}}</td>
+              <td><span local-class="status published">{{article.status}}</span></td>
+              <td>{{article.lastModified}}</td>
+            </tr>
+          {{/each}}
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+
+  {{#if (gt this.totalPages 1)}}
+    <div local-class="pagination">
+      <button 
+        {{action "firstPage"}}
+        local-class={{if (eq this.currentPage 1) "hidden" ""}}
+        disabled={{or (eq this.currentPage 1) (gt this.loadingPage 0)}}
+      >
+        {{t 'admin.knowledgebase.pagination.first'}}
+      </button>
+
+      <button 
+        {{action "previousPage"}}
+        local-class={{if (eq this.currentPage 1) "hidden" ""}}
+        disabled={{or (eq this.currentPage 1) (gt this.loadingPage 0)}}
+      >
+        {{t 'admin.knowledgebase.pagination.previous'}}
+      </button>
+
+      {{#each this.visiblePages as |page|}}
+        <button
+          local-class={{if (eq page this.currentPage) "selected" ""}}
+          {{action "goToPage" page}}
+          disabled={{gt this.loadingPage 0}}
+        >
+          {{#if (eq page this.loadingPage)}}
+            {{ko-loader}}
+          {{else}}
+            {{page}}
+          {{/if}}
+        </button>
+      {{/each}}
+
+      <button 
+        {{action "nextPage"}}
+        local-class={{if (eq this.currentPage this.totalPages) "hidden" ""}}
+        disabled={{or (eq this.currentPage this.totalPages) (gt this.loadingPage 0)}}
+      >
+        {{t 'admin.knowledgebase.pagination.next'}}
+      </button>
+
+      <button 
+        {{action "goToLastPage"}}
+        local-class={{if (eq this.currentPage this.totalPages) "hidden" ""}}
+        disabled={{or (eq this.currentPage this.totalPages) (gt this.loadingPage 0)}}
+      >
+        {{t 'admin.knowledgebase.pagination.last'}}
+      </button>
+    </div>
+  {{/if}}
+</div>

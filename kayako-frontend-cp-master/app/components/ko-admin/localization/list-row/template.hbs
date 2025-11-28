@@ -1,0 +1,19 @@
+{{#list.row isLoading=onToggle.isRunning as |row|}}
+  {{#row.cell disabled=(or (not language.isPublic) onToggle.isRunning)}}
+    <span>
+      <span local-class="name">{{language.nativeName}}</span>
+      {{#if language.isLocalized}}<span local-class="caption">{{t "admin.localization.localized"}}</span>{{/if}}
+      {{#if (eq language.locale locale.accountDefaultLocaleCode)}}<span local-class="caption">({{t "generic.default"}})</span>{{/if}}
+    </span>
+  {{/row.cell}}
+  {{#row.actions}}
+    {{#if canToggle}}
+      <a
+        onclick={{perform onToggle}}
+        class={{qa-cls (if language.isPublic "qa-language-disable" "qa-language-enable")}}
+      >
+        {{t (if language.isPublic "generic.disable" "generic.enable")}}
+      </a>
+    {{/if}}
+  {{/row.actions}}
+{{/list.row}}

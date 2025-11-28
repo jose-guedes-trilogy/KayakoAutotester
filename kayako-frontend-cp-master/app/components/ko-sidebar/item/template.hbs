@@ -1,0 +1,13 @@
+{{#if (variation "release-restrict-insights")}}
+  {{#if inactive}}
+    <span local-class="inactive-item">{{yield}}</span>
+  {{else}}
+    {{#link-to route local-class="item"}}
+      {{yield}}
+    {{/link-to}}
+  {{/if}}
+{{else}}
+  {{#link-to route local-class="item"}}
+    {{yield}}
+  {{/link-to}}
+{{/if}}

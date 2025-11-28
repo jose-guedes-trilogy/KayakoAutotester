@@ -1,0 +1,38 @@
+{{#power-select
+  disabled=disabled
+  matchTriggerWidth=matchTriggerWidth
+  dropdownClass=(local-class "dropdown")
+  initiallyOpened=initiallyOpened
+  onchange=onChange
+  options=options
+  placeholder=placeholder
+  renderInPlace=false
+  search=search
+  searchEnabled=false
+  noMatchesMessage=(or noMatchesMessage defaultNoMatchesMessage)
+  loadingMessage=false
+  searchField=searchField
+  selected=selected
+  triggerComponent=triggerComponent
+  beforeOptionsComponent=beforeOptionsComponent
+  onkeydown=onKeyDown
+  triggerClass=(join-classes
+    (local-class "select")
+    (local-class "trigger")
+    (if focused (local-class "trigger--focused"))
+    (if (eq size "small") (local-class "select--small"))
+    (if (eq size "medium") (local-class "select--medium"))
+    (qa-cls qaClass)
+  )
+  extra=(hash
+    searchEnabled=(or searchEnabled (and search (not options)))
+    focused=focused
+    triggerField=triggerField
+  )
+  as |option|}}
+  {{#if hasBlock}}
+    {{yield option}}
+  {{else}}
+    {{get option searchField}}
+  {{/if}}
+{{/power-select}}

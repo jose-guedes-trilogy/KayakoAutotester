@@ -1,0 +1,56 @@
+.container {
+  :global(.sortable-item) {
+    transition: all 0.125s;
+    background: #FFFFFF;
+
+    &:global(.is-dragging) {
+      transition-duration: 0s;
+      z-index: 50;
+      position: relative;
+      box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(45, 49, 56, 0.09);
+    }
+  }
+}
+
+.list {
+  list-style: none;
+  background-color: #EBEEF0;
+}
+
+.item {
+  position: relative;
+  padding-left: 13.5px;
+  margin-left: -13.5px;
+  display: flex;
+  flex-shrink: 0;
+  min-height: 60px;
+
+  &:hover {
+    @include child-icon {
+      visibility: visible;
+    }
+  }
+}
+
+.handle {
+  cursor: grab;
+  position: relative;
+  @include icon {
+    @extend %u-v-center;
+    left: -10px;
+    position: absolute;
+    visibility: hidden;
+    color: #CBCFD1;
+    @include font-size-with-line-height(30px);
+  }
+}
+
+.handleOutside {
+  @include icon {
+    left: -10px;
+  }
+}
+
+:global(#ember-testing .sortable-item) {
+  transition: all 0s !important;
+}

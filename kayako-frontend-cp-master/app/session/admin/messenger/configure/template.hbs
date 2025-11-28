@@ -1,0 +1,16 @@
+{{#if (variation "release-messenger-persistent-settings")}}
+  {{ko-admin/messenger-persistent
+    brands=model.brand
+    messengerSettings=model.messengerSetting
+    businessHour=model.businessHour
+    twitterAccounts=model.twitterAccounts
+    metrics=model.metrics
+    registerAs=(action (mut editComponent))
+  }}
+{{else}}
+  {{ko-admin/messenger
+    brands=model.brand
+    twitterAccounts=model.twitterAccounts
+    metrics=model.metrics
+  }}
+{{/if}}

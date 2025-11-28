@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    function parseQueryString (query) {
+      var queryString = {};
+      for(var x=0; x<query.length;x++) {
+        var item = query[x].split(/=/);
+        if (item.length === 2) {
+          queryString[item[0]] = item[1];
+        }
+      }
+      return queryString;
+    }
+    var queryString = parseQueryString(window.location.search.substr(1).split('&'));
+    if(queryString.success && queryString.responseFrom && queryString.refId) {
+      window.parent.postMessage({success: true, refId: queryString.refId}, window.location.origin);
+    } else {
+      window.parent.postMessage({success: false}, window.location.origin);
+    }
+  </script>
+</body>
+</html>

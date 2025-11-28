@@ -1,0 +1,43 @@
+<div local-class="header">
+  <img src="/images/apps/header.png">
+</div>
+
+<div local-class="contentBlock">
+  <h2 local-class="title">
+    {{t "admin.apps.zapier.heading"}}
+  </h2>
+
+  <div local-class="subtitle">
+    {{t "admin.apps.zapier.subtitle"}}
+  </div>
+
+  <div local-class="content">
+    <div local-class="messagesBlock">
+      <dl local-class="definitionList">
+        <dt local-class="definitionTitle">
+          {{t "admin.apps.zapier.integrate_without_code.title"}}
+        </dt>
+        <dd local-class="definitionText">
+          {{t "admin.apps.zapier.integrate_without_code.description"}}
+        </dd>
+
+        <dt local-class="definitionTitle">
+          {{t "admin.apps.zapier.activate_super_powers.title"}}
+        </dt>
+        <dd local-class="definitionText">
+          {{t "admin.apps.zapier.activate_super_powers.description"}}
+        </dd>
+
+        <dd local-class="findOutCTA">
+          {{#ko-button size="medium" onClick=(action "ctaClick") rel="noopener" href="https://support.kayako.com/article/1169-connecting-kayako-to-other-apps-with-zapier?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=zapier" target="_blank" rel="noopener noreferrer" type="primary"}}
+            {{t "admin.apps.zapier.cta"}}
+          {{/ko-button}}
+        </dd>
+      </dl>
+    </div>
+
+    <div local-class="imageBlock">
+      <img src="/images/apps/zapier/integrations.png" width="260">
+    </div>
+  </div>
+</div>

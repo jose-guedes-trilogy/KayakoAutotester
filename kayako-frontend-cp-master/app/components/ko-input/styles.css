@@ -1,0 +1,53 @@
+.input {
+  line-height: 18px;
+  padding: 8px 9px;
+  border-radius: 3px;
+  border: 1px solid #D1D5D7;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.06);
+  font-size: 15px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  resize: vertical;
+
+  &:focus {
+    @extend %brand-focus;
+  }
+
+  &:disabled {
+    background-color: $grey-1;
+    color: $grey-5;
+    cursor: not-allowed;
+  }
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.small {
+  width: 80px;
+}
+
+.medium {
+  width: 285px;
+}
+
+.full {
+  width: 100%;
+}
+
+.addon {
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 100px;
+  border-radius: 3px 0 0 3px;
+}
+
+.input[type="number"]::-webkit-inner-spin-button,
+.input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type="number"] {
+  -moz-appearance:textfield;
+}

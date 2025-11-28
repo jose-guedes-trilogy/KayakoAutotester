@@ -1,0 +1,49 @@
+.app-logo-container {
+  display: flex;
+}
+
+.app-logo-upload {
+  display: flex;
+  align-items: center;
+}
+
+.loader {
+  margin-left: 10px;
+}
+
+.app-logo {
+  margin: 2px 14px 0 0;
+}
+
+.file-field {
+  display: none;
+}
+
+.copy-button {
+  composes: default from 'frontend-cp/components/ko-button/styles';
+  display: inline;
+  margin-left: 10px;
+}
+
+.app-secret {
+  color: #E86048;
+}
+
+.app-scopes-container {
+  margin-top: 20px;
+}
+
+.app-scope {
+  flex-shrink: 1;
+}
+
+.app-scope-access-level {
+  min-width: 100px;
+}
+
+.app-item-container {
+  margin-top: 0 !important;
+  display: flex !important;
+  align-items: flex-start;
+  justify-content: space-between;
+}

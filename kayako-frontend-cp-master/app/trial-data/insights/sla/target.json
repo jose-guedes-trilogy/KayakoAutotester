@@ -1,0 +1,116 @@
+{
+  "status": 200,
+  "data": {
+    "start_at": "2016-05-28T00:00:00+00:00",
+    "end_at": "2016-06-27T23:59:59+00:00",
+    "previous_start_at": "2016-04-16T00:00:00+00:00",
+    "previous_end_at": "2016-05-16T23:59:59+00:00",
+    "targets": [
+      {
+        "type": "FIRST_REPLY_TIME",
+        "metrics": [
+          {
+            "name": "percentage_achieved",
+            "value": 72.115,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "total_breached",
+            "value": 121,
+            "delta_percent": 100,
+            "previous": 0,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_to_target",
+            "value": 1519,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_overdue_to_breach",
+            "value": 6,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          }
+        ],
+        "resource_type": "sla_metric_type"
+      },
+      {
+        "type": "NEXT_REPLY_TIME",
+        "metrics": [
+          {
+            "name": "percentage_achieved",
+            "value": 86.792,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "total_breached",
+            "value": 29,
+            "delta_percent": 100,
+            "previous": 0,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_to_target",
+            "value": 3694,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_overdue_to_breach",
+            "value": 369,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          }
+        ],
+        "resource_type": "sla_metric_type"
+      },
+      {
+        "type": "RESOLUTION_TIME",
+        "metrics": [
+          {
+            "name": "percentage_achieved",
+            "value": 22.535,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "total_breached",
+            "value": 214,
+            "delta_percent": 100,
+            "previous": 0,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_to_target",
+            "value": 11485,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          },
+          {
+            "name": "average_time_overdue_to_breach",
+            "value": 4,
+            "delta_percent": 100,
+            "previous": null,
+            "resource_type": "report_value_comparison"
+          }
+        ],
+        "resource_type": "sla_metric_type"
+      }
+    ],
+    "resource_type": "report_sla_target"
+  },
+  "resources": [],
+  "resource": "report_sla_target"
+}

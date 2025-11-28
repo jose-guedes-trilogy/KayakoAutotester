@@ -1,0 +1,12 @@
+.channel-layout {
+  display: flex;
+}
+
+.channels {
+  width: 140px;
+}
+
+.events {
+  margin-left: 20px;
+  width: 140px;
+}

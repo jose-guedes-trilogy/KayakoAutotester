@@ -1,0 +1,57 @@
+.loader {
+  height: 100px;
+  overflow: auto;
+  position: relative;
+}
+
+.header-bar {
+  margin: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  flex-grow: 1;
+  margin: auto;
+}
+
+.search {
+  width: 250px;
+}
+
+.search-result {
+  display: flex;
+  align-items: center;
+}
+
+.search-result-avatar {
+  margin-right: 5px;
+}
+
+.member-avatar {
+  margin-right: 5px;
+}
+
+.member-name {
+  font-weight: 600;
+}
+
+.secondary {
+  color: $grey-6;
+}
+
+.new-member-row {
+  background: $color-note-background;
+}
+
+.member-search-already-included {
+  position: relative;
+  top: -1px;
+  margin-left: 10px;
+  color: $grey-4;
+
+  :global([aria-current="true"]) & {
+    color: $grey-1;
+  }
+}

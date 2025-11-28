@@ -137,6 +137,16 @@
       "[contenteditable='plaintext-only']",
       "textarea"
     ],
+    // Toggle back to Reply mode (when in Notes)
+    "replyToggle": [
+      "div[class*='ko-channel-selector_selected-channel__container_']",
+      "role=button[name='Reply']",
+      "role=tab[name='Reply']",
+      "[role='tab']:has-text('Reply')",
+      "[class*='ko-text-editor_mode-selector__root_'] div:has-text('Reply')",
+      "[class*='mode-selector'] div:has-text('Reply')",
+      "text=Reply"
+    ],
     // Toggle to switch to Internal note (or similar)
     "internalNoteToggle": [
       "role=button[name='Internal note']",
@@ -272,6 +282,11 @@
       "[class*='ko-case-content__submit-properties_'] .ko-button__span_ka3fcv",
       ".ko-case-content__submit-properties_11x6m5 .ko-button__span_ka3fcv",
       "[class*='ko-button__span_']"
+    ],
+    // Container that shows the Update properties controls; disappears after successful save
+    "updatePropertiesContainer": [
+      "[class*='ko-case-content__submit-properties_']",
+      ".ko-case-content__submit-properties_11x6m5"
     ]
   },
   // Global search selectors
@@ -286,6 +301,184 @@
     "resultItem": [
       "[class*='search'] [class*='result'] a[href*='/agent/conversations/']",
       "[class*='results'] a[href*='/agent/conversations/']"
+    ]
+  },
+  // Macro selectors
+  "macro": {
+    // Button or control to open the macro selection menu
+    "macroSelectorTrigger": [
+      "div.ember-power-select-trigger[class*='ko-case_macro-selector__trigger_']",
+      "[class*='ko-case_macro-selector_trigger__trigger_']",
+      // Text fallback last:
+      "text=Macro"
+    ],
+    // "Send to Customer" macro option in the dropdown
+    "macroOptionSendToCustomer": [
+      "ul[role='listbox'] li[role='option']:has-text('Send to Customer')",
+      ".ember-power-select-option:has-text('Send to Customer')",
+      "text=Send to Customer"
+    ],
+    // Macro dropdown container (optional checks)
+    "macroDropdownContainer": [
+      "[id^='ember-basic-dropdown-content-'][class*='ko-case_macro-selector__dropdown_']",
+      "#ember-basic-dropdown-wormhole [class*='ko-case_macro-selector__dropdown_']"
+    ]
+  },
+  // Status selectors
+  "status": {
+    // Trigger to open the status selection dropdown
+    "statusFieldTrigger": [
+      "div[class*='ko-info-bar_field_select__trigger_']:has-text('Status')",
+      "role=button[name='Status']",
+      "text=Status"
+    ],
+    // "Pending" status option in the dropdown
+    "statusOptionPending": [
+      "ul[role='listbox'] li[role='option']:has-text('Pending')",
+      ".ember-power-select-option:has-text('Pending')",
+      "text=Pending"
+    ]
+  },
+  // Tags selectors
+  "tags": {
+    // Trigger to open the tags input/selection
+    "tagsFieldTrigger": [
+      "div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')",
+      "role=button[name='Tags']",
+      "text=Tags"
+    ],
+    // Input inside the tags multi-select (ember-power-select-multiple)
+    "tagsInput": [
+      "input[class*='ko-info-bar_field_select-multiple_trigger__input_']",
+      "[id^='ember-basic-dropdown-content-'] .ember-power-select-search-input",
+      ".ember-power-select-multiple-input",
+      "input.ember-power-select-search-input"
+    ],
+    // Generic option in the dropdown list (used with :has-text())
+    "tagsOption": [
+      "ul[role='listbox'] li[role='option']",
+      ".ember-power-select-option"
+    ],
+    // A pill representing an added tag
+    "tagPill": [
+      "[class*='ko-select_multiple_pill__pill_']",
+      ".ember-power-select-multiple-option"
+    ]
+  },
+  // Info bar (right-side) generic selectors for custom fields
+  "info": {
+    // Container for the right-side panel
+    "panel": [
+      "[class*='ko-info-bar_']",
+      "[class*='ko-case-content__properties_']",
+      "[class*='info-bar']"
+    ],
+    // Generic field container within the panel
+    "fieldContainer": [
+      "[class*='ko-agent-content_layout__fields_'] [class*='ko-info-bar_item__container_']",
+      "[class*='ko-info-bar_item__container_']",
+      "[class*='ko-info-bar_field_']",
+      "[class*='ko-case-content_field_']"
+    ],
+    // Header/label element inside a field container
+    "fieldHeader": [
+      "span[class*='__header_']",
+      "span[class*='ko-info-bar_field_'][class*='__header_']"
+    ],
+    // Generic select trigger within a field (ember-power-select)
+    "selectTrigger": [
+      "div.ember-power-select-trigger",
+      "div[class*='ko-info-bar_field_select_trigger__trigger_']",
+      "div[class*='ko-info-bar_field_select__trigger_']",
+      "div[class*='ko-info-bar_field_drill-down__trigger_']"
+    ],
+    // Date focus/activation element for date fields
+    "dateFocus": [
+      "span[class*='ko-info-bar_field_date__focus_']"
+    ],
+    // Datepicker dropdown container (appears after focus click)
+    "dateDropdown": [
+      "div[class*='ko-info-bar_field_date__dropdownMenu_']",
+      "div[class*='ko-datepicker__container_']",
+      "#ember-basic-dropdown-wormhole div[class*='ko-info-bar_field_date__dropdownMenu_']",
+      "#ember-basic-dropdown-wormhole div[class*='ko-datepicker__container_']"
+    ],
+    // Date field container/icon/header that can open the calendar
+    "dateContainer": [
+      "[class*='ko-agent-content_layout__fields_'] [class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_']",
+      "div[class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_']",
+      "div[class*='ko-info-bar_field_date__date_']"
+    ],
+    "dateIcon": [
+      "i[class*='ko-info-bar_field_date__icon_']",
+      "i.i-select"
+    ],
+    "dateHeader": [
+      "span[class*='ko-info-bar_field_date__header_']"
+    ],
+    // Datepicker header controls and labels
+    "datePrev": [
+      "span[class*='ko-datepicker__previous_']"
+    ],
+    "dateNext": [
+      "span[class*='ko-datepicker__next_']"
+    ],
+    "dateMonth": [
+      "span[class*='ko-datepicker__month_']"
+    ],
+    "dateYear": [
+      "span[class*='ko-datepicker__year_']"
+    ],
+    // Day cells (current month and any)
+    "dateDayCurrentMonth": [
+      "span[class*='ko-datepicker__dateCurrentMonth_']"
+    ],
+    "dateDayAny": [
+      "span[class*='ko-datepicker__date_']"
+    ],
+    // Today day cell in the grid
+    "dateDayToday": [
+      "span[class*='ko-datepicker__date--today_']"
+    ],
+    // Footer actions container and items (Today, Clear, Close)
+    "dateActionsContainer": [
+      "div[class*='ko-datepicker__actions_']"
+    ],
+    "dateAction": [
+      "div[class*='ko-datepicker__action_']"
+    ],
+    // Active state of the date container (when calendar is shown)
+    "dateContainerActive": [
+      "div[class*='ko-info-bar_field_date__date_'][class*='ko-info-bar_item__containerActive_']"
+    ],
+    // Generic dropdown option (use with :has-text())
+    "dropdownOption": [
+      "ul[role='listbox'] li[role='option']",
+      ".ember-power-select-option"
+    ],
+    // Generic checkbox or switch within a field container
+    "checkbox": [
+      "input[type='checkbox']",
+      "[role='switch']"
+    ],
+    // Generic text input(s) within a field container
+    "textInput": [
+      "input[type='text']",
+      "input[type='search']",
+      "input[type='number']"
+    ],
+    // Generic textarea within a field container
+    "textarea": [
+      "textarea"
+    ],
+    // Generic date input within a field container
+    "dateInput": [
+      "input[type='date']"
+    ],
+    // Radio input within a field container
+    "radio": [
+      "input[type='radio']",
+      "[role='radio']"
     ]
   }
 }

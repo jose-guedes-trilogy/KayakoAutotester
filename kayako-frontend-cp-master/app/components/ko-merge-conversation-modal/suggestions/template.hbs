@@ -1,0 +1,29 @@
+<div local-class="suggestions-container">
+  {{#if (or fetchCasesForUser.isRunning suggestedConversations.length)}}
+    <p local-class="suggested-heading">{{headingLabel}}</p>
+  {{/if}}
+  {{#if fetchCasesForUser.isRunning}}
+    {{ko-loader large=true class=(local-class "centered-loader")}}
+  {{else}}
+    {{#if suggestedConversations.length}}
+      <ul>
+        {{#each suggestedConversations as |convo|}}
+          {{ko-universal-search/result
+            result=convo
+            showAppendIcon=true
+            isHighlighted=(eq convo highlightedResult)
+            onHighlight=(action "highlightResult")
+            onSelectHighlightedResult=onSelectResult
+          }}
+        {{/each}}
+      </ul>
+    {{else}}
+      {{#unless (gt idsToExclude.length 1)}}
+        <div local-class="no-cases-placeholder">
+          {{inline-svg "no-recent-conversations"}}
+          <div local-class="no-cases-text">{{t "cases.merge_conversation.modal.no_recent_cases" name=requester.fullName}}</div>
+        </div>
+      {{/unless}}
+    {{/if}}
+  {{/if}}
+</div>

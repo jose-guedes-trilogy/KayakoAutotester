@@ -1,0 +1,21 @@
+<svg width="33px" height="33px" viewBox="34 109 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d="M15.887,9.459 L14.213,1.933 C14.096,1.405 13.553,0.979 13,0.979 C13,0.438 12.553,0 12,0 L11,0 C10.447,0 10,0.438 10,0.979 C9.447,0.979 9,1.415 9,1.955 L9,4 L7,4 L7,1.955 C7,1.415 6.553,0.979 6,0.979 C6,0.438 5.553,0 5,0 L4,0 C3.447,0 3,0.438 3,0.979 C2.447,0.979 1.905,1.405 1.788,1.933 L0.133,9.396 C0.055,9.681 0,9.974 0,10.281 C0,12.172 1.57,14.001 3.5,14.001 C5.381,14.001 6.909,13 6.985,11 L7,11 L7,8 L9,8 L9,11 L9.015,11 C9.091,13 10.619,14 12.5,14 C14.43,14 16,12.317 16,10.427 C16,10.142 15.954,9.724 15.887,9.459 L15.887,9.459 Z" id="path-1"></path>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="14.001" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+    <rect id="path-3" x="6" y="4" width="4" height="4"></rect>
+    <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="4" height="4" fill="white">
+      <use xlink:href="#path-3"></use>
+    </mask>
+  </defs>
+  <g id="icon--monitor" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(34.000000, 109.000000)">
+    <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="Rectangle-185" fill="#EBEEF0"></path>
+    <g transform="translate(8.000000, 8.500000)">
+      <use id="Fill-776" stroke="#838D94" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-1"></use>
+      <use id="Rectangle-3" stroke="#838D94" mask="url(#mask-4)" stroke-width="2" fill="#DADDDF" xlink:href="#path-3"></use>
+      <path d="M12.5,11.997 C11.673,11.997 11,11.324 11,10.497 C11,9.67 11.673,8.997 12.5,8.997 C13.327,8.997 14,9.67 14,10.497 C14,11.324 13.327,11.997 12.5,11.997 L12.5,11.997 Z" id="Path" fill="#838D94"></path>
+      <path d="M3.5,11.997 C2.673,11.997 2,11.324 2,10.497 C2,9.67 2.673,8.997 3.5,8.997 C4.327,8.997 5,9.67 5,10.497 C5,11.324 4.327,11.997 3.5,11.997 L3.5,11.997 Z" id="Path" fill="#838D94"></path>
+    </g>
+  </g>
+</svg>

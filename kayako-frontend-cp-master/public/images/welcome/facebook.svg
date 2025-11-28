@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="157px" width="203px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 203 157">
+ <defs>
+  <ellipse id="path-1" cy="68.217" cx="14" rx="1" ry="1.0032"/>
+  <mask id="mask-2" maskContentUnits="userSpaceOnUse" height="2.00638978" width="2" y="0" x="0" maskUnits="objectBoundingBox" fill="white">
+   <use xlink:href="#path-1"/>
+  </mask>
+  <ellipse id="path-3" cy="2.508" cx="33" rx="2.5" ry="2.508"/>
+  <mask id="mask-4" maskContentUnits="userSpaceOnUse" height="5.01597444" width="5" y="0" x="0" maskUnits="objectBoundingBox" fill="white">
+   <use xlink:href="#path-3"/>
+  </mask>
+  <ellipse id="path-5" cy="4.2636" cx="153.75" rx="1.25" ry="1.254"/>
+  <mask id="mask-6" maskContentUnits="userSpaceOnUse" height="2.50798722" width="2.5" y="0" x="0" maskUnits="objectBoundingBox" fill="white">
+   <use xlink:href="#path-5"/>
+  </mask>
+  <ellipse id="path-7" cy="84.77" cx="170" rx="2" ry="2.0064"/>
+  <mask id="mask-8" maskContentUnits="userSpaceOnUse" height="4.01277955" width="4" y="0" x="0" maskUnits="objectBoundingBox" fill="white">
+   <use xlink:href="#path-7"/>
+  </mask>
+ </defs>
+ <g id="🚧-Onboarding" fill-rule="evenodd" fill="none">
+  <g id="Onboarding---2.2" transform="translate(-873 -265)">
+   <g id="facebook" transform="translate(872 265)">
+    <path id="Path-15-Copy-3" stroke-linejoin="round" stroke="#D9D7DB" stroke-linecap="round" d="m10.75 153.99h172.53"/>
+    <g id="bg-thingy">
+     <use id="Oval-3" xlink:href="#path-1" stroke="#FCE2D9" stroke-width="1.5" mask="url(#mask-2)"/>
+     <use id="Oval-4" xlink:href="#path-3" stroke="#FCE2D9" stroke-width="1.5" mask="url(#mask-4)"/>
+     <use id="Oval-5" xlink:href="#path-5" stroke="#FCE2D9" stroke-width="1.5" mask="url(#mask-6)"/>
+     <use id="Oval-7" xlink:href="#path-7" stroke="#FCE2D9" stroke-width="1.5" mask="url(#mask-8)"/>
+     <g id="Group" stroke-linejoin="round" transform="translate(180.5 30.096)" stroke="#FEF4DF" stroke-linecap="round" stroke-width=".75">
+      <path id="Combined-Shape" d="m4.1571 2.1875h-3.8572c-0.13848 0-0.25076 0.112-0.25076 0.25-0.000002 0.1381 0.11228 0.25 0.2508 0.25h3.8572c0.1385 0 0.2508-0.1119 0.2508-0.25"/>
+      <path id="Path-5" d="m1.9785 0.50895v3.8572c0 0.1384 0.1119 0.2507 0.25 0.2507s0.25-0.1123 0.25-0.2508v-3.8572c0-0.13847-0.1119-0.25075-0.25-0.25075"/>
+     </g>
+     <g id="Group-Copy" stroke-linejoin="round" transform="translate(200.93 58.51) rotate(45) translate(-3.25 -3.261)" stroke="#FEF4DF" stroke-linecap="round" stroke-width=".85">
+      <path id="Combined-Shape" d="m5.919 3.0514h-5.4c-0.19396 0-0.35116 0.1617-0.35116 0.3611 0 0.1995 0.1572 0.3611 0.35112 0.3611h5.4c0.1939 0 0.3511-0.1616 0.3511-0.3611"/>
+      <path id="Path-5" d="m2.8579 0.71252v5.4c0 0.194 0.1616 0.3512 0.3611 0.3512 0.1994 0 0.3611-0.1572 0.3611-0.3512v-5.4c0-0.19389-0.1617-0.3511-0.3611-0.3511"/>
+     </g>
+     <g id="Group-Copy-3" stroke-linejoin="round" transform="translate(68.5 10.534)" stroke="#FEF4DF" stroke-linecap="round" stroke-width=".75">
+      <path id="Combined-Shape" d="m5.038 2.6195h-4.6286c-0.16617 0-0.30091 0.1368-0.30091 0.3055 0 0.1688 0.13474 0.3056 0.30096 0.3056h4.6286c0.1663 0 0.301-0.1368 0.301-0.3056"/>
+      <path id="Path-5" d="m2.4182 0.61073v4.6286c0 0.1662 0.1368 0.301 0.3055 0.301 0.1688 0 0.3056-0.1348 0.3056-0.301v-4.6286c0-0.16618-0.1368-0.30092-0.3056-0.30092"/>
+     </g>
+     <g id="Group-Copy-2" stroke-linejoin="round" transform="translate(4 37.369) rotate(45) translate(-2.5 -2.759)" stroke="#FEF4DF" stroke-linecap="round" stroke-width=".75">
+      <path id="Combined-Shape" d="m4.5976 2.4035h-4.2429c-0.15237 0-0.27589 0.1244-0.27589 0.2778 0.000003 0.1534 0.12352 0.2778 0.27588 0.2778h4.2429c0.1523 0 0.2758-0.1244 0.2758-0.2778"/>
+      <path id="Path-5" d="m2.1984 0.55984v4.2429c0 0.1524 0.1243 0.2759 0.2777 0.2759s0.2778-0.1235 0.2778-0.2759v-4.2429c0-0.15232-0.1244-0.27584-0.2778-0.27584"/>
+     </g>
+    </g>
+    <path id="Combined-Shape-Copy" opacity=".18" style="mix-blend-mode:multiply" fill="#39599E" d="m89.048 139.85c0.318 2.13 1.751 12.44-0.14 13.86-2.11 1.58-13.12 4.4-15.636 2.2-2.515-2.2 6.203-8.97 9-8.97-2.308-2.11-5.751-6.37-6.885-7.8l-12.099-0.64c-9.381-0.49-16.587-8.49-16.095-17.87l2.074-39.583c-0.149-0.394-7.748-20.37-21.31-33.393-4.273 0-10.223-3.618-7.223-10.641 3-7.022 14.626-4.214 14.626 2.281 3.711 1.405 6.564 2.469 15.707 8.325 1.118-8.743 8.806-15.276 17.761-14.807l71.382 3.741c9.38 0.492 16.59 8.492 16.1 17.872l-1.59 30.358c1.02 1.685 11.25 17.947 29.64 27.257 0 0 7.14-0.9 8.16 6.3 1.02 7.21-8.31 10.92-12.64 4.39 0 0-17.98-1.77-26.69-8.89l-0.64 12.31c-0.49 9.38-8.49 16.59-17.88 16.1l-15.03-0.79c-0.83 0.83-3.41 3.37-5.72 5.48 2.8 0 11.51 6.77 9 8.97-2.52 2.2-13.53-0.62-15.64-2.2-1.89-1.42-0.39-10.93-0.06-12.9l-18.172-0.96z"/>
+    <path id="Combined-Shape" stroke-linejoin="round" stroke="#39599E" stroke-linecap="round" d="m85.548 136.34c0.318 2.13 1.751 12.44-0.14 13.86-2.11 1.58-13.12 4.4-15.636 2.2-2.515-2.2 6.203-8.97 9-8.97-2.308-2.11-5.751-6.37-6.885-7.8l-12.099-0.64c-9.381-0.49-16.587-8.49-16.095-17.87l2.074-39.584c-0.149-0.394-7.748-20.37-21.31-33.393-4.273 0-10.223-3.618-7.223-10.641 3-7.022 14.626-4.214 14.626 2.281 3.711 1.405 6.564 2.468 15.707 8.324 1.118-8.742 8.806-15.275 17.761-14.806l71.382 3.741c9.38 0.492 16.59 8.491 16.1 17.872l-1.59 30.358c1.02 1.685 11.25 17.945 29.64 27.258 0 0 7.14-0.9 8.16 6.3 1.02 7.21-8.31 10.92-12.64 4.39 0 0-17.98-1.77-26.69-8.89l-0.64 12.31c-0.49 9.38-8.49 16.59-17.88 16.09l-15.03-0.78c-0.83 0.82-3.41 3.37-5.72 5.48 2.8 0 11.51 6.77 9 8.97-2.52 2.2-13.53-0.62-15.64-2.2-1.89-1.42-0.39-10.93-0.06-12.9l-18.172-0.96z"/>
+    <path id="Path-19-Copy" fill="#fff" d="m119.69 66.288s-9.96-0.759-12.12 9.819c9 0 11.65 0.101 11.65 0.101l-1.35 14.4-11.27-0.143-2.44 31.845-15.77-0.68 2.323-32.623-7.213 0.051 0.818-13.995 6.919 0.03s-3.069-27.836 28.923-21.482c0 5.37-0.47 12.677-0.47 12.677z"/>
+    <path id="Path-19" stroke-linejoin="round" stroke="#39599E" stroke-linecap="round" d="m116.19 62.777s-9.96-0.76-12.12 9.819c9 0 11.65 0.101 11.65 0.101l-1.35 14.399-11.27-0.142-2.44 31.846-15.77-0.69 2.323-32.614-7.213 0.05 0.818-13.994 6.919 0.03s-3.069-27.837 28.923-21.482c0 5.37-0.47 12.677-0.47 12.677z"/>
+   </g>
+  </g>
+ </g>
+</svg>

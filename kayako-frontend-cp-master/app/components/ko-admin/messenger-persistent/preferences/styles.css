@@ -1,0 +1,79 @@
+.label {
+  display: block;
+}
+
+.localized-field {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.reply-time-locale {
+
+  .radio-container {
+    display: flex;
+    .radio {
+      display: block;
+    }
+
+    .label {
+      position: relative;
+      top: -3px;
+      max-width: 100%;
+      .text {
+        cursor: pointer;
+      }
+
+      .current-expectation {
+        color: $grey-6;
+      }
+    }
+
+    .tooltip-container {
+      position: relative;
+      top: 2px;
+      padding-left: 3px;
+      display: inline-block;
+    }
+  }
+}
+
+.text--small {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.business-hours {
+  .select-field {
+    margin-bottom: 7px;
+  }
+}
+
+.suggestions-settings-container {
+  .label {
+    margin-left: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .form-field {
+    display: flex;
+    align-items: center;
+
+    .tooltip-container {
+      padding-left: 4px;
+    }
+  }
+
+  &.disabled {
+    .form-field .label .text {
+      color: $grey-6;
+      cursor: not-allowed;
+    }
+
+    .checkbox {
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@value size: 15px;
+
+.radio {
+  margin-bottom: 4.5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio--disabled {
+  opacity: 0.5;
+}
+
+.container {
+  width: size;
+  height: size;
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.5) 0%, #FAFAFA 100%);
+  border: 1px solid #BEC4C7;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4.5px;
+  transition: border-color 0.1s, box-shadow 0.1s;
+
+  &:focus {
+    @extend %brand-focus;
+  }
+}
+
+.check {
+  width: round(size / 3);
+  height: round(size / 3);
+  background: #616C73;
+  border-radius: 50%;
+  transition: 0.2s;
+  transform: scale(0);
+}
+
+.check--on {
+  transform: scale(1);
+}
+
+.radio-label {
+  cursor: pointer;
+}

@@ -1,0 +1,58 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    <div local-class="avatarContainer">
+      {{#ko-tooltip side="left" title=model.requester.fullName delay=400 local-class="itemWrap"}}
+        <img local-class="avatar {{if (not model.assignedAgent) "avatarUnassigned"}}"
+             src={{model.requester.avatar}}>
+      {{/ko-tooltip}}
+
+      {{#if model.assignedAgent}}
+        {{#ko-tooltip side="right" title=model.assignedAgent.fullName delay=400 local-class="itemWrap"}}
+          <div local-class="agentAvatarContainer">
+            <img local-class="agentAvatar" src={{model.assignedAgent.avatar}}>
+          </div>
+        {{/ko-tooltip}}
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    {{#if model.requester.fullName}}
+      <div local-class="title">{{model.requester.fullName}}</div>
+    {{/if}}
+
+    {{#if model.hasAttachments}}
+      <div local-class="attachments">
+        {{#ko-tooltip side="top" title=(t "cases.has_attachments") delay=500}}
+          {{ko-icon name="clip" color="#A1AAAF" size=12}}
+        {{/ko-tooltip}}
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+
+    <div local-class="bottom-text">
+      {{#if model.subject}}
+        <span local-class="subject-text" title={{escape-html model.subject}}>{{escape-html model.subject}}</span>
+      {{else}}
+        <span local-class="subject-text" title={{escape-html result.resultData.subject}}>{{escape-html result.resultData.subject}}</span>
+      {{/if}}
+      {{#if model.lastMessagePreview}}
+        <span local-class="preview">
+          <span local-class="separator">•</span>
+          {{#if (and
+            model.lastReplier.role.isAgentOrHigher
+            model.lastPostStatus
+            (not (eq model.lastPostStatus "NOT_SENT"))
+          )}}
+            <span local-class="status-icon">
+              {{ko-post-status-icon status=model.lastPostStatus}}
+            </span>
+          {{/if}}
+          <span local-class="preview-message">{{model.lastMessagePreview}}</span>
+        </span>
+      {{/if}}
+    </div>
+  {{/if}}
+{{/ko-universal-search/result/layout}}

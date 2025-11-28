@@ -1,0 +1,34 @@
+<div local-class="engagement__block__container">
+  <div local-class="engagement__block">
+    <div local-class="avatar__container {{if multipleAvatars "multiple__avatars"}}">
+      {{#each avatars as |avatar|}}
+        <img src={{avatar}} alt="{{t 'admin.engagements.preview.avatar_alt'}}">
+      {{/each}}
+    </div>
+    <div local-class="engagement__block__text__container">
+      <div local-class="engagement__block__message">
+        <h4 local-class="engagement__block__reply-to">{{senderName}}</h4>
+        <p local-class="engagement__block__message__text">{{messageText}}</p>
+        <p local-class="engagement__block__message__time">{{t "admin.engagements.preview.time"}}</p>
+      </div>
+      <div local-class="engagement__block__reply">
+        <div local-class="engagement__block__reply__text">
+          <div local-class="engagement__block__sender__name">{{t "admin.engagements.preview.reply_to" name=senderName}}</div>
+          <div local-class="icon__items">
+            <div local-class="icon__item--emoji">
+              {{inline-svg "messenger-emoji-select"}}
+            </div>
+            <div local-class="icon__item">
+              {{inline-svg "messenger-file-select"}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div local-class="bubble__container">
+    <div local-class="bubble">
+      {{inline-svg "messenger-bubble" local-class="bubble__icon"}}
+    </div>
+  </div>
+</div>

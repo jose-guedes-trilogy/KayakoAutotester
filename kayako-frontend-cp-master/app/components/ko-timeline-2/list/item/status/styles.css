@@ -1,0 +1,83 @@
+.dropdown-trigger {
+  cursor: pointer;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 2px;
+  color: $grey-5;
+  font-size: 14px;
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.recipients-list {
+  width: 430px;
+  padding: 14px;
+  background-color: #fff;
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(45, 49, 56, 0.09);
+}
+
+.recipient {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: 9px;
+  }
+}
+
+.name {
+  max-width: 115px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.email {
+  max-width: 180px;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  margin-left: 2px;
+  color: $grey-6;
+}
+
+.not-sent .label {
+
+}
+
+.sent .label {
+
+}
+
+.delivered .label {
+
+}
+
+.seen .label {
+
+}
+
+.rejected .label {
+  color: $color-bad;
+}
+
+.client-failed .label {
+  color: $color-bad;
+}

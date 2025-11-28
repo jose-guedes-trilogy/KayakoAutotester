@@ -1,0 +1,7 @@
+.container {
+  padding: 9px 15px 15px 15px; /* dropdown styles already include 6px padding */
+  display: flex;
+  line-height: 17px;
+  font-size: 13px;
+  color: #838d94;
+}

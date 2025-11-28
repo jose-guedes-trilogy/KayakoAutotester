@@ -1,0 +1,44 @@
+{{#if (plan-has 'kayako_ai_ticket_chat')}}
+  <div local-class="chat-icon {{if this.isChatWithTicketPopupVisible 'open'}} {{if plan.isTrial 'trial-position'}}" id="chatIcon"
+    onclick={{action "toggleChat" }}>
+    {{ko-icon name="sparkle" color="#8846CB" size="24"}}
+  </div>
+
+  <div local-class="chat-popup {{if this.isChatWithTicketPopupVisible 'show'}}" id="chatPopup">
+    <div local-class="chat-popup-header">
+      <h5>{{t "cases.chat.with_ticket"}}</h5>
+      <button local-class="close-chat" id="closeChat" onclick={{action 'closeChat' }}>{{html-safe '&times;'}}</button>
+    </div>
+    <div local-class="chat-output" id="chatOutputPopup">
+      {{#each this.displayMessages as |message|}}
+        <div local-class="chat-bubble {{if (eq message.role 'user') 'user-message' 'ai-message'}}">
+          {{#if message.isLoading}}
+            <div local-class="loading-indicator">
+              <div local-class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          {{else}}
+            <strong>{{if (eq message.role "user") "You:" "AI:"}}</strong> {{message.content}}
+          {{/if}}
+        </div>
+      {{/each}}
+    </div>
+    <div local-class="input-container">
+      <div local-class="input-row">
+        <textarea id="chatInputPopup" local-class="chat-input" value={{this.userInput}}
+          placeholder={{t "cases.chat.placeholder" }} oninput={{action "handleInputResize" }}></textarea>
+
+        <button id="sendChatPopup" local-class="send-button {{if this.userInput 'active'}}"
+          onclick={{action "sendMessage" }} disabled={{or (not this.userInput) this.isLoading this.isStreaming}}>
+          {{ko-icon name="send"}}
+        </button>
+      </div>
+      <button id="clearChatPopup" local-class="clear-button" onclick={{action "clearChat" }} disabled={{this.isLoading}}>
+        {{t "cases.chat.clear_chat"}}
+      </button>
+    </div>
+  </div>
+{{/if}}

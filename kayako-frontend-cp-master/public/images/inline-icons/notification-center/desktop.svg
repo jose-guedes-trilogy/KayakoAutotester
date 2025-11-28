@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="30px" viewBox="0 0 32 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--new_desktop--32</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M29.8666667,25 L2.13333333,25 C0.96,25 0,24.0217391 0,22.826087 L0,2.17391304 C0,0.97826087 0.96,0 2.13333333,0 L29.8666667,0 C31.04,0 32,0.97826087 32,2.17391304 L32,22.826087 C32,24.0217391 31.04,25 29.8666667,25 Z" id="path-1"></path>
+        <path d="M29.8666667,25 L2.13333333,25 C0.96,25 0,24.0217391 0,22.826087 L0,19 L32,19 L32,22.826087 C32,24.0217391 31.04,25 29.8666667,25 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notifications---Preferences" transform="translate(-297.000000, -204.000000)">
+            <g id="icon--new_desktop--32" transform="translate(297.000000, 204.000000)">
+                <rect id="Rectangle-7" fill="#838D94" x="12" y="25" width="1" height="5"></rect>
+                <rect id="Rectangle-7" fill="#838D94" x="19" y="25" width="1" height="5"></rect>
+                <rect id="Rectangle-2" fill="#838D94" x="8" y="29" width="16" height="1"></rect>
+                <g id="Shape">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke="#838D94" stroke-width="1" d="M29.8666667,24.5 C30.7617268,24.5 31.5,23.7476836 31.5,22.826087 L31.5,2.17391304 C31.5,1.2523164 30.7617268,0.5 29.8666667,0.5 L2.13333333,0.5 C1.23827316,0.5 0.5,1.2523164 0.5,2.17391304 L0.5,22.826087 C0.5,23.7476836 1.23827316,24.5 2.13333333,24.5 L29.8666667,24.5 Z"></path>
+                </g>
+                <g id="Shape">
+                    <use fill="#D1D5D7" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <path stroke="#838D94" stroke-width="1" d="M31.5,19.5 L0.5,19.5 L0.5,22.826087 C0.5,23.7476836 1.23827316,24.5 2.13333333,24.5 L29.8666667,24.5 C30.7617268,24.5 31.5,23.7476836 31.5,22.826087 L31.5,19.5 Z"></path>
+                </g>
+                <rect id="Rectangle-2" fill="#838D94" x="1" y="19" width="30" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<div local-class="attachments-header">
+  <div local-class="attachments-count">
+    {{ko-icon name="clip" color="#A1AAAF" size=14}}
+    <span>{{t "generic.attachments" count=attachments.length}}</span>
+  </div>
+  {{#unless (eq attachments.length 1)}}
+    <span local-class="separator">•</span>
+    <a local-class="download-all" href="{{downloadAll}}">{{t "generic.download_all"}}</a>
+  {{/unless}}
+</div>
+<div local-class="attachments">
+  {{#each attachments as |attachment|}}
+    {{ko-timeline-2/list/item/attachment attachment=attachment
+    case=case}}
+  {{/each}}
+</div>

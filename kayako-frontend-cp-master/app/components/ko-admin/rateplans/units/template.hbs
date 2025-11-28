@@ -1,0 +1,18 @@
+{{! template-lint-disable bare-strings }}
+
+<div local-class="plan-units">
+  <div local-class="agents-count">
+    {{ko-input
+      qaClass="agents-count"
+      max=seatsLimit
+      min="1"
+      size="full"
+      disabled=isDisabled
+      value=selectedNumberOfSeats
+      type="number"
+      onInput=(action attrs.seatsChanged)
+    }}
+    <div local-class="label-helper">{{t seatsLabel count=selectedNumberOfSeats}}</div>
+  </div>
+  <div local-class="operator">×</div>
+</div>

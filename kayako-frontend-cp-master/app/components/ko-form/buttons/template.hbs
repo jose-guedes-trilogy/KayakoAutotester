@@ -1,0 +1,23 @@
+<div local-class="buttons">
+  {{#if deleteLabel}}
+    <div local-class="left-button">
+      {{#ko-button type="alert" purpose="delete" qaClass="qa-ko-form_buttons__delete" disabled=(or isSubmitting isSaving) onClick=(action "deleteAction")}}
+        {{deleteLabel}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+
+  {{#if (or isSubmitting isSaving)}}
+    <div local-class="loader">{{ko-loader}}</div>
+  {{else}}
+    {{#if onCancel}}
+      {{#ko-button type="naked" purpose="cancel" qaClass=cancelButtonClass onClick=onCancel}}{{cancelLabel}}{{/ko-button}}
+    {{/if}}
+  {{/if}}
+
+  {{yield}}
+
+  {{#if submitLabel}}
+    {{#ko-button type="primary" purpose="submit" submit=(if onSubmit false true) disabled=(or (or isSubmitting isSaving) (not isValid)) qaClass=submitClass onClick=onSubmit}}{{submitLabel}}{{/ko-button}}
+  {{/if}}
+</div>

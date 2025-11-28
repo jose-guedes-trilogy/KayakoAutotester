@@ -1,0 +1,7 @@
+{
+  "name": "ember-cli-deploy-update-app-version",
+  "keywords": [
+    "ember-addon",
+    "ember-cli-deploy-plugin"
+  ]
+}

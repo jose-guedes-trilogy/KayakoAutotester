@@ -1,0 +1,81 @@
+.container {
+  border-bottom: 1px solid #D1D5D7;
+  padding: 9px 18px 9px 22px;
+  transition: 0.2s background-color, 0.1s box-shadow;
+
+  &:hover {
+    background-color: #FFFFFF;
+  }
+}
+
+.avatars {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}
+
+.avatar {
+  margin-top: 4.5px;
+  margin-right: 4.5px;
+  display: flex;
+  position: relative;
+}
+
+.avatar-image {
+  display: flex;
+}
+
+.avatar-image.inactive {
+  opacity: 0.5;
+}
+
+.updating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px;
+
+    .spinner-bounce {
+      width: 6px;
+      height: 6px;
+      background-color: $grey-6;
+
+      border-radius: 100%;
+      display: inline-block;
+      animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    }
+
+    .spinner-bounce1 {
+      animation-delay: -0.32s;
+    }
+
+    .spinner-bounce2 {
+      animation-delay: -0.16s;
+    }
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,35 @@
+.dropdownUser {
+  line-height: 18px;
+  padding: 4.5px 0;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.userInfo {
+  display: flex;
+}
+
+.dropdownUserImage {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  margin-right: 9px;
+}
+
+.caption {
+  color: $grey-6;
+
+  &.is-active {
+    color: inherit;
+  }
+}
+
+:global(.ember-power-select-option[aria-current="true"]) .caption {
+  color: #FFF;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}

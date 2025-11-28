@@ -1,0 +1,27 @@
+<div local-class="preview">
+  <div local-class="preview-header">
+    {{t "insights.custom_reports.form.preview.title"}}
+  </div>
+
+  <div local-class="preview-info">
+    {{#ko-form/field/help}}{{t "insights.custom_reports.form.preview.info"}}{{/ko-form/field/help}}
+  </div>
+
+  <div local-class="preview-items">
+    {{#if preview.isRunning}}
+      <div local-class="preview-items-spinner">
+        {{ko-loader size="S"}}
+      </div>
+    {{else}}
+      {{#each previews as |item|}}
+        <div local-class="preview-item">
+          {{ko-universal-search/result/case result=(hash resultData=item)}}
+        </div>
+      {{else}}
+        <div local-class="no-preview-items">
+          {{t "insights.custom_reports.form.preview.no_results"}}
+        </div>
+      {{/each}}
+    {{/if}}
+  </div>
+</div>

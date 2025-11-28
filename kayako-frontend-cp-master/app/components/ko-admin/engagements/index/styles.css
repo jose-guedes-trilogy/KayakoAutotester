@@ -1,0 +1,14 @@
+.rule-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: $grey-8;
+  letter-spacing: 0;
+}
+
+.row-wrapper {
+  display: flex;
+  cursor: pointer;
+  &:hover {
+    background: $grey-1;
+  }
+}

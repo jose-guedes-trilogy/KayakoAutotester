@@ -1,0 +1,18 @@
+<div
+  class="ember-power-select-multiple-option {{qa-cls "qa-ko-select_multiple_pill"}}"
+  local-class="pill {{if option.isKREEdited "pill--kre"}} {{if option.isNew "pill--new"}} {{if option.isError "pill--error"}}"
+>
+  <span local-class="text" class="{{qa-cls 'qa-ko-select_multiple_pill__label'}}">{{get option searchField}}</span>
+  {{#if isRemovable}}
+    <div
+      role="button"
+      aria-label="remove element"
+      class="ember-power-select-multiple-remove-btn"
+      local-class="remove"
+      onclick={{action "remove" option}}
+    >
+      <div local-class="close">{{ko-icon name="removePill" color="#A1AAAF" size=8}}</div>
+    </div>
+  {{/if}}
+
+</div>

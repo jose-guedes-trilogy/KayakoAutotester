@@ -1,0 +1,36 @@
+<div local-class="root">
+  {{#ko-form/field}}
+    {{#ko-form/field/label}}{{t "admin.businesshours.holidays.label.title"}}{{/ko-form/field/label}}
+    {{ko-input
+      value=editedHoliday.title
+      onInput=(action (mut editedHoliday.title) value="target.value")
+      disabled=isSubmitting
+    }}
+    {{ko-form/field/errors errors=holiday.errors.title}}
+  {{/ko-form/field}}
+
+  {{#ko-grid-picker
+    initialGrid=holidayGrid
+    legend=hoursLegend
+    onRangeSelect=(action "selectRange")
+  }}
+    <div local-class="title {{if holiday.errors.date "error"}}">
+      {{ko-date-select
+        value=holidayDate
+        placeholder="Add date"
+        onChange=(action "selectHolidayDate")
+      }}
+    </div>
+  {{/ko-grid-picker}}
+
+  <div local-class="buttons" class="{{qa-cls "ko-admin_holidays_edit__buttons"}}">
+    {{#ko-button onClick=(action "save")}}
+      {{t "admin.businesshours.holidays.saveholiday"}}
+    {{/ko-button}}
+    {{#ko-button type="naked" onClick=(action "cancelEditing")}}
+      {{t "generic.cancel"}}
+    {{/ko-button}}
+  </div>
+
+  {{ko-form/field/errors errors=errors}}
+</div>

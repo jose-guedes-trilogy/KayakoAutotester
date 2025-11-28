@@ -1,0 +1,17 @@
+<div local-class="item {{if isRead "is-seen"}}" onclick={{action "closeDropdown"}}>
+  <a local-class="item-link" href="{{ ko-convert-to-relative-link url }}">
+    {{!-- Avatar types: 1) User avatar, 2) breach icon, 3) default icon for system notifications --}}
+    {{#if avatarUrl}}
+      <span><img local-class="avatar" src="{{avatarUrl}}"></span>
+    {{else if isBreach}}
+      <span local-class="avatar-container for-breach">{{inline-svg "notification-center/breach"}}</span>
+    {{else}}
+      <span local-class="avatar-container">{{inline-svg "notification-center/events"}}</span>
+    {{/if}}
+
+    <p local-class="summary">
+      {{ko-notification-summary notification.activity.summary}}
+    </p>
+    <span local-class="time">{{ko-from-now notification.createdAt}}</span>
+  </a>
+</div>

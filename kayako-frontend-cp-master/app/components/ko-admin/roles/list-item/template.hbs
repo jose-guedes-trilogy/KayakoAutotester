@@ -1,0 +1,41 @@
+{{#ko-simple-list/row onClick=(if canEdit (action "edit" role)) as |row|}}
+  {{#row.cell width="50%"}}
+    <div>
+      <span local-class="title" class="{{qa-cls "qa-ko-admin_roles_list-item__title"}}">
+        {{role.title}}
+      </span>
+
+      {{#if role.isSystem}}
+        <span local-class="caption" class="{{qa-cls "qa-ko-admin_roles_list-item__title-caption"}}">
+          {{t "admin.roles.system"}}
+        </span>
+      {{/if}}
+    </div>
+  {{/row.cell}}
+
+  {{#row.cell}}
+    <span local-class="caption" class="{{qa-cls "qa-ko-admin_roles_list-item__label"}}">
+      {{roleType.label}}
+    </span>
+  {{/row.cell}}
+
+  {{#row.actions}}
+    {{#if canEdit}}
+      <span local-class="action">
+        <a onclick={{action "edit" role}}
+           class={{qa-cls "qa-ko-admin_roles_list-item__edit"}}>
+          {{t "generic.edit"}}
+        </a>
+      </span>
+    {{/if}}
+
+    {{#if canDelete}}
+      <span local-class="action">
+        <a onclick={{action "delete" role}}
+           class={{qa-cls "qa-ko-admin_roles_list-item__delete"}}>
+          {{t "generic.delete"}}
+        </a>
+      </span>
+    {{/if}}
+  {{/row.actions}}
+{{/ko-simple-list/row}}

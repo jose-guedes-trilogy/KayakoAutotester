@@ -1,0 +1,50 @@
+{{#ko-modal
+  width="auto"
+  chromelessContent=true
+  noFooter=true
+  on-close=(action onClose)
+  qaClass="change-passsword-modal" as |modal|}}
+
+  {{#if modal.isHeader}}
+    {{t "users.change_password.title"}}
+  {{/if}}
+
+  {{#if modal.isMain}}
+    <div local-class="main">
+      <aside local-class="policies">
+        <div>{{t "users.change_password.policies.title"}}</div>
+        <ul>
+          {{#each policies as |policy|}}
+            <li local-class="policy">
+              <span local-class="tick {{if policy.passes "is-green"}}">{{inline-svg "tick"}}</span>
+              {{t policy.name value=policy.value}}
+            </li>
+          {{/each}}
+        </ul>
+      </aside>
+
+      <section local-class="fields">
+        {{#ko-form onSubmit=(perform save)}}
+          <label local-class="label">{{t "users.change_password.label.current"}}</label>
+          {{ko-input type="password" value=currentPassword qaClass="current-password"}}
+          <label local-class="label">{{t "users.change_password.label.new"}}</label>
+          {{ko-input type="password" value=newPassword onInput=(action (mut newPassword) value="target.value") qaClass="new-password"}}
+          <label local-class="label">{{t "users.change_password.label.confirm"}}</label>
+          {{ko-input type="password" value=confirmPassword qaClass="confirm-password"}}
+          <div local-class="button">
+            {{#ko-button
+              type="primary" size="medium"
+              submit=true
+              hasAnimation=true
+              loading=save.isRunning
+              disabled=buttonDisabled
+              onClick=(perform save)
+              qaClass="save-password"}}
+              {{t "users.change_password.title"}}
+            {{/ko-button}}
+          </div>
+        {{/ko-form}}
+      </section>
+    </div>
+  {{/if}}
+{{/ko-modal}}

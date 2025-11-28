@@ -1,0 +1,55 @@
+<div local-class="row">
+  <div local-class="column"></div>
+  <div local-class="column">
+    {{#ko-form/field/label}}{{t "admin.sla.edit.targets.first_reply_time"}}{{/ko-form/field/label}}
+  </div>
+  <div local-class="column">
+    {{#ko-form/field/label}}{{t "admin.sla.edit.targets.next_reply_time"}}{{/ko-form/field/label}}
+  </div>
+  <div local-class="column">
+    {{#ko-form/field/label}}{{t "admin.sla.edit.targets.resolution_time"}}{{/ko-form/field/label}}
+  </div>
+</div>
+<div local-class="row">
+  <div local-class="column">{{t "admin.sla.edit.targets.no_priority"}}</div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" null "FIRST_REPLY_TIME") priority=null type="FIRST_REPLY_TIME" targets=sla.targets}}
+  </div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" null "NEXT_REPLY_TIME") priority=null type="NEXT_REPLY_TIME" targets=sla.targets}}
+  </div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" null "RESOLUTION_TIME") priority=null type="RESOLUTION_TIME" targets=sla.targets}}
+  </div>
+</div>
+{{#each priorities as |priority|}}
+  <div local-class="row">
+    <div local-class="column">{{priority.label}}</div>
+    <div local-class="column">
+      {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" priority "FIRST_REPLY_TIME") priority=priority type="FIRST_REPLY_TIME" targets=sla.targets}}
+    </div>
+    <div local-class="column">
+      {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" priority "NEXT_REPLY_TIME") priority=priority type="NEXT_REPLY_TIME" targets=sla.targets}}
+    </div>
+    <div local-class="column">
+      {{ko-admin/sla/edit/target onValueChange=(action "setTargetGoalInSeconds" priority "RESOLUTION_TIME") priority=priority type="RESOLUTION_TIME" targets=sla.targets}}
+    </div>
+  </div>
+{{/each}}
+
+{{#ko-form/field/help}}{{t "admin.sla.edit.operational_hours.description"}}{{/ko-form/field/help}}
+
+<div local-class="row">
+  <div local-class="column">{{t "admin.sla.edit.operational_hours.title"}}</div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/operational-hours sla=sla metric="FIRST_REPLY_TIME"}}
+  </div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/operational-hours sla=sla metric="NEXT_REPLY_TIME"}}
+  </div>
+  <div local-class="column">
+    {{ko-admin/sla/edit/operational-hours sla=sla metric="RESOLUTION_TIME"}}
+  </div>
+</div>
+
+{{#ko-form/field/help}}{{t "admin.sla.edit.note"}}{{/ko-form/field/help}}

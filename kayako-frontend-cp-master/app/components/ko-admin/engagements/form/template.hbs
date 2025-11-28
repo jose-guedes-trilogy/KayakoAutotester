@@ -1,0 +1,53 @@
+{{#ko-form onSubmit=(action "save" theVisitorEngagement) as |form|}}
+  {{#ko-admin/page
+    showFooter=true
+    title=(if theVisitorEngagement.isNew (t "admin.engagements.headings.new") (t "admin.engagements.headings.edit" title=theVisitorEngagement.title))
+    onCancel=(route-action "cancel" theVisitorEngagement)
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteVisitorEngagement")
+    buttonText=(t "generic.save")}}
+
+    {{#ko-admin/forms/group legend=(t "admin.engagements.heading.details")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.engagements.labels.title"}}{{/ko-form/field/label}}
+        {{ko-input
+          name="title"
+          value=editedVisitorEngagement.title
+          oninput=(action (mut editedVisitorEngagement.title) value="target.value")
+          disabled=form.isSubmitting
+          placeholder=(t "admin.engagements.labels.title_placeholder")
+        }}
+        {{ko-form/field/errors errors=editedVisitorEngagement.errors.title}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.engagements.conditions.heading"}}</h5>
+      {{ko-admin/forms/description small=true link="https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1" description="admin.engagements.conditions.description" linkText="admin.engagements.conditions.description_link"}}
+      {{ko-admin/engagement-predicate-builder definitions=editedVisitorEngagement.definitions
+        collections=editedVisitorEngagement.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "addPropositionToCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")
+        onPropositionChange=(action "onPropositionChange")
+      }}
+      {{ko-form/field/errors errors=editedVisitorEngagement.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.engagements.actions.heading"}}</h5>
+      {{ko-form/field/help text=(t "admin.engagements.actions.info")}}
+      {{ko-admin/engagement-actions-builder
+        automationActions=editedVisitorEngagement.actions
+        shouldGroupDefinitions=false
+        definitions=automationActionDefinitions
+        agents=agents
+        teams=teams
+        type="engagements"
+        isNew=theVisitorEngagement.isNew
+      }}
+      {{ko-form/field/errors errors=editedVisitorEngagement.errors.actions}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

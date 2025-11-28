@@ -3,6 +3,7 @@ import path from 'path';
 import { parse } from 'jsonc-parser';
 import type { Page, Locator, Frame } from '@playwright/test';
 import { createLogger } from '../lib/logger';
+import { env } from '../config/env';
 
 const logger = createLogger('selectors');
 const SELECTORS_FILE = path.join(process.cwd(), 'selectors', 'selectors.jsonc');
@@ -53,25 +54,25 @@ export async function firstAvailableLocator(
     const selector = candidates[i];
     for (const ctx of searchContexts) {
       const locator = ctx.locator(selector).first();
-      try {
+    try {
         // Prefer a short wait so we don't instantly miss dynamic elements
         await locator.waitFor({ state: 'attached', timeout: 8000 });
-        const count = await locator.count();
-        if (count > 0) {
-          if (i > 0) {
-            logger.warn(
-              'Fallback used for %s.%s: index=%d selector=%s',
-              group,
-              key,
-              i,
-              selector,
-            );
-          } else {
-            logger.debug('Primary selector used for %s.%s: %s', group, key, selector);
-          }
-          return { locator, usedSelector: selector, fallbackIndex: i };
+      const count = await locator.count();
+      if (count > 0) {
+        if (i > 0) {
+          logger.warn(
+            'Fallback used for %s.%s: index=%d selector=%s',
+            group,
+            key,
+            i,
+            selector,
+          );
+        } else {
+          logger.debug('Primary selector used for %s.%s: %s', group, key, selector);
         }
-      } catch (err) {
+        return { locator, usedSelector: selector, fallbackIndex: i };
+      }
+    } catch (err) {
         logger.warn(
           'Error probing selector for %s.%s in %s: %s (%o)',
           group,
@@ -90,8 +91,8 @@ export async function firstAvailableLocator(
 export async function click(page: Page, group: string, key: string): Promise<void> {
   // First try standard Playwright click path
   try {
-    const { locator, usedSelector, fallbackIndex } = await firstAvailableLocator(page, group, key);
-    logger.info('Clicking %s.%s (selector=%s, fallbackIndex=%d)', group, key, usedSelector, fallbackIndex);
+  const { locator, usedSelector, fallbackIndex } = await firstAvailableLocator(page, group, key);
+  logger.info('Clicking %s.%s (selector=%s, fallbackIndex=%d)', group, key, usedSelector, fallbackIndex);
     try {
       await locator.click({ timeout: 4000 });
       return;
@@ -199,4 +200,1162 @@ export async function dispatchClickText(page: Page, text: string): Promise<void>
     throw new Error(`Dispatch-click by text failed: ${text}`);
   }
   logger.info('Dispatch-click by text succeeded: %s', text);
+}
+
+// Best-effort: dispatch-click by exact text confined to open ember dropdown content
+async function dispatchClickTextInDropdown(page: Page, text: string): Promise<boolean> {
+  logger.debug('Dispatch-click in dropdown by text: %s', text);
+  const ok = await page.evaluate((needle: string) => {
+    function visible(el: Element): boolean {
+      const s = getComputedStyle(el as HTMLElement);
+      const r = (el as HTMLElement).getBoundingClientRect();
+      return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+    }
+    const containers = Array.from(document.querySelectorAll<HTMLElement>("[id^='ember-basic-dropdown-content-']"));
+    for (const root of containers) {
+      if (!visible(root)) continue;
+      const all = Array.from(root.querySelectorAll<HTMLElement>('*'));
+      const target = all.find((e) => visible(e) && (e.textContent || '').trim() === needle);
+      if (target) {
+        target.scrollIntoView({ block: 'center', inline: 'center' });
+        for (const type of ['pointerdown','mousedown','pointerup','mouseup','click'] as const) {
+          target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+        }
+        return true;
+      }
+    }
+    return false;
+  }, text).catch(() => false);
+  return ok;
+}
+
+// Read innerText of a selector group/key if present
+export async function getText(page: Page, group: string, key: string): Promise<string | null> {
+  try {
+    const { locator } = await firstAvailableLocator(page, group, key);
+    const t = await locator.innerText().catch(() => '');
+    return (t || '').trim() || null;
+  } catch {
+    return null;
+  }
+}
+
+// Click the first visible agent option in the current assignee drill-down list
+async function dispatchClickFirstAssigneeAgentOption(page: Page): Promise<boolean> {
+  logger.info('Attempting to click first assignee agent option in dropdown');
+  const ok = await page.evaluate(() => {
+    function visible(el: Element): boolean {
+      const s = getComputedStyle(el as HTMLElement);
+      const r = (el as HTMLElement).getBoundingClientRect();
+      return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+    }
+    const roots = Array.from(document.querySelectorAll<HTMLElement>("[id^='ember-basic-dropdown-content-']"));
+    for (const root of roots) {
+      if (!visible(root)) continue;
+      const options = Array.from(root.querySelectorAll<HTMLElement>("li[role='option'], .ember-power-select-option"));
+      for (const opt of options) {
+        if (!visible(opt)) continue;
+        const isUnassigned = /\(Unassigned\)/i.test(opt.textContent || '');
+        // Agent options tend to include an agent-name element; prefer those
+        const hasAgentName = !!opt.querySelector("[class*='ko-case-content_field_assignee_trigger-value__agent-name_']");
+        const isTeam = /General|VIP Account Team/i.test(opt.textContent || '') && !hasAgentName;
+        if (!isUnassigned && !isTeam) {
+          (opt as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+          for (const type of ['pointerdown','mousedown','pointerup','mouseup','click'] as const) {
+            opt.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+          }
+          return true;
+        }
+      }
+    }
+    return false;
+  }).catch(() => false);
+  if (ok) {
+    logger.info('Clicked first agent option');
+  } else {
+    logger.warn('Could not find any agent option to click');
+  }
+  return ok;
+}
+
+export async function switchAssigneeTeamAndSave(
+  page: Page,
+  preferredOrder: string[] = ['VIP Account Team', 'General'],
+): Promise<void> {
+  // Attempt the quick path first: footer "Assign to me" trigger with team choice
+  // This immediately assigns to the current agent after picking a team.
+  const tryComposerQuickAssign = async (order: string[]): Promise<boolean> => {
+    try {
+      // Open the footer Assign to me menu using event-dispatch CSS first (more reliable),
+      // then fallback to text label or standard click.
+      try {
+        await dispatchClickCss(page, 'assign', 'assignToMeTrigger');
+      } catch {
+        try {
+          await dispatchClickText(page, 'Assign to me');
+        } catch {
+          await click(page, 'assign', 'assignToMeTrigger');
+        }
+      }
+      // Wait for dropdown container to appear; if not, try once more via CSS click
+      let dropdownVisible = false;
+      try {
+        const { locator } = await firstAvailableLocator(page, 'assign', 'assignToMeOptions');
+        await locator.waitFor({ state: 'visible', timeout: 800 });
+        dropdownVisible = true;
+      } catch {
+        try {
+          await dispatchClickCss(page, 'assign', 'assignToMeTrigger');
+          const { locator } = await firstAvailableLocator(page, 'assign', 'assignToMeOptions');
+          await locator.waitFor({ state: 'visible', timeout: 800 });
+          dropdownVisible = true;
+        } catch {
+          dropdownVisible = false;
+        }
+      }
+      if (!dropdownVisible) {
+        logger.warn('Assign-to-me dropdown did not appear; abandoning quick path');
+        return false;
+      }
+      // Decide target team purely by preferred order (do not depend on reading current value here)
+      const targetQuick = order[0];
+      // Click team inside the dropdown (dropdown-scoped first, then global fallback)
+      let clicked = await dispatchClickTextInDropdown(page, targetQuick);
+      if (!clicked) {
+        // Try alternate teams in order until one succeeds
+        for (const team of order) {
+          if (await dispatchClickTextInDropdown(page, team)) {
+            clicked = true;
+            break;
+          }
+        }
+      }
+      if (!clicked) {
+        for (const team of order) {
+          try {
+            await dispatchClickText(page, team);
+            clicked = true;
+            break;
+          } catch {
+            // continue trying others
+          }
+        }
+      }
+      await page.waitForTimeout(250);
+      return clicked;
+    } catch (e) {
+      logger.warn('Composer quick assign path failed, will fallback to Properties path: %o', e);
+      return false;
+    }
+  };
+
+  // Merge env-preferred team to the front if provided
+  const order = (() => {
+    const prefer = (env.KAYAKO_PREFERRED_TEAM || '').trim();
+    const base = [...preferredOrder];
+    if (prefer) {
+      const without = base.filter((t) => t.trim() !== prefer);
+      return [prefer, ...without];
+    }
+    return base;
+  })();
+  logger.info('Switching assignee team and saving (preferredOrder=%o)', order);
+  // Try quick path first, then (if needed) properties path; avoid early blocking reads
+
+  // Quick path first, as soon as the page is interactive
+  const quickDone = await tryComposerQuickAssign(order);
+  if (quickDone) {
+    logger.info('Assignment completed via composer quick path');
+    return;
+  }
+
+  // Open the Properties → Assignee field
+  try {
+    await click(page, 'assign', 'assigneeFieldTrigger');
+  } catch (e) {
+    logger.warn('Primary click on assigneeFieldTrigger failed, attempting text dispatch: %o', e);
+    const ok = await dispatchClickTextInDropdown(page, 'Assignee');
+    if (!ok) {
+      // Fallback to global text if dropdown-scope fails
+      await dispatchClickText(page, 'Assignee');
+    }
+  }
+  await page.waitForTimeout(150);
+
+  // Decide target team: pick the first in order that differs from current
+  const currentTeam = await getText(page, 'assign', 'assigneeTeamValue');
+  logger.info('Current team detected (properties path): %s', currentTeam ?? '(unknown)');
+  const targetTeam =
+    order.find((t) => t && t.trim() && (!currentTeam || t.trim() !== currentTeam.trim())) ||
+    order[0];
+  logger.info('Target team: %s', targetTeam);
+
+  // Click the team in dropdown by text (dropdown-scoped first, then global)
+  let teamClicked = await dispatchClickTextInDropdown(page, targetTeam);
+  if (!teamClicked) {
+    logger.warn('Dropdown-scoped team click failed; trying global dispatch for: %s', targetTeam);
+    try {
+      await dispatchClickText(page, targetTeam);
+      teamClicked = true;
+    } catch {
+      teamClicked = false;
+    }
+  }
+  if (!teamClicked) {
+    logger.error('Unable to click team option: %s', targetTeam);
+    throw new Error(`Unable to click team option: ${targetTeam}`);
+  }
+  await page.waitForTimeout(150);
+
+  // Try to pick a specific agent (self) first, then fallback to the first agent option
+  const selfNames = ['Assign to me', 'Me', 'Myself', 'José Guedes', 'Jose Guedes'];
+  let agentSelected = false;
+  for (const name of selfNames) {
+    // Scope to dropdown when possible
+    const ok = await dispatchClickTextInDropdown(page, name);
+    if (ok) {
+      logger.info('Selected agent by text: %s', name);
+      agentSelected = true;
+      break;
+    }
+  }
+  if (!agentSelected) {
+    agentSelected = await dispatchClickFirstAssigneeAgentOption(page);
+  }
+  if (!agentSelected) {
+    logger.error('Failed to select any agent after switching team');
+    throw new Error('Failed to select any agent after switching team');
+  }
+  await page.waitForTimeout(150);
+
+  // Click Update properties using text dispatch, then span CSS fallback
+  try {
+    await dispatchClickText(page, 'Update properties');
+  } catch (e) {
+    logger.warn('Text dispatch for Update properties failed (%o); trying span CSS', e);
+    await dispatchClickCss(page, 'assign', 'updatePropertiesSpan');
+  }
+
+  // Wait for the submit container to disappear (if present)
+  try {
+    const { locator } = await firstAvailableLocator(page, 'assign', 'updatePropertiesContainer');
+    await locator.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => undefined);
+  } catch {
+    // If container wasn't found, it's fine — some states hide it immediately
+  }
+  logger.info('Assignee switch and save flow completed');
+}
+
+export async function logAssigneeValues(page: Page): Promise<void> {
+  const team = await getText(page, 'assign', 'assigneeTeamValue');
+  const agent = await getText(page, 'assign', 'assigneeAgentValue');
+  logger.info('Assignee values: team=%s agent=%s', team ?? '(none)', agent ?? '(none)');
+}
+
+// Read the current conversation status text (from header pill)
+export async function getConversationStatusText(page: Page): Promise<string | null> {
+  return await getText(page, 'conversation', 'statusPill');
+}
+
+// Read currently visible tag pills text array
+export async function getTagPills(page: Page): Promise<string[]> {
+  try {
+    const { locator } = await firstAvailableLocator(page, 'tags', 'tagPill');
+    const items = await locator.allTextContents();
+    return items.map((t) => (t || '').trim()).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+// Apply the "Send to Customer" macro via the macro selector
+export async function applyMacroSendToCustomer(page: Page): Promise<void> {
+  // Open macro selector
+  try {
+    await click(page, 'macro', 'macroSelectorTrigger');
+  } catch {
+    try {
+      await dispatchClickCss(page, 'macro', 'macroSelectorTrigger');
+    } catch {
+      await dispatchClickText(page, 'Macro');
+    }
+  }
+  await page.waitForTimeout(150);
+  // Click "Send to Customer" option
+  try {
+    await dispatchClickTextInDropdown(page, 'Send to Customer');
+  } catch {
+    await dispatchClickText(page, 'Send to Customer');
+  }
+  await page.waitForLoadState('networkidle').catch(() => undefined);
+}
+
+// Add tags to the conversation via the Tags field (right-side info bar)
+export async function addTags(page: Page, tags: string[]): Promise<void> {
+  if (!Array.isArray(tags) || tags.length === 0) return;
+  logger.info('Adding tags: %o', tags);
+  // Focus/open tags field trigger
+  try {
+    await click(page, 'tags', 'tagsFieldTrigger');
+  } catch {
+    try {
+      await dispatchClickCss(page, 'tags', 'tagsFieldTrigger');
+    } catch {
+      await dispatchClickText(page, 'Tags');
+    }
+  }
+  await page.waitForTimeout(150);
+  // For each tag: type into the search and select or press Enter to create
+  for (const tag of tags) {
+    try {
+      // Prefer the trigger-embedded input; it appears even before the dropdown opens
+      const { locator: input } = await firstAvailableLocator(page, 'tags', 'tagsInput');
+      await input.click({ timeout: 1000 }).catch(() => {});
+      await input.fill('');
+      await input.type(tag, { delay: 20 });
+      await page.waitForTimeout(150);
+      // Try to click "Add tag “value”" first (curly quotes), then straight quotes, then the plain value
+      let added =
+        (await dispatchClickTextInDropdown(page, `Add tag “${tag}”`)) ||
+        (await dispatchClickTextInDropdown(page, `Add tag "${tag}"`)) ||
+        (await dispatchClickTextInDropdown(page, tag));
+      if (!added) {
+        // Fallback: press Enter to accept current value
+        await page.keyboard.press('Enter');
+        added = true;
+      }
+      await page.waitForTimeout(200);
+      // Best-effort verify the tag pill appears
+      const pills = await getTagPills(page).catch(() => []);
+      if (!pills.some((t) => t.toLowerCase() === tag.toLowerCase())) {
+        logger.warn('Tag not confirmed by pills after add attempt: %s (pills=%o)', tag, pills);
+      }
+    } catch (e) {
+      logger.warn('Tags add path failed for "%s": %o', tag, e);
+      // Last resort: try opening dropdown and clicking the option by text only
+      const ok =
+        (await dispatchClickTextInDropdown(page, `Add tag “${tag}”`)) ||
+        (await dispatchClickTextInDropdown(page, `Add tag "${tag}"`)) ||
+        (await dispatchClickTextInDropdown(page, tag));
+      if (!ok) logger.warn('Could not add tag via dropdown: %s', tag);
+    }
+  }
+}
+
+// Insert text into the reply editor (ensures focus and types to trigger events)
+export async function insertReplyText(page: Page, text: string): Promise<void> {
+  logger.info('Inserting reply text (%d chars)', text.length);
+  const { locator } = await firstAvailableLocator(page, 'composer', 'editor');
+  await locator.click({ timeout: 2000 });
+  // Use typing to trigger onChange/input observers reliably
+  await page.keyboard.type(text, { delay: 10 });
+}
+
+// Switch composer from Notes/Internal Note mode back to Reply mode
+export async function switchToReplyMode(page: Page): Promise<void> {
+  logger.info('Switching composer to Reply mode');
+  // Fast path: click the "Reply" tab within the text editor mode selector using scoped event dispatch.
+  const quickClicked = await page
+    .evaluate(() => {
+      function visible(el: Element): boolean {
+        const s = getComputedStyle(el as HTMLElement);
+        const r = (el as HTMLElement).getBoundingClientRect();
+        return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+      }
+      const roots = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          "[class*='ko-text-editor_mode-selector__root_'], [class*='mode-selector']",
+        ),
+      );
+      for (const root of roots) {
+        if (!visible(root)) continue;
+        const candidates = Array.from(
+          root.querySelectorAll<HTMLElement>("[class*='ko-text-editor_mode-selector__case-mode_'], *"),
+        );
+        const target = candidates.find((el) => visible(el) && (el.textContent || '').trim() === 'Reply');
+        if (target) {
+          target.scrollIntoView({ block: 'center', inline: 'center' });
+          for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'] as const) {
+            target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+          }
+          return true;
+        }
+      }
+      return false;
+    })
+    .catch(() => false);
+  if (!quickClicked) {
+    // Fallback to our generic selector-driven paths, but avoid long waits
+    try {
+      await dispatchClickCss(page, 'composer', 'replyToggle');
+    } catch {
+      try {
+        await click(page, 'composer', 'replyToggle');
+      } catch {
+        await dispatchClickText(page, 'Reply');
+      }
+    }
+  }
+  await page.waitForTimeout(150);
+}
+
+// Change conversation status via the right-side status dropdown
+export async function setStatus(page: Page, statusLabel: string): Promise<void> {
+  logger.info('Setting status: %s', statusLabel);
+  try {
+    await click(page, 'status', 'statusFieldTrigger');
+  } catch {
+    try {
+      await dispatchClickCss(page, 'status', 'statusFieldTrigger');
+    } catch {
+      await dispatchClickText(page, 'Status');
+    }
+  }
+  await page.waitForTimeout(150);
+  const clicked = await dispatchClickTextInDropdown(page, statusLabel);
+  if (!clicked) {
+    await dispatchClickText(page, statusLabel);
+  }
+  // If a properties submit container is visible, wait briefly for save affordance
+  try {
+    const { locator } = await firstAvailableLocator(page, 'assign', 'updatePropertiesContainer');
+    if (await locator.isVisible({ timeout: 500 })) {
+      // not clicking submit here; leave commit decision to the flow (e.g., Send and update)
+      logger.debug('Update properties container visible after status change');
+    }
+  } catch {
+    // ignore if not present
+  }
+}
+
+type CustomFieldType =
+  | 'text'
+  | 'textarea'
+  | 'radio'
+  | 'dropdown'
+  | 'checkbox'
+  | 'integer'
+  | 'decimal'
+  | 'yesno'
+  | 'cascading'
+  | 'date'
+  | 'regex';
+
+// Find a right-side info bar field container by its label text
+async function findInfoBarFieldByLabel(page: Page, label: string): Promise<Locator> {
+  // Scope to panel then to generic field containers to avoid accidental matches elsewhere
+  const panelSel = getSelectorCandidates('info', 'panel').join(', ');
+  const fieldSel = getSelectorCandidates('info', 'fieldContainer').join(', ');
+  const panel = page.locator(panelSel).first();
+  // Try panel-scoped first
+  try {
+    await panel.waitFor({ state: 'visible', timeout: 4000 });
+    const field = panel.locator(fieldSel).filter({ hasText: label }).first();
+    await field.waitFor({ state: 'visible', timeout: 4000 });
+    return field;
+  } catch {
+    // Fallback: global search by field container with label text
+    const globalField = page.locator(fieldSel).filter({ hasText: label }).first();
+    await globalField.waitFor({ state: 'visible', timeout: 6000 });
+    return globalField;
+  }
+}
+
+export async function setCustomField(
+  page: Page,
+  opts: {
+    type: CustomFieldType;
+    label: string;
+    value?: string | number | boolean | string[];
+    path?: string[]; // for cascading selects
+  },
+): Promise<void> {
+  const { type, label } = opts;
+  logger.info('Setting custom field (%s): %s', type, label);
+  const root = await findInfoBarFieldByLabel(page, label);
+
+  const textInputsSel = getSelectorCandidates('info', 'textInput').join(', ');
+  const textareaSel = getSelectorCandidates('info', 'textarea').join(', ');
+  const dateSel = getSelectorCandidates('info', 'dateInput').join(', ');
+  const selectTriggerSel = getSelectorCandidates('info', 'selectTrigger').join(', ');
+  const dropdownOptionSel = getSelectorCandidates('info', 'dropdownOption').join(', ');
+  const checkboxSel = getSelectorCandidates('info', 'checkbox').join(', ');
+  const radioSel = getSelectorCandidates('info', 'radio').join(', ');
+
+  switch (type) {
+    case 'text':
+    case 'integer':
+    case 'decimal':
+    case 'regex': {
+      const input = root.locator(textInputsSel).first();
+      await input.waitFor({ state: 'visible' });
+      await input.fill(String(opts.value ?? ''));
+      break;
+    }
+    case 'textarea': {
+      const input = root.locator(`${textareaSel}, ${textInputsSel}`).first();
+      await input.waitFor({ state: 'visible' });
+      await input.fill(String(opts.value ?? ''));
+      break;
+    }
+    case 'date': {
+      const valueStr = String(opts.value ?? '').trim();
+      logger.info('Setting date value: %s', valueStr || '(empty)');
+      // 1) Try opening the datepicker by dispatching on the field's own container (matches console snippet)
+      logger.debug('Date open: starting root-scoped dispatch attempt for label "%s"', label);
+      let opened = await openDateCalendarOnRoot(page, root).catch(() => false);
+      if (!opened) {
+        // 1b) Try opening by label-based global dispatch (still following user snippet)
+        logger.debug('Date open: root-scoped dispatch did not confirm open; trying label-based dispatch for "%s"', label);
+        opened = await openDateCalendarByLabel(page, label).catch(() => false);
+      }
+      // 2) Fallback: open the datepicker using multiple robust triggers
+      try {
+        const focusCount = await root.locator(dateFocusSel).count().catch(() => -1 as number);
+        const containerCount = await root.locator(containerSel).count().catch(() => -1 as number);
+        logger.debug('Date open debug: focus candidates=%d, container candidates=%d', focusCount, containerCount);
+      } catch {
+        // ignore debug failure
+      }
+      const dropdownSel = getSelectorCandidates('info', 'dateDropdown').join(', ');
+      const containerSel = getSelectorCandidates('info', 'dateContainer').join(', ');
+      const iconSel = getSelectorCandidates('info', 'dateIcon').join(', ');
+      const dateFocusSel = getSelectorCandidates('info', 'dateFocus').join(', ');
+      const headerSel = getSelectorCandidates('info', 'dateHeader').join(', ');
+      const dateActionsContainerSel = getSelectorCandidates('info', 'dateActionsContainer').join(', ');
+      const dateActionSel = getSelectorCandidates('info', 'dateAction').join(', ');
+      const dropdown = page.locator(dropdownSel).first();
+      const activeSel = getSelectorCandidates('info', 'dateContainerActive').join(', ');
+      const active = page.locator(activeSel).first();
+
+      async function attemptOpenWith(locator: Locator): Promise<boolean> {
+        try {
+          await locator.click({ timeout: 600 });
+        } catch {
+          try {
+            const handle = await locator.elementHandle();
+            if (handle) {
+              await handle.evaluate((el: Element) => {
+                const node = el as HTMLElement;
+                node.scrollIntoView({ block: 'center', inline: 'center' });
+                for (const type of ['mousedown','mouseup','click'] as const) {
+                  node.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+                }
+              });
+            }
+          } catch {
+            // ignore
+          }
+        }
+        // Consider opened if either dropdown becomes visible or active class is applied
+        const until = Date.now() + 900;
+        while (Date.now() < until) {
+          const d = await dropdown.isVisible().catch(() => false);
+          if (d) return true;
+          const a = await active.isVisible().catch(() => false);
+          if (a) return true;
+          await new Promise((r) => setTimeout(r, 60));
+        }
+        return false;
+      }
+
+      if (!opened) {
+        // Try container
+        opened = await attemptOpenWith(root.locator(containerSel).first());
+      }
+      if (!opened) {
+        // Try icon
+        opened = await attemptOpenWith(root.locator(iconSel).first());
+      }
+      if (!opened) {
+        // Try focus + Enter / Space
+        const focusEl = root.locator(dateFocusSel).first();
+        try {
+          await focusEl.focus({ timeout: 500 });
+        } catch {}
+        try {
+          await focusEl.press('Enter', { timeout: 500 });
+        } catch {}
+        try {
+          await dropdown.waitFor({ state: 'visible', timeout: 800 });
+          opened = true;
+        } catch {
+          try {
+            await focusEl.press(' ');
+          } catch {}
+          try {
+            await dropdown.waitFor({ state: 'visible', timeout: 800 });
+            opened = true;
+          } catch {
+            opened = false;
+          }
+        }
+      }
+      if (!opened) {
+        // Try header click last
+        opened = await attemptOpenWith(root.locator(headerSel).first());
+      }
+      if (!opened) {
+        // Global fallback: click the date container associated with the header label text
+        try {
+          const clicked = await page.evaluate(
+            (label: string, containerCss: string, headerCss: string) => {
+              function visible(el: Element): boolean {
+                const s = getComputedStyle(el as HTMLElement);
+                const r = (el as HTMLElement).getBoundingClientRect();
+                return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+              }
+              const containers = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
+              const needle = (label || '').trim().toLowerCase();
+              const target = containers.find((c) => {
+                const h = c.querySelector<HTMLElement>(headerCss);
+                const text = (h?.textContent || '').trim().toLowerCase();
+                return visible(c) && (!!needle ? text === needle : true);
+              }) || containers.find(visible);
+              if (!target) return false;
+              (target as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+              // Focus the hidden focus element directly (matches component behavior)
+              const focusEl = target.querySelector<HTMLElement>("[class*='ko-info-bar_field_date__focus_']");
+              if (focusEl) {
+                focusEl.focus();
+              }
+              for (const type of ['mousedown','mouseup','click'] as const) {
+                target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+              }
+              return true;
+            },
+            label,
+            containerSel,
+            headerSel,
+          );
+          if (clicked) {
+            // Wait for either dropdown or active state
+            const until = Date.now() + 1200;
+            while (Date.now() < until) {
+              const d = await dropdown.isVisible().catch(() => false);
+              if (d) { opened = true; break; }
+              const a = await active.isVisible().catch(() => false);
+              if (a) { opened = true; break; }
+              await page.waitForTimeout(60);
+            }
+          }
+        } catch {
+          // ignore
+        }
+      }
+      if (!opened) {
+        // Last-resort: explicitly invoke jQuery .focus() on the focus element and dispatch a native focus event
+        try {
+          await page.evaluate((label: string, containerCss: string, headerCss: string) => {
+            const $win = (window as any).$;
+            const containers = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
+            const needle = (label || '').trim().toLowerCase();
+            const target = containers.find((c) => {
+              const h = c.querySelector<HTMLElement>(headerCss);
+              const text = (h?.textContent || '').trim().toLowerCase();
+              return !!needle ? text === needle : true;
+            }) || containers[0];
+            if (!target) return;
+            const focusEl = target.querySelector<HTMLElement>("[class*='ko-info-bar_field_date__focus_']");
+            if (!focusEl) return;
+            if ($win && typeof $win === 'function') {
+              try { $win(focusEl).focus(); } catch {}
+            }
+            try {
+              focusEl.focus();
+              focusEl.dispatchEvent(new FocusEvent('focus', { bubbles: false, cancelable: false }));
+            } catch {}
+          }, label, containerSel, headerSel);
+          const until = Date.now() + 1200;
+          while (Date.now() < until) {
+            const d = await dropdown.isVisible().catch(() => false);
+            if (d) { opened = true; break; }
+            const a = await active.isVisible().catch(() => false);
+            if (a) { opened = true; break; }
+            await page.waitForTimeout(60);
+          }
+        } catch {
+          // ignore
+        }
+      }
+      if (!opened) {
+        logger.warn('Datepicker dropdown did not open via any trigger; proceeding with fallback typing if applicable.');
+      }
+      // 2) If no specific date provided (e.g., "today"), select a visible day
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(valueStr)) {
+        const dropdownScope = dropdown;
+        // 2a) Prefer clicking the explicit "today" day cell
+        const todayDaySel = getSelectorCandidates('info', 'dateDayToday').join(', ');
+        const todayCell = dropdownScope.locator(todayDaySel).first();
+        let picked = false;
+        try {
+          if (await todayCell.isVisible({ timeout: 400 })) {
+            logger.debug('Date select: clicking today day cell');
+            await todayCell.click({ timeout: 800 });
+            picked = true;
+          }
+        } catch {
+          picked = false;
+        }
+        // 2b) Fallback: click "Today" action in the footer
+        if (!picked) {
+          logger.debug('Date select: today day cell not clicked; trying Today action');
+          picked = await page
+            .evaluate((actionsContainerSel: string, actionSel: string) => {
+              function visible(el: Element): boolean {
+                const s = getComputedStyle(el as HTMLElement);
+                const r = (el as HTMLElement).getBoundingClientRect();
+                return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+              }
+              const root =
+                document.querySelector("[class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("[class*='ko-datepicker__container_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-datepicker__container_']");
+              if (!root) return false;
+              const actionsRoot = root.querySelector<HTMLElement>(actionsContainerSel) || root;
+              const actions = Array.from(actionsRoot.querySelectorAll<HTMLElement>(actionSel));
+              const today = actions.find((a) => visible(a) && (a.textContent || '').trim().match(/^Today$/i));
+              if (today) {
+                for (const type of ['mousedown','mouseup','click'] as const) {
+                  today.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+                }
+                return true;
+              }
+              return false;
+            }, dateActionsContainerSel, dateActionSel)
+            .catch(() => false);
+        }
+        // 2c) Fallback: click currently selected day (often today)
+        if (!picked) {
+          logger.debug('Date select: Today action not clicked; trying selected day cell');
+          picked = await page
+            .evaluate(() => {
+              const root =
+                document.querySelector("[class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("[class*='ko-datepicker__container_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-datepicker__container_']");
+              if (!root) return false;
+              const selected = root.querySelector<HTMLElement>("[class*='ko-datepicker__date--selected_']");
+              if (!selected) return false;
+              (selected as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+              for (const type of ['mousedown','mouseup','click'] as const) {
+                selected.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+              }
+              return true;
+            })
+            .catch(() => false);
+        }
+        if (!picked) {
+          logger.warn('Date select: failed to pick a day (today/selected)');
+        }
+        break;
+      }
+      // 3) Parse the ISO date and navigate to month/year
+      const [yStr, mStr, dStr] = valueStr.split('-');
+      const targetYear = parseInt(yStr, 10);
+      const targetMonth = parseInt(mStr, 10); // 1-12
+      const targetDay = parseInt(dStr, 10);
+      const dropdownScope = dropdown;
+      const monthEl = dropdownScope.locator(getSelectorCandidates('info', 'dateMonth').join(', ')).first();
+      const yearEl = dropdownScope.locator(getSelectorCandidates('info', 'dateYear').join(', ')).first();
+      const prevEl = dropdownScope.locator(getSelectorCandidates('info', 'datePrev').join(', ')).first();
+      const nextEl = dropdownScope.locator(getSelectorCandidates('info', 'dateNext').join(', ')).first();
+      const monthNameToNum: Record<string, number> = {
+        january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
+        july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+      };
+      async function readDisplayed(): Promise<{ year: number; month: number }> {
+        const mText = ((await monthEl.innerText().catch(() => '')) || '').trim().toLowerCase();
+        const yText = ((await yearEl.innerText().catch(() => '')) || '').trim();
+        const month = monthNameToNum[mText] || new Date().getMonth() + 1;
+        const year = parseInt(yText, 10) || new Date().getFullYear();
+        return { year, month };
+      }
+      let { year: curYear, month: curMonth } = await readDisplayed();
+      const maxSteps = 36; // limit nav
+      let steps = 0;
+      while ((curYear !== targetYear || curMonth !== targetMonth) && steps < maxSteps) {
+        const forward = curYear < targetYear || (curYear === targetYear && curMonth < targetMonth);
+        const target = forward ? nextEl : prevEl;
+        let clicked = false;
+        try {
+          await target.click({ timeout: 500 });
+          clicked = true;
+        } catch {
+          try {
+            const handle = await target.elementHandle();
+            if (handle) {
+              await handle.evaluate((el: Element) => {
+                const types: Array<keyof DocumentEventMap> = ['mousedown','mouseup','click'];
+                (el as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+                for (const type of types) {
+                  el.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+                }
+              });
+              clicked = true;
+            }
+          } catch {
+            clicked = false;
+          }
+        }
+        if (!clicked) {
+          logger.warn('Datepicker nav click failed; breaking navigation loop');
+          break;
+        }
+        await page.waitForTimeout(120);
+        ({ year: curYear, month: curMonth } = await readDisplayed());
+        steps++;
+      }
+      if (curYear === targetYear && curMonth === targetMonth) {
+        // 4) Click target day
+        const daySel = getSelectorCandidates('info', 'dateDayCurrentMonth').join(', ');
+        const day = dropdownScope.locator(daySel).filter({ hasText: String(targetDay) }).first();
+        try {
+          await day.click({ timeout: 800 });
+        } catch {
+          // Fallback: event-dispatch click via evaluate within dropdown
+          const ok = await page.evaluate(
+            (needle: string) => {
+              function visible(el: Element): boolean {
+                const s = getComputedStyle(el as HTMLElement);
+                const r = (el as HTMLElement).getBoundingClientRect();
+                return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+              }
+              const root =
+                document.querySelector("[class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("[class*='ko-datepicker__container_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-info-bar_field_date__dropdownMenu_']") ||
+                document.querySelector("#ember-basic-dropdown-wormhole [class*='ko-datepicker__container_']");
+              if (!root) return false;
+              const cells = Array.from(root.querySelectorAll<HTMLElement>("[class*='ko-datepicker__dateCurrentMonth_']"));
+              const target = cells.find((c) => visible(c) && (c.textContent || '').trim() === needle);
+              if (!target) return false;
+              (target as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+              for (const type of ['mousedown','mouseup','click'] as const) {
+                target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+              }
+              return true;
+            },
+            String(targetDay),
+          );
+          if (!ok) throw new Error('Failed to click day in datepicker');
+        }
+      } else {
+        logger.warn('Date navigation did not reach target month/year; attempting to type fallback');
+        await page.keyboard.type(valueStr, { delay: 5 }).catch(() => {});
+        await page.keyboard.press('Enter').catch(() => {});
+      }
+      break;
+    }
+    case 'yesno': {
+      // Yes/No is implemented as a select in FE; open the trigger and select accordingly
+      const trigger = root.locator(selectTriggerSel).first();
+      await trigger.click();
+      const label = Boolean(opts.value) ? 'Yes' : 'No';
+      const ok =
+        (await dispatchClickTextInDropdown(page, label)) ||
+        (await dispatchClickText(page, label).then(() => true).catch(() => false));
+      if (!ok) throw new Error(`Yes/No option not found: ${label}`);
+      break;
+    }
+    case 'checkbox': {
+      // Support booleans (single) or string[] (multiple named options)
+      const val = opts.value;
+      if (Array.isArray(val)) {
+        for (const name of val) {
+          // Click checkbox label by text inside root
+          const clicked =
+            (await root.locator(`label:has-text(${JSON.stringify(name)})`).first().click().then(() => true).catch(() => false)) ||
+            (await root
+              .locator(dropdownOptionSel + `:has-text(${JSON.stringify(name)})`)
+              .first()
+              .click()
+              .then(() => true)
+              .catch(() => false));
+          if (!clicked) {
+            logger.warn('Checkbox option not found: %s', name);
+          }
+        }
+      } else {
+        const desired = Boolean(val);
+        const box = root.locator(checkboxSel).first();
+        await box.waitFor({ state: 'visible' });
+        const isChecked = await box.isChecked().catch(async () => {
+          const el = await box.elementHandle();
+          const aria = el ? await el.getAttribute('aria-checked') : null;
+          return aria === 'true';
+        });
+        if (isChecked !== desired) {
+          await box.click();
+        }
+      }
+      break;
+    }
+    case 'radio': {
+      const name = String(opts.value ?? '');
+      // Prefer clicking a visible label/span with the option text inside the field root
+      const clicked =
+        (await root.locator(`label:has-text(${JSON.stringify(name)})`).first().click().then(() => true).catch(() => false)) ||
+        (await root
+          .locator(`${radioSel} + label:has-text(${JSON.stringify(name)})`)
+          .first()
+          .click()
+          .then(() => true)
+          .catch(() => false)) ||
+        (await dispatchClickText(name).then(() => true).catch(() => false));
+      if (!clicked) {
+        throw new Error(`Radio option not found: ${name}`);
+      }
+      break;
+    }
+    case 'dropdown': {
+      const name = String(opts.value ?? '');
+      const trigger = root.locator(selectTriggerSel).first();
+      await trigger.click();
+      const ok = await dispatchClickTextInDropdown(page, name);
+      if (!ok) {
+        await dispatchClickText(page, name);
+      }
+      break;
+    }
+    case 'cascading': {
+      const path = Array.isArray(opts.path) && opts.path.length > 0 ? opts.path : ([] as string[]);
+      if (path.length === 0) {
+        // Accept simple single-level usage via value
+        const name = String(opts.value ?? '');
+        const trigger = root.locator(selectTriggerSel).first();
+        await trigger.click();
+        const ok = await dispatchClickTextInDropdown(page, name);
+        if (!ok) {
+          await dispatchClickText(page, name);
+        }
+        break;
+      }
+      // Open the top-level trigger once
+      await root.locator(selectTriggerSel).first().click();
+      for (const step of path) {
+        // Select each step from the currently open dropdown without re-clicking the trigger
+        const ok = await dispatchClickTextInDropdown(page, step);
+        if (!ok) {
+          await dispatchClickText(page, step);
+        }
+        await page.waitForTimeout(150);
+      }
+      break;
+    }
+  }
+  // Allow UI to react
+  await page.waitForTimeout(150);
+}
+
+// Open the date calendar by field label using dispatch (mousedown → mouseup → click)
+export async function openDateCalendarByLabel(page: Page, label: string): Promise<boolean> {
+  logger.info('Opening date calendar by label: %s', label);
+  const selector = getSelectorCandidates('info', 'dateContainer')[0] || "[class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_']";
+  const headerSelector = getSelectorCandidates('info', 'dateHeader')[0] || "span[class*='__header_']";
+  const dropdownSel = getSelectorCandidates('info', 'dateDropdown').join(', ');
+  const activeSel = getSelectorCandidates('info', 'dateContainerActive').join(', ');
+  try {
+    const globalCount = await page.locator(selector).count().catch(() => -1 as number);
+    logger.debug('Date open (label): global container count=%d for selector "%s"', globalCount, selector);
+  } catch {}
+  const opened = await page.evaluate(
+    (labelText: string, containerCss: string, headerCss: string) => {
+      function normalize(s: string): string {
+        return (s || '').replace(/\s+/g, ' ').trim();
+      }
+      function matchesLabel(container: Element, needle: string): boolean {
+        const header = container.querySelector<HTMLElement>(headerCss);
+        const text = normalize(header?.textContent || '');
+        const n = normalize(needle);
+        return text.localeCompare(n, undefined, { sensitivity: 'base' }) === 0 || text.toLowerCase().includes(n.toLowerCase());
+      }
+      const targets = Array.from(document.querySelectorAll<HTMLElement>(containerCss));
+      const t =
+        targets.find((c) => matchesLabel(c, labelText)) ||
+        targets[0];
+      if (!t) return false;
+      const props = { bubbles: true, cancelable: true, view: window } as MouseEventInit;
+      (t as HTMLElement).scrollIntoView({ block: 'center', inline: 'center' });
+      t.dispatchEvent(new MouseEvent('mousedown', props));
+      t.dispatchEvent(new MouseEvent('mouseup', props));
+      t.dispatchEvent(new MouseEvent('click', props));
+      return true;
+    },
+    label,
+    selector,
+    headerSelector,
+  );
+  if (!opened) {
+    logger.warn('Dispatch open failed for date calendar: %s', label);
+  }
+  // Verify open by waiting briefly for dropdown or active class
+  const dropdown = page.locator(dropdownSel).first();
+  const active = page.locator(activeSel).first();
+  const until = Date.now() + 1200;
+  while (Date.now() < until) {
+    const d = await dropdown.isVisible().catch(() => false);
+    if (d) return true;
+    const a = await active.isVisible().catch(() => false);
+    if (a) return true;
+    await page.waitForTimeout(60);
+  }
+  logger.debug('Date open (label): dropdown/active not detected after dispatch');
+  return false;
+}
+
+// Open the date calendar on a known field root container
+export async function openDateCalendarOnRoot(page: Page, root: Locator): Promise<boolean> {
+  try {
+    const containerSel = getSelectorCandidates('info', 'dateContainer').join(', ');
+    const candidates = root.locator(containerSel);
+    const count = await candidates.count().catch(() => 0);
+    logger.debug('Date open (root): candidates found=%d via selector "%s"', count, containerSel);
+    const cont = count > 0 ? candidates.first() : root;
+    await cont.waitFor({ state: 'visible', timeout: 2000 });
+    const handle = await cont.elementHandle();
+    if (!handle) return false;
+    try {
+      const diag = await handle.evaluate((el) => {
+        const n = el as HTMLElement;
+        const r = n.getBoundingClientRect();
+        const s = getComputedStyle(n);
+        const cx = Math.floor(r.left + r.width / 2);
+        const cy = Math.floor(r.top + r.height / 2);
+        const atop = document.elementFromPoint(cx, cy) as HTMLElement | null;
+        return {
+          className: n.className,
+          id: n.id,
+          rect: { x: r.x, y: r.y, w: r.width, h: r.height },
+          style: {
+            display: s.display,
+            visibility: s.visibility,
+            opacity: s.opacity,
+            pointerEvents: s.pointerEvents,
+            zIndex: s.zIndex,
+          },
+          elementFromPoint: atop ? { cls: atop.className, id: atop.id } : null,
+        };
+      });
+      logger.debug('Date open (root): container diagnostics: %o', diag);
+    } catch {}
+    await handle.evaluate((el: Element) => {
+      const node = el as HTMLElement;
+      node.scrollIntoView({ block: 'center', inline: 'center' });
+      const props: MouseEventInit = { bubbles: true, cancelable: true, view: window };
+      node.dispatchEvent(new MouseEvent('mousedown', props));
+      node.dispatchEvent(new MouseEvent('mouseup', props));
+      node.dispatchEvent(new MouseEvent('click', props));
+    });
+    const dropdownSel = getSelectorCandidates('info', 'dateDropdown').join(', ');
+    const activeSel = getSelectorCandidates('info', 'dateContainerActive').join(', ');
+    const dropdown = page.locator(dropdownSel).first();
+    const active = page.locator(activeSel).first();
+    const until = Date.now() + 1200;
+    let tick = 0;
+    while (Date.now() < until) {
+      const d = await dropdown.isVisible().catch(() => false);
+      if (d) return true;
+      const a = await active.isVisible().catch(() => false);
+      if (a) return true;
+      if (tick % 2 === 0) {
+        try {
+          const wormholeChildren = await page.evaluate(() => {
+            const w = document.querySelector('#ember-basic-dropdown-wormhole');
+            return w ? (w.children ? w.children.length : 0) : 0;
+          });
+          logger.debug('Date open (root): wormhole children=%d', wormholeChildren as any);
+        } catch {}
+      }
+      await page.waitForTimeout(60);
+      tick++;
+    }
+    logger.debug('Date open (root): dropdown/active not detected after dispatch');
+    return false;
+  } catch {
+    return false;
+  }
+}
+
+// Identify type of a given property (right-side menu) by its label
+export async function identifyInfoBarFieldType(page: Page, label: string): Promise<CustomFieldType | 'unknown' | null> {
+  const container = await findInfoBarFieldByLabel(page, label).catch(() => null as any);
+  if (!container) return null;
+  const type = await detectFieldTypeFromContainer(container);
+  logger.info('Detected field type for "%s": %s', label, type);
+  return type;
+}
+
+// Find a property by name with optional type filter and occurrence index to disambiguate duplicates
+export async function findInfoBarFieldByName(
+  page: Page,
+  name: string,
+  opts?: { type?: CustomFieldType; occurrence?: number },
+): Promise<Locator | null> {
+  const fieldsSel = getSelectorCandidates('info', 'fieldContainer').join(', ');
+  const headerSel = getSelectorCandidates('info', 'fieldHeader').join(', ');
+  const fields = page.locator(fieldsSel);
+  const count = await fields.count().catch(() => 0);
+  const matches: Array<{ loc: Locator; type: CustomFieldType | 'unknown' }> = [];
+  for (let i = 0; i < count; i++) {
+    const item = fields.nth(i);
+    const labelText = (await item.locator(headerSel).first().innerText().catch(() => '')).trim();
+    if (!labelText) continue;
+    const same = labelText.localeCompare(name, undefined, { sensitivity: 'base' }) === 0;
+    if (!same) continue;
+    const t = await detectFieldTypeFromContainer(item);
+    matches.push({ loc: item, type: t });
+  }
+  if (matches.length === 0) return null;
+  if (opts?.type) {
+    const byType = matches.find((m) => m.type === opts.type);
+    if (byType) return byType.loc;
+  }
+  const idx = Math.max(0, Math.min(matches.length - 1, opts?.occurrence ?? 0));
+  return matches[idx].loc;
+}
+
+async function detectFieldTypeFromContainer(container: Locator): Promise<CustomFieldType | 'unknown'> {
+  // Class-name based detection (fast and stable)
+  try {
+    const handle = await container.elementHandle();
+    if (handle) {
+      const className: string = await handle.evaluate((el) => (el as HTMLElement).className);
+      const cls = className.toLowerCase();
+      if (cls.includes('ko-info-bar_field_date__date')) return 'date';
+      if (cls.includes('ko-info-bar_field_drill-down__trigger')) return 'cascading';
+      if (cls.includes('ko-info-bar_field_select-multiple__trigger')) return 'dropdown';
+      if (cls.includes('ko-info-bar_field_select__trigger')) return 'dropdown';
+      if (cls.includes('ko-info-bar_field_yesno__trigger')) return 'yesno';
+      if (cls.includes('ko-info-bar_field_multiline-text__textarea')) return 'textarea';
+      if (cls.includes('ko-info-bar_field_text__input')) return 'text';
+      if (cls.includes('ko-info-bar_field_integer__input')) return 'integer';
+      if (cls.includes('ko-info-bar_field_decimal__input')) return 'decimal';
+      if (cls.includes('ko-info-bar_field_checkbox')) return 'checkbox';
+      if (cls.includes('ko-info-bar_field_radio')) return 'radio';
+    }
+  } catch {
+    // ignore
+  }
+  // Structural fallback
+  const dateFocusSel = getSelectorCandidates('info', 'dateFocus').join(', ');
+  if (await container.locator(dateFocusSel).first().isVisible().catch(() => false)) return 'date';
+  const selectTriggerSel = getSelectorCandidates('info', 'selectTrigger').join(', ');
+  if (await container.locator(selectTriggerSel).first().isVisible().catch(() => false)) {
+    const isDrill = await container.locator("div[class*='ko-info-bar_field_drill-down__trigger_']").first().isVisible().catch(() => false);
+    return isDrill ? 'cascading' : 'dropdown';
+  }
+  const yesno = await container.locator("div[class*='ko-info-bar_field_yesno__trigger_']").first().isVisible().catch(() => false);
+  if (yesno) return 'yesno';
+  const textareaSel = getSelectorCandidates('info', 'textarea').join(', ');
+  if (await container.locator(textareaSel).first().isVisible().catch(() => false)) return 'textarea';
+  const textSel = getSelectorCandidates('info', 'textInput').join(', ');
+  if (await container.locator(textSel).first().isVisible().catch(() => false)) return 'text';
+  const cbSel = getSelectorCandidates('info', 'checkbox').join(', ');
+  if (await container.locator(cbSel).first().isVisible().catch(() => false)) return 'checkbox';
+  const radioSel = getSelectorCandidates('info', 'radio').join(', ');
+  if (await container.locator(radioSel).first().isVisible().catch(() => false)) return 'radio';
+  return 'unknown';
 }

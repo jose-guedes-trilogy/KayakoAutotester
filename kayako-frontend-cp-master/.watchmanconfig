@@ -1,0 +1,3 @@
+{
+  "ignore_dirs": [ ".idea", ".git", "tmp", "dist", "node_modules", "bower_components" ]
+}

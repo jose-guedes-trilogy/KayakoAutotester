@@ -1,0 +1,28 @@
+<div local-class="wrapper">
+  <div local-class="text">
+    <h2 local-class="title">
+      {{t "admin.apps.timetracking.heading"}}
+    </h2>
+    <div local-class="sub-title">
+      {{t "admin.apps.timetracking.sub_heading"}}
+    </div>
+    <div local-class="features">
+      <div local-class="feature">
+        <h5 local-class="feature-title">{{t "admin.apps.timetracking.feature_1_title"}}</h5>
+        <p local-class="feature-description">{{t "admin.apps.timetracking.feature_1_description"}}</p>
+      </div>
+      <div local-class="feature">
+        <h5 local-class="feature-title">{{t "admin.apps.timetracking.feature_2_title"}}</h5>
+        <p local-class="feature-description">{{t "admin.apps.timetracking.feature_2_description"}}</p>
+      </div>
+    </div>
+    {{ko-toggle
+      label=(if value (t "admin.apps.timetracking.enabled") (t "admin.apps.timetracking.disabled"))
+      activated=value
+      isDisabled=updateValue.isRunning
+      onToggle=(perform updateValue)}}
+  </div>
+  <div local-class="image">
+    <img src="/images/apps/time-tracking.png" width="465px">
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.title {
+  color: #838D93;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #838D93;
+  cursor: pointer;
+}

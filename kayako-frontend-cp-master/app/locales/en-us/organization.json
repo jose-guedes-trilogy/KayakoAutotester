@@ -1,0 +1,66 @@
+{
+  "title": "Organization",
+  "new": "New Organization",
+  "domains": "Domains",
+  "total_organizations": "total organizations",
+  "organizations": "Organizations",
+  "new_organization_placeholder": "Click to add a name",
+  "create_new": "Create new organization",
+  "set_organization": "Set Organization",
+  "unset_org": "Remove {name} from organization",
+  "assignment_passed": "{name} was added to {org}",
+  "assignment_failed": "An error was encountered while adding the user to the organization.",
+  "removal_passed": "{name} was removed from {org}",
+  "removal_failed": "An error was encountered while removing the user from the organization.",
+  "primary_set": "{org} was marked as primary for user {name}",
+  "primary_set_failed": "An error was encountered while setting {org} as primary organization.",
+  "already_member": "{name} is already a member of {org}.",
+  "delete_organization": "Delete organization",
+  "created": "Organization created",
+  "updated": "Organization updated",
+  "infobar": {
+    "cases": {
+      "shared": {
+        "true": "Can see each others’ conversations",
+        "false": "Cannot see each others’ conversations"
+      }
+    },
+    "accesslevel": "Conversation access"
+  },
+  "organizationid": "Organization ID",
+  "timeline": {
+    "preamble": "<p>Howdy! This is the beginning of the journey for <strong>{name}</strong>. Kayako pulls together all of the activities of people who belong to this organization."
+  },
+  "member_title": "Members",
+  "hide_members": "Hide user list",
+  "member_count": "View all {memberCount} users",
+  "member_count_extra": "Showing {currentlyShown} members. View all {memberCount} users",
+  "browse_keys": "<strong>&uarr;&darr;</strong> to browse",
+  "close_key": "<strong>Esc</strong> to close",
+  "search_members": "Search users...",
+  "search_organizations": "Search organization...",
+  "add_member": "Add a user…",
+  "member_search": "Search for a user by name or an email address, or enter an email address to add a new user.",
+  "member_create": "Create a new user for the email address<strong>{email}</strong>. You can add additional contact details once you've created the user.",
+  "member_create_empty": "Create a new user for the new email address. You can add additional contact details once you've created the user.",
+  "member_missing": "No user found matching <strong>{term}</strong>.",
+  "member_already_present": "{fullName} <{email}> is already a member of {orgName}.",
+  "first_last_name": "First and last name",
+  "cancel": "Cancel",
+  "add_user_text": "Add new user",
+  "new_user_email": "new user email",
+  "add": "Add",
+  "redirection_message": "Taking you to {name}'s journey...",
+  "no_members": "There are no members in this organization.",
+  "confirm": {
+    "remove_header": "Remove organization",
+    "remove_body": "Are you sure you want to remove {name} from the organization {org}?",
+    "remove_confirm": "Remove"
+  },
+  "removing": "Removing organization...",
+  "name_update_success": "Name was successfully updated.",
+  "name_update_failure": "An error was encountered while trying to update the name.",
+  "organization_list": {
+    "no_results": "No matching organizations found"
+  }
+}

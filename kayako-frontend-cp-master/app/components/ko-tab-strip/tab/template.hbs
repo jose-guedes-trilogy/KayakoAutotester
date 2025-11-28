@@ -1,0 +1,26 @@
+<div
+  tagName="div"
+  local-class="
+    {{if (ko-is-active tab.linkParams) "active-tab"}}
+    {{if (not (ko-is-active tab.linkParams)) "inactive-tab"}}
+  "
+  class={{qa-cls "qa-tab" (if (ko-is-active tab.linkParams) "qa-active-tab") qaClass}}
+>
+  {{#ko-tooltip local-class="tooltip" title=label delay=750}}
+    {{#link-to params=tab.linkParams local-class="link"}}
+      {{#if hasBlock}}
+        {{yield (hash
+          icon=(component "ko-tab-strip/tab/icon" icon=icon)
+          label=(component "ko-tab-strip/tab/label" label=label)
+        )}}
+      {{else}}
+        {{ko-tab-strip/tab/icon icon=icon}}
+        {{ko-tab-strip/tab/label label=label}}
+      {{/if}}
+    {{/link-to}}
+
+    <div local-class="close" class={{qa-cls "qa-close-tab"}} onclick={{action on-close}}>
+      {{ko-icon name="cross" color="#a1aaaf"}}
+    </div>
+  {{/ko-tooltip}}
+</div>

@@ -1,0 +1,49 @@
+{{#ko-admin/page title=(t "admin.apps.manage.title")}}
+  {{#ko-admin/forms/description}}
+    <p>{{t "admin.apps.manage.description"}}</p>
+  {{/ko-admin/forms/description}}
+
+  {{#if installedApps}}
+    {{#ko-simple-list header="Installed" as |list|}}
+      {{#each installedApps as |installedApp|}}
+        {{#with installedApp.app as |app|}}
+          {{#list.row onClick=(action (transition-to "session.admin.apps.manage.edit" installedApp.id)) as |row|}}
+            {{#row.cell}}
+              {{ko-admin/apps/manage/index/app app=app}}
+            {{/row.cell}}
+            {{#row.actions}}
+              {{#link-to "session.admin.apps.manage.edit" installedApp.id}}
+                {{t "admin.apps.manage.actions.configure"}}
+              {{/link-to}}
+              |
+              <a onclick={{action (perform uninstall installedApp)}}>
+                {{t "admin.apps.manage.actions.uninstall"}}
+              </a>
+            {{/row.actions}}
+          {{/list.row}}
+        {{/with}}
+      {{/each}}
+    {{/ko-simple-list}}
+  {{/if}}
+
+  {{#if availableApps}}
+    {{#ko-simple-list header="Available" as |list|}}
+      {{#each availableApps as |app|}}
+        {{#list.row onClick=(action (transition-to "session.admin.apps.manage.show" app.id)) as |row|}}
+          {{#row.cell}}
+            {{ko-admin/apps/manage/index/app app=app}}
+          {{/row.cell}}
+          {{#row.actions}}
+            {{#link-to "session.admin.apps.manage.show" app.id}}
+              {{t "admin.apps.manage.actions.details"}}
+            {{/link-to}}
+            |
+            <a onclick={{action (perform install app)}}>
+              {{t "admin.apps.manage.actions.install"}}
+            </a>
+          {{/row.actions}}
+        {{/list.row}}
+      {{/each}}
+    {{/ko-simple-list}}
+  {{/if}}
+{{/ko-admin/page}}

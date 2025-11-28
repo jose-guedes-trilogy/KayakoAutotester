@@ -1,0 +1,316 @@
+{
+  "title": "Insights",
+  "agents": {
+    "page": {
+      "title": "Insights / Agents"
+    },
+    "subtitle": "using data from conversations assigned to {name}",
+    "cases_completed": "Conversations completed",
+    "cases_completed_explanation": "<b>{value}</b> conversations completed",
+    "csat": "Customer satisfaction score",
+    "csat_explanation": "<b>{csatValue}</b> CSAT in current period vs <b>{csatPreviousValue}</b> CSAT in the previous period"
+  },
+  "teams": {
+    "page": {
+      "title": "Insights / Teams"
+    },
+    "subtitle": "using data from conversations assigned to team {team}"
+  },
+  "cases": {
+    "page": {
+      "title": "Insights / Conversations"
+    },
+    "average_response_time_by_interval": "Average response time",
+    "average_resolution_time_by_interval": "Average resolution time",
+    "messages_received_by_channel": "Messages received",
+    "messages_received_by_channel_explanation": "Received <b>{value}</b> messages in the current period"
+  },
+  "searches": {
+    "page": {
+      "title": "Insights / Searches"
+    },
+    "popular_searches": "Popular searches",
+    "failed_searches": "Failed searches",
+    "query": "Query",
+    "count": "Count"
+  },
+  "articles": {
+    "page": {
+      "title": "Insights / Articles"
+    },
+    "most_popular": "Most popular articles",
+    "title": "Title",
+    "up_vote_count": "Upvotes",
+    "view_count": "Views",
+    "comment_count": "Comments"
+  },
+  "sla": {
+    "overview": {
+      "title": "Insights / SLA / Overview"
+    },
+    "metrics": {
+      "FIRST_REPLY_TIME": "First reply time",
+      "NEXT_REPLY_TIME": "Next reply time",
+      "RESOLUTION_TIME": "Resolution time"
+    },
+    "sla_target_performance_for": "SLA target performance for",
+    "overall_performance_for": "Overall performance for"
+  },
+  "insights": {
+    "vs": "vs"
+  },
+  "sidebar": {
+    "general": {
+      "title": "General",
+      "agents": {
+        "title": "Agents",
+        "upgrade": "Upgrade to access Agents"
+      },
+      "teams": {
+        "title": "Teams",
+        "upgrade": "Upgrade to access Teams"
+      },
+      "cases": {
+        "title": "Conversations"
+      }
+    },
+    "reporting": {
+      "title": "Reporting",
+      "custom_reports": {
+        "title": "Custom Reports",
+        "upgrade": "Upgrade to access Custom Reports"
+      }
+    },
+    "sla": {
+      "title": "SLA",
+      "overview": {
+        "title": "Overview",
+        "upgrade": "Upgrade to access SLA"
+      }
+    },
+    "help_center": {
+      "title": "Help Center",
+      "searches": {
+        "title": "Searches",
+        "upgrade": "Upgrade to access Searches"
+      },
+      "articles": {
+        "title": "Articles",
+        "upgrade": "Upgrade to access Articles"
+      }
+    }
+  },
+  "metric": {
+    "total_assigned": "Total assigned",
+    "total_created": "Conversations created",
+    "total_completed": "Conversations completed",
+    "customers_helped": "Customers helped",
+    "cases_touched": "Conversations touched",
+    "total_public_replies": "Total public replies",
+    "average_csat": "Customer satisfaction",
+    "average_response_time": "Response time",
+    "average_first_response_time": "First response time",
+    "average_resolution_time": "Resolution time",
+    "average_replies_to_resolution": "Replies to resolution",
+    "percentage_first_contact_resolved": "First contact resolved",
+    "average_first_assignment_time": "First assignment time",
+    "average_team_changes": "Team changes",
+    "average_assignee_changes": "Assignee changes",
+    "percentage_achieved": "Percentage target achieved",
+    "total_breached": "Target breaches",
+    "average_time_to_target": "Time to target",
+    "average_time_overdue_to_breach": "Breaches overdue by",
+    "tooltip": {
+      "case": {
+        "total_created": "The number of conversations that were created (started).",
+        "total_completed": "The number of conversations that were completed.",
+        "customers_helped": "The number of unique customers communicated with (even if agents worked on multiple conversations from the same customer).",
+        "average_csat": "The CSAT score, calculated from conversations that were completed in the period.",
+        "average_first_response_time": "The average first response time of conversations completed in the period.",
+        "average_response_time": "The average response time (the time between each requester reply and the next agent reply) of conversations that were completed in the period.",
+        "average_resolution_time": "The average amount of time it took to complete conversations in the period.",
+        "average_replies_to_resolution": "The average number of replies exchanged in conversations that were completed in the period.",
+        "percentage_first_contact_resolved": "The percentage of conversations that were completed in the period after just one reply.",
+        "average_first_assignment_time": "The average amount of time it took to assign conversations that were assigned for the first time in the period.",
+        "average_team_changes": "The average number of assigned team changes for conversations assigned in the period.",
+        "average_assignee_changes": "The average number of assignee changes for conversations assigned in the period."
+      },
+      "agent": {
+        "total_assigned": "The number of conversations that were assigned to this agent in the period (and are still assigned to this agent).",
+        "total_created": "The number of conversations that were created (started) by this agent.",
+        "total_completed": "The number of conversations that were completed by the agent and irrespective of the assignee.",
+        "customers_helped": "The number of unique customers that this agent communicated with (even if the agent worked on multiple conversations from the same customer).",
+        "cases_touched": "The number of conversations that this agent updated in some way.",
+        "total_public_replies": "The total number of public replies (this excludes private notes) this agent made.",
+        "average_csat": "The CSAT score, calculated from conversations that were completed in the period and assigned to this agent.",
+        "average_first_response_time": "The average first response time of conversations completed in the period.",
+        "average_response_time": "The average response time (the time between each requester reply and the next agent reply) of conversations that were completed in the period.",
+        "average_resolution_time": "The average amount of time it took to complete conversations completed in the period.",
+        "average_replies_to_resolution": "The average number of replies exchanged in conversations that were completed in the period.",
+        "percentage_first_contact_resolved": "The percentage of conversations that were completed in the period after just one reply.",
+        "average_first_assignment_time": "The average amount of time it took to assign conversations that were assigned for the first time in the period.",
+        "average_team_changes": "The average number of assigned team changes for conversations assigned in the period.",
+        "average_assignee_changes": "The average number of assignee changes for conversations assigned in the period.",
+        "percentage_achieved": "The target achievement rate for conversations where this agent was the assignee.",
+        "total_breached": "The total number of target misses for conversations where this agent was the assignee.",
+        "average_time_to_target": "The average amount of time it took to meet the target for conversations where this agent was the assignee.",
+        "average_time_overdue_to_breach": "The average amount of time over a target, for conversations which missed their target while this agent was the assignee."
+      },
+      "team": {
+        "total_assigned": "The number of conversations that were assigned to this team in the period.",
+        "total_created": "The number of conversations that were created (started) by this team.",
+        "total_completed": "The number of conversations that were completed while assigned to this team.",
+        "customers_helped": "The number of unique customers that this team communicated with (even if the team worked on multiple conversations from the same customer).",
+        "cases_touched": "The number of conversations that this team updated in some way.",
+        "total_public_replies": "The total number of public replies (this excludes private notes) this agent made.",
+        "average_csat": "The CSAT score, calculated from conversations that were completed in the period and assigned to this team.",
+        "average_first_response_time": "The average first response time of conversations completed in the period.",
+        "average_response_time": "The average response time (the time between each requester reply and the next agent reply) of conversations that were completed in the period.",
+        "average_resolution_time": "The average amount of time it took to complete conversations completed in the period.",
+        "average_replies_to_resolution": "The average number of replies exchanged in conversations that were completed in the period.",
+        "percentage_first_contact_resolved": "The percentage of conversations that were completed in the period after just one reply.",
+        "average_first_assignment_time": "The average amount of time it took to assign conversations that were assigned for the first time in the period.",
+        "average_team_changes": "The average number of assigned team changes for conversations assigned in the period.",
+        "average_assignee_changes": "The average number of assignee changes for conversations assigned in the period.",
+        "percentage_achieved": "The target achievement rate for conversations where this team was the assignee.",
+        "total_breached": "The total number of target misses for conversations where this team was the assignee.",
+        "average_time_to_target": "The average amount of time it took to meet the target for conversations where this team was the assignee.",
+        "average_time_overdue_to_breach": "The average amount of time over a target, for conversations which missed their target while this team was the assignee."
+      },
+      "sla": {
+        "percentage_achieved": "The total target achievement.",
+        "total_breached": "The total number of target misses.",
+        "average_time_to_target": "The average amount of time it took to meet the target.",
+        "average_time_overdue_to_breach": "The average amount of time over a target, for conversations which missed their target."
+      }
+    }
+  },
+  "chart": {
+    "completion_vs_csat": {
+      "completed_cases": "Completed cases",
+      "completed_cases_current": "Current period",
+      "completed_cases_previous": "Previous period",
+      "csat_current": "Current period",
+      "csat_previous": "Previous period",
+      "csat_axis_title": "Customer satisfaction score",
+      "completed_cases_axis_title": "Completed cases",
+      "chart_tooltip_cases": " cases",
+      "chart_tooltip_no_csat": "no customer satisfaction score"
+    },
+    "current_period": "Current period",
+    "previous_period": "Previous period",
+    "sla_resolution": {
+      "resolution_due_at": "Resolution due at",
+      "age": "Age",
+      "effort_score": "Effort score",
+      "percentage_achieved": "Percentage achieved"
+    },
+    "channel_stats": {
+      "FACEBOOK": "Facebook",
+      "TWITTER": "Twitter",
+      "MESSENGER": "Messenger",
+      "CALL": "Call",
+      "MAIL": "Mail",
+      "HELPCENTER": "Help Centre"
+    }
+  },
+  "trial": {
+    "notification": {
+      "title": "We’re showing demo data so you can get a feel for Insights in Kayako during your trial.",
+      "link": "Show my real Kayako data"
+    }
+  },
+  "helpcenter": {
+    "popular_searches": {
+      "description": "Use the popular searches report to see what your customers are looking for, and learn what your customers are most interested in or struggling with the most. You can use these insights to tailor the look, feel and content organization of your Help Center to surface the things people are looking for more prominently, or develop extra self-service content."
+    },
+    "failed_searches": {
+      "description": "Use the failed searches report to see what customers are searching for in your Help Center that return no matching results. You can use these insights to find opportunities to help your customers find their own answers, such as by developing more self-service content or tailoring existing content to the vocabulary of your customers."
+    }
+  },
+  "day": "Day",
+  "week": "Week",
+  "month": "Month",
+  "custom_reports": {
+    "index": {
+      "title": "Custom Reports",
+      "description": "Custom reports allow you to export a file that contains all conversations that meet the report criteria for analysis in tools like Excel. You can create reports based on conversation, requester and organization properties like tags and custom fields, and more. {link}.",
+      "description_link": "Learn more about custom reports"
+    },
+    "reports": {
+      "new_report": "New Report"
+    },
+    "new_report": {
+      "title": "New Report"
+    },
+    "edit_report": {
+      "title": "Edit Report"
+    },
+    "report": {
+      "download": "Download",
+      "regenerate": "Refresh report",
+      "num_records": "{count, plural, =0 {no conversations} =1 {1 conversation} other {# conversations}}",
+      "last_downloaded_at": "Last downloaded:",
+      "created_by": "Created by:",
+      "status": {
+        "NOT_STARTED": "NOT STARTED",
+        "WAITING": "WAITING",
+        "STARTED": "GENERATING",
+        "COMPLETED": "COMPLETED",
+        "FAILED": "FAILED",
+        "EXPIRED": "EXPIRED"
+      }
+    },
+    "report_new": {
+      "download": "Download",
+      "regenerate": "Re-run report",
+      "last_downloaded_at": "Last downloaded:",
+      "created_at": "Last generated on",
+      "created_by": "Created by",
+      "failed": "Report failed, ",
+      "status": {
+        "TRIGGERED": "We’re generating your report now. We'll send a confirmation email once done.",
+        "WAITING": "We’re generating your report now. We'll send a confirmation email once done.",
+        "STARTED": "We’re generating your report now. We'll send a confirmation email once done.",
+        "COMPLETED": "Last generated on",
+        "NOT_STARTED": "Report failed, try again?",
+        "FAILED": "Report failed, try again?"
+      }
+    },
+    "confirm_delete": {
+      "title": "Delete report",
+      "body": "Are you sure you want to delete the report? This cannot be undone."
+    },
+    "deleted": "Report was deleted successfully.",
+    "form": {
+      "details": {
+        "legend": "Report Details"
+      },
+      "visibility": {
+        "header": "Sharing",
+        "field_label": "Make this report available to",
+        "public": "Every agent",
+        "private": "Just myself",
+        "team": "Specific teams"
+      },
+      "teams": {
+        "field_label": "Teams",
+        "help": "Choose which teams can view this report"
+      },
+      "label": {
+        "field_title": "Name",
+        "field_title_placeholder": "My custom report"
+      },
+      "preview": {
+        "title": "Preview",
+        "info": "Showing a sample of up to 10 matching conversations",
+        "no_results": "No conversations found",
+        "refresh": "Refresh"
+      },
+      "predicates": {
+        "heading": "When these conditions are met",
+        "description": "This report will apply to conversations which match the conditions you specify below."
+      }
+    }
+  }
+}

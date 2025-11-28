@@ -1,0 +1,12 @@
+{{ko-admin/fields/form
+  agentCaseSettings=true
+  title=title
+  field=field
+  editedField=editedField
+  schema=schema
+  onCancel=(action "canceled")
+  onSave=(action "updated")
+  onDelete=(action "deleted")
+  isSystemOptionsEdited=isSystemOptionsEdited
+  onSystemOptionsEdit=(action (mut isSystemOptionsEdited))
+}}

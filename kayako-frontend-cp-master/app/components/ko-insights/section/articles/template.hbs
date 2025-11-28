@@ -1,0 +1,15 @@
+<div local-class="container">
+  <h3>{{t "insights.articles.most_popular"}}</h3>
+
+  {{#ko-insights/loader/help-center/articles metricsQueryParams=metricsQueryParams as |data|}}
+    <div local-class="table">
+      {{#if data.articles}}
+        {{ko-insights/articles-list articles=data.articles}}
+      {{/if}}
+
+      {{#if data.request.isPending}}
+        {{ko-insights/loader size="M"}}
+      {{/if}}
+    </div>
+  {{/ko-insights/loader/help-center/articles}}
+</div>

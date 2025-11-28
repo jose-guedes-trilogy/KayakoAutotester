@@ -1,0 +1,13 @@
+<div class="{{qa-cls "qa-notification-center--item"}} {{if isRead (qa-cls "qa-notification-center--item--seen")}}" local-class="item {{if isRead "is-seen"}}" onclick={{action (action close)}}>
+  <a local-class="item-link" href="{{ ko-convert-to-relative-link url }}">
+    {{yield (hash
+      avatar=(component "ko-notification-center/-base-notification/-avatar")
+      summary=(component "ko-notification-center/-base-notification/-summary")
+    )}}
+
+    <div local-class="meta">
+      <span local-class="time">{{ko-from-now notification.createdAt}}</span>
+      <span local-class="read" class="{{qa-cls "qa-notification-center--read"}}" onclick={{action "markAsRead"}}>{{t "notifications.mark_as_read"}}</span>
+    </div>
+  </a>
+</div>

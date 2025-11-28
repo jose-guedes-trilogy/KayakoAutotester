@@ -1,0 +1,15 @@
+<svg width="33px" height="33px" viewBox="134 109 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d="M8,0 C3.6,0 0,3.6 0,8 C0,12.4 3.6,16 8,16 C12.4,16 16,12.4 16,8 C16,3.6 12.4,0 8,0 Z" id="path-1"></path>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="16" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+  </defs>
+  <g id="icon--sla" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(134.000000, 109.000000)">
+    <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="Rectangle-185" fill="#EBEEF0"></path>
+    <g transform="translate(8.000000, 8.000000)" id="Shape">
+      <use stroke="#838D94" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-1"></use>
+      <path d="M9,4.99895656 C9,4.44724809 8.55613518,4 8,4 L8,4 C7.44771525,4 7,4.44371665 7,4.99980749 L7,8.00019251 C7,8.55237094 7.44371665,9 7.99980749,9 L11.0001925,9 C11.5523709,9 12,8.55613518 12,8 L12,8 C12,7.44771525 11.5573397,7 11.0010434,7 L9,7 L9,4.99895656 Z" fill="#838D94"></path>
+    </g>
+  </g>
+</svg>

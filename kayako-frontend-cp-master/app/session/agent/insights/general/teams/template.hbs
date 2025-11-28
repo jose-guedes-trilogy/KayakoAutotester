@@ -1,0 +1,16 @@
+{{ko-admin/page title=(t "insights.teams.page.title")}}
+
+{{ko-insights/section/agents-teams
+  section="team"
+  startAt=startAt
+  endAt=endAt
+  interval=interval
+  metricsQueryParams=metricsQueryParams
+  slaId=sla
+  actorId=team
+  actorShowAvatarImage=false
+  onActorChange=(action "updateTeam")
+  onSlaChange=(action "updateSla")
+  onDateRangeChange=(action "dateRangeHidden")
+  onIntervalChange=(action "intervalChanged")
+}}

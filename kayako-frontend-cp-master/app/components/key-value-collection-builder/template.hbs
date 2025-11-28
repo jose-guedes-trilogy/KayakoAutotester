@@ -1,0 +1,19 @@
+{{#each collection as |pair index|}}
+  <dl local-class="pair">
+    <dt local-class="key">
+      {{ko-input value=pair.name onInput=(action updatePair pair "name") name=(concat name "-key-" index) placeholder=keyPlaceholder}}
+    </dt>
+    <dd local-class="value">
+      {{! we json-to-string because you can switch from json endpoint to form endpoint }}
+      {{ko-input value=(json-to-string pair.value) onInput=(action updatePair pair "value") name=(concat name "-value-" index) placeholder=valuePlaceholder}}
+    </dd>
+    {{#if (gt collection.length 1)}}
+      <div onclick={{action remove pair}} local-class="remove-button">
+        {{ko-icon name="minusCircle" color="#BEC4C7" size=18}}
+      </div>
+    {{/if}}
+  </dl>
+{{/each}}
+<button type="button" local-class="add-btn" onclick={{add}}>
+  {{yield}}
+</button>

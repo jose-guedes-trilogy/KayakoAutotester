@@ -1,0 +1,9 @@
+{{#ko-notification-center/-base-notification notification=notification close=close as |notification|}}
+  {{#notification.avatar}}
+    <span local-class="avatar-breach">{{inline-svg "notification-center/breach"}}</span>
+  {{/notification.avatar}}
+
+  {{#notification.summary}}
+    {{format-html-message "notifications.text.sla_breached" name=sla subject=subject}}
+  {{/notification.summary}}
+{{/ko-notification-center/-base-notification}}

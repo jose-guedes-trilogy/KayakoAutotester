@@ -1,0 +1,223 @@
+/* stylelint-disable */
+$solidColors: #FF3B30 #FF9500 #FFCC00 #4CD964 #5AC8FA #007AFF #5856D6;
+/* stylelint-enable */
+
+.messenger-page {
+  min-width: 760px;
+  /* neutralize spacer at the bottom */
+  margin-bottom: -110px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.page-title {
+  margin-bottom: 10px;
+  display: inline;
+}
+
+.inline-loader {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.container {
+  display: flex;
+}
+
+.column {
+  width: 50%;
+
+  &--options {
+    position: relative;
+    z-index: 1;
+    min-width: 440px;
+    padding-top: 25px;
+    padding-right: 30px;
+  }
+
+  &--preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: $grey-1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid $grey-3;
+  font-size: 14px;
+  font-weight: 600;
+  list-style: none;
+
+  &__item {
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: -1px;
+    padding: 15px 3px 15px 0;
+    color: $grey-6;
+    cursor: pointer;
+    transition: color 0.25s ease;
+
+    /* Bottom line for active tab item */
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 2px solid $primary-blue;
+      opacity: 0;
+      transform: scaleX(0.4);
+      transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1), transform 0.55s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    &:hover,
+    &.is-active {
+      color: $grey-8;
+    }
+
+    &.is-active:after {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &__number {
+    margin-right: 2px;
+    font-weight: 400;
+  }
+}
+
+.tab-container {
+  position: relative;
+}
+
+.tab-content {
+  padding-bottom: 40px;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
+  transform-origin: top;
+  transition: all 0.33s ease;
+  will-change: transform, opacity;
+
+  &:not(:first-child) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    z-index: $z-default;
+  }
+
+  &__wrapper {
+    width: 400px;
+  }
+}
+
+.label {
+  margin-top: 18px;
+  margin-bottom: 2px;
+  display: block;
+
+  &.no-top-margin {
+    margin-top: 0px;
+  }
+}
+
+.widget-title {
+  margin-bottom: 10px;
+  color: $grey-6;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.widget {
+  padding: 12px 0;
+  border-top: 1px solid $grey-3;
+
+  &.is-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  &__label {
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  &__content {
+    font-size: 15px;
+  }
+
+  &__switch {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__help-text {
+    width: calc(100% - 100px);
+    color: $grey-6;
+  }
+
+  &__dropdown {
+    max-width: 300px;
+  }
+}
+
+.copy-button {
+  composes: primary from 'frontend-cp/components/ko-button/styles';
+  height: 36px;
+  font-weight: 600;
+}
+
+.trigger {
+  composes: trigger from 'frontend-cp/components/ko-select/shared';
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+}
+
+.next-button-spacer {
+  margin-top: 40px;
+}
+
+.text--small {
+  font-size: 13px;
+}
+
+.text--light {
+  color: $grey-6;
+}
+
+.mbottom {
+  margin-bottom: 24px;
+}
+
+.mbottom--tiny {
+  margin-bottom: 6px;
+}
+
+.mbottom--medium {
+  margin-bottom: 14px;
+}
+
+.sdk-button {
+  max-width: 145px;
+}
+
+.nudge-upward {
+  margin-top: -8px;
+}

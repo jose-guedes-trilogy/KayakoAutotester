@@ -1,0 +1,20 @@
+{{ko-select/multiple/internal
+  allowCreate=allowCreate
+  renderInPlace=renderInPlace
+  matchTriggerWidth=matchTriggerWidth
+  dropdownClass=(local-class "dropdown")
+  disabled=disabled
+  onChange=onChange
+  onValueAddition=onValueAddition
+  onValueRemoval=onValueRemoval
+  onKeydown=onKeydown
+  onSuggestion=onSuggestion
+  options=options
+  placeholder=placeholder
+  searchField=searchField
+  triggerClass=(join-classes (local-class "trigger") (if focused (local-class "trigger--focused")))
+  triggerComponent="ko-select/multiple/trigger"
+  extra=(hash searchOnly=searchOnly)
+  selected=selected
+  allowAddDuringSearch=allowAddDuringSearch
+}}

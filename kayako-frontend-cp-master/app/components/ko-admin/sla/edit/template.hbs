@@ -1,0 +1,55 @@
+{{#ko-form
+  onSubmit=(action "save")
+  onSuccess=onSuccess
+as |form|}}
+  {{#ko-admin/page
+    title=(if sla.isNew (t "admin.sla.headings.new") (t "admin.sla.headings.edit" title=sla.title))
+    onCancel=onCancel
+    buttonText=(t "generic.save")
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteSLA")
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t 'admin.sla.edit.details')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.sla.edit.title'}}{{/ko-form/field/label}}
+        {{ko-input placeholder=(t "admin.sla.edit.title_placeholder") value=editedSla.title disabled=form.isSubmitting onInput=(action (mut editedSla.title) value="target.value")}}
+        {{ko-form/field/errors errors=editedSla.errors.title}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.sla.edit.description'}}{{/ko-form/field/label}}
+        {{ko-input value=editedSla.description disabled=form.isSubmitting onInput=(action (mut editedSla.description) value="target.value")}}
+        {{ko-form/field/errors errors=editedSla.errors.description}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-toggle
+          activated=editedSla.isEnabled
+          label=(t (if editedSla.isEnabled 'admin.sla.edit.is_enabled' 'admin.sla.edit.is_disabled'))
+        }}
+        {{ko-form/field/errors errors=editedSla.errors.isEnabled}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <legend class={{qa-cls "ko-admin-form-group__legend"}}>{{t 'admin.sla.edit.filters.heading'}}</legend>
+      {{#ko-form/field/help}}{{t 'admin.sla.edit.filters.description'}}{{/ko-form/field/help}}
+      {{ko-admin/predicate-builder
+        definitions=definitions
+        collections=editedSla.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "createPropositionForCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")
+      }}
+      {{ko-form/field/errors errors=editedSla.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <legend class={{qa-cls "ko-admin-form-group__legend"}}>{{t 'admin.sla.edit.targets.heading'}}</legend>
+      {{#ko-form/field/help}}{{t 'admin.sla.edit.targets.description'}}{{/ko-form/field/help}}
+      {{ko-admin/sla/edit/targets sla=editedSla priorities=priorities}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

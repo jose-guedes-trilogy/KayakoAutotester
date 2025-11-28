@@ -1,0 +1,29 @@
+<div local-class="channel-selector" class="{{if qaClass (qa-cls qaClass)}}" onmousedown={{action "handleMouseDown"}}>
+  {{#power-select
+    disabled=disabled
+    options=channels
+    selected=channel
+    searchEnabled=false
+    onchange=onchange
+    matchTriggerWidth=false
+    verticalPosition="above"
+    triggerClass=(join-classes
+      (local-class "trigger")
+      (if (not isNote) (local-class "trigger--active"))
+      (if noUser (local-class "trigger--dormant"))
+    )
+    dropdownClass=(local-class "dropdown")
+    triggerComponent=(component "ko-channel-selector/selected-channel" noUser=noUser isNote=isNote) as |channel select|}}
+    <div local-class="item">
+      {{#if (and channel.shouldDeliverViaMessenger (eq channel select.selected))}}
+        {{inline-svg "icon--replybox_messenger"}}
+      {{else}}
+        {{inline-svg (concat "icon--replybox_" channel.normalizedType)}}
+      {{/if}}
+
+      <div local-class="item-text">
+        {{channel.handle}}
+      </div>
+    </div>
+  {{/power-select}}
+</div>

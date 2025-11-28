@@ -1,0 +1,27 @@
+<div local-class="container">
+  {{#if userOrganizationsList.length}}
+    <ul local-class="list" class="{{qa-cls "qa-organizations-list"}}">
+      {{#each userOrganizationsList as |userOrg index|}}
+        <li class="{{qa-cls (if userOrg.isPrimary "qa-organization-primary")}}">
+          {{ko-user-organizations-list/organization
+            organization=userOrg.organization
+            userOrg=userOrg
+            index=index
+            canUpdateUser=canUpdateUser
+            onMakePrimary=(action "makePrimaryOrganization")
+            onRemoveOrganization=(action "removeOrganization")
+          }}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+  
+  {{#if canUpdateUser}}
+    {{ko-user-organizations-list/form
+      qaClass="qa-organizations-add-new"
+      disabled=disabled
+      save=(action "saveOrganization")
+      cancel=(action "cancelOrganization")
+    }}
+  {{/if}}
+</div>

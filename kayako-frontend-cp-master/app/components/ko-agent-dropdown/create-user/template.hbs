@@ -1,0 +1,55 @@
+{{#ko-form
+onSubmit=(action "submit")
+onSuccess=onCreate
+onError=(action "onError")
+as |form|}}
+  {{#ko-agent-dropdown/layout as |block|}}
+    {{#if block.header}}
+      {{t 'generic.create_user_panel.title'}}
+    {{/if}}
+
+    {{#if block.contents}}
+      {{#ko-form/field field=fullNameValue}}
+        {{#ko-form/field/label}}{{t 'generic.create_user_panel.name_label'}}{{/ko-form/field/label}}
+        {{ko-input autofocus=true size="full"
+        qaClass="qa-agent-dropdown_create-user__full_name"
+        value=fullNameValue
+        onInput=(action (mut fullNameValue) value="target.value")
+        onBlur=(action "handleFocusOut" "shouldShowValidationErrorUser")
+        disabled=form.isSubmitting
+        }}
+        {{#if shouldShowValidationErrorUser}}
+          {{#if fullNameError}}<p local-class="error">{{fullNameError}}</p>{{/if}}
+        {{/if}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field field=emailValue}}
+        {{#ko-form/field/label}}{{t 'generic.create_user_panel.email_label'}}{{/ko-form/field/label}}
+        {{ko-input size="full"
+        qaClass="qa-agent-dropdown_create-user__email"
+        value=emailValue
+        onInput=(action (mut emailValue) value="target.value")
+        onBlur=(action "handleFocusOut" "shouldShowValidationErrorEmail")
+        disabled=form.isSubmitting
+        }}
+        {{#if shouldShowValidationErrorEmail}}
+          {{#if emailError}}<p local-class="error">{{emailError}}</p>{{/if}}
+        {{/if}}
+      {{/ko-form/field}}
+    {{/if}}
+
+    {{#if block.footer}}
+      {{t 'generic.create_user_panel.info'}}
+    {{/if}}
+
+    {{#if block.buttons}}
+      {{ko-form/buttons
+      onCancel=onCancel
+      cancelButtonClass="qa-agent-dropdown-create-user__cancel"
+      submitClass="qa-agent-dropdown-create-user__submit"
+      isValid=(and (not fullNameError) (not emailError))
+      submitLabel=(t 'generic.create_user_panel.submit')
+      cancelLabel=(t 'generic.cancel')}}
+    {{/if}}
+  {{/ko-agent-dropdown/layout}}
+{{/ko-form}}

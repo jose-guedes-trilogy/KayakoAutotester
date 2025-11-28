@@ -1,0 +1,82 @@
+.plan-notification {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.flex-empty-column {
+  flex-basis: 200px;
+  display: flex;
+}
+
+.flex-content-column {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  padding: 8px 27px;
+  display: flex;
+  background: $color-info;
+  justify-content: space-between;
+  margin-right: 0;
+}
+
+.sticky {
+  position: fixed;
+  top: 84px;
+  bottom: auto;
+  z-index: 1;
+  animation-duration: 300ms;
+  animation-name: slidein;
+}
+
+.sticky .flex-box {
+  display: flex;
+  justify-content: center;
+  padding: 0 45px;
+}
+
+.sticky .flex-content-column {
+  margin-right: 200px;
+  padding: 27px;
+  border-bottom: 1px solid $grey-3;
+  box-shadow: 0px 2px 5px $grey-3;
+  max-width: 1200px;
+}
+
+@media (max-width: 1400px) {
+  .sticky .flex-content-column {
+    margin-right: 0;
+  }
+}
+
+@keyframes slidein {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: 84px;
+  }
+}
+
+.inline-loader {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+}
+
+.disabled {
+  background: #EEEEEE;
+}
+
+.summary-label {
+  text-transform: uppercase;
+  color: $grey-6;
+  font-weight: 600;
+}
+
+.summary-content {
+  line-height: 20px;
+  max-height: 20px;
+}

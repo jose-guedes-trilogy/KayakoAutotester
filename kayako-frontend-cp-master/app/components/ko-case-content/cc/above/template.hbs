@@ -1,0 +1,16 @@
+{{#if select.loading}}
+  <div local-class="center">
+    {{ko-loader}}
+  </div>
+{{else if isMailboxCC}}
+  <div local-class="center mailbox-cc">
+    <img src="/images/cases/icon--no_mailbox--56.svg" width="45">
+    <span local-class="mailbox-cc--title">{{format-html-message "cases.mailbox_not_allowed_in_cc_title"}}</span>
+    <span local-class="mailbox-cc--subtitle">{{format-html-message "cases.mailbox_not_allowed_in_cc_subtitle"}}</span>
+  </div>
+{{else if hasNoResults}}
+  <div local-class="center">
+    <img src="/images/cases/no-email-suggestions.svg" width="45">
+    <span>{{format-html-message "cases.text_editor.cc.nothing_found" searchText=select.searchText}}</span>
+  </div>
+{{/if}}

@@ -1,0 +1,81 @@
+.header {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+}
+
+.entity {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtersControls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.metricsContainer {
+  position: relative;
+  min-height: 236px;
+}
+
+.metrics {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.metrics:first-child {
+  padding-bottom: 0;
+}
+
+.chart {
+  position: relative;
+}
+
+.questionBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question {
+  margin-top: 20px;
+}
+
+.questionTitle {
+  margin-bottom: 0;
+  line-height: 26px;
+}
+
+.questionSpacing {
+  margin-bottom: 20px;
+}
+
+.answer {
+  padding-bottom: 20px;
+  min-height: 38px;
+  color: $grey-6;
+}
+
+.insights {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.insightsChannelChart {
+  min-height: 400px;
+}

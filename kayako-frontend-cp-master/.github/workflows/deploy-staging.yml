@@ -1,0 +1,44 @@
+name: Deploy to Staging Env
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release version (tags)'
+        required: true
+        type: string
+
+jobs:
+  deploy-frontend-release:
+    name: "Deploy Frontend Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build the runner Docker image
+        run: docker build . --file ember-test.Dockerfile --tag kayako-frontend-cp-local
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      - name: Establish SSH tunnel to Consul
+        env:
+          BASTION_SERVER_IP: "52.200.24.175"
+          CONSUL_SERVER_IP: "10.0.13.84"
+        run: ssh -o "StrictHostKeyChecking=no" -L 0.0.0.0:9991:$CONSUL_SERVER_IP:8500 -fN ec2-user@$BASTION_SERVER_IP
+      - name: Find Tag SHA
+        id: find-tag-sha
+        run: |
+          RELEASE_SHA=$(git rev-list -n 1 ${{ github.event.inputs.release_version }})
+          echo "RELEASE_SHA=$RELEASE_SHA" >> $GITHUB_ENV
+      - name: Deploy to Staging
+        env:
+          CONSUL_HOST: "http://host.docker.internal:9991"
+          CONSUL_TOKEN: ${{ secrets.CONSUL_TOKEN }}
+          DEPLOY_TARGET: "staging"
+          CONSUL_NAMESPACE_TOKEN: "frontend/frontend-cp-staging/default"
+        run: |
+          docker run --add-host host.docker.internal:host-gateway -e env=production -e CONSUL_HOST=$CONSUL_HOST -e CONSUL_TOKEN=$CONSUL_TOKEN -e CONSUL_NAMESPACE_TOKEN=$CONSUL_NAMESPACE_TOKEN kayako-frontend-cp-local npm run ember-cli -- deploy:activate $DEPLOY_TARGET --revision=$RELEASE_SHA

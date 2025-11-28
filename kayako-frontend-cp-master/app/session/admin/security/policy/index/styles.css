@@ -1,0 +1,16 @@
+.field {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.field-column {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  margin-left: 10px;
+  color: $grey-6;
+  font-size: 12px;
+}

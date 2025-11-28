@@ -1,0 +1,60 @@
+{{#ko-form
+  onSubmit=(action "saveMacro" macro)
+  onSuccess=onSuccess
+as |form|}}
+  {{#ko-admin/page
+    title=title
+    onCancel=onCancel
+    submitClass=(qa-cls "qa-admin_macros_edit__submit-button")
+    cancelButtonClass=(qa-cls "qa-admin_macros__cancel-button")
+    buttonText=(t "generic.save")
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t 'admin.macros.heading.details')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.macros.label.title'}}{{/ko-form/field/label}}
+        {{ko-input placeholder=(t "admin.macros.label.title_placeholder") qaClass="qa-admin_macros_edit__title-input" value=editedMacro.title onInput=(action (mut editedMacro.title) value="target.value") disabled=form.isSubmitting}}
+        {{ko-form/field/errors errors=editedMacro.errors.title}}
+        {{#ko-form/field/help}}{{t "admin.macros.label.title_description"}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t 'admin.macros.heading.sharing')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.macros.label.visibility_type'}}{{/ko-form/field/label}}
+        {{ko-radio qaClass="qa-just-myself" label=(t "admin.macros.radio.label.me") checked=(eq editedMacro.visibilityType "PRIVATE") onChange=(action "setMacroSharing" "PRIVATE") disabled=form.isSubmitting}}
+        {{ko-radio qaClass="qa-every-agent" label=(t "admin.macros.radio.label.all") checked=(eq editedMacro.visibilityType "ALL") onChange=(action "setMacroSharing" "ALL") disabled=form.isSubmitting}}
+
+        <div local-class="team-sharing">
+          {{ko-radio qaClass="qa-specific-team" label=(t "admin.macros.radio.label.specific") checked=(eq editedMacro.visibilityType "TEAM") onChange=(action "setMacroSharing" "TEAM") disabled=form.isSubmitting}}
+          <div local-class="team-selector">
+            {{#ko-select
+              size="medium"
+              placeholder=(t "generic.select_placeholder")
+              options=teams
+              selected=selectedTeam
+              onChange=(action "selectTeam")
+              disabled=(not-eq editedMacro.visibilityType "TEAM") as |team|
+            }}
+              {{team.title}}
+            {{/ko-select}}
+          </div>
+        </div>
+        {{ko-form/field/errors errors=editedMacro.errors.visible_to_team_id}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.macros.heading.actions"}}</h5>
+      {{ko-admin/automation-actions-builder
+        automationActions=editedMacro.macroActions
+        definitions=referenceData.actionDefinitions
+        shouldGroupDefinitions=false
+        addAction=(action "addAction")
+        type="macros"
+        removeAction=(action "removeAction")
+        changeAction=(action "changeAction")
+      }}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

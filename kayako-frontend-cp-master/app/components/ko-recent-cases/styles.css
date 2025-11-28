@@ -1,0 +1,141 @@
+.root {
+  padding: 18px 0;
+  margin-bottom: 0;
+}
+
+.heading {
+  text-transform: uppercase;
+  @include font-size-with-line-height(12px);
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #838D94;
+
+  padding: 0 18px;
+}
+
+.subject {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 13px;
+  margin-left: 1px;
+  margin-bottom: 3px;
+}
+
+.case-info {
+  font-style: italic;
+  color: $grey-6;
+  font-size: 12px;
+}
+
+.missing {
+  padding: 0 18px;
+}
+
+.case-item {
+  display: flex;
+  flex-direction: column;
+  padding: 9px 18px 0;
+  color: $grey-8;
+  cursor: pointer;
+
+  &:hover {
+    background: $grey-2;
+  }
+
+  .case-item-inner {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #ebeef0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+    .case-item-inner {
+      border-bottom: none;
+    }
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  margin-right: -1px;
+  @include font-size-with-line-height(13px);
+  font-weight: bolder;
+  color: #838D94;
+}
+
+.involved-users {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+  .avatar {
+    display: flex;
+    > div {
+      height: 22px;
+      width: 22px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #f7f8f9;
+
+      &:not(:first-of-type) {
+        position: relative;
+        right: 5px;
+      }
+      &:first-of-type {
+        z-index: 1;
+      }
+    }
+  }
+}
+
+.last-updated {
+  font-weight: normal;
+}
+
+.no-assignee {
+  padding-right: 5px;
+}
+
+.status {
+  display: flex;
+  color: #A1AAAF;
+  padding-left: 3px;
+  .case-status {
+    &.case-status-NEW {
+      color: #4EAFCB;
+    }
+    &.case-status-OPEN {
+      color: #4EAFCB;
+    }
+    &.case-status-PENDING {
+      color: #E0AF2A;
+    }
+    &.case-status-COMPLETED {
+      color: #4EAC5E;
+    }
+    &.case-status-CLOSED {
+      color: #A1AAAF;
+    }
+    &.case-status-CUSTOM {
+      color: #E0AF2A;
+    }
+  }
+  .middot {
+    padding: 0 2px;
+  }
+}
+
+.view-all-cases {
+  padding: 10px 18px;
+  font-size: 12px;
+  a {
+    color: #a1aaaf;
+  }
+}

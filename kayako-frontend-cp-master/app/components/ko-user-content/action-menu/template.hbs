@@ -1,0 +1,51 @@
+{{#ko-agent-content/action-menu as |menu|}}
+  {{menu.item
+    title=(t (if user.isEnabled "users.disable" "users.enable"))
+    disabled=(not canModifyUserState)
+    onClick=onUserToggle
+  }}
+
+  {{menu.item
+    title=(t "users.start_conversation")
+    disabled=(not targetUserIsCustomer)
+    onClick=onCreateNewCase
+  }}
+
+  {{#if showManageAppAccess}}
+    {{menu.item
+      qaClass=(qa-cls "qa-action-menu__manage-app-access")
+      title=(t "users.manage_app_access")
+      onClick=onManageAppAccess
+    }}
+  {{/if}}
+
+  {{#if (and currentUserHasChangeSignaturePermission (not targetUserIsCurrentUser))}}
+    {{menu.item
+      title=(t "users.editsignature")
+      disabled=isDisabled
+      onClick=onEditSignature
+    }}
+  {{/if}}
+
+  {{#if (and hasTwoFactorAuth (and hasDisableTwoFactorPermission (not targetUserIsCurrentUser)))}}
+    {{menu.item
+      title=(t "users.two_factor.menu.disable")
+      disabled=isDisabled
+      onClick=onDisableTwoFactor
+    }}
+  {{/if}}
+
+  {{#if currentUserHasChangePasswordEmailPermission}}
+    {{menu.item
+      title=(t "users.send_password_reset_email")
+      onClick=(if (not isDisabled) onChangeUserPassword)
+    }}
+  {{/if}}
+
+  {{#if canDeleteTargetUser}}
+    {{menu.item
+      title=(t "users.delete_user")
+      onClick=(action deleteUser)
+    }}
+  {{/if}}
+{{/ko-agent-content/action-menu}}

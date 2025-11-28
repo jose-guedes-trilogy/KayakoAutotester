@@ -1,0 +1,44 @@
+{{#ko-simple-list/row onClick=onClick as |row|}}
+  {{#row.cell disabled=(not endpoint.isEnabled)}}
+    <div local-class="container">
+      <div local-class="icon" class="i-png-endpoint-{{endpoint.fieldType}}"></div>
+      <div>
+        <p local-class="row__title">{{endpoint.title}}</p>
+        <p local-class="row__description">
+          {{t (concat "admin.apps.endpoints.list." endpoint.fieldType ".description")}}
+
+          {{#if (eq endpoint.lastAttemptResult "FAILURE")}}
+            -
+
+            <div local-class="row__warning">
+              <div local-class="row__warning-icon" class="i-png-endpoint-warning"></div>
+              <div>
+                {{t "admin.apps.endpoints.list.problem_reaching"}}
+
+                {{#if endpoint.lastAttemptMessage}}
+                  (<a onclick={{action onDetailsClick}} local-class="row-details">{{t "admin.apps.endpoints.list.details"}}</a>)
+                {{/if}}
+              </div>
+            </div>
+          {{else}}
+            {{#if endpoint.lastAttemptAt}}
+              {{#ko-tooltip local-class="row__last-attempt" side="top" title=(format-time endpoint.lastAttemptAt format="tooltip")}}
+                {{ko-from-now endpoint.lastAttemptAt}}
+              {{/ko-tooltip}}
+            {{/if}}
+          {{/if}}
+        </p>
+      </div>
+    </div>
+  {{/row.cell}}
+
+  {{#row.actions}}
+    <a onclick={{action onClick}}>{{t "generic.edit"}}</a> |
+    {{#if endpoint.isEnabled}}
+      <a onclick={{action toggleEnabledStatus}}>{{t "generic.disable"}}</a> |
+    {{else}}
+      <a onclick={{action toggleEnabledStatus}}>{{t "generic.enable"}}</a> |
+    {{/if}}
+    <a onclick={{action deleteEndpoint}}>{{t "generic.delete"}}</a>
+  {{/row.actions}}
+{{/ko-simple-list/row}}

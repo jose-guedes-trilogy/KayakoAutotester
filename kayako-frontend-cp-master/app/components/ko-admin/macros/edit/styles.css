@@ -1,0 +1,8 @@
+.team-sharing {
+  display: flex;
+}
+
+.team-selector {
+  margin-top: -6px;
+  margin-left: 15px;
+}

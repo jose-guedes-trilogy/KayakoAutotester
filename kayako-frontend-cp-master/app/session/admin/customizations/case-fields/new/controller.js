@@ -1,0 +1,57 @@
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { isEdited } from 'frontend-cp/services/virtual-model';
+import schema from 'frontend-cp/lib/fields-schema';
+
+import { variation } from 'ember-launch-darkly';
+
+export default Controller.extend({
+  notification: service(),
+  i18n: service(),
+  customFields: service(),
+  virtualModel: service(),
+  metrics: service(),
+  schema,
+
+  title: computed('field.title', function() {
+    return this.get('customFields').getTitleBreadcrumbs(this.get('field'));
+  }),
+
+  actions: {
+    created() {
+      this.get('notification').add({
+        type: 'success',
+        title: this.get('i18n').t('generic.changes_saved'),
+        autodismiss: true
+      });
+
+      this.initEdits();
+      if (variation('release-event-tracking')) {
+        this.get('metrics').trackEvent({
+          event: 'conversation_field_created',
+          object: this.get('editedField.id'),
+          type: this.get('editedField.fieldType'),
+          visible_to_customers: this.get('editedField.isVisibleToCustomers'),
+          is_required_on_resolution: this.get('editedField.isRequiredOnResolution'),
+          is_required_for_customers: this.get('editedField.isRequiredForCustomers'),
+          is_required_for_agents: this.get('editedField.isVisibleToAgents')
+        });
+      }
+      this.transitionToRoute('session.admin.customizations.case-fields.index');
+    },
+
+    canceled() {
+      this.transitionToRoute('session.admin.customizations.case-fields.index');
+    }
+  },
+
+  // Methods
+  initEdits() {
+    this.set('editedField', this.get('virtualModel').makeSnapshot(this.get('field'), schema));
+  },
+
+  isEdited() {
+    return isEdited(this.get('field'), this.get('editedField'), schema);
+  }
+});

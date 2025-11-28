@@ -1,0 +1,9 @@
+.note-destination-selector {
+  display: flex;
+  margin-right: 6px;
+  margin-top: 3px;
+}
+
+.option-container {
+  margin-right: 9px;
+}

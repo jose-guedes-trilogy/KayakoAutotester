@@ -1,0 +1,27 @@
+:focus {
+  outline: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.notifications {
+  position: fixed;
+  z-index: $z-notification;
+  top: 69px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}

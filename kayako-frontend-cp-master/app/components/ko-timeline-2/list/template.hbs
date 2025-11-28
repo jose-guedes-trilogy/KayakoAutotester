@@ -1,0 +1,24 @@
+{{#each posts as |post|}}
+  {{ko-timeline-2/list/post
+    parent=parent
+    post=post
+    publicReplyChannels=publicReplyChannels
+    posts=posts
+    caseFields=caseFields
+    timelineContext=timelineContext
+    isLastReadPost=(eq post lastReadPost)
+    scroll-into-view=scrollPostIntoView
+    canResend=canResend
+    isItemMenuOpen=isItemMenuOpen
+    onReplyToPost=onReplyToPost
+    onReplyWithQuote=onReplyWithQuote
+    onAddCC=onAddCC
+    onCopyLink=onCopyLink
+    onResend=onResend
+    onItemMenuOpen=onItemMenuOpen
+    setReplyContent=setReplyContent
+    submitReply=submitReply
+    openReply=openReply
+    toggleSideConversationPanel=toggleSideConversationPanel
+  }}
+{{/each}}

@@ -1,0 +1,137 @@
+.avatarContainer {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+}
+
+.avatarUnassigned {
+  width: 42px;
+  height: 42px;
+}
+
+.agentAvatarContainer {
+  border: 2px solid #FFFFFF;
+  border-radius: 2px 2px 0;
+
+  display: flex;
+  background: #FFF;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.agentAvatar {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-right: 5px;
+  font-weight: 600;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 600px;
+  flex-shrink: 1;
+}
+
+.separator {
+  margin-right: 5px;
+  color: #A1AAAF;
+}
+
+.requesterFullName {
+  margin-right: 5px;
+}
+
+.status {
+  margin-right: 8px;
+  position: relative;
+  top: -1px;
+}
+
+.bottom-text {
+  color: #838D94;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+  font-size: 15px;
+}
+
+.bullet {
+  margin: 0 3px;
+}
+
+.status-icon {
+  display: inline-flex;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.preview {
+  color: #838D94;
+}
+
+.appended-button {
+  margin-left: 12px;
+  color: #3ea9c9;
+  padding: 6.5px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #3ea9c9;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.append-button {
+  margin-left: 12px;
+  color: #838D94;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.remove-button {
+  margin-left: 12px;
+  color: #838D94;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+
+  [data-name="plus"] {
+    transform: rotate(45deg);
+  }
+}
+
+.showPrimaryBadge {
+  display: flex;
+}

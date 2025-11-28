@@ -1,0 +1,18 @@
+{{page-title "Knowledgebase"}}
+<div local-class="main-container">
+  <div local-class="sidebar">
+    {{articles-view-sidebar 
+      articleCounts=model.articleCounts
+      filterByStatus=(action "filterByStatus")
+      selectedStatus=this.selectedStatus
+    }}
+  </div>
+  <div local-class="main-content">
+    {{articles-view-list 
+      isHidden=(not this.isIndexRoute)
+      currentPage=this.currentPage
+      selectedStatus=this.selectedStatus
+    }}
+    {{outlet}}
+  </div>
+</div>

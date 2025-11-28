@@ -1,0 +1,5 @@
+<div local-class="operationalHours">
+  {{#ko-select selected=selected options=options onChange=(action "onChange") as |item|}}
+    {{item.label}}
+  {{/ko-select}}
+</div>

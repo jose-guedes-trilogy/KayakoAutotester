@@ -1,0 +1,50 @@
+<div local-class="container">
+  <div local-class="sidebar">
+    {{#ko-entity-list/sidebar
+      definitions=definitions
+      currentPredicateCollections=currentPredicateCollections
+      currentPropositionOperators=currentPropositionOperators
+      currentCollectionOperator=currentCollectionOperator
+      onPropositionsChange=(action 'changePropositions')
+      onPropositionsRemoval=(action 'removePropositions')
+      onPropositionsRemoveAll=(action 'removeAllPropositions')
+      onPropositionOperatorChange=(action 'changePropositionOperator')
+      onCollectionOperatorChange=(action 'changeCollectionOperator')
+    }}
+      {{t "search.organization_list.organization_attributes"}}
+    {{/ko-entity-list/sidebar}}
+  </div>
+  <div local-class="sidebar-detail"></div>
+  <div local-class="results">
+    {{#if (and (not organizations.length) fetchOrganizations.isIdle)}}
+      <div local-class="not-found">
+        <div local-class="not-found-image">
+          <img src="/images/empty-states/conversation.svg" width="462" height="262" alt="{{t 'cases.list.casesnotfound'}}">
+        </div>
+        <div local-class="not-found-message">
+          {{t "organization.organization_list.no_results"}}
+        </div>
+      </div>
+    {{else}}
+      {{#if fetchOrganizations.isRunning}}
+        <div local-class="title-loader">
+          {{ko-loading/text-placeholder width="150px" height="22px"}}
+        </div>
+      {{else}}
+        <div local-class="title">
+          <h4 local-class="heading">
+            <b>{{totalResults}}</b> {{t 'organization.total_organizations'}}
+          </h4>
+        </div>
+      {{/if}}
+
+      {{ko-organization-list/results
+        organizations=organizations
+        isLoading=fetchOrganizations.isRunning
+      }}
+      {{#unless fetchOrganizations.isRunning}}
+        {{ko-pagination currentPage=page pageCount=totalPages}}
+      {{/unless}}
+    {{/if}}
+  </div>
+</div>

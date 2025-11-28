@@ -1,0 +1,27 @@
+{{#if (or primaryEmail primaryTwitterHandle primaryFacebookUsername primaryPhone user.timeZone)}}
+  {{#ko-agent-content/sidebar/info-list as |list|}}
+    {{#if primaryEmail}}
+      {{list.item iconName="email" content=primaryEmail}}
+    {{/if}}
+
+    {{#if primaryTwitterHandle}}
+      {{list.item iconName="twitter" content=(concat "@" primaryTwitterHandle)}}
+    {{/if}}
+
+    {{#if primaryFacebookUsername}}
+      {{list.item iconName="facebook" content=primaryFacebookUsername}}
+    {{/if}}
+
+    {{#if primaryPhone}}
+      {{list.item iconName="mobilePhone" content=primaryPhone}}
+    {{/if}}
+
+    {{#if user.timeZone}}
+      {{ko-agent-content/sidebar/info-list/requester-current-time user=user}}
+    {{/if}}
+
+    {{#if hasTwoFactorAuthEnabled}}
+      {{list.item iconName="lock" content=(t "users.2fa_enabled")}}
+    {{/if}}
+  {{/ko-agent-content/sidebar/info-list}}
+{{/if}}

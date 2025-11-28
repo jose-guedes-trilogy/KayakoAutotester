@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 2px;
+  height: 19px;
+}
+
+.metric-breached {
+  background-color: $color-bad;
+}
+
+.icon {
+  font-size: 11px;
+  line-height: 1;
+}
+
+.icon-good {
+  color: $color-good;
+}
+
+.icon-bad {
+  color: $color-bad;
+}
+
+.icon-open {
+  color: #A1AAAF;
+}
+
+.icon-breached {
+  color: #fff;
+}
+
+.text {
+  padding-left: 7px;
+  line-height: 1;
+}
+
+.text-breached {
+  color: #fff;
+}

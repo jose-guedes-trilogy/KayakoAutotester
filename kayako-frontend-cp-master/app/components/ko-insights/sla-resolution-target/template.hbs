@@ -1,0 +1,41 @@
+<div local-class="targets">
+  {{#each targets as |target|}}
+    <div local-class="target">
+      <div local-class="title">{{t (concat "insights.sla.metrics." target.type)}}</div>
+
+      <div local-class="metrics">
+        {{#each target.metrics as |metric|}}
+          {{ko-insights/metric
+            section=section
+            name=metric.name
+            value=metric.value
+            previous=metric.previous
+            delta=metric.delta
+            deltaInverted=metric.deltaInverted
+          }}
+        {{/each}}
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if onIntervalChange}}
+  <div local-class="filters">
+    <div local-class="filtersControls">
+      {{ko-insights/interval-toggle
+        value=interval
+        onChange=onIntervalChange
+      }}
+    </div>
+  </div>
+{{/if}}
+
+<div local-class="charts">
+  <div local-class="chart">
+    <h4>{{t "insights.sla.overall_performance_for"}} {{performanceData.sla.title}}</h4>
+    {{ko-insights/charts/sla-resolution-target
+      data=performanceData
+      interval=interval
+    }}
+  </div>
+</div>

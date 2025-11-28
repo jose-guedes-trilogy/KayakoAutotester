@@ -1,0 +1,17 @@
+{{#each automationActions as |automationAction|}}
+  {{ko-admin/automation-actions-builder/action
+    currentAction=automationAction
+    definition=(find-by 'name' automationAction.name definitions)
+    definitions=(reject-by 'name' 'atlasai' definitions)
+    shouldGroupDefinitions=shouldGroupDefinitions
+    showRemoveActionButton=(gt automationActions.length 1)
+    onRemoveAction=(action "onRemoveAction")
+    onChangeAction=(action "onChangeAction")
+  }}
+{{/each}}
+
+{{#if showAddActionButton}}
+  <div local-class="add-action-btn" class="{{qa-cls "qa-add-action-button"}}" onclick={{addAction}}>
+    {{t 'admin.automation_actions_builder.label.addition_of_action'}}
+  </div>
+{{/if}}

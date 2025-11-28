@@ -1,0 +1,178 @@
+{{#ko-form onSubmit=(action "save" article) isSubmitting=this.isSaving as |form|}}
+  {{#ko-admin/page
+    onCancel=this.onCancel
+    showFooter=false
+    title=this.headingTitle
+    buttonText=(t "generic.save")}}
+
+    <div local-class="create-article-form">
+      {{!-- class="article" will apply the global article styles from _article.scss --}}
+      <div local-class="create-article-form-left" class="article">
+        {{#ko-form/field class=(local-class "form-field")}}
+          <textarea
+            local-class="title-field"
+            name="title"
+            placeholder={{t "admin.knowledgebase.article_title_placeholder"}}
+            value={{this.currentTitle}}
+            oninput={{action "updateArticleTitle" value="target.value"}}
+            disabled={{form.isSubmitting}}
+          />
+        
+          {{ko-form/field/errors errors=article.errors.titles}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field}}
+          {{froala-editor
+            id="froala-toolbar"
+            content=currentLocaleContent
+            options=froalaParams
+            class="froala-editor-container-full"
+            update=(action "updateArticleContent")
+            on-keyup-getHtml=(action "updateArticleContent")
+            on-image-uploaded=(action "handleImageUpload")
+            on-popups-show-image-edit=(action "handleImageToolbarOpen")
+          }}
+          {{ko-form/field/errors errors=article.errors.contents}}
+        {{/ko-form/field}}
+      
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{article-file-upload
+            onUploadAttachments=(action "onUploadAttachments")
+            disabled=form.isSubmitting
+            uploadedFiles=this.article.attachments
+          }}
+          {{ko-form/field/errors errors=article.errors.attachments}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.tags_label'}}
+          {{/ko-form/field/label}}
+
+          {{ko-select/multiple
+            selected=visibleTags
+            allowCreate=true
+            allowDelete=true
+            allowAddDuringSearch=true
+            onValueAddition=(action "addTag")
+            onValueRemoval=(action "removeTag")
+            searchField="name"
+            onSuggestion=(perform suggestTags)
+            disabled=form.isSubmitting
+          }}
+
+          {{ko-form/field/errors errors=article.errors.tags}}
+        {{/ko-form/field}}
+      </div>
+
+      <div local-class="create-article-form-right">
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.article_settings.language'}}
+          {{/ko-form/field/label}}
+
+          {{locale-select
+            selected=this.selectedLocale
+            onChange=(action "updateSelectedLocale")
+            disabled=form.isSubmitting
+          }}
+
+          {{ko-form/field/errors errors=article.errors.locale}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.article_settings.status'}}
+          {{/ko-form/field/label}}
+
+          {{#ko-select
+            selected=article.status
+            options=statuses
+            onChange=(action (mut article.status))
+            disabled=form.isSubmitting
+            as |status|}}
+            {{status}}
+          {{/ko-select}}
+
+          {{ko-form/field/errors errors=article.errors.status}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.article_settings.section'}}
+          {{/ko-form/field/label}}
+
+          {{ko-select/drill-down
+            options=categoriesTree
+            value=article.section
+            onValueChange=(action "changeSectionValue")
+            triggerComponent="ko-select/trigger"
+            dropdownClass=(local-class "dropdown")
+            triggerClass=(local-class "trigger")
+            isDisabled=form.isSubmitting
+            searchEnabled=false
+            search=search
+            searchField="value"
+            extra=(hash
+              searchEnabled=sectionSearchEnabled
+              searchPlaceholder=(t "admin.knowledgebase.search_section_placeholder")
+            )
+          }}
+
+          {{ko-form/field/errors errors=article.errors.section}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.article_settings.author'}}
+          {{/ko-form/field/label}}
+
+          {{agent-lookup 
+            selected=article.author
+            onChange=(action (mut article.author))
+            disabled=form.isSubmitting
+          }}
+
+          {{ko-form/field/errors errors=article.errors.author}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{ko-checkbox
+            label=(t 'admin.knowledgebase.article_settings.allow_comments')
+            checked=article.allowComments
+            disabled=form.isSubmitting
+          }}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{ko-checkbox
+            label=(t 'admin.knowledgebase.article_settings.pin_article')
+            checked=article.pinArticle
+            disabled=form.isSubmitting
+          }}
+        {{/ko-form/field}}
+
+        {{#ko-form/field class=(local-class "form-field")}}
+          {{#ko-form/field/label}}
+            {{t 'admin.knowledgebase.article_settings.search_keywords'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input 
+            multiline=true
+            lines=3
+            size="full"
+            name="searchKeywords"
+            value=article.searchKeywords
+            oninput=(action (mut article.searchKeywords) value="target.value")
+            disabled=form.isSubmitting
+          }}
+
+          {{ko-form/field/errors errors=article.errors.searchKeywords}}
+          <p local-class="help-text">{{t 'admin.knowledgebase.article_settings.search_keywords_help'}}</p>
+        {{/ko-form/field}}
+      </div>
+
+    </div>
+  {{/ko-admin/page}}
+{{/ko-form}}

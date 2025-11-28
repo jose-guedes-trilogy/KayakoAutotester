@@ -1,0 +1,24 @@
+{{#ko-admin/page
+  title=(t "admin.security.policy.title_breadcrumbs")
+  tabs=tabs
+  buttonText=(if (or hasChanges save.isRunning) (t "generic.save"))
+  onCancel=(if (or hasChanges save.isRunning) (perform cancel))
+  onSave=(perform save)
+  isSaving=save.isRunning
+  showFooter=true
+}}
+
+  {{#ko-admin/forms/group}}
+    {{ko-checkbox
+      checked=(eq editedSettings.security_allow_unsafe_html_in_articles.value "1")
+      label=(t "admin.settings.security.agents.html_content.title")
+      disabled=save.isRunning
+      onCheck=(action "editBooleanSetting" "security_allow_unsafe_html_in_articles")
+      qaClass="ko-admin-settings-security-html_content"
+    }}
+
+    {{ko-form/field/help text=(t "admin.settings.security.agents.html_content.description")}}
+
+    {{ko-form/field/errors errors=editedSettings.errors.security_allow_unsafe_html_in_articles class=(qa-cls "qa-field-error")}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

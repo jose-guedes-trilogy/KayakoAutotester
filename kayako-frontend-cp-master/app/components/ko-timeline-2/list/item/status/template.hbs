@@ -1,0 +1,52 @@
+{{#if noRecipients}}
+  {{#ko-tooltip
+    title=(t (concat "cases.post.status.tooltip_with_time." item.postStatus) time=(format-time item.postStatusUpdatedAt format="tooltip"))
+    side="top"
+    class=(join-classes
+      (local-class "status")
+      (local-class (dasherize item.postStatus))
+    )
+  }}
+    <span local-class="label">
+      {{t (concat "cases.post.status.label." item.postStatus)}}
+    </span>
+
+    <span local-class="icon">
+      {{ko-post-status-icon status=item.postStatus tooltip=false}}
+    </span>
+  {{/ko-tooltip}}
+{{else}}
+  {{#basic-dropdown horizontalPosition="right" as |dropdown|}}
+    {{#dropdown.trigger local-class="dropdown-trigger"}}
+      <span local-class="label">
+        {{t (concat "cases.post.status.label." item.postStatus)}}
+      </span>
+      <span local-class="icon">
+        {{ko-post-status-icon status=item.postStatus tooltip=false}}
+      </span>
+    {{/dropdown.trigger}}
+
+    {{#dropdown.content local-class="recipients-list"}}
+      <ul>
+        {{#each item.original.recipients as |recipient|}}
+          <li local-class="recipient">
+            <span>
+              <span local-class="icon">{{ko-post-status-icon status=recipient.emailDeliveryStatus tooltip=false}}</span>
+              <span local-class="name" title={{recipient.name}}>{{recipient.name}}</span>
+              <span local-class="email" title={{recipient.identity.email}}>{{recipient.identity.email}}</span>
+            </span>
+            {{#if item.postStatusRejectReason}}
+              {{#ko-tooltip title=(format-html-message (concat "cases.post.status.tooltip_with_time_and_error." recipient.emailDeliveryStatus) time=(format-time recipient.emailDeliveryStatusUpdatedAt format="tooltip") error=item.postStatusRejectReason) side="top" }}
+                <span>{{recipient.time}}</span>
+              {{/ko-tooltip}}
+            {{else}}
+              {{#ko-tooltip title=(t (concat "cases.post.status.tooltip_with_time." recipient.emailDeliveryStatus) time=(format-time recipient.emailDeliveryStatusUpdatedAt format="tooltip")) side="top" }}
+                <span>{{recipient.time}}</span>
+              {{/ko-tooltip}}
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    {{/dropdown.content}}
+  {{/basic-dropdown}}
+{{/if}}

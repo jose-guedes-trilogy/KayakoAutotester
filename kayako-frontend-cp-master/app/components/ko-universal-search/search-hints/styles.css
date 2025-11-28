@@ -1,0 +1,31 @@
+.is-active {
+  background-color: $trivial-blue;
+}
+
+.block {
+  padding-bottom: 30px;
+}
+
+.container {
+  position: relative;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 24px;
+  flex-wrap: wrap;
+  transition: background-color 0.15s ease;
+}
+
+.suggestion-description {
+  color: #A1AAAF;
+  padding-left: 12px;
+  font-size: 13px;
+
+  &:before {
+    content: '-';
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.load-link {
+  display: flex;
+  flex-grow: 1;
+  padding: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  display: flex;
+  flex-grow: 1;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader--idle {
+  composes: loader;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.loader--running {
+  composes: loader;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.previous-activities-container-wrapper {
+  margin: auto 0 0;
+  animation: fadein-timeline 0.15s;
+  padding-bottom: 22px;
+}
+
+@keyframes fadein-timeline {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.previous-activities-container {
+  margin-top: 19px;
+}
+
+.previous-activities {
+  height: 1px;
+  margin: 27px 18px 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px dashed #EBEEF0;
+}
+
+.previous-activities-blob {
+  padding: 9px 33px;
+  border-radius: 27px;
+  background: #EFF8FA;
+  color: #5F6C73;
+}
+
+.previous-activities-arrow {
+  margin-right: 7px;
+  color: #4EAFCB;
+}
+
+.jump-bar {
+  position: fixed;
+  z-index: $z-pagination;
+  left: 78px;
+  right: 338px;
+  margin-top: 4.5px;
+}

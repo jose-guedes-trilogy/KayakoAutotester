@@ -1,0 +1,75 @@
+{{#if (eq definitionInputType "multiple")}}
+  {{ko-select/multiple
+    renderInPlace=true
+    searchField="string"
+    selected=selectedOptionsFromOption
+    options=unselectedOptionsFromOption
+    onChange=(action "setMultipleValue")
+  }}
+{{else if (eq definitionInputType "autocomplete")}}
+  {{#ko-select
+    selected=currentPropositionValueAsAutocompleteObject
+    searchEnabled=true
+    renderInPlace=true
+    options=currentPropositionValueAsAutocompleteObject
+    search=(action "searchAutocomplete")
+    searchField="name"
+    onChange=(action "selectFromAutocomplete")
+    as |value|
+  }}
+    {{#if value.string}}
+      {{value.string}}
+    {{else}}
+      {{get value autocompleteOptionLabelPath}}
+    {{/if}}
+  {{/ko-select}}
+{{else if (eq definitionInputType "tags")}}
+  {{ko-select/multiple
+    allowCreate=true
+    selected=selectedTagsFromValue
+    onValueAddition=(action "addTagToValue")
+    onValueRemoval=(action "removeTagFromValue")
+  }}
+{{else if (eq definitionInputType "options")}}
+  {{#ko-select
+    searchField="string"
+    selected=currentlySelectedDefinitionValue
+    options=selectedOperatorDefinitionValueObjects
+    searchEnabled=true
+    renderInPlace=true
+    onChange=(action "selectValue")
+  as |value|}}
+    {{value.string}}
+  {{/ko-select}}
+{{else if (eq definitionInputType "date-relative")}}
+  {{#ko-select
+    searchField="string"
+    selected=currentlySelectedDefinitionValue
+    options=selectedOperatorDefinitionValueObjects
+    searchEnabled=true
+    renderInPlace=true
+    onChange=(action "selectValue")
+    as |value|
+  }}
+    {{t (concat "admin.predicate_builder.date_relative.value." (or value.string "none"))}}
+  {{/ko-select}}
+{{else if (eq definitionInputType "date-absolute")}}
+  {{ko-date-select value=currentProposition.value onChange=(action "setIsoDate")}}
+{{else if (eq definitionInputType "boolean")}}
+  {{#ko-select
+    renderInPlace=true
+    options=booleanOptions
+    selected=currentPropositionAsBooleanString
+    onChange=(action "setBooleanValue")
+    as |option|
+  }}
+    {{t (concat "admin.predicate_builder.boolean." option)}}
+  {{/ko-select}}
+{{else}}
+  {{ko-input
+    size="full"
+    value=currentProposition.value
+    onInput=(perform captureTextAndSetAsValue value="target.value")
+    onKeyUp=(action "handleEnterPressInInput")
+  }}
+{{/if}}

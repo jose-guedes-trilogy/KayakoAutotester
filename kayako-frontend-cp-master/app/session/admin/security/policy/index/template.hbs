@@ -1,0 +1,92 @@
+{{#ko-admin/page
+  title=(t "admin.security.policy.title_breadcrumbs")
+  tabs=tabs
+  buttonText=(if (or isEdited save.isRunning) (t "generic.save"))
+  onCancel=(if (or isEdited save.isRunning) (perform cancel))
+  onSave=(perform save)
+  isSaving=save.isRunning
+  showFooter=true
+}}
+  {{#if customSecurityPolicy}}
+    {{#ko-admin/forms/group legend=(t "admin.settings.security.agents.security_policy.heading")}}
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.security_policy.session_expiry.title")}}
+
+        {{ko-input type="number" size="small" value=editedSettings.security_agent_session_expiry.value onInput=(action "editTextSetting" "security_agent_session_expiry") disabled=save.isRunning qaClass="ko-admin-settings-security-session-expiry"}}
+        {{t 'generic.units.hours'}}
+
+        {{#ko-form/field/help}}{{format-html-message "admin.settings.security.agents.security_policy.session_expiry.description"}}{{/ko-form/field/help}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_session_expiry class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.security_policy.max_login_attempts.title")}}
+
+        {{ko-input type="number" size="small" value=editedSettings.security_agent_login_attempt_limit.value onInput=(action "editTextSetting" "security_agent_login_attempt_limit") disabled=save.isRunning qaClass="ko-admin-settings-security-login-attempt-limit"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.agents.security_policy.max_login_attempts.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_login_attempt_limit class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.security_policy.password_expiry.title")}}
+
+        {{ko-input type="number" size="small" value=editedSettings.security_agent_password_expires_in.value onInput=(action "editTextSetting" "security_agent_password_expires_in") disabled=save.isRunning qaClass="ko-admin-settings-security-password-expires-in"}}
+        {{t 'generic.units.days'}}
+
+        {{#ko-form/field/help}}{{format-html-message "admin.settings.security.agents.security_policy.password_expiry.description"}}{{/ko-form/field/help}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_expires_in class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.settings.security.agents.password_policy.heading")}}
+      {{#ko-form/field/help}}{{format-html-message "admin.settings.security.agents.password_policy.description"}}{{/ko-form/field/help}}
+
+      <div local-class="field">
+        <div local-class="field-column">{{t "admin.settings.security.agents.password_policy.minumum_length.title"}}</div>
+        <div local-class="field-column">{{ko-input type="number" size="small" value=editedSettings.security_agent_password_min_characters.value onInput=(action "editTextSetting" "security_agent_password_min_characters") disabled=save.isRunning qaClass="ko-admin-settings-security-minimum-length"}}</div>
+      </div>
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_min_characters class=(qa-cls "qa-field-error")}}
+
+      <div local-class="field">
+        <div local-class="field-column">{{t "admin.settings.security.agents.password_policy.minumum_numbers.title"}}</div>
+        <div local-class="field-column">{{ko-input type="number" size="small" value=editedSettings.security_agent_password_min_numbers.value onInput=(action "editTextSetting" "security_agent_password_min_numbers") disabled=save.isRunning qaClass="ko-admin-settings-security-minimum-numbers"}}</div>
+      </div>
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_min_numbers class=(qa-cls "qa-field-error")}}
+
+      <div local-class="field">
+        <div local-class="field-column">{{t "admin.settings.security.agents.password_policy.minumum_symbols.title"}}</div>
+        <div local-class="field-column">{{ko-input type="number" size="small" value=editedSettings.security_agent_password_min_symbols.value onInput=(action "editTextSetting" "security_agent_password_min_symbols") disabled=save.isRunning qaClass="ko-admin-settings-security-minimum-symbols"}}</div>
+      </div>
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_min_symbols class=(qa-cls "qa-field-error")}}
+
+      <div local-class="field">
+        <div local-class="field-column">{{t "admin.settings.security.agents.password_policy.require_mixed_case.title"}}</div>
+        <div local-class="field-column" class="{{qa-cls 'ko-admin-settings-security-mixed-case'}}">
+          {{#ko-select
+            size="small"
+            selected=editedSettings.security_agent_password_require_mixed_case.value
+            onChange=(action "editSetting" "security_agent_password_require_mixed_case")
+            options=mixedCaseOptions
+            disabled=save.isRunning
+          as |option|}}
+            {{t (concat "admin.settings.security.agents.password_policy.require_mixed_case.options." option)}}
+          {{/ko-select}}
+        </div>
+      </div>
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_require_mixed_case class=(qa-cls "qa-field-error")}}
+
+      <div local-class="field">
+        <div local-class="field-column">{{t "admin.settings.security.agents.password_policy.maximum_consecutive_characters.title"}}</div>
+        <div local-class="field-column">
+          {{ko-input type="number" size="small" value=editedSettings.security_agent_password_max_consecutive.value onInput=(action "editTextSetting" "security_agent_password_max_consecutive") disabled=save.isRunning qaClass="ko-admin-settings-security-maximum-consecutive"}}
+          <span local-class="description">{{t "admin.settings.security.agents.password_policy.maximum_consecutive_characters.description"}}</span>
+        </div>
+      </div>
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_password_max_consecutive class=(qa-cls "qa-field-error")}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+{{/ko-admin/page}}

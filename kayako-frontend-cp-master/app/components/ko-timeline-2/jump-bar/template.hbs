@@ -1,0 +1,20 @@
+<div local-class="jump-bar">
+  <div onclick={{action on-jump}} local-class="jump">
+    <span local-class="jump-arrow">
+      {{inline-svg "jump-bar-down"}}
+    </span>
+    <span local-class="jump-text">
+      {{t "cases.posts.jump_to_latest"}}
+    </span>
+    <span local-class="jump-message">
+      {{t "cases.posts.unread_posts" num=unreadCount}}
+    </span>
+  </div>
+  <div local-class="mark-as-seen">
+    {{#unless moreNewerPosts}}
+      <div onclick={{action on-clear}} local-class="mark-as-seen-action">
+        {{inline-svg "jump-bar-dismiss"}}
+      </div>
+    {{/unless}}
+  </div>
+</div>

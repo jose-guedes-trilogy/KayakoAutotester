@@ -1,0 +1,24 @@
+<div local-class="container">
+  {{#ko-select
+    class=(qa-cls "qa-configure-column")
+    options=unusedColumns
+    onChange=onColumnAdd
+    placeholder=(t "generic.select_placeholder")
+    size="medium"
+  as |column|}}
+    {{column.title}}
+  {{/ko-select}}
+
+  <div local-class="container">
+    {{#ko-reorderable-list handleOutside=true onReorder=onColumnReorder items=columns as |column|}}
+      <div local-class="item">
+        <span local-class="content">
+          {{column.title}}
+        </span>
+        <div local-class="action" class="{{qa-cls "qa-configure-column__remove"}}" onclick={{action onColumnRemove column}}>
+          {{ko-icon name="minusCircle" color="#BEC4C7" size=18}}
+        </div>
+      </div>
+    {{/ko-reorderable-list}}
+  </div>
+</div>

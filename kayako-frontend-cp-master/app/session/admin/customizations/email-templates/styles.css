@@ -1,0 +1,10 @@
+.brand-selector {
+  width: 220px;
+}
+
+.loader {
+  height: 82px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

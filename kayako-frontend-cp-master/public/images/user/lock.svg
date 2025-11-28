@@ -1,0 +1,10 @@
+<svg width="26px" height="34px" viewBox="19 15 26 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Group-13" stroke="none" fill="none" transform="translate(20.000000, 16.000000)" stroke-linecap="square" stroke-width="1" fill-rule="evenodd">
+    <g stroke="#98A162">
+      <path d="M11.6363636,0 L11.6363636,0 C7.63636364,0 4.36363636,3.27272727 4.36363636,7.27272727 L4.36363636,11.6363636 L18.9090909,11.6363636 L18.9090909,7.27272727 C18.9090909,3.27272727 15.6363636,0 11.6363636,0 Z" id="Shape" stroke-width="2"></path>
+      <rect id="Rectangle-path" stroke-width="2" x="0" y="11.6363636" width="23.2727273" height="20.3636364"></rect>
+      <circle id="Oval" stroke-width="2" cx="11.6363636" cy="20.3636364" r="2.90909091"></circle>
+      <path d="M11.6363636,23.2727273 L11.6363636,26.1818182" id="Shape" stroke-width="2"></path>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<div local-class="item">
+  {{ko-input value=valueLocale.translation onInput=(action "setValue" value="target.value") placeholder=(t "admin.casefields.type.checkbox.field_options.title")}}
+</div>
+{{#if (and isCaseField (plan-has 'custom_field_tags'))}}
+  <div local-class="item">
+    {{ko-input value=option.tag onInput=(action "setTag" value="target.value") placeholder=(t "admin.casefields.type.checkbox.field_options.tag")}}
+  </div>
+{{/if}}
+<div local-class="item">
+  {{ko-admin/inline-locale-edit localeFields=option.values field="label"}}
+</div>

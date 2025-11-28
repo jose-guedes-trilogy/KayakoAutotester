@@ -1,0 +1,46 @@
+{{#ko-info-bar/field/select/arrow show=(and extra.showBottomArrow (not select.disabled)) active=extra.isEdited}}
+  {{#ko-info-bar/item
+    id=(concat "ko-info-bar-select-trigger-" select.uniqueId)
+    class=(local-class "trigger")
+    isEdited=extra.isEdited
+    isKREEdited=extra.isKREEdited
+    hasError=extra.isErrored
+    isActive=select.isOpen
+    isDisabled=select.disabled
+    qaClass=(qa-cls (if extra.isKREEdited "qa-is-kre-edited"))
+  }}
+    {{#if (not select.disabled)}}
+      {{#if select.loading}}
+        <span local-class="loading"></span>
+      {{else}}
+        <i local-class="icon" class="{{if select.isOpen "i-search" "i-select"}}"></i>
+      {{/if}}
+    {{/if}}
+    <span local-class="header">{{extra.title}}</span>
+    <input
+      type="search"
+      local-class="input {{if (not select.isOpen) "input--hidden"}}"
+      tabindex="0"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      role="textbox"
+      value={{value}}
+      placeholder={{extra.searchPlaceholder}}
+      onmousedown={{action "handleMouseDown"}}
+      oninput={{onInput}}
+      onfocus={{select.actions.open}}
+      onkeydown={{action "handleKeyDown"}}
+    >
+    {{#if (not select.isOpen)}}
+      <span local-class="placeholder" title="{{value}}">
+        {{#if triggerValueComponent}}
+          {{component triggerValueComponent select=select value=value selected=select.selected}}
+        {{else}}
+          <span local-class="middle-ellipsis-span" data-content-start="{{middle-ellipsis value startPart=true}}" data-content-end="{{middle-ellipsis value startPart=false}}"></span>
+        {{/if}}
+      </span>
+    {{/if}}
+  {{/ko-info-bar/item}}
+{{/ko-info-bar/field/select/arrow}}

@@ -1,0 +1,7 @@
+{{#ko-admin/forms/group legend=(t 'admin.casefields.edit.heading.regex')}}
+  {{#ko-form/field}}
+    {{ko-input qaClass="ko-admin_case-fields_edit_regex__input" value=field.regularExpression onInput=(action (mut field.regularExpression) value="target.value")}}
+    {{#ko-form/field/help}}{{t 'admin.casefields.help.regex'}}{{/ko-form/field/help}}
+    {{ko-form/field/errors errors=field.errors.regularExpression}}
+  {{/ko-form/field}}
+{{/ko-admin/forms/group}}

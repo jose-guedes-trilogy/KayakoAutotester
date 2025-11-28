@@ -1,0 +1,39 @@
+.trigger {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  overflow: hidden;
+
+  :global(.ember-power-select-selected-item) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 9px;
+    margin-right: 20px;
+    font-size: 15px;
+    line-height: 2.3;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
+
+  :global(.ember-power-select-placeholder) {
+    margin-left: 9px;
+    margin-right: 20px;
+  }
+}
+
+.input {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0 0 0 9px;
+  margin-right: 20px;
+  line-height: 34px;
+  height: 34px;
+}
+
+.loading {
+  composes: loading from '../shared';
+}

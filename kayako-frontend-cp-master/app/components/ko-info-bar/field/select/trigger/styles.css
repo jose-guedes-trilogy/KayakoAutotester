@@ -1,0 +1,74 @@
+.trigger {
+  cursor: pointer;
+  line-height: 18px;
+  color: #3B4048;
+}
+
+.input {
+  width: calc(100% - 16px);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  overflow: hidden;
+}
+
+.input--hidden {
+  opacity: 0;
+}
+
+.placeholder {
+  height: 20px;
+  text-overflow: ellipsis;
+  right: 35px;
+  overflow: hidden;
+  position: absolute;
+  left: 18px;
+  cursor: text;
+  white-space: nowrap;
+}
+
+.icon {
+  @include icon {
+    position: absolute;
+    right: 18px;
+    top: 20px; /* not a regular spacing variable - used for centering */
+    color: #A1AAAF;
+  }
+}
+
+.loading {
+  composes: loading-icon from 'frontend-cp/components/ko-select/shared';
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  margin: auto;
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+  user-select: none;
+}
+
+.middle-ellipsis-span::before {
+  content: attr(data-content-start);
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 50%;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.middle-ellipsis-span::after {
+  content: attr(data-content-end);
+  text-overflow: inherit;
+  direction: rtl;
+  unicode-bidi: plaintext;
+  display: inline-block;
+  max-width: 50%;
+  overflow: hidden;
+  white-space: pre;
+}

@@ -1,0 +1,270 @@
+.root {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modalBottom {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.signatureInput {
+  width: 100%;
+  min-height: 135px;
+  padding: 18px 45px 18px 18px;
+  margin-bottom: 9px;
+  resize: none;
+  border: none;
+  border-radius: 0;
+  overflow-y: auto;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.message {
+  padding-top: 4px;
+  color: $grey-6;
+  font-size: 14px;
+}
+
+.closeModal {
+  margin-right: 8px;
+}
+
+.buttonLoading {
+  margin: 0 auto;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.delete-user-buttons {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+.timeline-header {
+  display: flex;
+  margin: auto 18px 0;
+  padding-top: 45px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid $grey-2;
+  align-items: flex-start;
+}
+
+.timeline-header-image {
+  margin: 5px 14px 0 0;
+  flex-shrink: 0;
+}
+
+.timeline-header-body {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.timeline-header-title {
+  line-height: 25px;
+  margin: 0;
+}
+
+.timeline-header-subtitle {
+  color: #838D93;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.timeline-preamble {
+  margin: 18px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #838D93;
+  max-width: 900px;
+
+  > p {
+    padding: 6px 0;
+  }
+}
+
+.timeline-header-subtitle-segment:not(:empty) + .timeline-header-subtitle-segment:before {
+  content: '·';
+  font-weight: 600;
+}
+
+.submit-properties {
+  padding: 18px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  transition: padding 0.25s;
+
+  > button:first-of-type {
+    transition: height 0.25s;
+  }
+
+  > button {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  &.submitting {
+    padding: 18px;
+  }
+
+  &:not(.show-submit) {
+    padding: 18px;
+    > button:first-of-type {
+      height: 0;
+    }
+    .or-text {
+      width: 0;
+    }
+    .cancel-property-changes {
+      font-size: 14px;
+    }
+  }
+}
+
+.cancel-property-changes {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #5F6C73;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 3px;
+  transition: font-size 0.25s;
+}
+
+.or-text {
+  text-transform: lowercase;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.new-conversation-button {
+  margin-right: 11px;
+}
+
+.padded-content--small {
+  padding: 0 28px 20px;
+}
+
+.disable-otp {
+  &-title {
+    margin-bottom: 8px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  &-subtitle {
+    font-size: 14px;
+    color: $grey-6;
+  }
+}
+
+.grant-list-container {
+  min-height: 300px;
+}
+
+.grant-message {
+  display: flex;
+  justify-content: center;
+  margin: 60px 10px;
+}
+
+.redirection-loader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .redirection-message {
+    color: #838D94;
+    margin-top: 12px;
+  }
+}
+
+.replyOptions {
+  display: flex;
+  align-items: center;
+  margin-right: 9px;
+}
+
+.replyOptionDescription {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  margin-left: 10px;
+}
+
+.editor-footer-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.note-destination-no-send-button > div {
+  margin-right: 0;
+}
+
+.delete-modal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 216px;
+}
+
+.delete-user-header-title {
+  font-size: 24px;
+  line-height: 31px;
+  color: $color-bad;
+  margin-top: 12px;
+}
+
+.delete-user-header-subtitle {
+  font-size: 15px;
+  color: $grey-7;
+  line-height: 25px;
+  margin-top: 9px;
+  font-weight: 600;
+}
+
+.delete-user-warnings {
+  padding: 29px 39px;
+}
+
+.delete-user-warning-title {
+  font-size: 15px;
+  color: $grey-7;
+  line-height: 24px;
+}
+
+.delete-user-warning-list {
+  font-size: 15px;
+  color: $grey-8;
+  line-height: 24px;
+
+  li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin-top: 9px;
+
+    span {
+      margin-left: 12px;
+    }
+  }
+}

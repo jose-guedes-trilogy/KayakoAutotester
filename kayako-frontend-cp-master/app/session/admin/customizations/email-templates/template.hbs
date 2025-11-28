@@ -1,0 +1,121 @@
+{{#ko-admin/page
+  title=(t "admin.brands.edit.title" name=brand.name)
+  tabs=tabs
+  buttonText=(t "generic.save")
+  onSave=(perform save)
+  showFooter=true
+  isSaving=save.isRunning
+}}
+  {{#ko-form/field/help}}{{t "admin.manage.brands.edit.templates.description"}}{{/ko-form/field/help}}
+
+  {{#ko-admin/forms/group legend="Brand"}}
+    <div local-class="brand-selector">
+      {{#ko-select
+        options=brands
+        onChange=(action "brandChanged")
+        selected=brand as |brand|}}
+        {{ brand.name }}
+      {{/ko-select}}
+    </div>
+  {{/ko-admin/forms/group}}
+
+  {{#if updateTemplates.isRunning}}
+    <div local-class="loader">
+      {{ko-loader large=true}}
+    </div>
+  {{else}}
+    {{#ko-admin/forms/group legend=(t "admin.manage.brands.edit.templates.heading.reply")}}
+
+      {{#if (variation "release-improved-email-template-editing")}}
+        <div class={{qa-cls "qa-brand-edit-templates-reply"}}>
+          {{ember-ace
+            minLines=5
+            maxLines=24
+            highlightActiveLine=true
+            showPrintMargin=false
+            theme="ace/theme/chrome"
+            mode="ace/mode/html"
+            value=(or editedEmailCaseNotification.contents '')
+            update=(action "updatedCaseNotification")
+          }}
+        </div>
+      {{else}}
+        {{ko-input
+          multiline=true
+          monospace=true
+          size="full"
+          value=editedEmailCaseNotification.contents
+          qaClass="qa-brand-edit-templates-reply"
+          disabled=save.isRunning
+          onInput=(action (mut editedEmailCaseNotification.contents) value="target.value")
+        }}
+      {{/if}}
+
+      {{#ko-form/field/help}}{{t "admin.manage.brands.edit.templates.reply.description"}}{{/ko-form/field/help}}
+
+      {{ko-form/field/errors errors=emailCaseNotification.errors.contents}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.manage.brands.edit.templates.heading.notification")}}
+      {{#if (variation "release-improved-email-template-editing")}}
+        <div class={{qa-cls "qa-brand-edit-templates-notification"}}>
+          {{ember-ace
+            minLines=5
+            maxLines=24
+            highlightActiveLine=true
+            showPrintMargin=false
+            theme="ace/theme/chrome"
+            mode="ace/mode/html"
+            value=(or editedEmailNotification.contents '' )
+            update=(action "updatedEmailNotification")
+          }}
+        </div>
+      {{else}}
+        {{ko-input
+          multiline=true
+          monospace=true
+          size="full"
+          value=editedEmailNotification.contents
+          qaClass="qa-brand-edit-templates-notification"
+          disabled=save.isRunning
+          onInput=(action (mut editedEmailNotification.contents) value="target.value")
+        }}
+      {{/if}}
+
+      {{#ko-form/field/help}}{{t "admin.manage.brands.edit.templates.notification.description"}}{{/ko-form/field/help}}
+
+      {{ko-form/field/errors errors=emailNotification.errors.contents}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.manage.brands.edit.templates.heading.satisfaction_survey")}}
+      {{#if (variation "release-improved-email-template-editing")}}
+        <div class={{qa-cls "qa-brand-edit-templates-satisfaction-survey"}}>
+          {{ember-ace
+            minLines=5
+            maxLines=24
+            highlightActiveLine=true
+            showPrintMargin=false
+            theme="ace/theme/chrome"
+            mode="ace/mode/html"
+            value=(or editedEmailSatisfaction.contents '')
+            update=(action "updatedEmailSatisfaction")
+          }}
+        </div>
+      {{else}}
+        {{ko-input
+          multiline=true
+          monospace=true
+          size="full"
+          value=editedEmailSatisfaction.contents
+          qaClass="qa-brand-edit-templates-satisfaction-survey"
+          disabled=save.isRunning
+          onInput=(action (mut editedEmailSatisfaction.contents) value="target.value")
+        }}
+      {{/if}}
+
+      {{#ko-form/field/help}}{{t "admin.manage.brands.edit.templates.satisfaction_survey.description"}}{{/ko-form/field/help}}
+
+      {{ko-form/field/errors errors=emailSatisfaction.errors.contents}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+{{/ko-admin/page}}

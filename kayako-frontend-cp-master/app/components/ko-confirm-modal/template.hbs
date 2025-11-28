@@ -1,0 +1,21 @@
+{{#if activeConfirmation}}
+  {{#ko-modal on-close=(action "onCancel") on-confirm=(action "onConfirm") showHeader=false width="400px" as |modal|}}
+    {{#if modal.isMain}}
+      <div local-class="main">
+        <div local-class="header">{{activeConfirmation.header}}</div>
+        <div local-class="body" class="{{qa-cls "qa-ko-confirm-modal__body"}}">{{activeConfirmation.text}}</div>
+      </div>
+    {{/if}}
+
+    {{#if modal.isFooter}}
+      <div local-class="button">
+        {{#ko-button type="naked" qaClass="qa-ko-confirm-modal__cancel" onClick=(action "onCancel")}}
+          {{activeConfirmation.cancelLabel}}
+        {{/ko-button}}
+      </div>
+      {{#ko-button type=activeConfirmation.confirmButtonType qaClass="qa-ko-confirm-modal__confirm" onClick=(action "onConfirm")}}
+        {{activeConfirmation.confirmLabel}}
+      {{/ko-button}}
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}

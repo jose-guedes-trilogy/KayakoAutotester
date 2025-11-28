@@ -1,0 +1,112 @@
+{{#with legacyRateplans as |rateplans|}}
+  <div>
+    {{#each rateplans as |rateplan|}}
+      {{ko-admin/rateplans/item
+        rateplan=rateplan
+        selectedPlan=selectedPlan
+        isDisabled=disableActions
+        selectedTerm=selectedTerm.value
+        selectedNumberOfSeats=selectedNumberOfSeats
+        seatsLimit=seatsLimit
+        subscriptionAmount=subscriptionAmount
+        discountAmount=discountAmount
+        nextChargeDate=nextChargeDate
+        stickySummary=_stickySummary
+        calculatingSummary=calculatingSummary
+        grossTotal=grossTotal
+        seatsChanged=(action "seatsChanged")
+        switchPlan=(action "switchPlan")
+      }}
+    {{/each}}
+  </div>
+
+  <section local-class="update-message">
+    <h3 local-class="update-message-title">
+      {{t "account.plans.update_message.title" }}
+    </h3>
+    <div local-class="update-message-body">
+      {{format-html-message "account.plans.update_message.body" }}
+    </div>
+  </section>
+{{/with}}
+
+{{#if ratePlanGroups}}
+  {{#with ratePlanGroups as |rateplans|}}
+    <div>
+      {{#each rateplans as |rateplan|}}
+        {{ko-admin/rateplans/item-group
+          rateplanGroup=rateplan
+          selectedPlan=selectedPlan
+          isDisabled=disableActions
+          selectedTerm=selectedTerm.value
+          selectedNumberOfSeats=selectedNumberOfSeats
+          selectedNumberOfCollaborators=selectedNumberOfCollaborators
+          defaultNumberOfCollaborators=defaultNumberOfCollaborators
+          seatsLimit=seatsLimit
+          collaboratorsLimit=collaboratorsLimit
+          subscriptionAmount=subscriptionAmount
+          discountAmount=discountAmount
+          nextChargeDate=nextChargeDate
+          stickySummary=_stickySummary
+          calculatingSummary=calculatingSummary
+          grossTotal=grossTotal
+          seatsChanged=(action "seatsChanged")
+          collaboratorsChanged=(action attrs.collaboratorsChanged)
+          agentsChanged=(action attrs.agentsChanged)
+          switchPlan=(action "switchPlan")
+        }}
+      {{/each}}
+    </div>
+  {{/with}}
+{{else}}
+  {{#with latestRateplans as |rateplans|}}
+    <div>
+      {{#each rateplans as |rateplan|}}
+        {{ko-admin/rateplans/item
+          rateplan=rateplan
+          selectedPlan=selectedPlan
+          isDisabled=disableActions
+          selectedTerm=selectedTerm.value
+          selectedNumberOfSeats=selectedNumberOfSeats
+          seatsLimit=seatsLimit
+          collaboratorsLimit=collaboratorsLimit
+          subscriptionAmount=subscriptionAmount
+          discountAmount=discountAmount
+          nextChargeDate=nextChargeDate
+          stickySummary=_stickySummary
+          calculatingSummary=calculatingSummary
+          grossTotal=grossTotal
+          seatsChanged=(action "seatsChanged")
+          switchPlan=(action "switchPlan")
+        }}
+      {{/each}}
+    </div>
+  {{/with}}
+{{/if}}
+{{#if noRateplansAvailable }}{{t "account.plans.noPlanAvailableDuetoYearMismatch"}}{{/if}}
+<div local-class="plans-footer">
+  <div local-class="listfilters">
+    {{#each ratePlanTerms as |term|}}
+      <div local-class="radio">
+        {{#if (eq ratePlanTerms.length 1)}}
+          <label local-class="radio-label" for="{{uniqueId}}">{{term.label}}</label>
+        {{else}}
+          {{ko-radio qaClass="ko-admin_rateplans_list--radio" label=term.label checked=(eq selectedTerm.value term.value) onChange=(action "termChanged" term) disabled=disableActions}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+
+  {{#if (gt ratePlanTerms 1) }}
+    <div local-class="listfilters">
+      {{#each ratePlanTerms as |term|}}
+        <div local-class="radio">
+          {{ko-radio qaClass="ko-admin_rateplans_list--radio" label=term.label checked=(eq selectedTerm.value term.value) onChange=(action "termChanged" term) disabled=disableActions}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  <div local-class="compare-plans">
+    {{#ko-button onClick=(action onCtaComparePlans) href="http://kayako.com/pricing" target="_blank" rel="noopener noreferrer"}}{{t "account.plans.compare.title"}}{{/ko-button}}
+  </div>
+</div>

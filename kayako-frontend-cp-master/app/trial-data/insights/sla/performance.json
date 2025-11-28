@@ -1,0 +1,435 @@
+{
+  "status": 200,
+  "data": {
+    "start_at": "2016-05-28T00:00:00+00:00",
+    "end_at": "2016-06-27T23:59:59+00:00",
+    "previous_start_at": "2016-04-16T00:00:00+00:00",
+    "previous_end_at": "2016-05-16T23:59:59+00:00",
+    "interval": "DAY",
+    "interval_count": 31,
+    "performance_series": [
+      {
+        "sla": {
+          "id": 22,
+          "resource_type": "sla"
+        },
+        "series": {
+          "name": "percentage_achieved",
+          "data": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16.667,
+            54.783,
+            61.538,
+            73.333,
+            61.875,
+            79.07,
+            70.588,
+            34.661,
+            48.148,
+            47.619,
+            81.818,
+            40.594
+          ],
+          "previous": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "resource_type": "report_series_comparison"
+        },
+        "resource_type": "report_performance_series"
+      }
+    ],
+    "resource_type": "report_sla_performance"
+  },
+  "resources": {
+    "case_priority": {
+      "14": {
+        "id": 14,
+        "label": "Low",
+        "level": 4,
+        "created_at": "2016-01-16T05:47:57+00:00",
+        "updated_at": "2016-06-01T11:40:33+00:00",
+        "resource_type": "case_priority",
+        "resource_url": "https://support.kayako.com/api/v1/cases/priorities/14"
+      },
+      "18": {
+        "id": 18,
+        "label": "High",
+        "level": 2,
+        "created_at": "2016-01-16T05:47:57+00:00",
+        "updated_at": "2016-06-01T11:40:33+00:00",
+        "resource_type": "case_priority",
+        "resource_url": "https://support.kayako.com/api/v1/cases/priorities/18"
+      },
+      "24": {
+        "id": 24,
+        "label": "Critical",
+        "level": 1,
+        "created_at": "2016-01-16T05:47:57+00:00",
+        "updated_at": "2016-06-01T11:40:33+00:00",
+        "resource_type": "case_priority",
+        "resource_url": "https://support.kayako.com/api/v1/cases/priorities/24"
+      },
+      "26": {
+        "id": 26,
+        "label": "Normal",
+        "level": 3,
+        "created_at": "2016-01-16T05:47:57+00:00",
+        "updated_at": "2016-06-01T11:40:33+00:00",
+        "resource_type": "case_priority",
+        "resource_url": "https://support.kayako.com/api/v1/cases/priorities/26"
+      }
+    },
+    "predicate_collection": {
+      "5": {
+        "id": 5,
+        "propositions": [
+          {
+            "id": 5,
+            "resource_type": "proposition"
+          }
+        ],
+        "resource_type": "predicate_collection"
+      },
+      "6": {
+        "id": 6,
+        "propositions": [
+          {
+            "id": 6,
+            "resource_type": "proposition"
+          },
+          {
+            "id": 7,
+            "resource_type": "proposition"
+          },
+          {
+            "id": 8,
+            "resource_type": "proposition"
+          }
+        ],
+        "resource_type": "predicate_collection"
+      }
+    },
+    "proposition": {
+      "5": {
+        "id": 5,
+        "field": "cases.assigneeteamid",
+        "operator": "comparison_equalto",
+        "value": "16",
+        "resource_type": "proposition"
+      },
+      "6": {
+        "id": 6,
+        "field": "cases.channel",
+        "operator": "comparison_equalto",
+        "value": "MAIL",
+        "resource_type": "proposition"
+      },
+      "7": {
+        "id": 7,
+        "field": "cases.channel",
+        "operator": "comparison_equalto",
+        "value": "NOTE",
+        "resource_type": "proposition"
+      },
+      "8": {
+        "id": 8,
+        "field": "cases.channel",
+        "operator": "comparison_equalto",
+        "value": "HELPCENTER",
+        "resource_type": "proposition"
+      }
+    },
+    "sla": {
+      "22": {
+        "id": 22,
+        "title": "Support SLA",
+        "description": "4 hours for all cases",
+        "execution_order": 1,
+        "predicate_collections": [
+          {
+            "id": 5,
+            "resource_type": "predicate_collection"
+          },
+          {
+            "id": 6,
+            "resource_type": "predicate_collection"
+          }
+        ],
+        "targets": [
+          {
+            "id": 1,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 2,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 3,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 4,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 5,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 6,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 7,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 8,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 9,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 10,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 11,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 12,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 13,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 14,
+            "resource_type": "sla_target"
+          },
+          {
+            "id": 15,
+            "resource_type": "sla_target"
+          }
+        ],
+        "is_enabled": true,
+        "created_at": "2016-06-16T16:55:59+00:00",
+        "updated_at": "2016-06-16T16:55:59+00:00",
+        "resource_type": "sla",
+        "resource_url": "https://support.kayako.com/api/v1/slas/22"
+      }
+    },
+    "sla_target": {
+      "1": {
+        "id": 1,
+        "priority": null,
+        "type": "FIRST_REPLY_TIME",
+        "goal_in_seconds": 14400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "2": {
+        "id": 2,
+        "priority": {
+          "id": 14,
+          "resource_type": "case_priority"
+        },
+        "type": "FIRST_REPLY_TIME",
+        "goal_in_seconds": 14400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "3": {
+        "id": 3,
+        "priority": {
+          "id": 18,
+          "resource_type": "case_priority"
+        },
+        "type": "FIRST_REPLY_TIME",
+        "goal_in_seconds": 14400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "4": {
+        "id": 4,
+        "priority": {
+          "id": 26,
+          "resource_type": "case_priority"
+        },
+        "type": "FIRST_REPLY_TIME",
+        "goal_in_seconds": 14400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "5": {
+        "id": 5,
+        "priority": {
+          "id": 24,
+          "resource_type": "case_priority"
+        },
+        "type": "FIRST_REPLY_TIME",
+        "goal_in_seconds": 14400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "6": {
+        "id": 6,
+        "priority": null,
+        "type": "NEXT_REPLY_TIME",
+        "goal_in_seconds": 86400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "7": {
+        "id": 7,
+        "priority": {
+          "id": 14,
+          "resource_type": "case_priority"
+        },
+        "type": "NEXT_REPLY_TIME",
+        "goal_in_seconds": 86400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "8": {
+        "id": 8,
+        "priority": {
+          "id": 18,
+          "resource_type": "case_priority"
+        },
+        "type": "NEXT_REPLY_TIME",
+        "goal_in_seconds": 86400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "9": {
+        "id": 9,
+        "priority": {
+          "id": 26,
+          "resource_type": "case_priority"
+        },
+        "type": "NEXT_REPLY_TIME",
+        "goal_in_seconds": 86400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "10": {
+        "id": 10,
+        "priority": {
+          "id": 24,
+          "resource_type": "case_priority"
+        },
+        "type": "NEXT_REPLY_TIME",
+        "goal_in_seconds": 86400,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "11": {
+        "id": 11,
+        "priority": null,
+        "type": "RESOLUTION_TIME",
+        "goal_in_seconds": 259200,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "12": {
+        "id": 12,
+        "priority": {
+          "id": 14,
+          "resource_type": "case_priority"
+        },
+        "type": "RESOLUTION_TIME",
+        "goal_in_seconds": 259200,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "13": {
+        "id": 13,
+        "priority": {
+          "id": 18,
+          "resource_type": "case_priority"
+        },
+        "type": "RESOLUTION_TIME",
+        "goal_in_seconds": 259200,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "14": {
+        "id": 14,
+        "priority": {
+          "id": 26,
+          "resource_type": "case_priority"
+        },
+        "type": "RESOLUTION_TIME",
+        "goal_in_seconds": 259200,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      },
+      "15": {
+        "id": 15,
+        "priority": {
+          "id": 24,
+          "resource_type": "case_priority"
+        },
+        "type": "RESOLUTION_TIME",
+        "goal_in_seconds": 259200,
+        "operational_hours": "BUSINESS_HOURS",
+        "resource_type": "sla_target"
+      }
+    }
+  },
+  "resource": "report_sla_performance"
+}

@@ -1,0 +1,40 @@
+{{#if hasMultipleLocales}}
+  <div local-class="container">
+    {{#basic-dropdown renderInPlace=true horizontalPosition="center" as |dropdown|}}
+      {{#dropdown.trigger}}
+        <span local-class="modalButton {{if isEdited "modalButtonEdited"}}">
+          <span class="{{locale-flag defaultLocale}}">{{defaultLocale}}</span>
+          <span class="i-select"></span>
+        </span>
+      {{/dropdown.trigger}}
+
+      {{#dropdown.content local-class="dropdownContent"}}
+        <div local-class="popover">
+          <div local-class="arrow"></div>
+
+          <div local-class="locale-fields">
+            {{#each translationsForField as |localeField|}}
+              <span class={{locale-flag localeField.locale}}>{{localeField.locale}}</span>
+              {{#if (eq inputType "text")}}
+                <div local-class="text">
+                  {{ko-input size="full" value=localeField.translation onInput=(action (mut localeField.translation) value="target.value")}}
+                </div>
+              {{/if}}
+              {{#if (eq inputType "textArea")}}
+                <div local-class="text">
+                  {{ko-input multiline=true size="full" value=localeField.translation onInput=(action (mut localeField.translation) value="target.value")}}
+                </div>
+              {{/if}}
+            {{/each}}
+          </div>
+
+          <div local-class="buttons">
+            {{#ko-button type="primary" onClick=(action dropdown.actions.close)}}
+              {{t "admin.casefields.buttons.complete_locale_edit"}}
+            {{/ko-button}}
+          </div>
+        </div>
+      {{/dropdown.content}}
+    {{/basic-dropdown}}
+  </div>
+{{/if}}

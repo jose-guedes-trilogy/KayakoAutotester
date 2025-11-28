@@ -1,0 +1,32 @@
+<div local-class="actorContainer">
+  {{#if showAvatarImage}}
+    <div local-class="avatar">
+      {{ko-user-avatar size="large" user=selected}}
+    </div>
+  {{/if}}
+
+  {{#if options}}
+    <div local-class="actorDropdownContainer">
+      <div local-class="actorDropdown">
+        {{#ko-select
+          searchEnabled=true
+          selected=selected
+          searchField=searchField
+          options=options
+          onChange=onChange
+          placeholder=placeholder
+        as |option|}}
+          {{get option titleField}}
+        {{/ko-select}}
+      </div>
+
+      <div local-class="actorDescription">
+        {{description}}
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if isLoading}}
+    {{ko-insights/loader}}
+  {{/if}}
+</div>

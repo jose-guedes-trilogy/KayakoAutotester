@@ -1,0 +1,31 @@
+{{#with (or activeCasesList recentCasesList) as |cases|}}
+  {{#basic-dropdown local-class="active-cases-dropdown" matchTriggerWidth=true renderInPlace=true as |dropdown|}}
+    {{#dropdown.trigger local-class="sandbox-trigger" class=(qa-cls "qa-active-cases--trigger") tabindex=-1}}
+      <div local-class="active-cases-trigger">
+        <div local-class="conversations-count">
+          {{#if inRecentCasesMode}}
+            {{inline-svg 'icon--sidebar_conversation--active'}}
+          {{else}}
+            {{inline-svg 'icon--conversation--active'}}
+          {{/if}}
+        </div>
+        <div local-class="trigger-text" class="{{qa-cls "qa-active-cases--trigger-text"}}">{{casesTriggerText}}</div>
+        <div local-class="chevron">
+          {{inline-svg "chevron-down-circle"}}
+        </div>
+      </div>
+    {{/dropdown.trigger}}
+
+    <div local-class="sandbox-dropdown {{unless dropdown.isOpen "closed"}}">
+      {{ko-user-cases/dropdown
+        cases=cases
+        case=case
+        user=user
+        dropdown=dropdown
+        inRecentCasesMode=inRecentCasesMode
+        showTotalCountButton=showTotalCountButton
+        casesCount=user.recentCases.length
+      }}
+    </div>
+  {{/basic-dropdown}}
+{{/with}}

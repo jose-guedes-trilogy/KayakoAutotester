@@ -1,0 +1,35 @@
+.trigger {
+  outline: none;
+  height: 28px;
+  width: 28px;
+  background-color: #fff;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.15s, background-color 0.15s;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: $grey-1;
+  }
+
+  &[aria-expanded="true"] {
+    background-color: $grey-2;
+
+    .chevron {
+      transform: rotateX(180deg);
+    }
+  }
+
+  &[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.chevron {
+  transition: transform 0.125s;
+}

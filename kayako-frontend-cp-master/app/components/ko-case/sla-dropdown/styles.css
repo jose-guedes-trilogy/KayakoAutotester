@@ -1,0 +1,17 @@
+.sidebar {
+  padding: 0 15px;
+  margin-top: 14px;
+  color: #838D94;
+}
+
+.title {
+  font-size: 13px;
+  color: $grey-7;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 9px;
+  margin-top: 3px;
+}

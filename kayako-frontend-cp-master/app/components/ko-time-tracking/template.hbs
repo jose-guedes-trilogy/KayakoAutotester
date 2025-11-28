@@ -1,0 +1,144 @@
+{{#if isEnabled}}
+  <div local-class="time-tracking">
+    {{#basic-dropdown horizontalPosition="right" as |dropdown|}}
+      {{#dropdown.trigger class=(qa-cls "qa-time-tracking-trigger")}}
+        <div local-class="pill {{if dropdown.isOpen "active"}} {{if timeWorked "has-worked-time"}} {{if timerTotalSeconds "has-active-timer"}}">
+          <span local-class="pill__icon">{{inline-svg "time-tracking/tracking-icon"}}</span>
+          {{#if timerTotalSeconds}}
+            <span local-class="timer">{{ko-seconds-to-time totalSeconds}}</span>
+          {{else if timeWorked}}
+            <span local-class="worked-time">{{ko-seconds-to-time timeWorked}}</span>
+          {{/if}}
+        </div>
+      {{/dropdown.trigger}}
+
+      {{#dropdown.content class=(qa-cls "qa-time-tracking-dropdown")}}
+        <div local-class="dropdown">
+          <div local-class="title">{{t "cases.timetracking.title"}}</div>
+          <div local-class="time-entry {{if isEditing "is-editing"}} {{if (or isCaseClosed isCaseTrashed) "is-disabled"}}">
+            <div local-class="button-group">
+              <div local-class="time-input {{if isInputFocussed "is-focussed"}}">
+                <div>
+                  <div local-class="input-labels">
+                    <span>{{t "cases.timetracking.input.hours"}}</span>
+                    <span>{{t "cases.timetracking.input.minutes"}}</span>
+                    <span>{{t "cases.timetracking.input.seconds"}}</span>
+                  </div>
+                  <div local-class="inputs {{if isTimerRunning "is-updating"}}">
+                    <input
+                      local-class="input"
+                      maxlength="2"
+                      placeholder="{{t "cases.timetracking.input.placeholder"}}"
+                      value={{timerHours}}
+                      oninput={{action "inputHours"}}
+                      onkeypress={{action "validateInput"}}>:
+                    <input
+                      local-class="input"
+                      maxlength="2"
+                      placeholder="{{t "cases.timetracking.input.placeholder"}}"
+                      value={{timerMinutes}}
+                      oninput={{action "inputMinutes"}}
+                      onkeypress={{action "validateInput"}}>:
+                    <input
+                      local-class="input"
+                      class={{qa-cls "seconds-input"}}
+                      maxlength="2"
+                      placeholder="{{t "cases.timetracking.input.placeholder"}}"
+                      value={{timerSeconds}}
+                      oninput={{action "inputSeconds"}}
+                      onkeypress={{action "validateInput"}}>
+                  </div>
+                </div>
+                <div local-class="play-button" onclick={{action "playPauseTimer"}}>
+                  {{#if isTimerRunning}}
+                    {{inline-svg "time-tracking/pause-icon"}}
+                  {{else}}
+                    {{inline-svg "time-tracking/play-icon"}}
+                  {{/if}}
+                </div>
+              </div>
+              <div local-class="flex">
+                {{#ko-button
+                  type="primary" size="medium"
+                  hasAnimation=true
+                  loading=updateEntry.isRunning
+                  disabled=(not isTimerDirty)
+                  onClick=(perform updateEntry)
+                  qaClass="qa-save-button"}}
+                  {{t "generic.save"}}
+                {{/ko-button}}
+                <span
+                  local-class="cancel {{if (not isTimerDirty) "is-disabled"}}"
+                  onclick={{action "stopTimer"}}>
+                  {{t "generic.cancel"}}
+                </span>
+              </div>
+            </div>
+            <span local-class="checkbox">
+              {{ko-checkbox label=(t "cases.timetracking.billable") checked=isBillable onCheck=(action "updateIsBillable")}}
+            </span>
+          </div>
+
+          <div local-class="stat">
+            <div local-class="flex">
+              <span local-class="inline-icon">{{inline-svg "time-tracking/tracked-icon"}}</span>
+              <label local-class="label">{{t "cases.timetracking.tracked_label"}}</label>
+            </div>
+            {{#if entries}}
+              <div local-class="list {{if timerTotalSeconds "not-editable"}}">
+                {{#each entries as |log|}}
+                  {{ko-time-tracking/entry
+                    entry=log
+                    isEditing=isEditing
+                    onEditEntry=(action "editEntry" entry)
+                    afterDeleteEntry=(action "deductTotalTime" entry)
+                  }}
+                {{/each}}
+              </div>
+              <div local-class="total">
+                <b>{{t "cases.timetracking.total"}}</b>
+                <div local-class="flex">
+                  <b local-class="total-worked">{{ko-seconds-to-time timeWorked}}</b>
+                  {{#if timeBilled}}
+                    <div local-class="total-billed">
+                      <div local-class="inline-icon">
+                        {{inline-svg "dollar-icon"}}
+                      </div>
+                      {{ko-seconds-to-time timeBilled}}
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+            {{else}}
+              <p>{{t "cases.timetracking.tracked_placeholder"}}</p>
+            {{/if}}
+          </div>
+
+          <div local-class="stat">
+            <div local-class="flex">
+              <span local-class="inline-icon">{{inline-svg "time-tracking/eye-icon"}}</span>
+              <label local-class="label">{{t "cases.timetracking.activity_label"}}</label>
+            </div>
+            {{#if hasActivities}}
+              <div local-class="list">
+                {{#each activities as |activity|}}
+                  <div local-class="list-item">
+                    <div>
+                      <img local-class="avatar" src="{{activity.agent.avatar}}" width="16" height="16">
+                      {{activity.agent.fullName}}
+                    </div>
+                    <div>
+                      {{ko-seconds-to-time activity.totalTimeSpent}}
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+            {{else}}
+              <p>{{t "cases.timetracking.activity_placeholder"}}</p>
+            {{/if}}
+          </div>
+        </div>
+      {{/dropdown.content}}
+    {{/basic-dropdown}}
+  </div>
+{{/if}}

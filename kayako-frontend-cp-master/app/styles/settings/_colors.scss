@@ -1,0 +1,49 @@
+/*
+    Color settings and variables
+    (Ref: https://invis.io/6P8QL007M#/207186874_Colour_guide)
+   ========================================================================= */
+
+// Brand color
+$primary-blue: #4EAFCB;
+
+// Greys
+$grey-1: #F7F8F9; // Background fill
+$grey-2: #EBEEF0; // Secondary border
+$grey-3: #D1D5D7; // Border color
+$grey-4: #BEC4C7; // Lighter icons
+$grey-5: #A1AAAF; // Icons
+$grey-6: #838D94; // Lighter text
+$grey-7: #5F6C73; // Secondary text
+$grey-8: #2D3138; // Primary text
+
+// Links
+$color-link: $primary-blue;
+$color-link-hover: #3AA6C5;
+
+// Accent colors
+$color-good: 	#98A162;
+$color-bad: 	#E86048;
+$color-warning: #ECC645;
+$color-info: #EEF7FA;
+$color-kre-edited: #C2A8D0;
+$color-note-background: #FCF8EC;
+$color-note-border: #E0AF2A;
+$color-online: #4EAC5E;
+$color-purple-dark: #40364D;
+$color-twitter: 	#35AADE;
+$color-facebook:	#3B5A95;
+$color-orange: #FFA14C;
+
+// Trivial color
+$trivial-blue: #EFF8FA;
+$trivial-green: #F6F6F1;
+$trivial-yellow: #FCF8EC;
+$trivial-red: #FDF1EE;
+
+// Case Status colors
+$case-default: rgba(0, 0, 0, 0.08);
+$case-open: $primary-blue;
+$case-pending: $color-note-border;
+$case-completed: #36A148;
+$case-closed: $grey-5;
+$case-primary: #98A162;

@@ -1,0 +1,31 @@
+{{#if suggestedSearchOptions}}
+  <div local-class="block">
+    {{#ko-universal-search/title}}{{t "search.search_suggestions"}}{{/ko-universal-search/title}}
+
+    {{#each suggestedSearchOptions as |searchSuggestion|}}
+      <li
+        onmouseenter={{ action onHighlight searchSuggestion}}
+        onclick={{action onSelectSuggestion searchSuggestion}}
+        local-class="container {{if (eq searchSuggestion.searchTerm highlightedSuggestion.searchTerm) "is-active"}}"
+      >
+        <span class={{qa-cls "qa-ko-universal-search_search-hints__suggestion"}}>{{sanitize-html searchSuggestion.markedUpSearchTerm "bold"}}</span>
+        <span local-class="suggestion-description">{{searchSuggestion.searchDescription}}</span>
+      </li>
+    {{/each}}
+  </div>
+{{/if}}
+
+
+{{#if recentSearches}}
+  {{#ko-universal-search/title}}{{t "search.recent_searches"}}{{/ko-universal-search/title}}
+
+  {{#each recentSearches as |searchSuggestion|}}
+    <li
+      onmouseenter={{action onHighlight searchSuggestion}}
+      onclick={{action onSelectSuggestion searchSuggestion}}
+      local-class="container {{if (eq searchSuggestion highlightedSuggestion) "is-active"}}"
+    >
+      {{searchSuggestion}}
+    </li>
+  {{/each}}
+{{/if}}

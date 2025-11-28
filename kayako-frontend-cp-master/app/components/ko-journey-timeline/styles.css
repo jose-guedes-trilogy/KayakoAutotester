@@ -1,0 +1,141 @@
+/* stylelint-disable */
+$connector-offset: 33px;
+/* stylelint-enable */
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.loader {
+  display: flex;
+  flex-grow: 1;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader--idle {
+  composes: loader;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.loader--running {
+  composes: loader;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  &:hover {
+    .event-url-container {
+      display: flex;
+    }
+  }
+}
+
+.item > div {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.located > div {
+  box-shadow: 0 0 0 5px rgba(224, 175, 42, 0.44);
+}
+
+.standard {
+  padding: 9px 18px;
+
+  &:hover {
+    background-color: $grey-1;
+  }
+}
+
+.note {
+  max-width: 800px;
+  padding: 9px 18px;
+}
+
+.standard[data-single-no-icon],
+.standard[data-single] {
+
+}
+
+.standard[data-single]:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: -9px;
+  left: $connector-offset;
+  height: 18px;
+}
+
+.standard[data-single]:after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: 42px;
+  left: $connector-offset;
+  bottom: -9px;
+}
+
+.standard[data-single-no-icon]:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: -8px;
+  left: $connector-offset;
+  height: 18px;
+}
+
+.standard[data-single-no-icon]:after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: 25px;
+  left: $connector-offset;
+  bottom: -7px;
+}
+
+.standard[data-connect]:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: 41px;
+  left: $connector-offset;
+  bottom: -10px;
+}
+
+.standard[data-connect-no-icon]:before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #EBEEF0;
+  top: 26px;
+  left: $connector-offset;
+  bottom: -10px;
+}
+
+.activity-container {
+  z-index: 1;
+}
+
+.event-url-container {
+  display: none;
+}
+
+.event-url {
+  line-height: 1;
+  margin: 7px 9px 0 0;
+}

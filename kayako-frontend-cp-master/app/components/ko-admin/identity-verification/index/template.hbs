@@ -1,0 +1,70 @@
+{{#ko-admin/page
+  title=(t "admin.messenger.identity_verification.title_breadcrumbs")
+  tabs=tabs
+}}
+  <p local-class="component-description">{{t "admin.messenger.identity_verification.web.description"}}</p>
+  <div local-class="instructions-container">
+    <div local-class="token-container">
+      <div local-class="token-input-label">{{t "admin.messenger.identity_verification.web.token_label"}}</div>
+      <div local-class="token-input">
+        {{ko-input local-class="token-input" multiline=true lines="2" readonly=true size="medium" value=webToken }}
+      </div>
+      {{ko-admin/identity-verification/buttons copyLabel=(t "admin.messenger.identity_verification.buttons.copy") refreshLabel=true copiedToClipboard=(action "onCopiedToClipboard") onRefresh=(action "onRefresh" "WEB") isRefreshing=updateWebToken.isRunning clipboardText=webToken}}
+    </div>
+    <hr local-class="internal-separator">
+    {{#ko-admin/identity-verification/steps heading=(t "admin.messenger.identity_verification.web.steps.heading")
+    description=(t "admin.messenger.identity_verification.web.steps.description") }}
+      <div local-class="step">
+        <div local-class="step-number">
+          <img src="/images/welcome/1.svg">
+        </div>
+        <div local-class="step-content">
+          <p local-class="step-heading">{{t "admin.messenger.identity_verification.web.step_1.heading"}}</p>
+          <div local-class="code-block-container">
+            <pre local-class="code-block">
+              {{stepOneJavascript}}
+            </pre>
+            <div local-class="lang-label">{{javascriptLabel}}</div>
+          </div>
+          <div local-class="step-description-list">
+            <p local-class="step-description-item">
+              {{t "admin.messenger.identity_verification.web.step_1.description_item_1"}}
+            </p>
+            <p local-class="step-description-item">
+              {{t "admin.messenger.identity_verification.web.step_1.description_item_2"}}
+            </p>
+            <p local-class="step-description-item">
+              {{t "admin.messenger.identity_verification.web.step_1.description_item_3"}}<br>
+            </p>
+          </div>
+          <div local-class="code-block-container">
+            <pre local-class="code-block">
+              {{stepOnePhp}}
+            </pre>
+            <div local-class="lang-label">{{phpLabel}}</div>
+          </div>
+        </div>
+      </div>
+      <div local-class="step">
+        <div local-class="step-number">
+          <img src="/images/welcome/2.svg">
+        </div>
+        <div local-class="step-content">
+          <p local-class="step-heading">{{t "admin.messenger.identity_verification.web.step_2.heading"}}</p>
+          <div local-class="code-block-container">
+            <pre local-class="code-block">
+              {{stepTwoJavascript}}
+            </pre>
+            <div local-class="lang-label">{{javascriptLabel}}</div>
+          </div>
+        </div>
+      </div>
+      <div local-class="external-article-wrapper">
+        <span local-class="external-article-text">{{t "admin.messenger.identity_verification.web.external_article.text"}}</span>
+        <span>
+          <a href="https://developer.kayako.com/messenger/web/methods/" local-class="external-article-link" rel="noopener noreferrer" target="_blank">{{articleLinkText}}</a>
+        </span>
+      </div>
+    {{/ko-admin/identity-verification/steps}}
+  </div>
+{{/ko-admin/page}}

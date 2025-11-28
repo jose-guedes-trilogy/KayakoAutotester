@@ -1,0 +1,91 @@
+<div local-class="member-component">
+  <span local-class="section-title">{{t "organization.member_title"}}</span>
+  {{#if hasOrg}}
+    <div local-class="avatar-list {{if showMemberExpanded "expanded"}}">
+      {{#each members as |member|}}
+        {{#ko-tooltip title=member.full_name side="top"}}
+          <div local-class="avatar-container" class="{{qa-cls "avatar-container"}}" {{action "goToUser" member}}>
+            <div local-class="overlay"></div>
+            <img local-class="avatar-image" src="{{member.avatar}}" alt="{{member.full_name}}">
+          </div>
+        {{/ko-tooltip}}
+      {{/each}}
+      {{#if isLoading}}
+        <div local-class="avatar-container">
+          {{ko-loader}}
+        </div>
+      {{else}}
+        <div local-class="avatar-container add-icon {{if addMemberMode "is-active"}}" {{action "toggleMemberDropdown" -1}}>
+          <span local-class="add-avatar-plus-element">{{ko-icon name="plus" color="#A1AAAF"}}</span>
+        </div>
+      {{/if}}
+    </div>
+    {{#if (gt members.length maximumMembersOnTwoRows)}}
+      {{#if (not-eq showMemberExpanded true)}}
+        <span local-class="subtext" {{action "toggleMemberExpanded"}}>{{memberCountText}}</span>
+      {{else}}
+        <span local-class="subtext" {{action "toggleMemberExpanded"}}>{{t "organization.hide_members"}}</span>
+      {{/if}}
+    {{/if}}
+    {{#if addMemberMode}}
+      <div local-class="user-search">
+        <div local-class="header">
+          <div class="close-key">{{format-html-message "organization.close_key"}}</div>
+        </div>
+        <div local-class="search-text {{if (eq userSet "adding member") "disabled"}}">
+          {{ko-icon name="email" color="#BFC5D1"}}
+          {{input local-class="add-member-email" value=searchText placeholder=searchPlaceholder key-up="handleInput" disabled=(eq userSet "adding member") autofocus=true}}
+        </div>
+
+        {{#if (not-eq searchState "not found")}}
+          <div local-class="search-message" class="new-user-search-message">{{memberCreate}}</div>
+
+          {{#if (and addMemberMode (not-eq userSet "adding member"))}}
+            {{#if (ko-is-email searchText)}}
+              <div class="search-results">
+                <ul local-class="results-list">
+                  <li local-class="member-item" {{action "toggleAddMemberForm" true}}>
+                    <span local-class="member-item-avatar">
+                      {{ko-icon name="plus" color="#838D94" size=24}}
+                    </span>
+                    {{t "organization.add"}}
+                    <span local-class="grey-text">
+                      <strong>{{searchText}} {{#if (eq searchText.length undefined)}}{{t "organization.new_user_email"}}{{/if}}</strong>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            {{/if}}
+          {{/if}}
+
+          {{#if (eq userSet "adding member")}}
+            <div local-class="add-user-form">
+              <div local-class="form-head">{{t "organization.first_last_name"}}</div>
+              {{input value=newUserName placeholder="Full name" enter="addUser"}}
+              <div local-class="add-user-actions">
+                {{#ko-button type="naked" onClick=(action "cancelAddingUser")}}{{t "organization.cancel"}}{{/ko-button}}
+                {{#ko-button type="primary" onClick=(action "addUser" searchText newUserName)}}
+                  <span local-class="{{if addingUserInProgress "hide"}}">{{t "organization.add_user_text"}}</span>
+                  <span local-class="{{if (not-eq addingUserInProgress true) "hide"}}">{{ko-loader}}</span>
+                {{/ko-button}}
+              </div>
+            </div>
+          {{/if}}
+        {{/if}}
+
+        {{#if (eq searchState "not found")}}
+          <div local-class="no-user-search-message">
+            <div local-class="no-user-icon"></div><div>{{memberMissing}}</div>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
+  {{else}}
+    <div local-class="avatar-list">
+      <div local-class="stub avatar-container"></div>
+      <div local-class="stub avatar-container"></div>
+      <div local-class="stub avatar-container"></div>
+      <div local-class="stub avatar-container"></div>
+    </div>
+  {{/if}}
+</div>

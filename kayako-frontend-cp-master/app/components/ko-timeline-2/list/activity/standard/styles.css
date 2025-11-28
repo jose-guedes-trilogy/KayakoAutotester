@@ -1,0 +1,136 @@
+.activity {
+  display: flex;
+  align-items: flex-start;
+}
+
+.activity-line-major {
+  margin-top: 6px;
+  flex-shrink: 1;
+  &.has-token-avatar {
+    margin-top: 4px;
+  }
+}
+
+.activity-line-minor {
+  margin-top: -1px;
+  flex-shrink: 1;
+}
+
+.activity-text {
+  margin-left: 9px;
+  max-width: 800px;
+  flex-shrink: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.activity-time {
+  margin-left: 4px;
+  color: #838D94;
+  font-size: 13px;
+}
+
+.box {
+  background: #FFFFFF;
+  max-width: 578px;
+  padding: 0 18px 22px 18px;
+  border: 1px solid #D1D5D7;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 8px 0 9px 42px;
+  animation: expand 0.2s;
+}
+
+.suggestions {
+  padding-top: 20px;
+  flex-shrink: 1;
+}
+
+.suggestions-wrapper {
+  margin-bottom: 4px;
+}
+
+.suggestion-index {
+  color: $grey-5;
+}
+
+.suggestion-text {
+  padding-left: 10px;
+  color: $primary-blue;
+  font-weight: 600;
+}
+
+@keyframes expand {
+  from {
+    transform: scaleY(0.6);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.properties {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.property {
+  width: 50%;
+  padding: 16px 9px 0 0;
+}
+
+.property-name {
+  font-size: 13px;
+  color: #838D94;
+  letter-spacing: 0;
+  line-height: 21px;
+}
+
+.property-value {
+  font-size: 14px;
+  color: #2D3138;
+  line-height: 22px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+
+.small-dot-spacer {
+  margin-left: 8px;
+  margin-right: 7px;
+}
+
+:global(.timeline-link) {
+  color: #2D3138;
+}
+
+.comment-block-container {
+  display: flex;
+  justify-content: center;
+}
+
+.comment-container {
+  max-width: 800px;
+  margin: 9px 45px 24px 45px;
+  display: flex;
+  align-items: stretch;
+  color: #2D3138;
+}
+
+.helpcenter-comment-text {
+  display: block;
+  justify-content: center;
+  font-style: italic;
+  line-height: 20px;
+
+  > :last-child:after {
+    content: '”';
+    padding-left: 3px;
+  }
+}
+
+.helpcenter-comment-text-open-quote {
+  padding-right: 3px;
+}

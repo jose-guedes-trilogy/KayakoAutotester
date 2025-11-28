@@ -1,0 +1,31 @@
+.item {
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+
+  span {
+    color: $grey-6;
+  }
+
+  span, div {
+    flex-shrink: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &.highlighted span {
+    color: #FFFFFF;
+  }
+
+  .selected {
+    display: inline-flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .selected, .default {
+    flex-shrink: 0;
+  }
+}

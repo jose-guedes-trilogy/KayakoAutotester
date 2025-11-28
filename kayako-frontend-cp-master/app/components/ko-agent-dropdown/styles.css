@@ -1,0 +1,129 @@
+.iconSquare {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  background-color: #007bff;
+  border-radius: 3px;
+  border-color: #007bff;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trigger {
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 13.5px;
+  background-color: #222222;
+  cursor: pointer;
+  user-select: none;
+}
+
+.drop {
+  border: 1px solid #D1D5D7;
+  width: 300px;
+  background-color: #fff;
+  margin-left: 9px;
+  border-radius: 3px;
+  box-shadow: $box-shadow2;
+}
+
+.drop--1 {
+  width: 105px;
+}
+
+.drop--2 {
+  width: 280px;
+}
+
+.drop--3 {
+  width: 300px;
+}
+
+.navItems {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  flex-wrap: wrap;
+  padding: 13.5px 13.5px 0;
+}
+
+.navItem {
+  color: darken($grey-6, 22.5%);
+  cursor: pointer;
+  font-size: 13px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 13.5px;
+
+  &.is-active {
+    color: inherit;
+  }
+
+  &:focus {
+    @extend %brand-focus;
+  }
+
+  .focused {
+    display: none !important;
+  }
+
+  &:hover {
+    .focused {
+      display: block !important;
+    }
+    .unfocused {
+      display: none !important;
+    }
+
+    .new-conv {
+      background-color: #FCE0D4;
+    }
+    .new-user {
+      background-color: #E9EBDD;
+    }
+    .new-org {
+      background-color: #FDF0CF;
+    }
+    .new-search {
+      background-color: #E0EDEF;
+    }
+  }
+}
+
+.navItemImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 120px;
+  height: 90px;
+  border-radius: 2px;
+  transition: 0.1s;
+  background-color: $grey-2;
+
+  &:hover {
+    border-color: darken($grey-2, 10%);
+  }
+}
+
+.navItemText {
+  margin-top: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dropdown-trigger-label {
+  color: #ffffff;
+  padding-right: 7px;
+  margin-left: -2px;
+  font-size: 12px;
+  font-weight: bolder;
+}

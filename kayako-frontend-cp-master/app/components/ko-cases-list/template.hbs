@@ -1,0 +1,134 @@
+<div local-class="container">
+  <div local-class="title">
+    <h4 local-class="heading">
+      {{title}}
+    </h4>
+    <div local-class="bulk-actions">
+      {{#if (variation "release-merge-from-lists")}}
+        {{#if (gt selectedCaseIds.length 1)}}
+          <div local-class="merge-button">
+            {{#ko-button
+              onClick=(perform mergeCases)
+              qaClass="qa-ko-cases-list__merge"
+            }}
+              {{t "cases.merge"}}
+            {{/ko-button}}
+          </div>
+        {{/if}}
+      {{/if}}
+
+      {{#if (and isSomeChecked hasPermissionToTrashCases)}}
+        <div local-class="trash-button">
+          {{#ko-button type="alert" onClick=(perform trashCases) disabled=isUpdatingCases qaClass="qa-cases-list__trash"}}
+            {{#if isUpdatingCases}}
+              {{ko-loader}}
+            {{else}}
+              {{t "cases.trashcases"}}
+            {{/if}}
+          {{/ko-button}}
+        </div>
+      {{else if (and isTrash hasPermissionToEmptyTrash cases)}}
+        <div local-class="trash-button">
+          {{#ko-button type="alert" onClick=(perform emptyTrash) disabled=isUpdatingCases qaClass="qa-cases-list__trash"}}
+            {{#if isUpdatingCases}}
+              {{ko-loader}}
+            {{else}}
+              {{t "cases.empty_trash"}}
+            {{/if}}
+          {{/ko-button}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{#ko-table
+    selectable=trashable
+    as |table|}}
+    {{#ko-table/header
+      allRowsSelected=isEverythingChecked
+      selectable=trashable
+      onSelectAll=(action "selectAll")
+      onDeselectAll=(action "deselectAll")
+    }}
+      {{#each columnList key="id" as |column|}}
+        {{#ko-table/column
+          column=column
+          minWidth=(ko-helper minWidthForColumn column.id)
+          maxWidth=(ko-helper maxWidthForColumn column.id)
+          sortable=(not column.disableSorting)
+          onSort=(action onCaseListSort)
+          orderBy=orderBy
+          orderByColumn=orderByColumn
+        }}
+          <span>{{column.title}}</span>
+        {{/ko-table/column}}
+      {{/each}}
+    {{/ko-table/header}}
+    {{#ko-table/body}}
+      {{#if isLoading}}
+        {{#each (repeat 8) as |🤡|}}
+          <div local-class="placeholder-shimmer">
+            {{#ko-table/row
+              class=(ko-contextual-helper classForRow this trashable)
+              table=table
+              clickable=false
+              rowContext=cse
+              selectableDisabled=true
+            }}
+              {{#ko-table/cell minWidth=300}}
+                {{ko-cases-list/column/conversation isLoading=isLoading}}
+              {{/ko-table/cell}}
+              {{#each columnList key="id" as |column|}}
+                {{#ko-table/cell minWidth=80 maxWidth=100}}
+                  {{ko-loading/text-placeholder width='40px'}}
+                {{/ko-table/cell}}
+              {{/each}}
+            {{/ko-table/row}}
+          </div>
+        {{/each}}
+      {{else}}
+        {{#each cases as |case|}}
+          {{ko-cases-list/kre-case case=case on-update=(action "enqueueCaseUpdate" case)}}
+
+          {{#ko-table/row
+            class=(join-classes
+              (if (eq case.id currentFocusedID) (local-class "row--focused"))
+              (ko-contextual-helper classForRow this case trashable)
+            )
+            table=table
+            clickable=true
+            rowContext=case
+            selectableDisabled=(or isUpdatingCases (eq case.state "TRASH"))
+            onSelectChange=(action "toggleCheck" case)
+            selected=(contains case.id selectedCaseIds)
+            onClick=onClick
+          }}
+            {{#each columnList key="id" as |column|}}
+              {{#ko-table/cell
+                minWidth=(ko-helper minWidthForColumn column.id)
+                maxWidth=(ko-helper maxWidthForColumn column.id)
+              }}
+                {{component (ko-case-list-cell "componentName" column.name)
+                  column=column.name
+                  model=case
+                  propertyName=(ko-case-list-cell "propertyName" column.name)
+                }}
+              {{/ko-table/cell}}
+            {{/each}}
+          {{/ko-table/row}}
+        {{/each}}
+      {{/if}}
+    {{/ko-table/body}}
+  {{/ko-table}}
+  {{yield "pagination"}}
+  {{#if (and (not cases) (not isLoading))}}
+    <div local-class="not-found">
+      <div local-class="not-found-image">
+        <img src="/images/empty-states/conversation.svg" width="462" height="262" alt="{{t 'cases.list.casesnotfound'}}">
+      </div>
+      <div local-class="not-found-message">
+        {{t "cases.list.casesnotfound"}}
+      </div>
+    </div>
+  {{/if}}
+</div>

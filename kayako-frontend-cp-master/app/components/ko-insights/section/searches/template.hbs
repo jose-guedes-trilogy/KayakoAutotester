@@ -1,0 +1,47 @@
+<div local-class="header">
+  <div local-class="entity">
+  </div>
+  <div local-class="filters">
+    {{ko-input-date-range
+      rangeStart=startAt
+      rangeEnd=endAt
+      onPickerHidden=onDateRangeChange
+    }}
+  </div>
+</div>
+
+{{#ko-insights/loader/help-center/search metricsQueryParams=metricsQueryParams as |data|}}
+  <div local-class="table first">
+    <h3 local-class="title">{{t "insights.searches.popular_searches"}}</h3>
+    <p local-class="description">
+      {{t "insights.helpcenter.popular_searches.description"}}
+    </p>
+
+    <div local-class="searches">
+      {{#if data.popularSearches}}
+        {{ko-insights/searches-list searches=data.popularSearches}}
+      {{/if}}
+
+      {{#if data.request.isPending}}
+        {{ko-insights/loader size="M"}}
+      {{/if}}
+    </div>
+  </div>
+
+  <div local-class="table">
+    <h3 local-class="title">{{t "insights.searches.failed_searches"}}</h3>
+    <p local-class="description">
+      {{t "insights.helpcenter.failed_searches.description"}}
+    </p>
+
+    <div local-class="searches">
+      {{#if data.failedSearches}}
+        {{ko-insights/searches-list searches=data.failedSearches}}
+      {{/if}}
+
+      {{#if data.request.isPending}}
+        {{ko-insights/loader size="M"}}
+      {{/if}}
+    </div>
+  </div>
+{{/ko-insights/loader/help-center/search}}

@@ -1,0 +1,30 @@
+{{#if show}}
+  <table>
+    {{#if post.email}}
+      <tr>
+        <td local-class="left">{{t "cases.more_info.from"}}</td>
+        <td local-class="cell"  onclick={{action onAddCC post.email}}>{{post.email}}</td>
+      </tr>
+    {{/if}}
+    {{#if toRecipients}}
+      <tr>
+        <td local-class="left">{{t "cases.more_info.to"}}</td>
+        <td local-class="cell">
+          {{#each toRecipients as |recipient|}}
+            <div onclick={{action onAddCC recipient.identity}}>{{recipient.identity.email}}</div>
+          {{/each}}
+        </td>
+      </tr>
+    {{/if}}
+    {{#if ccRecipients}}
+      <tr>
+        <td local-class="left">{{t "cases.more_info.cc"}}</td>
+        <td local-class="cell">
+          {{#each ccRecipients as |recipient|}}
+            <div onclick={{action onAddCC recipient.identity}}>{{recipient.identity.email}}</div>
+          {{/each}}
+        </td>
+      </tr>
+    {{/if}}
+  </table>
+{{/if}}

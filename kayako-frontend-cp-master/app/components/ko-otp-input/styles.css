@@ -1,0 +1,19 @@
+.otp {
+  width: 199px;
+  height: 60px;
+  padding: 0 0 2px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: repeating-linear-gradient(90deg, $grey-3 0, $grey-3 26px, transparent 0, transparent 33px) 0 100%/100% 2px no-repeat;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 45px;
+  letter-spacing: 6px;
+
+  /* Remove auto-suggestion dropdown in safari */
+  &::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+  }
+}

@@ -1,0 +1,23 @@
+<div local-class="container">
+  <div local-class="content">
+    <div local-class="heading">
+      {{yield "heading"}}
+    </div>
+    <div local-class="timeline">
+      {{yield "timeline"}}
+    </div>
+    <div local-class="reply-area" class="{{qa-cls "qa-agent-content_layout__reply-area"}}">
+      {{yield "reply-area"}}
+    </div>
+  </div>
+  <div local-class="side-panel">
+    {{yield "side-panel"}}
+  </div>
+  <div local-class="sidebar" class="{{qa-cls "qa-agent-content_layout__sidebar"}}">
+    <div local-class="fields">
+      {{yield "sidebar"}}
+      <div local-class="spacer"></div>
+    </div>
+    <div local-class="submit-button">{{yield "submit-button"}}</div>
+  </div>
+</div>

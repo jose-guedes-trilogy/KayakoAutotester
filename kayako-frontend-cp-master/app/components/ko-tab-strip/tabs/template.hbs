@@ -1,0 +1,3 @@
+{{#each tabs as |tab|}}
+  {{component (ko-helper tabComponentName tab.process.type) tab=tab on-close=(action on-close tab)}}
+{{/each}}

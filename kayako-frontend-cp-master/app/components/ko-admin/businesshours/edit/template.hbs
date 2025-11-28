@@ -1,0 +1,76 @@
+{{#ko-admin/page
+  title=title
+  buttonText=(t "generic.save")
+  onCancel=onCancel
+  deleteText=(if canBeDeleted (t "generic.delete"))
+  onDelete=(perform confirmDelete)
+  showFooter=true
+  isSaving=isDisabled
+  onSave=(perform save)
+}}
+  {{#ko-admin/forms/group legend=(t "admin.businesshours.heading.details")}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.businesshours.label.title"}}{{/ko-form/field/label}}
+      {{ko-input
+        value=editedBusinessHour.title
+        onInput=(action (mut editedBusinessHour.title) value="target.value")
+        disabled=isDisabled
+        placeholder=(t "admin.businesshours.label.title_placeholder")
+      }}
+      {{ko-form/field/errors errors=editedBusinessHour.errors.title}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+  {{#ko-admin/forms/group}}
+    <h5>{{t "admin.businesshours.title"}}</h5>
+    <p>{{t "admin.businesshours.info"}}</p>
+
+    {{#ko-grid-picker
+      initialGrid=businessHourGrid
+      legend=hoursLegend
+      onRangeSelect=(action "businessHourRangeSelect")
+    }}
+      {{#each titles as |title|}}
+        <div local-class="title">
+          {{title}}
+        </div>
+      {{/each}}
+    {{/ko-grid-picker}}
+  {{/ko-admin/forms/group}}
+
+  {{#ko-admin/forms/group}}
+    <h5>{{t "admin.businesshours.holidays.title"}}</h5>
+    <p>{{t "admin.businesshours.holidays.info"}}</p>
+
+    {{#ko-simple-list as |list|}}
+      {{#each editedBusinessHour.holidays as |holiday index|}}
+        {{ko-admin/holidays/row
+          holiday=holiday
+          onHolidayDelete=(action "deleteHoliday")
+          errors=(get editedBusinessHour.errors (concat "holidays/" index))
+        }}
+      {{/each}}
+      {{#if newHoliday}}
+        {{#list.row as |row|}}
+          {{#row.cell}}
+            {{ko-admin/holidays/edit
+              holiday=newHoliday
+              onSave=(action "addHoliday")
+              onCancel=(action "cancelAddingHoliday")}}
+          {{/row.cell}}
+        {{/list.row}}
+      {{/if}}
+    {{/ko-simple-list}}
+
+    {{#if (not newHoliday)}}
+      <div local-class="add-holiday">
+        {{#ko-button onClick=(action "showHolidayForm") qaClass="qa-admin_buinesshours_edit__add-holiday"}}
+          {{t "admin.businesshours.holidays.addaholiday"}}
+        {{/ko-button}}
+      </div>
+    {{/if}}
+
+    {{ko-form/field/errors errors=editedBusinessHour.errors.date}}
+
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

@@ -1,0 +1,36 @@
+<div local-class="metric {{if first "first"}}">
+  {{#if isLoading}}
+    {{ko-insights/loader}}
+  {{/if}}
+
+  <div local-class="values">
+    <div local-class="value">
+      {{#if (and (eq type "number") value)}}
+        {{format-number value}}
+      {{else if value}}
+        {{value}}
+      {{else}}
+        &mdash;
+      {{/if}}
+    </div>
+
+    {{#ko-tooltip content=deltaTooltip}}
+      <div local-class="delta" class="{{if deltaRounded deltaStyle}}">
+        <div local-class="{{if deltaRounded "triangle"}}" class="{{if deltaRounded triangleStyle}}"></div>
+        <div>
+          {{#if deltaRounded}}
+            {{deltaRounded}}%
+          {{else}}
+            &mdash;
+          {{/if}}
+        </div>
+      </div>
+    {{/ko-tooltip}}
+  </div>
+
+  <div local-class="name">
+    {{#ko-tooltip content=titleTooltip}}
+      {{title}}
+    {{/ko-tooltip}}
+  </div>
+</div>

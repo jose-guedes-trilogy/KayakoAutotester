@@ -1,0 +1,26 @@
+{{#power-select-multiple
+  disabled=disabled
+  dropdownClass=dropdownClass
+  extra=extra
+  onchange=(if onChange onChange (action "setValue"))
+  onkeydown=(or onKeydown (if allowCreate (action "createOnEnterOrTab")))
+  onopen=(action "closeIfEmpty")
+  onclose=(action "createOnCloseClickingOutside")
+  options=options
+  placeholder=placeholder
+  renderInPlace=renderInPlace
+  matchTriggerWidth=matchTriggerWidth
+  verticalPosition=verticalPosition
+  search=(if (or (not options) onSuggestion) (action "onSearch"))
+  searchField=searchField
+  selected=selected
+  selectedItemComponent=(component "ko-select/multiple/pill" 
+    removable=allowDelete
+    option=option
+  )
+  tabindex=-1
+  triggerClass=triggerClass
+  triggerComponent=(component triggerComponent isEmpty=isEmpty)
+as |option|}}
+  {{get option searchField}}
+{{/power-select-multiple}}

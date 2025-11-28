@@ -1,0 +1,20 @@
+<li local-class="item">
+  {{#if error}}
+    <span local-class="error">
+      {{upload.name}}
+      {{errorText}}
+    </span>
+  {{/if}}
+
+  {{#if inProgress}}
+    <span class="i-cross-bold" local-class="action" onclick={{action "cancel"}}></span>
+    <span local-class="name name--is-progressing">{{upload.name}}</span>
+    <span local-class="percentage">{{uploadProgress}}%</span>
+  {{/if}}
+
+  {{#if success}}
+    <span class="i-cross-bold" local-class="action" onclick={{action "cancel"}}></span>
+    <a local-class="name" href={{upload.contentUrl}} target="_blank" rel="noopener noreferrer">{{upload.name}}</a>
+    <span local-class="size">{{ko-file-size size=upload.size}}</span>
+  {{/if}}
+</li>

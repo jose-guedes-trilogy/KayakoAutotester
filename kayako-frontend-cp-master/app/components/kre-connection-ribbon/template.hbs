@@ -1,0 +1,15 @@
+{{! template-lint-disable bare-strings }}
+
+{{#if isOffline}}
+  <div local-class="ribbon">
+    <span>Your computer seems to be offline, we'll keep trying to reconnect.</span>
+    <span local-class="button" onclick={{action "reloadToRetry"}}>Reconnect Now</span>
+  </div>
+{{else if failedToConnect}}
+  <div local-class="ribbon">
+    <span>
+      Kayako can't get real-time updates because of your network settings.
+      Contact your network administrator and <a href="https://support.kayako.com/article/1498?utm_source=app&utm_medium=error-banner&utm_campaign=websockets" local-class="link" target="_blank" rel="noopener noreferrer">refer them to this article</a>.
+    </span>
+  </div>
+{{/if}}

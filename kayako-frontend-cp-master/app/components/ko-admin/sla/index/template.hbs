@@ -1,0 +1,59 @@
+{{ko-admin/page
+  title=(t "admin.sla.service_level_agreements")
+  buttonText=(t "admin.sla.buttons.add_new")
+  needsPlanUpgrade=reachedLimit
+  onSave=onAddSla
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.sla.description"}}</p>
+  <p><strong>{{format-html-message "admin.sla.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1158-establishing-slas-and-escalations?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=slas" "admin.sla.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not slas.length)}}
+  {{ko-admin/empty image="slas"}}
+{{/if}}
+
+{{#if sortedSlas.length}}
+  {{#ko-simple-list header=(t "generic.enabled") qaClass="qa-enabled-slas" as |list|}}
+    {{#ko-reorderable-list onReorder=(action "reorder") items=sortedSlas as |sla|}}
+      {{#list.row onClick=(action "edit" sla) qaClass="qa-sla-row" as |row|}}
+        {{#row.cell width="40%"}}
+          <span local-class="title">{{sla.title}}</span>
+        {{/row.cell}}
+        {{#row.cell}}
+          <span local-class="caption">{{sla.description}}</span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "edit" sla}}>{{t "generic.edit"}}</a>
+          <span local-class="caption">|</span>
+          <a class={{qa-cls "qa-disable-sla"}} onclick={{action "toggleStatus" sla}}>{{t "generic.disable"}}</a>
+          <span local-class="caption">|</span>
+          <a onclick={{action "delete" sla}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/ko-reorderable-list}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledSlas.length}}
+  {{#ko-simple-list header=(t "generic.disabled") qaClass="qa-disabled-slas" as |list|}}
+    {{#each disabledSlas as |sla|}}
+      {{#list.row qaClass="qa-sla-row" as |row|}}
+        {{#row.cell width="40%" disabled=true}}
+          <span local-class="title">{{sla.title}}</span>
+        {{/row.cell}}
+        {{#row.cell disabled=true}}
+          <span local-class="caption">{{sla.description}}</span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "edit" sla}}>{{t "generic.edit"}}</a>
+          <span local-class="caption">|</span>
+          <a class={{qa-cls "qa-enable-sla"}} onclick={{action "toggleStatus" sla}}>{{t "generic.enable"}}</a>
+          <span local-class="caption">|</span>
+          <a onclick={{action "delete" sla}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

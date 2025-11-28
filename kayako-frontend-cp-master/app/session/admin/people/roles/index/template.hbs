@@ -1,0 +1,25 @@
+{{ko-admin/page
+  title=(t "admin.roles.title")
+  buttonText=(t "admin.roles.index.add_new_button")
+  needsPlanUpgrade=needsPlanUpgrade
+  upgradeLinkText=(t "account.plans.upgrade_to_create_new_roles")
+  onSave=(action "transitionToNew")}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.roles.description"}}</p>
+  <p><strong>{{format-html-message "admin.roles.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1157-customizing-user-roles?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=roles1" "admin.roles.description_link")}}</strong></p>
+  <p>{{t "admin.roles.description3"}}</p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="roles"}}
+{{/if}}
+
+{{#ko-simple-list}}
+  {{#each arrangedModel as |role|}}
+    {{ko-admin/roles/list-item
+      class=(qa-cls "qa-ko-admin_roles__list-item")
+      role=role
+      onEdit=(action "transitionToEdit")}}
+  {{/each}}
+{{/ko-simple-list}}

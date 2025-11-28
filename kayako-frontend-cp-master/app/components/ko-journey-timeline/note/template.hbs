@@ -1,0 +1,53 @@
+<div local-class="note {{if note.isPinned "pinned"}}">
+  <div local-class="avatar">
+    {{#if note.user.avatar}}
+      {{ko-user-avatar user=note.user size="submedium"}}
+    {{/if}}
+  </div>
+
+  <div local-class="body">
+    <div local-class="header">
+      {{#if activity}}
+        <div local-class="message">
+          {{ko-timeline-2/list/activity/summary-text summary=activity.summary model=model}}
+        </div>
+      {{else}}
+        <div local-class="message">
+          {{t "timeline.activity.added_note" name=note.user.fullName}}
+        </div>
+      {{/if}}
+
+      <div local-class="activity-time">
+        {{#ko-tooltip title=(format-time (ko-intl-datetime-format note.createdAt) format="tooltip") local-class="time"}}
+          {{ko-from-now note.createdAt customRelativeTime=true}}
+        {{/ko-tooltip}}
+      </div>
+      {{#if note.isPinned}}
+        <span local-class="pinned-by separator">&middot;</span>
+        <span local-class="pinned-by">{{t "generic.pinned_by" name=note.pinnedBy.fullName}}</span>
+      {{/if}}
+    </div>
+
+    <div local-class="content">
+      {{sanitize-html note.body "server-html-content"}}
+    </div>
+
+    {{#if note.attachments}}
+      {{ko-attachments attachments=note.attachments downloadAll=note.downloadAll}}
+    {{/if}}
+
+    <div local-class="menu-wrapper">
+      <div local-class="menu hidden-item" class="ko-feed_item_menu">
+        <div role="button" local-class="menu-item {{if toggleNotePin.isRunning "processing"}} {{if note.isPinned "yellow"}}" onclick={{perform toggleNotePin activity}}>
+          {{#ko-tooltip tagName="div" side="top" title=pinTooltipText}}
+            {{#if note.isPinned}}
+              {{inline-svg "timeline/unpin.svg"}}
+            {{else}}
+              {{inline-svg "timeline/pin.svg"}}
+            {{/if}}
+          {{/ko-tooltip}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

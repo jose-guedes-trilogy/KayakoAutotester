@@ -1,0 +1,24 @@
+<div class="{{smallSlotClass}}">
+  {{#ko-select
+    selected=automationAction.option
+    options=definition.options
+    placeholder=(t "admin.automation_actions_builder.select_operator")
+    onChange=(action (mut automationAction.option))
+    searchEnabled=false
+    as |operator|}}
+    {{t (concat "admin.automation_actions_builder.operators." operator)}}
+  {{/ko-select}}
+</div>
+{{#if (and automationAction.option requiresValue)}}
+  <div class="{{smallSlotClass}}">
+    {{ko-select/multiple
+      allowCreate=true
+      renderInPlace=false
+      selected=tags
+      searchField="name"
+      onValueAddition=(action "addTag")
+      onValueRemoval=(action "removeTag")
+      onSuggestion=(perform suggestTags)
+    }}
+  </div>
+{{/if}}

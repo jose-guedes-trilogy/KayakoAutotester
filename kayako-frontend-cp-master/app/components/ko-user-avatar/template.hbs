@@ -1,0 +1,10 @@
+<div local-class="avatar-container">
+  {{#if hasBlock}}
+    {{yield (hash
+        online-indicator=(component "ko-user-avatar/online-indicator" size=size user=user showTooltip=true)
+        image=(component "ko-user-avatar/image" url=user.avatar size=size)
+      ) }}
+  {{else}}
+    {{ko-user-avatar/image url=user.avatar size=size type=type}}
+  {{/if}}
+</div>

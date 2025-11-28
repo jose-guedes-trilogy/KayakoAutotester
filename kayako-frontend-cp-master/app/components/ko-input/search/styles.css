@@ -1,0 +1,14 @@
+.search {
+  position: relative;
+
+  @include child-icon {
+    @extend %u-v-center;
+    right: 9px;
+  }
+}
+
+.input {
+  composes: input from '../styles';
+  display: inline-block;
+  padding-right: 18px;
+}

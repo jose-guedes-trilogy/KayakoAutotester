@@ -1,0 +1,74 @@
+{{! template-lint-disable bare-strings }}
+
+<div local-class="impersonate">
+  <section local-class="section">
+
+    <div local-class="box">
+
+      <div local-class="container">
+        <div local-class="front">
+          <div local-class="image"></div>
+        </div>
+        <div local-class="back">
+          <div style="" class="image"></div>
+        </div>
+      </div>
+
+      <div>
+        {{#ko-form
+          onSubmit=(perform impersonate)
+          }}
+          <h3 local-class="header">Impersonate a Customer</h3>
+          <p local-class="sub-header">
+            Enter the <strong>instance</strong> and <strong>email address</strong>
+          </p>
+
+          <div local-class="form-content">
+
+            {{#ko-form/field}}
+              <div local-class="form-wrapper">
+                {{ko-input type="text" size="full"
+                  placeholder="Domain"
+                  value=domain
+                  disabled=isLoading
+                  addon=true
+                }}
+                <span local-class='addon'>.kayako.com</span>
+              </div>
+            {{/ko-form/field}}
+
+            {{#ko-form/field}}
+              {{ko-input type="email" size="full"
+                placeholder="E-mail"
+                value=email
+                disabled=isLoading
+              }}
+            {{/ko-form/field}}
+
+          </div>
+
+          <div local-class="button">
+            {{#ko-button
+              submit=true
+              type="primary"
+              full=true
+              qaClass="ko-login__submit"
+              size="medium"
+              disabled=buttonDisabled
+            }}
+              Impersonate
+            {{/ko-button}}
+
+          </div>
+
+        {{/ko-form}}
+      </div>
+
+      {{#if url}}
+        <a href={{ url }} target="_blank" rel="noopener noreferrer" local-class="url">Impersonation Link</a>
+      {{/if}}
+
+    </div>
+
+  </section>
+</div>

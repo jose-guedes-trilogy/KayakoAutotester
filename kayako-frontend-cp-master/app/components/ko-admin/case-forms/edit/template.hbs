@@ -1,0 +1,112 @@
+{{#ko-admin/page
+  title=title
+  submitClass=(qa-cls "qa-admin_case-forms_edit__submit-button")
+  cancelButtonClass=(qa-cls "qa-admin_case-forms__cancel-button")
+  deleteText=(if canBeDeleted (t "generic.delete"))
+  onDelete=(action "deleteForm")
+  buttonText=(t "generic.save")
+  showFooter=true
+  onCancel=(action "cancel")
+  isSaving=save.isRunning
+  onSave=(perform save)
+}}
+  {{#ko-admin/forms/group legend=(t "admin.caseforms.heading.agent_settings")}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.caseforms.label.field_title"}}{{/ko-form/field/label}}
+      {{ko-input placeholder=(t "admin.caseforms.label.field_title_placeholder") qaClass="qa-admin_case-forms_edit__title-input" value=editedCaseForm.title onInput=(action (mut editedCaseForm.title) value="target.value") disabled=save.isRunning}}
+      {{ko-form/field/errors errors=editedCaseForm.errors.title}}
+    {{/ko-form/field}}
+
+    {{#if caseForm.canBeDisabled}}
+      {{#ko-form/field}}
+        {{ko-toggle
+          activated=editedCaseForm.isEnabled
+          label=(t (if editedCaseForm.isEnabled "admin.caseforms.edit.description_on.is_enabled" "admin.caseforms.edit.description_off.is_enabled"))
+        }}
+        {{ko-form/field/errors errors=editedCaseForm.errors.isEnabled}}
+      {{/ko-form/field}}
+    {{/if}}
+  {{/ko-admin/forms/group}}
+
+
+  {{#ko-admin/forms/group legend=(t "admin.caseforms.heading.customer_settings")}}
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checkboxClass=(qa-cls "qa-admin_case-forms__customer-available-checkbox")
+        label=(t "admin.caseforms.label.is_visible_to_customers")
+        checked=editedCaseForm.isVisibleToCustomers
+        disabled=save.isRunning
+      }}
+
+      {{ko-form/field/errors errors=editedCaseForm.errors.isVisibleToCustomers}}
+      {{#ko-form/field/help}}{{t "admin.caseforms.help.is_visible_to_customers"}}{{/ko-form/field/help}}
+    {{/ko-form/field}}
+
+    {{#if editedCaseForm.isVisibleToCustomers}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.caseforms.label.customer_form_title"}}{{/ko-form/field/label}}
+        <div local-class="localizableGroup">
+          {{ko-input placeholder=(t "admin.caseforms.label.customer_form_title_placeholder")
+          qaClass="qa-admin_case-forms__customer-title"
+          value=customerTitleLocale.translation
+          onInput=(action "setCustomerTitle" value="target.value")
+          disabled=save.isRunning}}
+          {{ko-admin/inline-locale-edit localeFields=editedCaseForm.customerTitles}}
+        </div>
+        {{ko-form/field/errors errors=editedCaseForm.errors.customerTitles}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.caseforms.label.customer_form_description"}}{{/ko-form/field/label}}
+        <div local-class="localizableGroup">
+          {{ko-input
+          multiline=true
+          qaClass="qa-admin_case-forms__customer-description"
+          value=descriptionLocale.translation
+          onInput=(action "setDescription" value="target.value")
+          disabled=save.isRunning
+          }}
+
+          {{ko-admin/inline-locale-edit
+          localeFields=editedCaseForm.descriptions
+          inputType="textArea"
+          }}
+        </div>
+        {{ko-form/field/errors errors=editedCaseForm.errors.descriptions}}
+      {{/ko-form/field}}
+    {{/if}}
+
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.caseforms.label.brand"}}{{/ko-form/field/label}}
+      {{!TODO: localize when the field localization API has been written}}
+      {{#ko-select
+        options=brandsWithPlaceholder
+        selected=editedCaseForm.brand
+        placeholder=(t "admin.caseforms.form.brand.all")
+        size="medium"
+        onChange=(action (mut editedCaseForm.brand))
+        as |brand|
+      }}
+        {{#if brand}}
+          {{brand.name}}
+        {{else}}
+          {{t "admin.caseforms.form.brand.all"}}
+        {{/if}}
+      {{/ko-select}}
+      {{ko-form/field/errors errors=editedCaseForm.errors.brand}}
+      {{#ko-form/field/help}}{{t "admin.caseforms.help.brand"}}{{/ko-form/field/help}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+  {{#ko-admin/forms/group legend=(t "admin.caseforms.heading.configure_form")}}
+    {{#ko-form/field field=fields.case_field_ids}}
+      {{ko-admin/case-forms/edit/fields
+        caseFields=editedCaseForm.fields
+        availableCaseFields=caseFields
+        onCaseFieldAddition=(action "addCaseFieldToForm")
+        onCaseFieldRemoval=(action "removeCaseFieldFromForm")
+        onUpdate=(action "updateFields")
+      }}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

@@ -1,0 +1,91 @@
+{
+  "status": 200,
+  "data": {
+    "start_at": "2016-05-28T00:00:00+00:00",
+    "end_at": "2016-06-27T23:59:59+00:00",
+    "previous_start_at": "2016-04-16T00:00:00+00:00",
+    "previous_end_at": "2016-05-16T23:59:59+00:00",
+    "metric": [
+      {
+        "name": "total_assigned",
+        "value": 3588,
+        "delta_percent": -34.681,
+        "previous": 5493,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "total_created",
+        "value": 3424,
+        "delta_percent": -36.675,
+        "previous": 5407,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "customers_helped",
+        "value": 1438,
+        "delta_percent": 898.611,
+        "previous": 144,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "cases_touched",
+        "value": 8448,
+        "delta_percent": -98.178,
+        "previous": 463595,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "total_public_replies",
+        "value": 22671,
+        "delta_percent": -14.092,
+        "previous": 26390,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "average_first_response_time",
+        "value": 125921,
+        "delta_percent": 463.682,
+        "previous": 22339,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "average_replies_to_resolution",
+        "value": 3,
+        "delta_percent": 100,
+        "previous": null,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "percentage_first_contact_resolved",
+        "value": 11.904,
+        "delta_percent": 14.067,
+        "previous": 10.436,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "average_team_changes",
+        "value": 1,
+        "delta_percent": 0,
+        "previous": 1,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "average_assignee_changes",
+        "value": 2,
+        "delta_percent": 0,
+        "previous": 2,
+        "resource_type": "report_value_comparison"
+      },
+      {
+        "name": "average_first_assignment_time",
+        "value": 5689,
+        "delta_percent": -3.886,
+        "previous": 5919,
+        "resource_type": "report_value_comparison"
+      }
+    ],
+    "resource_type": "report_case_metrics"
+  },
+  "resources": [],
+  "resource": "report_case_metrics"
+}

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  &:nth-of-type(even) {
+    margin-top: 36px;
+  }
+}

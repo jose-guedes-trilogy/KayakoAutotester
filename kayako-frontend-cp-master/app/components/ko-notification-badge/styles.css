@@ -1,0 +1,28 @@
+span:global(#HW_badge_cont) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+span:global(#HW_badge) {
+  width: auto;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  left: auto;
+  top: 5px;
+  right: 5px;
+}
+
+span:global(#HW_badge.HW_softHidden) {
+  display: none;
+}
+
+:global(#HW_frame_cont) {
+  transform: translate(54px, 28px);
+}

@@ -1,0 +1,117 @@
+.filters-panel-container {
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.filter-headings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.heading-column, .heading-operator, .heading-value {
+  padding: 6px;
+  font-size: 14px;
+  color: #838D94;
+  text-transform: uppercase;
+}
+
+.heading-column {
+  flex: 1;
+}
+
+.heading-operator {
+  flex: 1;
+}
+
+.heading-value {
+  flex: 1;
+}
+
+.filter-row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.filter-column, .filter-operator, .filter-value {
+  margin-right: 8px;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 0 !important;
+}
+
+.filter-column {
+  flex: 1;
+}
+
+.filter-operator {
+  flex: 1;
+}
+
+.filter-value {
+  flex: 1;
+}
+
+.filter-value-hidden {
+  margin-right: 8px;
+  margin-top: 0 !important;
+  flex: 1;
+  visibility: hidden;
+}
+
+.remove-filter {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: fit-content;
+  font-size: 16px;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.add-filter-btn, .apply-filter-btn, .reset-filter-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-filter-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.apply-filter-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.reset-filter-btn {
+  background-color: transparent;
+  color: #007bff;
+  padding: 8px 12px;
+}
+
+.add-filter-btn:hover, .apply-filter-btn:hover {
+  background-color: #0056b3;
+}
+
+.reset-filter-btn:hover {
+  color: #0056b3;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}

@@ -1,0 +1,48 @@
+<div local-class="header">
+  <img src="/images/apps/salesforce.png" width="540">
+</div>
+
+<div local-class="content">
+  <h2 local-class="title">
+    {{t "admin.apps.salesforce.heading"}}
+  </h2>
+
+  <ul local-class="list">
+    <li local-class="list__item">
+      <h5 local-class="list__item__title">{{t "admin.apps.salesforce.better_conversations.title"}}</h5>
+      <p local-class="list__item__description">{{t "admin.apps.salesforce.better_conversations.description"}}</p>
+    </li>
+    <li local-class="list__item">
+      <h5 local-class="list__item__title">{{t "admin.apps.salesforce.collaborations.title"}}</h5>
+      <p local-class="list__item__description">{{t "admin.apps.salesforce.collaborations.description"}}</p>
+    </li>
+    <li local-class="list__item">
+      <h5 local-class="list__item__title">{{t "admin.apps.salesforce.bridge_gaps.title"}}</h5>
+      <p local-class="list__item__description">{{t "admin.apps.salesforce.bridge_gaps.description"}}</p>
+    </li>
+    <li local-class="list__item">
+      <h5 local-class="list__item__title">{{t "admin.apps.salesforce.lowdown.title"}}</h5>
+      <p local-class="list__item__description">{{t "admin.apps.salesforce.lowdown.description"}}</p>
+    </li>
+  </ul>
+
+  <div local-class="buttons">
+    {{#ko-button
+      rel="noopener"
+      href="https://appexchange.salesforce.com/listingDetail?listingId=a0N3A00000EXn4PUAT"
+      target="_blank"
+      type="primary"
+      size="medium"
+      onClick=(action "ctaClick") }}
+      {{t "admin.apps.salesforce.cta"}}
+    {{/ko-button}}
+    {{#ko-button
+      rel="noopener noreferrer"
+      href="https://support.kayako.com/article/1273-displaying-your-support-conversations-in-salesforce?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=salesforce"
+      target="_blank"
+      type="naked"
+      onClick=(action "ctaClick") }}
+      {{t "admin.apps.salesforce.help_link"}}
+    {{/ko-button}}
+  </div>
+</div>

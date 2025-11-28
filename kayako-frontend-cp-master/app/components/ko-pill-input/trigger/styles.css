@@ -1,0 +1,19 @@
+.input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 4px;
+  line-height: 33px;
+  font-size: 15px;
+  height: 33px;
+  width: 150px;
+  flex-grow: 1;
+
+  &:first-child {
+    padding-left: 9px;
+  }
+}
+
+.loading {
+  composes: loading-icon from 'frontend-cp/components/ko-select/shared';
+}

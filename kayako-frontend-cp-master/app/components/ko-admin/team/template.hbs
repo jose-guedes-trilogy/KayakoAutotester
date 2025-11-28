@@ -1,0 +1,93 @@
+{{#ko-admin/page
+  buttonText=(t "generic.save")
+  buttonClass=(qa-cls "qa-ko-admin_team__submit")
+  deleteText=(if (not team.isNew) (t "admin.teams.labels.delete_team"))
+  isSaving=save.isRunning
+  onCancel=(perform cancel)
+  onDelete=(perform delete)
+  onSave=(perform save)
+  showFooter=true
+  title=title
+  local-class="page"
+}}
+  {{#ko-admin/forms/group legend=(t "admin.teams.legend.edit.details")}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.teams.labels.edit.name"}}{{/ko-form/field/label}}
+      {{ko-input qaClass="qa-ko-admin_team__input-title" value=editedTeam.title onInput=(action (mut editedTeam.title) value="target.value") disabled=save.isRunning}}
+      {{ko-form/field/errors errors=editedTeam.errors.title}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.businesshours.title"}}{{/ko-form/field/label}}
+      {{#ko-select
+        class=(qa-cls "qa-proposition--property")
+        selected=editedTeam.businesshour
+        searchEnabled=true
+        searchField="title"
+        options=businessHours
+        disabled=save.isRunning
+        size="medium"
+        onChange=(action (mut editedTeam.businesshour))
+      as |value|}}
+        {{value.title}}
+      {{/ko-select}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+  <div local-class="header-bar">
+    <h5 local-class="header">{{t "admin.teams.info.title"}}</h5>
+    {{#ko-select
+      search=(perform findAgents)
+      placeholder=(t "admin.teams.labels.filter_agents")
+      onChange=(perform addMember)
+      local-class="search"
+      qaClass="qa-ko-admin_team__agent-search"
+      noMatchesMessage=noMatchesMessage
+      as |agent|
+    }}
+      <div local-class="search-result">
+        <div local-class="search-result-avatar">
+          {{ko-user-avatar user=agent size="micro"}}
+        </div>
+        {{agent.fullName}}
+        {{#if (contains agent members)}}
+          <span class="i-check-circle" local-class="member-search-already-included" title={{t "users.team_member_search.already_included"}}></span>
+        {{/if}}
+      </div>
+    {{/ko-select}}
+  </div>
+
+  <div local-class="list-container">
+    {{#ko-simple-list as |list|}}
+      {{#each members as |member|}}
+        {{#list.row
+          local-class=(unless (contains member team.members) "new-member-row")
+          onClick=(perform viewMember member)
+          as |row|
+        }}
+          {{#row.cell}}
+            <span local-class="member-avatar">{{ko-user-avatar user=member size="small"}}</span>
+            <span local-class="member-name">{{member.fullName}}</span>
+            {{#unless member.isEnabled}}
+              <span local-class="secondary">&nbsp;({{t "generic.disabled"}})</span>
+            {{/unless}}
+          {{/row.cell}}
+          {{#row.cell}}
+            <span local-class="secondary">{{member.role.title}}</span>
+          {{/row.cell}}
+          {{#row.cell}}
+            {{#with member.lastActiveAt as |date|}}
+              <time datetime={{date}}>
+                {{t "users.last_seen" time=(ko-from-now date)}}
+              </time>
+            {{/with}}
+          {{/row.cell}}
+          {{#row.actions}}
+            <a href={{href-to "session.agent.users.user" member}}>{{t "generic.view"}}</a>
+            | <a onclick={{perform removeMember member}} class={{qa-cls "qa-ko-admin_team__remove-member"}}>{{t "generic.remove"}}</a>
+          {{/row.actions}}
+        {{/list.row}}
+      {{/each}}
+    {{/ko-simple-list}}
+  </div>
+{{/ko-admin/page}}

@@ -1,0 +1,8 @@
+{{#basic-dropdown horizontalPosition="right" onOpen=onOpen onClose=onClose as |dropdown|}}
+  {{#dropdown.trigger local-class="trigger" class=(qa-cls "qa-list-item-menu__dropdown")}}
+    {{ko-power-select-triggers/chevron}}
+  {{/dropdown.trigger}}
+  {{#dropdown.content local-class="dropdown-body"}}
+    {{yield (hash item=(component "ko-timeline-2/list/item/menu/item" onClose=(action dropdown.actions.close)))}}
+  {{/dropdown.content}}
+{{/basic-dropdown}}

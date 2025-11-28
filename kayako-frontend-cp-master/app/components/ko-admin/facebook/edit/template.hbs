@@ -1,0 +1,23 @@
+{{#ko-form
+  onSubmit=onSave
+  onSuccess=onSuccess
+}}
+  {{#ko-admin/page
+    title=(t "admin.facebook.edit.heading" pageTitle=page.title)
+    onCancel=onCancel
+    buttonText=(t "generic.save")
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t 'admin.facebook.heading.page_settings')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.facebook.label.brand'}}{{/ko-form/field/label}}
+        {{!TODO: localize when the field localization API has been written}}
+        {{#ko-select options=brands selected=editedPage.brand size="medium" onChange=(action (mut editedPage.brand)) as |brand|}}
+          {{brand.name}}
+        {{/ko-select}}
+        {{ko-form/field/errors errors=editedPage.errors.brand}}
+        {{#ko-form/field/help}}{{t 'admin.facebook.help.brand'}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

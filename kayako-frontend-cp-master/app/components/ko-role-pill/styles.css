@@ -1,0 +1,16 @@
+.role-pill {
+  color: $grey-7;
+  border: 1px solid $grey-3;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 17px;
+  line-height: 1;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,441 @@
+<div local-class="onboard">
+  {{#if isFinished}}
+    <div local-class="confetti">
+      {{ko-confetti}}
+    </div>
+  {{/if}}
+  <div local-class="wrapper">
+    <header local-class="header">
+      <p local-class="title"><span>{{first-name session.user.fullName}}</span>, {{t "welcome.title"}}</p>
+      <p local-class="subtitle">{{t "welcome.subtitle"}}</p>
+    </header>
+
+    <main local-class="cards">
+      <div local-class="card {{if onBoardingStatus.progress.account_setup "is-done"}}" class={{qa-cls "card--email"}} onClick={{action "showPopup" 1}}>
+        <div local-class="card__count">
+          <img local-class="card__count__number" src="/images/welcome/1.svg">
+          <span local-class="card__count__tick"></span>
+        </div>
+        <div class="u-flex-grow">
+          <h4 local-class="card__title">{{t "welcome.cards.emails.title"}}</h4>
+          <p local-class="card__description">{{t "welcome.cards.emails.description"}}</p>
+        </div>
+        <div local-class="card__button {{if (eq nextStep 'email') 'is-active'}}">
+          {{t "welcome.start"}}
+        </div>
+      </div>
+
+      <div local-class="card {{if onBoardingStatus.progress.account_connected "is-done"}} {{if grayoutSocial "is-disabled"}}" class={{qa-cls "card--social"}} onClick={{action "showPopup" 2}}>
+        <div local-class="card__count">
+          <img local-class="card__count__number" src="/images/welcome/2.svg">
+          <span local-class="card__count__tick"></span>
+        </div>
+        <div class="u-flex-grow">
+          <h4 local-class="card__title">{{t "welcome.cards.social.title"}}</h4>
+          <p local-class="card__description">{{t "welcome.cards.social.description"}}</p>
+        </div>
+        <div local-class="card__button {{if (eq nextStep 'social') 'is-active'}}">
+          {{t "welcome.continue"}}
+        </div>
+      </div>
+
+      <div local-class="card {{if onBoardingStatus.progress.setup "is-done"}}" class={{qa-cls "card--messenger"}} onClick={{action "showPopup" 3}}>
+        <div local-class="card__count">
+          <img local-class="card__count__number" src="/images/welcome/3.svg">
+          <span local-class="card__count__tick"></span>
+        </div>
+        <div class="u-flex-grow">
+          <h4 local-class="card__title">{{t "welcome.cards.messenger.title"}}</h4>
+          <p local-class="card__description">{{t "welcome.cards.messenger.description"}}</p>
+        </div>
+        <div local-class="card__button {{if (eq nextStep 'messenger') 'is-active'}}">
+          {{t "welcome.continue"}}
+        </div>
+      </div>
+
+      <div local-class="card {{if onBoardingStatus.progress.agent_added "is-done"}} {{if grayoutAgents "is-disabled"}}" class={{qa-cls "card--agents"}} onClick={{action "showPopup" 4}}>
+        <div local-class="card__count">
+          <img local-class="card__count__number" src="/images/welcome/4.svg">
+          <span local-class="card__count__tick"></span>
+        </div>
+        <div class="u-flex-grow">
+          <h4 local-class="card__title">{{t "welcome.cards.agents.title"}}</h4>
+          <p local-class="card__description">{{t "welcome.cards.agents.description"}}</p>
+        </div>
+        <div local-class="card__button {{if (eq nextStep 'agents') 'is-active'}}">
+          {{t "welcome.continue"}}
+        </div>
+      </div>
+    </main>
+
+
+    {{#liquid-if (eq activePopup 1)}}
+      {{#ko-modal
+        modalStyle=(if (eq emailStep "connected") "width: 600px;height:468px" "width: 600px;height:404px")
+        noHeaderContent=(if hideEmailSetupTitle true)
+        noFooter=true
+        on-close=(action "cancel") as |modal|}}
+        {{#if modal.isHeader}}
+          {{#unless hideEmailSetupTitle}}
+            {{t "welcome.popups.emails.initial.title"}}
+          {{/unless}}
+        {{/if}}
+        {{#if modal.isMain spaceBetween=true}}
+          <section local-class="modal-section modal-section--spaced is-aligned {{if (eq emailStep 'initial') 'is-active'}}" class={{if (eq emailStep 'initial') (qa-cls "email-setup-prompt")}}>
+            <h5 local-class="heading">{{t "welcome.popups.emails.initial.heading"}}</h5>
+            {{#ko-button type="primary" size="medium" align="center" margin=true fixwidth=true onClick=(action "connectEmailInput") qaClass="action-connect-email"}}
+              {{t "welcome.popups.emails.initial.primarybutton"}}
+            {{/ko-button}}
+            {{#ko-button size="medium" align="center" fixwidth=true onClick=(action "createEmailInput") qaClass="action-create-email"}}
+              {{t "welcome.popups.emails.initial.secondarybutton"}}
+            {{/ko-button}}
+          </section>
+
+          <section local-class="modal-section modal-section--spaced is-aligned {{if (eq emailStep 'connect') 'is-active'}}" class={{if (eq emailStep 'connect') (qa-cls "email-setup-connect")}}>
+            <h5 local-class="label">{{t "welcome.popups.emails.connect.label"}}</h5>
+            <form onsubmit={{action "connectEmail"}}>
+              {{ko-input size="full" placeholder=(t "welcome.popups.emails.connect.inputplaceholder") value=(mut emailToBeConnected.address) qaClass="existing-email"}}
+              <div local-class="paired-buttons">
+                <div class="u-mright">
+                  {{#ko-button size="wide" onClick=(action "startEmail") qaClass="goto-email-prompt"}}
+                    {{t "generic.back"}}
+                  {{/ko-button}}
+                </div>
+                {{#ko-button type="primary" size="wide" hasAnimation=true loading=emailToBeConnected.isSaving disabled=emailToBeConnected.isSaving onClick=(action "connectEmail") qaClass="server-connect-email"}}
+                  {{t "generic.next"}}
+                {{/ko-button}}
+              </div>
+            </form>
+          </section>
+
+          <section local-class="modal-section modal-section--spaced is-aligned {{if (eq emailStep 'emailForwarding') 'is-active'}}" class={{if (eq emailStep 'emailForwarding') (qa-cls "email-setup-postconnect")}}>
+            <h5 local-class="heading">{{t "welcome.popups.emails.emailForwarding.step1"}}</h5>
+            <h5 local-class="heading">{{t "welcome.popups.emails.emailForwarding.step2" domain=fullDomain}}</h5>
+            <a class="text--small text--center" href="https://support.kayako.com/article/1283-forwarding-emails-to-kayako-from-external-domains" target="_blank" rel="noopener noreferrer">
+              {{t "welcome.popups.emails.emailForwarding.instructions"}}
+            </a>
+            {{#copy-button local-class="copy-button" class="text--small" clipboardText=(t "welcome.popups.emails.emailForwarding.instructionstext" domain=fullDomain) success=(action "copiedToClipboard")}}
+              {{t "welcome.popups.emails.emailForwarding.copyinstructions"}}
+            {{/copy-button}}
+            <div local-class="paired-buttons">
+              {{#ko-button type="primary" size="medium" fixwidth=true onClick=(action "emailConnected") qaClass="email-connect-success"}}
+                {{t "generic.next"}}
+              {{/ko-button}}
+            </div>
+          </section>
+
+          <section local-class="modal-section modal-section--allset transition-delay-2 {{if (eq emailStep 'connected') 'is-active'}}" class={{if (eq emailStep 'connected') (qa-cls "email-setup-connect-success")}}>
+            <div local-class="modal-section__content" class="text--center">
+              <img local-class="allset-tick" class="u-mbottom--mini" src="/images/welcome/tick-icon.svg" width="64" height="64">
+              <h2 class="u-mbottom--tiny">{{t "welcome.popups.emails.connected.heading"}}</h2>
+              <p local-class="light-text" class="u-mbottom">{{t "welcome.popups.emails.connected.subheading"}}</p>
+            </div>
+            <div local-class="gray-box">
+              <h5 class="text--bold u-mbottom--tiny">{{t "welcome.popups.emails.connected.liveconversationstitle"}}</h5>
+              <p local-class="gray-box__text" class="u-mbottom--mini">{{t "welcome.popups.emails.connected.liveconversationsdescription"}}</p>
+              <div local-class="button-text">
+                <div class="u-mright">
+                  {{#ko-button href="https://support.kayako.com/article/1197-protecting-your-emails-from-spam-filters" target="_blank" rel="noopener noreferrer" type="highlight" size="medium"}}
+                    {{t "welcome.popups.emails.connected.button"}}
+                  {{/ko-button}}
+                </div>
+                {{#copy-button local-class="copy-button" class="text--small" clipboardText=(t "welcome.popups.emails.connected.instructionstext") success=(action "copiedToClipboard")}}
+                  {{t "welcome.popups.emails.connected.copyinstructions"}}
+                {{/copy-button}}
+              </div>
+            </div>
+            <div local-class="next-step" onClick={{action "showPopup" 2}}>
+              <p>{{t "welcome.popups.emails.connected.nextstep"}}</p>
+            </div>
+          </section>
+
+          <section local-class="modal-section modal-section--spaced is-aligned {{if (eq emailStep 'create') 'is-active'}}" class={{if (eq emailStep 'create') (qa-cls "email-setup-create")}}>
+            <h5 local-class="heading">{{t "welcome.popups.emails.create.label"}}</h5>
+            <form onsubmit={{action "createEmail"}}>
+              <div class="u-flex u-mbottom">
+                {{ko-input addon=true size=false value=(mut createEmailName) qaClass="new-email"}}
+                <span local-class="input-addon">{{fullDomain}}</span>
+              </div>
+              <div local-class="paired-buttons">
+                <div class="u-mright">
+                  {{#ko-button size="wide" onClick=(action "startEmail") qaClass="goto-email-prompt"}}
+                    {{t "generic.back"}}
+                  {{/ko-button}}
+                </div>
+                {{#ko-button type="primary" size="wide" hasAnimation=true loading=emailToBeCreated.isSaving disabled=emailToBeCreated.isSaving onClick=(action "createEmail") qaClass="create-new-email"}}
+                  {{t "welcome.popups.emails.create.primarybutton"}}
+                {{/ko-button}}
+              </div>
+            </form>
+          </section>
+
+          <section local-class="modal-section modal-section--allset transition-delay-1 {{if (eq emailStep 'created') 'is-active'}}" class={{if (eq emailStep 'created') (qa-cls "email-setup-created-success")}}>
+            <div local-class="modal-section__content">
+              <div local-class="modal-section__wrapper" class="text--center">
+                <img local-class="allset-tick" class="u-mbottom--mini" src="/images/welcome/tick-icon.svg" width="64" height="64">
+                <h2 class="u-mbottom--tiny">{{t "welcome.popups.emails.created.heading"}}</h2>
+                <p local-class="light-text" class="u-mbottom">
+                  {{#if emailPopupRevisited}}
+                    {{t "welcome.popups.emails.created.subheadingdefault"}}
+                  {{else}}
+                    {{t "welcome.popups.emails.created.subheading" address=emailToBeCreated.address}}
+                  {{/if}}
+                </p>
+              </div>
+            </div>
+            <div local-class="gray-box">
+              <p local-class="gray-box__text" class="u-mbottom--tiny">{{t "welcome.popups.emails.created.tryout"}}</p>
+            </div>
+            <div local-class="next-step" onClick={{action "showPopup" 2}}>
+              <p>{{t "welcome.popups.emails.connected.nextstep"}}</p>
+            </div>
+          </section>
+
+        {{/if}}
+      {{/ko-modal}}
+    {{/liquid-if}}
+
+    {{!-------------
+    -----SOCIAL-----
+    ---------------}}
+    {{#liquid-if (eq activePopup 2)}}
+      {{#ko-modal
+        modalStyle=socialModalDimensions
+        noHeaderContent=(if (eq socialSetup "done") true)
+        noFooter=(if hideSocialPopupFooter true)
+        on-close=(action "cancel") as |modal|}}
+        {{#if modal.isHeader}}
+          {{#unless (eq socialSetup "done")}}
+            {{#if isFacebookPagesPopup}}
+              {{t "welcome.popups.social.connect.facebookpages"}}
+            {{else}}
+              {{t "welcome.popups.social.initial.title"}}
+            {{/if}}
+          {{/unless}}
+        {{/if}}
+        {{#if modal.isMain}}
+          <section local-class="modal-section is-aligned {{if (eq socialSetup 'initial') 'is-active'}}" class={{if (eq socialSetup 'initial') (qa-cls "social-setup-prompt")}}>
+
+            <div local-class="modal-section__content modal-section--spaced">
+              <h5 local-class="heading">{{t "welcome.popups.social.initial.heading"}}</h5>
+              {{#ko-button type="primary" size="medium" align="center" margin=true fixwidth=true onClick=(action "connectSocial") qaClass="select-social-connect"}}
+                {{t "welcome.popups.social.initial.primarybutton"}}
+              {{/ko-button}}
+              {{#ko-button size="medium" align="center" fixwidth=true onClick=(action "skipSocialSetup") qaClass="skip-social-connect"}}
+                {{t "welcome.popups.social.initial.secondarybutton"}}
+              {{/ko-button}}
+            </div>
+            <p class="text--light text--center text--small">{{t "welcome.popups.social.initial.fact"}}</p>
+          </section>
+
+          <section local-class="modal-section modal-section--low-scale transition-delay-1 {{if (eq socialSetup 'connect') 'is-active'}}"  class="text--center {{if (eq socialSetup 'connect') (qa-cls "social-setup-connect")}}">
+            <div local-class="modal-section__social">
+              <img class="u-mbottom" src="/images/welcome/twitter.svg">
+              <h5 class="text--bold">{{t "welcome.popups.social.connect.twitterheading"}}</h5>
+              <p class="u-mbottom">{{t "welcome.popups.social.connect.twitterdescription"}}</p>
+              {{#ko-button type="primary" size="medium" align="center" hasAnimation=true loading=isTwitterloading disabled=twitterButtonDisabled onClick=(perform redirectToTwitterAuthenticationEndpoint)}}
+                {{#if twitterConnected}}
+                  {{t "welcome.popups.social.connect.twitterconnected"}}
+                {{else}}
+                  {{t "welcome.popups.social.connect.twitterbutton"}}
+                {{/if}}
+              {{/ko-button}}
+            </div>
+            <div local-class="modal-section__social">
+              <img class="u-mbottom" src="/images/welcome/facebook.svg">
+              <h5 class="text--bold">{{t "welcome.popups.social.connect.facebookheading"}}</h5>
+              <p class="u-mbottom">{{t "welcome.popups.social.connect.facebookdescription"}}</p>
+              {{#ko-button type="primary" size="medium" align="center" hasAnimation=true loading=isFacebookConnecting disabled=facebookButtonDisabled onClick=(action "redirectToFacebookAuthenticationEndpoint")}}
+                {{#if facebookPagesConnected}}
+                  {{t "welcome.popups.social.connect.facebookconnected"}}
+                {{else}}
+                  {{t "welcome.popups.social.connect.facebookpages"}}
+                {{/if}}
+              {{/ko-button}}
+            </div>
+          </section>
+
+          <section local-class="modal-section transition-delay-1 {{if (eq socialSetup 'connectpages') 'is-active'}}">
+            {{#if fetchingPages}}
+              <div local-class="facebook-pages-loader">
+                {{ko-loader}}
+              </div>
+            {{else}}
+              <ul local-class="facebook-pages">
+                {{#each availablePages as |page|}}
+                  <li local-class="facebook-pages__item">
+                    {{ko-checkbox label=page.title checked=page.import}}
+                  </li>
+                {{else}}
+                  <div local-class="no-pages">{{t "admin.facebook.no_pages"}}</div>
+                {{/each}}
+              </ul>
+            {{/if}}
+          </section>
+
+          <section local-class="modal-section modal-section--allset transition-delay-1 {{if (eq socialSetup 'done') 'is-active'}}">
+            <div local-class="narrow-success-message modal-section__content" class="text--center">
+              <img local-class="allset-tick" class="u-mbottom--mini" src="/images/welcome/tick-icon.svg" width="64" height="64">
+              <h2 class="u-mbottom--tiny">{{t "welcome.popups.social.done.heading"}}</h2>
+              <p local-class="light-text" class="u-mbottom">{{t "welcome.popups.social.done.subheading"}}</p>
+            </div>
+            <div local-class="next-step" onClick={{action "showPopup" 3}}>
+              <p>{{t "welcome.popups.social.done.nextstep"}}</p>
+            </div>
+          </section>
+        {{/if}}
+        {{#if modal.isFooter}}
+
+          {{#if isFacebookPagesPopup}}
+            <div class="u-mright">
+              {{#ko-button size="medium" onClick=(action "connectSocial")}}
+                {{t "welcome.popups.social.connect.skipbutton"}}
+              {{/ko-button}}
+            </div>
+            {{#ko-button type="primary" size="wide" qaClass="qa-admin-facebook-page__save" hasAnimation=true loading=importingPages disabled=importPagesButtonDisabled onClick=(action "importPages")}}
+              {{t "admin.facebook.save"}}
+            {{/ko-button}}
+          {{else}}
+            {{#ko-button size="wide" onClick=(action "socialSetupDone")}}
+              {{t "welcome.popups.social.connect.donebutton"}}
+            {{/ko-button}}
+          {{/if}}
+
+        {{/if}}
+      {{/ko-modal}}
+    {{/liquid-if}}
+
+    {{!-------------
+    ----MESSENGER---
+    ---------------}}
+    {{#liquid-if (eq activePopup 3)}}
+      {{#ko-modal
+        modalStyle=(if (eq messengerSetup "done") "width: 600px;height:596px" "width: 900px;height:700px")
+        noFooter=true
+        on-close=(action "cancel") as |modal|}}
+        {{#if modal.isHeader}}
+          {{t "welcome.popups.messenger.initial.title"}}
+        {{/if}}
+        {{#if modal.isMain}}
+          <section local-class="modal-section modal-section--wide {{if (or (eq messengerSetup 'initial') (eq messengerSetup 'embedCode')) 'is-active'}}" class={{if (eq messengerSetup 'initial') (qa-cls "messenger-setup-intro")}}>
+            <div local-class="messenger-preview" class="small">
+              {{ko-admin/messenger/preview preview=preview isBackgroundAnimating=animateBackground.isRunning}}
+            </div>
+            {{#if (eq messengerSetup 'initial')}}
+              <div local-class="messenger-right-text">
+                {{ko-admin/messenger/customize
+                  title=title
+                  titleLocaleFields=titleLocaleFields
+                  welcomeMessage=welcomeMessage
+                  welcomeMessageLocaleFields=welcomeMessageLocaleFields
+                  primaryColor=primaryColor
+                  activeGradient=activeGradient
+                  activeSolidColor=activeSolidColor
+                  activePattern=activePattern
+                  backgroundMode=backgroundMode}}
+
+                {{#ko-button type="primary" size="medium" full=true margin=true hasAnimation=true loading=publish.isRunning onClick=(perform publish) qaClass="messenger-next-button"}}
+                  {{t "generic.next"}}
+                {{/ko-button}}
+              </div>
+            {{else}}
+              <div local-class="messenger-right-text messenger-text-transition">
+                <h5 class="text--bold text--spaced u-mbottom--mini">{{t "welcome.popups.messenger.embedCode.heading"}}</h5>
+                <h5 class="text--bold text--spaced u-mbottom">{{t "welcome.popups.messenger.embedCode.subheading"}}</h5>
+                <div local-class="space-between">
+                  <span>{{t "welcome.popups.messenger.embedCode.embedcode"}}</span>
+                  {{#copy-button local-class="copy-button" class="text--bold" clipboardText=generatedCode success=(action "copiedToClipboard")}}
+                    {{t 'generic.copy_to_clipboard'}}
+                  {{/copy-button}}
+                </div>
+                {{ko-input multiline=true size="full" lines="7" value=generatedCode}}
+                <div class="text--small text--light u-mbottom">{{t "welcome.popups.messenger.embedCode.helptext"}}</div>
+                <div local-class="messenger-button-pair">
+                  <div class="u-flex-grow u-mright">
+                    {{#ko-button size="medium" full=true onClick=(action "showPopup" 4) qaClass="messenger-later-button"}}
+                      {{t "welcome.popups.messenger.embedCode.dolater"}}
+                    {{/ko-button}}
+                  </div>
+                  <div class="u-flex-grow ">
+                    {{#ko-button type="primary" size="medium" full=true onClick=(action "messengerSet") qaClass="messenger-done-button"}}
+                      {{t "welcome.popups.messenger.embedCode.done"}}
+                    {{/ko-button}}
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+          </section>
+        {{/if}}
+      {{/ko-modal}}
+    {{/liquid-if}}
+
+    {{!-------------
+    -----AGENTS-----
+    ---------------}}
+    {{#liquid-if (eq activePopup 4)}}
+      {{#ko-modal
+        modalStyle=agentModalDimensions
+        noHeaderContent=(if hideAgentSetupTitle true)
+        noFooter=(if (eq agentSetup "add") false true)
+        on-close=(action "cancel") as |modal|}}
+        {{#if modal.isHeader}}
+          {{#unless hideAgentSetupTitle}}
+            {{t "welcome.popups.agents.initial.title"}}
+          {{/unless}}
+        {{/if}}
+        {{#if modal.isMain}}
+          <section local-class="modal-section modal-section--spaced is-aligned {{if (eq agentSetup "initial") "is-active"}}" class={{if (eq agentSetup 'initial') (qa-cls "agent-setup-prompt")}}>
+            <h5 local-class="heading">{{t "welcome.popups.agents.initial.heading"}}</h5>
+            <div class="u-mbottom--tiny">
+              {{#ko-button type="primary" size="medium" align="center" fixwidth=true onClick=(action "addAgents") qaClass="goto-add-agents"}}
+                {{t "welcome.popups.agents.initial.primarybutton"}}
+              {{/ko-button}}
+            </div>
+            <div class="u-mbottom--tiny">
+              {{#ko-button size="medium" align="center" fixwidth=true onClick=(action "cancel")}}
+                {{t "welcome.popups.agents.initial.secondarybutton"}}
+              {{/ko-button}}
+            </div>
+            <div class="text--center">
+              <span class="text--action text--small " onClick={{action "skipAgents"}}>
+                {{t "welcome.popups.agents.initial.dontwant"}}
+              </span>
+            </div>
+          </section>
+
+          <section local-class="modal-section modal-section--wide modal-section--low-scale transition-delay-1 {{if (eq agentSetup "add") "is-active"}}" class={{if (eq agentSetup 'add') (qa-cls "add-agents-section")}}>
+            <div local-class="add-agents-fields">
+              {{ko-bulk-invitation
+                onBoarding=true
+                invitation=invitation
+                referenceData=referenceData
+                onRowsChanged=(action "rowsChanged")
+              }}
+            </div>
+          </section>
+
+          <section local-class="modal-section modal-section--narrow transition-delay-1 {{if (eq agentSetup "done") "is-active"}}" class="text--center">
+            <div local-class="narrow-success-message modal-section__content">
+              <img local-class="allset-tick" class="u-mbottom--mini" src="/images/welcome/tick-icon.svg" width="64" height="64">
+              <h3 class="u-mbottom--mini">{{t "welcome.popups.agents.done.heading"}}</h3>
+              <p local-class="light-text" class="u-mbottom text--center">{{t "welcome.popups.agents.done.subheading"}}</p>
+              {{#ko-button type="primary" size="wide" onClick=(action "cancel")}}
+                {{t "welcome.popups.agents.done.buttontext"}}
+              {{/ko-button}}
+            </div>
+            <p class="u-mbottom text--light text--small">{{t "welcome.popups.agents.done.note"}}</p>
+          </section>
+        {{/if}}
+        {{#if modal.isFooter}}
+          {{#ko-button type="naked" onClick=(action "skipAgents")}}
+            {{t "generic.cancel"}}
+          {{/ko-button}}
+          {{#ko-button type="primary" size="medium" hasAnimation=true loading=saveTask.isRunning disabled=saveTask.isRunning onClick=(perform saveTask invitation)}}
+            {{t "welcome.popups.agents.add.invite"}}
+          {{/ko-button}}
+        {{/if}}
+      {{/ko-modal}}
+    {{/liquid-if}}
+
+  </div>
+</div>

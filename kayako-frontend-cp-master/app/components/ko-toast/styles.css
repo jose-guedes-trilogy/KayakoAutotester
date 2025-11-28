@@ -1,0 +1,137 @@
+.toast {
+  pointer-events: none;
+}
+
+.toast + .toast {
+  margin: 15px auto 0;
+}
+
+.container {
+  position: relative;
+  border-radius: 4px;
+  padding: 6px 12px 6px 36px;
+  color: #fff;
+  max-width: 456px;
+  display: inline-block;
+  text-align: left;
+  pointer-events: auto;
+}
+
+.container.dismissable,
+.container.multiline {
+  padding-right: 34px;
+}
+
+.container.multiline {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.container.error {
+  background-color: $color-bad;
+}
+.container.warning {
+  background-color: $color-warning;
+}
+.container.info {
+  background-color: $primary-blue;
+}
+.container.success {
+  background-color: $color-good;
+}
+
+.addModifier {
+  will-change: transform;
+  &.addModifierActive {
+    animation: bounce 0.7s linear forwards;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: matrix3d(0.8, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.3% {
+    transform: matrix3d(0.903, 0, 0, 0, 0, 0.903, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  8.61% {
+    transform: matrix3d(0.976, 0, 0, 0, 0, 0.976, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  12.91% {
+    transform: matrix3d(1.01, 0, 0, 0, 0, 1.01, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  17.22% {
+    transform: matrix3d(1.019, 0, 0, 0, 0, 1.019, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  28.33% {
+    transform: matrix3d(1.004, 0, 0, 0, 0, 1.004, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  39.44% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  61.66% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+
+.toast.removeModifier {
+  animation: none;
+  margin-bottom: 0;
+  opacity: 1;
+  transition: all 100ms ease-out;
+
+  &.removeModifierActive {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 7px;
+  right: 6px;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.multiline .close {
+  top: 6px;
+}
+
+.icon {
+  position: absolute;
+  top: 6px;
+  left: 12px;
+}
+
+.multiline .icon {
+  top: 12px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.title-text {
+  white-space: pre-line;
+}
+
+.href {
+  margin-top: 5px;
+}
+
+.link {
+  font-weight: 600;
+  color: #fff;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.body {
+  margin-top: 1px;
+  white-space: pre-line;
+}

@@ -1,0 +1,43 @@
+{{#ko-form onSubmit=(action "save" monitor) as |form|}}
+  {{#ko-admin/page
+    showFooter=true
+    title=(if monitor.isNew (t "admin.monitors.headings.new") (t "admin.monitors.headings.edit" title=monitor.title))
+    onCancel=(route-action "cancel" monitor)
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteMonitor")
+    buttonText=(t "generic.save")}}
+
+    {{#ko-admin/forms/group legend=(t "admin.monitors.heading.details")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.monitors.label.title"}}{{/ko-form/field/label}}
+        {{ko-input placeholder=(t "admin.monitors.label.title_placeholder") name="title" value=editedMonitor.title disabled=form.isSubmitting}}
+        {{ko-form/field/errors errors=editedMonitor.errors.title}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.monitors.conditions.heading"}}</h5>
+      {{ko-admin/forms/description small=true link="https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=monitors1" description="admin.monitors.conditions.description" linkText="admin.monitors.conditions.description_link"}}
+      {{ko-admin/predicate-builder definitions=definitions
+        collections=editedMonitor.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "addPropositionToCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")}}
+      {{ko-form/field/errors errors=editedMonitor.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t "admin.monitors.actions.heading"}}</h5>
+      {{ko-form/field/help text=(t "admin.monitors.actions.info")}}
+      {{ko-admin/automation-actions-builder
+        automationActions=editedMonitor.actions
+        definitions=automationActionDefinitions
+        type="monitors"
+        addAction=(action "addAction")
+        removeAction=(action "removeAction")}}
+      {{ko-form/field/errors errors=editedMonitor.errors.actions}}
+    {{/ko-admin/forms/group}}
+
+  {{/ko-admin/page}}
+{{/ko-form}}

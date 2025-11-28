@@ -1,0 +1,6 @@
+{{#if (and translationsLoaded showReloadNotification)}}
+  <div local-class="app-version-notifier" class={{qa-cls "qa-app-version-notifier"}}>
+    <span>{{t "generic.app_version_out_of_date"}}</span>
+    <span local-class="button" onclick={{action "reloadBrowser"}}>{{t "generic.app_version_out_of_date_call_to_action"}}</span>
+  </div>
+{{/if}}

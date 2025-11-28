@@ -1,0 +1,142 @@
+{{#ko-admin/page title=(t "account.overview.title")}}
+  {{#ko-simple-list header=(t "account.overview.list.title") as |list|}}
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <span local-class="title"> {{t "account.overview.balance.title"}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <span local-class="title caption"> {{format-number accountBalance style='currency' currency=accountCurrency}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+      {{/row.cell}}
+    {{/list.row}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <span local-class="title"> {{t "account.overview.plan.title"}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <span local-class="caption title"> {{subscribedPlanName}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+      {{/row.cell}}
+    {{/list.row}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <span local-class="title"> {{t "account.overview.payment.title"}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <span local-class="caption title"> {{defaultCard.number}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <div local-class="account-action">
+          {{#ko-button href=(href-to "session.admin.account.billing")}}
+            {{t "account.overview.payment.buttonText"}}
+          {{/ko-button}}
+        </div>
+      {{/row.cell}}
+    {{/list.row}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <span local-class="title"> {{t "account.overview.billing.title"}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <div local-class="billing-address">
+          <p local-class="title">
+            {{subscription.account.billTo.firstName}} {{subscription.account.billTo.lastName}}
+          </p>
+          <p local-class="caption">
+            {{subscription.account.billTo.address1}} <br>
+            {{subscription.account.billTo.city}}, {{subscription.account.billTo.state}} <br>
+            {{subscription.account.billTo.country}}, {{subscription.account.billTo.postalCode}}
+          </p>
+        </div>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <div local-class="account-action">
+          {{#ko-button href=(href-to "session.admin.account.billing")}}
+            {{t "account.overview.billing.buttonText"}}
+          {{/ko-button}}
+        </div>
+      {{/row.cell}}
+    {{/list.row}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <span local-class="title"> {{t "account.overview.subscription.title"}} </span>
+      {{/row.cell}}
+
+      {{#row.cell}}
+        {{t "account.overview.subscription.expiry" date=(format-date expiryAt format="full")}}
+      {{/row.cell}}
+
+      {{#row.cell}}
+        <div local-class="account-action">
+          {{#ko-button qaClass="cancel-subscription" onClick=(action "openSupportConversation")}}
+            {{t "account.overview.subscription.cancelContactSupport"}}
+          {{/ko-button}}
+        </div>
+      {{/row.cell}}
+    {{/list.row}}
+
+  {{/ko-simple-list}}
+
+  <div local-class="invoices-list">
+    {{#ko-simple-list header=(t "account.overview.invoices.title") as |list|}}
+      {{#if invoices.length}}
+        <div>
+          {{#list.row as |row|}}
+            {{#row.cell}}
+              <div class="ko-simple-cell__header">
+                {{t "account.overview.invoices.date"}}
+              </div>
+            {{/row.cell}}
+
+            {{#row.cell}}
+              <div class="ko-simple-cell__header">
+                {{t "account.overview.invoices.amount"}}
+              </div>
+            {{/row.cell}}
+
+            {{#row.cell}}
+              <span></span>
+            {{/row.cell}}
+          {{/list.row}}
+
+          {{#each invoices as |invoice|}}
+            {{#list.row qaClass="invoice-item" as |row|}}
+              {{#row.cell}}
+                <span local-class="title"> {{format-date invoice.dueAt format="full"}} </span>
+              {{/row.cell}}
+
+              {{#row.cell}}
+                <span local-class="caption title"> {{format-number invoice.amount style='currency' currency=accountCurrency}}</span>
+              {{/row.cell}}
+
+              {{#row.cell}}
+                <div local-class="account-action">
+                  <a href="{{invoice.resourceUrl}}/download" target="_blank" rel="noopener noreferrer"> {{t "account.overview.invoices.downloadText"}} </a>
+                </div>
+              {{/row.cell}}
+
+            {{/list.row}}
+          {{/each}}
+        </div>
+      {{else}}
+        <div local-class="note">
+          {{t "account.overview.invoices.notAvailable"}}
+        </div>
+      {{/if}}
+    {{/ko-simple-list}}
+  </div>
+{{/ko-admin/page}}

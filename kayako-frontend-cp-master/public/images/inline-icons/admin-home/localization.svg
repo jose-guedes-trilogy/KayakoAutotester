@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="44px" viewBox="0 0 33 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--localization--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon--localization--48" transform="translate(-12.000000, -6.000000)" stroke="#838D94">
+            <g transform="translate(12.000000, 6.000000)">
+                <path d="M32.5,16.5 C32.5,27.5 16.5,43.5 16.5,43.5 C16.5,43.5 0.5,27.5 0.5,16.5 C0.460627963,12.2445883 2.13369133,8.15200978 5.14285055,5.14285055 C8.15200978,2.13369133 12.2445883,0.460627963 16.5,0.5 C20.7554117,0.460627963 24.8479902,2.13369133 27.8571494,5.14285055 C30.8663087,8.15200978 32.539372,12.2445883 32.5,16.5 Z" id="Shape" fill="#FFFFFF"></path>
+                <circle id="Oval" fill="#DADDDF" cx="16.5" cy="16.5" r="5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,13 @@
+{{#unless (lt pageCount 2)}}
+  <div>
+    <div local-class="pagination-wapper" class="{{qa-cls "qa-pagination-container"}}">
+      {{#each pagesToDisplay as |page|}}
+        {{#if (eq page '...')}}
+          {{ko-pagination/spacer}}
+        {{else}}
+          {{ko-pagination/item page=page isActive=(eq page currentPage)}}
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+{{/unless}}

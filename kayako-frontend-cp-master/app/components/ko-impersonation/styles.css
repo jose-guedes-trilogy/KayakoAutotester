@@ -1,0 +1,122 @@
+@value inputFieldHeight: 50px;
+@value fieldHeight: 80px;
+@value smoothTransition: cubic-bezier(0.19, 1, 0.22, 1);
+@value mutedText: #797e82;
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.impersonate {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  opacity: 0;
+  animation: fade-in 0.3s forwards 0.1s;
+  a {
+    color: $primary-blue;
+  }
+}
+
+.section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 320px;
+  height: 380px;
+  background-color: #fff;
+}
+
+/* Image Section */
+
+.container {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 25px;
+}
+
+.front, .back {
+  position: absolute;
+  transition: all 1s smoothTransition;
+}
+
+.front {
+  .flipped & {
+    transform: scale(0.8);
+  }
+}
+
+.back {
+  transform: scale(0.8);
+  .flipped & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-size: cover;
+  background-image: url('/images/login/avatar.png');
+}
+
+/* Header */
+
+.header {
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.sub-header {
+  margin-bottom: 25px;
+  color: mutedText;
+}
+
+/* Form */
+
+.form-content {
+  position: relative;
+  min-height: fieldHeight;
+  width: 100%;
+}
+
+.form-wrapper {
+  display: flex;
+}
+
+.addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-left: 0px;
+  border-radius: 4px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.button {
+  margin-top: 10px;
+}
+
+.url {
+  margin-top: 10px;
+  text-align: center;
+}

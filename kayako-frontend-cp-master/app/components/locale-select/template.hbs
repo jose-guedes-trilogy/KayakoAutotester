@@ -1,0 +1,10 @@
+<div class="{{smallSlotClass}}">
+  {{#ko-select
+    selected=selectedLocale
+    options=options
+    onChange=onChange
+    disabled=disabled
+    as |locale|}}
+    {{locale.language}}
+  {{/ko-select}}
+</div>

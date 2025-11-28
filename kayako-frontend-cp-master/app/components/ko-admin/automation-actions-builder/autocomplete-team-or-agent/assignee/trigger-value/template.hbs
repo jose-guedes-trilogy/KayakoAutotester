@@ -1,0 +1,40 @@
+<div local-class="trigger">
+  {{#if (or team agent)}}
+    {{#if team}}
+      <div local-class="team">
+        {{#if highlight}}
+          {{ko-embolden team.title highlight}}
+        {{else}}
+          {{team.title}}
+        {{/if}}
+      </div>
+    {{/if}}
+    {{#if (and team agent)}}
+      <div local-class="separator">
+        /
+      </div>
+    {{/if}}
+    {{#if agent}}
+      <div local-class="agent">
+        <div local-class="avatar">
+          {{#ko-user-avatar user=agent size="micro" as |avatar|}}
+            {{avatar.image}}
+            {{avatar.online-indicator}}
+          {{/ko-user-avatar}}
+        </div>
+        <span local-class="agent-name">
+          {{#if highlight}}
+            {{ko-embolden agent.fullName highlight}}
+          {{else}}
+            {{agent.fullName}}
+          {{/if}}
+        </span>
+        {{#if isMe}}
+          {{ko-you-label}}
+        {{/if}}
+      </div>
+    {{/if}}
+  {{else}}
+    {{emptyLabel}}
+  {{/if}}
+</div>

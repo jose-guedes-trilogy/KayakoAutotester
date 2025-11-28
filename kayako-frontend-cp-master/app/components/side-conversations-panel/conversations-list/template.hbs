@@ -1,0 +1,117 @@
+<div>
+  <div local-class="side-panel-header">
+    <div local-class="title">
+      {{t "cases.side_conversations.title"}}
+    </div>
+    <div local-class="add-button" title="{{t "cases.side_conversations.add_conversation"}}" onclick={{action setView "NEW_CONVERSATION"}}>
+      {{ko-icon name="plus" color="#838D94"}}
+    </div>
+  </div>
+  
+  <div local-class="conversation-list-container">
+    <ul local-class="conversation-list">
+      {{#if (gt this.loadingPage 0)}}
+        <div local-class="loader">
+          {{ko-loader size='L'}}
+        </div>
+      {{else}}
+        {{#if this.groupedConversations.hasOpen}}
+          <li local-class="conversation-group-header">
+            {{t "cases.side_conversations.open_conversations"}}
+          </li>
+          {{#each this.groupedConversations.open as |conversation|}}
+            <li local-class="conversation-item" onclick={{action openConversation conversation}}>
+              <div local-class="conversation-header">
+                <span local-class="conversation-subject">
+                  {{conversation.filteredSubject}}
+                </span>
+                <span local-class="conversation-time">{{format-date conversation.createdAt year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"}}</span>
+              </div>
+              <div local-class="conversation-participants">
+                {{#each conversation.firstMessage.recipients as |recipient index|}}
+                  {{recipient.name}}{{#unless (eq index (dec conversation.firstMessage.recipients.length))}}, {{/unless}}
+                {{/each}}
+              </div>
+              <div local-class="conversation-content">
+                {{conversation.firstMessage.bodyText}}
+              </div>
+            </li>
+          {{/each}}
+        {{/if}}
+
+        {{#if this.groupedConversations.hasClosed}}
+          <li local-class="conversation-group-header">
+            {{t "cases.side_conversations.closed_conversations"}}
+          </li>
+          {{#each this.groupedConversations.closed as |conversation|}}
+            <li local-class="conversation-item" onclick={{action openConversation conversation}}>
+              <div local-class="conversation-header">
+                <span local-class="conversation-subject">
+                  {{conversation.filteredSubject}}
+                </span>
+                <span local-class="conversation-time">{{format-date conversation.createdAt year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"}}</span>
+              </div>
+              <div local-class="conversation-participants">
+                {{#each conversation.firstMessage.recipients as |recipient index|}}
+                  {{recipient.name}}{{#unless (eq index (dec conversation.firstMessage.recipients.length))}}, {{/unless}}
+                {{/each}}
+              </div>
+              <div local-class="conversation-content">
+                {{conversation.firstMessage.bodyText}}
+              </div>
+            </li>
+          {{/each}}
+        {{/if}}
+      {{/if}}
+    </ul>
+    {{#if (gt this.totalPages 1)}}
+      <div local-class="pagination">
+        <button 
+          {{action "firstPage"}}
+          local-class={{if (eq this.currentPage 1) "hidden" ""}}
+          disabled={{or (eq this.currentPage 1) (gt this.loadingPage 0)}}
+        >
+          {{t "cases.side_conversations.first_page_button"}}
+        </button>
+
+        <button 
+          {{action "previousPage"}}
+          local-class={{if (eq this.currentPage 1) "hidden" ""}}
+          disabled={{or (eq this.currentPage 1) (gt this.loadingPage 0)}}
+        >
+          {{t "cases.side_conversations.prev_button"}}
+        </button>
+
+        {{#each this.visiblePages as |page|}}
+          <button
+            local-class={{if (eq page this.currentPage) "selected" ""}}
+            {{action "goToPage" page}}
+            disabled={{gt this.loadingPage 0}}
+          >
+            {{#if (eq page this.loadingPage)}}
+              {{ko-loader}}
+            {{else}}
+              {{page}}
+            {{/if}}
+          </button>
+        {{/each}}
+
+        <button 
+          {{action "nextPage"}}
+          local-class={{if (eq this.currentPage this.totalPages) "hidden" ""}}
+          disabled={{or (eq this.currentPage this.totalPages) (gt this.loadingPage 0)}}
+        >
+          {{t "cases.side_conversations.next_button"}}
+        </button>
+
+        <button 
+          {{action "goToLastPage"}}
+          local-class={{if (eq this.currentPage this.totalPages) "hidden" ""}}
+          disabled={{or (eq this.currentPage this.totalPages) (gt this.loadingPage 0)}}
+        >
+          {{t "cases.side_conversations.last_page_button"}}
+        </button>
+      </div>
+    {{/if}}
+  </div>
+</div>

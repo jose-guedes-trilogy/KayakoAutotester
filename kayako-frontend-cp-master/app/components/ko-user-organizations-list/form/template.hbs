@@ -1,0 +1,39 @@
+<div local-class="container">
+  {{#unless showForm}}
+    <div local-class="add-link" {{action "showAddForm"}} class="{{qa-cls "qa-add-organization-link"}}">
+      <span local-class="add">{{t "generic.organizations.add_new"}}</span>
+    </div>
+  {{else}}
+    <div local-class="form-container">
+      <div local-class="content">
+        {{#ko-select
+          search=(perform searchOrganizations)
+          selected=organization
+          onChange=(action "selectOrganization")
+          placeholder=placeholder
+          disabled=disabled
+          qaClass="qa-organization-select"
+          searchEnabled=true
+          searchField="name"
+          as |org|
+        }}
+          {{org.name}}
+        {{/ko-select}}
+        {{ko-form/field/errors errors=errors}}
+      </div>
+      <p local-class="buttons">
+        {{#ko-button type="naked" onClick=(action "cancel") disabled=isSaving}}
+          {{t "generic.cancel"}}
+        {{/ko-button}}
+        {{#ko-button 
+          type="primary" 
+          onClick=(action "addOrganization")
+          disabled=(not organization)
+          class=(qa-cls "qa-add-organization-button")
+        }}
+          {{t "generic.add"}}
+        {{/ko-button}}
+      </p>
+    </div>
+  {{/unless}}
+</div>

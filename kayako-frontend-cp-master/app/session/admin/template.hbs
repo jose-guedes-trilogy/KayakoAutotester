@@ -1,0 +1,13 @@
+{{page-title (t "admin.administration")}}
+
+<div local-class="index">
+  {{ko-admin/sidebar}}
+  <div local-class="content-container" class="{{qa-cls "qa-layout_two-columns__content"}}">
+    <div local-class="content">
+      {{outlet}}
+      {{#unless isLoading}}
+        {{ko-messenger/spacer}}
+      {{/unless}}
+    </div>
+  </div>
+</div>

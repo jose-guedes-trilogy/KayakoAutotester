@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+  background-color: #FFF;
+  border-radius: 2px;
+  border: 1px solid #BEC4C7;
+}
+
+.arrow {
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  left: calc(50% - 6px);
+  pointer-events: none;
+  transform: rotate(45deg);
+
+  bottom: -5px;
+  border-bottom: 1px solid #BEC4C7;
+  border-right: 1px solid #BEC4C7;
+
+  background: #FFFFFF;
+}

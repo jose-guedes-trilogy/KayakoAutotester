@@ -1,0 +1,29 @@
+.select {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+
+  &--small {
+    width: 80px;
+  }
+
+  &--medium {
+    width: 225px;
+  }
+}
+
+.trigger {
+  composes: trigger from './shared';
+}
+
+.ko-select-typeahead-trigger {
+  min-height: inherit;
+}
+
+.trigger--focused {
+  composes: trigger--focused from './shared';
+}
+
+.dropdown {
+  composes: dropdown from './shared';
+}

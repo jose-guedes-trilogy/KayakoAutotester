@@ -1,0 +1,24 @@
+.plan-units {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  margin-right: 20px;
+  justify-content: space-between;
+}
+
+.agents-count {
+  width: 55px;
+  display: inline-block;
+}
+
+.label-helper {
+  color: $grey-6;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.operator {
+  color: $grey-4;
+  font-weight: 600;
+  font-size: 20px;
+}

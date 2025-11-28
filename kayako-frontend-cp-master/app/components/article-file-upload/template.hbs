@@ -1,0 +1,28 @@
+{{#ko-text-editor/draggable-dropzone onDrop=(action "onDrop") isUploadEnabled=(not this.disabled)}}  
+  <div local-class="file-upload-container">
+    <div local-class="file-upload-box">
+      <input type="file" id="fileInput" multiple local-class="file-input" onchange={{action "handleFileInput"}} disabled={{this.disabled}}>
+      <label for="fileInput" local-class="file-upload-label">
+        <button type="button" local-class="choose-files-btn" disabled={{this.disabled}}>{{t 'admin.knowledgebase.file_upload.choose_files'}}</button>
+        <span local-class="drag-drop-text">{{t 'admin.knowledgebase.file_upload.drag_and_drop'}}</span>
+      </label>
+    </div>
+  </div>
+
+  <div local-class="uploaded-files-list">
+    {{#each this.uploadedFiles as |file|}}
+      <div local-class="file-item">
+        <span>{{file.name}} <span local-class="file-size">{{format-size-kb file.size}} {{t 'generic.units.kB'}}</span></span>
+        {{#if file.isUploading}}
+          {{ko-loader}}
+        {{else}}
+          <button type="button" local-class="remove-file-btn" onclick={{action "removeFile" file}} disabled={{this.disabled}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+{{/ko-text-editor/draggable-dropzone}}

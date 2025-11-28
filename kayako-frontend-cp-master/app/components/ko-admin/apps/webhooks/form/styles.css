@@ -1,0 +1,7 @@
+.copy-button-container {
+  margin-top: 13px;
+}
+
+.copy-button {
+  composes: default from 'frontend-cp/components/ko-button/styles';
+}

@@ -1,0 +1,86 @@
+{{#ko-table
+  as |table|}}
+  {{#ko-table/header}}
+    {{#if isLoading}}
+      {{#each columnList as |column index|}}
+        {{#if (eq index 0)}}
+          {{#ko-table/column
+            minWidth=(ko-helper minWidthForColumn 'orgComposite')
+            maxWidth=(ko-helper maxWidthForColumn 'orgComposite')
+          }}
+            {{ko-loading/text-placeholder width='60px'}}
+          {{/ko-table/column}}
+        {{else}}
+          {{#ko-table/column
+            minWidth=(ko-helper minWidthForColumn column)
+            maxWidth=(ko-helper maxWidthForColumn column)
+          }}
+            {{ko-loading/text-placeholder width='60px'}}
+          {{/ko-table/column}}
+        {{/if}}
+      {{/each}}
+    {{else}}
+      {{#each columnList as |column|}}
+        {{#ko-table/column
+          minWidth=(ko-helper minWidthForColumn column)
+          maxWidth=(ko-helper maxWidthForColumn column)
+          column=column
+        }}
+          <span>{{t (concat "search.ORGANIZATIONS." column)}}</span>
+        {{/ko-table/column}}
+      {{/each}}
+    {{/if}}
+  {{/ko-table/header}}
+  {{#ko-table/body}}
+    {{#if isLoading}}
+      {{#ko-table/row
+        class=(local-class "row-styles")
+        table=table
+        clickable=false
+        rowContext=organization
+        selectableDisabled=true
+      }}
+        {{#each columnList as |column index|}}
+          {{#if (eq index 0)}}
+            {{#ko-table/cell
+              minWidth=(ko-helper minWidthForColumn 'orgComposite')
+              maxWidth=(ko-helper maxWidthForColumn 'orgComposite')
+            }}
+              {{ko-cases-list/column/org-composite isLoading=isLoading}}
+            {{/ko-table/cell}}
+          {{else}}
+            {{#ko-table/cell
+              minWidth=(ko-helper minWidthForColumn column)
+              maxWidth=(ko-helper maxWidthForColumn column)
+            }}
+              {{ko-loading/text-placeholder width='40px'}}
+            {{/ko-table/cell}}
+          {{/if}}
+        {{/each}}
+      {{/ko-table/row}}
+    {{else}}
+      {{#each organizations as |organization|}}
+        {{#ko-table/row
+          table=table
+          clickable=true
+          rowContext=organization
+          onClick=(action "viewOrganization")
+          class=(local-class "row-styles")
+        }}
+          {{#each columnList as |column|}}
+            {{#ko-table/cell
+              minWidth=(ko-helper minWidthForColumn column)
+              maxWidth=(ko-helper maxWidthForColumn column)
+            }}
+              {{component (ko-case-list-cell "componentName" column)
+                column=column
+                model=organization
+                propertyName=(ko-case-list-cell "propertyName" column)
+              }}
+            {{/ko-table/cell}}
+          {{/each}}
+        {{/ko-table/row}}
+      {{/each}}
+    {{/if}}
+  {{/ko-table/body}}
+{{/ko-table}}

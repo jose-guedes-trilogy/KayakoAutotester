@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.no-user-found {
+  text-align: center;
+  color: $grey-6;
+  padding-top: 18px;
+}

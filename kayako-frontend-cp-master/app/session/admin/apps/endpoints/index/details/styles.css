@@ -1,0 +1,8 @@
+.preFormatted {
+  margin-top: 30px;
+  margin-bottom: 15px;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

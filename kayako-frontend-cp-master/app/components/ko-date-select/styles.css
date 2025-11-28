@@ -1,0 +1,74 @@
+.datepicker {
+  background-color: #fff;
+  border: 1px solid #d1d5d7;
+  border-radius: 2px;
+}
+
+.content {
+  padding: 3px 0;
+}
+
+.trigger {
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #D1D5D7;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  font-size: 14px;
+  height: 30px;
+  padding-left: 9px;
+  padding-right: 20px;
+  position: relative;
+
+  transition: border-color 0.1s, box-shadow 0.1s;
+  display: flex;
+
+  &:focus, &--focused, &[aria-expanded="true"] {
+    outline: none;
+    border-color: $primary-blue !important;
+    box-shadow: 0 0 4px 0 rgba(78, 174, 203, 0.65), inset 0 1px 1px 0 rgba(0, 0, 0, 0.08) !important;
+  }
+}
+
+.trigger-text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  user-select: none;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trigger-icon {
+  border: 0;
+  bottom: 0;
+  color: #A1AAAF;
+  display: inline-block;
+  font-family: 'icomoon';
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  height: 13px;
+  line-height: 1;
+  margin: auto;
+  position: absolute;
+  right: 6px;
+  top: 0;
+  width: 13px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::before {
+    content: "\e602";
+  }
+}
+
+.trigger[aria-expanded="true"] .trigger-icon::before {
+  content: "\e603";
+}
+
+.trigger[aria-disabled="true"] {
+  background-color: #EEEEEE;
+}

@@ -1,0 +1,30 @@
+<div class="{{smallSlotClass}}">
+  {{#ko-select
+    selected=selected
+    options=options
+    placeholder=(t "admin.automation_actions_builder.select_receiver")
+    onChange=(action (mut selected))
+    search=(perform search)
+    searchEnabled=searchEnabled
+    as |requester|}}
+    {{requester.text}}
+  {{/ko-select}}
+</div>
+{{#each-in automationAction.attributes as |name value|}}
+  <div class="{{bigSlotClass}}">
+    <br>
+    {{#ko-form/field/label}}
+      {{t (concat "admin.automation_actions_builder.labels." name)}}
+    {{/ko-form/field/label}}
+    {{ko-input
+      name=name
+      value=value
+      onInput=(action "updateMetadata" name)
+      size="full"
+      multiline=(get attributeMultilineMappings name)
+      lines=6}}
+  </div>
+{{/each-in}}
+<div class="{{bigSlotClass}}">
+  {{ko-admin/forms/description small=true link=(concat "https://support.kayako.com/article/1172-adding-dynamic-content-with-placeholders?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=" type "2") description="admin.automation_actions_builder.label.placeholders_allowed.description" linkText="admin.automation_actions_builder.label.placeholders_allowed.description_link"}}
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Green check</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="path-1"></path>
+    </defs>
+    <g id="Onboarding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Onboarding---Onboarding-Page" transform="translate(-364.000000, -304.000000)">
+            <g id="Group-4" transform="translate(342.000000, 285.000000)">
+                <g id="Green-check" transform="translate(22.000000, 19.000000)">
+                    <g>
+                        <g id="Rectangle-185">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <use fill-opacity="0.0899999961" fill="#49A43E" fill-rule="evenodd" xlink:href="#path-1"></use>
+                            <path stroke="#49A43E" stroke-width="2" d="M1,16 C1,24.2855244 7.71503889,31 16,31 C24.2855244,31 31,24.2849611 31,16 C31,7.71447564 24.2849611,1 16,1 C7.71447564,1 1,7.71503889 1,16 Z"></path>
+                        </g>
+                        <polyline id="Shape" stroke="#49A43E" stroke-width="2" points="10 17 14 21 23 12"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

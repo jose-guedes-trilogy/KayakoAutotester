@@ -1,0 +1,168 @@
+.flap-hide {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  background-color: #FFFFFF;
+  height: 14px;
+  width: 32px;
+  border-radius: 100% 100% 0 0;
+  transform: rotate(45deg) translateX(1px);
+  right: -10px;
+  top: -2px;
+}
+.attachment-container {
+  position: relative;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.attachment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  position: relative;
+  height: 128px;
+  width: 189px;
+  border-radius: 3px;
+  box-shadow: $box-shadow1;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover .details {
+    transform: translateY(-40px);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 21px;
+    width: 21px;
+    background-color: #C7C7C7;
+    border-radius: 0 3px;
+    box-shadow: $box-shadow1;
+  }
+}
+
+.thumbnail {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
+  width: 100%;
+  background: $grey-2;
+
+  > div {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.no-thumb {
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.thumbnail-link {
+  padding: 9px;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.small {
+  align-self: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  padding: 9px;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 -1px 3px -1px rgba(44, 48, 56, 0.09);
+  border-radius: 0 0 3px 3px;
+  transition: transform 0.3s ease;
+}
+.meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  margin-top: 5px;
+}
+
+.action {
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  border: 1px solid $grey-3;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s border-color ease;
+
+  path {
+    transition: 0.3s fill ease;
+  }
+  &:hover {
+    border-color: $primary-blue;
+    path {
+      fill: $primary-blue;
+    }
+  }
+}
+
+.preview {
+  margin-right: 5px;
+}
+
+.download {
+  cursor: pointer;
+}
+
+.name {
+  color: $grey-8;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 95%;
+  line-height: 15px;
+}
+
+.name-element {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.size {
+  color: $grey-6;
+  min-width: 100px;
+  font-size: 12px;
+  margin-top: -1px; /* to handle adjusted line-height on `.name` */
+}
+
+.full-screen-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* ensure it is above other content */
+}

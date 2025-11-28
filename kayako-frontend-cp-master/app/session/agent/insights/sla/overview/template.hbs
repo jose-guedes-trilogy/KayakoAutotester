@@ -1,0 +1,12 @@
+{{ko-admin/page title=(t "insights.sla.overview.title")}}
+
+{{ko-insights/section/sla-overview
+  startAt=startAt
+  endAt=endAt
+  interval=interval
+  metricsQueryParams=metricsQueryParams
+  slaId=sla
+  onActorChange=(action "updateSla")
+  onDateRangeChange=(action "dateRangeHidden")
+  onIntervalChange=(action "intervalChanged")
+}}

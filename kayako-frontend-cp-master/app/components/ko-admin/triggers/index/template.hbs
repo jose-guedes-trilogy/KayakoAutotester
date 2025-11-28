@@ -1,0 +1,69 @@
+{{#ko-admin/page
+  title=(t "admin.triggers.title")
+  buttonText=(t "admin.triggers.buttons.add")
+as |section|}}
+  {{#if (eq section "buttons")}}
+    {{#ko-button href=(href-to "session.admin.automation.triggers.new") type="primary"}}{{t "admin.triggers.buttons.add"}}{{/ko-button}}
+  {{/if}}
+
+  {{#if (eq section "contents")}}
+    {{#ko-admin/forms/description}}
+      <p>{{t "admin.triggers.description"}}</p>
+      <p><strong>{{format-html-message "admin.triggers.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1" "admin.triggers.description_link")}}</strong></p>
+    {{/ko-admin/forms/description}}
+
+    {{#if (not triggers.length)}}
+      {{ko-admin/empty image="triggers"}}
+    {{/if}}
+
+    {{#if sortedEnabledTriggers.length}}
+      {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+        {{#ko-reorderable-list class=(qa-cls "qa-admin_triggers--enabled") onReorder=(action "reorder") items=sortedEnabledTriggers as |trigger|}}
+          {{#if (not-eq trigger.title "Atlas AI")}}
+            {{#list.row onClick=(action edit trigger.id) as |row|}}
+              {{#row.cell width="60%"}}
+                <span local-class="title">{{trigger.title}}</span>
+              {{/row.cell}}
+              {{#row.cell}}
+                <span local-class="caption">{{if trigger.lastTriggeredAt (t "admin.triggers.last_triggered" date=(ko-from-now trigger.lastTriggeredAt))}}</span>
+              {{/row.cell}}
+              {{#row.actions}}
+                {{#link-to "session.admin.automation.triggers.edit" trigger.id}}{{t "generic.edit"}}{{/link-to}}
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "toggleStatus" trigger}}>{{t "generic.disable"}}</a>
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "delete" trigger}}>{{t "generic.delete"}}</a>
+              {{/row.actions}}
+            {{/list.row}}
+          {{/if}}
+        {{/ko-reorderable-list}}
+      {{/ko-simple-list}}
+    {{/if}}
+
+    {{#if sortedDisabledTriggers.length}}
+      {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+        <ul class={{qa-cls "qa-admin_triggers--disabled"}}>
+          {{#each sortedDisabledTriggers as |trigger|}}
+            {{#if (not-eq trigger.title "Atlas AI")}}
+              {{#list.row onClick=(action edit trigger.id) as |row|}}
+                {{#row.cell width="60%" disabled=true}}
+                  <span local-class="title">{{trigger.title}}</span>
+                {{/row.cell}}
+                {{#row.cell disabled=true}}
+                  <span local-class="caption">{{if trigger.lastTriggeredAt (t "admin.triggers.last_triggered" date=(ko-from-now trigger.lastTriggeredAt))}}</span>
+                {{/row.cell}}
+                {{#row.actions}}
+                  {{#link-to "session.admin.automation.triggers.edit" trigger.id}}{{t "generic.edit"}}{{/link-to}}
+                  <span local-class="caption">|</span>
+                  <a href="#" onclick={{action "toggleStatus" trigger}}>{{t "generic.enable"}}</a>
+                  <span local-class="caption">|</span>
+                  <a href="#" onclick={{action "delete" trigger}}>{{t "generic.delete"}}</a>
+                {{/row.actions}}
+              {{/list.row}}
+            {{/if}}
+          {{/each}}
+        </ul>
+      {{/ko-simple-list}}
+    {{/if}}
+  {{/if}}
+{{/ko-admin/page}}

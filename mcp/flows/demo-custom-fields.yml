@@ -1,0 +1,37 @@
+name: demo-custom-fields
+description: Demonstrate setting yes/no, cascading select (multi-level), and date fields
+steps:
+  - type: goto-conversation-by-env-id
+  - type: wait-loadstate
+    state: networkidle
+  # Fallback open first conversation if no ID
+  - type: goto
+    url: env.KAYAKO_CONVERSATIONS_URL
+  - type: expect-visible
+    selectorKey: inbox.conversationSubject
+  - type: click
+    selectorKey: inbox.conversationSubject
+  - type: wait-loadstate
+    state: networkidle
+  # Yes/No toggle -> Yes
+  - type: set-custom-field
+    fieldType: yesno
+    label: "Yes/no toggle"
+    value: true
+  # Cascading select -> choose path ["Level 1","Level 2"] (example; adjust as needed)
+  - type: set-custom-field
+    fieldType: cascading
+    label: "Cascading select"
+    path:
+      - "Category-A"
+      - "Subcategory-A"
+      - "Item-1"
+  # Date -> ISO format
+  - type: set-custom-field
+    fieldType: date
+    label: "Date of purchase"
+    value: "2025-04-05"
+  - type: wait
+    value: "3000"
+
+

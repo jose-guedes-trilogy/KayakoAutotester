@@ -1,0 +1,21 @@
+<div local-class="container">
+  {{ko-select/drill-down
+    options=macroValueList
+    actionReceiver=drillDownComponent
+    value=value
+    onValueChange=(action "onMacroSelect")
+    hasEmptyOption=false
+    searchPlaceholder=(t "cases.applymacroplaceholder")
+    searchEnabled=true
+    triggerComponent="ko-case/macro-selector/trigger"
+    triggerClass=(local-class "trigger")
+    isDisabled=isDisabled
+    dropdownClass=(local-class "dropdown")
+    verticalPosition="above"
+    horizontalPosition="right"
+    matchTriggerWidth=false
+    extra=(hash
+      label=(t "cases.macro")
+    )
+  }}
+</div>

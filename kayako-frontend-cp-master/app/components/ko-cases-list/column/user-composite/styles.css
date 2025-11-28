@@ -1,0 +1,65 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 6px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 2px;
+}
+
+.avatar-loading {
+  width: 42px;
+  height: 42px;
+  border-radius: 2px;
+  background-color: $grey-2;
+}
+
+.title {
+  color: #2D3138;
+  margin-right: 5px;
+  font-weight: 600;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  flex-shrink: 1;
+}
+
+.role {
+  height: 16px;
+  line-height: 16px;
+  display: flex;
+  margin: 0 6px 0 0;
+}
+
+.separator {
+  color: #A1AAAF;
+  margin-right: 5px;
+}
+
+.loading-separator {
+  color: $grey-1;
+  margin: 5px;
+}
+
+.company {
+  color: #2D3138;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.identity {
+  margin-right: 5px;
+  color: #838D94;
+}
+
+.identityMain {
+  color: #2D3138;
+}

@@ -1,0 +1,44 @@
+<div local-class="message-timeline-container">
+  {{#if (not messages.length)}}
+    <div local-class="loader">
+      {{ko-loader size='L'}}
+    </div>
+  {{else}}
+    {{#each messagesWithRecipients as |messageItem|}}
+      <div local-class="message-timeline-item">
+        <div local-class="message-header">
+          {{ko-user-avatar user=messageItem.message.creator}}
+          <span local-class="sender-name">
+            {{messageItem.message.creator.full_name}}
+            <div local-class="sender-email">{{messageItem.message.creator.emails.0.email}}</div>
+          </span>
+          <span local-class="message-timestamp">{{format-date messageItem.message.created_at year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"}}</span>
+        </div>
+
+        <div local-class="message-recipients">
+          <span local-class="recipient-heading">{{t "cases.side_conversations.to"}}</span>
+          {{#each messageItem.toRecipients as |recipient index|}}
+            <span local-class="recipient">{{recipient.identity.email}}</span>{{#unless (eq index (dec messageItem.toRecipients.length))}}, {{/unless}}
+          {{/each}}
+        </div>
+
+        {{#if messageItem.ccRecipients.length}}
+          <div local-class="message-recipients">
+            <span local-class="recipient-heading">{{t "cases.side_conversations.cc"}}</span>
+            {{#each messageItem.ccRecipients as |recipient index|}}
+              <span local-class="recipient">{{recipient.identity.email}}</span>{{#unless (eq index (dec messageItem.ccRecipients.length))}}, {{/unless}}
+            {{/each}}
+          </div>
+        {{/if}}
+
+        <div local-class="message-body">
+          {{html-safe messageItem.message.body_html}}
+        </div>
+
+        {{#if messageItem.message.attachments.length}}
+          {{ko-attachments attachments=messageItem.message.attachments downloadAll=messageItem.message.downloadAll}}
+        {{/if}}
+      </div>
+    {{/each}}
+  {{/if}}
+</div>

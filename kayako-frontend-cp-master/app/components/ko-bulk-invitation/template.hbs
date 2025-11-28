@@ -1,0 +1,55 @@
+{{#ko-form as |form|}}
+  {{#if invitation.users}}
+    <div local-class="row">
+      <div local-class="layout">
+        <div local-class="item fieldLabel">{{concat (t "admin.staff.bulk_invitation.fields.name.label")}}</div>
+        <div local-class="item fieldLabel">{{concat (t "admin.staff.bulk_invitation.fields.email.label")}}</div>
+        <div local-class="item fieldLabel">
+          {{concat (t "admin.staff.bulk_invitation.fields.role.label")}}
+          {{#if onBoarding}}
+            <span local-class="icon">
+              {{#ko-tooltip side="top" title=(t "admin.staff.bulk_invitation.fields.role.tooltip") delay=200}}
+                {{ko-icon name="help" color="#BEC4C7"}}
+              {{/ko-tooltip}}
+            </span>
+          {{/if}}
+        </div>
+        <div local-class="item fieldLabel">
+          {{concat (t "admin.staff.bulk_invitation.fields.teams.label")}}
+          {{#if onBoarding}}
+            <span local-class="icon">
+              {{#ko-tooltip side="top" title=(t "admin.staff.bulk_invitation.fields.teams.tooltip") delay=200}}
+                {{ko-icon name="help" color="#BEC4C7"}}
+              {{/ko-tooltip}}
+            </span>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#each invitation.users as |recipient index|}}
+    <div local-class="row" class="{{qa-cls "qa-recipient-row" (concat "qa-recipient-row" "-" index)}}">
+      {{ko-bulk-invitation/recipient
+        onBoarding=onBoarding
+        recipient=recipient
+        allRoles=referenceData.roles
+        allTeams=referenceData.teams
+      }}
+
+      <div local-class="actions">
+        <a class={{qa-cls "qa-remove-recipient"}} onclick={{action "removeRecipient" recipient}}>
+          {{ko-icon name="minusCircle" color="#BEC4C7" size=16}}
+        </a>
+      </div>
+    </div>
+  {{/each}}
+
+  <a local-class="addNew" class="{{qa-cls "qa-add-recipient"}}" onclick={{action "addRecipient"}}>
+    {{#if onBoarding}}
+      {{t 'admin.staff.bulk_invitation.buttons.add_team_member.onboarding_label'}}
+    {{else}}
+      {{t 'admin.staff.bulk_invitation.buttons.add_team_member.label'}}
+    {{/if}}
+  </a>
+{{/ko-form}}

@@ -1,0 +1,97 @@
+.list-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &.is-editable:hover {
+    background-color: $trivial-blue;
+  }
+
+  &:not(.is-editable) {
+    pointer-events: none;
+  }
+
+  &.is-editable:not(.is-editing):hover {
+    .controls {
+      display: block;
+    }
+
+    .time {
+      display: none;
+    }
+  }
+
+  &.is-editing {
+    background-color: $trivial-blue;
+    border-color: rgba(78, 175, 203, 0.7);
+  }
+
+  &.is-disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.time {
+  display: flex;
+  align-items: center;
+}
+
+.controls {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: none;
+}
+
+.avatar {
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.delete {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: $color-bad;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 8px;
+    height: 2px;
+    background-color: #fff;
+  }
+}
+
+.edit-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: $primary-blue;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.agent {
+  display: flex;
+  align-items: center;
+}
+
+.inline-icon {
+  margin-right: 5px;
+}

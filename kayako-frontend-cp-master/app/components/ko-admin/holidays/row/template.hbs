@@ -1,0 +1,25 @@
+{{#ko-simple-list/row onClick=(if (not isEditing) (action "editHoliday" holiday)) as |row|}}
+  {{#if (or isEditing errors.length)}}
+    {{#row.cell}}
+      {{ko-admin/holidays/edit
+        holiday=holiday
+        onSave=(action "stopEditing")
+        onCancel=(action "stopEditing")
+        errors=errors
+      }}
+    {{/row.cell}}
+  {{else}}
+    {{#row.cell width="30%"}}
+      <span local-class="title">{{holiday.title}}</span>
+    {{/row.cell}}
+    {{#row.cell}}
+      <span local-class="caption">{{format-date formattedDate format="full"}}</span>
+    {{/row.cell}}
+
+    {{#row.actions}}
+      <a onclick={{action "editHoliday" holiday}}>{{t "generic.edit"}}</a>
+      <span local-class="caption">|</span>
+      <a onclick={{action onHolidayDelete holiday}}>{{t "generic.delete"}}</a>
+    {{/row.actions}}
+  {{/if}}
+{{/ko-simple-list/row}}

@@ -1,0 +1,12 @@
+.target {
+  display: flex;
+}
+
+.value {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.unit {
+  width: 100px;
+}

@@ -1,0 +1,59 @@
+@import 'node_modules/normalize.css/normalize';
+
+@import 'fonts';
+@import 'fontawesome';
+
+@import 'settings/colors';
+@import 'settings/brand';
+@import 'settings/z-index';
+
+@import 'objects/dropdown-menu';
+@import 'objects/article';
+
+@import 'utilities/layout';
+@import 'utilities/margin';
+@import 'utilities/typography';
+@import 'partials/icon';
+@import 'vendor/froala';
+@import 'vendor/power-select';
+
+// Environment-dependent config
+
+// Addons
+
+.ember-basic-dropdown {
+  position: relative;
+}
+.ember-basic-dropdown, .ember-basic-dropdown-content, .ember-basic-dropdown-content * {
+  box-sizing: border-box;
+}
+.ember-basic-dropdown-content {
+  position: absolute;
+  width: auto;
+  z-index: 1000;
+  background-color: transparent;
+}
+.ember-basic-dropdown-content--left { left: 0; }
+.ember-basic-dropdown-content--right { right: 0; }
+.ember-basic-dropdown-overlay {
+  position: fixed;
+  background: rgba(0,0,0, 0.5);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+$box-shadow1: 0 1px 3px 0 rgba(44, 48, 56, 0.09);
+$box-shadow2: 0 2px 6px 0 rgba(0, 0, 0, 0.06), 0 1px 3px 0 rgba(44, 48, 56, 0.09);
+$box-shadow3: 0 4px 9px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(44, 48, 56, 0.09);
+
+
+//Kayako Custom
+
+@import 'base.scss';
+
+// ember-css-modules
+@import 'assets/frontend-cp';

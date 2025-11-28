@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  flex-shrink: 1;
+  .hoverable:hover .pencil {
+    opacity: 1;
+  }
+}
+
+.input {
+  width: 100%;
+  outline: 0;
+  border: none;
+  padding: 0;
+  background: transparent;
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  box-sizing: content-box;
+}
+
+.input--large {
+  font-size: 24px;
+  height: 31px;
+  line-height: 31px;
+  border-bottom: 1px dotted transparent;
+  &:invalid {
+    border-bottom: 1px dotted #616C73;
+    font-style: italic;
+    color: #616C73;
+    width: auto;
+  }
+}
+
+.text {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  flex-shrink: 1;
+}
+
+.emphasizedText {
+  margin-right: 4px;
+  font-size: 16px;
+  line-height: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  flex-shrink: 1;
+}
+
+.emphasizedText--large {
+  font-size: 24px;
+  line-height: 31px;
+  border-bottom: 1px dotted transparent;
+}
+
+.text--kre-edited {
+  color: $color-kre-edited;
+}
+
+.text--edited {
+  color: $primary-blue;
+}
+
+.text--disabled {
+  opacity: 0.5;
+  cursor: text;
+}
+
+.container--empty {
+  .text {
+    font-style: italic;
+    color: #616C73;
+  }
+
+  .emphasizedText {
+    border-bottom: 1px dotted #616C73;
+  }
+}
+
+.container--error {
+  .text {
+    color: $color-bad;
+  }
+}
+
+.pencil {
+  position: relative;
+  top: 1px;
+}
+
+.hoverable .pencil {
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}

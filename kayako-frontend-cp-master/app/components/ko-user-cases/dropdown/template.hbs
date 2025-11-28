@@ -1,0 +1,59 @@
+<div local-class="root">
+  {{#each lastFewCases as |case i|}}
+    <a local-class="case-item" class="{{qa-cls "qa-active-cases--item"}}" onclick={{action "openActiveCase" case dropdown}}>
+      <div local-class="case-item-inner">
+        <div local-class="title">
+          <div local-class="involved-users">
+            <div local-class="case-meta">
+              {{#if case.requester.fullName}}
+                <div local-class="avatar requester">
+                  {{#ko-tooltip side="top" delay=300 title=case.requester.fullName}}
+                    {{ko-user-avatar size="micro" user=case.requester}}
+                  {{/ko-tooltip}}
+                </div>
+              {{/if}}
+              {{#if case.assignedAgent.fullName}}
+                <div local-class="avatar agent">
+                  {{#ko-tooltip side="top" delay=300 title=case.assignedAgent.fullName}}
+                    {{ko-user-avatar size="micro" user=case.assignedAgent}}
+                  {{/ko-tooltip}}
+                </div>
+              {{/if}}
+              <div local-class="name" class="{{qa-cls "qa-active-cases--requester"}}">{{first-name case.requester.fullName}}</div>
+              {{#if case.assignedAgent.fullName}}
+                <div local-class="name" class="{{qa-cls "qa-active-cases--assignee"}}">&nbsp;&amp; {{first-name case.assignedAgent.fullName}}</div>
+              {{else if case.assignedTeam.title}}
+                <div local-class="name" class="{{qa-cls "qa-active-cases--assignee"}}">&nbsp;&amp; {{case.assignedTeam.title}}</div>
+              {{else}}
+                <div local-class="name unassigned" class="{{qa-cls "qa-active-cases--assignee"}}">&nbsp;{{t "cases.unassigned"}}</div>
+              {{/if}}
+            </div>
+          </div>
+          <div local-class="status">
+            <div local-class="case-status {{join-classes "case-status" (concat "case-status-" case.status.statusType)}}" class="{{qa-cls "qa-active-cases--status"}}">{{case.status.label}}</div>
+            <div local-class="middot">&middot;</div>
+            <div local-class="last-updated" class="{{qa-cls "qa-active-cases--updated-time"}}">
+              {{#ko-tooltip tagName="span" side="top" title=(format-time (ko-intl-datetime-format case.updatedAt) format="tooltip") local-class="time"}}
+                {{ko-from-now case.updatedAt short=true}}
+              {{/ko-tooltip}}
+            </div>
+          </div>
+        </div>
+        <div local-class="subject">
+          <span local-class="subject-content" class="{{qa-cls "qa-active-cases--subject"}}">
+            {{ko-truncate-multiline text=case.subject lines=2}}
+          </span>
+        </div>
+      </div>
+    </a>
+  {{/each}}
+  {{#if showTotalCountButton}}
+    <div local-class="view-all-cases">
+      <div local-class="view-all-cases-content" onclick={{action "openSearchTabForUserCases" dropdown}}>
+        <a class="{{qa-cls "qa-active-cases--count"}}">
+          {{t-html "cases.find_all_cases" count=casesCount}}
+        </a>
+      </div>
+    </div>
+  {{/if}}
+</div>

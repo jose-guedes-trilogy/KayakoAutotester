@@ -1,0 +1,52 @@
+{{#ko-admin/page
+  title=(t "admin.security.settings.title_breadcrumbs")
+  buttonText=(if (or hasChanges save.isRunning) (t "generic.save"))
+  onCancel=(if (or hasChanges save.isRunning) (perform cancel))
+  onSave=(perform save)
+  isSaving=save.isRunning
+  showFooter=true
+}}
+  {{#ko-admin/forms/group}}
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checked=(eq editedSettings.users_allow_requests_from_unregistered.value "1")
+        label=(t "admin.settings.users.registration.allow_requests_from_unregistered.title")
+        disabled=save.isRunning
+        onCheck=(action "editBooleanSetting" "users_allow_requests_from_unregistered")
+        qaClass="ko-admin-settings-users-allow-from-unregistered"
+      }}
+      {{ko-form/field/errors errors=editedSettings.errors.users_allow_requests_from_unregistered class=(qa-cls "qa-field-error")}}
+      {{ko-form/field/help text=(t "admin.settings.users.registration.allow_requests_from_unregistered.description")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checked=(eq editedSettings.users_require_captcha.value "1")
+        label=(t "admin.settings.users.registration.require_captcha.title")
+        disabled=save.isRunning
+        onCheck=(action "editBooleanSetting" "users_require_captcha")
+        qaClass="ko-admin-settings-users-require-captcha"
+      }}
+      {{ko-form/field/errors errors=editedSettings.errors.users_require_captcha class=(qa-cls "qa-field-error")}}
+      {{ko-form/field/help text=(t "admin.settings.users.registration.require_captcha.description")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-form/field/label text=(t "admin.settings.users.registration.email_blacklist.title")}}
+
+      {{ko-input multiline=true value=editedEmailBlacklist onInput=(action "setCommaSeparatedField" "users_email_blacklist") disabled=save.isRunning qaClass="ko-admin-settings-users-email-blacklist"}}
+
+      {{ko-form/field/errors errors=editedSettings.errors.users_email_blacklist class=(qa-cls "qa-field-error")}}
+      {{ko-form/field/help text=(t "admin.settings.users.registration.email_blacklist.description")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-form/field/label text=(t "admin.settings.users.registration.email_whitelist.title")}}
+
+      {{ko-input multiline=true value=editedEmailWhitelist onInput=(action "setCommaSeparatedField" "users_email_whitelist") disabled=save.isRunning qaClass="ko-admin-settings-users-email-whitelist"}}
+
+      {{ko-form/field/errors errors=editedSettings.errors.users_email_whitelist class=(qa-cls "qa-field-error")}}
+      {{ko-form/field/help text=(t "admin.settings.users.registration.email_whitelist.description")}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

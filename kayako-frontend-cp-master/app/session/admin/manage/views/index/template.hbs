@@ -1,0 +1,108 @@
+{{#with (hash
+  canEditViews=(or (plan-has "edit_views") (variation "feature-edit-views"))
+) as |flags|}}
+  {{ko-admin/page
+    title=(t "admin.views.title")
+    buttonText=(t "admin.views.buttons.add_new")
+    needsPlanUpgrade=(not flags.canEditViews)
+    onSave=(action "transitionToNewViewRoute")
+  }}
+
+  {{ko-admin/forms/description link="https://support.kayako.com/article/1150-adding-and-editing-views?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=views" description="admin.views.description" linkText="admin.views.description_link"}}
+
+  {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+    {{#list.row class=(qa-cls "qa-view-list-active--title") onClick=(if flags.canEditViews (action "editView" inboxView)) as |row|}}
+      {{#row.cell width="50%"}}
+        <div>
+          <span local-class="title">{{inboxView.title}}</span>
+          <span local-class="caption">{{t "admin.caseforms.label.system"}}</span>
+        </div>
+      {{/row.cell}}
+      {{#row.cell}}
+        <span local-class="caption">
+          {{t "generic.shared_with"}} {{inboxView.visibilityString}}
+        </span>
+      {{/row.cell}}
+      {{#row.actions}}
+        {{#if flags.canEditViews}}
+          <a onclick={{action "editView" inboxView}}>{{t "generic.edit"}}</a>
+        {{/if}}
+      {{/row.actions}}
+    {{/list.row}}
+
+    {{#ko-reorderable-list onReorder=(action "reorderViews") reorderAvailable=flags.canEditViews items=enabledViews as |enabledView|}}
+      {{#list.row class=(qa-cls " qa-view-list-active--title") onClick=(if flags.canEditViews (action "editView" enabledView)) as |row|}}
+        {{#row.cell width="50%"}}
+          <span local-class="title">
+            {{enabledView.title}}
+          </span>
+        {{/row.cell}}
+        {{#row.cell}}
+          <span local-class="caption">
+            {{t "generic.shared_with"}} {{enabledView.visibilityString}}
+          </span>
+        {{/row.cell}}
+        {{#row.actions}}
+          {{#if flags.canEditViews}}
+            <a onclick={{action "editView" enabledView}}>{{t "generic.edit"}}</a>
+            <span local-class="caption">|</span>
+            <a onclick={{action "toggleEnabledStatus" enabledView}}>{{t "generic.disable"}}</a>
+            <span local-class="caption">|</span>
+            <a onclick={{action "delete" enabledView }}>{{t "generic.delete"}}</a>
+          {{/if}}
+        {{/row.actions}}
+      {{/list.row}}
+    {{/ko-reorderable-list}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <div>
+          <span local-class="title">{{t "cases.suspendedMessages.title"}}</span>
+          <span local-class="caption">{{t "admin.caseforms.label.system"}}</span>
+        </div>
+      {{/row.cell}}
+      {{#row.cell}}
+        <span local-class="caption">
+          {{t "generic.shared_with"}} {{trashView.visibilityString}}
+        </span>
+      {{/row.cell}}
+    {{/list.row}}
+
+    {{#list.row as |row|}}
+      {{#row.cell}}
+        <div>
+          <span local-class="title">{{trashView.title}}</span>
+          <span local-class="caption">{{t "admin.caseforms.label.system"}}</span>
+        </div>
+      {{/row.cell}}
+      {{#row.cell}}
+        <span local-class="caption">
+          {{t "generic.shared_with"}} {{trashView.visibilityString}}
+        </span>
+      {{/row.cell}}
+    {{/list.row}}
+  {{/ko-simple-list}}
+
+  {{#if disabledViews.length}}
+    {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+      {{#each disabledViews as |disabledView|}}
+        {{#list.row qaClass="qa-view-list-inactive--title" as |row|}}
+          {{#row.cell width="50%" disabled=true}}
+            <span local-class="title">{{disabledView.title}}</span>
+          {{/row.cell}}
+          {{#row.cell disabled=true}}
+            <span local-class="caption">{{t "generic.shared_with"}} {{disabledView.visibilityString}}</span>
+          {{/row.cell}}
+          {{#row.actions}}
+            {{#if flags.canEditViews}}
+              <a onclick={{action "editView" disabledView}}>{{t "generic.edit"}}</a>
+              <span local-class="caption">|</span>
+              <a onclick={{action "toggleEnabledStatus" disabledView}}>{{t "generic.enable"}}</a>
+              <span local-class="caption">|</span> <a onclick={{action "delete" disabledView}}>{{t "generic.delete"}}</a>
+            {{/if}}
+          {{/row.actions}}
+        {{/list.row}}
+      {{/each}}
+    {{/ko-simple-list}}
+  {{/if}}
+{{/with}}

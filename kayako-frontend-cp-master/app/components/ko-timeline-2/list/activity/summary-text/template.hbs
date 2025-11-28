@@ -1,0 +1,18 @@
+<div local-class="summary-text">
+  {{#each tokens as |token index|}}
+    {{#unless (or (eq index 0) (eq token.type "text") activityBelongsToCase)}}
+      <div local-class="token-avatar">
+        {{#if (eq token.type "actor")}}
+          {{ko-user-avatar user=(ko-contextual-helper getUserFromToken this token) size="nano"}}
+        {{else if (eq token.type "entity")}}
+          {{ko-org-logo org=(or model.requester.organization model.organization model) size=(if activity 16 18)}}
+        {{/if}}
+      </div>
+    {{/unless}}
+    {{#if token.url}}
+      <a href="{{token.url}}" local-class="link {{token.type}}">{{token.content}}</a>
+    {{else}}
+      <span local-class="{{token.type}}">{{token.content}}</span>
+    {{/if}}
+  {{/each}}
+</div>

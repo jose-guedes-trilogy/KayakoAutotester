@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="43px" viewBox="0 0 37 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--billing_info--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M34.5,42.5 L2.5,42.5 L2.5,42.5 C1.3954305,42.5 0.5,41.6045695 0.5,40.5 L0.5,0.5 L6.5,4.5 L12.499,0.5 L18.499,4.5 L24.5,0.5 L30.5,4.5 L36.5,0.5 L36.5,40.5 L36.5,40.5 C36.5,41.6045695 35.6045695,42.5 34.5,42.5 Z" id="path-1"></path>
+    </defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon--billing_info--48" transform="translate(-10.000000, -7.000000)">
+            <g transform="translate(10.000000, 7.000000)" id="Shape">
+                <g>
+                    <use fill="#F4F5EF" xlink:href="#path-1"></use>
+                    <use stroke="#838D94" stroke-width="1" fill="#FFFFFF" xlink:href="#path-1"></use>
+                </g>
+                <path d="M12.904,30.501 C13.663,32.28 15.415,33.5 17.5,33.5 L19.5,33.5 C22.3,33.5 24.5,31.3 24.5,28.5 L24.5,28.5 C24.5,21.5 12.5,25.5 12.5,18.5 L12.5,18.5 C12.5,15.7 14.7,13.5 17.5,13.5 L19.5,13.5 C21.586,13.5 23.34,14.721 24.098,16.502" stroke="#838D94"></path>
+                <path d="M18.5,10.5 L18.5,13.5" stroke="#838D94"></path>
+                <path d="M18.5,33.5 L18.5,36.5" stroke="#838D94"></path>
+            </g>
+        </g>
+    </g>
+</svg>

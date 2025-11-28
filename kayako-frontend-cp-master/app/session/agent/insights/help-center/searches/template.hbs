@@ -1,0 +1,8 @@
+{{ko-admin/page title=(t "insights.searches.page.title")}}
+
+{{ko-insights/section/searches
+  startAt=startAt
+  endAt=endAt
+  metricsQueryParams=metricsQueryParams
+  onDateRangeChange=(action "dateRangeHidden")
+}}

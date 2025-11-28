@@ -1,0 +1,32 @@
+.preview {
+
+}
+
+.preview-items {
+  max-height: 270px;
+  overflow: auto;
+}
+
+.preview-items-spinner {
+  padding: 90px 0;
+}
+
+.no-preview-items {
+  padding: 90px 0;
+  text-align: center;
+  color: #838D94;
+}
+
+.preview-item {
+  padding: 9px 0;
+}
+
+.preview-header {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 9px;
+}
+
+.preview-info {
+
+}

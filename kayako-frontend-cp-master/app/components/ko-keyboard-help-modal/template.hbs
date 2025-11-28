@@ -1,0 +1,159 @@
+{{! template-lint-disable bare-strings }}
+
+{{#ko-modal width="680px" on-close=(action on-close) on-confirm=(action on-close) as |modal|}}
+  {{#if modal.isHeader}}
+    {{t "generic.keyboard_shortcuts.title"}}
+  {{/if}}
+  {{#if modal.isMain}}
+    <div local-class="shortcuts">
+      <div local-class="column">
+
+        <div local-class="group">
+          <h2 local-class="heading">
+            {{t "generic.keyboard_shortcuts.navigation"}}
+          </h2>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.go_cases"}}
+            </span>
+
+            <span local-class="key">G</span>
+            <span local-class="separator">
+              {{t "generic.keyboard_shortcuts.then"}}
+            </span>
+            <span local-class="key">C</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.go_insights"}}
+            </span>
+
+            <span local-class="key">G</span>
+            <span local-class="separator">
+              {{t "generic.keyboard_shortcuts.then"}}
+            </span>
+            <span local-class="key">I</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.go_admin"}}
+            </span>
+
+            <span local-class="key">G</span>
+            <span local-class="separator">
+              {{t "generic.keyboard_shortcuts.then"}}
+            </span>
+            <span local-class="key">A</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.previous_tab"}}
+            </span>
+
+            <span local-class="key">[</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.next_tab"}}
+            </span>
+
+            <span local-class="key">]</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.close_tab"}}
+            </span>
+
+            <span local-class="key">X</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.search"}}
+            </span>
+
+            <span local-class="key">/</span>
+          </div>
+        </div>
+      </div>
+
+      <div local-class="column">
+
+        <div local-class="group">
+          <h2 local-class="heading">
+            {{t "generic.keyboard_shortcuts.cases_users_and_orgs"}}
+          </h2>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.reply"}}
+            </span>
+
+            <span local-class="key">R</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.note"}}
+            </span>
+
+            <span local-class="key">N</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.macro"}}
+            </span>
+
+            <span local-class="key">M</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.assignee"}}
+            </span>
+
+            <span local-class="key">A</span>
+          </div>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.save"}}
+            </span>
+
+            <span local-class="key">{{cmdKey}}</span>
+            <span local-class="separator">+</span>
+            <span local-class="key">{{t "generic.keyboard_shortcuts.enter"}}</span>
+          </div>
+        </div>
+
+        <div local-class="group">
+          <h2 local-class="heading">
+            {{t "generic.keyboard_shortcuts.general"}}
+          </h2>
+
+          <div local-class="shortcut">
+            <span local-class="description">
+              {{t "generic.keyboard_shortcuts.help"}}
+            </span>
+
+            <span local-class="key">?</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  {{/if}}
+  {{#if modal.isFooter}}
+    {{#ko-button type="primary" onClick=(action on-close)}}
+      {{t "generic.close"}}
+    {{/ko-button}}
+  {{/if}}
+{{/ko-modal}}

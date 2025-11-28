@@ -1,0 +1,5 @@
+import Process from './process';
+
+export default Process.extend({
+  type: 'organization'
+});

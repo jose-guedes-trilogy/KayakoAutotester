@@ -1,0 +1,8 @@
+.sidebar {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  border-right: 1px solid #d1d5d7;
+  padding: 6px 0;
+}

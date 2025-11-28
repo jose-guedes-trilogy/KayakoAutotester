@@ -1,0 +1,124 @@
+{{#ko-admin/page
+  title=(t "admin.security.authentication.title_breadcrumbs")
+  tabs=tabs
+  buttonText=(if (or isEdited save.isRunning) (t "generic.save"))
+  onCancel=(if (or isEdited save.isRunning) (perform cancel))
+  onSave=(perform save)
+  isSaving=save.isRunning
+  showFooter=true
+}}
+  {{#ko-admin/forms/group legend=(t "admin.settings.security.agents.authentication.heading")}}
+    {{#ko-form/field class=(qa-cls 'ko-admin-settings-security-authentication')}}
+      {{ko-form/field/label text=(t "admin.settings.security.agents.authentication.mode.title")}}
+
+      {{#ko-select
+        size="medium"
+        selected=editedSettings.security_agent_authentication_type.value
+        onChange=(action "editSetting" "security_agent_authentication_type")
+        options=authenticationModeOptions
+        disabled=save.isRunning
+      as |option|}}
+        {{t (concat "admin.settings.security.agents.authentication.mode.options." option)}}
+      {{/ko-select}}
+
+      {{ko-form/field/help text=(t "admin.settings.security.agents.authentication.mode.description")}}
+
+      {{ko-form/field/errors errors=editedSettings.errors.security_agent_authentication_type class=(qa-cls "qa-field-error")}}
+    {{/ko-form/field}}
+
+    {{#if googleAppsSSO}}
+      {{#ko-form/field}}
+        {{ko-checkbox
+          checked=(eq editedSettings.security_agent_social_authentication_google.value "1")
+          label=(t "admin.settings.security.agents.authentication.google.title")
+          disabled=save.isRunning
+          onCheck=(action "editBooleanSetting" "security_agent_social_authentication_google")
+          qaClass="ko-admin-settings-security-google-login"
+        }}
+
+        {{ko-form/field/help text=(t "admin.settings.security.agents.authentication.google.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_social_authentication_google class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#if (eq editedSettings.security_agent_social_authentication_google.value "1")}}
+        {{#ko-form/field}}
+          {{ko-form/field/label text=(t "admin.settings.security.agents.google.allowed_domains.title")}}
+
+          {{ko-pill-input
+            value=editedGoogleDomains
+            isEdited=isEdited
+            isDisabled=save.isRunning
+            placeholder=(t "admin.settings.security.agents.google.allowed_domains.placeholder")
+            onValueAddition=(action "addDomain")
+            onValueRemoval=(action "removeDomain")
+            qaClass="ko-admin-settings-security-google-domain"
+          }}
+
+          {{ko-form/field/help text=(t "admin.settings.security.agents.google.allowed_domains.description")}}
+
+          {{ko-form/field/errors errors=editedSettings.errors.security_agent_google_authentication_domain class=(qa-cls "qa-field-error")}}
+        {{/ko-form/field}}
+      {{/if}}
+    {{/if}}
+  {{/ko-admin/forms/group}}
+
+  {{#if (eq editedSettings.security_agent_authentication_type.value "jwt")}}
+    {{#ko-admin/forms/group legend=(t "admin.settings.security.agents.sso.heading")}}
+      {{ko-form/field/help text=(t "admin.settings.security.agents.sso.description")}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.sso.login_url.title")}}
+
+        {{ko-input value=editedSettings.security_agent_sso_jwt_login_url.value onInput=(action "editTextSetting" "security_agent_sso_jwt_login_url") disabled=save.isRunning qaClass="ko-admin-settings-security-login-url"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.agents.sso.login_url.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_sso_jwt_login_url class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.sso.logout_url.title")}}
+
+        {{ko-input value=editedSettings.security_agent_sso_jwt_logout_url.value onInput=(action "editTextSetting" "security_agent_sso_jwt_logout_url") disabled=save.isRunning qaClass="ko-admin-settings-security-logout-url"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.agents.sso.logout_url.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_sso_jwt_logout_url class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.sso.shared_secret.title")}}
+
+        {{ko-input value=editedSettings.security_agent_sso_jwt_shared_secret.value onInput=(action "editTextSetting" "security_agent_sso_jwt_shared_secret") disabled=save.isRunning qaClass="ko-admin-settings-security-shared-secret"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.agents.sso.shared_secret.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_sso_jwt_shared_secret class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.agents.sso.service_name.title")}}
+
+        {{ko-input value=editedSettings.security_agent_sso_jwt_service_name.value onInput=(action "editTextSetting" "security_agent_sso_jwt_service_name") disabled=save.isRunning qaClass="ko-admin-settings-security-service-name"}}
+
+        {{#ko-form/field/help}}
+          {{t "admin.settings.security.agents.sso.service_name.description"}}<br>
+          <strong>{{t "admin.settings.security.agents.sso.service_name.notice"}}</strong>
+        {{/ko-form/field/help}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_agent_sso_jwt_service_name class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#ko-admin/forms/group legend=(t "admin.settings.security.agents.ip_restrictions.heading")}}
+    {{ko-form/field/help text=(t "admin.settings.security.agents.ip_restrictions.description")}}
+
+    {{ko-input multiline=true value=editedIpRestrictions onInput=(action "setIpRestrictions") disabled=save.isRunning qaClass="ko-admin-settings-security-ip-restrictions"}}
+
+    {{ko-form/field/help text=(t "admin.settings.security.agents.ip_restrictions.description2")}}
+
+    {{ko-form/field/errors errors=editedSettings.errors.security_agent_ip_restriction class=(qa-cls "qa-field-error")}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

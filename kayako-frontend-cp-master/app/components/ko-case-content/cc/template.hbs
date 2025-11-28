@@ -1,0 +1,131 @@
+{{#if (variation "release-cc-list-improvements")}}
+  {{#unless hideToggleButton}}
+    <div tabindex="0" local-class="cc {{if isActive "cc--on"}} {{if showExpandCCsButton "cc--collapsed"}}" onmousedown={{action "toggleCC"}}>
+      {{t "cases.text_editor.cc.label"}}
+    </div>
+  {{/unless}}
+
+  <div local-class="cc-list-and-input">
+    {{#each viewableSelectedCCs as |option|}}
+      <li local-class="option-item">
+        <div local-class="option-item-membrane">
+          <div local-class="option-item-title">{{option}}</div>
+          <div local-class="option-item-close" {{action "popCC" option}}>{{ko-icon name="cross" color="#ffffff" size=7}}</div>
+        </div>
+      </li>
+    {{/each}}
+
+    {{#if showExpandCCsButton}}
+      <li local-class="cc-expand-item" onmousedown={{action "toggleCC"}}>
+        <span>{{t "cases.n_more" count=hiddenCCsCount}}</span>
+      </li>
+    {{/if}}
+
+    {{#if isActive}}
+      {{#power-select-multiple
+        placeholder=placeholder
+        onchange=(action "onChange")
+        selected=selected
+        search=(perform onSearch)
+        matchTriggerWidth=false
+        local-class="root"
+        searchMessage=""
+        loadingMessage=""
+        noMatchesMessage=""
+        searchField="identity.email"
+        selectedItemComponent="ko-case-content/cc/item"
+        beforeOptionsComponent="ko-case-content/cc/above"
+        optionsComponent="ko-case-content/cc/options"
+        dropdownClass=(if hasCCInput (local-class "dropdown") (local-class "hide"))
+        triggerClass=(local-class "trigger")
+        triggerComponent=(component "ko-case-content/cc/trigger" addImmediateCC=(action "addImmediateCC"))
+        oninput=(action onCCInput)
+        tabindex="-1"
+        extra=(hash
+          inputId=inputId
+          addUser=(action "addUser")
+        )
+      as |option select|}}
+        <div local-class="option">
+          {{#if option.isNew}}
+            <div local-class="add-icon">
+              {{ko-icon name="plusRounded" color="#A1AAAF"}}
+            </div>
+            <div local-class="text">
+              <div local-class="email">{{format-html-message "cases.text_editor.cc.use_email" email=option.identity.email}}</div>
+            </div>
+          {{else}}
+            {{ko-user-avatar user=option.user size="submedium"}}
+            <div local-class="text">
+              {{#if option.user.fullName}}
+                <div local-class="name">{{sanitize-html (ko-embolden option.user.fullName select.lastSearchedText) "bold"}}</div>
+              {{/if}}
+              <div local-class="email">{{sanitize-html (ko-embolden option.identity.email select.lastSearchedText) "bold"}}</div>
+            </div>
+          {{/if}}
+        </div>
+      {{/power-select-multiple}}
+    {{/if}}
+  </div>
+{{else}}
+  {{#unless hideToggleButton}}
+    <div tabindex="0" local-class="cc {{if isActive "cc--on"}}" onmousedown={{action "toggleCC"}}>
+      {{t "cases.text_editor.cc.label"}}
+    </div>
+  {{/unless}}
+
+  {{#if isActive}}
+    {{#each selected as |option|}}
+      <li local-class="option-item">
+        <div local-class="option-item-membrane">
+          <div local-class="option-item-title">{{option}}</div>
+          <div local-class="option-item-close" {{action "popCC" option}}>{{ko-icon name="cross" color="#ffffff" size=7}}</div>
+        </div>
+      </li>
+    {{/each}}
+    {{#power-select-multiple
+      placeholder=placeholder
+      onchange=(action "onChange")
+      selected=selected
+      search=(perform onSearch)
+      matchTriggerWidth=false
+      local-class="root"
+      searchMessage=""
+      loadingMessage=""
+      noMatchesMessage=""
+      searchField="identity.email"
+      selectedItemComponent="ko-case-content/cc/item"
+      beforeOptionsComponent="ko-case-content/cc/above"
+      optionsComponent="ko-case-content/cc/options"
+      dropdownClass=(if hasCCInput (local-class "dropdown") (local-class "hide"))
+      triggerClass=(local-class "trigger")
+      triggerComponent=(component "ko-case-content/cc/trigger" addImmediateCC=(action "addImmediateCC"))
+      oninput=(action onCCInput)
+      tabindex="-1"
+      extra=(hash
+        inputId=inputId
+        addUser=(action "addUser")
+      )
+    as |option select|}}
+      <div local-class="option">
+        {{#if option.isNew}}
+          <div local-class="add-icon">
+            {{ko-icon name="plusRounded" color="#A1AAAF"}}
+          </div>
+          <div local-class="text">
+            <div local-class="email">{{format-html-message "cases.text_editor.cc.use_email" email=option.identity.email}}</div>
+          </div>
+        {{else}}
+          {{ko-user-avatar user=option.user size="submedium"}}
+          <div local-class="text">
+            {{#if option.user.fullName}}
+              <div local-class="name">{{sanitize-html (ko-embolden option.user.fullName select.lastSearchedText) "bold"}}</div>
+            {{/if}}
+            <div local-class="email">{{sanitize-html (ko-embolden option.identity.email select.lastSearchedText) "bold"}}</div>
+          </div>
+        {{/if}}
+      </div>
+    {{/power-select-multiple}}
+  {{/if}}
+{{/if}}
+

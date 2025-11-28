@@ -1,0 +1,47 @@
+{{#if isSummarizingTranscription}}
+  <div local-class="full-screen-loader">
+    {{ko-loader large=true}}
+  </div>
+{{/if}}
+<div local-class="ai-suggestion-container">
+  <div local-class="ai-suggestion-icon">
+    {{inline-svg "admin-home/hover/sparkle"}}
+  </div>
+  <div local-class="ai-suggestion-content-wrapper">
+    <div local-class="ai-suggestion-text">
+      {{contextTitle}}
+    </div>
+    <div local-class="ai-suggestion-bubble">
+      <div local-class="action-button-container" id={{concat "ai-action-button-" uniqueId}}>
+        {{#if (eq noteType "AI_TRANSCRIPTION")}}
+          {{#if (plan-has 'kayako_ai_transcription')}}
+            <button local-class="ai-suggestion-action-button" {{action "summarizeTranscription"}}>
+              {{ko-icon name="sparkle" color="#8846CB"}}
+              <span>{{t "generic.summarize" }}</span>
+            </button>
+          {{/if}}
+        {{/if}}
+        {{#if (and setReplyContent (not (or (eq noteType "AI_TRANSCRIPTION") (eq noteType "AI_TRANSC_SUMMARY"))))}}
+          <button local-class="ai-suggestion-action-button" {{action "editResponse"}}>
+            {{ko-icon name="edit" color="#8846CB"}}
+            <span>{{t "generic.edit" }}</span>
+          </button>
+        {{/if}}
+        {{#if (and submitReply (not (or (eq noteType "AI_TRANSCRIPTION") (eq noteType "AI_TRANSC_SUMMARY"))))}}
+          <button local-class="ai-suggestion-action-button" {{action "pasteAsIs"}}>
+            {{ko-icon name="send" color="#8846CB"}}
+            <span>{{t "generic.send" }}</span>
+          </button>
+        {{/if}}
+      </div>
+      <div local-class="ai-suggestion-content {{if isExpanded "expanded"}}">
+        {{html-safe htmlContent}}
+        {{#if showReadMoreButton}}
+          <button local-class="ai-suggestion-read-more-button" {{action "toggleExpand"}}>
+            {{t (if isExpanded "cases.ai_suggestion_bubble.read_less" "cases.ai_suggestion_bubble.read_more")}}
+          </button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

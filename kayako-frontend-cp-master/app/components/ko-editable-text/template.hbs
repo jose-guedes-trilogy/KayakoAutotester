@@ -1,0 +1,26 @@
+<div
+  local-class="container {{if isErrored "container--error"}} {{if isEmpty "container--empty"}}"
+  class="{{if qaClass (qa-cls qaClass)}}"
+>
+  {{#if (not isEditing)}}
+    <div local-class="text {{if showPencilOnHover "hoverable"}} {{if isDisabled "text--disabled"}} {{if isKREEdited "text--kre-edited"}} {{if isEdited "text--edited"}}" onclick={{action "edit"}}>
+      <span local-class="emphasizedText {{if (eq size "large") "emphasizedText--large"}}" class="{{qa-cls "qa-ko-editable-text__text"}}">{{displayText}}</span>
+      {{component labelComponent}}
+      {{#if (not isDisabled)}}
+        <span local-class="pencil">{{ko-icon name="pencil" color="#838D93" size=iconSize}}</span>
+      {{/if}}
+    </div>
+  {{else}}
+    <input
+      id="{{inputId}}"
+      local-class="input {{if (eq size "large") "input--large"}}"
+      placeholder="{{placeholder}}"
+      type="text"
+      value={{value}}
+      oninput={{action (mut valueToSave) value="target.value"}}
+      onkeydown={{action "handleKeyDown"}}
+      onblur={{action "handleFocusOut"}}
+      required={{required}}
+    >
+  {{/if}}
+</div>

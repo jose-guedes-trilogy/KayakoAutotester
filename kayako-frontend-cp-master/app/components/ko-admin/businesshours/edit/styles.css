@@ -1,0 +1,13 @@
+.title {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  text-align: right;
+  font-weight: 600;
+  margin-right: 9px;
+}
+
+.add-holiday {
+  margin-top: 9px;
+  margin-bottom: 9px;
+}

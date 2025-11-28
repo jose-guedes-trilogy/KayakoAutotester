@@ -1,0 +1,72 @@
+<div local-class="article-view">
+
+  {{!-- Loading Overlay when rendering the Article --}}
+  {{#if isArticleLoading}}
+    <div local-class="loading-overlay">
+      <div local-class="loading-message">
+        {{ko-loader size='L'}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div local-class="article-header">
+    <h2 local-class="article-title">{{model.article.title}}</h2>
+    <div local-class="article-actions">
+      <button local-class="edit-button" {{action "openEditArticlePane"}}>{{t 'generic.edit'}}</button>
+      {{#link-to "session.agent.knowledgebase.index"}}
+        <button local-class="back-button">{{t 'generic.back'}}</button>
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div local-class="article-meta">
+    <div local-class="meta-left">
+      <h3>{{t 'admin.knowledgebase.brand'}}: {{model.article.brand}}</h3>
+      <h3>{{t 'admin.knowledgebase.created_by'}}: {{model.article.author.full_name}}</h3>
+    </div>
+    <p local-class="last-modified">{{t 'admin.knowledgebase.last_modified'}} {{model.article.lastModified}}</p>
+  </div>
+
+  <div local-class="article-content-section">
+    <h3>{{t 'admin.knowledgebase.content'}}:</h3>
+    {{!-- class="article" will apply the global article styles from _article.scss --}}
+    <div local-class="article-content" class="article froala-editor-container-full">
+      {{html-safe model.article.content}}
+    </div>
+  </div>
+    
+  {{#if model.article.attachments.length}}
+    <div local-class="attachments-section">
+      <h3>{{t 'admin.knowledgebase.attachments'}}:</h3>
+      {{#each model.article.attachments as |attachment|}}
+        <div local-class="attachment-item">
+          <p local-class="attachment-name">{{attachment.name}}</p>
+          <div>
+            <p local-class="attachment-size">{{format-size-kb attachment.size}} {{t 'generic.units.kB'}}</p>
+            <a local-class="attachment-link" href="{{attachment.url}}" target="_blank" rel="noopener noreferrer">{{t 'admin.knowledgebase.view_attachment'}}</a>
+            <a local-class="attachment-link" href="{{attachment.url_download}}" download>{{t 'admin.knowledgebase.download_attachment'}}</a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  
+  {{#if visibleTags.length}}
+    <div local-class="tags-section">
+      <h3>{{t 'admin.knowledgebase.tags'}}:</h3>
+      {{#each visibleTags as |tag|}}
+        <span local-class="tag-item">{{tag.name}}</span>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
+
+{{#if isEditPaneOpen}}
+  <div local-class="edit-pane-overlay" {{action "closeEditArticlePane"}}>
+    <div local-class="edit-pane" local-class="{{if isEditPaneVisible 'edit-pane-open'}}" onclick={{action "stopPropagation"}}>
+      <div local-class="edit-pane-content">
+        {{article-form article=articleToEdit headingTitle=(t "admin.knowledgebase.edit_article") onCancel=(action "closeEditArticlePane") onSave=(action "onArticleSave")}} 
+      </div>
+    </div>
+  </div>
+{{/if}}

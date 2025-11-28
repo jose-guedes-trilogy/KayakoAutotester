@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+}
+
+.entity {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filtersControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.metricsContainer {
+  position: relative;
+  min-height: 236px;
+}
+
+.metrics {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.metrics:first-child {
+  padding-bottom: 0;
+}
+
+.chart {
+  position: relative;
+}
+
+.questionBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  margin-top: 40px;
+}
+
+.slaQuestion {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.slaFilter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.questionTitle {
+  margin-bottom: 0;
+  line-height: 26px;
+  padding-right: 10px;
+}
+
+.answer {
+  margin-bottom: 20px;
+  color: $grey-6;
+}
+
+.insights {
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

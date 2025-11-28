@@ -1,0 +1,162 @@
+.root {
+  display: flex;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.hide {
+  display: none;
+}
+
+.cc {
+  background: $grey-2;
+  border-radius: 2px;
+  border: 1px solid $grey-2;
+  font-weight: 600;
+  font-size: 12px;
+  color: $grey-6;
+  letter-spacing: 0;
+  line-height: 14px;
+  padding: 0 6px;
+  margin-right: 9px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s, background-color 0.2s, border 0.2s;
+}
+
+.cc--on {
+  background: transparent;
+  color: #BEC4C7;
+}
+
+.cc--collapsed {
+  background-color: $primary-blue;
+  border: 1px solid $primary-blue;
+  color: #FFF;
+}
+
+.cc-expand-item {
+  list-style-type: none;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid #4dafcc;
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: $grey-8;
+  cursor: pointer;
+  margin-bottom: 3px;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: $primary-blue;
+    color: #FFF;
+  }
+}
+
+.cc-list-and-input {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: inherit;
+  max-height: 70px;
+  overflow-y: auto;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  outline: none;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+
+  width: 280px;
+  height: 264px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  :global(.ember-power-select-options)[role="listbox"] {
+    max-height: 250px;
+  }
+}
+
+.option {
+  display: flex;
+  height: 36px;
+  align-items: center;
+}
+
+.text {
+  margin-left: 9px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.name, .email {
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 18px;
+}
+
+.email {
+  :global(.ember-power-select-option)[aria-current="false"] & {
+    color: $grey-6;
+  }
+}
+
+.add-icon {
+  width: 32px;
+  height: 32px;
+  background-color: $grey-2;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.option-item {
+  list-style-type: none;
+  font-size: 14px;
+  color: #3AA6C5;
+  line-height: 18px;
+  border-bottom: 1px solid $grey-2;
+  margin-right: 9px;
+  display: flex;
+  margin-bottom: 3px;
+
+  &:hover {
+    .option-item-close {
+      background: #E86048;
+    }
+  }
+}
+
+.option-item-title {
+  padding-right: 5px;
+}
+
+.option-item-membrane {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+}
+
+.option-item-close {
+  margin-top: 1px;
+  background: #BEC4C7;
+  border-radius: 50%;
+  padding: 2px;
+  cursor: pointer;
+  transition: 0.2s all ease;
+}

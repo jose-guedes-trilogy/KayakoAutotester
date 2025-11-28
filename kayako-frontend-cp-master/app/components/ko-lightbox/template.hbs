@@ -1,0 +1,17 @@
+<div onclick={{action "toggleLightbox"}}>
+  {{yield}}
+</div>
+
+{{#if showingLightbox}}
+  {{#ko-overlay}}
+    <div local-class="modal" onclick={{action "toggleLightbox"}}>
+      {{#if (not imgLoaded)}}
+        {{ko-loader}}
+      {{/if}}
+
+      <div local-class="{{if imgLoaded "lightbox-image" "loading-image"}}" style={{imgStyle}}>
+        <img local-class="hidden-image" src={{imgSrc}} onload={{action "onImageLoaded"}}>
+      </div>
+    </div>
+  {{/ko-overlay}}
+{{/if}}

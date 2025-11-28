@@ -1,0 +1,83 @@
+@value background-primary: #E5F3F7;
+@value background-hover: #D0EAF1;
+@value text-color: #4EAFCB;
+
+.jump-bar {
+  display: flex;
+  color: text-color;
+  text-align: left;
+  pointer-events: auto;
+  height: 34px;
+  width: 460px;
+  margin: 0 auto;
+  border-radius: 4px;
+  background-color: background-primary;
+  transition: background-color 0.25s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: background-hover;
+  }
+}
+
+.jump {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  display: flex;
+
+  font-weight: 600;
+  padding: 9px 14px;
+}
+
+.jump-arrow {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  margin-right: 9px;
+  margin-top: 4px;
+}
+
+.jump-text {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  transition: opacity 0.25s ease-out;
+}
+
+.jump-message {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  text-align: center;
+}
+
+.mark-as-seen {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  padding: 14px 18px;
+  width: 34px;
+  height: 34px;
+  position: relative;
+
+  &-action {
+    height: 24px;
+    width: 24px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 8px 8px;
+    background-color: background-primary;
+    border-radius: 4px;
+
+    transition: background-color 0.25s ease-out;
+
+    &:hover {
+      background-color: #FFF;
+    }
+  }
+}

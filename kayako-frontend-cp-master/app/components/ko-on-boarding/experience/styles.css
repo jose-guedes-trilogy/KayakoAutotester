@@ -1,0 +1,49 @@
+.box {
+  position: relative;
+  display: flex;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(45, 49, 56, 0.05), 0 1px 3px 0 rgba(45, 49, 56, 0.15);
+  border-radius: 6px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 37px;
+    top: 100%;
+    width: 2px;
+    height: 20px;
+    background-color: $grey-3;
+  }
+}
+
+.box__number {
+  height: 32px;
+  width: 32px;
+  margin-right: 14px;
+  background-image: linear-gradient(0deg, #fff 2%, rgba(235, 238, 240, 0.36) 98%);
+  border-radius: 50%;
+}
+
+.box__title {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.box__content {
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+}
+
+.box__text {
+  flex-shrink: 1;
+  margin-left: 24px;
+}
+
+.box__description {
+  margin-top: 10px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}

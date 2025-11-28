@@ -1,0 +1,17 @@
+{{#ko-tab-strip/tab
+  qaClass="qa-user-tab"
+  tab=tab
+  label=user.fullName
+  on-close=on-close
+  as |tab|
+}}
+  {{#tab.icon}}
+    {{#ko-user-avatar user=user size="micro" as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator showTooltip=false}}
+    {{/ko-user-avatar}}
+  {{/tab.icon}}
+
+  {{tab.label}}
+
+{{/ko-tab-strip/tab}}

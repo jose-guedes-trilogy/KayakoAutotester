@@ -1,0 +1,26 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.separator {
+  margin: 0 4px;
+}
+
+.agent {
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+}
+
+.avatar, .agent-name {
+  margin-right: 4px;
+}
+
+.team, .agent-name {
+  flex-shrink: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

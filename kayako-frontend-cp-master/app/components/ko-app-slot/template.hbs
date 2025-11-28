@@ -1,0 +1,16 @@
+{{#each appsForSlot as |installedApp|}}
+  {{#each (filter-by "location" name installedApp.app.slots) as |slot|}}
+    {{ko-app-slot/app
+      class=(qa-cls "app")
+
+      installedApp=installedApp
+      prompts=installedApp.iprompts
+      app=installedApp.app
+      slot=slot
+
+      case=case
+      user=user
+      organization=organization
+    }}
+  {{/each}}
+{{/each}}

@@ -1,0 +1,120 @@
+{{#ko-modal
+  chromelessContent=true
+  width="900px"
+  on-close=(action onClose)
+  qaClass="notification-preferences-modal" as |modal|}}
+
+  {{#if modal.isHeader}}
+    {{t "notifications.preferences.title"}}
+  {{/if}}
+
+  {{#if modal.isMain}}
+    <div local-class="description">
+      <h3 local-class="heading">{{t "notifications.preferences.heading"}}</h3>
+      <div local-class="devices">
+        <div local-class="device">
+          <figure>{{inline-svg "notification-center/desktop"}}</figure>
+          <div local-class="device-text">
+            <h5 local-class="device-label">{{t "notifications.preferences.desktop"}}</h5>
+            <p>{{t "notifications.preferences.desktop_description"}}</p>
+          </div>
+        </div>
+
+        <span local-class="vertical-separator"></span>
+
+        <div local-class="device">
+          <figure>{{inline-svg "notification-center/mobile"}}</figure>
+          <div local-class="device-text">
+            <h5 local-class="device-label">{{t "notifications.preferences.mobile"}}</h5>
+            <p>{{format-html-message "notifications.preferences.mobile_description"}}</p>
+          </div>
+        </div>
+
+        <span local-class="vertical-separator"></span>
+
+        <div local-class="device">
+          <figure>{{inline-svg "notification-center/email"}}</figure>
+          <div local-class="device-text">
+            <h5 local-class="device-label">{{t "notifications.preferences.email"}}</h5>
+            <p>{{format-html-message "notifications.preferences.email_description"}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div local-class="list">
+      <table local-class="table">
+        <thead local-class="list-header">
+          <tr>
+            <th local-class="list-head">{{t "notifications.preferences.activities"}}</th>
+            <th local-class="list-head">{{t "notifications.preferences.desktop"}}</th>
+            <th local-class="list-head">{{t "notifications.preferences.mobile"}}</th>
+            <th local-class="list-head">{{t "notifications.preferences.email"}}</th>
+          </tr>
+        </thead>
+
+        {{#each preferences as |preference|}}
+          {{#if (variation "release-live-chat-notification-improvements")}}
+            <tr local-class="list-row">
+              <td local-class="list-data">{{t (concat "notifications.preferences." preference.notificationType)}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelDesktop}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelMobile}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelEmail}}</td>
+            </tr>
+          {{else}}
+            <tr local-class="list-row-old">
+              <td local-class="list-data">{{t (concat "notifications.preferences." preference.notificationType)}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelDesktop}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelMobile}}</td>
+              <td>{{ko-checkbox isHorizontallyCentered=true size="large" checked=preference.channelEmail}}</td>
+            </tr>
+          {{/if}}
+        {{else}}
+          <tr>
+            <td colspan="4">
+              <span local-class="loader">{{ko-loader size='M'}}</span>
+            </td>
+          </tr>
+        {{/each}}
+      </table>
+    </div>
+
+    {{#if (variation "release-live-chat-notification-improvements")}}
+      <div local-class="sound-preferences-container">
+        <div local-class="sound-preferences">
+          <div local-class="sound-preference">
+            {{ko-checkbox
+              size="large"
+              label=(t "notifications.preferences.sound.desktop_sound_alerts")
+              checked=soundPreferences.desktopSoundAlerts}}
+          </div>
+        </div>
+
+        <span local-class="sound-icon">
+          {{#if soundPreferences.desktopSoundAlerts}}
+            {{inline-svg "notification-center/speaker-on"}}
+          {{else}}
+            {{inline-svg "notification-center/speaker-off"}}
+          {{/if}}
+        </span>
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if modal.isFooter}}
+    <div local-class="buttons">
+      {{#ko-button type="naked" onClick=onClose}}
+        {{t "generic.cancel"}}
+      {{/ko-button}}
+
+      {{#ko-button
+        type="primary" size="medium"
+        hasAnimation=true
+        loading=isSaving
+        disabled=(not isEdited)
+        onClick=(action "save")}}
+        {{t "notifications.preferences.save"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-modal}}

@@ -1,0 +1,89 @@
+<div local-class="instant-entity-component" class="{{qa-cls qaClass}}">
+  <div local-class="instant-entity-input-container">
+    <div local-class="loader-container">
+      {{#if (and isInstantLoadRunning isValidInstantEntityTerm)}}
+        {{ko-loader size=15}}
+      {{else if inUserMode}}
+        {{inline-svg "avatar"}}
+      {{else}}
+        {{inline-svg "icon--org"}}
+      {{/if}}
+    </div>
+    {{input id=(concat elementId "-instant-input")
+      placeholder=(t (if inUserMode (if isCase "cases.instant_user_in_case" "cases.instant_user_placeholder") "cases.instant_org_placeholder"))
+      local-class=(join-classes "search-add-user-input" (if cancellable "cancellable") (if invalidState "invalid"))
+      input=(action (if inUserMode "instantUserSearch" "instantOrgSearch") value="target.value")
+      key-down=(action "handleInstantUserSearchKeypress")
+      disabled=(or isProcessRunning actionTriggered)
+      class=(qa-cls "ko-instant-search--input-bar")
+    }}
+    {{#if cancellable}}
+      <div local-class="cancel-icon" onclick={{action "triggerCancelAction"}}>
+        {{ko-icon name="cross" color="#FFFFFF" size=10}}
+      </div>
+    {{/if}}
+  </div>
+  <div local-class="instant-entity-results">
+    <ul local-class="instant-entity-list {{if (or (and invalidState inUserMode) (and isInputDirty (not isValidInstantEntityTerm)) instantEntityResults.length showAddOption) "has-results"}}">
+      <li local-class="disable-cursor-overlay {{if pointerDisabled "show"}}" onmouseenter={{action "trackPointer"}} onmousemove={{action "enablePointer"}}></li>
+      {{#if isValidInstantEntityTerm}}
+        {{#if showAddOption}}
+          {{ko-instant-entity/item
+            inUserMode=inUserMode
+            qaClass="instant-entity-add-option"
+            entity=instantEntityTerm
+            setInstantEntity=(action "setInstantEntity")
+            isProcessRunning=isProcessRunning
+            showAddOption=showAddOption
+            iconComponent=(component "ko-icon" name="plus" color="#A1AAAF")
+            addFocus=(action "addFocus")
+            removeFocus=(action "removeFocus")
+          }}
+        {{else if (and invalidState inUserMode)}}
+          {{ko-instant-entity/item
+            invalidState=true
+            qaClass="instant-entity-info-option"
+            helpText=(t "generic.kie.invalid_format")
+            iconComponent=(component "ko-icon" name="caution" color="#A1AAAF")
+            addFocus=(action "addFocus")
+            removeFocus=(action "removeFocus")
+          }}
+        {{/if}}
+        {{#each instantEntityResults as |entity|}}
+          {{#if inUserMode}}
+            {{ko-instant-entity/item
+              qaClass="instant-entity-list-item"
+              inUserMode=inUserMode
+              entity=entity
+              setInstantEntity=(action "setInstantEntity")
+              isProcessRunning=isProcessRunning
+              iconComponent=(component "ko-user-avatar" user=entity size="medium")
+              addFocus=(action "addFocus")
+              removeFocus=(action "removeFocus")
+            }}
+          {{else}}
+            {{ko-instant-entity/item
+              qaClass="instant-entity-list-item"
+              inUserMode=inUserMode
+              entity=entity
+              setInstantEntity=(action "setInstantEntity")
+              isProcessRunning=isProcessRunning
+              iconComponent=(component "ko-org-logo" org=entity)
+              addFocus=(action "addFocus")
+              removeFocus=(action "removeFocus")
+            }}
+          {{/if}}
+        {{/each}}
+      {{else if isInputDirty}}
+        {{ko-instant-entity/item
+          invalidState=true
+          qaClass="instant-entity-info-item"
+          helpText=(t "generic.kie.term_too_small")
+          iconComponent=(component "ko-icon" name="caution" color="#A1AAAF")
+          addFocus=(action "addFocus")
+          removeFocus=(action "removeFocus")
+        }}
+      {{/if}}
+    </ul>
+  </div>
+</div>

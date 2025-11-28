@@ -1,0 +1,59 @@
+{{#each summaryLineActions as |action|}}
+  <span local-class="summary-line-actions">
+    {{#if (eq action.field 'casestatusid')}}
+      {{#if action.oldValue}}
+        {{format-html-message "timeline.activity.status_from_something"}}
+      {{else}}
+        {{format-html-message "timeline.activity.status_from_nothing"}}
+      {{/if}}
+      <span local-class="status-pill">
+        {{ko-status-pill
+          label=action.newValue
+          type=(ko-contextual-helper caseStatusType this action.newObject.original.id)
+        }}
+      </span>
+    {{else if (eq action.field 'requesterid')}}
+      {{format-html-message "timeline.activity.requester_from_something"}}
+      <div local-class="inline-property-avatar">
+        {{#ko-user-avatar size="micro" as |avatar|}}
+          {{avatar.image url=action.newObject.image}}
+        {{/ko-user-avatar}}
+      </div>
+      <b>{{#link-to "session.agent.users.user" action.newObject.original.id class="timeline-link"}}{{action.newValue}}{{/link-to}}</b>
+    {{else if (eq action.field 'assigneeagentid')}}
+      {{#if action.newValue}}
+        {{format-html-message "timeline.activity.agent"}}
+        <div local-class="inline-property-avatar">
+          {{#ko-user-avatar size="micro" as |avatar|}}
+            {{avatar.image url=action.newObject.image}}
+          {{/ko-user-avatar}}
+        </div>
+        <b>{{#link-to "session.agent.users.user" action.newObject.original.id class="timeline-link"}}{{action.newValue}}{{/link-to}}</b>
+      {{else}}
+        {{t "timeline.activity.agent_unassigned"}}
+      {{/if}}
+    {{else if (eq action.field 'coercedassignee')}}
+      {{format-html-message "timeline.activity.coerced_assignee" team=action.teamName}}
+      <div local-class="inline-property-avatar">
+        {{#ko-user-avatar size="micro" as |avatar|}}
+          {{avatar.image url=action.agentObject.image}}
+        {{/ko-user-avatar}}
+      </div>
+      <b>{{#link-to "session.agent.users.user" action.agentObject.original.id class="timeline-link"}}{{action.agentName}}{{/link-to}}</b>
+    {{else}}
+      {{#if (and (eq action.field 'assigneeteamid') (not action.newValue))}}
+        {{t "timeline.activity.team_unassigned"}}
+      {{else}}
+        {{ko-contextual-helper localizedSummaryStringForField this action.field action.oldValue action.newValue}}
+      {{/if}}
+    {{/if}}
+  </span>
+{{/each}}
+
+{{#if hasActionsNotOnSummaryLine}}
+  {{format-html-message "timeline.activity.other_items" count=actionsNotOnSummaryLine.length}}
+{{/if}}
+
+{{#unless (eq timelineContext "case")}}
+  {{format-html-message "timeline.activity.on_context" name=activity.object.title anchor=(ko-convert-to-relative-link activity.object.url)}}
+{{/unless}}

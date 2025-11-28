@@ -1,0 +1,13 @@
+.team-sharing {
+  display: flex;
+}
+
+.team-selector {
+  margin-top: -6px;
+  margin-left: 15px;
+  width: 340px;
+}
+
+.download-button {
+  margin-right: 9px;
+}

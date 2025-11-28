@@ -1,0 +1,10 @@
+.sidebar {
+  padding: 9px;
+  width: 280px;
+  border-right: 1px solid $grey-3;
+  overflow-y: scroll;
+}
+
+.no-padding {
+  padding: 0;
+}

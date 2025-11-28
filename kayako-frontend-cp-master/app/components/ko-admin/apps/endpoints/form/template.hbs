@@ -1,0 +1,275 @@
+{{#ko-admin/page
+  title=title
+  buttonText=(t "generic.save")
+  onCancel=onCancel
+  deleteText=(if (not endpoint.isNew) (t "generic.delete"))
+  onDelete=(perform confirmDelete)
+  showFooter=true
+  isSaving=isDisabled
+  onSave=(perform save)
+}}
+  {{#ko-admin/forms/group legend=(t 'admin.apps.endpoints.title-singular')}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}
+        {{t 'admin.apps.endpoints.form.title'}}
+      {{/ko-form/field/label}}
+
+      {{ko-input value=editedEndpoint.title disabled=isDisabled}}
+
+      {{ko-form/field/errors errors=editedEndpoint.errors.title}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field/help}}
+      {{format-html-message "admin.apps.endpoints.form.description"}}
+    {{/ko-form/field/help}}
+  {{/ko-admin/forms/group}}
+
+  {{#if (eq endpoint.fieldType "EMAIL")}}
+    {{#ko-admin/forms/group legend=(t 'admin.apps.endpoints.types.email.title')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}
+          {{t 'admin.apps.endpoints.form.email.destination'}}
+        {{/ko-form/field/label}}
+
+        {{ko-input type="email" value=editedEndpoint.emailDestination disabled=isDisabled}}
+
+        {{ko-form/field/errors errors=editedEndpoint.errors.attributes-address}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}
+          {{t 'admin.apps.endpoints.form.email.subject'}}
+        {{/ko-form/field/label}}
+
+        {{ko-input value=editedEndpoint.emailSubject disabled=isDisabled}}
+
+        {{ko-form/field/errors errors=editedEndpoint.errors.attributes-subject}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#if (eq endpoint.fieldType "SLACK")}}
+    {{#ko-admin/forms/group legend=(t 'admin.apps.endpoints.types.slack.title')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}
+          {{t 'admin.apps.endpoints.form.slack.title'}}
+        {{/ko-form/field/label}}
+
+        {{ko-input value=editedEndpoint.slackUrl disabled=isDisabled}}
+        {{ko-form/field/errors errors=editedEndpoint.errors.attributes-webhook_url}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field/help}}
+        {{format-html-message "admin.apps.endpoints.form.slack.description"}}
+      {{/ko-form/field/help}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#if (eq endpoint.fieldType "HTTP")}}
+    {{#ko-admin/forms/group legend=(t 'admin.apps.endpoints.form.webhook.title')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}
+          {{t 'admin.apps.endpoints.form.webhook.payload_url.title'}}
+        {{/ko-form/field/label}}
+
+        {{ko-input value=editedEndpoint.webhookUrl disabled=isDisabled}}
+        {{ko-form/field/errors errors=editedEndpoint.errors.attributes-url}}
+
+        {{#ko-form/field/help}}
+          {{format-html-message "admin.apps.endpoints.form.webhook.payload_url.description"}}
+        {{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+      <div style="display: flex;">
+        <div>
+          {{#ko-form/field}}
+            {{#ko-form/field/label}}
+              {{t 'admin.apps.endpoints.form.webhook.request_method.title'}}
+            {{/ko-form/field/label}}
+
+            {{#ko-select
+            local-class="select"
+            selected=requestMethod
+            options=requestMethods
+            onChange=(action (mut editedEndpoint.requestMethod) value="id")
+            disabled=isDisabled
+            as |option|}}
+              {{option.id}}
+            {{/ko-select}}
+
+            {{ko-form/field/errors errors=editedEndpoint.errors.attributes-method}}
+
+          {{/ko-form/field}}
+        </div>
+        {{#if showContentType}}
+          <div>
+            {{#ko-form/field}}
+              {{#ko-form/field/label}}
+                {{t 'admin.apps.endpoints.form.webhook.request_method.content_type'}}
+              {{/ko-form/field/label}}
+
+              {{#ko-select
+                local-class="select"
+                selected=requestContentType
+                options=requestContentTypes
+                onChange=(action (mut editedEndpoint.requestContentType) value="id")
+                disabled=isDisabled
+              as |option|}}
+                {{option.id}}
+              {{/ko-select}}
+
+              {{ko-form/field/errors errors=editedEndpoint.errors.attributes-content_type}}
+            {{/ko-form/field}}
+          </div>
+        {{/if}}
+      </div>
+
+      {{#ko-form/field class=(local-class "auth-method")}}
+        {{#ko-form/field/label}}
+          {{t 'admin.apps.endpoints.form.webhook.auth_method.title'}}
+        {{/ko-form/field/label}}
+
+        <div class={{local-class "auth-options"}}>
+          {{ko-radio
+            name="authMethod"
+            value="none"
+            checked=(eq editedEndpoint.webhookAuthMethod 'none')
+            onChange=(action "changeAuthMethod" 'none')
+            label=(t 'admin.apps.endpoints.form.webhook.auth_method.none')
+            disabled=isDisabled
+          }}
+
+          {{ko-radio
+            name="authMethod"
+            value="apikey"
+            checked=(eq editedEndpoint.webhookAuthMethod 'apikey')
+            onChange=(action "changeAuthMethod" 'apikey')
+            label=(t 'admin.apps.endpoints.form.webhook.auth_method.apikey')
+            disabled=isDisabled
+          }}
+
+          {{ko-radio
+            name="authMethod"
+            value="basic"
+            checked=(eq editedEndpoint.webhookAuthMethod 'basic')
+            onChange=(action "changeAuthMethod" 'basic')
+            label=(t 'admin.apps.endpoints.form.webhook.auth_method.basic')
+            disabled=isDisabled
+          }}
+
+          {{ko-radio
+            name="authMethod"
+            value="bearer"
+            checked=(eq editedEndpoint.webhookAuthMethod 'bearer')
+            onChange=(action "changeAuthMethod" 'bearer')
+            label=(t 'admin.apps.endpoints.form.webhook.auth_method.bearer')
+            disabled=isDisabled
+          }}
+
+        </div>
+      {{/ko-form/field}}
+
+      {{#if (eq editedEndpoint.webhookAuthMethod 'basic')}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}
+            {{t 'admin.apps.endpoints.form.webhook.http_auth.username'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input value=editedEndpoint.webhookUsername disabled=isDisabled}}
+
+          {{ko-form/field/errors errors=editedEndpoint.errors.attributes-auth_username}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}
+            {{t 'admin.apps.endpoints.form.webhook.http_auth.password'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input type="password" value=editedEndpoint.webhookPassword disabled=isDisabled}}
+
+          {{ko-form/field/errors errors=editedEndpoint.errors.attributes-auth_password}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#if (eq editedEndpoint.webhookAuthMethod 'bearer')}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}
+            {{t 'admin.apps.endpoints.form.webhook.bearer_auth.token'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input value=editedEndpoint.webhookBearerToken disabled=isDisabled}}
+
+          {{ko-form/field/errors errors=editedEndpoint.errors.attributes-auth_bearer_token}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#if (eq editedEndpoint.webhookAuthMethod 'apikey')}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}
+            {{t 'admin.apps.endpoints.form.webhook.apikey_auth.key'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input value=editedEndpoint.webhookApiKey disabled=isDisabled}}
+
+          {{ko-form/field/errors errors=editedEndpoint.errors.attributes-auth_api_key}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}
+            {{t 'admin.apps.endpoints.form.webhook.apikey_auth.value'}}
+          {{/ko-form/field/label}}
+
+          {{ko-input type="password" value=editedEndpoint.webhookApiValue disabled=isDisabled}}
+
+          {{ko-form/field/errors errors=editedEndpoint.errors.attributes-auth_api_value}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#ko-admin/forms/group}}
+        <h5>{{t 'admin.apps.endpoints.form.webhook.custom_headers.title'}}</h5>
+        {{ko-form/field/help text=(t 'admin.apps.endpoints.form.webhook.custom_headers.description' max=maxHeaders)}}
+        
+        {{#each headers as |header|}}
+          <dl local-class="header-pair">
+            <dt local-class="header-key {{if header.hasError 'has-error'}}">
+              {{ko-input 
+                value=header.key 
+                onInput=(action "updateHeaderPair" header "key") 
+                name=(concat "header-key-" header.key) 
+                placeholder=(t "admin.apps.endpoints.form.webhook.custom_headers.key_placeholder")
+                disabled=isDisabled
+                hasError=header.hasError
+              }}
+            </dt>
+            <dd local-class="header-value {{if header.valueError 'has-error'}}">
+              {{ko-input 
+                value=header.value 
+                onInput=(action "updateHeaderPair" header "value") 
+                name=(concat "header-value-" header.key) 
+                placeholder=(t "admin.apps.endpoints.form.webhook.custom_headers.value_placeholder")
+                disabled=isDisabled
+                hasError=header.valueError
+              }}
+            </dd>
+            <div local-class="header-remove" onclick={{action "removeHeader" header}}>
+              {{ko-icon name="minusCircle" color="#BEC4C7" size=18}}
+            </div>
+          </dl>
+        {{/each}}
+        
+        <button type="button" local-class="header-add-btn" onclick={{action "addHeader"}} disabled={{or isDisabled (not canAddHeader)}}>
+          {{#ko-button type="primary" disabled=(or isDisabled (not canAddHeader))}}
+            {{t 'admin.apps.endpoints.form.webhook.custom_headers.add'}}
+          {{/ko-button}}
+        </button>
+        
+        {{#if (not canAddHeader)}}
+          {{#ko-form/field/help}} {{t 'admin.apps.endpoints.form.webhook.custom_headers.max_reached' max=maxHeaders}} {{/ko-form/field/help}}
+        {{/if}}
+        
+        {{ko-form/field/errors errors=editedEndpoint.errors.webhookCustomHeaders}}
+      {{/ko-admin/forms/group}}
+
+    {{/ko-admin/forms/group}}
+  {{/if}}
+{{/ko-admin/page}}

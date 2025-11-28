@@ -1,0 +1,60 @@
+.select {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.checkbox {
+  margin-top: 13.5px;
+}
+
+.auth-method {
+  margin-top: 13.5px;
+  margin-bottom: 16px;
+}
+
+.auth-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Custom headers styles based on key-value-collection-builder */
+.header-pair {
+  display: flex;
+  margin-bottom: 9px;
+  padding-right: 40px;
+  align-items: center;
+}
+
+.header-key {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  padding-right: 14px;
+  max-width: 300px;
+}
+
+.header-value {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  padding-right: 14px;
+  max-width: 300px;
+}
+
+.header-remove {
+  cursor: pointer;
+}
+
+.header-add-btn {
+  border: 0;
+  text-align: inherit;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.has-error input {
+  border-color: #e74c3c !important;
+  background-color: rgba(231, 76, 60, 0.05) !important;
+}

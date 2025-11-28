@@ -1,0 +1,52 @@
+.automation-action {
+  position: relative;
+  margin-bottom: 9px;
+  background-color: $grey-1;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
+}
+
+.automation-action-form {
+  width: 55%;
+  padding: 15px 15px 15px 40px;
+}
+
+.slots {
+  display: inline-flex;
+}
+
+.small-slot {
+  width: 58%;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.big-slot {
+  width: 80%;
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

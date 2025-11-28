@@ -1,0 +1,59 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    {{#if isLoading}}
+      <div local-class="avatar-loading">
+      </div>
+    {{else}}
+      <img local-class="avatar" src={{model.avatar}}>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    {{#if isLoading}}
+      {{ko-loading/text-placeholder width="25px"}}
+      <div local-class="loading-separator">•</div>
+      {{ko-loading/text-placeholder width="255px"}}
+    {{else}}
+      <div local-class="title">{{escape-html model.fullName}}</div>
+      {{#if isMe}}
+        {{ko-you-label}}
+      {{else if modelrole.isAgentOrHigher}}
+        <div local-class="role">
+          {{ko-role-pill}}
+        </div>
+      {{/if}}
+      {{#if model.organization.name}}
+        <div local-class="separator">•</div>
+        <div local-class="company">{{model.organization.name}}</div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    {{#if isLoading}}
+      {{ko-loading/text-placeholder width="55px"}}
+      <div local-class="loading-separator">•</div>
+      {{ko-loading/text-placeholder width="55px"}}
+    {{else}}
+      {{#each identities as |identity index|}}
+        {{#if index}}
+          <div local-class="separator">•</div>
+        {{/if}}
+
+        {{#if (eq identity.type "twitter")}}
+          <div local-class="icon">
+            {{ko-icon color="#D1D5D7" size=16 name="twitter"}}
+          </div>
+        {{/if}}
+
+        {{#if (eq identity.type "facebook")}}
+          <div local-class="icon">
+            {{ko-icon color="#D1D5D7" size=14 name="facebook"}}
+          </div>
+        {{/if}}
+
+        <div local-class="identity {{if (not index) "identityMain"}}">{{identity.value}}</div>
+      {{/each}}
+    {{/if}}
+  {{/if}}
+{{/ko-universal-search/result/layout}}

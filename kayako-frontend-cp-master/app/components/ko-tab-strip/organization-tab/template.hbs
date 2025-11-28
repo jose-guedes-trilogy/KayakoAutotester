@@ -1,0 +1,13 @@
+{{#ko-tab-strip/tab
+  qaClass="qa-org-tab"
+  tab=tab
+  label=org.name
+  on-close=on-close
+  as |tab|
+}}
+  {{#tab.icon}}
+    {{ko-org-logo org=org size=18 local-class="org-logo"}}
+  {{/tab.icon}}
+
+  {{tab.label}}
+{{/ko-tab-strip/tab}}

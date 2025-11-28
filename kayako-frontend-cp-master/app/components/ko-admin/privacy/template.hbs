@@ -1,0 +1,67 @@
+{{#ko-admin/page
+  title=title
+  buttonText=(t "generic.save")
+  onCancel=onCancel
+  deleteText=(if (not or privacy.isNew privacy.default) (t "generic.delete"))
+  onDelete=(perform confirmDelete)
+  showFooter=true
+  isSaving=isDisabled
+  onSave=(perform save)
+}}
+  {{#ko-admin/forms/group legend=(t 'admin.privacy.form.url_description')}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}
+        {{t 'admin.privacy.form.url'}}
+      {{/ko-form/field/label}}
+      {{ko-input qaClass="qa-privacy-policy-edit-url" value=editedPrivacy.url disabled=isDisabled}}
+      {{ko-form/field/errors errors=editedPrivacy.errors.url}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}
+        {{t 'admin.privacy.form.choose_privacy_types'}}
+      {{/ko-form/field/label}}
+
+      {{#ko-select
+        qaClass="qa-ko-select-privacy-policy-select-privacy-type"
+        local-class="select"
+        selected=privacyType
+        options=privacyTypes
+        onChange=(action (mut editedPrivacy.privacyType) value="id")
+        disabled=isDisabled
+        as |option|}}
+        {{t option.titleKey}}
+      {{/ko-select}}
+
+      {{ko-form/field/errors errors=editedPrivacy.errors.privacyType}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}
+        {{t 'admin.privacy.form.choose_locale'}}
+      {{/ko-form/field/label}}
+
+      {{#ko-select
+        qaClass="qa-ko-select-privacy-policy-select-locale"
+        local-class="select"
+        selected=locale
+        options=enabledLocales
+        onChange=(action (mut editedPrivacy.locale) value="locale")
+        disabled=isDisabled
+        as |option|}}
+        {{option.name}}
+      {{/ko-select}}
+      {{ko-form/field/errors errors=editedPrivacy.errors.locale}}
+    {{/ko-form/field}}
+
+
+    {{#ko-form/field}}
+      {{ko-checkbox
+        label=(t "admin.privacy.form.make_default")
+        checked=editedPrivacy.default
+        disabled=form.isSubmitting
+      }}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+{{/ko-admin/page}}

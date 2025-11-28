@@ -1,0 +1,21 @@
+<div class="{{typeClass}}" local-class="container {{if body "multiline"}} {{if dismissable "dismissable"}}">
+  {{#if dismissable}}
+    <div local-class="close" class="i-cross-bold" onclick={{action "onCloseClicked"}}></div>
+  {{/if}}
+  <span local-class="icon" class="{{iconClass}}"></span>
+  <div local-class="title">
+    <span local-class="title-text">{{title}}</span>
+    {{#if href}}
+      <div local-class="href">
+        <a href={{href}} target={{hrefTarget}} local-class="link" onclick={{action "onCloseClicked"}}>
+          {{#if hrefText}}
+            {{hrefText}}
+          {{else}}
+            {{href}}
+          {{/if}}
+        </a>
+      </div>
+    {{/if}}
+  </div>
+  <div local-class="body">{{body}}</div>
+</div>

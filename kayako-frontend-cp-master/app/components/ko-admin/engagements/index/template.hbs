@@ -1,0 +1,67 @@
+{{#ko-admin/page
+  title=(t "admin.engagements.title")
+  buttonText=(t "admin.engagements.buttons.add")
+as |section|}}
+  {{#if (eq section "buttons")}}
+    {{#ko-button href=(href-to "session.admin.messenger.engagements.new") type="primary"}}{{t "admin.engagements.buttons.add"}}{{/ko-button}}
+  {{/if}}
+
+  {{#if (eq section "contents")}}
+    {{#ko-admin/forms/description}}
+      <p>
+        {{t "admin.engagements.description"}}
+        <strong>{{format-html-message "admin.engagements.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1395" "admin.engagements.description_link")}}</strong>
+      </p>
+    {{/ko-admin/forms/description}}
+    {{#if sortedEngagements.length}}
+      {{#ko-table}}
+        {{#ko-table/header}}
+          {{#ko-table/column minWidth=484 maxWidth=484 dense=true}}
+            {{t "admin.engagements.index.headers.rules"}}
+          {{/ko-table/column}}
+          {{ko-table/column minWidth=112 maxWidth=112}}
+          {{#ko-table/column minWidth=148 maxWidth=148}}
+            {{t "admin.engagements.index.headers.delivered"}}
+          {{/ko-table/column}}
+          {{ko-table/column minWidth=12 maxWidth=12}}
+          {{#ko-table/column minWidth=148 maxWidth=148}}
+            {{t "admin.engagements.index.headers.clicked"}}
+          {{/ko-table/column}}
+          {{ko-table/column minWidth=12 maxWidth=12}}
+          {{#ko-table/column minWidth=148 maxWidth=148}}
+            {{t "admin.engagements.index.headers.conversations"}}
+          {{/ko-table/column}}
+        {{/ko-table/header}}
+        {{#ko-simple-list as |list|}}
+          {{#ko-reorderable-table class=(qa-cls "qa-admin_triggers--enabled") onReorder=(perform reorderEngagements) items=sortedEngagements as |engagement|}}
+            <div local-class="row-wrapper" onclick={{action edit engagement.id}}>
+              {{#ko-table/cell minWidth=484 maxWidth=484}}
+                <span local-class="rule-title">{{engagement.title}}</span>
+              {{/ko-table/cell}}
+              {{#ko-table/cell minWidth=100 maxWidth=100}}
+                <div onclick={{action "stop" bubbles=false}}>
+                  {{ko-admin/engagements/index/toggle engagement=engagement}}
+                </div>
+              {{/ko-table/cell}}
+              {{#ko-table/cell minWidth=160 maxWidth=160 compact=true dasherize=true}}
+                <div local-class="count-wrapper">
+                  {{ko-admin/engagements/index/poly-graph engagement=engagement showVisible=true background="#F0F6FA" width=160 height=70}}
+                </div>
+              {{/ko-table/cell}}
+              {{#ko-table/cell minWidth=160 maxWidth=160 compact=true dasherize=true}}
+                <div local-class="count-wrapper">
+                  {{ko-admin/engagements/index/poly-graph engagement=engagement showClicked=true background="#E3E5F1" width=160 height=70}}
+                </div>
+              {{/ko-table/cell}}
+              {{#ko-table/cell minWidth=160 maxWidth=160 compact=true dasherize=true}}
+                <div local-class="count-wrapper">
+                  {{ko-admin/engagements/index/poly-graph engagement=engagement showUsed=true background="#F0E2F0" width=160 height=70}}
+                </div>
+              {{/ko-table/cell}}
+            </div>
+          {{/ko-reorderable-table}}
+        {{/ko-simple-list}}
+      {{/ko-table}}
+    {{/if}}
+  {{/if}}
+{{/ko-admin/page}}

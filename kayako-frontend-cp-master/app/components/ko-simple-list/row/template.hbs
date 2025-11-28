@@ -1,0 +1,11 @@
+<div
+  local-class="row {{if onClick "row--actionable"}}"
+  class="{{if qaClass (qa-cls qaClass)}}"
+  onmouseenter={{action "onMouseEnter"}}
+  onmouseleave={{action "onMouseLeave"}}
+>
+  {{yield (hash
+    cell=(component "ko-simple-list/cell")
+    actions=(component "ko-simple-list/actions" show=showActions loading=isLoading)
+  )}}
+</div>

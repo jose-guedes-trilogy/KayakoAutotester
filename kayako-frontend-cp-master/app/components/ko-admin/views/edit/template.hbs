@@ -1,0 +1,120 @@
+{{#ko-admin/page
+  title=title
+  onCancel=(action "cancel")
+  buttonText=(t "generic.save")
+  deleteText=(if canBeDeleted (t "generic.delete"))
+  onDelete=(action "deleteView")
+  showFooter=true
+  isSaving=save.isRunning
+  onSave=(perform save)
+}}
+  {{#ko-admin/forms/group legend=(t "admin.views.heading.view_details")}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.views.label.view_title"}}{{/ko-form/field/label}}
+      {{ko-input qaClass="ko-admin_views_edit__title" value=editedCaseView.title onInput=(action (mut editedCaseView.title) value="target.value") disabled=titleOrSharingEditDisabled}}
+      {{ko-form/field/errors errors=editedCaseView.errors.title}}
+    {{/ko-form/field}}
+
+    {{#if (not caseView.isNew)}}
+      {{#ko-form/field}}
+        {{ko-toggle
+          activated=editedCaseView.isEnabled
+          label=(t (if editedCaseView.isEnabled "admin.views.edit.description_on.is_enabled" "admin.views.edit.description_off.is_enabled"))
+          isDisabled=titleOrSharingEditDisabled
+        }}
+        {{ko-form/field/errors errors=editedCaseView.errors.isEnabled}}
+      {{/ko-form/field}}
+    {{/if}}
+  {{/ko-admin/forms/group}}
+
+  {{#ko-admin/forms/group legend=(t "admin.views.heading.sharing")}}
+    {{#ko-form/field}}
+      {{#ko-form/field/label}}{{t "admin.views.label.sharing"}}{{/ko-form/field/label}}
+      {{ko-radio qaClass="qa-just-myself" label=(t "admin.views.radio.label.me") checked=sharedWithSelf onChange=(action "setViewSharingSelf") disabled=titleOrSharingEditDisabled}}
+      {{ko-radio qaClass="qa-every-agent" label=(t "admin.views.radio.label.all") checked=sharedWithAll onChange=(action "setViewSharingAll") disabled=titleOrSharingEditDisabled}}
+
+      <div local-class="team-sharing">
+        {{ko-radio qaClass="qa-specific-team" label=(t "admin.views.radio.label.specific") checked=sharedWithTeam onChange=(action "setViewSharingTeam") disabled=titleOrSharingEditDisabled}}
+        <div local-class="team-selector">
+          {{ko-select/multiple
+            placeholder=(t "generic.select_placeholder")
+            options=availableTeams
+            selected=selectedTeams
+            searchField="title"
+            onKeydown=(action "preventFormSubmission")
+            onChange=(action "selectTeam")
+            disabled=titleOrSharingEditDisabled
+          }}
+        </div>
+      </div>
+      {{ko-form/field/errors errors=editedCaseView.errors.visibilityType}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+  {{#if (not-eq caseView.viewType "TRASH")}}
+    {{#ko-admin/forms/group}}
+      <div local-class="predicate-header">{{t "admin.views.heading.predicate_builder"}}</div>
+      {{ko-admin/predicate-builder
+        definitions=definitions
+        collections=editedCaseView.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "addPropositionToCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")
+        disabled=(eq caseView.viewType "INBOX")
+      }}
+      {{ko-form/field/errors errors=editedCaseView.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+
+  {{#ko-admin/forms/group legend=(t "admin.views.heading.configure_layout")}}
+    {{ko-admin/views/edit/columns
+      availableColumns=orderedAvailableColumnList
+      columns=editedCaseView.columns
+      onColumnAdd=(action "addColumn")
+      onColumnRemove=(action "removeColumn")
+      onColumnReorder=(action "reorderColumn")
+    }}
+    {{ko-form/field/errors errors=editedCaseView.errors.columns}}
+  {{/ko-admin/forms/group}}
+
+  {{#ko-admin/forms/group legend=(t "admin.views.heading.sorting")}}
+    {{#if editedCaseView.columns.length}}
+      {{#ko-form/field}}
+        {{#ko-form/field/help}}{{t "admin.views.label.sorting"}}{{/ko-form/field/help}}
+        <div local-class="sorting">
+          <div>
+            {{#ko-select
+              class=(qa-cls "qa-sorted-by")
+              placeholder=(t "generic.select_placeholder")
+              options=orderedAvailableColumnList
+              selected=selectedSortableColumn
+              onChange=(action "selectOrderByColumn")
+              size="medium"
+              as |column|}}
+              {{column.title}}
+            {{/ko-select}}
+            {{ko-form/field/errors errors=editedCaseView.errors.orderByColumn}}
+          </div>
+          <div local-class="sort-direction">
+            {{#ko-select
+              placeholder=(t "generic.select_placeholder")
+              options=sortOrderDirections
+              selected=selectedSortingDirection
+              onChange=(action "selectOrderByDirection")
+              size="medium"
+            as |direction|}}
+              {{direction.label}}
+            {{/ko-select}}
+            {{ko-form/field/errors errors=editedCaseView.errors.orderBy}}
+          </div>
+        </div>
+      {{/ko-form/field}}
+      {{#ko-form/field/help}}
+        {{t (if (eq editedCaseView.orderBy "ASC") "admin.views.description_sorting_ascending" "admin.views.description_sorting_descending")}}
+      {{/ko-form/field/help}}
+    {{else}}
+      {{t "admin.views.edit.select_columns"}}
+    {{/if}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

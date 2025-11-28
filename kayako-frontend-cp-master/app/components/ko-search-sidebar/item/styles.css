@@ -1,0 +1,38 @@
+.item {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 9px;
+  border-radius: 4px;
+  font-size: 15px;
+  text-decoration: none;
+  color: $grey-8;
+}
+
+.item--active {
+  background-color: $trivial-blue;
+  color: #3B4048;
+  font-weight: 600;
+}
+
+.text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  text-overflow: ellipsis;
+}
+
+.counter {
+  padding: 0 6px;
+  border-radius: 2px;
+  background-color: $grey-2;
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: $grey-6;
+}
+
+.item--active .counter {
+  background-color: $primary-blue;
+  color: #ffffff;
+}

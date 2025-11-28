@@ -1,0 +1,32 @@
+.item {
+  display: flex;
+  margin: 0 18px 0 0;
+  overflow: hidden;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.item--shrink {
+  flex-shrink: 1;
+
+  a {
+    flex-shrink: inherit;
+  }
+}
+
+.link {
+  color: $grey-8;
+  display: flex;
+  align-items: center;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.link:global(.active:not(.ember-transitioning-out)), .link:global(.ember-transitioning-in) {
+  border-bottom-color: $primary-blue;
+  font-weight: 600;
+}

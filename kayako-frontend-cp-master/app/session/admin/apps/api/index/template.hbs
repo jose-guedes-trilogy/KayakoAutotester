@@ -1,0 +1,43 @@
+{{#if canManageOAuthApps}}
+  {{ko-admin/page title=(t "admin.apps.api.title") tabs=tabs}}
+{{/if}}
+
+<div local-class="header">
+  <img src="/images/apps/header.png">
+</div>
+
+<div local-class="contentBlock">
+  <h2 local-class="title">
+    {{t "admin.apps.api.heading"}}
+  </h2>
+
+  <div local-class="subtitle">
+    {{t "admin.apps.api.subtitle"}}
+  </div>
+
+  <div local-class="content">
+    <div local-class="messagesBlock">
+      <dl local-class="definitionList">
+        <dt local-class="definitionTitle">
+          {{t "admin.apps.api.platform_to_grow_with.title"}}
+        </dt>
+        <dd local-class="definitionText">
+          {{t "admin.apps.api.platform_to_grow_with.description"}}
+        </dd>
+        <dt local-class="definitionTitle">
+          {{t "admin.apps.api.ideas.title"}}
+        </dt>
+        <dd local-class="definitionText">
+          {{t "admin.apps.api.ideas.description"}}
+        </dd>
+
+        <dd local-class="findOutCTA">
+          {{#ko-button size="medium" onClick=(action "ctaClick") rel="noopener" href="https://developer.kayako.com/" target="_blank" rel="noopener noreferrer" type="primary"}}
+            {{t "admin.apps.api.cta"}}
+          {{/ko-button}}
+        </dd>
+      </dl>
+    </div>
+    <img src="/images/apps/api/platform-to-grow.png" width="300" height="190">
+  </div>
+</div>

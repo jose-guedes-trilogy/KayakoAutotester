@@ -1,0 +1,40 @@
+{{#if multiline}}
+  <textarea
+    id="{{uniqueId}}"
+    name={{name}}
+    class="{{if qaClass (qa-cls qaClass)}}"
+    local-class="input {{size}} {{if monospace "monospace"}}"
+    value={{value}}
+    name={{name}}
+    oninput={{if (or onInput onChange) onInput (action (mut value) value="target.value")}}
+    onchange={{onChange}}
+    onblur={{onBlur}}
+    disabled={{disabled}}
+    readonly={{readonly}}
+    placeholder={{placeholder}}
+    autofocus={{autofocus}}
+    rows={{lines}}
+  ></textarea>
+{{else}}
+  <input
+    id="{{id}}"
+    name={{name}}
+    min={{min}}
+    max={{max}}
+    maxlength={{maxlength}}
+    range={{range}}
+    type={{type}}
+    class="{{if qaClass (qa-cls qaClass)}}"
+    local-class="input {{size}} {{if monospace "monospace"}} {{if addon "addon"}} {{if otp "otp"}}"
+    value={{value}}
+    name={{name}}
+    oninput={{if (or onInput onChange) onInput (action (mut value) value="target.value")}}
+    onchange={{onChange}}
+    onkeyup={{onKeyUp}}
+    onblur={{onBlur}}
+    disabled={{disabled}}
+    readonly={{readonly}}
+    placeholder={{placeholder}}
+    autofocus={{autofocus}}
+  >
+{{/if}}

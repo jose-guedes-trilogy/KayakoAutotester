@@ -1,0 +1,53 @@
+{
+  "syntax": "scss",
+  "plugins": [
+    "./node_modules/stylelint-no-browser-hacks/lib"
+  ],
+  "rules": {
+    "color-named": "never",
+    "color-no-invalid-hex": true,
+    "font-family-name-quotes": "always-unless-keyword",
+    "function-comma-space-after": "always",
+    "function-comma-space-before": "never",
+    "function-linear-gradient-no-nonstandard-direction": true,
+    "function-name-case": "lower",
+    "function-url-quotes": "always",
+    "number-leading-zero": "always",
+    "number-no-trailing-zeros": true,
+    "string-no-newline": true,
+    "unit-blacklist": [ "rem", "em" ],
+    "unit-case": "lower",
+    "unit-no-unknown": true,
+    "value-list-comma-space-after": "always",
+    "value-list-comma-space-before": "never",
+    "property-blacklist": [ "word-break", "float" ],
+    "property-case": "lower",
+    "declaration-property-value-blacklist": {
+      "/.*/": ["initial"]
+    },
+    "declaration-block-no-duplicate-properties": true,
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-after": "always",
+    "block-closing-brace-newline-before": "always",
+    "block-opening-brace-newline-after": "always",
+    "block-opening-brace-space-before": "always",
+    "selector-attribute-brackets-space-inside": "never",
+    "selector-attribute-operator-space-after": "never",
+    "selector-attribute-operator-space-before": "never",
+    "selector-attribute-operator-whitelist": [ "=" ],
+    "selector-attribute-quotes": "always",
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+    "selector-descendant-combinator-no-non-space": true,
+    "selector-max-id": 0,
+    "selector-no-qualifying-type": true,
+    "indentation": 2,
+    "max-empty-lines": 1,
+    "plugin/no-browser-hacks": [true],
+    "no-empty-source": true,
+    "no-eol-whitespace": true,
+    "no-extra-semicolons": true,
+    "no-missing-end-of-source-newline": true,
+    "no-unknown-animations": true
+  }
+}

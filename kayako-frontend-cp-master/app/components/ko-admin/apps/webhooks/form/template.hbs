@@ -1,0 +1,59 @@
+{{#ko-form onSubmit=(action "save" webhook) as |form|}}
+  {{#ko-admin/page
+    showFooter=true
+    title=(if webhook.isNew (t "admin.apps.webhooks.heading.new") (t "admin.apps.webhooks.heading.edit" title=webhook.label))
+    onCancel=(route-action "cancel" webhook)
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteWebhook")
+    buttonText=(t "generic.save")}}
+
+    {{#ko-admin/forms/group legend=(t "admin.apps.webhooks.heading.settings")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.apps.webhooks.label.label"}}{{/ko-form/field/label}}
+        {{ko-input
+          name="label"
+          value=editedWebhook.label
+          oninput=(action (mut editedWebhook.label) value="target.value")
+          disabled=form.isSubmitting
+        }}
+        {{ko-form/field/errors errors=editedWebhook.errors.label}}
+      {{/ko-form/field}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.apps.webhooks.label.description"}}{{/ko-form/field/label}}
+        {{ko-input
+          name="description"
+          value=editedWebhook.description
+          oninput=(action (mut editedWebhook.description) value="target.value")
+          disabled=form.isSubmitting
+        }}
+        {{ko-form/field/errors errors=editedWebhook.errors.description}}
+        {{#ko-form/field/help}}
+          {{format-html-message "admin.apps.webhooks.descriptions.help"}}
+        {{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#unless webhook.isNew}}
+      {{#ko-admin/forms/group legend=(t "admin.apps.webhooks.heading.token")}}
+        {{#ko-form/field}}
+          {{ko-form/field/help text=(t "admin.apps.webhooks.token.help")}}
+          {{ko-input
+            name="token"
+            value=webhook.token
+            disabled=true
+          }}
+          <div local-class="copy-button-container">
+            {{#copy-button
+              local-class="copy-button"
+              clipboardText=webhook.token
+              success="onCopiedToClipboard"
+            }}
+              {{t 'generic.copy_to_clipboard'}}
+            {{/copy-button}}
+          </div>
+        {{/ko-form/field}}
+      {{/ko-admin/forms/group}}
+    {{/unless}}
+
+  {{/ko-admin/page}}
+{{/ko-form}}

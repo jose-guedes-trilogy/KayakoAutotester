@@ -1,0 +1,18 @@
+{{#each-in groupedNotifications as |day notifications|}}
+  <div local-class="list-group-title">
+    {{day}}
+  </div>
+  <div local-class="list-group-items">
+    {{#each notifications as |notification|}}
+      {{#if (variation "release-notification-centre-improvements")}}
+        {{#with notification.notificationType as |type|}}
+          {{component (concat "ko-notification-center/notification-" (dasherize type)) notification=notification close=close}}
+        {{else}}
+          {{component "ko-notification-center/notification-case-updated" notification=notification close=close}}
+        {{/with}}
+      {{else}}
+        {{ko-notification-center/notification notification=notification close=close}}
+      {{/if}}
+    {{/each}}
+  </div>
+{{/each-in}}

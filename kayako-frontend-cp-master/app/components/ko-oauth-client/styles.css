@@ -1,0 +1,40 @@
+.client-logo {
+  margin: 10px 10px 10px 0;
+}
+
+.client-row {
+  flex-wrap: wrap;
+  padding: 10px 0;
+  line-height: 1.2;
+  flex-shrink: 1;
+}
+
+.client-caption {
+  width: 100%;
+}
+
+.client-title {
+  font-weight: 600;
+}
+
+.client-author {
+  color: #838D94;
+}
+
+.client-body {
+  margin-top: 4px;
+}
+
+.client-description {
+  color: #838D94;
+}
+
+.client-details {
+  font-size: 14px;
+  color: #A1AAAF;
+}
+
+.separator {
+  color: #A1AAAF;
+  margin: 0 3px;
+}

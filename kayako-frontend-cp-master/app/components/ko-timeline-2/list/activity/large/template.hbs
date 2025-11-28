@@ -1,0 +1,94 @@
+{{#if hasCompletedWithinTheLast10Minutes}}
+  <div local-class="confetti">
+    {{ko-confetti height="165" widthOffset="410"}}
+  </div>
+{{/if}}
+
+<div local-class="{{type}}">
+  {{#if activityFacade.isRating}}
+    <div local-class="rating-summary">
+      {{#if activityFacade.isGoodRating}}
+        <img local-class="large-activity-icon" src="/images/timeline/good-rating.svg" width="32" height="32">
+      {{else if activityFacade.isBadRating}}
+        <img local-class="large-activity-icon" src="/images/timeline/bad-rating.svg" width="32" height="32">
+      {{/if}}
+      <span local-class="large-activity-text">
+        {{format-html-message "timeline.activity.rating" userAnchor=(href-to "session.agent.users.user" activityFacade.actorUser.id) name=activityFacade.actor.title rating=(lowercase activityFacade.object.title)}}
+      </span>
+      <div local-class="activity-time">
+        {{#ko-tooltip title=(format-time (ko-intl-datetime-format activity.createdAt) format="tooltip") local-class="time"}}
+          {{ko-from-now activity.createdAt customRelativeTime=true}}
+        {{/ko-tooltip}}
+      </div>
+    </div>
+    {{#if activityFacade.hasComment}}
+      <div local-class="comment-container">
+        <div local-class="rating-comment-text">
+          <span local-class="rating-comment-text-open-quote">{{t "generic.open_quotes"}}</span>
+          {{activityRatingComment}}
+        </div>
+      </div>
+    {{/if}}
+  {{else}}
+    {{#if activityFacade.isBreach}}
+      <img local-class="large-activity-icon" src="/images/timeline/breach.svg" width="32" height="32">
+      <span local-class="large-activity-text">
+        {{ko-contextual-helper localizedMetricName this activityFacade.result.title}}
+      </span>
+      <span local-class="large-activity-detail-text">
+        ({{activityFacade.actor.title}})
+      </span>
+    {{else if activityFacade.isTrashed}}
+      <img local-class="large-activity-icon" src="/images/timeline/trash.svg" width="32" height="32">
+      <span local-class="large-activity-text">
+        {{t "timeline.activity.trash_case"}}
+        {{#if activityFacade.isMonitorOrTrigger}}
+          {{format-html-message "timeline.activity.completed_trashed_or_restored_by_monitor_or_trigger" type=activityFacade.actor.name name=activityFacade.actor.title}}
+        {{else}}
+          <div local-class="inline-property-avatar">
+            {{#ko-user-avatar size="micro" as |avatar|}}
+              {{avatar.image url=activityFacade.actor.image}}
+            {{/ko-user-avatar}}
+          </div>
+          {{#link-to "session.agent.users.user" activityFacade.actorUser class="timeline-link"}}{{activityFacade.actor.title}}{{/link-to}}
+        {{/if}}
+      </span>
+    {{else if activityFacade.isRestored}}
+      <img local-class="large-activity-icon" src="/images/timeline/trash.svg" width="32" height="32">
+      <span local-class="large-activity-text">
+        {{t "timeline.activity.restore_case"}}
+        {{#if activityFacade.isMonitorOrTrigger}}
+          {{format-html-message "timeline.activity.completed_trashed_or_restored_by_monitor_or_trigger" type=activityFacade.actor.name name=activityFacade.actor.title}}
+        {{else}}
+          <div local-class="inline-property-avatar">
+            {{#ko-user-avatar size="micro" as |avatar|}}
+              {{avatar.image url=activityFacade.actor.image}}
+            {{/ko-user-avatar}}
+          </div>
+          {{#link-to "session.agent.users.user" activityFacade.actorUser class="timeline-link"}}{{activityFacade.actor.title}}{{/link-to}}
+        {{/if}}
+      </span>
+    {{else if activityFacade.isCompleted}}
+      <img local-class="large-activity-icon" src="/images/timeline/completed.svg" width="32" height="32">
+      <span local-class="large-activity-text">
+        {{t "timeline.activity.completed"}}
+        {{#if activityFacade.isMonitorOrTrigger}}
+          {{format-html-message "timeline.activity.completed_trashed_or_restored_by_monitor_or_trigger" type=activityFacade.actor.name name=activityFacade.actor.title}}
+        {{else}}
+          <div local-class="inline-property-avatar">
+            {{#ko-user-avatar size="micro" as |avatar|}}
+              {{avatar.image url=activityFacade.actor.image}}
+            {{/ko-user-avatar}}
+          </div>
+          {{#link-to "session.agent.users.user" activityFacade.actorUser class="timeline-link"}}{{activityFacade.actor.title}}{{/link-to}}
+        {{/if}}
+      </span>
+    {{/if}}
+
+    <div local-class="activity-time">
+      {{#ko-tooltip title=(format-time (ko-intl-datetime-format activity.createdAt) format="tooltip") local-class="time"}}
+        {{ko-from-now activity.createdAt customRelativeTime=true}}
+      {{/ko-tooltip}}
+    </div>
+  {{/if}}
+</div>

@@ -1,0 +1,86 @@
+.conversation {
+  display: flex;
+  width: 100%;
+  padding: 6px 0;
+}
+
+.avatar {
+  margin-right: 15px;
+}
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-shrink: 1;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.firstRow {
+  display: flex;
+}
+
+.requester {
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.22px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.secondRow {
+  font-size: 15px;
+  letter-spacing: -0.21px;
+  display: flex;
+  align-items: center;
+}
+
+.subject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+}
+
+.preview {
+  color: $grey-6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 100000;
+}
+
+.bullet {
+  color: $grey-6;
+  margin: 0 6px;
+}
+
+.ago {
+  font-size: 14px;
+  color: #A1AAAF;
+  letter-spacing: -0.2px;
+}
+
+.status-icon {
+  display: inline-flex;
+  margin-right: 6px;
+}
+
+.unreadDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: $primary-blue;
+  margin-right: 5px;
+}
+
+.attachments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}

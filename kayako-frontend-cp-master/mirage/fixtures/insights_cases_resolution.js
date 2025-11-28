@@ -1,0 +1,101 @@
+export default {
+  status: 200,
+  data: {
+    start_at: '2016-04-30T21:00:00+00:00',
+    end_at: '2016-05-31T20:59:59+00:00',
+    previous_start_at: '2016-03-30T21:00:01+00:00',
+    previous_end_at: '2016-04-30T21:00:00+00:00',
+    interval: 'DAY',
+    interval_count: 31,
+    series: {
+      name: 'average_resolution_time',
+      data: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72100.25,
+        1122808.3333,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      previous: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      resource_type: 'report_series_comparison'
+    },
+    metric: {
+      name: 'average_resolution_time',
+      value: 130600.9286,
+      delta_percent: 100,
+      previous: 0,
+      resource_type: 'report_value_comparison'
+    },
+    resource_type: 'report_average_resolution'
+  },
+  resources: [],
+  resource: 'report_average_resolution',
+  logs: [
+    {
+      level: 'WARNING',
+      message: 'Entire resources enforced for flat mode'
+    },
+    {
+      level: 'NOTICE',
+      message: 'Redundant request parameters supplied: agent_id'
+    }
+  ]
+};

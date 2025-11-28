@@ -1,0 +1,45 @@
+<div tabindex="-1" onkeydown={{action "handleKeyDown"}} local-class="container">
+  <div local-class="header">
+    <span local-class="previous" class="i-chevron-large-left" onclick={{action "previousMonth"}}></span>
+    <div>
+      <span local-class="month">{{format-date shownDate format="month"}}</span>
+      <span local-class="year">{{format-date shownDate format="year"}}</span>
+    </div>
+    <span local-class="next" class="i-chevron-large-right" onclick={{action "nextMonth"}}></span>
+  </div>
+
+  <div local-class="days">
+    {{#each weekdays as |weekday|}}
+      <span local-class="weekday">{{weekday}}</span>
+    {{/each}}
+    {{#each days key="@index" as |date|}}
+      <span
+        local-class="date {{if date.currentMonth "dateCurrentMonth"}} {{if date.today "date--today"}} {{if date.selected "date--selected"}}"
+        onclick={{action "selectDate" date}}
+      >
+        {{date.date}}
+      </span>
+    {{/each}}
+  </div>
+
+  <div local-class="actions">
+    <div local-class="action">
+      <span onclick={{action "today"}}>
+        <span class="i-triangle" local-class="icon--today"></span>
+        {{t "generic.datepicker.today"}}
+      </span>
+    </div>
+    <div local-class="action">
+      <span onclick={{action "clear"}}>
+        <span class="i-minus" local-class="icon--clear"></span>
+        {{t "generic.datepicker.clear"}}
+      </span>
+    </div>
+    <div local-class="action">
+      <span onclick={{onClose}}>
+        <span class="i-cross-bold" local-class="icon--close"></span>
+        {{t "generic.datepicker.close"}}
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div local-class="plan-price">
+  <div local-class="plan-price-amount">
+    {{ko-admin/rateplans/currency amount currency}}
+  </div>
+  {{#if unitFee}}
+    <div local-class="label-helper">{{t perUnit}}</div>
+  {{else}}
+  <div local-class="label-helper">
+    {{t "account.plans.priceFor.flatFee" seats=flatUpto}}
+  </div>
+  {{/if}}
+</div>

@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.title {
+  padding: 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: $grey-8;
+
+  margin-top: 18px;
+  margin-bottom: 18px;
+  height: 32px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 22px;
+}
+
+.not-found {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.not-found-image {
+  margin-bottom: 6px;
+}
+
+.not-found-message {
+  color: #838D94;
+}

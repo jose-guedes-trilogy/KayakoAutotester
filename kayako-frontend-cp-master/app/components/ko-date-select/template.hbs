@@ -1,0 +1,18 @@
+{{#basic-dropdown horizontalPosition="left" as |dropdown|}}
+  {{#dropdown.trigger local-class="trigger"}}
+    <div local-class="trigger-text">
+      {{#if value}}
+        {{format-date value format="full"}}
+      {{else}}
+        {{or placeholder (t "generic.dateselect.placeholder")}}
+      {{/if}}
+    </div>
+    <i local-class="trigger-icon"></i>
+  {{/dropdown.trigger}}
+
+  {{#dropdown.content local-class="content"}}
+    <div local-class="datepicker">
+      {{ko-datepicker date=value onDateChange=(action "setDate" dropdown.actions.close) onClose=dropdown.actions.close}}
+    </div>
+  {{/dropdown.content}}
+{{/basic-dropdown}}

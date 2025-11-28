@@ -1,0 +1,24 @@
+<div local-class="chartDateRangeInput">
+  {{date-range-picker
+    alwaysShowCalendars=true
+    start=rangeStart
+    end=rangeEnd
+    autoApply=false
+    format="L"
+    firstDay=1
+    applyClass=(local-class "button-apply")
+    cancelClass=(local-class "button-cancel")
+    cancelLabel=(t "generic.cancel")
+    applyLabel=(t "generic.apply")
+    customRangeLabel=(t "generic.input_date_range.custom_range")
+    daysOfWeek=daysOfWeek
+    monthNames=monthNames
+    ranges=ranges
+    applyAction=onRangeApplied
+    hideAction=onPickerHidden
+  }}
+</div>
+
+<div onclick={{action "openDatePicker"}} local-class="chartDateRangeIcon">
+  <div class="i-calendar"></div>
+</div>

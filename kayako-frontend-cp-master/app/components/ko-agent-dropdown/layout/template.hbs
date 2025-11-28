@@ -1,0 +1,13 @@
+<div local-class="header">
+  <h5 local-class="title">{{yield (hash header=true)}}</h5>
+</div>
+
+<div local-class="contents">
+  {{yield (hash contents=true)}}
+
+  <p local-class="footer">
+    {{yield (hash footer=true)}}
+  </p>
+
+  {{yield (hash buttons=true)}}
+</div>

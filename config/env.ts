@@ -21,6 +21,8 @@ const EnvSchema = z.object({
   KAYAKO_USERNAME: z.string().min(1),
   KAYAKO_PASSWORD: z.string().min(1),
   PW_REPORTER: z.string().optional(),
+  KAYAKO_CONVERSATION_ID: z.string().optional(),
+  KAYAKO_PREFERRED_TEAM: z.string().optional(),
 });
 
 const parsed = EnvSchema.safeParse(process.env);

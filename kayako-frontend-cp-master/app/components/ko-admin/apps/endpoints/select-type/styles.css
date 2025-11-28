@@ -1,0 +1,31 @@
+.container {
+  padding: 13.5px 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid $grey-2;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 2px;
+  margin-right: 9px;
+}
+
+.action {
+  @include child-icon {
+    @extend %u-v-center;
+    right: 0;
+  }
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.caption {
+  color: $grey-6;
+}

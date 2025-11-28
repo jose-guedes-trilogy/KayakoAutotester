@@ -1,0 +1,15 @@
+{{#if organizations.length}}
+  {{ko-info-bar/field/select
+    qaClass=qaClass
+    title=(t "users.organization.title")
+    options=organizations
+    value=value
+    isEdited=isEdited
+    isErrored=isErrored
+    isDisabled=isDisabled
+    onValueChange=onValueChange
+    labelPath="organization.name"
+    idPath="organization"
+    hasEmptyOption=false
+  }}
+{{/if}}

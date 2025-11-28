@@ -1,0 +1,52 @@
+.app {
+  display: flex;
+  padding: 9px 0;
+}
+
+.image {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid $grey-6;
+  border-radius: 4px;
+  background-color: #FFF;
+}
+
+.details {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 0 18px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 16px;
+  padding-right: 9px;
+}
+
+.version {
+  color: $grey-6;
+}
+
+.top-line {
+  padding-bottom: 9px;
+}
+
+.bottom-line {
+
+}
+
+.description {
+  color: $grey-6;
+}

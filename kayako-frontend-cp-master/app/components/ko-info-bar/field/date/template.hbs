@@ -1,0 +1,31 @@
+{{#ko-info-bar/item
+class=(local-class "date")
+isEdited=isEdited
+isKREEdited=isKREEdited
+hasError=isErrored
+isActive=isCalendarShown
+isDisabled=isDisabled
+onMouseDown=(action "mouseDown")
+}}
+  <i local-class="icon" class="i-select"></i>
+  <span
+    local-class="focus"
+    id={{uniqueId}}
+    tabindex="0"
+    onfocus={{action "focus"}}
+    onblur={{action "blur"}}
+  ></span>
+  <span local-class="header">{{title}}</span>
+  <span local-class="value">
+    {{#with valueAsDate as |date|}}
+      {{format-date date format="full"}}
+    {{else}}
+      {{emptyLabel}}
+    {{/with}}
+  </span>
+  {{#if isCalendarShown}}
+    <div local-class="dropdownMenu" role="menu" onmousedown={{action "preserveFocus"}}>
+      {{ko-datepicker date=valueAsDate onDateChange=(action "dateChange") onClose=(action "hide")}}
+    </div>
+  {{/if}}
+{{/ko-info-bar/item}}

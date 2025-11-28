@@ -1,0 +1,7 @@
+{{kre-channel
+  name=case.realtimeChannel
+  events=(hash
+    CHANGE_POST=(perform reloadCase)
+    CHANGE=(perform reloadCase)
+  )
+}}

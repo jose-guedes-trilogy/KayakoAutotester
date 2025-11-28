@@ -1,0 +1,310 @@
+{{yield (hash at-mention-support=(component "ko-text-editor/at-mention-support" _editor=_editor actionReceiver=atMentionSupport))}}
+
+{{#if isGeneratingSummary}}
+  <div local-class="loader-overlay">
+    {{ko-loader size='L'}}
+  </div>
+{{/if}}
+
+{{#if isLoading}}
+  <div local-class="container">
+    <div local-class="header">
+      <div local-class="section">
+        <div local-class="group">
+          {{ko-loading/text-placeholder width='160px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='35px' margin='16px 9px'}}
+        </div>
+      </div>
+      <div local-class="section">
+        <div local-class="group groupCollapsed">
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+        </div>
+
+        <div local-class="groupSeparator"></div>
+
+        <div local-class="group groupCollapsed">
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+        </div>
+
+        <div local-class="groupSeparator"></div>
+
+        <div local-class="group">
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='40px' margin='16px 9px'}}
+          {{ko-loading/text-placeholder width='16px' margin='16px 9px'}}
+        </div>
+      </div>
+    </div>
+
+    <div local-class="contents">
+    </div>
+
+    <div local-class="footer">
+      {{yield (hash isFooter=true)}}
+    </div>
+  </div>
+  <div local-class="info-panel"></div>
+{{else}}
+  <div local-class="container {{if (and editorFocussed (not disabled)) "has-focus"}} {{if isNote "note-container"}}">
+    <div local-class="header">
+      <div local-class="section">
+        <div local-class="group">
+          {{yield (hash isHeader=true)}}
+        </div>
+      </div>
+
+      {{#if isSummaryModalVisible}}
+        {{#ko-modal width="500px" on-close=(action "closeTicketSummaryModal") as |modal|}}
+          {{#if modal.isHeader}}
+            <div local-class="modal-header">
+              {{t "cases.ai_summary.header"}}
+            </div>
+          {{/if}}
+          {{#if modal.isMain}}
+            <div local-class="modal-content">
+              {{html-safe generatedSummary}}
+            </div>
+          {{/if}}
+          {{#if modal.isFooter}}
+            <div local-class="actions">
+              {{#ko-button type="primary" onClick=(action "addSummaryToCase") loading=isAddingSummaryToCase}}
+                {{t (if isAddingSummaryToCase "cases.ai_summary.adding_button" "cases.ai_summary.add_button")}}
+              {{/ko-button}}
+            </div>
+          {{/if}}
+        {{/ko-modal}}
+      {{/if}}
+
+      <div local-class="section">
+        {{#if isRichFormattingAvailable}}
+          <div local-class="group groupCollapsed">
+            {{#if (and case (plan-has 'kayako_ai_summary'))}}
+              {{#ko-tooltip
+                side="top"
+                title=(t "cases.text_editor.generate_ticket_summary")
+                delay=600
+                mouseDown=(action "generateTicketSummary")
+                local-class="item itemWrap"
+              }}
+                {{ko-icon name="sparkle" color="#8846CB"}}
+              {{/ko-tooltip}}
+            {{/if}}
+
+            {{!-- AI Copilot toggle switch --}}
+            {{#if (plan-has 'kayako_ai_copilot')}}
+              {{#ko-tooltip
+                side="top"
+                title=(if isCopilotEnabled
+                        (t "cases.text_editor.disable_copilot")
+                        (t "cases.text_editor.enable_copilot"))
+                delay=600
+                local-class="item itemWrap"
+              }}
+                {{ko-toggle
+                  activated=isCopilotEnabled
+                  onToggle=(action "toggleCopilot")
+                  label=(t "cases.text_editor.copilot_toggle_label")
+                  isDisabled=(not isRichFormattingAvailable)
+                }}
+              {{/ko-tooltip}}
+            {{/if}}
+
+            {{#ko-tooltip
+              side="top"
+              title=(t "cases.text_editor.bold_shortcut" shortcutPrefix=shortcutPrefix)
+              delay=600
+              mouseDown=(action "triggerControl" "bold")
+              local-class="item itemWrap"
+            }}
+              {{ko-icon name="bold" color=(if isButtonBold "#4EAFCB" "#5F6C73")}}
+            {{/ko-tooltip}}
+
+            {{#ko-tooltip
+              side="top"
+              title=(t "cases.text_editor.italic_shortcut" shortcutPrefix=shortcutPrefix)
+              delay=600
+              mouseDown=(action "triggerControl" "italic")
+              local-class="item itemWrap"
+            }}
+              {{ko-icon name="italic" color=(if isButtonItalic "#4EAFCB" "#5F6C73")}}
+            {{/ko-tooltip}}
+          </div>
+
+          <div local-class="groupSeparator"></div>
+
+          <div local-class="group groupCollapsed">
+            {{#basic-dropdown horizontalPosition="center" verticalPosition="above" onOpen=(action "openDropdown") as |dropdown|}}
+              {{#dropdown.trigger local-class="item" class=(qa-cls "qa__ko-text-editor__link-trigger") tabindex=-1}}
+                {{#ko-tooltip side="top" title=(t "cases.text_editor.link") delay=600 local-class="itemWrap"}}
+                  {{ko-icon name="link" color="#5F6C73"}}
+                {{/ko-tooltip}}
+              {{/dropdown.trigger}}
+
+              {{#dropdown.content local-class="dropdown"}}
+                {{#ko-layout/popup-with-arrow}}
+                  {{ko-text-editor/link-manager
+                    onAddLink=(action "addLink" dropdown)
+                    onCancel=(action "closeLinkManager" dropdown)
+                    editor=_editor
+                  }}
+                {{/ko-layout/popup-with-arrow}}
+              {{/dropdown.content}}
+            {{/basic-dropdown}}
+
+            {{#basic-dropdown horizontalPosition="center" verticalPosition="above" onOpen=(action "openDropdown") as |dropdown|}}
+              {{#dropdown.trigger local-class="item" tabindex=-1}}
+                {{#ko-tooltip side="top" title=(t "cases.text_editor.paragraph") delay=600 local-class="itemWrap"}}
+                  {{ko-icon name="paragraph" color="#5F6C73"}}
+                {{/ko-tooltip}}
+              {{/dropdown.trigger}}
+
+              {{#dropdown.content local-class="dropdown"}}
+                {{#ko-layout/popup-with-arrow}}
+                  <ul local-class="dropdownList">
+                    {{#each-in froalaParams.paragraphFormat as |code name|}}
+                      <li onmousedown={{action "setParagraph" code dropdown}} local-class="dropdownListItem">
+                        {{name}}
+                      </li>
+                    {{/each-in}}
+                  </ul>
+                {{/ko-layout/popup-with-arrow}}
+              {{/dropdown.content}}
+            {{/basic-dropdown}}
+
+            {{#basic-dropdown horizontalPosition="center" verticalPosition="above" onOpen=(action "openDropdown") as |dropdown|}}
+              {{#dropdown.trigger local-class="item" tabindex=-1}}
+                {{#ko-tooltip side="top" title=(t "cases.text_editor.quote") delay=600 local-class="itemWrap"}}
+                  {{ko-icon name="quote" color="#5F6C73"}}
+                {{/ko-tooltip}}
+              {{/dropdown.trigger}}
+
+              {{#dropdown.content local-class="dropdown"}}
+                {{#ko-layout/popup-with-arrow}}
+                  <ul onmousedown={{action "openDropdown" dropdown}}  local-class="dropdownList">
+                    <li onmousedown={{action "triggerControl" "quote.increase"}} local-class="dropdownListItem">
+                      {{t "cases.text_editor.link_manager.quote.increase"}}
+                    </li>
+                    <li onmousedown={{action "triggerControl" "quote.decrease"}} local-class="dropdownListItem">
+                      {{t "cases.text_editor.link_manager.quote.decrease"}}
+                    </li>
+                  </ul>
+                {{/ko-layout/popup-with-arrow}}
+              {{/dropdown.content}}
+            {{/basic-dropdown}}
+
+            {{ko-text-editor/secondary-controls
+              isButtonUl=isButtonUl
+              isButtonOl=isButtonOl
+              isButtonOutdentDisabled=isButtonOutdentDisabled
+              onTriggerControl=(action "triggerControl")
+            }}
+
+            {{#basic-dropdown horizontalPosition="center" verticalPosition="above" onOpen=(action "openDropdown") as |dropdown|}}
+              {{#dropdown.trigger local-class="item itemControlsDropdown" tabindex=-1}}
+                {{#ko-tooltip side="top" title=(t "cases.text_editor.show_controls") delay=600 local-class="itemWrap"}}
+                  {{ko-icon name="chevronDownLarge" color="#5F6C73"}}
+                {{/ko-tooltip}}
+              {{/dropdown.trigger}}
+
+              {{#dropdown.content local-class="dropdown buttonsDropdown"}}
+                {{#ko-layout/popup-with-arrow}}
+                  <div local-class="dropdownList">
+                    {{ko-text-editor/secondary-controls
+                      isButtonUl=isButtonUl
+                      isButtonOl=isButtonOl
+                      isButtonOutdentDisabled=isButtonOutdentDisabled
+                      onTriggerControl=(action "triggerControl")
+                      isInsideDropdown=true}}
+                  </div>
+                {{/ko-layout/popup-with-arrow}}
+              {{/dropdown.content}}
+            {{/basic-dropdown}}
+          </div>
+
+          <div local-class="groupSeparator"></div>
+
+          <div local-class="group">
+            <div local-class="item">
+              {{#ko-tooltip side="top" title=(t "cases.text_editor.insert_image") delay=600 local-class="itemWrap"}}
+                <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><g fill="#5F6C73" fill-rule="evenodd"><path d="M8 9L4 5c.2 0-.2 0 0 0L2 6c.2.7 0 1 0 1v4c0 .8.2 1 1 1h9c-.2 0 0-.2 0-1V9s-.2-.3 0 0l-2-2c.2 0-.2 0 0 0L8 9M10 6c.3 0 1-.7 1-1 0-1.3-.7-2-1-2-1.3 0-2 .7-2 2 0 .3.7 1 2 1"/><path d="M1 0C.4 0 0 .4 0 1v12c0 .6.4 1 1 1h12c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1H1zm0 1h12v12H1V1z"/></g></svg>
+                {{ko-file-field accept="image/*" local-class="fileField" on-change=(action "uploadImage")}}
+              {{/ko-tooltip}}
+            </div>
+          </div>
+        {{/if}}
+        {{#if showMacros}}
+          {{#if isRichFormattingAvailable}}
+            <div local-class="groupSeparator"></div>
+          {{/if}}
+
+          <div local-class="group">
+            {{yield (hash isToolbar=true)}}
+          </div>
+        {{/if}}
+      </div>
+
+      {{#if isImageUploading}}
+        <span local-class="upload-animation"></span>
+      {{/if}}
+    </div>
+    {{! Create the editor container --}}
+
+    <div local-class="contents-container {{if isNote "is-note"}}">
+      {{#ko-text-editor/draggable-dropzone dropzoneError=dropzoneError onDrop=onAttachFiles isRichFormattingAvailable=isRichFormattingAvailable onUploadImages=(action "uploadImage") as |dropzone|}}
+        <div local-class="contents" data-href-to-ignore>
+          {{yield (hash isTextArea=true)}}
+
+          {{froala-editor
+            local-class="froalaTextArea"
+            content=value
+            update=onTextChanged
+            on-keyup-getHtml=onTextChanged
+            options=froalaParams
+            on-drop=dropzone.onDrop
+            on-commands-before=(action "allowFormattingCommands")
+            on-toolbar-show=(action "allowToolbar")
+            on-paste-beforeCleanup=(action "processPastedContent")
+            on-paste-afterCleanup=(action "processPastedContentAfterFroalaClean")
+            on-initialized=(action "initialized")
+          }}
+        </div>
+
+        {{ko-text-editor/file-upload
+          onCancel=onCancelAttachment
+          uploads=attachedFiles
+        }}
+
+        <div local-class="footer">
+          {{#if onAttachFiles}}
+            {{#ko-tooltip side="top" title=(t "cases.text_editor.attach_file") delay=600 local-class="clip-icon"}}
+              {{ko-icon name="clip" color="#A1AAAF"}}
+              {{ko-file-field title="" local-class="fileField" viewName="attachFile" on-change=onAttachFiles}}
+            {{/ko-tooltip}}
+          {{/if}}
+          {{yield (hash isFooter=true)}}
+        </div>
+
+      {{/ko-text-editor/draggable-dropzone}}
+    </div>
+  </div>
+  <div local-class="info-panel">
+    {{#if footerText.length}}
+      <div local-class="footer-text">
+        {{footerText}}
+      </div>
+    {{/if}}
+    {{#if showSubmitTip}}
+      <span local-class="submit-message">
+        <span local-class="submit-message-keys">{{submitShortcut}}</span>
+        {{t 'generic.keyboard_shortcuts.to_send'}}
+        {{#with messengerHelpText as |text|}}
+          {{text}}
+        {{/with}}
+      </span>
+    {{/if}}
+  </div>
+{{/if}}

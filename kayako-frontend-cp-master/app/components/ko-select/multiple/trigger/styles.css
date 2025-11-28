@@ -1,0 +1,32 @@
+.trigger {
+  composes: statusIcon from '../../shared';
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  max-width: 100%;
+
+  :global(.ember-power-select-multiple-options) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.input {
+  background: 0 0;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  font-size: 14px;
+  line-height: 30px;
+  height: 30px;
+  margin-left: 8px;
+  min-width: 50px;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+.loading {
+  composes: loading from '../../shared';
+}

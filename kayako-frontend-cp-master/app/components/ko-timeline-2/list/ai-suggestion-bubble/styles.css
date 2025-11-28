@@ -1,0 +1,136 @@
+/* AI-GEN START - GPT-4o */
+.ai-suggestion-container {
+  display: flex;
+  align-items: flex-start;
+  margin: 16px 0;
+}
+
+.ai-suggestion-icon {
+  margin: 10px;
+  flex: 0 0 auto;
+  > svg {
+    width: 32px;
+  }
+}
+
+.ai-suggestion-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.ai-suggestion-text {
+  color: #8846CB;
+  font-style: italic;
+  text-align: left;
+  font-size: small;
+  margin-bottom: 4px;
+}
+
+.ai-suggestion-bubble {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  padding-right: 16px;
+  padding-left: 32px;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-right: 12px;
+  background-color: #F9F4FF;
+  border: 1px solid #8846CB;
+}
+
+.ai-suggestion-action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  margin-left: 8px;
+  position: relative;
+  bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.ai-suggestion-action-button span {
+  margin-left: 4px;
+  color: #8846CB;
+  font-weight: bold;
+}
+
+.ai-suggestion-content {
+  max-height: 56px; /* Initial max height */
+  transition: max-height 0.3s ease-in-out; /* Smooth transition */
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.expanded {
+  max-height: 1000px; /* Remove max height restriction */
+}
+
+.ai-suggestion-read-more-button {
+  background-color: #8846CB;
+  color: #fff;
+  border: none;
+  border-radius: 999px; /* Make the button pill-shaped */
+  padding: 4px 24px;
+  cursor: pointer;
+  width: auto;
+  display: block;
+  margin: 0 auto; /* Center the button */
+  position: absolute;
+  bottom: -12px; /* Position half of the button outside the bubble */
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 600;
+}
+
+@media (min-width: 600px) {
+  .ai-suggestion-container {
+    flex-direction: row;
+  }
+  .ai-suggestion-read-more-button {
+    width: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .ai-suggestion-bubble {
+    padding: 8px;
+  }
+  .ai-suggestion-read-more-button {
+    padding: 6px 12px;
+    height: 36px; /* Adjust height for smaller screens */
+    line-height: 20px; /* Center text vertically for smaller screens */
+  }
+}
+
+.action-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.full-screen-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* ensure it is above other content */
+  color:#8846CB
+}
+
+/* AI-GEN END */

@@ -1,0 +1,114 @@
+{{#ko-admin/page
+  title=(t "admin.security.authentication.title_breadcrumbs")
+  tabs=tabs
+  buttonText=(if (or isEdited save.isRunning) (t "generic.save"))
+  onCancel=(if (or isEdited save.isRunning) (perform cancel))
+  onSave=(perform save)
+  isSaving=save.isRunning
+  showFooter=true
+}}
+  {{#ko-admin/forms/group legend=(t "admin.settings.security.customers.authentication.heading")}}
+    {{#ko-form/field class=(qa-cls 'ko-admin-settings-security-authentication')}}
+      {{ko-form/field/label text=(t "admin.settings.security.customers.authentication.mode.title")}}
+
+      {{#ko-select
+        size="medium"
+        selected=editedSettings.security_customer_authentication_type.value
+        onChange=(action "editSetting" "security_customer_authentication_type")
+        options=authenticationModeOptions
+        disabled=save.isRunning
+      as |option|}}
+        {{t (concat "admin.settings.security.customers.authentication.mode.options." option)}}
+      {{/ko-select}}
+
+      {{ko-form/field/help text=(t "admin.settings.security.customers.authentication.mode.description")}}
+
+      {{ko-form/field/errors errors=editedSettings.errors.security_customer_authentication_type class=(qa-cls "qa-field-error")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checked=(eq editedSettings.security_customer_social_authentication_twitter.value "1")
+        label=(t "admin.settings.security.customers.authentication.twitter.title")
+        disabled=save.isRunning
+        onCheck=(action "editBooleanSetting" "security_customer_social_authentication_twitter")
+        qaClass="ko-admin-settings-security-twitter-login"
+      }}
+      {{ko-form/field/help text=(t "admin.settings.security.customers.authentication.twitter.description")}}
+      {{ko-form/field/errors errors=editedSettings.errors.security_customer_social_authentication_twitter class=(qa-cls "qa-field-error")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checked=(eq editedSettings.security_customer_social_authentication_facebook.value "1")
+        label=(t "admin.settings.security.customers.authentication.facebook.title")
+        disabled=save.isRunning
+        onCheck=(action "editBooleanSetting" "security_customer_social_authentication_facebook")
+        qaClass="ko-admin-settings-security-facebook-login"
+      }}
+      {{ko-form/field/help text=(t "admin.settings.security.customers.authentication.facebook.description")}}
+      {{ko-form/field/errors errors=editedSettings.errors.security_customer_social_authentication_facebook class=(qa-cls "qa-field-error")}}
+    {{/ko-form/field}}
+
+    {{#ko-form/field}}
+      {{ko-checkbox
+        checked=(eq editedSettings.security_customer_social_authentication_google.value "1")
+        label=(t "admin.settings.security.customers.authentication.google.title")
+        disabled=save.isRunning
+        onCheck=(action "editBooleanSetting" "security_customer_social_authentication_google")
+        qaClass="ko-admin-settings-security-google-login"
+      }}
+      {{ko-form/field/help text=(t "admin.settings.security.customers.authentication.google.description")}}
+      {{ko-form/field/errors errors=editedSettings.errors.security_customer_social_authentication_google class=(qa-cls "qa-field-error")}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+
+  {{#if (eq editedSettings.security_customer_authentication_type.value "jwt")}}
+    {{#ko-admin/forms/group legend=(t "admin.settings.security.customers.sso.heading")}}
+      {{ko-form/field/help text=(t "admin.settings.security.customers.sso.description")}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.customers.sso.login_url.title")}}
+
+        {{ko-input value=editedSettings.security_customer_sso_jwt_login_url.value onInput=(action "editTextSetting" "security_customer_sso_jwt_login_url") disabled=save.isRunning qaClass="ko-admin-settings-security-login-url"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.customers.sso.login_url.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_customer_sso_jwt_login_url class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.customers.sso.logout_url.title")}}
+
+        {{ko-input value=editedSettings.security_customer_sso_jwt_logout_url.value onInput=(action "editTextSetting" "security_customer_sso_jwt_logout_url") disabled=save.isRunning qaClass="ko-admin-settings-security-logout-url"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.customers.sso.logout_url.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_customer_sso_jwt_logout_url class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.customers.sso.shared_secret.title")}}
+
+        {{ko-input value=editedSettings.security_customer_sso_jwt_shared_secret.value onInput=(action "editTextSetting" "security_customer_sso_jwt_shared_secret") disabled=save.isRunning qaClass="ko-admin-settings-security-shared-secret"}}
+
+        {{ko-form/field/help text=(t "admin.settings.security.customers.sso.shared_secret.description")}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_customer_sso_jwt_shared_secret class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-form/field/label text=(t "admin.settings.security.customers.sso.service_name.title")}}
+
+        {{ko-input value=editedSettings.security_customer_sso_jwt_service_name.value onInput=(action "editTextSetting" "security_customer_sso_jwt_service_name") disabled=save.isRunning qaClass="ko-admin-settings-security-service-name"}}
+
+        {{#ko-form/field/help}}
+          {{t "admin.settings.security.customers.sso.service_name.description"}}<br>
+          <strong>{{t "admin.settings.security.customers.sso.service_name.notice"}}</strong>
+        {{/ko-form/field/help}}
+
+        {{ko-form/field/errors errors=editedSettings.errors.security_customer_sso_jwt_service_name class=(qa-cls "qa-field-error")}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/if}}
+{{/ko-admin/page}}

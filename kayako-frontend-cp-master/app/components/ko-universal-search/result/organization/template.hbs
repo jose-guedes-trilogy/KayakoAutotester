@@ -1,0 +1,22 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    <div local-class="icon">
+      {{ko-org-logo domain=domains.firstObject.domain}}
+    </div>
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    <div local-class="title">{{escape-html result.title}}</div>
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    {{#if domains.length}}
+      <div local-class="domains">
+        {{#each domains as |domain index|}}
+          {{#if index}}<div local-class="separator">•</div>{{/if}}
+          <div local-class="domain {{if (not index) "domainFirst"}}">{{domain.domain}}</div>
+        {{/each}}
+      </div>
+    {{/if}}
+  {{/if}}
+{{/ko-universal-search/result/layout}}

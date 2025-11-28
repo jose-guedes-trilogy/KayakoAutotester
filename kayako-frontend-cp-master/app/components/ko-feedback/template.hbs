@@ -1,0 +1,20 @@
+<div local-class="container">
+  <div local-class="heading">{{title}}</div>
+
+  <div local-class="list">
+    {{#each feedback as |feedbackItem|}}
+      <div local-class="item">
+        <a href={{href-to 'session.agent.cases.case' feedbackItem.case}} onclick={{action "openCase" feedbackItem.case}}>
+          {{#if (eq feedbackItem.score "GOOD")}}
+            <span local-class="metric">{{inline-svg "icon--good--42"}}</span>
+          {{else}}
+            <span local-class="metric">{{inline-svg "icon--bad--42"}}</span>
+          {{/if}}
+          {{#ko-tooltip side="top" title=(format-time feedbackItem.createdAt format="tooltip") local-class="caption"}}
+            {{ko-from-now feedbackItem.createdAt}}
+          {{/ko-tooltip}}
+        </a>
+      </div>
+    {{/each}}
+  </div>
+</div>

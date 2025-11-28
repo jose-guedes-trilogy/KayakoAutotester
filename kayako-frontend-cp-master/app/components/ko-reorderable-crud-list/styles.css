@@ -1,0 +1,23 @@
+.item {
+  display: flex;
+  padding: 9px;
+
+  &:hover {
+    background: $grey-1;
+
+    .actions {
+      visibility: visible;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+
+.actions-item {
+  display: flex;
+  cursor: pointer;
+}

@@ -1,0 +1,10 @@
+{{#ko-tabs as |tabs|}}
+  {{#if tabs.isTabs}}
+    {{#ko-tabs/tab routeName="session.agent.organizations.organization"}}
+      {{model.name}}
+    {{/ko-tabs/tab}}
+  {{/if}}
+  {{#if tabs.isRight}}
+    {{yield}}
+  {{/if}}
+{{/ko-tabs}}

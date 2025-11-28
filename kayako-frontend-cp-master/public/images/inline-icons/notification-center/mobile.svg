@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="32px" viewBox="0 0 20 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.1 (44463) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--new_mobile--32</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="32" rx="4"></rect>
+        <path d="M0,24 L20,24 L20,28 C20,30.209139 18.2075324,32 16.00077,32 L3.99922997,32 C1.79051625,32 0,30.2046438 0,28 L0,24 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Notifications---Preferences" transform="translate(-751.000000, -206.000000)">
+            <g id="icon--new_mobile--32" transform="translate(751.000000, 206.000000)">
+                <g id="Rectangle-12">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#838D94" stroke-width="1" x="0.5" y="0.5" width="19" height="31" rx="4"></rect>
+                </g>
+                <g id="Rectangle-9">
+                    <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <path stroke="#838D94" stroke-width="1" d="M0.5,24.5 L0.5,28 C0.5,29.9301623 2.06831808,31.5 3.99922997,31.5 L16.00077,31.5 C17.9320801,31.5 19.5,29.9323066 19.5,28 L19.5,24.5 L0.5,24.5 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

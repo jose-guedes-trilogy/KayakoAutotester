@@ -1,0 +1,8 @@
+{{! template-lint-disable bare-strings }}
+
+{{#with previewVersion as |version|}}
+  <div local-class="ribbon">
+    <span>PREVIEWING: {{version}}</span>
+    <span local-class="button" onclick={{action "clearCookieAndReloadBrowser"}}>Switch back to active version</span>
+  </div>
+{{/with}}

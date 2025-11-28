@@ -1,0 +1,51 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.policies {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 40px 0 30px;
+  border-right: 1px solid $grey-3;
+  background-color: $grey-1;
+}
+
+.policy {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  list-style: none;
+
+  &:first-child {
+    margin-top: 10px;
+  }
+}
+
+.tick {
+  margin-right: 8px;
+  path {
+    fill: $grey-4;
+  }
+  &.is-green {
+    path {
+      fill: $color-online;
+    }
+  }
+}
+
+.fields {
+  padding: 10px 35px 35px 35px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 3px;
+}

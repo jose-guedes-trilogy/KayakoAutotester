@@ -1,0 +1,7 @@
+{{#ko-notification-center/-base-notification notification=notification close=close as |notification|}}
+  {{notification.avatar user=user}}
+
+  {{#notification.summary}}
+    {{format-html-message "notifications.text.case_assigned_to_agent" name=user.fullName}}
+  {{/notification.summary}}
+{{/ko-notification-center/-base-notification}}

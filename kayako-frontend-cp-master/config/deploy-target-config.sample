@@ -1,0 +1,52 @@
+{
+  "appsApiUrl": "https://apps.kayakodev.net",
+  "kreSocket": "wss://kre.kayakodev.net/socket",
+  "metricsAdapters": [{
+    "config": {
+      "key": "jSiherbyTwW3twI4Yqv0vzhhK2LdWoQU"
+    }
+  }],
+  "bugsnag": {
+    "apiKey": "dee7cbbc59697623dc4372a809972e6c"
+  },
+  "messengerAssetsUrl": "https://frontend-assets.kayakodev.net/messenger/pattern-",
+  "messengerSupportUrl": "https://support.kayakodev.net/messenger",
+  "messengerSupportApiUrl": "https://support.kayakodev.net/api/v1",
+  "messengerSupportInstanceName": "support.kayakodev.net",
+  "messengerSupportWidgets": {
+    "presence": {
+      "enabled": true
+    },
+    "twitter": {
+      "enabled": true,
+      "twitterHandle": "21652408"
+    },
+    "articles": {
+      "enabled": false,
+      "sectionId": 194
+    }
+  },
+  "ember-cli-mirage": {
+    "excludeFilesFromBuild": true
+  },
+  "assetsUrl": "https://frontend-assets.kayakodev.net/",
+  "contentSecurityPolicy": {
+    "default-src": [],
+    "worker-src": [],
+    "img-src": [],
+    "style-src": ["https://frontend-assets.kayakodev.net"],
+    "font-src": ["https://frontend-assets.kayakodev.net"],
+    "connect-src": [
+		"https://*.kayakodev.net",
+		"https://frontend-assets.kayakodev.net",
+		"wss://kre.kayakodev.net",
+		"https://apps.kayakodev.net"
+    ],
+    "script-src": [
+		"https://frontend-assets.kayakodev.net",
+		"https://support.kayakodev.net"
+	],
+    "frame-src": ["https://*.kayakodev.net"],
+    "media-src": ["https://frontend-assets.kayakodev.net"]
+  }
+}

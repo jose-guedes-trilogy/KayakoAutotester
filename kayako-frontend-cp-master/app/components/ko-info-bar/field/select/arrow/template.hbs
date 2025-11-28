@@ -1,0 +1,9 @@
+{{#if show}}
+  <div local-class="arrow-inset {{if active "active"}}">
+    <div local-class="arrow">
+      {{yield}}
+    </div>
+  </div>
+{{else}}
+  {{yield}}
+{{/if}}

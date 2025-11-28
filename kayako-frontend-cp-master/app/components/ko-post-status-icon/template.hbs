@@ -1,0 +1,12 @@
+{{#if icon}}
+  {{#if tooltip}}
+    {{#ko-tooltip
+      title=(t (concat "cases.post.status.tooltip_without_time." status))
+      side="top"
+    }}
+      {{inline-svg icon}}
+    {{/ko-tooltip}}
+  {{else}}
+    {{inline-svg icon}}
+  {{/if}}
+{{/if}}

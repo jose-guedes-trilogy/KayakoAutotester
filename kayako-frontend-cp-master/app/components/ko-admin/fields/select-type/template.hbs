@@ -1,0 +1,16 @@
+<div>
+  {{#each customFieldsTypes.availableTypes as |availableType|}}
+    <div local-class="field-type" onclick={{action onFieldTypeSelect availableType.name}}>
+      <div local-class="icon">
+        {{ko-admin/fields/type-icon name=availableType.name}}
+      </div>
+      <div>
+        <p local-class="title">{{t availableType.nameIntlKey}}</p>
+        <p local-class="caption">{{t availableType.descriptionIntlKey}}</p>
+      </div>
+      <div local-class="action">
+        <span class="i-chevron-large-right i-color-grey"></span>
+      </div>
+    </div>
+  {{/each}}
+</div>

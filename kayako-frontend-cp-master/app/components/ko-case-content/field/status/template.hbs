@@ -1,0 +1,21 @@
+{{#ko-info-bar/field/select
+  qaClass=qaClass
+  title=title
+  options=statuses
+  value=value
+  isEdited=isEdited
+  isKREEdited=isKREEdited
+  isErrored=isErrored
+  isDisabled=isDisabled
+  onValueChange=onValueChange
+  labelPath="label"
+  hasEmptyOption=false
+  triggerValueComponent="ko-case-content/field/status/swatch-with-label"
+  as |option select|
+}}
+  {{ko-case-content/field/status/swatch-with-label
+    selected=option
+    highlight=select.lastSearchedText
+    swatchHasBorder=(eq option select.highlighted)
+  }}
+{{/ko-info-bar/field/select}}

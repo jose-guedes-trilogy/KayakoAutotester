@@ -14,9 +14,37 @@ type Step =
   | { type: 'dispatch-click'; selectorKey: string }
   | { type: 'dispatch-click-text'; value: string }
   | { type: 'expect-visible'; selectorKey: string }
+  | { type: 'wait-hidden'; selectorKey: string }
+  | { type: 'wait-loadstate'; state?: 'load' | 'domcontentloaded' | 'networkidle' }
   | { type: 'expect-url-contains'; value: string }
   | { type: 'wait'; value: string }
-  | { type: 'press'; key: string; selectorKey?: string };
+  | { type: 'press'; key: string; selectorKey?: string }
+  | { type: 'goto-conversation-by-env-id' }
+  | { type: 'switch-assignee-and-save'; order?: string[] }
+  | { type: 'log-assignee' }
+  // New basic capability steps
+  | { type: 'add-tags'; values: string[] }
+  | { type: 'insert-reply-text'; value: string }
+  | { type: 'switch-to-reply' }
+  | { type: 'set-status'; value: string }
+  | {
+      type: 'set-custom-field';
+      fieldType:
+        | 'text'
+        | 'textarea'
+        | 'radio'
+        | 'dropdown'
+        | 'checkbox'
+        | 'integer'
+        | 'decimal'
+        | 'yesno'
+        | 'cascading'
+        | 'date'
+        | 'regex';
+      label: string;
+      value?: string | number | boolean | string[];
+      path?: string[];
+    };
 
 type Flow = {
   name: string;
@@ -45,7 +73,7 @@ function generateTest(flow: Flow): string {
   const lines: string[] = [];
   lines.push("import { test, expect } from '../../fixtures/auth.fixture';");
   lines.push("import { env } from '../../config/env';");
-  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText } from '../../selectors';");
+  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField } from '../../selectors';");
   lines.push('');
   lines.push(`test.describe(${JSON.stringify(flow.description ?? flow.name)}, () => {`);
   lines.push(`  test('${flow.name}', async ({ authenticatedPage: page }) => {`);
@@ -57,6 +85,14 @@ function generateTest(flow: Flow): string {
       case 'goto': {
         if (optional) lines.push(optBegin);
         lines.push(`    await page.goto(${resolveEnvToken((step as any).url)});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'goto-conversation-by-env-id': {
+        if (optional) lines.push(optBegin);
+        lines.push(
+          "    if (env.KAYAKO_CONVERSATION_ID) { await page.goto(env.KAYAKO_AGENT_URL.replace(/\\/$/, '') + '/conversations/' + env.KAYAKO_CONVERSATION_ID); }",
+        );
         if (optional) lines.push(optEnd);
         break;
       }
@@ -101,6 +137,24 @@ function generateTest(flow: Flow): string {
         if (optional) lines.push(optEnd);
         break;
       }
+      case 'wait-hidden': {
+        const { group, key } = selectorGroupAndKey((step as any).selectorKey);
+        if (group === 'login') break;
+        if (optional) lines.push(optBegin);
+        lines.push(
+          `    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.waitFor({ state: 'hidden' }); }`,
+        );
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'wait-loadstate': {
+        const s = (step as any).state as string | undefined;
+        const state = ['load','domcontentloaded','networkidle'].includes(String(s)) ? s : 'networkidle';
+        if (optional) lines.push(optBegin);
+        lines.push(`    await page.waitForLoadState(${JSON.stringify(state)}, { timeout: 3000 }).catch(() => {});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
       case 'expect-url-contains': {
         const value = (step as any).value as string;
         if (optional) lines.push(optBegin);
@@ -128,6 +182,60 @@ function generateTest(flow: Flow): string {
           lines.push(`    await page.keyboard.press(${JSON.stringify(s.key)});`);
           if (optional) lines.push(optEnd);
         }
+        break;
+      }
+      case 'switch-assignee-and-save': {
+        const order = (step as any).order as string[] | undefined;
+        const orderExpr = Array.isArray(order) && order.length > 0 ? `[${order.map((s) => JSON.stringify(s)).join(', ')}]` : `['VIP Account Team','General']`;
+        if (optional) lines.push(optBegin);
+        lines.push(`    await (await import('../../selectors')).switchAssigneeTeamAndSave(page, ${orderExpr});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'log-assignee': {
+        if (optional) lines.push(optBegin);
+        lines.push(`    await (await import('../../selectors')).logAssigneeValues(page);`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'add-tags': {
+        const values = (step as any).values as string[];
+        if (optional) lines.push(optBegin);
+        lines.push(`    await addTags(page, ${JSON.stringify(values || [])});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'insert-reply-text': {
+        const value = (step as any).value as string;
+        if (optional) lines.push(optBegin);
+        lines.push(`    await insertReplyText(page, ${JSON.stringify(value || '')});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'switch-to-reply': {
+        if (optional) lines.push(optBegin);
+        lines.push('    await switchToReplyMode(page);');
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'set-status': {
+        const value = (step as any).value as string;
+        if (optional) lines.push(optBegin);
+        lines.push(`    await setStatus(page, ${JSON.stringify(value || '')});`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'set-custom-field': {
+        const s = step as any;
+        const obj = {
+          type: s.fieldType,
+          label: s.label,
+          value: s.value,
+          path: s.path,
+        };
+        if (optional) lines.push(optBegin);
+        lines.push(`    await setCustomField(page, ${JSON.stringify(obj)} as any);`);
+        if (optional) lines.push(optEnd);
         break;
       }
     }

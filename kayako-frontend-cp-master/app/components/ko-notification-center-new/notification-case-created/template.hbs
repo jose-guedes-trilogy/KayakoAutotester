@@ -1,0 +1,7 @@
+{{#ko-notification-center/-base-notification notification=notification close=close as |notification|}}
+  {{notification.avatar user=user}}
+
+  {{#notification.summary}}
+    {{format-html-message "notifications.text.case_created" name=user.fullName subject=subject}}
+  {{/notification.summary}}
+{{/ko-notification-center/-base-notification}}

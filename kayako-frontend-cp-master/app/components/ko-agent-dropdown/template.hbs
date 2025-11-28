@@ -1,0 +1,62 @@
+{{#basic-dropdown onClose=(action "reset") as |dropdown|}}
+  {{#dropdown.trigger local-class="trigger"}}
+    <div local-class="iconSquare">
+      <div local-class="icon">{{ko-icon name="plus" color="#FFFFFF"}}<div local-class="dropdown-trigger-label">{{t "generic.new"}}</div></div>
+    </div>
+  {{/dropdown.trigger}}
+
+  {{#dropdown.content local-class=(join-classes "drop" (if selectedNavItem "full-grown")) class=dropdownWidthClass}}
+    {{#liquid-if selectedNavItem}}
+      {{#if (eq selectedNavItem "user")}}
+        {{ko-agent-dropdown/create-user
+          dropdown=dropdown
+          onCreate=(action "onTabCreateComplete" "session.agent.users.user")
+          onCancel=(action "reset")}}
+      {{else if (eq selectedNavItem "case")}}
+        {{ko-agent-dropdown/create-case
+          onSubmit=(action "transitionToRoute" dropdown)
+          onCancel=(action "reset")}}
+      {{else if (eq selectedNavItem "organization")}}
+        {{ko-agent-dropdown/create-organization
+          dropdown=dropdown
+          onCreate=(action "onTabCreateComplete" "session.agent.organizations.organization")
+          onCancel=(action "reset")}}
+      {{/if}}
+    {{else}}
+      <div local-class="navItems">
+        <div local-class="navItem" onclick={{action "openNewConversationTab" dropdown}}>
+          <div local-class="navItemImg new-conv">
+            {{inline-svg "icon--convo--32" local-class="unfocused"}}
+            {{inline-svg "icon--convo--32--focused" local-class="focused"}}
+            <div local-class="navItemText">{{t "cases.conversation"}}</div>
+          </div>
+        </div>
+        {{#if canCreateUsers}}
+          <div local-class="navItem" onclick={{action "openNewUserTab" dropdown}}>
+            <div local-class="navItemImg new-user">
+              {{inline-svg "icon--user--32" local-class="unfocused"}}
+              {{inline-svg "icon--user--32--focused" local-class="focused"}}
+              <div local-class="navItemText">{{t "users.new_user_label"}}</div>
+            </div>
+          </div>
+        {{/if}}
+        {{#if canCreateOrganizations}}
+          <div local-class="navItem" onclick={{action "openNewOrganizationTab" dropdown}}>
+            <div local-class="navItemImg new-org">
+              {{inline-svg "icon--org--32" local-class="unfocused"}}
+              {{inline-svg "icon--org--32--focused" local-class="focused"}}
+              <div local-class="navItemText">{{t "organization.title"}}</div>
+            </div>
+          </div>
+        {{/if}}
+        <div local-class="navItem" onclick={{action "openSearchTab" dropdown}}>
+          <div local-class="navItemImg new-search">
+            {{inline-svg "icon--search--32" local-class="unfocused"}}
+            {{inline-svg "icon--search--32--focused" local-class="focused"}}
+            <div local-class="navItemText">{{t "cases.search.label"}}</div>
+          </div>
+        </div>
+      </div>
+    {{/liquid-if}}
+  {{/dropdown.content}}
+{{/basic-dropdown}}

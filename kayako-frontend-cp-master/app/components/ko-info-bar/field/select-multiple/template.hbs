@@ -1,0 +1,26 @@
+<div class="{{if qaClass (qa-cls qaClass)}}">
+  {{ko-select/multiple/internal
+    allowCreate=allowCreate
+    allowDelete=allowDelete
+    allowAddDuringSearch=allowAddDuringSearch
+    dropdownClass=(local-class "dropdown")
+    disabled=isDisabled
+    onChange=onChange
+    onValueAddition=onValueAddition
+    onValueRemoval=onValueRemoval
+    onSuggestion=onSuggestion
+    renderInPlace=false
+    options=options
+    placeholder=placeholder
+    searchField=searchField
+    triggerClass=(local-class "trigger")
+    triggerComponent="ko-info-bar/field/select-multiple/trigger"
+    selected=value
+    extra=(hash
+      title=title
+      isEdited=isEdited
+      isKREEdited=isKREEdited
+      isErrored=isErrored
+    )
+  }}
+</div>

@@ -1,0 +1,25 @@
+<div local-class="container">
+  {{#if metric}}
+    {{#ko-sla/tooltip metric=metric}}
+      <div local-class="metric metric-{{status}}">
+        <i class="{{iconClassName}}" local-class="icon icon-{{status}}"></i>
+        <div local-class="text text-{{status}}">
+          {{#ko-sla/remaining metric=metric as |remaining|}}
+            {{#if remaining.wholeDays}}
+              {{sign}}{{remaining.wholeDays}}{{t "generic.day_abbreviation"}}
+            {{else if remaining.wholeHours}}
+              {{sign}}{{remaining.wholeHours}}{{t "generic.hour_abbreviation"}}
+            {{else}}
+              {{sign}}{{remaining.wholeMinutes}}{{t "generic.minute_abbreviation"}}
+              {{#if developerTools.slaMetricsInSeconds}}
+                {{remaining.wholeSeconds}}
+              {{/if}}
+            {{/if}}
+          {{/ko-sla/remaining}}
+        </div>
+      </div>
+    {{/ko-sla/tooltip}}
+  {{else}}
+    -
+  {{/if}}
+</div>

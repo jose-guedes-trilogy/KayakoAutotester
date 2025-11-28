@@ -1,0 +1,22 @@
+{{#if show}}
+  {{#if (eq style 'inline')}}
+    {{ko-admin/add-new-card/form generatingToken=generatingToken iframeLoaded=iframeLoaded reloadingIframe=reloadingIframe failedIframe=iframeLoadFailed iframeSrc=iframeSrc}}
+    {{#ko-admin/add-new-card/footer iframeLoaded=iframeLoaded}}
+      {{yield (hash isFooter=true submit=(action "saveNewCard"))}}
+    {{/ko-admin/add-new-card/footer}}
+  {{else}}
+
+    {{#ko-modal on-close=(action onCancel) on-confirm=(if iframeLoaded (action "saveNewCard")) width="350px" as |modal|}}
+      {{#if modal.isHeader }}
+        {{t "account.billing.card.new"}}
+      {{/if}}
+      {{#if modal.isMain }}
+        {{ko-admin/add-new-card/form generatingToken=generatingToken iframeLoaded=iframeLoaded reloadingIframe=reloadingIframe failedIframe=iframeLoadFailed iframeSrc=iframeSrc}}
+      {{/if}}
+      {{#if modal.isFooter }}
+        {{ko-admin/add-new-card/footer iframeLoaded=iframeLoaded onCancel=onCancel saveNewCard=(action "saveNewCard")}}
+      {{/if}}
+    {{/ko-modal}}
+
+  {{/if}}
+{{/if}}

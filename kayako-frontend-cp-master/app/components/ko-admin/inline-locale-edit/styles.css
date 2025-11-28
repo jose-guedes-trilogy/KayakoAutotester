@@ -1,0 +1,63 @@
+.container {
+  display: inline-block;
+
+  :global(.ember-basic-dropdown-trigger:focus) {
+    outline: none;
+  }
+}
+
+.modalButton {
+  cursor: pointer;
+}
+
+.modalButtonEdited {
+  color: $color-bad;
+}
+
+.text {
+  padding: 4.5px 0 18px;
+}
+
+.popover {
+  padding: 12px;
+  width: 300px;
+  overflow: auto;
+  border: 1px solid #BEC4C7;
+  border-radius: 3px;
+  background: #f8f8f8;
+}
+
+.locale-fields {
+  max-height: 280px;
+  padding-left: 2px;
+  padding-right: 2px;
+  overflow: auto;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 13.5px;
+  border-top: 1px solid #d1d5d7;
+}
+
+@value arrow-size: 9px;
+@value arrow-border: 1px solid #BEC4C7;
+
+.arrow {
+  width: arrow-size;
+  height: arrow-size;
+  position: absolute;
+  left: calc(50% - (arrow-size / 2));
+  pointer-events: none;
+  transform: rotate(45deg);
+  background: #f8f8f8;
+  top: - floor(arrow-size / 2);
+  border-top: arrow-border;
+  border-left: arrow-border;
+}
+
+.dropdownContent {
+  margin-top: 12px;
+  left: calc(-150px + 50%);
+}

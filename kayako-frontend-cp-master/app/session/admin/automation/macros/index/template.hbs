@@ -1,0 +1,44 @@
+{{ko-admin/page
+  title=(t "admin.macros.title")
+  buttonText=(t "admin.macros.buttons.add_new_macro")
+  buttonClass=(qa-cls "qa-admin_macros__new-button")
+  cancelButtonClass=(qa-cls "qa-admin_macros__cancel-button")
+  onSave=(action "transitionToNewMacroRoute")
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.macros.description"}}</p>
+  <p><strong>{{format-html-message "admin.macros.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1153-automating-common-replies-and-updates-using-macros?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=macros1" "admin.macros.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="macros"}}
+{{/if}}
+
+<div local-class="macros-list">
+  {{#if deleteAndRefreshMacrosList.isRunning}}
+    <div local-class="loading-state">
+      {{ko-loader large=true}}
+    </div>
+  {{/if}}
+  {{#ko-simple-list class=(qa-cls "qa-admin_macros__enabled-list") as |list|}}
+    {{#each model as |macro|}}
+      {{#list.row onClick=(action "editMacro" macro) as |row|}}
+        {{#row.cell width="50%"}}
+          <span local-class="title" title="{{macro.title}}">{{macro.title}}</span>
+        {{/row.cell}}
+        {{#row.cell}}
+          <span title={{format-date macro.lastUsedAt format="LLL"}} local-class="caption">
+            {{t "admin.macros.usage_count" count=macro.usageCount}}{{#if macro.lastUsedAt}}, {{t "admin.macros.last_used_at" date=(ko-from-now macro.lastUsedAt)}}{{/if}}
+          </span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "editMacro" macro}}>{{t "generic.edit"}}</a>
+          | <a onclick={{action "deleteMacro" macro}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+</div>
+
+{{ko-pagination currentPage=page pageCount=totalPages}}

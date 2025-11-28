@@ -1,0 +1,40 @@
+.container {
+  min-height: 50px;
+  position: relative;
+  border-bottom: 1px solid #D1D5D7;
+  padding: 9px 18px;
+  transition: 0.2s background-color, 0.1s box-shadow;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #FFFFFF;
+  }
+}
+
+/* Order of this modifiers is important! */
+
+.containerActive {
+  background-color: #FFFFFF;
+}
+
+.containerEdited {
+  box-shadow: inset 4px 0 0 0 $primary-blue;
+  background-color: #FFFFFF;
+}
+
+.containerKREEdited {
+  box-shadow: inset 5px 0 0 0 $color-kre-edited;
+  background-color: #FFFFFF;
+}
+
+.containerError {
+  box-shadow: inset 5px 0 0 0 #E86048;
+  background-color: #FFFFFF;
+}
+
+.containerDisabled {
+  cursor: default !important;
+}

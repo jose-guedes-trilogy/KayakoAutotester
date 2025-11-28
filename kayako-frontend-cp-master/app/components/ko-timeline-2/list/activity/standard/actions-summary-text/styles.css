@@ -1,0 +1,20 @@
+.inline-property-avatar {
+  margin: -2px 2px 0 2px;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 22px;
+}
+
+.summary-line-actions {
+  &:not(:first-child):before {
+    content: ', ';
+    margin-left: -2px;
+    margin-right: 2px;
+  }
+}
+
+.status-pill {
+  position: relative;
+  top: -1px;
+}

@@ -1,0 +1,16 @@
+{{#power-select
+  options=options
+  onchange=(action "selectItem")
+  triggerClass=(local-class "trigger")
+  triggerComponent="ko-profile-menu/trigger"
+  dropdownClass=(local-class "dropdown")
+  optionsComponent="ko-profile-menu/options"
+  beforeOptionsComponent="ko-profile-menu/header"
+  searchEnabled=false
+  matchTriggerWidth=false
+  defaultHighlighted=false
+  extra=(hash user=user)
+  as |option|
+}}
+  {{option.label}}
+{{/power-select}}

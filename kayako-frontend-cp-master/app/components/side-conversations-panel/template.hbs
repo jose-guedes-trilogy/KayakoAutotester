@@ -1,0 +1,23 @@
+<div local-class="side-panel {{if this.isVisible 'open'}}">
+  <div local-class="{{unless (eq this.currentView "CONVERSATIONS_LIST") 'hidden'}}">
+    {{side-conversations-panel/conversations-list
+      setView=(action "setView")
+      case=case
+      openConversation=(action "openConversation")
+      refetchConversations=(action "refetchConversations")
+      shouldRefetchConversations=this.shouldRefetchConversations
+    }}
+  </div>
+
+  <div local-class="{{unless (or (eq this.currentView "NEW_CONVERSATION") (eq this.currentView "INDIVIDUAL_CONVERSATION")) 'hidden'}}">
+    {{side-conversations-panel/individual-conversation
+      isNew=(eq this.currentView "NEW_CONVERSATION")
+      timeline=timeline
+      case=case
+      currentConversation=currentConversation
+      setView=(action "setView")
+      refetchConversations=(action "refetchConversations")
+      currentView=this.currentView
+    }}
+  </div>
+</div>

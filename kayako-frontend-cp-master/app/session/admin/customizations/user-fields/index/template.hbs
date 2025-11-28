@@ -1,0 +1,66 @@
+{{#with (hash
+  canAddFields=(or (plan-has "custom_user_organization_fields") (not (variation "release-restrict-fields")))
+) as |flags|}}
+  {{#ko-admin/page
+    title=(t "admin.custom_fields.title_breadcrumbs")
+    tabs=tabs
+    buttonText=(t "admin.userfields.buttons.add_new_userfield")
+    needsPlanUpgrade=(not flags.canAddFields)
+    onSave=(action "transitionToNewUserFieldRoute")}}
+
+    {{#ko-admin/forms/description}}
+      <p>{{t "admin.userfields.description"}}</p>
+      <p><strong>{{format-html-message "admin.userfields.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1151-adding-custom-fields-for-cases-users-and-organizations?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=userfields" "admin.userfields.description_link")}}</strong></p>
+    {{/ko-admin/forms/description}}
+
+    {{#if (not model.length)}}
+      {{ko-admin/empty image="user-fields"}}
+    {{/if}}
+
+    {{#if customfields.length}}
+      {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+        {{#ko-reorderable-list onReorder=(action "reorderCustomFields") items=customfields as |customfield|}}
+          {{#list.row onClick=(action "editField" customfield) as |row|}}
+            {{#row.cell width="50%"}}
+              <span local-class="title">{{customfield.title}}</span>
+            {{/row.cell}}
+            {{#row.cell}}
+              <div local-class="icon">
+                {{ko-admin/fields/type-icon name=(ko-helper customFields.baseKeyForFieldType customfield.fieldType)}}
+              </div>
+              <p local-class="title">{{t (ko-helper customFields.baseTypeKeyForFieldType customfield.fieldType)}}</p>
+            {{/row.cell}}
+            {{#row.actions}}
+              <a onclick={{action "editField" customfield}}>{{t "generic.edit"}}</a> |
+              <a onclick={{action "toggleEnabledStatus" customfield}}>{{t "generic.disable"}}</a> |
+              <a onclick={{action "deleteField" customfield}}>{{t "generic.delete"}}</a>
+            {{/row.actions}}
+          {{/list.row}}
+        {{/ko-reorderable-list}}
+      {{/ko-simple-list}}
+    {{/if}}
+
+    {{#if disabledfields.length}}
+      {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+        {{#each disabledfields as |disabledfield|}}
+          {{#list.row onClick=(action "editField" disabledfield) as |row|}}
+            {{#row.cell width="50%" disabled=true}}
+              <span local-class="title">{{disabledfield.title}}</span>
+            {{/row.cell}}
+            {{#row.cell disabled=true}}
+              <div local-class="icon">
+                {{ko-admin/fields/type-icon name=(ko-helper customFields.baseKeyForFieldType disabledfield.fieldType)}}
+              </div>
+              <p local-class="title">{{t (ko-helper customFields.baseTypeKeyForFieldType disabledfield.fieldType)}}</p>
+            {{/row.cell}}
+            {{#row.actions}}
+              <a onclick={{action "editField" disabledfield}}>{{t "generic.edit"}}</a> |
+              <a onclick={{action "toggleEnabledStatus" disabledfield}}>{{t "generic.enable"}}</a> |
+              <a onclick={{action "deleteField" disabledfield}}>{{t "generic.delete"}}</a>
+            {{/row.actions}}
+          {{/list.row}}
+        {{/each}}
+      {{/ko-simple-list}}
+    {{/if}}
+  {{/ko-admin/page}}
+{{/with}}

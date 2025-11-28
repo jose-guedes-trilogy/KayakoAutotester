@@ -1,0 +1,261 @@
+.preview-container {
+  /* As the preview has fixed position, we scale it down on small screens */
+  @media screen and (max-height: 710px) {
+    transform: scale(0.9);
+    transform-origin: top;
+  }
+}
+
+.preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+  width: 400px;
+  margin-top: -50px;
+  border-radius: 4px;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  cursor: default;
+  transition: all 0.4s ease;
+
+  :global(.small) & {
+    height: 530px;
+  }
+
+  &__content {
+    flex-grow: 1;
+    max-height: 490px;
+    padding: 35px 26px;
+    border-radius: 4px 4px 0 0;
+    background-image: linear-gradient(-192deg, #40364D 37%, #9B4779 100%);
+    overflow: auto;
+
+    :global(.small) & {
+      height: 440px;
+    }
+  }
+
+  &__updated-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 90px);
+    border-radius: 4px 4px 0 0;
+    opacity: 1;
+    clip-path: ellipse(0 0 at left center);
+    will-change: clip-path, opacity;
+    transition: none;
+
+    &.is-animating {
+      clip-path: ellipse(365px 365px at left 130px center);
+      transition: clip-path 1s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+
+  &-light-text {
+    color: #fff;
+  }
+
+  &__main-text {
+    padding-left: 5px;
+    padding-right: 5px;
+    word-wrap: break-word;
+    transition: color 0.2s ease;
+  }
+
+  &__title {
+    margin-bottom: 6px;
+    font-size: 36px;
+    font-weight: 300;
+  }
+
+  &__welcome-message {
+    font-size: 16px;
+    white-space: pre-line;
+  }
+
+  &__textarea {
+    position: relative;
+    height: 90px;
+    padding: 10px 10px 0 18px;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.08), 0 -2px 6px 0 rgba(0, 0, 0, 0.06);
+    color: $grey-6;
+
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 13px;
+    }
+  }
+
+  &__button {
+    position: relative;
+    padding: 8px 40px 7px 18px;
+    border-radius: 18px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    &:after {
+      content: url('/images/apps/messenger/send-icon.svg');
+      position: absolute;
+      right: 12px;
+      top: 8px;
+    }
+  }
+
+  &__label {
+    margin-top: 10px;
+    margin-left: 2px;
+    color: $grey-5;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.preview__widgets {
+  position: relative;
+
+  :global(.liquid-container) {
+    overflow: visible;
+    will-change: height;
+  }
+}
+
+.preview__widget {
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
+  background-color: rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  animation: widget-in 0.2s ease 0.05s forwards;
+
+  :global(.small) & {
+    opacity: 1;
+    animation: none;
+  }
+
+  &__title {
+    padding: 8px 15px;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: 0.15s;
+  }
+}
+
+@keyframes widget-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.agents {
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+.agent-pic {
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.agent-names {
+  padding: 5px 15px 12px;
+  color: $grey-8;
+}
+
+.bubble {
+  display: flex;
+  justify-content: space-between;
+
+  &__icon {
+    position: relative;
+    left: 16px;
+  }
+}
+
+.article {
+  display: flex;
+  padding: 15px;
+  animation: fadein-articles 0.4s ease;
+  &:not(:last-child) {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.no-data-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 69px;
+}
+
+@keyframes fadein-articles {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.author-pic {
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.article__title {
+  color: $grey-8;
+  font-weight: 600;
+}
+
+.content-placeholder {
+  width: 318px;
+  height: 69px;
+  background-image: radial-gradient(circle 16px at 17px 17px, rgba(255, 255, 255, 0.3) 99%, transparent 0), linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 80%), linear-gradient(100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 80%), linear-gradient(rgba(255, 255, 255, 0.3) 10px, transparent 0), linear-gradient(rgba(255, 255, 255, 0.3) 8px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 100px 200px, 45px 10px, 45px 8px, 261px 200px, 135px 200px;
+  background-position: 15px 15px, 62px 17px, 62px 40px, 62px 17px, 62px 40px;
+  animation: shimmer 0.8s ease infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 15px 15px, 280px 17px, 163px 40px, 62px 17px, 62px 40px;
+  }
+}
+
+.tweet {
+  flex-shrink: 1;
+}
+
+.tweet__text {
+  color: $grey-8;
+}
+
+.text--small {
+  font-size: 13px;
+}
+
+.text--light {
+  color: $grey-6;
+}

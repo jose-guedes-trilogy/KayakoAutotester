@@ -1,0 +1,14 @@
+<div local-class="password">
+  {{ko-input type="password" size="full"
+    placeholder=(t "login.newpassword")
+    value=newPassword1
+    onInput=(action (mut newPassword1) value="target.value")
+    disabled=isLoading
+  }}
+</div>
+{{ko-input type="password" size="full"
+  placeholder=(t "login.repeatpassword")
+  value=newPassword2
+  onInput=(action (mut newPassword2) value="target.value")
+  disabled=isLoading
+}}

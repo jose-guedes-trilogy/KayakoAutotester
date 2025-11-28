@@ -1,0 +1,20 @@
+{{#power-select
+  options=options
+  onchange=(action "selectItem")
+  triggerComponent=(component "ko-avatar-update/trigger" isLoading=isLoading user=user)
+  dropdownClass=(local-class "dropdown")
+  beforeOptionsComponent="ko-avatar-update/header"
+  searchEnabled=false
+  matchTriggerWidth=false
+  closeOnSelect=false
+  as |option|
+}}
+  <span local-class="list-item {{if (eq option.id "remove") "remove-item"}}">
+    {{#if (eq option.id "upload")}}
+      {{ko-file-field id="avatar-selection-dropdown-option" title="" local-class="file-field" viewName="attachFile" multiple=false on-change=(action "onAttachFiles")}}
+      <label for="avatar-selection-dropdown-option" local-class="file-upload-label">{{option.label}}</label>
+    {{else}}
+      {{option.label}}
+    {{/if}}
+  </span>
+{{/power-select}}

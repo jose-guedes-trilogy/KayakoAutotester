@@ -1,0 +1,60 @@
+{{page-title titleSuffix}}
+
+<div local-class="header {{unless tabs "header--bar"}}">
+  <h3 local-class="title">
+    {{#if titleTrail}}
+      <span local-class="caption">{{titleTrail}}</span>
+    {{/if}}
+    {{titleSuffix}}
+    {{#if isBeta}}
+      <span local-class="beta-label">{{t "admin.beta"}}</span>
+    {{/if}}
+  </h3>
+  {{#if hasBlockParams}}
+    {{yield "buttons"}}
+  {{else if needsPlanUpgrade}}
+    {{#ko-button href=(href-to upgradeUrl) type="primary"}}{{or upgradeLinkText (t "account.limit.reached")}}{{/ko-button}}
+  {{else}}
+    {{ko-form/buttons
+      submitLabel=buttonText
+      submitClass=buttonClass
+      cancelButtonClass=cancelButtonClass
+      cancelLabel=cancelButtonText
+      onSubmit=onSave
+      onCancel=onCancel
+      isValid=isValid
+      isSaving=isSaving
+      deleteLabel=deleteText
+      onDelete=onDelete
+    }}
+  {{/if}}
+</div>
+
+{{#if tabs}}
+  {{ko-tabs tabs=tabs}}
+{{/if}}
+<div local-class="spacer"> </div>
+
+{{yield "contents"}}
+
+{{#if showFooter}}
+  {{#if needsPlanUpgrade}}
+    <div local-class="footer-upgrade">
+      {{#ko-button href=(href-to upgradeUrl) type="primary"}}{{or upgradeLinkText (t "account.limit.reached")}}{{/ko-button}}
+    </div>
+  {{else}}
+    <div local-class="footer">
+      {{ko-form/buttons
+        submitLabel=buttonText
+        submitClass=submitClass
+        cancelLabel=cancelButtonText
+        onSubmit=onSave
+        onCancel=onCancel
+        isValid=isValid
+        isSaving=isSaving
+        deleteLabel=deleteText
+        onDelete=onDelete
+      }}
+    </div>
+  {{/if}}
+{{/if}}

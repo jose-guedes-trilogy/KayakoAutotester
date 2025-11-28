@@ -1,0 +1,5 @@
+{{#if hasDeleteOrganizationPermission}}
+  {{#ko-agent-content/action-menu as |menu|}}
+    {{menu.item title=(t "organization.delete_organization") onClick=(action "deleteOrganization")}}
+  {{/ko-agent-content/action-menu}}
+{{/if}}

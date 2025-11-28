@@ -1,0 +1,39 @@
+.outer {
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+.outer.has-border {
+  background-color: #FFF;
+}
+
+.inner {
+  border-radius: 2px;
+  width: 10px;
+  height: 10px;
+}
+
+.status-draft .inner,
+.status-new .inner,
+.status-open .inner {
+  background-color: #4EAFCB;
+}
+
+.status-pendingapproval .inner,
+.status-pending .inner,
+.status-custom .inner {
+  background-color: #E0AF2A;
+}
+
+.status-published .inner,
+.status-completed .inner {
+  background-color: #36A148;
+}
+
+.status-closed .inner {
+  background-color: #A1AAAF;
+}

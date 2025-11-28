@@ -1,0 +1,19 @@
+<th onclick={{action "handleClick"}}
+    onmousedown={{action "handleMouseDown"}}
+    style={{headingStyle}}
+    class="{{class}}"
+    local-class="container {{if selected "selected"}} {{if dense "dense"}} {{if sortable "sortable"}}">
+  <div local-class="ellipsis">
+    {{yield}}
+  </div>
+
+  {{#if selected}}
+    {{#if (eq orderBy 'asc')}}
+      <span class="i-chevron-small-up"></span>
+    {{/if}}
+
+    {{#if (eq orderBy 'desc')}}
+      <span class="i-chevron-small-down"></span>
+    {{/if}}
+  {{/if}}
+</th>

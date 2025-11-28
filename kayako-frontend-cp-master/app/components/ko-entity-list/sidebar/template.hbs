@@ -1,0 +1,26 @@
+<div local-class="sidebar">
+  <div local-class="heading-container">
+    <div local-class="heading">
+      {{yield}}
+    </div>
+    {{ko-entity-list/sidebar/collection-logic-operator
+      collectionOperators=collectionOperators
+      currentCollectionOperator=currentCollectionOperator
+      setCollectionOperator=(action "setCollectionOperator")
+    }}
+  </div>
+  <ul local-class="definitions">
+    {{#each definitions as |definition|}}
+      {{ko-entity-list/sidebar/definition
+        definition=definition
+        currentPredicateCollections=currentPredicateCollections
+        currentPropositionOperators=currentPropositionOperators
+        currentCollectionOperator=currentCollectionOperator
+        onPropositionsChange=onPropositionsChange
+        onPropositionsRemoval=onPropositionsRemoval
+        onPropositionsRemoveAll=onPropositionsRemoveAll
+        onPropositionOperatorChange=onPropositionOperatorChange
+      }}
+    {{/each}}
+  </ul>
+</div>

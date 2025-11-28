@@ -1,0 +1,6 @@
+.before-options {
+  padding: 0 8px 6px;
+  line-height: 22px;
+  color: $grey-6;
+  font-style: italic;
+}

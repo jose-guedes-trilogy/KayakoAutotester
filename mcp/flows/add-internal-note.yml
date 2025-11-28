@@ -19,6 +19,9 @@ steps:
     selectorKey: inbox.conversationSubject
   - type: click
     selectorKey: inbox.conversationSubject
+  - type: wait-loadstate
+    state: networkidle
+    optional: true
   - type: expect-visible
     selectorKey: conversation.subjectHeading
   - type: wait
@@ -42,5 +45,7 @@ steps:
     selectorKey: composer.sendButton
   - type: expect-visible
     selectorKey: conversation.noteText
+  - type: wait
+    value: "5000"
 
 

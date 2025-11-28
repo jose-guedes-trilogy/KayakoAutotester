@@ -1,0 +1,35 @@
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+  margin-right: 9px;
+  min-width: 250px;
+  ul > li {
+    padding: 0 !important;
+  }
+}
+
+.list-item {
+  color: #E86048; /* TODO: This does not take effect, work on it later. */
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  cursor: pointer;
+  &.remove-item {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    padding: 7px 8px 7px 15px;
+  }
+}
+
+.hide, .file-field {
+  display: none;
+}
+
+.file-upload-label {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  padding: 7px 8px 7px 15px;
+}

@@ -1,0 +1,39 @@
+/*
+   modified from borderless styles:
+   https://github.com/iamceege/tooltipster/blob/master/src/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.css
+*/
+
+.tooltip {
+  &:global(.tooltipster-grow) {
+    opacity: 0;
+    transform: scale(0.95);
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:global(.tooltipster-show) {
+      opacity: 1;
+      transform: none;
+    }
+
+    &:global(.tooltipster-dying) {
+      transition-property: opacity, transform;
+    }
+  }
+
+  :global(.tooltipster-box) {
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(45, 49, 56, 0.09);
+    background: $color-purple-dark;
+    color: #fff;
+    max-width: 350px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  :global(.tooltipster-content) {
+    font-size: 13px;
+    line-height: 16px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+}

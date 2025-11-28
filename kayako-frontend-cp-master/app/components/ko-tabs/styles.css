@@ -1,0 +1,30 @@
+.tabs {
+  border-bottom: 1px solid #D1D5D7;
+  display: flex;
+  justify-content: space-between;
+  height: 51px;
+}
+
+.list {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 1;
+
+  li {
+    list-style-type: none;
+    display: flex;
+    margin: 0 18px -1px 0;
+    overflow: hidden;
+
+    &:last-child {
+      margin-right: 0;
+      flex-shrink: 1;
+    }
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  margin-left: 9px;
+}

@@ -1,0 +1,9 @@
+{{#if uploads.length}}
+  <div local-class="{{if (gt uploads.length 10) "overflowed"}} file-upload">
+    <ul local-class="files">
+      {{#each uploads as |upload|}}
+        {{ko-text-editor/file-upload/upload-item upload=upload onCancel=onCancel}}
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

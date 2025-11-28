@@ -1,0 +1,40 @@
+{{#ko-info-bar/item
+class=(local-class "trigger")
+isEdited=extra.isEdited
+isKREEdited=extra.isKREEdited
+hasError=extra.isErrored
+isActive=select.isOpen
+isDisabled=select.disabled
+}}
+  <span local-class="title">{{extra.title}}</span>
+  {{#unless select.disabled}}
+    {{#if loading}}
+      <span local-class="loading"></span>
+    {{/if}}
+  {{/unless}}
+  <ul id="ember-power-select-multiple-options-{{select.uniqueId}}" class="ember-power-select-multiple-options">
+    {{#each select.selected as |opt index|}}
+      {{component selectedItemComponent index=index option=opt select=select searchField=searchField}}
+    {{/each}}
+    {{#if (and (not select.disabled) searchEnabled)}}
+      <input
+        type="search"
+        local-class="input"
+        tabindex="0"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        value={{select.searchText}}
+        aria-controls={{listboxId}}
+        placeholder={{if selected.length "" placeholder}}
+        disabled={{select.disabled}}
+        onmousedown={{action "keepOpened"}}
+        oninput={{action "onInput"}}
+        onkeydown={{action "onKeydown"}}
+        onblur={{action "handleBlur"}}
+      >
+    {{/if}}
+  </ul>
+  <span class="ember-power-select-status-icon"></span>
+{{/ko-info-bar/item}}

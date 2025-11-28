@@ -1,0 +1,73 @@
+:global(.liquid-container) {
+  overflow: visible;
+
+  :global(.liquid-child) {
+    overflow: visible;
+  }
+}
+
+:global(.liquid-container.liquid-animating) {
+  overflow: hidden;
+
+  :global(.liquid-child) {
+    overflow: hidden;
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  margin-left: 11px;
+  cursor: pointer;
+}
+
+.icon-padding {
+  margin: 0 5px 0 9px;
+}
+
+.proposition {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 3px;
+  margin-bottom: 9px;
+  padding: 14px 11px 9px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: $box-shadow1;
+}
+
+.definition-item {
+  padding: 6px 0;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+
+.definition-label {
+  display: flex;
+  align-items: center;
+}
+
+.label-text {
+  font-size: 15px;
+}
+
+.remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 2px 0 5px;
+  cursor: pointer;
+
+  &:hover path:first-of-type {
+    fill: $color-bad;
+  }
+}
+
+.add-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}

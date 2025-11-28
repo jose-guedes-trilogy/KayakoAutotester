@@ -1,0 +1,41 @@
+{
+  "center_title": "My Notifications",
+  "mark_as_read": "Mark as read",
+  "mark_all_as_read": "Mark all as read",
+  "marked_all_as_read": "Marked as read",
+  "load_more": "Load more",
+  "loading_more": "Loading...",
+  "no_notifications": "End of Notifications",
+  "yesterday": "Yesterday",
+  "preferences": {
+    "title": "Notifications",
+    "heading": "Keep up to date with conversations in real-time, wherever you are",
+    "desktop": "Desktop",
+    "desktop_description": "Get notifications through your browser when you're on your computer",
+    "mobile": "Mobile",
+    "mobile_description": "When you're away, Kayako notifies your mobile instead. Get Kayako for <a href=\"https://itunes.apple.com/us/app/kayako/id1163593165?mt=8\" target=\"_blank\" rel=\"noopener noreferrer\">iOS</a> and <a href=\"https://play.google.com/store/apps/details?id=com.kayako.android.k5\" target=\"_blank\" rel=\"noopener noreferrer\">Android</a>",
+    "email": "Email",
+    "email_description": "Receive email notifications about important conversations and updates",
+    "activities": "Activities",
+    "case_created": "A new conversation is created",
+    "case_assigned_to_agent": "A conversation is assigned to you",
+    "case_assigned_to_team": "A conversation is assigned to one of your teams",
+    "mentioned_in_conversation": "Someone mentions you in a note",
+    "sla_breached": "One of your assigned conversations breaches its SLA",
+    "reply_on_case": "Someone replies to one of your assigned conversations",
+    "save": "Save changes",
+    "success": "Your notification preferences have been updated",
+    "sound": {
+      "desktop_sound_alerts": "Play sound for desktop notifications",
+      "desktop_sound_alerts_realtime_only": "Play sound only when requester is online"
+    }
+  },
+  "text": {
+    "case_created": "<strong>{name}</strong> created <strong>{subject}</strong>",
+    "case_assigned_to_agent": "You were assigned to <strong>{name}</strong>'s conversation",
+    "case_assigned_to_team": "Your team <strong>{team}</strong> was assigned to <strong>{name}</strong>'s conversation",
+    "sla_breached": "SLA <strong>{name}</strong> breached on <strong>{subject}</strong>",
+    "reply_on_case": "<strong>{name}</strong> replied to <strong>{subject}</strong>",
+    "mentioned_in_conversation": "<strong>{name}</strong> mentioned you in a note on <strong>{subject}</strong>"
+  }
+}

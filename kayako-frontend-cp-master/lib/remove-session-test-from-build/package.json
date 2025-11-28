@@ -1,0 +1,6 @@
+{
+  "name": "remove-session-test-from-build",
+  "keywords": [
+    "ember-addon"
+  ]
+}

@@ -1,0 +1,10 @@
+.cell {
+  padding: 3px 4px;
+}
+
+.left {
+  padding: 3px 4px 3px 0;
+  vertical-align: top;
+  text-align: right;
+  color: #838D93;
+}

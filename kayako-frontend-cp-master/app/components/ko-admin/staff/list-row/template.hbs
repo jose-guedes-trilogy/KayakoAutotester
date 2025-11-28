@@ -1,0 +1,34 @@
+{{#list.row onClick=(action "viewUser" user) as |row|}}
+  {{#row.cell disabled=(not user.isEnabled)}}
+    {{#ko-user-avatar user=user size="submedium" as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator showTooltip=false}}
+    {{/ko-user-avatar}}
+    <span local-class="username">{{user.fullName}}</span>
+  {{/row.cell}}
+
+  {{#row.cell disabled=(not user.isEnabled)}}
+    {{user.role.title}}
+  {{/row.cell}}
+
+  {{#row.cell width="30%" disabled=(not user.isEnabled)}}
+    <span local-class="team-list">{{teamList}}</span>
+  {{/row.cell}}
+
+  {{#row.cell disabled=(not user.isEnabled)}}
+    <span class="u-mright">{{t "admin.staff.2fa"}}</span>
+    {{#if user.isMfaEnabled}}
+      {{#ko-tooltip side="left" title=(t "admin.staff.2fa_enabled") delay=150}}
+        {{ko-icon name="lock" color="#81C38D"}}
+      {{/ko-tooltip}}
+    {{else}}
+      {{#ko-tooltip side="left" title=(t "admin.staff.2fa_not_setup") delay=150}}
+        {{ko-icon name="unlock" color="#ED8E7D"}}
+      {{/ko-tooltip}}
+    {{/if}}
+  {{/row.cell}}
+
+  {{#row.actions}}
+    <a href={{href-to "session.agent.users.user" user.id}}>{{t "admin.staff.view_user"}}</a>
+  {{/row.actions}}
+{{/list.row}}

@@ -1,0 +1,59 @@
+{{#if href}}
+  <a
+    href={{href}}
+    onclick={{onClick}}
+    target={{target}}
+    rel={{rel}}
+    class="{{qa-cls qaClass}}"
+    local-class="
+      {{if (eq type "default") "default"}}
+      {{if (eq type "naked") "naked"}}
+      {{if (eq type "primary") "primary"}}
+      {{if (eq type "primary-with-options") "primary-with-options"}}
+      {{if (eq type "highlight") "highlight"}}
+      {{if (eq type "alert") "alert"}}
+      {{if (eq type "note-with-options") "primary-with-options note"}}
+      {{if (eq type "note") "primary note"}}
+      {{if (eq size "medium") "size--medium"}}
+      {{if full "full"}}
+      {{if disabled "disabled"}}
+    ">
+    {{yield}}
+  </a>
+{{else}}
+  <button
+    type={{if submit "submit" "button"}}
+    data-purpose={{purpose}}
+    onclick={{onClick}}
+    disabled={{disabled}}
+    class="{{qa-cls qaClass}}"
+    local-class="
+      {{if (eq type "default") "default"}}
+      {{if (eq type "naked") "naked"}}
+      {{if (eq type "primary") "primary"}}
+      {{if (eq type "primary-with-options") "primary-with-options"}}
+      {{if (eq type "highlight") "highlight"}}
+      {{if (eq type "alert") "alert"}}
+      {{if (eq type "note-with-options") "primary-with-options note"}}
+      {{if (eq type "note") "primary note"}}
+      {{if (eq size "medium") "size--medium"}}
+      {{if (eq size "wide") "size--wide"}}
+      {{if (eq align "center") "align--center"}}
+      {{if margin "has-margin"}}
+      {{if fixwidth "fixed-width"}}
+      {{if full "full"}}
+      {{if hasAnimation "has-animation"}}
+      {{if loading "is-loading"}}
+      {{if disabled "disabled"}}
+    ">
+    <span local-class="span">{{yield}}</span>
+    {{# if hasAnimation }}
+      <div local-class="loading">
+        <span local-class="loading__dot"></span>
+        <span local-class="loading__dot"></span>
+        <span local-class="loading__dot"></span>
+        <span local-class="loading__dot"></span>
+      </div>
+    {{/if}}
+  </button>
+{{/if}}

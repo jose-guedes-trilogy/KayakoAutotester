@@ -1,0 +1,384 @@
+.label {
+  margin-top: 18px;
+  margin-bottom: 2px;
+  display: block;
+}
+
+.localized-field {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.locale-input {
+  position: absolute;
+  left: 100%;
+  top: calc(50% - 10px);
+  min-width: 80px;
+  margin-left: 5px;
+}
+
+.background-mode {
+  display: inline-block;
+  width: 116px;
+  margin-right: 2px;
+  padding: 5px 8px 1px 8px;
+  border-radius: 3px;
+  background-color: $grey-1;
+
+  &.is-active {
+    background-color: #EFF8FA;
+  }
+}
+
+.color-palletes {
+  position: relative;
+  display: flex;
+  height: 120px;
+  margin-top: 15px;
+  margin-bottom: 24px;
+  transition: height 0.2s;
+  will-change: height;
+
+  &.show-colors {
+    height: 34px;
+  }
+
+  &__wrap {
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.3s, visibility 0.3s;
+
+    &:first-child {
+      opacity: 1;
+      visibility: visible;
+
+      .show-colors & {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    &:last-child {
+      opacity: 0;
+      visibility: hidden;
+
+      .show-colors & {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.reply-time-locale {
+
+  .radio-label-detail {
+    position: relative;
+    top: -4px;
+    margin-left: 20px;
+    margin-bottom: 4.5px;
+  }
+
+  .loader {
+    margin-left: 22px;
+    margin-bottom: 4px;
+  }
+}
+
+.pallete {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 34px;
+  width: 34px;
+  margin-bottom: 9px;
+  margin-right: 9px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &.is-active {
+    animation: pallete-press 0.4s ease;
+
+    &:after {
+      content: url('/images/apps/messenger/white-tick.svg');
+      position: absolute;
+      top: 6px;
+      left: 11px;
+      animation: scale-up 0.2s ease;
+    }
+  }
+}
+
+@keyframes pallete-press {
+  40% {
+    transform: scale(0.94);
+  }
+}
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.solid-color {
+  @each $solidColor in $solidColors {
+    &:nth-child(#{index($solidColors, $solidColor)}) {
+      background-color: $solidColor;
+    }
+  }
+}
+
+.gradient {
+  &:first-child {
+    background-image: linear-gradient(-192deg, #40364D 37%, #9B4779 100%);
+  }
+  &:nth-child(2) {
+    background-image: linear-gradient(22deg, #CE287E 0%, #FF3B30 100%);
+  }
+  &:nth-child(3) {
+    background-image: linear-gradient(22deg, #F34E8B 0%, #FFEA01 98%);
+  }
+  &:nth-child(4) {
+    background-image: linear-gradient(22deg, #FFCC00 0%, #53DB91 97%);
+  }
+  &:nth-child(5) {
+    background-image: linear-gradient(22deg, #23A975 0%, #BAD33B 96%);
+  }
+  &:nth-child(6) {
+    background-image: linear-gradient(22deg, #0DDFA9 0%, #5AC8FA 96%);
+  }
+  &:nth-child(7) {
+    background-image: linear-gradient(22deg, #581F7E 0%, #5195F8 96%);
+  }
+  &:nth-child(8) {
+    background-image: linear-gradient(-180deg, #62A8FD 0%, #9E80F3 100%);
+  }
+  &:nth-child(9) {
+    background-image: linear-gradient(-180deg, #77EFD8 0%, #45BAF2 100%);
+  }
+  &:nth-child(10) {
+    background-image: linear-gradient(-180deg, #F9BF66 0%, #F95C81 100%);
+  }
+  &:nth-child(11) {
+    background-image: linear-gradient(-180deg, #B6B7F8 0%, #F5ACCC 100%);
+  }
+  &:nth-child(12) {
+    background-image: linear-gradient(-180deg, #FFE35A 0%, #FFB064 100%);
+  }
+  &:nth-child(13) {
+    background-image: linear-gradient(-180deg, #F387BC 0%, #A26FED 100%);
+  }
+  &:nth-child(14) {
+    background-image: linear-gradient(-180deg, #E7EE9D 0%, #5BF2B9 100%);
+  }
+  &:nth-child(15) {
+    background-image: linear-gradient(0deg, #5F6BE4 0%, #73BDEB 100%);
+  }
+  &:nth-child(16) {
+    background-image: linear-gradient(-180deg, #FD9786 0%, #F567DC 100%);
+  }
+  &:nth-child(17) {
+    background-image: linear-gradient(0deg, #889CFF 0%, #9BE1D3 100%);
+  }
+  &:nth-child(18) {
+    background-image: linear-gradient(-180deg, #B7F2EB 0%, #8ADDEB 100%);
+  }
+  &:nth-child(19) {
+    background-image: linear-gradient(-180deg, #86CFEC 0%, #789AEC 100%);
+  }
+  &:nth-child(20) {
+    background-image: linear-gradient(-180deg, #E5EBA4 0%, #A7DA7C 100%);
+  }
+  &:nth-child(21) {
+    background-image: linear-gradient(-180deg, #A2ACF1 0%, #B482D3 100%);
+  }
+  &:nth-child(22) {
+    background-image: linear-gradient(0deg, #F25555 0%, #FB72AE 100%);
+  }
+}
+
+.patterns {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.pattern {
+  position: relative;
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  margin-right: 9px;
+  border-radius: 5px;
+  border: 1px solid $grey-3;
+  background-size: 90px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:nth-child(-n + 7) {
+    margin-bottom: 3px;
+  }
+
+  @for $i from 2 through 10 {
+    &:nth-of-type(#{$i}) {
+      background-image: url('//assets.kayako.com/messenger/pattern-#{$i - 1}--dark.svg');
+    }
+  }
+
+  &.is-active-pattern {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 2px #DFF1F6;
+  }
+}
+
+.color-input-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.color-input {
+  margin-top: -5px;
+  width: 100%;
+  padding: 8px 8px 8px 35px;
+  border-radius: 3px;
+  border: 1px solid $grey-3;
+  box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.06);
+  line-height: 18px;
+  text-transform: uppercase;
+  transition: border-color 0.1s, box-shadow 0.1s;
+
+  &:focus {
+    @extend %brand-focus;
+  }
+}
+
+.text--small {
+  font-size: 13px;
+}
+
+/* Override 'ember-spectrum-color-picker' plugin styles */
+:global(.sp-dd) {
+  display: none;
+}
+
+:global(.sp-replacer) {
+  background: none;
+}
+
+:global(.sp-container) {
+  background-color: #fff;
+  border-radius: 4px;
+  border-color: $grey-3;
+  transform-origin: top;
+  transform: scale(1) translate(50%, 0);
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+  :global(.sp-input) {
+    padding: 6px 8px;
+    border: 1px solid $grey-3;
+    box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.06);
+    font-family: 'Source Sans Pro K', sans-serif !important;
+    font-size: 15px !important;
+    line-height: 18px;
+
+    &:focus {
+      @extend %brand-focus;
+    }
+  }
+}
+
+:global(.sp-picker-container) {
+  width: 184px;
+  padding: 10px 6px 294px 10px;
+}
+
+:global(.sp-color),
+:global(.sp-hue),
+:global(.sp-clear) {
+  border: none;
+}
+
+:global(.sp-color),
+:global(.sp-val) {
+  border-radius: 5px;
+}
+
+:global(.sp-hue) {
+  left: 87%;
+  width: 18px;
+  border-radius: 10px;
+}
+
+:global(.sp-dragger),
+:global(.sp-slider) {
+  width: 12px;
+  height: 12px;
+  border: solid 2px #fff;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+:global(.sp-slider) {
+  left: 1px;
+  opacity: 1;
+}
+
+:global(.sp-hidden) {
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.75) translate(50%, -5px);
+}
+
+.color-selector--background {
+  position: relative;
+
+  :global(.sp-replacer) {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    border-color: $grey-3;
+    background: url('/images/apps/messenger/icon-dropper.svg') no-repeat center;
+  }
+
+  :global(.sp-preview) {
+    display: none;
+  }
+}
+
+.color-selector--primary {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 36px;
+
+  :global(.sp-replacer) {
+    padding: 7px;
+    border: none;
+  }
+
+  :global(.sp-preview) {
+    height: 22px;
+    width: 22px;
+    border: none;
+    border-radius: 3px;
+  }
+
+  :global(.sp-preview-inner) {
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.mtop--tiny {
+  margin-top: 8px;
+}
+
+.nudge-upward {
+  margin-top: -8px;
+}

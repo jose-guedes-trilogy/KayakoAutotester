@@ -1,0 +1,72 @@
+{{#ko-admin/page
+  title=(t "admin.apps.webhooks.title")
+as |section|}}
+
+  {{#if (eq section "buttons")}}
+    {{#ko-button href=(href-to "session.admin.apps.webhooks.new") type="primary"}}{{t 'admin.apps.webhooks.button.add'}}{{/ko-button}}
+  {{/if}}
+
+  {{#if (eq section "contents")}}
+    {{#ko-admin/forms/description}}
+      <p>{{t "admin.apps.webhooks.description"}}</p>
+      <p><strong>{{format-html-message "admin.apps.webhooks.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1170-webhooks?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=webhooks" "admin.apps.webhooks.description_link")}}</strong></p>
+      <p>{{t "admin.apps.webhooks.description3"}}</p>
+    {{/ko-admin/forms/description}}
+
+    {{#if (not webhooks.length)}}
+      {{ko-admin/empty image="webhooks"}}
+    {{/if}}
+
+    {{#if sortedEnabledWebhooks}}
+      {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+        <ul class={{qa-cls "qa-admin_webhooks--enabled"}}>
+          {{#each sortedEnabledWebhooks as |webhook index|}}
+            {{#list.row class=(qa-cls "qa-admin_row") onClick=(action edit webhook.id) as |row|}}
+              {{#row.cell}}
+                <div local-class="row">
+                  <div local-class="rowDetail">
+                    <p local-class="label" class="{{qa-cls "qa-admin_row_label"}}">{{webhook.label}}</p>
+                    <p local-class="description">{{webhook.description}}</p>
+                  </div>
+                </div>
+              {{/row.cell}}
+              {{#row.actions}}
+                {{#link-to "session.admin.apps.webhooks.edit" webhook.id}}{{t "generic.edit"}}{{/link-to}}
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "toggleStatus" webhook}}>{{t "generic.disable"}}</a>
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "delete" webhook}}>{{t "generic.delete"}}</a>
+              {{/row.actions}}
+            {{/list.row}}
+          {{/each}}
+        </ul>
+      {{/ko-simple-list}}
+    {{/if}}
+
+    {{#if sortedDisabledWebhooks}}
+      {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+        <ul class={{qa-cls "qa-admin_webhooks--disabled"}}>
+          {{#each sortedDisabledWebhooks as |webhook|}}
+            {{#list.row class=(qa-cls "qa-admin_row") onClick=(action edit webhook.id) as |row|}}
+              {{#row.cell disabled=true}}
+                <div local-class="row">
+                  <div local-class="rowDetail">
+                    <p local-class="label" class="{{qa-cls "qa-admin_row_label"}}">{{webhook.label}}</p>
+                    <p local-class="description">{{webhook.description}}</p>
+                  </div>
+                </div>
+              {{/row.cell}}
+              {{#row.actions}}
+                {{#link-to "session.admin.apps.webhooks.edit" webhook.id}}{{t "generic.edit"}}{{/link-to}}
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "toggleStatus" webhook}}>{{t "generic.enable"}}</a>
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "delete" webhook}}>{{t "generic.delete"}}</a>
+              {{/row.actions}}
+            {{/list.row}}
+          {{/each}}
+        </ul>
+      {{/ko-simple-list}}
+    {{/if}}
+  {{/if}}
+{{/ko-admin/page}}

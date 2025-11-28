@@ -1,0 +1,117 @@
+.table {
+  width: 100%;
+}
+
+.label {
+  @include truncate(35%);
+  width: 25%;
+  font-weight: 600;
+}
+
+.data {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.time {
+  line-height: 12px;
+  font-weight: 600;
+  display: flex;
+  margin-left: 8px;
+  margin-right: 8px;
+  color: $grey-7;
+
+  &.is-breached {
+    color: $color-bad;
+  }
+}
+
+.metric {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  border-radius: 3px;
+}
+
+.metric-good {
+  background-color: #4EAC5E;
+}
+
+.metric-bad {
+  background-color: #E86048;
+}
+
+.metric-active,
+.metric-paused {
+  background-color: #E0AF2A;
+}
+
+.progress {
+  height: 1px;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  background-color: rgba(209, 213, 215, 0.7);
+}
+
+.progress-bar {
+  height: 3px;
+  width: 0;
+  border-radius: 3px;
+  transform: translateY(-1px);
+  transition: width 0.2s;
+}
+
+.progress-bar--good {
+  width: 100%;
+  background-color: $color-online;
+}
+
+.progress-bar--bad {
+  width: 100%;
+  background-color: $color-bad;
+}
+
+.progress-bar--active {
+  width: 0;
+  position: relative;
+  background-color: $color-note-border;
+  overflow: hidden;
+  transform-origin: left;
+  animation: grow 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.8) 20%, transparent 100%);
+    background-size: 75px 3px;
+    background-position: -75px 0;
+    background-repeat: no-repeat;
+  }
+
+  &.shimmer:after {
+    animation: shimmer 0.8s ease forwards;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleX(0.1) translateY(-1px);
+  }
+  to {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: calc(100% + 75px) 0;
+  }
+}

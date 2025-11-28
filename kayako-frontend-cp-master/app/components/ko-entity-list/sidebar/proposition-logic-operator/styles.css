@@ -1,0 +1,39 @@
+.proposition-operator {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: -17px;
+  left: 112px;
+  margin-top: 3px;
+  margin-bottom: 9px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 56px;
+  padding: 0 13px;
+  border-radius: 13px;
+  font-size: 12px;
+  box-shadow: $box-shadow1;
+  transition: background-color 0.2s ease;
+}
+
+.green-pill {
+  composes: pill;
+  background: #DFF0E2;
+  border: 1px solid #A4CEAC;
+}
+
+.orange-pill {
+  composes: pill;
+  background: #F8EED0;
+  border: 1px solid #EBD189;
+}
+
+.chevron {
+  padding-left: 3px;
+}

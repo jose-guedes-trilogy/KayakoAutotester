@@ -1,0 +1,61 @@
+{{#ko-admin/page
+  title=(t "admin.twitter.headings.index")
+  as |name|
+}}
+  {{#if (eq name "buttons")}}
+    {{ko-form/buttons
+      submitLabel=(t "admin.twitter.buttons.create_account")
+      onSubmit=(perform redirectToTwitterAuthenticationEndpoint)
+      isSubmitting=redirectToTwitterAuthenticationEndpoint.isRunning
+    }}
+  {{/if}}
+{{/ko-admin/page}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.twitter.description"}}</p>
+  <p><strong>{{format-html-message "admin.twitter.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1148-setting-up-twitter-support?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=twitter" "admin.twitter.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not accounts.length)}}
+  {{ko-admin/empty image="twitter"}}
+{{/if}}
+
+{{#if enabledAccounts.length}}
+  {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+    {{#each enabledAccounts as |account|}}
+      {{#list.row onClick=(action "editAccount" account) as |row|}}
+        {{#row.cell}}
+          <div>
+            <span local-class="title">@{{account.screenName}}</span>
+            {{#if account.brand.name}} <span local-class="caption"> ({{account.brand.name}}) </span>{{/if}}
+            {{#unless (eq account.status "AVAILABLE")}}<span local-class="error"> ({{t "admin.twitter.connection_lost"}}) </span>{{/unless}}
+          </div>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{perform redirectToTwitterAuthenticationForReauthorize account}}>{{t "admin.twitter.reconnect"}}</a> |
+          {{#link-to "session.admin.channels.twitter.edit" account.id}}{{t "generic.edit"}}{{/link-to}} |
+          <a onclick={{action "toggleEnabledProperty" account}}>{{t "generic.disable"}}</a> |
+          <a class="js-admin_channels_twitter__delete-button" onclick={{action "delete" account}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledAccounts.length}}
+  {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+    {{#each disabledAccounts as |account|}}
+      {{#list.row as |row|}}
+        {{#row.cell disabled=true}}
+          <span><span local-class="title">@{{account.screenName}}</span> <span local-class="caption">{{account.brand.title}}</span></span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{perform redirectToTwitterAuthenticationForReauthorize account}}>{{t "admin.twitter.reconnect"}}</a> |
+          {{#link-to "session.admin.channels.twitter.edit" account.id}}{{t "generic.edit"}}{{/link-to}} |
+          <a onclick={{action "toggleEnabledProperty" account}}>{{t "generic.enable"}}</a> |
+          <a class="js-admin_channels_twitter__delete-button" onclick={{action "delete" account}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

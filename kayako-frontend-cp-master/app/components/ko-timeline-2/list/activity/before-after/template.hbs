@@ -1,0 +1,42 @@
+{{#if action.oldValue}}
+  <span local-class="property-old-value">
+    {{#if (or
+      (eq action.field "assigneeagentid")
+      (eq action.field "requesterid")
+    )}}
+      <div local-class="property-avatar">
+        {{#ko-user-avatar size="micro" as |avatar|}}
+          {{avatar.image url=action.oldObject.image}}
+        {{/ko-user-avatar}}
+      </div>
+    {{/if}}
+
+    {{#if (eq action.field "casestatusid")}}
+      {{ko-status-pill
+        label=action.oldValue
+        type=(ko-contextual-helper caseStatusType this action.oldObject.original.id)
+      }}
+    {{else}}
+      {{action.oldValue~}}
+    {{/if}}
+  </span>
+{{else}}
+  <span local-class="property-old-value">
+    {{#if (or (eq action.field "assigneeagentid") (eq action.field "assigneeagentid"))}}
+      {{t "timeline.assignee_empty_value"}}
+    {{else if (eq action.field "tags")}}
+      {{t "timeline.tags_empty_value"}}
+    {{else}}
+      {{t "timeline.property_empty_value"}}
+    {{/if}}
+  </span>
+{{/if}}
+
+<span local-class="arrow">
+  {{ko-icon name="arrow" color="#838d94"}}
+</span>
+
+{{ko-timeline-2/list/activity/after
+  action=action
+  statusId=statusId
+}}

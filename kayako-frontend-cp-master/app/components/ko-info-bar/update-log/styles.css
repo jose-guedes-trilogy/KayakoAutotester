@@ -1,0 +1,48 @@
+.container {
+  padding: 9px 22px;
+  border-bottom: 1px solid #D1D5D7;
+}
+
+.box {
+  width: 8px;
+  background-color: $color-kre-edited;
+  height: 8px;
+  margin-top: 5px;
+}
+
+.close {
+  cursor: pointer;
+  width: 16px;
+}
+
+.log-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.log-item {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 9px;
+}
+
+.name {
+  max-width: 95%;
+  padding-left: 4px;
+
+  .tooltipstered {
+    @include truncate(100%);
+    color: $grey-8;
+  }
+}
+
+.detail {
+  padding-left: 4.5px;
+  color: #838D94;
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}

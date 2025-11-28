@@ -1,0 +1,54 @@
+.automation-action {
+  position: relative;
+  padding: 15px 15px 15px 40px;
+  margin-bottom: 9px;
+  background-color: $grey-1;
+  border-radius: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
+}
+
+.small-slot {
+  width: calc((100% - 100px) / 3);
+  padding-left: 10px
+}
+.big-slot {
+  width: calc(100% - 120px);
+  padding-left: 10px
+}
+
+.remove-action-btn {
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+
+    & svg path {
+      fill: #f00;
+    }
+  }
+}
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

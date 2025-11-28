@@ -1,0 +1,23 @@
+<div local-class="container" class="{{qa-cls (concat "qa-send-and-status-" selected.label)}}">
+  {{#if prefix}}
+    <div local-class="prefix">
+      {{prefix}}
+    </div>
+  {{/if}}
+  {{#if selected.statusType}}
+    <div local-class="swatch">
+      {{ko-status-swatch
+        type=selected.statusType
+        hasBorder=swatchHasBorder
+      }}
+    </div>
+  {{/if}}
+
+  <div local-class="label">
+    {{#if highlight}}
+      {{ko-embolden selected.label highlight}}
+    {{else}}
+      {{selected.label}}
+    {{/if}}
+  </div>
+</div>

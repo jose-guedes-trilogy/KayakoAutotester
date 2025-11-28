@@ -1,0 +1,28 @@
+.root {
+  color: $grey-7;
+  margin: 0 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.active {
+  color: $grey-8;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: $color-note-border;
+    transition: background-color 0.15s;
+  }
+
+  &.case-mode:after {
+    background-color: $primary-blue;
+  }
+}

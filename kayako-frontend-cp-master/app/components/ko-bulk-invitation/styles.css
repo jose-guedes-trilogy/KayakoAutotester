@@ -1,0 +1,45 @@
+.fieldLabel {
+  font-weight: 600;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 9px;
+
+  &:hover {
+    & .actions {
+      visibility: visible;
+    }
+  }
+}
+
+.layout {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  display: flex;
+  margin-left: -10px;
+  margin-right: 16px;
+}
+
+.item {
+  width: calc((100% - 10px) / 4);
+  padding-left: 9px;
+}
+
+.actions {
+  display: flex;
+  visibility: hidden;
+  align-items: center;
+}
+
+.addNew {
+  margin-top: 13.5px;
+  color: $color-link;
+}
+
+.icon {
+  display: inline-block;
+  margin-left: 4px;
+  vertical-align: middle;
+}

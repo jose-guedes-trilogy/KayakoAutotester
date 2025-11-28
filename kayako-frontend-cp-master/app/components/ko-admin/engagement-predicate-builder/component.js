@@ -1,0 +1,25 @@
+import Component from '@ember/component';
+
+export default Component.extend({
+  tagName: '',
+
+  // Attributes
+
+  definitions: [],
+  collections: [],
+  onCollectionAddition: null,
+  onCollectionRemoval: null,
+  onAdditionOfPropositionToCollection: null,
+  onPropositionDeletion: null,
+  onPropositionChange: null,
+
+  // Actions
+
+  actions: {
+    onPropositionChange(collection, proposition) {
+      if (this.get('onPropositionChange')) {
+        return this.get('onPropositionChange')(collection, proposition);
+      }
+    }
+  }
+});

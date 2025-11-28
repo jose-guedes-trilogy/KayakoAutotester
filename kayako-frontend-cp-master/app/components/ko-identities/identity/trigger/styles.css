@@ -1,0 +1,25 @@
+.name {
+  margin: 0 5px 0 8px;
+  flex-shrink: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+
+  &:first-child {
+    margin: 0 5px 0 24px;
+  }
+}
+
+.chevron {
+  visibility: hidden;
+  transition: transform 0.1s;
+}
+
+:global(.ember-power-select-trigger):hover .chevron {
+  visibility: visible;
+}
+
+:global(.ember-basic-dropdown-trigger)[aria-expanded="true"] .chevron {
+  visibility: visible;
+  transform: rotate(180deg);
+}

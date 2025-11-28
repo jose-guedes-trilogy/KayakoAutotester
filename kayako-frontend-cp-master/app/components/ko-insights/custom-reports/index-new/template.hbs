@@ -1,0 +1,40 @@
+{{ko-admin/page
+  title=(t "insights.custom_reports.index.title")
+  buttonText=(t "insights.custom_reports.reports.new_report")
+  onSave=onAddReport
+}}
+
+{{ko-admin/forms/description
+  description="insights.custom_reports.index.description"
+  linkText="insights.custom_reports.index.description_link"
+  link="https://support.kayako.com/article/1282?utm_source=app&utm_campaign=in-product-help&utm_medium=agentarea&utm_content=customreports"
+}}
+
+{{#if reports}}
+  {{#ko-simple-list as |list|}}
+    <ul>
+      {{#each (sort-by 'updatedAt:desc' reports) as |report|}}
+        {{#list.row onClick=(action onEditReport report) as |row|}}
+          {{#row.cell}}
+            {{ko-insights/custom-reports/index-new/report report=report}}
+          {{/row.cell}}
+          {{#row.actions}}
+            <a onclick={{action onEditReport report}}>{{t "generic.edit"}}</a>
+
+            {{#if (contains report.status (array "NOT_STARTED" "COMPLETED" "FAILED" "EXPIRED"))}}
+              <span local-class="separator">|</span>
+              <a onclick={{action "generate" report}}>{{t "insights.custom_reports.report_new.regenerate"}}</a>
+            {{/if}}
+
+            {{#if (eq report.status "COMPLETED")}}
+              <span local-class="separator">|</span>
+              <a onclick={{action "download" report}}>{{t "insights.custom_reports.report_new.download"}}</a>
+            {{/if}}
+            <span local-class="separator">|</span>
+            <a onclick={{action "delete" report}}>{{t "generic.delete"}}</a>
+          {{/row.actions}}
+        {{/list.row}}
+      {{/each}}
+    </ul>
+  {{/ko-simple-list}}
+{{/if}}

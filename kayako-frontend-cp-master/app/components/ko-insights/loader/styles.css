@@ -1,0 +1,15 @@
+.container {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-overlay;
+  opacity: 0.9;
+  background-color: #fff;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}

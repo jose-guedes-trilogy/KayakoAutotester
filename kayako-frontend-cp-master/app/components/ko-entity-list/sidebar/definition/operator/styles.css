@@ -1,0 +1,11 @@
+.operator-list {
+  list-style-type: none;
+}
+
+.operator {
+  margin-bottom: 9px;
+}
+
+.input {
+  padding: 0 10px 0 18px;
+}

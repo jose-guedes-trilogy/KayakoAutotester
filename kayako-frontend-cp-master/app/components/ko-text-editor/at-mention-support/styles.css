@@ -1,0 +1,116 @@
+:global(.at-mentions-supported .ko-mention) {
+  background-color: #cde7f6;
+  border-radius: 3px;
+  padding: 2px 5px;
+  user-select: auto;
+  color: darken($primary-blue, 30%);
+}
+
+:global(.at-mentions-supported .ko-mention-me) {
+  background-color: #fccec8;
+}
+
+:global(.atwho-view) {
+  border-radius: 5px;
+  overflow: hidden;
+  position:absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  margin-top: 18px;
+  background: #FFF;
+  color: $grey-8;
+  border: 1px solid $grey-3;
+  box-shadow: $box-shadow1;
+  min-width: 120px;
+  z-index: 11110;
+
+  :global(.atwho-view-ul) {
+    padding: 0 0 5px;
+    list-style:none;
+    margin:auto;
+    max-height: 200px;
+    overflow-y: auto;
+
+    :global(.cur) {
+      background: linear-gradient(-180deg, #49AFCD 4%, #29A0C2 96%) !important;
+    }
+  }
+}
+
+:global(.mentions-list-item) {
+  display: flex;
+  padding: 6px 9px;
+  cursor: pointer;
+}
+
+:global(.mentions-header) {
+  padding: 3px 9px;
+  background: $grey-1;
+  border-bottom: 1px solid $grey-2;
+  font-size: 12px;
+}
+
+:global(.mentions-header-contents) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $grey-6;
+}
+
+:global(.mentions-avatar-wrapper) {
+  align-items: center;
+  margin-right: 9px;
+}
+
+:global(.mentions-user-data) {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.mentions-name-wrapper) {
+  display: flex;
+  flex-direction: row;
+}
+
+:global(.mentions-full-name) {
+  font-weight: 600;
+  color: $grey-8;
+}
+
+:global(.mentions-primary-email) {
+  color: $grey-6;
+}
+
+:global(.cur .mentions-full-name), :global(.cur .mentions-primary-email) {
+  color: #FFF;
+}
+
+:global(.mentions-avatar) {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+}
+
+:global(.mentions-you-wrapper) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid $color-orange;
+  box-shadow: $box-shadow1;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 17px;
+}
+
+:global(.mentions-you-text) {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: $color-orange;
+  text-transform: uppercase;
+  padding: 0 3px 0 4px;
+  font-size: 11px;
+  line-height: 1;
+}

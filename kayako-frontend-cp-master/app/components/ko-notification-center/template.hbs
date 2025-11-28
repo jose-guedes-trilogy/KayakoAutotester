@@ -1,0 +1,66 @@
+<div local-class="wrapper">
+  {{#basic-dropdown onClose=(action "removePaginatedNotifications") horizontalPosition="right" verticalPosition="below" as |dropdown|}}
+    {{#dropdown.trigger}}
+      <div class="{{qa-cls "qa-notification-center--trigger"}}" local-class="bell {{if dropdown.isOpen "is-active"}}" onclick={{perform markAllAsSeen}}>
+        {{inline-svg "notification-center/bell"}}
+        {{#if hasNewNotification}}
+          <span local-class="unread-mark"></span>
+        {{/if}}
+      </div>
+    {{/dropdown.trigger}}
+
+    {{#dropdown.content}}
+      <div local-class="content">
+        <div local-class="header">
+          <h3 local-class="title">{{t "notifications.center_title"}}</h3>
+
+          <span local-class="read-all-action {{if markAllAsRead.isRunning "activated"}}" onclick={{perform markAllAsRead}} role="button">
+            {{#if markAllAsRead.isRunning}}
+              {{t "notifications.marked_all_as_read"}}
+            {{else}}
+              {{t "notifications.mark_all_as_read"}}
+            {{/if}}
+          </span>
+
+          <span local-class="preferences-icon" onclick={{action "showPreferences"}} role="button">
+            {{inline-svg "gear"}}
+          </span>
+        </div>
+
+        <div local-class="list">
+          {{#if getNotifications.isRunning}}
+            <div local-class="loader {{if getNotifications.isRunning "is-active"}}">
+              {{ko-loader}}
+            </div>
+          {{/if}}
+
+          {{ko-notification-center/group notificationsList=notifications close=(action "closeDropdown" dropdown)}}
+
+          {{#if hasMore}}
+            <div local-class="load-more" onclick={{perform getNotifications false}}>
+              {{#if getNotifications.isRunning}}
+                {{t "notifications.loading_more"}}
+              {{else}}
+                {{t "notifications.load_more"}}
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+
+      </div>
+    {{/dropdown.content}}
+  {{/basic-dropdown}}
+
+  {{#if showPreferencesModal}}
+    {{#if (variation "ops-refactor-notification-preferences-data-retrieval")}}
+      {{ko-notification-center/preferences-new onClose=(action "closePreferecesModal")}}
+    {{else}}
+      {{ko-notification-center/preferences onClose=(action "closePreferecesModal")}}
+    {{/if}}
+  {{/if}}
+</div>
+
+{{kre-channel
+  name=notificationChannel
+  events=(hash NEW=(action "refreshNotifications"))
+}}

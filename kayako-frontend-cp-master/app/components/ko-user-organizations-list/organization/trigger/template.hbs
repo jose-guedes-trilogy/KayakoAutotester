@@ -1,0 +1,18 @@
+{{! we're intentionally passing org=null to render the default org logo }}
+
+{{#if (eq extra.index 0)}}
+  {{ko-org-logo org=null size=14 local-class="org-logo"}}
+{{/if}}
+
+<div local-class="name {{if extra.userOrg.isPrimary 'primary-name'}}" title={{extra.organization.name}}>
+  {{extra.organization.name}}
+  {{#if extra.userOrg.isPrimary}}
+    <img src="/images/inline-icons/tick--green.svg" style="margin-left: 5px; width: 12px; height: 9px;">
+  {{/if}}
+</div>
+
+{{#if extra.canUpdateUser}}
+  <div local-class="chevron">
+    {{ko-icon name="chevronDownLarge" color="#666666"}}
+  </div>
+{{/if}}

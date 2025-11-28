@@ -24,7 +24,12 @@ steps:
     selectorKey: search.resultItem
   - type: click
     selectorKey: search.resultItem
+  - type: wait-loadstate
+    state: networkidle
+    optional: true
   - type: expect-visible
     selectorKey: conversation.subjectHeading
+  - type: wait
+    value: "5000"
 
 

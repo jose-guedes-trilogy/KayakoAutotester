@@ -1,0 +1,17 @@
+.container {
+  margin-top: -9px;
+  border-bottom: 1px solid #e8eaed;
+  padding-bottom: 12px;
+  background: #FFFFFF;
+}
+
+.list {
+  list-style: none;
+}
+
+.no-organizations {
+  color: #747e8d;
+  font-size: 13px;
+  padding: 8px 12px;
+  font-style: italic;
+}

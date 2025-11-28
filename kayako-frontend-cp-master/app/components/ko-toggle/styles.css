@@ -1,0 +1,68 @@
+@value toggle-border-radius: 31px;
+
+.toggle {
+  display: flex;
+  align-items: center;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 66px;
+  height: 30px;
+  background: #BEC4C7;
+  box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.09);
+  border-radius: toggle-border-radius;
+  transition: background 300ms;
+  cursor: pointer;
+
+  &:focus {
+    @extend %brand-focus;
+  }
+}
+
+.container--activated {
+  background: $color-online;
+}
+
+.container--micro {
+  width: 35px;
+  height: 18px;
+}
+
+.slider {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.24), 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  border-radius: toggle-border-radius;
+  transition: transform 0.3s;
+}
+
+.slider--activated {
+  transform: translateX(36px);
+}
+
+.slider--micro {
+  width: 12px;
+  height: 12px;
+}
+
+.slider--activated.slider--micro {
+  margin-left: 20px;
+}
+
+.label {
+  font-size: 12px;
+  color: $grey-6;
+  margin-left: 9px;
+}
+
+.label--micro {
+  margin-left: 4.5px;
+}

@@ -1,0 +1,14 @@
+.steps-description {
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: $grey-8;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.steps-heading {
+  font-weight: 200;
+  font-size: 30px;
+  color: $grey-8;
+  margin-bottom: 20px;
+}

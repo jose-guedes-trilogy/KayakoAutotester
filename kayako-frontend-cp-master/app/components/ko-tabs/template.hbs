@@ -1,0 +1,19 @@
+<div local-class="tabs">
+  <ul local-class="list">
+    {{#if tabs}}
+      {{#each tabs as |tab|}}
+        {{#ko-tabs/tab
+          routeName=tab.routeName
+          dynamicSegments=tab.dynamicSegments
+        }}
+          {{tab.label}}
+        {{/ko-tabs/tab}}
+      {{/each}}
+    {{else}}
+      {{yield (hash isTabs=true)}}
+    {{/if}}
+  </ul>
+  <div local-class="right">
+    {{yield (hash isRight=true)}}
+  </div>
+</div>

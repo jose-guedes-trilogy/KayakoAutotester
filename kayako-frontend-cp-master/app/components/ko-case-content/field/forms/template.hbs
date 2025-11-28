@@ -1,0 +1,15 @@
+{{#if forms.length}}
+  {{ko-info-bar/field/select
+    title=(t "cases.form-select")
+    value=selectedForm
+    options=forms
+    onValueChange=attrs.onFormSelected
+    labelPath="title"
+    isEdited=isEdited
+    isKREEdited=isKREEdited
+    isErrored=isErrored
+    isDisabled=isDisabled
+    hasEmptyOption=false
+    showBottomArrow=showBottomArrow
+  }}
+{{/if}}

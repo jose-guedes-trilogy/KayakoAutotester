@@ -1,0 +1,9 @@
+<td
+  local-class="container {{if selectable "selectable"}} {{if compact "compact"}} {{if dasherize "dasherize"}}"
+  style={{cellStyle}}
+  onclick={{action "handleClick"}}
+>
+  <div local-class="ellipsis">
+    {{yield}}
+  </div>
+</td>

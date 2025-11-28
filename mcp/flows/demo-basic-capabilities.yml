@@ -1,0 +1,30 @@
+name: demo-basic-capabilities
+description: Demonstrate basic reusable actions (reply text, tags, status)
+steps:
+  - type: goto-conversation-by-env-id
+  - type: wait-loadstate
+    state: networkidle
+  # Fallback: open inbox and click a conversation if no ID provided
+  - type: goto
+    url: env.KAYAKO_CONVERSATIONS_URL
+  - type: expect-visible
+    selectorKey: inbox.conversationSubject
+  - type: click
+    selectorKey: inbox.conversationSubject
+  - type: wait-loadstate
+    state: networkidle
+  - type: expect-visible
+    selectorKey: composer.editor
+  - type: switch-to-reply
+  - type: insert-reply-text
+    value: "[AUTOTEST] Demo reply text"
+  - type: add-tags
+    values:
+      - demo
+      - automation
+  - type: set-status
+    value: "Pending"
+  - type: wait
+    value: "5000"
+
+

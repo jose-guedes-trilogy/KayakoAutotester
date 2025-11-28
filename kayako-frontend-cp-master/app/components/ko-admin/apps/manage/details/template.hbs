@@ -1,0 +1,41 @@
+{{#ko-admin/page title=(concat (t "admin.apps.manage.title") " / " app.name) as |section|}}
+
+  {{#if (eq section "buttons")}}
+    <div local-class="buttons">
+      {{#ko-button type="naked" href=(href-to "session.admin.apps.manage.index")}}
+        {{t "generic.back"}}
+      {{/ko-button}}
+
+      {{#if isInstalled}}
+        {{#ko-button type="primary" href=(href-to "session.admin.apps.manage.edit" installedApp.id)}}
+          {{t "admin.apps.manage.actions.configure"}}
+        {{/ko-button}}
+
+        {{#ko-button type="alert" onClick=(action (perform uninstall))}}
+          {{t "admin.apps.manage.actions.uninstall"}}
+        {{/ko-button}}
+      {{else}}
+        {{#ko-button type="primary" onClick=(action (perform install))}}
+          {{t "admin.apps.manage.actions.install"}}
+        {{/ko-button}}
+      {{/if}}
+    </div>
+  {{/if}}
+
+
+  {{#if (eq section "contents")}}
+    <div local-class="app">
+      <div local-class="sidebar">
+        <div local-class="image">
+        </div>
+      </div>
+
+      <div local-class="main">
+        <div local-class="description">
+          {{app.description}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+{{/ko-admin/page}}

@@ -1,0 +1,19 @@
+.group {
+  padding: 18px 0 27px;
+  border-bottom: 1px solid $grey-2;
+}
+
+.group--with-legend {
+  display: flex;
+}
+
+.legend {
+  @include font-size-with-line-height(16px);
+  color: #2D3138;
+  font-weight: 400;
+  width: 25%;
+}
+
+.contents {
+  width: 75%;
+}

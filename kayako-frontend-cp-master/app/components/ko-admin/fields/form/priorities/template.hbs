@@ -1,0 +1,48 @@
+{{#ko-admin/forms/group}}
+  <legend local-class="legend">{{t 'admin.casefields.edit.heading.priorities'}}</legend>
+
+  {{#ko-form/field/help}}
+    {{t 'admin.casefields.edit.label.priorities'}}
+  {{/ko-form/field/help}}
+
+  {{#ko-simple-list as |list|}}
+    {{#ko-reorderable-list reorderAvailable=(and (not editedPriority) isPlanEnabled) onReorder=(action "reorderList") items=sortedPriorities as |priority|}}
+      {{#list.row onClick=(if (not originalPriority) (perform startEditing priority)) as |row|}}
+        {{#if (eq priority originalPriority)}}
+          {{#row.cell}}
+            {{ko-input disabled=priority.isSaving qaClass="qa-custom-priority-label-input" autofocus=true value=editedPriority.label onInput=(action (mut editedPriority.label) value="target.value")}}
+          {{/row.cell}}
+          {{#row.cell}}
+            <div local-class="buttons">
+              {{#if priority.isSaving}}
+                <div local-class="loader">{{ko-loader}}</div>
+              {{else}}
+                {{#ko-button type="naked" qaClass="qa-custom-priority-cancel" onClick=(perform cancelEditing)}}{{t "generic.cancel"}}{{/ko-button}}
+              {{/if}}
+              {{#ko-button type="primary" disabled=priority.isSaving qaClass="qa-custom-priority-save" onClick=(perform savePriority)}}{{t "generic.save"}}{{/ko-button}}
+            </div>
+          {{/row.cell}}
+        {{else}}
+          {{#row.cell disabled=priority.isSaving}}
+            <span local-class="label" class="qa-custom-priority-label">{{priority.label}}</span>
+          {{/row.cell}}
+          {{#row.actions loading=priority.isSaving}}
+            {{#if (and isPlanEnabled (not editedPriority))}}
+              <a onclick={{perform startEditing priority}} class={{qa-cls "qa-custom-priority-edit"}}>{{t "generic.edit"}}</a>
+              | <a onclick={{action "removePriority" priority}} class={{qa-cls "qa-custom-priority-delete"}}>{{t "generic.delete"}}</a>
+            {{/if}}
+          {{/row.actions}}
+        {{/if}}
+      {{/list.row}}
+    {{/ko-reorderable-list}}
+  {{/ko-simple-list}}
+
+
+  {{#if isPlanEnabled}}
+    <div local-class="add-priority">
+      {{#ko-button disabled=(if editedPriority true false) qaClass="qa-priorities__add-priority-message" onClick=(perform addPriority)}}
+        {{t "admin.casefields.edit.add_new_priority"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-admin/forms/group}}

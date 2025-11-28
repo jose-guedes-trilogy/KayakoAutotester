@@ -1,0 +1,12 @@
+{{#power-select
+  options=options
+  disabled=disabled
+  onchange=(action "selectItem")
+  triggerClass=(join-classes (local-class "trigger") (qa-cls qaClass))
+  triggerComponent="ko-identities/create/trigger"
+  dropdownClass=(local-class "dropdown")
+  searchEnabled=false
+  as |option|
+}}
+  {{option.label}}
+{{/power-select}}

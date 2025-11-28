@@ -1,0 +1,4 @@
+.otp-label {
+  /* To adjust OTP field without changing other elements' style */
+  margin-top: -10px;
+}

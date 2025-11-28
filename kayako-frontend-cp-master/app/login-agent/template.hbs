@@ -1,0 +1,141 @@
+{{page-title (t "login.title")}}
+
+<div local-class=login>
+  <aside local-class="aside">
+    <div local-class="aside__logo">
+      <img src="/images/brand/kayako-logo.svg" width="23" height="24">
+    </div>
+    <div local-class="aside__promotion">
+      <div local-class="promotion__wrapper">
+        <label local-class="promotion__label">{{t "login.promotionlabel"}}</label>
+        <a local-class="promotion__link" href="https://kayako.com/resources/ebooks/communicate-product-feedback/" target="_blank" rel="noopener noreferrer">
+          <h4 local-class="promotion__title">{{t "login.promotiontitle"}}</h4>
+          <span local-class="promotion__description">{{t "login.promotiondescription"}}</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <section local-class="section">
+    <div local-class="box {{if googleLoginLink "box-extended"}}">
+      <div class="{{qa-cls "ko-login__flipper"}}" local-class="container {{if flipAvatar "flipped"}}">
+        <div local-class="front">
+          <div local-class="image" style={{loginFrontImageStyle}}></div>
+        </div>
+        <div local-class="back">
+          <div local-class="image" style={{loginBackImageStyle}}></div>
+        </div>
+      </div>
+
+      <div>
+        <form local-class="reset-form {{if isLogin "is-login"}}" onsubmit={{action "sendForgotPasswordEmail"}}>
+          <h3 local-class="header header--reset">{{t "login.resetpassword"}}</h3>
+          <h6 local-class="sub-header">{{t "login.resetinstruction"}}</h6>
+          {{#if isForgotPasswordEmailSent}}
+            <div local-class="form-wrapper">
+              <h6 local-class="message--good">{{forgotPasswordMessage}}</h6>
+            </div>
+          {{/if}}
+
+          {{#if hasErrorMessages}}
+            <h6 local-class="message--bad" class="{{qa-cls "ko-login__error"}}">
+              {{#each errorMessages as |message|}}
+                {{message}}
+              {{/each}}
+            </h6>
+          {{/if}}
+
+          {{#if (not isForgotPasswordEmailSent)}}
+            <div local-class="form-wrapper">
+              {{ko-input type="email" size="full"
+                placeholder=(t "login.email")
+                value=model.email
+                onInput=(action (mut model.email) value="target.value")
+                disabled=isLoading
+              }}
+            </div>
+
+            <div local-class="form-wrapper">
+              <div local-class="button">
+                {{#ko-button submit=true type="primary" full=true size="medium" disabled=resetButtonDisabled}}
+                  {{#unless isLoading}}{{t "login.resetbuttontext"}}{{/unless}}
+                {{/ko-button}}
+                <div local-class="loading {{if isLoading "is-loading"}}">
+                  <span local-class="loading__dot"></span>
+                  <span local-class="loading__dot"></span>
+                  <span local-class="loading__dot"></span>
+                  <span local-class="loading__dot"></span>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+
+          <div local-class="form-wrapper actions">
+            <a onclick={{action "gotoLogin"}}>{{t "login.back"}}</a>
+          </div>
+        </form>
+        <form local-class="login-form {{if isError "error"}} {{if isLogin "is-login"}}" onsubmit={{action "login"}}>
+          <h3 local-class="header">{{t "login.welcome"}}</h3>
+
+          {{#if hasErrorMessages}}
+            <h6 local-class="message--bad" class="{{qa-cls "qa-login__message"}}">
+              {{#each errorMessages as |message|}}
+                {{message}}
+              {{/each}}
+            </h6>
+          {{/if}}
+
+          <div local-class="form-content {{if isContentDown "form-content-down"}}">
+            <div local-class="fields-container-top">
+              {{#if topFormSet}}
+                {{component topFormSet model=model isLoading=isLoading otp=otp newPassword1=newPassword1 newPassword2=newPassword2}}
+              {{/if}}
+            </div>
+            <div local-class="fields-container-bottom">
+              {{#if bottomFormSet}}
+                {{component bottomFormSet model=model isLoading=isLoading otp=otp newPassword1=newPassword1 newPassword2=newPassword2}}
+              {{/if}}
+            </div>
+          </div>
+
+          <div local-class="button">
+            {{#ko-button submit=true type="primary" full=true qaClass="ko-login__submit" size="medium" disabled=loginButtonDisabled}}
+              {{#unless isLoading}}{{actionButtonText}}{{/unless}}
+            {{/ko-button}}
+            <div local-class="loading {{if isLoading "is-loading"}}">
+              <span local-class="loading__dot"></span>
+              <span local-class="loading__dot"></span>
+              <span local-class="loading__dot"></span>
+              <span local-class="loading__dot"></span>
+            </div>
+          </div>
+
+          {{#if (not (eq currentState "login.resetPassword.input"))}}
+            <div local-class="login-actions">
+              {{#if (variation "release-remember-me")}}
+                <span>
+                  {{ko-checkbox label=(t "login.remember_me") checked=rememberMe qaClass="qa-remember-me-tick"}}
+                </span>
+              {{/if}}
+              <div local-class="actions">
+                <a onclick={{action "gotoForgotPassword"}}>{{t "login.forgot"}}</a>
+              </div>
+            </div>
+          {{/if}}
+
+          {{#if googleLoginLink}}
+            <div local-class="divider">
+              <hr local-class="divider-rule">
+              <span local-class="divider-text">{{t "login.divider_text"}}</span>
+            </div>
+
+            <button local-class="google-signin" class="{{qa-cls "qa-login__google"}}" onClick={{action "redirectToGoogle"}}>
+              {{inline-svg "google" local-class="google-icon"}}
+              {{t "login.sign_in_with_google"}}
+            </button>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,34 @@
+{{#liquid-if viewingUsers}}
+  <div local-class="container">
+    <div>
+      <span local-class="header">{{t "cases.also_viewing"}}</span>
+    </div>
+    <div local-class="avatars">
+      {{#each viewingUsers key="id" as |viewer|}}
+        {{#ko-tooltip
+          title=(concat viewer.user.full_name ", "
+                  (if viewer.isUpdating
+                      (t "cases.viewers.updating")
+                      (t "cases.viewers.viewing")) ", "
+                  (ko-from-now viewer.lastActiveAt))
+        }}
+          <div local-class="avatar">
+            <div local-class="avatar-image {{if (or viewer.isUpdating viewer.inactive) "inactive"}}">
+              {{ko-user-avatar user=viewer.user size="small"}}
+            </div>
+
+            {{#if viewer.isUpdating}}
+              <div local-class="updating">
+                <div local-class="spinner">
+                  <div local-class="spinner-bounce spinner-bounce1"></div>
+                  <div local-class="spinner-bounce spinner-bounce2"></div>
+                  <div local-class="spinner-bounce spinner-bounce3"></div>
+                </div>
+              </div>
+            {{/if}}
+          </div>
+        {{/ko-tooltip}}
+      {{/each}}
+    </div>
+  </div>
+{{/liquid-if}}

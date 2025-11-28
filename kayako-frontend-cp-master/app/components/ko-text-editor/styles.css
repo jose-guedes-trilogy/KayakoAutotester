@@ -1,0 +1,386 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  border-radius: 3px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $grey-3;
+  border-radius: 5px;
+  transition: 0.2s;
+  overflow: hidden;
+  &.has-focus {
+    @extend %brand-focus;
+
+    :global(.channel-type--twitter) & {
+      border-color: #1DA1F2;
+      box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.18);
+    }
+
+    :global(.channel-type--facebook) & {
+      border-color: #3B5998;
+      box-shadow: 0 0 0 2px rgba(59, 89, 152, 0.18);
+    }
+
+    :global(.channel-type--messenger) & {
+      border-color: #F1703F;
+      box-shadow: 0 0 0 2px rgba(241, 112, 63, 0.18);
+    }
+
+    &.note-container {
+      border-color: $color-note-border;
+      box-shadow: 0 0 0 2px $color-note-background;
+    }
+  }
+}
+
+.info-panel {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 27px;
+  padding: 4.5px 0;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.submit-message {
+  font-size: 12px;
+  color: #838D94;
+}
+
+.submit-message-keys {
+  font-weight: 600;
+}
+
+.header {
+  height: 41px;
+  position: relative;
+  border-bottom: 1px solid $grey-3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section {
+  display: flex;
+  flex-shrink: 1;
+}
+
+.group {
+  padding: 0 5px;
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 1;
+}
+
+.groupSeparator {
+  display: flex;
+  height: 20px;
+  align-self: center;
+  border-left: 1px solid rgba(207, 212, 216, 0.6);
+}
+
+.groupCollapsed {
+  position: relative;
+}
+
+.item {
+  align-items: stretch;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: $primary-blue;
+    transform: scaleY(0);
+    transition: transform 0.15s;
+  }
+
+  &:hover:after {
+    transform: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.itemWrap {
+  display: flex;
+  align-items: center;
+  padding: 0 9px;
+  border-top: 2px solid transparent;
+}
+
+.fileField {
+  opacity: 0;
+  position: absolute;
+  /* -50px (or any other big number) is required, to move */
+  /* file field button out of clicking area, as this button */
+  /* do not have pointer cursor */
+  top: -50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* the button will not work in ie11 if it is not under the clicking area */
+/* target ie11 specifically to move the filefield back under the clicking area */
+/* ie11 does display the pointer cursor */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .fileField {
+    top: 12px;
+  }
+}
+
+.icon-text {
+  @include font-size-with-line-height(12px);
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.contents-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-shrink: 1;
+  border-radius: 0 0 5px 5px;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  position: relative;
+  z-index: $z-raised;
+
+  /* content has line-height of 20px and padding 12px  */
+  /* ensure the editor container is at least this high so there's not a "jump" */
+  /* when the editor is re-rendered */
+  min-height: 44px;
+}
+
+.is-note {
+  background: #FDF8EB;
+}
+
+.froalaTextArea {
+  width: 100%;
+  resize: none;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+  cursor: text;
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+
+  pre {
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: solid 2px #40364D;
+    margin-left: 0;
+    padding-left: 5px;
+    color: #40364D;
+  }
+
+  blockquote blockquote {
+    border-left: solid 2px #40364D;
+    margin-left: 0;
+    padding-left: 5px;
+    color: #40364D;
+  }
+
+  blockquote blockquote blockquote {
+    border-left: solid 2px #40364D;
+    margin-left: 0;
+    padding-left: 5px;
+    color: #40364D;
+  }
+
+  ol,
+  ul {
+    margin-left: 20px;
+  }
+}
+
+.froalaTextArea :global(.fr-placeholder) {
+  font-family: 'Source Sans Pro K', Sans-Serif, serif;
+  line-height: 20px !important;
+  padding: 12px 15px;
+}
+
+.froalaTextArea :global(.fr-wrapper) {
+  flex-shrink: 1;
+  background-color: inherit !important;
+  border-radius: 0 !important;
+}
+
+.froalaTextArea :global(.fr-wrapper) > :global(.fr-view) {
+  padding: 12px 15px;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+.copyInDropdown {
+  background: none;
+}
+
+.dropdownList {
+  list-style-type: none;
+  z-index: $z-dropdown;
+  top: calc(100% + 1px);
+  background: #FFFFFF;
+  user-select: none;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.dropdownListItem {
+  padding: 4.5px 9px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  color: #2D3138;
+
+  &:hover {
+    background: $primary-blue;
+    border: 1px solid $primary-blue;
+    color: #FFFFFF;
+
+    & > * {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.dropdown {
+  margin-top: -8px;
+}
+
+.buttonsDropdown {
+  display: none;
+  border: 0;
+  background-color: transparent;
+  min-width: 150px;
+}
+
+/* as we are not using Froala toolbar, hide toolbar */
+:global(.fr-toolbar) {
+  display: none !important; /* <- don't link it, but there is no other options :( */
+}
+
+.itemControlsDropdown {
+  display: none;
+}
+
+@media screen and (max-width: 1239px) {
+  .buttonsDropdown {
+    display: block;
+  }
+
+  .itemControlsDropdown {
+    display: flex;
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 0 9px 9px 15px;
+  min-height: 39px;
+  flex-wrap: wrap;
+}
+
+.clip-icon {
+  position: relative;
+  width: 16px;
+  margin-right: 6px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.upload-animation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: $primary-blue;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.8) 50%, transparent 80%);
+    background-size: 200px 2px;
+    background-position: -10% 0;
+    background-repeat: no-repeat;
+    animation: shimmer 1s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 110% 0;
+  }
+}
+
+.footer-text {
+  font-size: 12px;
+  color: $grey-6;
+  display: flex;
+  flex-grow: 1;
+}
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(64, 54, 77, 0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-header {
+  display: flex;
+}
+
+.modal-content {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.aiSuggestion {
+  color: $grey-6;
+  /* Optional: Make the suggestion text slightly transparent */
+  opacity: 0.7;
+}

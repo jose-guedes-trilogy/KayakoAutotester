@@ -1,0 +1,58 @@
+{{#if isGenerating}}
+  {{kre-channel
+    name=report.realtimeChannel
+    events=(hash CHANGE=(action "changed"))
+  }}
+{{/if}}
+
+<div local-class="report">
+  <div local-class="status-pill">
+    {{#if isGenerating}}
+      <div local-class="status is-waiting">
+        <svg local-class="spinner" viewBox="0 0 50 50">
+          <circle local-class="spinner-path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+        </svg>
+      </div>
+    {{else if isCompleted}}
+      <div local-class="status is-completed">
+        {{inline-svg "insights/tick"}}
+      </div>
+    {{else}}
+      {{#ko-tooltip title=(concat (t "insights.custom_reports.report_new.failed") (ko-datetime-format (or report.lastStatusUpdateAt report.createdAt))) side="top"}}
+        <div local-class="status is-failed">
+          {{inline-svg "insights/cross"}}
+        </div>
+      {{/ko-tooltip}}
+    {{/if}}
+  </div>
+
+  <div local-class="details">
+    <div local-class="details-header">
+      <span local-class="label">{{report.label}}</span>
+    </div>
+
+    <div local-class="details-footer">
+      <div>
+        <span local-class="{{if isGenerating "italic"}}">{{t (concat "insights.custom_reports.report_new.status." report.status)}}</span>
+        {{#if isCompleted}}
+          <span>{{ko-datetime-format (or report.lastStatusUpdateAt report.createdAt)}}</span>
+        {{/if}}
+      </div>
+      <span local-class="details-separator">•</span>
+      <div local-class="creator">
+        {{t "insights.custom_reports.report_new.created_by"}}&nbsp;{{report.creator.fullName}}
+      </div>
+
+      {{#if report.lastDownloadedAt}}
+        <div local-class="details-separator">
+          &middot;
+        </div>
+
+        <div local-class="last-downloaded">
+          <div local-class="last-downloaded-label">{{t "insights.custom_reports.report_new.last_downloaded_at"}}</div>
+          <div local-class="last-downloaded-date">{{ko-datetime-format report.lastDownloadedAt}}</div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

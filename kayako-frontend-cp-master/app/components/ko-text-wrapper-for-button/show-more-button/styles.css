@@ -1,0 +1,31 @@
+.toggle {
+  width: 28px;
+  height: 21px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  margin-left: 9px;
+  cursor: pointer;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+
+  .dots {
+    fill: #A1AAAF;
+  }
+
+  &--expanded {
+    border-color: #CBCFD1;
+
+    .dots {
+      fill: $primary-blue;
+    }
+  }
+
+  &:hover {
+    border-color: #CBCFD1;
+    background: #F7F8F9;
+  }
+}

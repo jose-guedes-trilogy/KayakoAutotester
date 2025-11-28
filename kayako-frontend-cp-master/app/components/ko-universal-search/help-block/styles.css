@@ -1,0 +1,42 @@
+.container {
+  width: 300px;
+  background: #F7F8F9;
+  padding: 20px;
+  border-bottom-right-radius: 6px;
+}
+
+.modifiers {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modifier {
+  color: #A1AAAF;
+  margin-bottom: 8px;
+}
+
+.emphasis {
+  color: #5F6C73;
+  font-weight: 600;
+}
+
+.separator {
+  border-bottom: 1px solid #EBEEF0;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  height: 1px;
+  margin: 15px 0;
+}
+
+.help {
+  color: #A1AAAF;
+  font-style: italic;
+
+  &__arrow {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

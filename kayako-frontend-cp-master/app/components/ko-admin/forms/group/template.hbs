@@ -1,0 +1,8 @@
+<div local-class="group {{if legend "group--with-legend"}}">
+  {{#if legend}}
+    <legend local-class="legend">{{legend}}</legend>
+    <div local-class="contents">{{yield}}</div>
+  {{else}}
+    {{yield}}
+  {{/if}}
+</div>

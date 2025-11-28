@@ -1,0 +1,39 @@
+{{#ko-tooltip triggerEvent=(if isInsideDropdown 'custom' 'hover') side="top" title=(t "cases.text_editor.bullet_list") delay=600 mouseDown=(action onTriggerControl "ul") class=itemClass}}
+  {{ko-icon name="bulletList" color=(if isButtonUl "#4EAFCB" "#5F6C73")}}
+
+  {{#if isInsideDropdown}}
+    <div local-class="buttonsDropdownItemText">{{t "cases.text_editor.bullet_list"}}</div>
+  {{/if}}
+{{/ko-tooltip}}
+
+{{#ko-tooltip triggerEvent=(if isInsideDropdown 'custom' 'hover') side="top" title=(t "cases.text_editor.numbered_list") delay=600 mouseDown=(action onTriggerControl "ol") class=itemClass}}
+  {{ko-icon name="numberList" color=(if isButtonOl "#4EAFCB" "#5F6C73")}}
+
+  {{#if isInsideDropdown}}
+    <div local-class="buttonsDropdownItemText">{{t "cases.text_editor.numbered_list"}}</div>
+  {{/if}}
+{{/ko-tooltip}}
+
+{{#ko-tooltip
+  triggerEvent=(if isInsideDropdown 'custom' 'hover')
+  side="top"
+  title=(t "cases.text_editor.outdent")
+  delay=600
+  mouseDown=(action onTriggerControl "outdent")
+  class=itemClass
+  local-class=(if isButtonOutdentDisabled "item-disabled")
+}}
+  {{ko-icon name="outdent" color=(if isButtonOutdentDisabled "#BFC5D1" "#5F6C73")}}
+
+  {{#if isInsideDropdown}}
+    <div local-class="buttonsDropdownItemText">{{t "cases.text_editor.outdent"}}</div>
+  {{/if}}
+{{/ko-tooltip}}
+
+{{#ko-tooltip triggerEvent=(if isInsideDropdown 'custom' 'hover') side="top" title=(t "cases.text_editor.indent") delay=600 mouseDown=(action onTriggerControl "indent") class=itemClass}}
+  {{ko-icon name="indent" color=(if isButtonIndentDisabled "#BFC5D1" "#5F6C73")}}
+
+  {{#if isInsideDropdown}}
+    <div local-class="buttonsDropdownItemText">{{t "cases.text_editor.indent"}}</div>
+  {{/if}}
+{{/ko-tooltip}}

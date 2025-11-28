@@ -1,0 +1,143 @@
+{{page-title (t "generic.title" account=brand.name) separator=" - " prepend=true}}
+
+{{#with currentUser.presenceChannel as |channel|}}
+  {{kre-channel name=channel params=params}}
+{{/with}}
+
+<nav local-class="left-navigation">
+  <div local-class="left-navigation-section">
+    {{#link-to "session.agent.cases" local-class="logo" aria-label=(t "generic.home")}}{{/link-to}}
+
+    {{#with caseListTab.inboxCount.realtimeChannel as |channel|}}
+      {{kre-channel
+        name=channel
+        events=(hash CHANGE=(action handleInboxCountChange))
+      }}
+    {{/with}}
+
+    {{#if (and tabStore.casesViewId (not viewingCaseViews))}}
+      {{#link-to "session.agent.cases.index.view" tabStore.casesViewId title=(t "cases.inbox-button-title" inboxCount=inboxCount) local-class="left-navigation-item"}}
+        {{inline-svg "nav/menu-inbox"}}
+        {{#if inboxCount}}
+          <span local-class="case-count-pill">{{inboxCount}}</span>
+        {{/if}}
+      {{/link-to}}
+    {{else}}
+      {{#link-to "session.agent.cases.index" title=(t "cases.inbox-button-title" inboxCount=inboxCount) local-class="left-navigation-item"}}
+        {{inline-svg "nav/menu-inbox"}}
+        {{#if inboxCount}}
+          <span local-class="case-count-pill">{{inboxCount}}</span>
+        {{/if}}
+      {{/link-to}}
+    {{/if}}
+
+    {{#link-to "session.agent.users.index" title=(t "users.users") local-class="left-navigation-item"}}
+      {{inline-svg 'users'}}
+    {{/link-to}}
+
+    {{#link-to "session.agent.organizations.index" title=(t "organization.organizations") local-class="left-navigation-item"}}
+      {{inline-svg 'organizations'}}
+    {{/link-to}}
+
+    {{#if hasInsightsAccess}}
+      {{#link-to "session.agent.insights" title=(t "insights.title") local-class="left-navigation-item"}}
+        {{inline-svg "nav/menu-insights"}}
+      {{/link-to}}
+    {{/if}}
+
+    {{#link-to "session.agent.knowledgebase" title=(t "generic.knowledgebase") local-class="left-navigation-item"}}
+      {{inline-svg "nav/menu-knowledgebase"}}
+    {{/link-to}}
+
+    {{#if (variation "feature-impersonation")}}
+      {{#link-to "session.agent.impersonate" title=(t "generic.impersonate") local-class="left-navigation-item"}}
+        {{inline-svg 'impersonate'}}
+      {{/link-to}}
+    {{/if}}
+
+    <a href="/" data-href-to-ignore=true title={{t "generic.helpcenter"}} local-class="left-navigation-item" target="_blank" rel="noopener noreferrer">
+      {{inline-svg "nav/menu-helpcenter"}}
+    </a>
+
+  </div>
+  <div local-class="left-navigation-section">
+    <div local-class="left-navigation-item">
+      {{ko-notification-badge}}
+    </div>
+    {{#if (or (eq session.user.role.roleType "ADMIN") (eq session.user.role.roleType "OWNER"))}}
+      {{#link-to "session.admin.index" title=(t "admin.administration") local-class="left-navigation-item"}}
+        {{inline-svg "nav/menu-settings"}}
+      {{/link-to}}
+    {{/if}}
+  </div>
+</nav>
+
+<div local-class="main">
+  <header local-class="header">
+    {{#if isSearchActive}}
+      {{ko-universal-search
+        onSeeMore=(action "seeMore")
+        onLoadSearchRoute=(action "loadSearchRoute")
+        onClose=(route-action "closeSearch")
+      }}
+    {{else}}
+      {{#ko-tab-strip as |strip|}}
+        {{strip.tabs}}
+        {{ko-agent-dropdown}}
+      {{/ko-tab-strip}}
+
+      <div local-class="header-secondary">
+        {{ko-trial-notification}}
+        <div local-class="search-box" class="{{qa-cls "qa-search-box"}}" onClick={{route-action "openSearch"}}>
+          <div local-class="search-icon">
+            {{ko-icon name="searchBox" color="#A1AAAF"}}
+          </div>
+        </div>
+
+        {{#if (variation "ops-reduce-notification-center-api-requests")}}
+          {{ko-notification-center-new}}
+        {{else}}
+          {{ko-notification-center}}
+        {{/if}}
+
+        {{ko-profile-menu
+          onShowKeyboardHelp=(toggle-action "showingKeyboardHelp" this)
+          onEnableTwoFactorAuth=(action "openTwoFactorModal")
+          onDisableTwoFactorAuth=(action "openDisableTwoFactorModal")
+          onEditSignature=(action "editSignature")
+          onChangePassword=(action "openPasswordModal")
+        }}
+      </div>
+    {{/if}}
+  </header>
+
+  <div local-class="outlet">
+    {{outlet}}
+  </div>
+</div>
+
+{{#if showingKeyboardHelp}}
+  {{ko-keyboard-help-modal
+    on-close=(toggle-action "showingKeyboardHelp" this)
+  }}
+{{/if}}
+
+{{#if signatureModal}}
+  {{ko-edit-signature
+    onClose=(action "closeSignatureModal")
+    onUpdate=(action "refreshUserData")
+    currentUser=currentUser
+  }}
+{{/if}}
+
+{{#if twoFactorModal}}
+  {{ko-two-factor-auth
+    onClose=(action "closeTwoFactorModal")
+    onUpdate=(action "refreshUserData")
+    role=twoFactorModalRole
+  }}
+{{/if}}
+
+{{#if changePasswordModal}}
+  {{ko-change-password onClose=(action "closePasswordModal")}}
+{{/if}}

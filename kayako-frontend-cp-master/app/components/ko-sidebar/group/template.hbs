@@ -1,0 +1,9 @@
+<div local-class="group">
+  <p local-class="header">
+    {{title}}
+  </p>
+
+  {{yield (hash
+    item=(component "ko-sidebar/item")
+  )}}
+</div>

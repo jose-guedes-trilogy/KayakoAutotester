@@ -1,0 +1,99 @@
+.container {
+  position: relative;
+  padding-bottom: 9px;
+
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.3s;
+
+  &:hover {
+    & .actions {
+      visibility: visible;
+    }
+  }
+
+  & + & {
+    & .label {
+      visibility: visible;
+    }
+  }
+}
+
+.containerRemoving {
+  opacity: 1;
+  animation: fadeIn ease-out 1;
+}
+
+.item {
+  width: calc((100% - 100px) / 3);
+  padding-left: 10px;
+}
+
+.input-time-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-time {
+  width: 50%;
+}
+
+.input-time-label {
+  padding-left: 9px;
+}
+
+.label {
+  @extend %u-v-center;
+  left: -27px;
+  color: #5F6C73;
+  @include font-size-with-line-height(12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+.actions {
+  width: 100px;
+  padding-left: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+
+.remove {
+  cursor: pointer;
+}
+
+.layout {
+  display: flex;
+  margin-left: -10px;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

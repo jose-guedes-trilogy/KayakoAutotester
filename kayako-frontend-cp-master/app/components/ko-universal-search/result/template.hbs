@@ -1,0 +1,26 @@
+{{#if resultComponent}}
+  <li onmouseenter={{action "highlightResult"}} onclick={{action "handleClick"}} local-class="container {{if isReadOnly "container-read-only"}} {{if isHighlighted "is-active"}}">
+    {{#if isReadOnly}}
+      <div local-class="read-only">
+        {{component resultComponent
+          result=result
+          showAppendIcon=showAppendIcon
+          showRemoveIcon=showRemoveIcon
+          showPrimaryBadge=showPrimaryBadge
+          appended=appended
+          onClickRemoveIcon=onClickRemoveIcon
+          }}
+      </div>
+    {{else}}
+      <a href={{href}} local-class="link" target="_blank" rel="noopener noreferrer">
+        {{component resultComponent
+          result=result
+          showAppendIcon=showAppendIcon
+          showRemoveIcon=showRemoveIcon
+          showPrimaryBadge=showPrimaryBadge
+          appended=appended
+          onClickRemoveIcon=onClickRemoveIcon}}
+      </a>
+    {{/if}}
+  </li>
+{{/if}}

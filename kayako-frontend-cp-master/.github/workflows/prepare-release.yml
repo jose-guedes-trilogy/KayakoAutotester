@@ -1,0 +1,96 @@
+name: Prepare Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release version (tags)'
+        required: true
+        type: string
+      release_notes:
+        description: 'Release notes text (use \n for new lines)'
+        required: false
+        type: string
+      create_github_release:
+        description: 'Create GitHub Release ?'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  prepare-release:
+    name: "Prepare Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - name: Build the runner Docker image
+        run: docker build . --file ember-test.Dockerfile --tag kayako-frontend-cp-local
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PRODUCTION_SSH_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      - name: Establish SSH tunnel to Consul
+        env:
+          BASTION_SERVER_IP: "52.200.24.175"
+          CONSUL_SERVER_IP: "10.0.13.84"
+        run: ssh -o "StrictHostKeyChecking=no" -L 0.0.0.0:9991:$CONSUL_SERVER_IP:8500 -fN ec2-user@$BASTION_SERVER_IP
+      - name: Upload to Prod
+        env:
+          CONSUL_HOST: "http://host.docker.internal:9991"
+          CONSUL_TOKEN: ${{ secrets.CONSUL_TOKEN }}
+          DEPLOY_TARGET: "production"
+          CONSUL_NAMESPACE_TOKEN: "frontend/frontend-cp/default"
+        run: |
+          docker run --add-host host.docker.internal:host-gateway -v $(pwd)/dist:/kayako/tmp/deploy-dist -e env=production -e CONSUL_HOST=$CONSUL_HOST -e CONSUL_TOKEN=$CONSUL_TOKEN -e CONSUL_NAMESPACE_TOKEN=$CONSUL_NAMESPACE_TOKEN kayako-frontend-cp-local npm run ember-cli -- deploy $DEPLOY_TARGET
+      - name: Upload to Staging
+        env:
+          CONSUL_HOST: "http://host.docker.internal:9991"
+          CONSUL_TOKEN: ${{ secrets.CONSUL_TOKEN }}
+          DEPLOY_TARGET: "staging"
+          CONSUL_NAMESPACE_TOKEN: "frontend/frontend-cp-staging/default"
+          # reuse build from above step. Hence the volume mount
+          EMBER_CLI_DEPLOY_REUSE_BUILD: true
+        run: |
+          docker run --add-host host.docker.internal:host-gateway -v $(pwd)/dist:/kayako/tmp/deploy-dist -e env=production -e CONSUL_HOST=$CONSUL_HOST -e CONSUL_TOKEN=$CONSUL_TOKEN -e EMBER_CLI_DEPLOY_REUSE_BUILD=$EMBER_CLI_DEPLOY_REUSE_BUILD -e CONSUL_NAMESPACE_TOKEN=$CONSUL_NAMESPACE_TOKEN kayako-frontend-cp-local npm run ember-cli -- deploy $DEPLOY_TARGET
+      - name: Upload to CS Sandbox
+        env:
+          CONSUL_HOST: "http://host.docker.internal:9991"
+          CONSUL_TOKEN: ${{ secrets.CONSUL_TOKEN }}
+          DEPLOY_TARGET: "cs-sandbox"
+          CONSUL_NAMESPACE_TOKEN: "frontend/frontend-cp-cs-sandbox/default"
+          # Not setting EMBER_CLI_DEPLOY_REUSE_BUILD to create a new build because the configurations are different
+        run: |
+          docker run --add-host host.docker.internal:host-gateway -v $(pwd)/dist:/kayako/tmp/deploy-dist -e env=production -e OVERRIDE_ENV=$DEPLOY_TARGET -e CONSUL_HOST=$CONSUL_HOST -e CONSUL_TOKEN=$CONSUL_TOKEN -e CONSUL_NAMESPACE_TOKEN=$CONSUL_NAMESPACE_TOKEN -e DEBUG="ember-cli-deploy:*" kayako-frontend-cp-local npm run ember-cli -- deploy $DEPLOY_TARGET
+      - name: Upload to CS Prod
+        env:
+          CONSUL_HOST: "http://host.docker.internal:9991"
+          CONSUL_TOKEN: ${{ secrets.CONSUL_TOKEN }}
+          DEPLOY_TARGET: "cs-prod"
+          CONSUL_NAMESPACE_TOKEN: "frontend/frontend-cp-cs-prod/default"
+          # Not setting EMBER_CLI_DEPLOY_REUSE_BUILD to create a new build because the configurations are different
+        run: |
+          docker run --add-host host.docker.internal:host-gateway -v $(pwd)/dist:/kayako/tmp/deploy-dist -e env=production -e OVERRIDE_ENV=$DEPLOY_TARGET -e CONSUL_HOST=$CONSUL_HOST -e CONSUL_TOKEN=$CONSUL_TOKEN -e CONSUL_NAMESPACE_TOKEN=$CONSUL_NAMESPACE_TOKEN -e DEBUG="ember-cli-deploy:*" kayako-frontend-cp-local npm run ember-cli -- deploy $DEPLOY_TARGET
+      - name: Create and push tag
+        env:
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+        run: |
+          if [ $(git tag -l "$RELEASE_VERSION") ]; then
+            echo "Tag $RELEASE_VERSION already exists"
+          else
+            git tag $RELEASE_VERSION
+            git push origin $RELEASE_VERSION
+          fi
+      - name: Create GitHub Release
+        if: ${{ github.event.inputs.create_github_release == 'true' }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.release_version }}
+          name: ${{ github.event.inputs.release_version }}
+          body: ${{ github.event.inputs.release_notes }}
+          draft: false
+          prerelease: false

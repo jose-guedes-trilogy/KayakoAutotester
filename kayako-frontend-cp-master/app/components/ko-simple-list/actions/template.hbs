@@ -1,0 +1,7 @@
+<div local-class="actions">
+  {{#if loading}}
+    {{ko-loader}}
+  {{else}}
+    <span local-class="{{unless show "hidden"}}">{{yield}}</span>
+  {{/if}}
+</div>

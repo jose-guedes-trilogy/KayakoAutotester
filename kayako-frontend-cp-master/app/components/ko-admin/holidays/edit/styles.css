@@ -1,0 +1,17 @@
+.root {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.title {
+  min-width: 140px;
+  margin-right: 9px;
+
+  &.error {
+    color: $color-bad;
+  }
+}
+
+.buttons {
+  display: flex;
+}

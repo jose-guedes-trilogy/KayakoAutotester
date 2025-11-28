@@ -1,0 +1,33 @@
+.container {
+  padding: 20px 0px;
+  margin-top: -1px;
+
+  &:hover {
+    border-top: 1px solid #5f6c73;
+
+    .item {
+      background-color: $grey-1;
+      color: #5f6c73;
+    }
+  }
+
+  &.active {
+    border-top: 1px solid #37a5c5;
+
+    .item {
+      color: #37a5c5;
+    }
+  }
+}
+
+.item {
+  line-height: 30px;
+  text-align: center;
+  color: #a1aaaf;
+  min-width: 30px;
+  padding: 0 3px;
+
+  &.active {
+    border-top: 1px solid #37a5c5;
+  }
+}

@@ -1,0 +1,34 @@
+<div local-class="container">
+  <div local-class="info-card">
+    {{#if user}}
+      {{#ko-agent-content/sidebar/requester-info-card user=user processingOrg=processingOrg updateOrgRemovalState=(action "updateOrgRemovalState")}}
+        {{ko-editable-text
+          onValueChange=(action "setName")
+          isDisabled=updateName.isRunning
+          value=user.fullName
+          showPencilOnHover=true
+          labelComponent=(if isMe (component "ko-you-label"))
+        }}
+      {{/ko-agent-content/sidebar/requester-info-card}}
+    {{else}}
+      {{ko-stub/user-info-block}}
+    {{/if}}
+  </div>
+
+  {{#if (or user.lastSeenAt isUserOnline)}}
+    {{ko-agent-content/sidebar/info-list/item
+      iconName="lastSeen"
+      content=(if isUserOnline (t "users.online_now") (t "users.last_seen" time=(ko-from-now user.lastSeenAt)))
+      tooltip=(format-date (ko-intl-datetime-format user.lastSeenAt) hour="2-digit" minute="2-digit" format="DD/MMMM/YYYY hh:mm")}}
+  {{/if}}
+  {{#if user.timeZone}}
+    {{ko-agent-content/sidebar/info-list/requester-current-time user=user}}
+  {{/if}}
+</div>
+
+{{#with user.presenceChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    on-presence-change=(action "onPresenceChanged")
+  }}
+{{/with}}

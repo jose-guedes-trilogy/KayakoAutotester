@@ -1,0 +1,92 @@
+{{#ko-admin/page
+  title=(t "admin.email.headings.index")
+  tabs=tabs
+as |section|}}
+  {{#if (eq section "buttons")}}
+    {{#ko-button href=(href-to "session.admin.channels.email.new") type="primary" qaClass="qa-admin-email-new-link"}}{{t "admin.email.buttons.add_mailbox"}}{{/ko-button}}
+  {{/if}}
+{{/ko-admin/page}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.email.description"}}</p>
+  <p><strong>{{format-html-message "admin.email.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1147-configuring-email-support?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=email" "admin.email.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="email"}}
+{{/if}}
+
+{{#if enabledChannels.length}}
+  {{#ko-simple-list header=(t "generic.enabled") qaClass="qa-mailboxes-enabled" as |list|}}
+    {{#each enabledChannels as |channel|}}
+      {{#list.row onClick=(action "editMailbox" channel) as |row|}}
+        {{#row.cell}}
+          <span>
+            <span local-class="title">{{channel.address}}</span>
+            {{#if channel.brand.name}} <span local-class="caption">({{channel.brand.name}})</span>{{/if}}
+            {{#if channel.isSystem}}<span local-class="caption">({{t "generic.system"}})</span>{{/if}}
+            {{#if channel.isDefault}}<span local-class="caption">({{t "generic.default"}})</span>{{/if}}
+          </span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a href={{href-to "session.admin.channels.email.edit" channel.id}} class={{qa-cls "qa-mailbox-edit"}}>{{t "generic.edit"}}</a>
+          {{#if (not channel.isDefault)}}
+            {{#if (not channel.isSystem)}}
+              | <a onclick={{action "toggleEnabledProperty" channel}} class={{qa-cls "qa-mailbox-disable"}}>{{t "generic.disable"}}</a>
+            {{/if}}
+            | <a onclick={{action "makeDefault" channel}} class={{qa-cls "qa-mailbox-make-default"}}>{{t "generic.make_default"}}</a>
+            {{#if (not channel.isSystem)}}
+              | <a onclick={{action "delete" channel}} class={{qa-cls "qa-mailbox-delete"}}>{{t "generic.delete"}}</a>
+            {{/if}}
+          {{/if}}
+        {{/row.actions}}
+      {{/list.row}}
+
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledChannels.length}}
+  {{#ko-simple-list header=(t "generic.disabled") qaClass="qa-mailboxes-disabled" as |list|}}
+    {{#each disabledChannels as |channel|}}
+      {{#list.row onClick=(action "editMailbox" channel) as |row|}}
+        {{#row.cell disabled=true}}
+          <span>
+            <span local-class="title">{{channel.address}}</span>
+            {{#if channel.brand.name}} <span local-class="caption">({{channel.brand.name}})</span>{{/if}}
+            {{#if channel.isDefault}}<span local-class="caption">({{t "generic.default"}})</span>{{/if}}
+          </span>
+        {{/row.cell}}
+        {{#row.actions}}
+          <a href={{href-to "session.admin.channels.email.edit" channel.id}} class={{qa-cls "qa-mailbox-edit"}}>{{t "generic.edit"}}</a>
+          | <a onclick={{action "toggleEnabledProperty" channel}} class={{qa-cls "qa-mailbox-enable"}}>{{t "generic.enable"}}</a>
+          {{#if (not channel.isSystem)}}
+            | <a onclick={{action "delete" channel}}>{{t "generic.delete"}}</a>
+          {{/if}}
+        {{/row.actions}}
+      {{/list.row}}
+
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if unverifiedChannels.length}}
+  {{#ko-simple-list header=(t "admin.email.unverified") qaClass="qa-mailboxes-unverified" as |list|}}
+    {{#each unverifiedChannels as |channel|}}
+      {{#list.row as |row|}}
+        {{#row.cell unverified=true}}
+          <span>
+            <span local-class="title">{{channel.address}}</span>
+            {{#if channel.brand.name}} <span local-class="caption">({{channel.brand.name}})</span>{{/if}}
+          </span>
+        {{/row.cell}}
+        {{#row.actions}}
+          {{#if (not channel.isSystem)}}
+            <a onclick={{action "delete" channel}}>{{t "generic.delete"}}</a>
+          {{/if}}
+        {{/row.actions}}
+      {{/list.row}}
+
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

@@ -1,0 +1,36 @@
+<div local-class="cell {{if isSelected "selected"}} {{unless (get rateplan selectedTerm) "disabled"}} {{if isDisabled "disabled"}}" onclick={{action attrs.switchPlan rateplan}}>
+  <div local-class="plan-item">
+    <div local-class="plan-name">{{rateplan.label}}</div>
+    {{#if (get rateplan selectedTerm)}}
+      <div local-class="plan-description">
+        <p>{{rateplan.description}}</p>
+      </div>
+      <div local-class="plan-maths">
+        {{#if isSelected}}
+          {{ko-admin/rateplans/units seatsLimit=seatsLimit isDisabled=isDisabled selectedNumberOfSeats=selectedNumberOfSeats seatsChanged=(action attrs.seatsChanged)}}
+        {{/if}}
+        {{ko-admin/rateplans/price amount=(get (get rateplan selectedTerm) "price") currency=rateplan.currency unitFee=(get (get rateplan selectedTerm) "unitFee") flatUpto=(get (get rateplan selectedTerm) "flatUpto")}}
+      </div>
+    {{else}}
+      <div local-class="plan-description">{{t "account.plans.notAvailable"}}</div>
+      <div local-class="plan-maths">
+        {{ko-admin/rateplans/price amount=0 currency=rateplan.currency unitFee=0 flatUpto=0}}
+      </div>
+    {{/if}}
+  </div>
+  {{#if isSelected}}
+    {{ko-admin/rateplans/summary
+      rateplanLabel=rateplan.label
+      stickySummary=stickySummary
+      isDisabled=isDisabled
+      selectedNumberOfSeats=selectedNumberOfSeats
+      subscriptionAmount=subscriptionAmount
+      discountAmount=discountAmount
+      currency=rateplan.currency
+      calculatingSummary=calculatingSummary
+      selectedTerm=selectedTerm
+      nextChargeDate=nextChargeDate
+      grossTotal=grossTotal
+    }}
+  {{/if}}
+</div>

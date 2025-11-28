@@ -1,0 +1,95 @@
+<div local-class="container">
+  <div local-class="title">
+    <h4 local-class="heading">
+      {{t "cases.suspendedMessages.title"}}
+    </h4>
+    {{#if selectedMailIds.length}}
+      {{#ko-button type="alert" qaClass="suspended-messages-section__delete-all" onClick=(action "permanentlyDeleteSelectedMails")}}{{t "cases.suspendedMessages.permanently_delete"}}{{/ko-button}}
+    {{/if}}
+  </div>
+
+  {{#ko-table
+    selectable=true
+    onSelectionChange=(action (mut selectedMailIds))
+    qaClass=(qa-cls "qa-suspended-messages-section__table") as |table|}}
+    {{#ko-table/header
+      allRowsSelected=isEverythingChecked
+      selectable=true
+      onSelectAll=(action "selectAll")
+      onDeselectAll=(action "deselectAll")
+    }}
+      {{#ko-table/column
+        class="ko-cases-list__table-column"
+        maxWidth=150
+        column="from"}}
+        {{t 'cases.suspendedMessages.table.from'}}
+      {{/ko-table/column}}
+      {{#ko-table/column
+        class="ko-cases-list__table-column"
+        minWidth=200
+        column="subject"}}
+        {{t 'cases.suspendedMessages.table.subject'}}
+      {{/ko-table/column}}
+      {{#ko-table/column
+        class="ko-cases-list__table-column"
+        maxWidth=150
+        column="createdAt"}}
+        {{t 'cases.suspendedMessages.table.createdAt'}}
+      {{/ko-table/column}}
+      {{#ko-table/column
+        class="ko-cases-list__table-column"
+        maxWidth=150
+        column="suspensionCode"}}
+        {{t 'cases.suspendedMessages.table.suspensionCode'}}
+      {{/ko-table/column}}
+    {{/ko-table/header}}
+    {{#ko-table/body}}
+      {{#each suspendedMails as |mail|}}
+        {{#ko-table/row
+          table=table
+          clickable=true
+          rowContext=mail
+          selected=(contains mail.id selectedMailIds)
+          onClick=(action "showMail" mail)
+          onSelectChange=(action "toggleCheck" mail)
+        }}
+          {{#ko-table/cell maxWidth=150}}
+            {{mail.from}}
+          {{/ko-table/cell}}
+
+          {{#ko-table/cell minWidth=200}}
+            {{mail.subject}}
+          {{/ko-table/cell}}
+
+          {{#ko-table/cell maxWidth=150}}
+            {{#ko-tooltip tagName="span" side="top" title=(format-time mail.createdAt format="tooltip")}}
+              {{ko-from-now mail.createdAt}}
+            {{/ko-tooltip}}
+          {{/ko-table/cell}}
+
+          {{#ko-table/cell maxWidth=150}}
+            {{mail.suspensionCode}}
+          {{/ko-table/cell}}
+        {{/ko-table/row}}
+      {{/each}}
+    {{/ko-table/body}}
+
+    {{#if model.length}}
+      {{! prevents weird pagination if we delete every model on page }}
+      {{ko-pagination currentPage=page pageCount=totalPages}}
+    {{/if}}
+  {{/ko-table}}
+
+  {{#unless model.length}}
+    <div local-class="not-found">
+      <div local-class="not-found-image">
+        <img src="/images/empty-states/conversation.svg" width="462" height="262" alt="{{t 'cases.list.casesnotfound'}}">
+      </div>
+      <div local-class="not-found-message">
+        {{t "cases.suspendedMessages.emptyList"}}
+      </div>
+    </div>
+  {{/unless}}
+
+  {{outlet}}
+</div>

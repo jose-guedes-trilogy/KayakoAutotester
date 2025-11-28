@@ -1,0 +1,10 @@
+<div class="{{bigSlotClass}}">
+  <br>
+  {{ko-input
+    name="plain-text"
+    value=automationAction.value
+    onInput=(action (mut automationAction.value) value="target.value")
+    size="full"
+    multiline=true
+    lines=8}}
+</div>

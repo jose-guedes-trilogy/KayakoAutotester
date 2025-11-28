@@ -1,0 +1,36 @@
+.main {
+  padding: 9px;
+}
+
+.header {
+  font-size: 21px;
+  color: #000000;
+  line-height: 27px;
+}
+
+.body {
+  padding-top: 6px;
+  font-size: 13px;
+  color: $grey-6;
+  > input {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+.button {
+  margin-right: 8px;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #000000;
+  font-size: 14px;
+}
+
+.extra {
+  margin-top: -10px;
+  display: inline-block;
+}

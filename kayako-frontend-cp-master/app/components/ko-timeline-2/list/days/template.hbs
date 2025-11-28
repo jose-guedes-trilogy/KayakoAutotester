@@ -1,0 +1,25 @@
+{{#each (group-by-day items key="createdAt") key="day" as |entry index|}}
+  {{#unless (eq index 0)}}
+    <div local-class="day-separator">
+      <span local-class="day-separator__text">
+        {{#with (relative-term-for-date entry.day) as |relativeTerm|}}
+          <strong local-class="day-separator__relative-term">{{t (concat "generic.dates.relative_terms." relativeTerm)}}</strong>
+        {{else}}
+          <time local-class="day-separator__date">
+            {{#with (make-date entry.day) as |date|}}
+              {{format-date
+                date
+                weekday=(if (ko-helper helpers.isThisWeek date) "long")
+                day="numeric"
+                month="long"
+                year="numeric"
+              }}
+            {{/with}}
+          </time>
+        {{/with}}
+      </span>
+    </div>
+  {{/unless}}
+
+  {{yield entry.items}}
+{{/each}}

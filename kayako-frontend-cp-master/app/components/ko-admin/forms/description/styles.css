@@ -1,0 +1,9 @@
+.description {
+  color: $grey-6;
+  margin-bottom: 22px;
+  line-height: 24px;
+}
+
+.small {
+  line-height: 18px;
+}

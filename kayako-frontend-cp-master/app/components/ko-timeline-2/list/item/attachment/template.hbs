@@ -1,0 +1,61 @@
+<div local-class="attachment-container">
+  {{#if isTranscribing}}
+    <div local-class="full-screen-loader">
+      {{ko-loader large=true}}
+    </div>
+  {{/if}}
+  <div local-class="flap-hide" class="attachment-container-flap-hide"></div>
+  <div local-class="attachment">
+    <div local-class="thumbnail {{unless thumbnail.height "no-thumb"}}">
+      {{#if attachment.thumbnails}}
+        {{#ko-lightbox imgSrc=attachment.url}}
+          <img
+            src="{{thumbnail.url}}"
+            width="{{thumbnail.width}}"
+            height="{{thumbnail.height}}"
+            local-class="{{if (lt thumbnail.height 100) "small"}}"
+          >
+        {{/ko-lightbox}}
+      {{else}}
+        <a href="{{unless attachment.thumbnails attachment.urlDownload}}" local-class="thumbnail-link">
+          {{inline-svg icon}}
+        </a>
+      {{/if}}
+    </div>
+    <div local-class="details">
+      <div class="meta">
+        <div local-class="name">
+          {{#ko-tooltip title=attachment.name}}
+            <span local-class="name-element">{{attachment.name}}</span>
+          {{/ko-tooltip}}
+        </div>
+
+        <div local-class="size">
+          {{ko-file-size size=attachment.size}}
+        </div>
+      </div>
+      <div local-class="actions">
+        {{#if attachment.thumbnails}}
+          <div local-class="preview action" onclick={{action "triggerPreview"}}>
+            {{ko-icon name="eye" size=16 color="#838D94"}}
+          </div>
+        {{/if}}
+        <a local-class="download action" href={{attachment.urlDownload}}>
+          {{ko-icon name="download" height=14 width=12 color="#838D94"}}
+        </a>
+        {{#if isTranscriptable}}
+          {{#if (plan-has 'kayako_ai_transcription')}}
+            {{#ko-tooltip title="Transcribe audio"}}
+              <div local-class="transcribe action">
+                <a onclick={{action "triggerTranscribe"}}>
+                  {{ko-icon name="sparkle" height=14 width=12 color="#8846CB"}}
+                </a>
+              </div>
+            {{/ko-tooltip}}
+          {{/if}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+</div>

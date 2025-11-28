@@ -1,0 +1,12 @@
+{{#each endpoints.types as |type|}}
+  <div local-class="container" onclick={{action "selectType" type.name}}>
+    <div local-class="icon" class="i-png-endpoint-{{type.name}}"></div>
+    <div>
+      <p local-class="title">{{t type.titleKey}}</p>
+      <p local-class="caption">{{t type.descriptionKey}}</p>
+    </div>
+    <div local-class="action">
+      <span class="i-chevron-large-right i-color-grey"></span>
+    </div>
+  </div>
+{{/each}}

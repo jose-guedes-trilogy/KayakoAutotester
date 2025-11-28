@@ -1,0 +1,30 @@
+{{#ko-universal-search/result/layout as |block|}}
+  {{#if (eq block 'avatar')}}
+    <div local-class="avatarContainer">
+      <div local-class="icon">
+        {{ko-icon size=36 name="article" color="#BEC4C7"}}
+      </div>
+
+      {{#if creatorAvatar}}
+        <div local-class="creatorAvatarContainer" title={{creatorFullName}}>
+          <img local-class="creatorAvatar" src={{creatorAvatar}}>
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  {{#if (eq block 'top')}}
+    <div local-class="title" title={{escape-html result.resultData.title}}>{{escape-html result.resultData.title}}</div>
+
+    {{#if (not status "PUBLISHED")}}
+      <div local-class="separator">•</div>
+      <div local-class="status">{{t statusLabel}}</div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq block 'bottom')}}
+    <div local-class="date">
+      {{section.category.titleLocale.translation}} / {{section.titleLocale.translation}}
+    </div>
+  {{/if}}
+{{/ko-universal-search/result/layout}}

@@ -1,0 +1,13 @@
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+
+  margin: 0 9px;
+
+  &:global(.ember-basic-dropdown-content--below) {
+    margin-top: -5px;
+  }
+
+  &:global(.ember-basic-dropdown-content--above) {
+    margin-top: 4px;
+  }
+}

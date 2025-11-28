@@ -1,0 +1,44 @@
+{{ko-admin/page
+  title=(t "admin.apps.endpoints.title")
+  buttonText=(t "admin.apps.endpoints.buttons.add")
+  onSave=(action "transitionToSelectType")
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.apps.endpoints.description"}}</p>
+  <p><strong>{{format-html-message "admin.apps.endpoints.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1146-defining-custom-endpoints?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=endpoints" "admin.apps.endpoints.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="endpoints"}}
+{{/if}}
+
+{{#if enabledEndpoints.length}}
+  {{#ko-simple-list header=(t "generic.enabled")}}
+    {{#each enabledEndpoints as |endpoint|}}
+      {{ko-admin/apps/endpoints/list-row
+        endpoint=endpoint
+        toggleEnabledStatus=(action "toggleEnabledStatus" endpoint)
+        deleteEndpoint=(action "deleteEndpoint" endpoint)
+        onClick=(action "editEndpoint" endpoint)
+        onDetailsClick=(action "showErrorDetails" endpoint)
+      }}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledEndpoints.length}}
+  {{#ko-simple-list header=(t "generic.disabled")}}
+    {{#each disabledEndpoints as |endpoint|}}
+      {{ko-admin/apps/endpoints/list-row
+        endpoint=endpoint
+        toggleEnabledStatus=(action "toggleEnabledStatus" endpoint)
+        deleteEndpoint=(action "deleteEndpoint" endpoint)
+        onClick=(action "editEndpoint" endpoint)
+        onDetailsClick=(action "showErrorDetails" endpoint)
+        }}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{outlet}}

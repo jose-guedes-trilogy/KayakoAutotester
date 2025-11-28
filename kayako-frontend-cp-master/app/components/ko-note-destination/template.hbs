@@ -1,0 +1,7 @@
+<div local-class="note-destination-selector">
+  {{#each options as |option|}}
+    <span local-class="option-container" class="{{qa-cls (concat "qa-note-destination--" option.id)}}">
+      {{ko-radio label=option.text checked=(eq selected option.id) onChange=(action "onChange" option) qaClass="qa-note-destination--radio"}}
+    </span>
+  {{/each}}
+</div>

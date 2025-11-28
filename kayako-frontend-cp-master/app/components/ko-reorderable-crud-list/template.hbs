@@ -1,0 +1,13 @@
+{{#ko-reorderable-list handleOutside=true onReorder=onReorder items=items as |item|}}
+  <div local-class="item">
+    {{yield item}}
+    <div local-class="actions">
+      <div local-class="actions-item" onclick={{action onRemove item}}>
+        {{ko-icon name="minusCircle" color="#BEC4C7" size=18}}
+      </div>
+      <div local-class="actions-item" class="{{qa-cls "qa-ko-reorderable-crud-list__add"}}" onclick={{action onCreate item}}>
+        {{ko-icon name="addCircle" color="#BEC4C7" size=18}}
+      </div>
+    </div>
+  </div>
+{{/ko-reorderable-list}}

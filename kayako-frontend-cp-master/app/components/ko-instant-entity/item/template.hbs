@@ -1,0 +1,62 @@
+<li local-class="instant-entity {{if invalidState "invalid-state"}}"
+    class="{{if qaClass (qa-cls qaClass)}}"
+    role="listitem"
+    onmouseover={{action "dispatch" "addFocus"}}
+    onmouseleave={{action "dispatch" "removeFocus"}}
+    onclick={{if entity (action "dispatch" "setInstantEntity" entity)}}
+>
+  <div local-class="avatar">
+    {{#if isProcessRunning}}
+      {{ko-loader}}
+    {{else}}
+      {{component iconComponent}}
+    {{/if}}
+  </div>
+  <div local-class="info">
+    <div local-class="info-row row-1">
+      <div local-class="name">{{or entity.fullName entity.name entity helpText}}</div>
+      {{#if entity.organization}}
+        <div local-class="separator">•</div>
+        <div local-class="organization">{{entity.organization.name}}</div>
+      {{/if}}
+    </div>
+    {{#unless helpText}}
+      <div local-class="info-row row-2">
+        {{#if showAddOption}}
+          <span local-class="blue italic small">{{t (if inUserMode "users.create_new" "organization.create_new")}}</span>
+        {{/if}}
+        {{#if (and inUserMode entity.fullName)}}
+          <div local-class="channel">
+            {{#if (or entity.primaryTwitterHandle entity.primaryFacebookUsername)}}
+              <div local-class="channel-icon">
+                {{#if entity.primaryTwitterHandle}}
+                  {{ko-icon name="twitter" color="#A1AAAF"}}
+                {{else if entity.primaryFacebookUsername}}
+                  {{ko-icon name="facebook" color="#A1AAAF"}}
+                {{/if}}
+              </div>
+            {{/if}}
+            <div local-class="channel-contact">
+              {{#if entity.primaryTwitterHandle}}
+                {{entity.primaryTwitterHandle}}
+              {{else if entity.primaryFacebookUsername}}
+                {{entity.primaryFacebookUsername}}
+              {{else if entity.primaryEmailAddress}}
+                {{entity.primaryEmailAddress}}
+              {{/if}}
+            </div>
+            {{#if entity.primaryPhoneNumber}}
+              <div local-class="separator">•</div>
+              <div local-class="channel-phone">{{entity.primaryPhoneNumber}}</div>
+            {{/if}}
+          </div>
+        {{else if entity.domains}}
+          {{#each entity.domains as |domain index|}}
+            {{#if index}}<div local-class="separator">•</div>{{/if}}
+            <div local-class="domain {{if (not index) "domain-first"}}">{{domain.domain}}</div>
+          {{/each}}
+        {{/if}}
+      </div>
+    {{/unless}}
+  </div>
+</li>

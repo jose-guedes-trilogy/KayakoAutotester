@@ -1,0 +1,41 @@
+.drill-down > ul > li {
+  display: flex;
+  align-items: center;
+}
+
+.back-option {
+  height: 5px;
+  width: 100px;
+  background: #000;
+}
+
+.back-arrow {
+  margin-right: 4px;
+}
+
+.option-main {
+  display: block;
+  width: 100%;
+}
+
+.child-arrow {
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.back-arrow, .child-arrow {
+  &.focused {
+    display: none;
+  }
+  &:not(.focused) {
+    display: flex;
+  }
+}
+
+.drill-down > ul > [aria-current='true'] {
+  .back-arrow, .child-arrow {
+    path {
+      fill: #FFFFFF;
+    }
+  }
+}

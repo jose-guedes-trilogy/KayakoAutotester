@@ -1,0 +1,29 @@
+<tr>
+  <td>
+    {{#ko-sla/remaining metric=metric onBreachChange=(action "breachChange" value) as |remaining|}}
+      {{#ko-sla/tooltip metric=metric isBreached=isBreached}}
+        <table local-class="table">
+          <tr>
+            <td local-class="label">
+              {{t (concat "cases.sla.title." metric.target.slaVersionTargetType)}} {{t (concat "cases.sla.phrase." status)}}
+            </td>
+            <td local-class="data">
+              <div local-class="time {{if isBreached "is-breached"}}">
+                <span>
+                  {{remaining.timeRemaining}}
+                </span>
+              </div>
+              <span local-class="metric metric-{{status}}">
+                {{inline-svg icon}}
+              </span>
+            </td>
+          </tr>
+        </table>
+      {{/ko-sla/tooltip}}
+
+      <div local-class="progress">
+        <div local-class="progress-bar progress-bar--{{status}} {{if remaining.shimmer "shimmer"}}" style={{remaining.timePassed}}></div>
+      </div>
+    {{/ko-sla/remaining}}
+  </td>
+</tr>

@@ -1,0 +1,44 @@
+<div local-class="sidebar">
+  {{ko-cases-list/sidebar/item
+    casesView=inboxView
+    qaClass=(qa-cls "ko-cases-list__sidebar__item")
+    isInbox=true
+    icon="inbox"
+  }}
+
+  {{#if filteredViews}}
+    <hr local-class="hr">
+    {{#each filteredViews as |casesView|}}
+      {{ko-cases-list/sidebar/item
+        casesView=casesView
+        qaClass=(qa-cls "ko-cases-list__sidebar__item")
+      }}
+    {{/each}}
+  {{/if}}
+
+  {{#if viewSeparator}}
+    <hr local-class="hr">
+  {{/if}}
+
+  {{#if suspendedView}}
+    {{#link-to "session.agent.cases.index.suspended-messages" local-class="item" class=(qa-cls "ko-cases-list__sidebar__item")}}
+      <div local-class="suspended-mails">{{t "cases.suspendedMessages.sidebar_title"}}</div>
+      <span local-class="counter {{if isInbox "inbox"}}">{{if (gt caseListTab.suspendedMailsCount 0) caseListTab.suspendedMailsCount}}</span>
+    {{/link-to}}
+  {{/if}}
+
+  {{#if trashView}}
+    {{ko-cases-list/sidebar/item
+      casesView=trashView
+      viewHasCount=false
+      qaClass=(qa-cls "ko-cases-list__sidebar__item")
+    }}
+  {{/if}}
+
+  {{#if session.user.role.isAdminOrHigher}}
+    <hr local-class="hr">
+    {{#link-to "session.admin.manage.views.index" local-class="item" class=(qa-cls "ko-cases-list__sidebar__item")}}
+      <div local-class="manage-views">{{t "cases.manage_views"}}</div>
+    {{/link-to}}
+  {{/if}}
+</div>

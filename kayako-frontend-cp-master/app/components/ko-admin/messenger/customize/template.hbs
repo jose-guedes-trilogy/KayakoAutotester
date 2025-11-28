@@ -1,0 +1,99 @@
+<label local-class="label">{{t "admin.messenger.tabs.customize.title_label"}}</label>
+<div local-class="localized-field">
+  {{ko-input size="full" value=title}}
+  {{#if messengerPage}}
+    <div local-class="locale-input">
+      {{ko-admin/inline-locale-edit localeFields=titleLocaleFields}}
+    </div>
+  {{/if}}
+</div>
+
+{{#if messengerPage}}
+  <div local-class="text--small">
+    {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.title_helptext"}}{{/ko-form/field/help}}
+  </div>
+{{/if}}
+
+<label local-class="label">{{t "admin.messenger.tabs.customize.welcome_label"}}</label>
+<div local-class="localized-field">
+  {{ko-input size="full" multiline=true lines=3 value=welcomeMessage}}
+  {{#if messengerPage}}
+    <div local-class="locale-input">
+      {{ko-admin/inline-locale-edit localeFields=welcomeMessageLocaleFields inputType="textArea"}}
+    </div>
+  {{/if}}
+</div>
+
+{{#if messengerPage}}
+  <div local-class="text--small">
+    {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.welcome_helptext"}}{{/ko-form/field/help}}
+  </div>
+{{/if}}
+
+{{#if (variation "release-manually-set-messenger-reply-time-expectation")}}
+  {{#if messengerPage}}
+    <label local-class="label">{{t "admin.messenger.tabs.customize.response_time.label"}}</label>
+    <div local-class="reply-time-locale">
+      {{ko-radio label="Auto" checked=(eq replyTimeLocale '') onChange=(action (mut replyTimeLocale) "")}}
+      {{#if fetchAverageReplyTime.isRunning}}
+        <div local-class="loader">
+          {{ko-loader size=15}}
+        </div>
+      {{else}}
+        <div local-class="radio-label-detail">
+          {{t "admin.messenger.tabs.customize.response_time.currently"}} - <i>{{currentResponseTimeExpectation}}</i>
+        </div>
+      {{/if}}
+      {{ko-radio label=(t "admin.messenger.tabs.customize.response_time.options.reply_in_few_hours") checked=(eq replyTimeLocale 'reply.in.few.hours') onChange=(action (mut replyTimeLocale) "reply.in.few.hours")}}
+      {{ko-radio label=(t "admin.messenger.tabs.customize.response_time.options.reply_in_few_minutes") checked=(eq replyTimeLocale 'reply.in.few.minutes') onChange=(action (mut replyTimeLocale) "reply.in.few.minutes")}}
+      {{ko-radio label=(t "admin.messenger.tabs.customize.response_time.options.reply_asap") checked=(eq replyTimeLocale 'reply.asap') onChange=(action (mut replyTimeLocale) "reply.asap")}}
+      <div local-class="text--small">
+        {{#ko-form/field/help}}{{t "admin.messenger.tabs.customize.response_time.help_text"}}{{/ko-form/field/help}}
+      </div>
+    </div>
+  {{/if}}
+{{/if}}
+
+<label local-class="label">{{t "admin.messenger.tabs.customize.background_label"}}</label>
+<div local-class="background-mode {{if (eq backgroundMode "gradient") "is-active"}}">
+  {{ko-radio label="Gradient" checked=(eq backgroundMode 'gradient') onChange=(action "switchBackgroundStyle" 'gradient')}}
+</div>
+<div local-class="background-mode {{if (eq backgroundMode "color") "is-active"}}">
+  {{ko-radio label="Color" checked=(eq backgroundMode 'color') onChange=(action "switchBackgroundStyle" 'color')}}
+</div>
+
+<div local-class="color-palletes {{if (eq backgroundMode "color") "show-colors"}}">
+  <div local-class="color-palletes__wrap">
+    {{#each gradients as |gradient|}}
+      <span local-class="pallete gradient {{if (eq activeGradient gradient) "is-active"}}" onClick={{action "updateGradient" gradient}}></span>
+    {{/each}}
+  </div>
+
+  <div local-class="color-palletes__wrap">
+    {{#each solidColors as |color|}}
+      <span local-class="pallete solid-color {{if (eq activeSolidColor color) "is-active"}}" onClick={{action "updateColor" color}}></span>
+    {{/each}}
+    <span local-class="pallete solid-color">
+      <div local-class="color-selector--background">
+        {{spectrum-color-picker color=activeSolidColor showInput=true onMove=(action "updateColor") onChange=(action "updateColor")}}
+      </div>
+    </span>
+  </div>
+</div>
+
+{{#if messengerPage}}
+  <div local-class="patterns">
+    <label local-class="label">{{t "admin.messenger.tabs.customize.texture_label"}}</label>
+    {{#each patterns as |pattern|}}
+      <span local-class="pattern {{if (eq activePattern pattern) "is-active-pattern"}}" onClick={{action "updatePattern" pattern}}></span>
+    {{/each}}
+  </div>
+{{/if}}
+
+<div local-class="color-input-container">
+  <label local-class="label">{{t "admin.messenger.tabs.customize.color_label"}}</label>
+  <input local-class="color-input" value={{primaryColor}} onchange={{action "primaryColorChanged" value="target.value"}}>
+  <div local-class="color-selector--primary">
+    {{spectrum-color-picker color=primaryColor onMove=(action "primaryColorChanged") onChange=(action "primaryColorChanged")}}
+  </div>
+</div>

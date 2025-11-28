@@ -1,0 +1,377 @@
+<div>
+  <h3 local-class="page-title">
+    <span local-class="home-icon">{{inline-svg "admin-home/home"}}</span>
+    {{t 'admin.home_page_title'}}
+  </h3>
+  <div local-class="categories">
+    {{!------------------------
+    -------- Channels ---------
+    --------------------------}}
+    {{#if (has-permission 'channels.manage')}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.channels'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.channels_description'}}</p>
+        <div local-class="items">
+          {{#link-to "session.admin.channels.email" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/email" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/email" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.email.title'}}</div>
+          {{/link-to}}
+          {{#link-to "session.admin.channels.facebook" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/facebook" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/facebook" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.facebook.headings.index'}}</div>
+          {{/link-to}}
+          {{#link-to "session.admin.channels.twitter" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/x" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/x" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.twitter.title'}}</div>
+          {{/link-to}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{!------------------------
+    -------- Messenger --------
+    --------------------------}}
+    {{#if shouldShowMessengerSection}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.messenger'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.messenger_description'}}</p>
+        <div local-class="items">
+          {{#if (has-permission 'channels.manage')}}
+            {{#link-to "session.admin.messenger.configure" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/configuration" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/configuration" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.messenger.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'automations.manage')}}
+            {{#link-to "session.admin.messenger.engagements" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/engagement_rules" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/engagement_rules" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.engagements.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'channels.manage')}}
+            {{#link-to "session.admin.messenger.identity-verification" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/identity_verification" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/identity_verification" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.messenger.identity_verification.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{!------------------------
+    ------ Conversations ------
+    --------------------------}}
+    <div local-class="category">
+      <h5 local-class="category-title">{{t 'admin.navigation.conversations'}}</h5>
+      <p local-class="category-description">{{t 'admin.navigation.conversations_description'}}</p>
+      <div local-class="items">
+        {{#if (has-permission 'case_views.manage')}}
+          {{#link-to "session.admin.manage.views" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/views" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/views" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.views.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+        {{#if (and (has-permission 'case_fields.manage') (plan-has 'case_forms'))}}
+          {{#link-to "session.admin.manage.case-forms" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/forms" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/forms" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.caseforms.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+        {{#link-to "session.admin.manage.time-tracking" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/time_tracking" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/time_tracking" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.apps.timetracking.title'}}</div>
+        {{/link-to}}
+      </div>
+    </div>
+
+    {{!------------------------
+    ----- Customizations ------
+    --------------------------}}
+    {{#if shouldShowCustomizationSection}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.customizations'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.customizations_description'}}</p>
+        <div local-class="items">
+          {{#if (has-permission 'brands.manage')}}
+            {{#link-to "session.admin.customizations.brands" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/brands" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/brands" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.brands.title'}}</div>
+            {{/link-to}}
+            {{#link-to "session.admin.customizations.email-templates" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/email_templates" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/email_templates" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.email_templates.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'case_fields.manage')}}
+            {{#link-to "session.admin.customizations.case-fields" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/custom_fields" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/custom_fields" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.custom_fields.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'localization.manage')}}
+            {{#link-to "session.admin.customizations.localization" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/localization" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/localization" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.localization.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{!------------------------
+    ------ Team settings ------
+    --------------------------}}
+    {{#if shouldShowPeopleSection}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.team_settings'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.team_settings_description'}}</p>
+        <div local-class="items">
+          {{#if (has-permission 'teams.manage')}}
+            {{#link-to "session.admin.people.teams" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/teams" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/teams" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.teams.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#link-to "session.admin.people.staff" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/agent_directory" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/agent_directory" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.staff.title'}}</div>
+          {{/link-to}}
+          {{#if (has-permission 'business_hours.manage')}}
+            {{#link-to "session.admin.people.businesshours" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/business_hours" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/business_hours" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.businesshours.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'roles.manage')}}
+            {{#link-to "session.admin.people.roles" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/roles_and_permissions" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/roles_and_permissions" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.roles.title_short'}}</div>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{!------------------------
+    ------- Automations -------
+    --------------------------}}
+    {{#if shouldShowAutomationsSection}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.automation'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.automation_description'}}</p>
+        <div local-class="items">
+          {{#if (has-permission 'macros.manage')}}
+            {{#link-to "session.admin.automation.macros" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/macros" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/macros" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.macros.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'automations.manage')}}
+            {{#link-to "session.admin.automation.triggers" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/triggers" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/triggers" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.triggers.title'}}</div>
+            {{/link-to}}
+            {{#link-to "session.admin.automation.monitors" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/monitors" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/monitors" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.monitors.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+          {{#if (has-permission 'slas.manage')}}
+            {{#link-to "session.admin.automation.sla" local-class="item"}}
+              <div local-class="item-icon-container">
+                {{inline-svg "admin-home/sla" local-class="item-icon"}}
+                {{inline-svg "admin-home/hover/sla" local-class="item-icon--hover"}}
+              </div>
+              <div local-class="item-title">{{t 'admin.sla.title'}}</div>
+            {{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{!------------------------
+    ------- Integrations ------
+    --------------------------}}
+    <div local-class="category">
+      <h5 local-class="category-title">{{t 'admin.navigation.integrations'}}</h5>
+      <p local-class="category-description">{{t 'admin.navigation.integrations_description'}}</p>
+      <div local-class="items">
+        {{#link-to "session.admin.apps.zapier" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/zapier" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/zapier" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.apps.zapier.title'}}</div>
+        {{/link-to}}
+        {{#link-to "session.admin.apps.salesforce" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/salesforce" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/salesforce" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.apps.salesforce.title'}}</div>
+        {{/link-to}}
+        {{#if (has-permission 'endpoints.manage')}}
+          {{#link-to "session.admin.apps.endpoints" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/endpoints" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/endpoints" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.apps.endpoints.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+        {{#link-to "session.admin.apps.webhooks" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/webhooks" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/webhooks" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.apps.webhooks.title'}}</div>
+        {{/link-to}}
+        {{#link-to "session.admin.apps.api" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/api" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/api" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.apps.api.title'}}</div>
+        {{/link-to}}
+        {{#if (and session.user.role.isAdminOrHigher (starts-with session.session.instanceName "doug-"))}}
+          {{#link-to "session.admin.apps.atlasai" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/sparkle" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/sparkle" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.apps.atlasai.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+      </div>
+    </div>
+
+    {{!------------------------
+    -------- Security ---------
+    --------------------------}}
+    <div local-class="category">
+      <h5 local-class="category-title">{{t 'admin.navigation.security'}}</h5>
+      <p local-class="category-description">{{t 'admin.navigation.security_description'}}</p>
+      <div local-class="items">
+        {{#if (has-permission 'settings.manage')}}
+          {{#link-to "session.admin.security.authentication" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/authentication" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/authentication" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.security.authentication.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+        {{#if (plan-has 'custom_security_policy')}}
+          {{#link-to "session.admin.security.policy" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/agent_directory" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/agent_directory" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.security.policy.title'}}</div>
+          {{/link-to}}
+        {{else}}
+          {{#link-to "session.admin.security.policy.help-center" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/agent_directory" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/agent_directory" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'admin.security.policy.title'}}</div>
+          {{/link-to}}
+        {{/if}}
+        {{#link-to "session.admin.security.settings" local-class="item"}}
+          <div local-class="item-icon-container">
+            {{inline-svg "admin-home/user_registration" local-class="item-icon"}}
+            {{inline-svg "admin-home/hover/user_registration" local-class="item-icon--hover"}}
+          </div>
+          <div local-class="item-title">{{t 'admin.security.settings.title'}}</div>
+        {{/link-to}}
+      </div>
+    </div>
+
+    {{!------------------------
+    --------- Account ---------
+    --------------------------}}
+    {{#if (and (has-permission 'account.billing') shouldShowAccountSection)}}
+      <div local-class="category">
+        <h5 local-class="category-title">{{t 'admin.navigation.account'}}</h5>
+        <p local-class="category-description">{{t 'admin.navigation.account_description'}}</p>
+        <div local-class="items">
+          {{#link-to "session.admin.account.overview" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/overview" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/overview" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'account.overview.title'}}</div>
+          {{/link-to}}
+          {{#link-to "session.admin.account.billing" local-class="item"}}
+            <div local-class="item-icon-container">
+              {{inline-svg "admin-home/billing_info" local-class="item-icon"}}
+              {{inline-svg "admin-home/hover/billing_info" local-class="item-icon--hover"}}
+            </div>
+            <div local-class="item-title">{{t 'account.billing.title'}}</div>
+          {{/link-to}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>

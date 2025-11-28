@@ -1,0 +1,26 @@
+{{#if generatingToken}}
+  <div local-class="loader">
+    {{ko-loader}}
+  </div>
+{{else}}
+  {{#unless iframeLoaded}}
+    {{#unless failedIframe}}
+      <div local-class="loader">
+        {{ko-loader}}
+      </div>
+    {{/unless}}
+
+    {{#if reloadingIframe}}
+      {{#if failedIframe}}
+        {{t 'account.trial.billing.iframe.failed'}}
+      {{else}}
+        {{t 'account.trial.billing.iframe.reloading'}}
+      {{/if}}
+    {{/if}}
+  {{/unless}}
+  <div class="{{unless iframeLoaded 'hide'}}">
+    {{#unless failedIframe}}
+      <iframe id="billing-iframe" src="{{iframeSrc}}" frameborder="0" sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+    {{/unless}}
+  </div>
+{{/if}}

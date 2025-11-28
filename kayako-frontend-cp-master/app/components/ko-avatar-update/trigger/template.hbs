@@ -1,0 +1,17 @@
+{{#ko-tooltip side="top" title=(t "users.change_avatar") delay=200}}
+  {{#ko-user-avatar user=user size="medium" as |avatar|}}
+    {{avatar.image}}
+
+    {{#if isLoading}}
+      <div local-class="overlay loading-overlay">
+        {{ko-loader}}
+      </div>
+    {{else}}
+      {{avatar.online-indicator showTooltip=false}}
+
+      <div local-class="overlay avatar-overlay">
+        <img src="/images/icons/camera.svg">
+      </div>
+    {{/if}}
+  {{/ko-user-avatar}}
+{{/ko-tooltip}}

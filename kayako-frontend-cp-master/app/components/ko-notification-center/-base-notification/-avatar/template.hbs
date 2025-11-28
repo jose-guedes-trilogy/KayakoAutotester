@@ -1,0 +1,10 @@
+<span local-class="avatar">
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    {{#ko-user-avatar user=user size="submedium" as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator}}
+    {{/ko-user-avatar}}
+  {{/if}}
+</span>

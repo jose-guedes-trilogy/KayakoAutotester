@@ -1,0 +1,22 @@
+<div local-class="container {{if isNote "dormant"}}" title={{select.selected.handle}}>
+  {{#with select.selected as |channel|}}
+    {{#if channel.shouldDeliverViaMessenger}}
+      {{inline-svg "icon--replybox_messenger"}}
+    {{else}}
+      {{inline-svg (concat "icon--replybox_" channel.normalizedType)}}
+    {{/if}}
+
+    <div local-class="text">
+      {{#if channel.shouldDeliverViaMessenger}}
+        {{t "cases.channelType.MESSENGER"}} ({{channel.handle}})
+      {{else}}
+        {{channel.handle}}
+      {{/if}}
+    </div>
+  {{else}}
+    <div local-class="text {{if noUser "dormant"}}">
+      {{t "cases.columns.channel.placeholder"}}
+    </div>
+  {{/with}}
+  {{ko-icon color="#5F6C73" name="select"}}
+</div>

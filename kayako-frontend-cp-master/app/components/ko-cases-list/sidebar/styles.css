@@ -1,0 +1,66 @@
+.sidebar {
+  padding: 9px;
+  flex-grow: 1;
+  overflow: auto;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.hr {
+  margin: 9px;
+  background-color: $grey-2;
+  height: 1px;
+  border: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  font-size: 15px;
+  padding: 0 9px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: $grey-8;
+
+  &:hover {
+    background-color: $grey-1;
+    color: $grey-8;
+  }
+
+  &:global(.disabled) {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  &:global(.active:not(.ember-transitioning-out)),
+  &:global(.ember-transitioning-in) {
+    color: #3B4048;
+    background-color: $trivial-blue;
+    font-weight: 600;
+  }
+}
+
+.suspended-mails, .manage-views {
+  display: inline-flex;
+  flex-grow: 1;
+}
+
+.manage-views {
+  font-size: 14px;
+  font-weight: 600;
+  color: $grey-6;
+}
+
+.counter {
+  padding: 0 6px;
+  border-radius: 2px;
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: $grey-6;
+
+  :global(.active:not(.ember-transitioning-out)) &,
+  :global(.ember-transitioning-in) & {
+    color: $primary-blue;
+  }
+}

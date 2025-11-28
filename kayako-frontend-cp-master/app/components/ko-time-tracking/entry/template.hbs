@@ -1,0 +1,22 @@
+<div local-class="list-item {{if deleteEntry.isRunning "is-disabled"}} {{if hasEditPermission "is-editable"}}" onclick={{action "edit" entry}} class={{qa-cls "tracking-entry"}}>
+  <div local-class="agent">
+    <img local-class="avatar" src="{{entry.agent.avatar}}" width="16" height="16">
+    {{entry.agent.fullName}}
+  </div>
+
+  <div local-class="time">
+    {{#if (eq entry.logType 'BILLED')}}
+      <div local-class="inline-icon">
+        {{inline-svg "dollar-icon"}}
+      </div>
+    {{/if}}
+    {{ko-seconds-to-time entry.timeSpent}}
+  </div>
+
+  {{#if hasEditPermission}}
+    <div local-class="controls">
+      <span local-class="delete" onclick={{perform deleteEntry entry}} class={{qa-cls "delete-entry"}}></span>
+      <span local-class="edit-button">{{t "generic.edit"}}</span>
+    </div>
+  {{/if}}
+</div>

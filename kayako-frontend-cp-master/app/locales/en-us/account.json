@@ -1,0 +1,227 @@
+{
+  "cancellation": {
+    "reason": {
+      "product_reliability": "Product was unstable, or didn’t function as expected",
+      "product_functionality": "You’re missing a key feature",
+      "product_price": "It’s too expensive",
+      "product_service": "The support team wasn’t helpful",
+      "out_of_business": "We no longer require a customer support platform"
+    }
+  },
+  "trial": {
+    "title": "Ready to upgrade your account?",
+    "start": {
+      "upgrade": "Sign up"
+    },
+    "step": {
+      "plans": "Choose your plan",
+      "billing": {
+        "details": "Billing Information"
+      },
+      "card": {
+        "details": "Payment Details"
+      }
+    },
+    "billing": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "address1": "Address line 1",
+      "address2": "Address line 2",
+      "city": "City",
+      "state": "State/Province",
+      "postal_code": "Postal code",
+      "country": "Country",
+      "vatid": "VAT ID",
+      "error": {
+        "first_name": "First name is required",
+        "last_name": "Last name is required",
+        "personal_email": "Enter valid email address",
+        "home_phone": "Enter valid phone number",
+        "address1": "Address line 1 is required",
+        "address2": "Address line 2 is required",
+        "city": "City is required",
+        "state": "State is required",
+        "postal_code": "Postcode is required",
+        "country": "Country is required",
+        "vat_id": "Invalid VAT ID"
+      },
+      "iframe": {
+        "reloading": "Please wait, credit card form is loading",
+        "failed": "Sorry, we were unable to load the credit card form. Please try again later"
+      }
+    },
+    "vat": {
+      "help": "Please feel free to leave VAT ID empty, if it is not applicable to your country"
+    },
+    "upgraded": "Your account has been upgraded successfully",
+    "upgrade": {
+      "inprocess": "Please wait, we are upgrading your account...",
+      "cta": "Upgrade now"
+    },
+    "days": {
+      "left": "<strong>{days} days</strong> left in trial."
+    },
+    "expired": "Trial expired.",
+    "agents": {
+      "input": {
+        "label": "{count, plural, =1 {agent} other {agents}}"
+      }
+    },
+    "collaborators": {
+      "input": {
+        "label": "{count, plural, =1 {collaborator} other {collaborators}}"
+      }
+    }
+  },
+  "sandbox": {
+    "title": "Sandbox Mode.",
+    "days": {
+      "left": "{days} more days left."
+    },
+    "limitations": {
+      "first": "No emails will be sent.",
+      "second": "Changes made here don’t affect your existing help desk."
+    },
+    "ondemand": {
+      "upgrade": {
+        "message": "Ready to upgrade? Navigate to <a href={anchor} target='_blank' rel='noopener noreferrer'>{title}</a> to upgrade your Kayako 4 production desk."
+      }
+    }
+  },
+  "overview": {
+    "title": "Overview",
+    "list": {
+      "title": "Billing Overview"
+    },
+    "invoices": {
+      "title": "Invoices",
+      "date": "Date",
+      "amount": "Amount",
+      "downloadText": "Download PDF",
+      "notAvailable": "There are no Invoices generated for this account"
+    },
+    "balance": {
+      "title": "Balance"
+    },
+    "plan": {
+      "title": "Current Plan"
+    },
+    "payment": {
+      "title": "Payment Method",
+      "buttonText": "Update Card"
+    },
+    "billing": {
+      "title": "Billing information",
+      "buttonText": "Update information"
+    },
+    "subscription": {
+      "title": "Subscription",
+      "expiry": "Your subscription is active until {date}",
+      "cancelContactSupport": "Contact support"
+    },
+    "cancellation": {
+      "reason": {
+        "question": "Why are you cancelling?",
+        "placeholder": "Choose the primary reason",
+        "chars": {
+          "limit": "{count, plural, =1 {# character left} other {# characters left}}"
+        }
+      },
+      "comment": {
+        "question": "Do you have any further comments? We take the time to read every one of these."
+      },
+      "revert": {
+        "label": "No, I’m staying for now"
+      },
+      "confirm": {
+        "label": "Yes, I’d like to cancel"
+      },
+      "confirmed": "Your cancellation request has been processed"
+    }
+  },
+  "billing": {
+    "title": "Billing info",
+    "cards": {
+      "title": "Saved Cards",
+      "description": "You can add a new credit card below and we’ll save your payment method here for future billing."
+    },
+    "card": {
+      "number": "Card number",
+      "expiry": "Card Expiry",
+      "new": "Add a new card",
+      "save": "Save",
+      "cancel": "Cancel",
+      "added": "Your card has been saved successfully",
+      "notAdded": "There was an error processing your card."
+    },
+    "defaultCard": "Default",
+    "zuora": {
+      "renderError": "Unable to initiate transaction"
+    }
+  },
+  "limit": {
+    "reached": "Upgrade to add more"
+  },
+  "plans": {
+    "title": "Plan",
+    "compare": {
+      "title": "Compare Plans"
+    },
+    "select": {
+      "title": "Choose Plans"
+    },
+    "upgrade": "Update Subscription",
+    "upgradeCancel": "Cancel",
+    "seats": {
+      "title": "No. Of Agents:",
+      "cannotIncrease": "You have reached the limit of seats allowed by this plan. Please contact support for available options"
+    },
+    "plan": {
+      "cannotSwitch": "Cannot switch plan. The current number of agents on your account are exceeding the limit of agents on new plan"
+    },
+    "term": {
+      "cannotSwitch": "{plan} plan is not available for {term} billing",
+      "savings": {
+        "title": "save",
+        "term": "/year"
+      }
+    },
+    "subscription": {
+      "updated": "Your plan has been updated successfully",
+      "title": "Subscription",
+      "key": "per {term, select, MONTH {month} ANNUAL {year}}"
+    },
+    "terms": {
+      "MONTH": "Billed monthly",
+      "ANNUAL": "Billed annually"
+    },
+    "collaborators": "{count, plural, =1 {# collaborator included in your plan} =999 {Unlimited Collaborators} other {# collaborators are included in your plan}}",
+    "priceFor": {
+      "flatFee": "up to {seats} agents",
+      "perAgent": "per agent / mo",
+      "perCollaborator": "per collab / mo"
+    },
+    "notAvailable": "not available",
+    "noPlanAvailableDuetoYearMismatch": "No plans available due to mismatch of the Subscription end date and the current year.",
+    "renewal": {
+      "data": {
+        "title": "Renewal date"
+      }
+    },
+    "paying": {
+      "title": "Paying now"
+    },
+    "upgrade_to_create_new_roles": "Upgrade to create new roles",
+    "custom_plan": "Lucky you, you’re on a custom plan! To update or make changes to your plan, please contact <a href=\"mailto:sales@kayako.com\">sales@kayako.com</a>.",
+    "update_message": {
+      "title": "Update your plan",
+      "body": "<p><a href=\"https://www.kayako.com/pricing\" rel=\"noopener noreferrer\" target=\"_blank\">Compare plans</a> and find the best one for you. <a href=\"https://support.kayako.com/conversation/new\" rel=\"noopener noreferrer\" target=\"_blank\">Contact sales</a> for more information.</p>"
+    },
+    "select_support_plan": "Select Support Plan level below and choose “1”, “3”, or “5 Years” to the right.  Choosing more than 1 Year lets you lock in your price for the entire length of your subscription",
+    "duration": "duration",
+    "additional_collaborator": "Add additional collaborators for $10/month in the box on the right",
+    "placeholder": "Choose how many agents in the box on the right"
+  }
+}

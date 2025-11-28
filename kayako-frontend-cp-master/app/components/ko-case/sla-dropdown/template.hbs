@@ -1,0 +1,8 @@
+<div local-class="sidebar">
+  <span local-class="title"><b>{{t "generic.SLA"}}</b> {{sla.title}}</span> {{! TODO: I don't know how we will localize this?}}
+  <table local-class="table">
+    {{#each slaMetrics as |metric|}}
+      {{ko-case/sla-dropdown/metric metric=metric}}
+    {{/each}}
+  </table>
+</div>

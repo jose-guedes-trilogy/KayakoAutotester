@@ -1,0 +1,41 @@
+<div onmousedown={{action "handleMouseDown"}}>
+  {{#power-select
+    onchange=(action "selectItem")
+    actionReceiver=actionReceiver
+    options=currentHierarchyLevel
+    search=(perform search)
+    searchEnabled=searchEnabled
+    disabled=isDisabled
+    placeholder=placeholder
+    searchPlaceholder=searchPlaceholder
+    closeOnSelect=false
+    triggerComponent=triggerComponent
+    triggerClass=triggerClass
+    extra=computedExtra
+    verticalPosition=verticalPosition
+    horizontalPosition=horizontalPosition
+    renderInPlace=renderInPlace
+    dropdownClass=(join-classes dropdownClass (local-class "drill-down") (if (eq option.type "back") "back-option"))
+    tabindex=tabIndex
+    searchMessage=false
+    matchTriggerWidth=matchTriggerWidth
+    onclose=(action "resetState")
+    searchField=searchField
+  as |option select|}}
+    {{#if (eq option.type "back")}}
+      <span local-class="back-arrow">{{inline-svg "icon--chevron--left--dark"}}</span>
+    {{/if}}
+
+    <span local-class="option-main">
+      {{#if hasBlock}}
+        {{yield option select}}
+      {{else}}
+        {{sanitize-html (ko-embolden option.value select.lastSearchedText) "bold"}}
+      {{/if}}
+    </span>
+
+    {{#if option.children}}
+      <span local-class="child-arrow">{{inline-svg "icon--chevron--right--dark"}}</span>
+    {{/if}}
+  {{/power-select}}
+</div>

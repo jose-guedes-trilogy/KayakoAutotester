@@ -1,0 +1,77 @@
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.first_name'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.first_name disabled=parent.saving name="first_name"}}
+  {{ko-form/field/errors errors=parent.formErrors.first_name}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.last_name'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.last_name disabled=parent.saving name="last_name"}}
+  {{ko-form/field/errors errors=parent.formErrors.last_name}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.email'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.personal_email disabled=parent.saving name="personal_email"}}
+  {{ko-form/field/errors errors=parent.formErrors.personal_email}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.phone'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.home_phone disabled=parent.saving name="home_phone"}}
+  {{ko-form/field/errors errors=parent.formErrors.home_phone}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.address1'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.address1 disabled=parent.saving name="address1"}}
+  {{ko-form/field/errors errors=parent.formErrors.address1}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.address2'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.address2 disabled=parent.saving name="address2"}}
+  {{ko-form/field/errors errors=parent.formErrors.address2}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.city'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.city disabled=parent.saving name="city"}}
+  {{ko-form/field/errors errors=parent.formErrors.city}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.state'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.state disabled=parent.saving name="state"}}
+  {{ko-form/field/errors errors=parent.formErrors.state}}
+{{/ko-form/field}}
+
+{{#ko-form/field}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.postal_code'}} {{/ko-form/field/label}}
+  {{ko-input value=parent.billing.postal_code disabled=parent.saving name="postal_code"}}
+  {{ko-form/field/errors errors=parent.formErrors.postal_code}}
+{{/ko-form/field}}
+
+{{#ko-form/field class=(qa-cls 'countries')}}
+  {{#ko-form/field/label}} {{t 'account.trial.billing.country'}} {{/ko-form/field/label}}
+  {{#ko-select
+    options=parent.countries
+    selected=parent.billing.country
+    searchEnabled=true
+    searchField="country"
+    size="medium"
+    name="country"
+    disabled=parent.saving
+    onChange=(action (mut parent.billing.country) ) as |country|}}
+    {{country.country}}
+  {{/ko-select}}
+  {{ko-form/field/errors errors=parent.formErrors.country}}
+{{/ko-form/field}}
+
+{{#if parent.vatRequired}}
+  {{#ko-form/field}}
+    {{#ko-form/field/label}} {{t 'account.trial.billing.vatid'}} {{/ko-form/field/label}}
+    {{ko-input value=parent.vatId qaClass="vat-id" onInput=(action (mut parent.vatId) value="target.value") disabled=parent.saving}}
+    {{ko-form/field/errors errors=parent.formErrors.vat_id}}
+  {{/ko-form/field}}
+{{/if}}

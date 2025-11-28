@@ -1,0 +1,21 @@
+.predicate-header {
+  margin-bottom: 18px;
+}
+
+.sorting {
+  display: flex;
+}
+
+.sort-direction {
+  margin-left: 3px;
+}
+
+.team-sharing {
+  display: flex;
+}
+
+.team-selector {
+  margin-top: -6px;
+  margin-left: 15px;
+  width: 340px;
+}

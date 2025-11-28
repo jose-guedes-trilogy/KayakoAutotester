@@ -1,0 +1,18 @@
+<div local-class="sidebar">
+  {{#if hasBlock}}
+    {{yield (hash
+      group=(component "ko-sidebar/group")
+    )}}
+  {{else}}
+    {{!-- TODO - remove legacy non-block version --}}
+    {{#each groups as |group|}}
+      {{#ko-sidebar/group title=group.title as |g|}}
+        {{#each group.items as |item|}}
+          {{#g.item route=item.route}}
+            {{item.title}}
+          {{/g.item}}
+        {{/each}}
+      {{/ko-sidebar/group}}
+    {{/each}}
+  {{/if}}
+</div>

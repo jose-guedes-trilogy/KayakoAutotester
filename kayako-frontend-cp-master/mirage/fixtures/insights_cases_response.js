@@ -1,0 +1,101 @@
+export default {
+  status: 200,
+  data: {
+    start_at: '2016-04-30T21:00:00+00:00',
+    end_at: '2016-05-31T20:59:59+00:00',
+    previous_start_at: '2016-03-30T21:00:01+00:00',
+    previous_end_at: '2016-04-30T21:00:00+00:00',
+    interval: 'DAY',
+    interval_count: 31,
+    series: {
+      name: 'average_response_time',
+      data: [
+        0,
+        1462211712.1667,
+        1462257745.2,
+        1462368446.2,
+        1462446470.1818,
+        1462525506.2,
+        1462577697,
+        0,
+        1462816847.0833,
+        1462869468.44,
+        1462972819.9333,
+        1463040785.8889,
+        1463130784.5152,
+        1463178663.8,
+        1463301424.3571,
+        7110.6364,
+        13680.9167,
+        50326.4762,
+        33838.5,
+        7593.4138,
+        6208.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      previous: [
+        0,
+        139002697.1429,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        649451750.5556,
+        1461279356.2143,
+        1461393596.6923,
+        0,
+        1461609335.5217,
+        1461654795.3333,
+        1461743481.5484,
+        1461831277.0833,
+        1461926874.5789,
+        1461969209.3636
+      ],
+      resource_type: 'report_series_comparison'
+    },
+    metric: {
+      name: 'average_response_time',
+      value: 978043873.4709,
+      delta_percent: 72.969103442159,
+      previous: 565444263.7485,
+      resource_type: 'report_value_comparison'
+    },
+    resource_type: 'report_average_response'
+  },
+  resources: [],
+  resource: 'report_average_response',
+  logs: [
+    {
+      level: 'WARNING',
+      message: 'Entire resources enforced for flat mode'
+    },
+    {
+      level: 'NOTICE',
+      message: 'Redundant request parameters supplied: agent_id'
+    }
+  ]
+};

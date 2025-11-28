@@ -1,0 +1,10 @@
+<a local-class="item {{if isActive "item--active"}}" onclick={{onClick}}>
+  <div local-class="text">
+    {{yield}}
+  </div>
+  {{#if count}}
+    <span local-class="counter">
+      {{count}}
+    </span>
+  {{/if}}
+</a>

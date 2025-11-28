@@ -1,0 +1,93 @@
+.message-timeline-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px;
+  transition: background-color 0.2s ease;
+}
+
+.message-timeline-item:hover {
+  background-color: $grey-1;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.message-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.sender-info {
+  margin-left: 10px;
+}
+
+.sender-name {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.sender-email {
+  font-weight:lighter;
+  font-size: 12px;
+  color: #444;
+}
+
+.message-timestamp {
+  color: #888;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.message-body {
+  margin-top: 15px;
+}
+
+.message-attachments {
+  margin-top: 15px;
+}
+
+.message-attachments ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.message-attachments li {
+  margin-top: 5px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 400px);
+}
+
+.message-recipients {
+  font-size: 14px;
+  color: #333;
+}
+
+.message-recipients strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.message-recipients span {
+  margin-right: 3px;
+}
+
+.recipient-heading {
+  font-weight: normal;
+  font-size: 12px;
+  color: #666;
+}
+
+.recipient {
+  font-size: 12px;
+  color: #555;
+  margin-right: 4px;
+}
+

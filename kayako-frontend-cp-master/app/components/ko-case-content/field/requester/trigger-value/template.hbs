@@ -1,0 +1,12 @@
+<div local-class="container">
+  {{#if selected}}
+    <div local-class="avatar">
+      {{ko-user-avatar user=selected size="micro"}}
+    </div>
+    <div local-class="name">
+      {{selected.fullName}}
+    </div>
+  {{else}}
+    <span>{{dash}}</span>
+  {{/if}}
+</div>

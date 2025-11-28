@@ -1,0 +1,8 @@
+<tr onclick={{action "handleClick"}} class="{{class}}" local-class="container {{if selected "selected"}}">
+  {{#if selectable}}
+    {{#ko-table/cell onClick=(action "toggleRow" null) minWidth=49 maxWidth=49}}
+      {{ko-checkbox disabled=selectableDisabled checked=selected onCheck=(action "toggleRow") qaClass="qa-ko-table__row__checkbox"}}
+    {{/ko-table/cell}}
+  {{/if}}
+  {{yield}}
+</tr>

@@ -1,0 +1,39 @@
+<div local-class="layout">
+  <div local-class="item" class="{{qa-cls "qa-fullname"}}">
+    {{ko-input value=recipient.fullname size="full"}}
+
+    {{ko-form/field/errors errors=recipient.errors.fullname}}
+  </div>
+
+  <div local-class="item" class="{{qa-cls "qa-email"}}">
+    {{ko-input value=recipient.email size="full"}}
+
+    {{ko-form/field/errors errors=recipient.errors.email}}
+  </div>
+
+  <div local-class="item" class="{{qa-cls "qa-role"}}">
+    {{#ko-select
+      options=sortedRoles
+      placeholder=(t "generic.select_placeholder")
+      selected=recipient.role
+      searchEnabled=true
+      searchField="title"
+      onChange=(action (mut recipient.role))
+    as |option|}}
+      {{option.title}}
+    {{/ko-select}}
+    {{ko-form/field/errors errors=recipient.errors.role}}
+  </div>
+
+  <div local-class="item" class="{{qa-cls "qa-teams"}}">
+    {{ko-select/multiple
+      placeholder=(t "generic.select_placeholder")
+      options=sortedTeams
+      selected=selectedTeams
+      searchField="title"
+      disabled=disableTeamSelector
+      onChange=(action (mut recipient.teams))
+    }}
+    {{ko-form/field/errors errors=recipient.errors.teams}}
+  </div>
+</div>

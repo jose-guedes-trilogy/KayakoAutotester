@@ -1,0 +1,11 @@
+<span local-class="item {{if shrink "item--shrink"}}">
+  {{#if (eq dynamicSegments.length 0)}}
+    {{#link-to routeName (query-params timestamp=_null noteId=_null postId=_null) current-when=routeName local-class="link"}}
+      {{yield}}
+    {{/link-to}}
+  {{else if (eq dynamicSegments.length 1)}}
+    {{#link-to routeName dynamicSegments.firstObject (query-params timestamp=_null noteId=_null postId=_null) current-when=routeName local-class="link"}}
+      {{yield}}
+    {{/link-to}}
+  {{/if}}
+</span>

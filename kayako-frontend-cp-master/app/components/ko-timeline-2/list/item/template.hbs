@@ -1,0 +1,256 @@
+<div
+  class="{{qaClass}}"
+  local-class="
+  {{if isNote "note" "post"}}
+  {{if isSideConversation "side-conversation"}}
+  {{if isThisMenuOpen "menu-open"}}
+  {{if isItemMenuOpen "menus-already-open" "no-menus-open"}}
+  {{if replyingTo "post--replying"}}
+  {{if isCasePage "case"}}
+  {{if isJoinedWithPrevious "joined-with-previous"}}
+  {{if isJoinedWithNext "joined-with-next"}}
+  {{if previousIsSameSourceNote "joined-with-previous-note"}}
+  {{if nextIsSameSourceNote "joined-with-next-note"}}
+  {{if isNotePinned "pinned"}}
+  {{if isWaiting "waiting"}}
+  {{if isSending "sending"}}
+  {{if isFailed "failed"}}
+  {{if isRateLimited "rateLimited"}}
+  item
+  "
+  data-id="{{event.id}}"
+  data-status="{{event.postStatus}}"
+  onclick={{if isSideConversation (action toggleSideConversationPanel event.original)}}
+  >
+  <div local-class="side-column">
+    {{#if isJoinedWithPrevious}}
+      {{#unless event.isNew}}
+        <div local-class="side-time">
+          {{format-time (ko-intl-datetime-format event.createdAt) format="time"}}
+        </div>
+      {{/unless}}
+    {{else}}
+      {{#if event.creator.avatar}}
+        {{ko-user-avatar user=event.creator size=(if isNote "submedium" "medium")}}
+      {{/if}}
+    {{/if}}
+  </div>
+
+  <div local-class="body">
+    <div local-class="header-container">
+      {{#unless isJoinedWithPrevious}}
+        <div local-class="header">
+          <div local-class="title">
+            {{#if isOrgOrUserNote}}
+              <div local-class="note-summary">{{ko-timeline-2/list/activity/summary-text summary=event.original.summary model=parent}}</div>
+            {{else}}
+              <span local-class="creator">
+                {{event.creator.fullName}}
+              </span>
+
+              {{#if (and (not isNote) event.creator.role.isAgentOrHigher)}}
+                <span local-class="role">
+                  {{ko-role-pill}}
+                </span>
+              {{/if}}
+            {{/if}}
+
+            <span local-class="subtitle">
+              {{#unless event.isNew}}
+                {{#ko-tooltip tagName="span" side="top" title=(format-time (ko-intl-datetime-format event.createdAt) format="tooltip") local-class="time"}}
+                  {{#ko-timeline-2/list/item/created-at model=event}}
+                    {{ko-from-now event.createdAt customRelativeTime=true}}
+                  {{/ko-timeline-2/list/item/created-at}}
+                {{/ko-tooltip}}
+              {{/unless}}
+
+              {{#if (not isNote)}}
+                <span local-class="via" class="{{qa-cls "qa-ko-timeline_item__subtitle"}}">
+                  {{t (concat "cases.timeline.item.via." viaTranslationKey)}}
+                </span>
+
+                {{#if (and isMessenger isUserAgentAvailable)}}
+                  <span>
+                    ({{userAgent}})
+                  </span>
+                {{/if}}
+
+                {{#if (and isMessenger isPageUrlAvailable)}}
+                  <span>{{t "cases.timeline.metadata.page_url.prefix"}}</span>
+                  {{#ko-tooltip tagName="span" side="top" title=pageUrl}}
+                    <a href={{pageUrl}} local-class="metadata-page-url" rel="noopener noreferrer" target="_blank">
+                      {{extract-path-from-url pageUrl}}
+                    </a>
+                  {{/ko-tooltip}}
+                {{/if}}
+              {{/if}}
+
+              {{#if isSideConversation }}
+                <span class="{{qa-cls "qa-ko-timeline_item__subtitle"}}">
+                  {{t "cases.timeline.item.side_conversation.initiated"}}
+                </span>                
+              {{/if}}
+              
+              {{#if (and (not event.isNew) (or postTypeIsEmail isSideConversation))}}
+                {{ko-timeline-2/list/item/email-info-inline 
+                  local-class="extended-info" 
+                  case=parent 
+                  post=(if isSideConversation event.original.firstMessage event.original) 
+                  postType=event.original.postType
+                  onAddCC=(action onAddCC)}}
+              {{/if}}
+            </span>
+          </div>
+        </div>
+      {{/unless}}
+      <div local-class="menu-wrapper">
+        {{#unless event.isNew}}
+          <div local-class="menu hidden-item {{if isMenuOpen "menu-open"}}" class="ko-feed_item_menu">
+            {{#unless isReplyDisabled}}
+              {{#if canReplyToPost}}
+                <div role="button" local-class="menu-item" class="{{qa-cls "qa-ko-timeline_item_menu__reply"}}" onclick={{action onReplyToPost event}}>
+                  {{inline-svg "timeline/reply.svg"}}
+                </div>
+              {{/if}}
+              <div role="button" local-class="menu-item quote-icon" onclick={{action onReplyWithQuote event}}>
+                {{inline-svg "timeline/quote.svg"}}
+              </div>
+            {{/unless}}
+
+            {{#if onCopyLink}}
+              {{#ko-tooltip title=(t "generic.timeline.item.copy_link") side="top" local-class="menu-item"}}
+                <div
+                  role="button"
+                  aria-label={{t "generic.timeline.item.copy_link"}}
+                  onclick={{action onCopyLink (href-to "session.agent.cases.case" (query-params postId=event.id))}}>
+                  {{inline-svg "timeline/link.svg"}}
+                </div>
+              {{/ko-tooltip}}
+            {{/if}}
+
+            {{#if isNote}}
+              <div role="button" class="{{qa-cls "qa-pin-timeline-note"}}" local-class="menu-item {{if toggleNotePin.isRunning "processing"}} {{if isNotePinned "yellow"}}" onclick={{perform toggleNotePin parent (or event.original.note event.original)}}>
+                {{#ko-tooltip
+                  tagName="div"
+                  side="top"
+                  title=(sanitize-html (concat
+                    "<div>"
+                    pinTooltipText
+                    "</div>"
+                    (if isNotePinned (t "generic.pinned_by" name=notePinnedBy.fullName))
+                  ) "server-html-content")
+                }}
+                  {{#if isNotePinned}}
+                    {{inline-svg "timeline/unpin.svg"}}
+                  {{else}}
+                    {{inline-svg "timeline/pin.svg"}}
+                  {{/if}}
+                {{/ko-tooltip}}
+              </div>
+            {{/if}}
+
+            {{#if (variation "release-show-original-in-timeline")}}
+              {{#if isInboundEmail}}
+                {{#ko-timeline-2/list/item/menu
+                  onOpen=(action "onMenuOpen" true)
+                  onClose=(action "onMenuOpen" false)
+                  as |menu|
+                }}
+                  {{#if originalEmailView}}
+                    {{menu.item title=(t "cases.show_email_with_default_styling")
+                      onClick=(action (mut originalEmailView) false)
+                    }}
+                  {{else}}
+                    {{menu.item title=(t "cases.show_email_with_original_styling")
+                      onClick=(perform fetchOriginalEmailContents)
+                    }}
+                  {{/if}}
+
+                  {{menu.item title=(t "cases.view_email_headers")
+                    onClick=(action (mut showModal) true)
+                  }}
+                {{/ko-timeline-2/list/item/menu}}
+              {{/if}}
+            {{/if}}
+          </div>
+        {{/unless}}
+
+        {{#if (and (not (eq event.postStatus "NOT_SENT")) (not isNote) event.creator.role.isAgentOrHigher)}}
+          {{#unless event.isNew}}
+            <span local-class="status-separator hidden-item">&middot;</span>
+          {{/unless}}
+
+          <div local-class="status">
+            {{ko-timeline-2/list/item/status item=event}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    {{#if isInboundEmail}}
+      {{#if originalEmailView}}
+        <div local-class="iframe-content" class="{{qa-cls "ko-feed_item__content"}}">
+          {{ko-email-iframe content=originalEmailHtmlContent}}
+        </div>
+      {{else}}
+        {{#with eventContents as |contents|}}
+          <div
+            local-class="{{if showHtmlReplies "html-content"}} {{if showTextReplies "content"}}"
+            class="{{qa-cls "ko-feed_item__content"}}"
+          >
+            {{html-safe contents.content}}
+          </div>
+
+          {{#each contents.mentions as |mention|}}
+            {{#ember-wormhole to=mention.id}}
+              {{ko-timeline-2/list/item/at-mention subjectId=mention.subjectId subjectType=mention.type placeholderText=mention.text}}
+            {{/ember-wormhole}}
+          {{/each}}
+        {{/with}}
+      {{/if}}
+    {{else}}
+      {{#with eventContents as |contents|}}
+        <div local-class="content" class="{{qa-cls "ko-feed_item__content"}}">
+          {{html-safe contents.content}}
+        </div>
+
+        {{#each contents.mentions as |mention|}}
+          {{#ember-wormhole to=mention.id}}
+            {{ko-timeline-2/list/item/at-mention subjectId=mention.subjectId subjectType=mention.type placeholderText=mention.text}}
+          {{/ember-wormhole}}
+        {{/each}}
+      {{/with}}
+    {{/if}}
+
+    {{#if postItem.attachments.length}}
+      {{ko-attachments attachments=postItem.attachments downloadAll=postItem.downloadAll
+      case=parent}}
+    {{/if}}
+
+    {{#if isFailed}}
+      <div local-class="client-failed-message">
+        {{#if isRateLimited}}
+          <div local-class="client-failed-message">
+            {{t "cases.post-failed-rate-limit.label"}}
+          </div>
+        {{/if}}
+
+        {{#unless isRateLimited}}
+          {{#if canResend}}
+            {{t "cases.post-failed.label"}}
+            <a onclick={{action onResend event.operation}} class="{{qa-cls "qa-resend-button"}}">{{t "cases.post-failed.resend"}}</a>
+          {{else}}
+            {{format-html-message "cases.post-failed-validation.label"}}
+          {{/if}}
+        {{/unless}}
+      </div>
+    {{/if}}
+
+    {{#if showModal}}
+      {{ko-timeline-2/list/item/created-at/email-modal model=event onClose=(action (mut showModal) false)}}
+    {{/if}}
+    {{#if isSideConversation}}
+      <div local-class="message-count">{{event.original.messageCount}}</div>
+    {{/if}}
+  </div>
+</div>

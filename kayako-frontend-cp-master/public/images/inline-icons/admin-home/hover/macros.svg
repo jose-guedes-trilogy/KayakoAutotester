@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--macros_color--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon--macros_color--48" transform="translate(-7.000000, -7.000000)">
+            <g transform="translate(7.000000, 7.000000)" id="Shape">
+                <polygon fill="#FFFFFF" points="42.5 0.5 17.5 25.5 0.5 17.5"></polygon>
+                <polygon fill="#FDF0EB" points="42.5 0.5 25.5 42.5 17.5 25.5"></polygon>
+                <polygon stroke="#F1703F" stroke-linecap="round" stroke-linejoin="round" points="42.5 0.5 25.5 42.5 17.5 25.5 0.5 17.5"></polygon>
+                <path d="M42.5,0.5 L17.5,25.5" stroke="#F1703F" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

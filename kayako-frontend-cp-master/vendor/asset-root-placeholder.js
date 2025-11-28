@@ -1,0 +1,1 @@
+window.ASSET_ROOT = "{{ assets('frontend') }}__cp"

@@ -1,0 +1,352 @@
+/*
+  Login box that appears when an unauthorised user hits /admin
+  Has two states: Fresh login (username/password) or a remembered login
+  that shows the users gravatar (image) and only a password field.
+   ========================================================================= */
+
+@value fieldHeight: 80px;
+@value smoothTransition: cubic-bezier(0.19, 1, 0.22, 1);
+
+.login {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  opacity: 0;
+  animation: fade-in 0.3s forwards 0.1s;
+  a {
+    color: $primary-blue;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 320px;
+  height: 380px;
+  background-color: #fff;
+}
+
+.box-extended {
+  height: 430px;
+}
+
+.header {
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+
+.header--reset {
+  margin-bottom: 0;
+}
+
+.sub-header {
+  color: $grey-6;
+}
+
+.image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.actions {
+  line-height: 65px;
+}
+
+.form-content {
+  position: relative;
+  min-height: fieldHeight;
+  width: 100%;
+}
+
+.fields-container-top,
+.fields-container-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: fieldHeight;
+  transition: all 0.4s smoothTransition;
+}
+
+.fields-container-top {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+
+  .form-content-down & {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.fields-container-bottom {
+  opacity: 0;
+  visibility: hidden;
+
+  .form-content-down & {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.login-form,
+.reset-form {
+  width: 100%;
+  position: absolute;
+  background-color: #fff;
+}
+
+.login-form {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-22%);
+  transition: transform 0.7s smoothTransition, opacity 0.3s smoothTransition;
+  &.is-login {
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.7s smoothTransition, opacity 1.5s smoothTransition;
+    transform: none;
+  }
+}
+
+.reset-form {
+  transform: none;
+  z-index: 1;
+  transition: transform 0.7s smoothTransition, opacity 1.5s smoothTransition;
+  &.is-login {
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.7s smoothTransition, opacity 0.3s smoothTransition;
+    transform: translateX(22%);
+  }
+}
+
+.button {
+  position: relative;
+  margin-top: 18px;
+}
+
+.divider {
+  text-align: center;
+}
+
+.divider-rule {
+  background: #dfe4e6;
+  height: 1px;
+  border: 0;
+}
+
+.divider-text {
+  background: #fff;
+  position: relative;
+  padding: 0 14px;
+  top: -9px;
+}
+
+.google-signin {
+  composes: primary from 'frontend-cp/components/ko-button/styles';
+  background-color: #458efb;
+  box-shadow: inset 0 -18px 40px -20px #2870e7, 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  margin-top: 14px;
+  display: block;
+  height: 36px;
+  width: 100%;
+  &:focus:not(.disabled):not(.is-loading) {
+    box-shadow: #d4e4fb 0 0 0 2px;
+  }
+  &:hover:not(.disabled) {
+    background-color: darken(#458efb, 8%);
+  }
+  svg {
+    display: inline;
+  }
+}
+
+.google-icon {
+  margin-right: 4px;
+  vertical-align: sub;
+}
+
+.message--good {
+  color: $color-good;
+  animation: slide 0.4s forwards;
+}
+
+.message--bad {
+  color: $color-bad;
+  animation: slide 0.4s forwards;
+  .login-form & {
+    position: absolute;
+    top: 34px;
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.container {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 25px;
+}
+
+.front, .back {
+  position: absolute;
+  transition: all 1s smoothTransition;
+}
+
+.front {
+  .flipped & {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.back {
+  opacity: 0;
+  transform: scale(0.8);
+  .flipped & {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.aside {
+  display: flex;
+  background-color: $color-purple-dark;
+
+  &__logo {
+    width: 60px;
+    padding-top: 14px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__promotion {
+    display: flex;
+    align-items: center;
+    width: 340px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: url('/images/login/illustration-1.png'), url('/images/login/illustration-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top, center bottom calc(12% - 140px);
+    color: #fff;
+  }
+}
+
+.promotion {
+  &__wrapper {
+    width: 100%;
+    opacity: 0;
+    animation: fade-in 0.3s forwards 0.3s;
+  }
+
+  &__label {
+    color: #F48C66;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__link {
+    display: block;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  &__description {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  padding-top: 17px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+
+  &.is-loading {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.loading__dot {
+  position: absolute;
+  padding: 2px;
+  border-radius: 50%;
+  background: #fff;
+  animation: loading-dots 1s ease-in-out 0s infinite;
+  &:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  &:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+}
+
+@keyframes loading-dots {
+  0% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+}
+
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: $grey-7;
+  }
+}

@@ -1,0 +1,16 @@
+<div local-class="email">
+  {{ko-input type="email" autofocus=true size="full"
+    placeholder=(t "login.email")
+    value=model.email
+    onInput=(action (mut model.email) value="target.value")
+    qaClass="ko-login-password__email"
+    disabled=isLoading
+  }}
+</div>
+{{ko-input type="password" size="full"
+  placeholder=(t "login.password")
+  value=model.password
+  onInput=(action (mut model.password) value="target.value")
+  qaClass="ko-login-password__password"
+  disabled=isLoading
+}}

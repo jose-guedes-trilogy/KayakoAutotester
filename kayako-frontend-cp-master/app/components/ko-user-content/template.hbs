@@ -1,0 +1,466 @@
+{{ko-search-suggestions activePage="user" target=user}}
+
+{{#ko-agent-content/layout as |name|}}
+  {{#if (eq name "heading")}}
+    {{#if (and hasUser (or (not setOrganizationMode) tabsModel.organization.name))}}
+      {{#component tabsComponent model=tabsModel setOrganizationModeOn=(action "setOrganizationModeOn") processingOrg=(or persistOrgToUser.isRunning unsetOrgInProgress) removedOrg=removedOrg}}
+        {{#if (or editedUser.isEnabled user.isEnabled)}}
+          <div local-class="new-conversation-button">
+            {{#ko-button type='highlight' onClick=(action 'newConversation')}}
+              {{t 'users.new_conversation'}}
+            {{/ko-button}}
+          </div>
+        {{/if}}
+        {{#if user.id}}
+          {{ko-user-content/action-menu
+            user=user
+            canModifyUserState=(and canModifyUserState (not state.toggleUserState.isRunning))
+            showManageAppAccess=showManageAppAccess
+            onCreateNewCase=(action onCreateNewCase user.id)
+            onManageAppAccess=(action "manageAppAccess")
+            onEditSignature=(action "editSignature" signature)
+            onDisableTwoFactor=(action "openDisableTwoFactorModal")
+            onChangeUserPassword=(action "changeUserPassword" user.primaryEmailAddress)
+            onUserToggle=(perform state.toggleUserState)
+            deleteUser=(action (mut deleteUserModal) true)
+          }}
+        {{/if}}
+      {{/component}}
+    {{else}}
+      {{ko-instant-entity
+        elementId=(concat elementId "-kie")
+        mode=(if setOrganizationMode "organization" "user")
+        action=(if setOrganizationMode "setInstantOrg" "setInstantUser")
+        instantEntityTerm=instantEntityTerm
+        instantEntityResults=instantEntityResults
+        isProcessRunning=(or createUser.isRunning createOrg.isRunning)
+        cancelAction=(if setOrganizationMode (action "setOrganizationModeOff") false)
+        keyboardAction=(if setOrganizationMode (action "handleInstantEntityTabbing"))
+      }}
+    {{/if}}
+  {{/if}}
+
+  {{#if (and (eq name "timeline") hasUser)}}
+    {{#ko-journey-timeline
+      timeline=timeline
+      model=user
+      caseFields=caseFields
+      timestamp=timestamp
+    }}
+      <div local-class="timeline-header">
+        <div local-class="timeline-header-image">
+          {{ko-user-avatar user=user size="medium"}}
+        </div>
+        <div local-class="timeline-header-body">
+          <h3 local-class="timeline-header-title" class="{{qa-cls "qa-user-content_timeline-header-title"}}">
+            {{ko-editable-text
+              keyDown=(action "handleTabbingFromSubject")
+              qaClass=(qa-cls "qa-ko-user-content__full-name")
+              value=user.fullName
+              onValueChange=(action "setName")
+              isErrored=errorMap.fullName
+              isDisabled=(not canUpdateUser)
+              size="large"
+            }}
+          </h3>
+          <div local-class="timeline-header-subtitle">
+            <p title={{format-date user.lastSeenAt format="LLL"}}
+              class="{{qa-cls "qa-ko-user-content__header-subtitle"}}"
+              local-class="subtitle"
+            >
+              <span local-class="timeline-header-subtitle-segment">
+                {{user.role.title}}
+              </span>
+              {{#with user.designation as |designation|}}
+                <span local-class="timeline-header-subtitle-segment">
+                  {{designation}}
+                </span>
+              {{/with}}
+              <span local-class="timeline-header-subtitle-segment">
+                {{t "users.last_seen" time=(ko-from-now user.lastSeenAt)}}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div local-class="timeline-preamble">
+        {{format-html-message
+          "users.timeline.preamble"
+          name=user.fullName
+        }}
+      </div>
+    {{/ko-journey-timeline}}
+  {{else if (and (eq name "timeline") redirectingToUser)}}
+    <div local-class="redirection-loader">
+      {{ko-loader large=true}}
+      <div local-class="redirection-message">{{t "users.redirection_message" name=username}}</div>
+    </div>
+  {{/if}}
+
+  {{#if (and (eq name "reply-area") hasUser)}}
+    {{#if canPostUserNote}}
+      {{#ko-text-editor
+        keyDown=(action "handleTabbingFromReply")
+        isRichFormattingAvailable=true
+        dropzoneError=dropzoneError
+        onAttachFiles=(action "onAttachFiles")
+        attachedFiles=attachedPostFiles
+        onCancelAttachment=(action "dispatch" "cancelAttachment")
+        placeholder=(t "generic.add_a_note")
+        isErrored=isErrored
+        allowFormatting=true
+        isNote=true
+        onTextChanged=(action "dispatch" "updatePostContent")
+        value=state.replyContent
+        disabled=isSaving
+        footerText=(if (not user.isNew) noteDestination.description)
+      as |editor|}}
+
+        {{#if editor.isHeader}}
+          {{#ko-text-editor/mode-selector active=true}}
+            {{t "users.notes"}}
+          {{/ko-text-editor/mode-selector}}
+        {{/if}}
+
+        {{#if editor.isFooter}}
+          <div local-class="editor-footer-right">
+            {{#if (and (not user.isNew) user.organization)}}
+              {{ko-note-destination selected=noteDestination.id options=noteDestinations onChange=(action "setNoteDestination") local-class=(if (not state.isContentEdited) "note-destination-no-send-button")}}
+            {{/if}}
+            {{#if state.isContentEdited}}
+              {{#ko-button type="note" disabled=submitDisabled onClick=(action "submit") qaClass="qa-user-content__submit"}}
+                {{#if uploadingFiles}}
+                  <span>{{t "generic.uploading_files"}}&nbsp;&nbsp;&nbsp;</span>{{ko-loader class=(local-class "buttonLoading")}}
+                {{else if (or state.saveEverything.isRunning addExternalNote.isRunning)}}
+                  {{ko-loader class=(local-class "buttonLoading")}}
+                {{else if state.arePropertiesEdited}}
+                  {{t "cases.send_and_update"}}
+                {{else}}
+                  {{t "cases.send"}}
+                {{/if}}
+              {{/ko-button}}
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/ko-text-editor}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq name "sidebar")}}
+    {{#ko-user-content/info-block userContext=userContext user=user processingOrg=persistOrgToUser.isRunning updateOrgRemovalState=(action "updateOrgRemovalState")}}
+      {{ko-editable-text
+        onValueChange=(action "setName")
+        isErrored=errorMap.fullName
+        isDisabled=(or (not (and hasUser canUpdateUser)) isSaving)
+        value=user.fullName
+      }}
+    {{/ko-user-content/info-block}}
+
+    {{#if (and (plan-has 'multi_org_users') (not user.isNew))}}
+      {{ko-user-organizations-list user=user canUpdateUser=canUpdateUser onUserChange=(action "refreshUser")}}
+    {{/if}}
+    
+    {{ko-identities parent=user canAddNewIdentity=canAddNewIdentity}}
+    
+    {{#unless user.isNew}}
+      {{ko-pinned-notes model=user fetchNotes=fetchNotes}}
+    {{/unless}}
+    {{ko-user-cases user=user case=case}}
+
+    {{#if state.recentFeedback.length}}
+      {{ko-feedback title=(t "users.recent_feedback") feedback=state.recentFeedback}}
+    {{/if}}
+
+    {{ko-info-bar/field/select
+      value=role
+      options=roles
+      title=(t "users.infobar.role")
+      isEdited=state.isRoleEdited
+      isErrored=errorMap.role_id
+      isDisabled=(not (and hasUser canChangeRolePermission))
+      onValueChange=(action "setRole")
+      labelPath="title"
+      hasEmptyOption=false
+      qaClass="ko-user-content__role-field"
+    }}
+
+    {{#if canChangeAgentAccessPermission}}
+      {{ko-info-bar/field/select
+      title=(t "users.infobar.accesslevel")
+      options=agentAccessLevels
+      isEdited=state.isAccessLevelEdited
+      value=agentCaseAccess
+      isErrored=errorMap.agent_case_access
+      isDisabled=(not (and hasUser canUpdateUser))
+      onValueChange=(action "dispatch" "setAgentAccessLevel")
+      hasEmptyOption=false
+      idPath="value"
+      labelPath="name"
+      qaClass=(qa-cls "qa-user-content__case-access-field")
+      }}
+    {{/if}}
+
+    {{#if canChangeOrganizationAccessPermission}}
+      {{ko-info-bar/field/select
+      title=(t "users.infobar.accesslevel")
+      options=organizationAccessLevels
+      isEdited=state.isAccessLevelEdited
+      isErrored=errorMap.organization_case_access
+      isDisabled=(not (and hasUser canUpdateUser))
+      value=organizationCaseAccess
+      onValueChange=(action "dispatch" "setOrganizationAccessLevel")
+      hasEmptyOption=false
+      idPath="value"
+      labelPath="name"
+      qaClass=(qa-cls "qa-user-content__case-access-field")
+      }}
+    {{/if}}
+
+    {{ko-user-content/field/locale-select
+      user=user
+      locale=locale
+      isEdited=state.isLocaleEdited
+      isErrored=errorMap.locale
+      isDisabled=(not (and hasUser canUpdateUser))
+      onChangeLocale=(action "dispatch" "setLocale")
+      qaClass="qa-user-content__locale-select"
+    }}
+
+    {{ko-user-content/field/timezone-select
+      timezone=timeZone
+      isEdited=state.isTimezoneEdited
+      isErrored=errorMap.time_zone
+      isDisabled=(not (and hasUser canUpdateUser))
+      onChangeTimezone=(action "dispatch" "setTimezone")
+    }}
+
+    {{#if canViewUserTeamPermission}}
+      {{ko-info-bar/field/select-multiple
+        title=(t "users.teams")
+        qaClass="user-team-ids-field"
+        isEdited=state.isTeamsFieldEdited
+        isErrored=errorMap.team_ids
+        isDisabled=(not canChangeUserTeamPermission)
+        options=availableTeams
+        searchField="title"
+        value=editedTeams
+        placeholder=(t "users.addteam")
+        onValueAddition=(action "dispatch" "addTeam")
+        onValueRemoval=(action "dispatch" "removeTeam")
+      }}
+    {{/if}}
+
+    {{ko-info-bar/field/select-multiple
+      allowCreate=true
+      title=(t "users.tags")
+      isEdited=state.isTagsFieldEdited
+      value=editedTags
+      isDisabled=(not (and hasUser canUpdateUser))
+      placeholder=(t "users.addtag")
+      onValueAddition=(action "dispatch" "addTag")
+      onValueRemoval=(action "dispatch" "removeTag")
+      onSuggestion=(perform suggestTags)
+    }}
+
+    {{#if (variation 'release-apps')}}
+      {{ko-app-slot
+        name="user-sidebar"
+        user=user
+        organization=user.organization
+      }}
+    {{/if}}
+
+    {{#each customFields as |field|}}
+      {{#if (ko-helper customFieldsList.componentFor field.fieldType)}}
+        {{#if field.isEnabled}}
+          {{component (ko-helper customFieldsList.componentFor field.fieldType)
+          value=(get state.customFields.idToEditedValueHash field.id)
+          options=field.options
+          title=field.title
+          isErrored=(get errorMap field.key)
+          isEdited=(and (get state.customFields.idToIsEditedHash field.id) (not state.isBeingDeleted))
+          isDisabled=(not (and hasUser canUpdateUser))
+          onValueChange=(action "dispatch" "setCustomField" field)
+          hasEmptyOption=(not field.isRequiredForAgents)
+          idPath="id"
+          labelPath="value"
+          }}
+        {{/if}}
+      {{/if}}
+    {{/each}}
+  {{/if}}
+
+  {{#if (eq name "submit-button")}}
+    {{#if (and hasUpdateUserPermission (or state.updateProperties.isRunning state.arePropertiesEdited))}}
+      {{#transition-group transition-class="update-button"}}
+        <div local-class="submit-properties
+          {{if (or state.updateProperties.isRunning (not state.isContentEdited)) "show-submit"}}
+          {{if submitDisabled "submitting"}}"
+        >
+          {{#ko-button
+            type="primary"
+            hasAnimation=true
+            full=true
+            size="medium"
+            onClick=(perform submit)
+            loading=submitDisabled
+            qaClass="qa-user-content__submit-properties"
+          }}
+            {{t "generic.update_properties"}}
+          {{/ko-button}}
+          {{#unless state.updateProperties.isRunning}}
+            <button local-class="cancel-property-changes" onclick={{action "resetProperties"}} disabled={{submitDisabled}}>
+              <span local-class="or-text">{{t "generic.or"}}&nbsp;</span>
+              <span>{{t "generic.cancel"}}</span>
+            </button>
+          {{/unless}}
+        </div>
+      {{/transition-group}}
+    {{/if}}
+  {{/if}}
+{{/ko-agent-content/layout}}
+
+{{#if signatureModal}}
+  {{#ko-modal modalStyle="width: 650px; height: 380px;" on-close=(action "closeSignatureModal") on-confirm=(action "updateSignature") chromelessContent=true as |modal|}}
+    {{#if modal.isHeader}}
+      {{t "users.editsignature"}}
+    {{/if}}
+    {{#if modal.isMain}}
+      <textarea local-class="signatureInput" value={{editingSignature}} oninput={{action (mut editingSignature) value="target.value"}} autofocus=true></textarea>
+    {{/if}}
+    {{#if modal.isFooter}}
+      <div local-class="modalBottom">
+        <div local-class="message">
+          {{t "users.signaturemessage"}}
+        </div>
+        <div local-class="buttons">
+          <div local-class="closeModal">
+            {{#ko-button type="naked" onClick=(action "closeSignatureModal")}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="primary" onClick=(action "updateSignature")}}
+            {{#if updateSignature.isRunning}}
+              {{ko-loader}}
+            {{else}}
+              {{t "users.update_signature"}}
+            {{/if}}
+          {{/ko-button}}
+        </div>
+      </div>
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}
+
+{{#if appAccessModal}}
+  {{#ko-modal on-close=(action "closeAppAccessModal") width="800px" chromelessContent=true as |modal|}}
+    {{#if modal.isHeader}}
+      {{t "users.manage_app_access"}}
+    {{/if}}
+    {{#if modal.isMain}}
+      {{#if (not grants)}}
+        <div local-class="grant-message">
+          {{t "users.grant.you_have_not_authorized_apps" }}
+        </div>
+      {{/if}}
+      <div local-class="grants-list-container">
+        {{#ko-simple-list as |list|}}
+          {{#each grants as |grant|}}
+            {{#list.row qaClass="qa-user-content__my-grant" as |row|}}
+              {{#row.cell}}
+                {{#ko-oauth-client client=grant.client links=true}}
+                  {{#if grant.lastActivityAt}}
+                    {{t "users.grant.last_used_at" date=(format-date grant.lastActivityAt format="ll")}}
+                  {{else}}
+                    {{t "users.grant.never_used"}}
+                  {{/if}}
+                {{/ko-oauth-client}}
+              {{/row.cell}}
+              {{#row.actions}}
+                {{#ko-button type="default" onClick=(action "revokeAccess" grant) qaClass="qa-user-content__my-grants-revoke"}}
+                  {{t "users.grant.revoke"}}
+                {{/ko-button}}
+              {{/row.actions}}
+            {{/list.row}}
+          {{/each}}
+        {{/ko-simple-list}}
+      </div>
+    {{/if}}
+    {{#if modal.isFooter}}
+      {{#ko-button type="primary" onClick=(action "closeAppAccessModal") qaClass="qa-user-content__my-grants-close"}}
+        {{t "generic.close"}}
+      {{/ko-button}}
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}
+
+{{!-- Disable two-factor auth modal --}}
+{{#if disableTwoFactorModal}}
+  {{#ko-modal on-close=(action "closeDisableTwoFactorModal") width="430px" noHeaderContent=true chromelessContent=true as |modal|}}
+    {{#if modal.isMain}}
+      <div local-class="padded-content--small">
+        <p local-class="disable-otp-title">{{t "users.two_factor.disable.headline"}}</p>
+        <p local-class="disable-otp-subtitle">{{t "users.two_factor.disable.subheading"}}</p>
+      </div>
+    {{/if}}
+    {{#if modal.isFooter}}
+      {{#ko-button type="naked" onClick=(action "closeDisableTwoFactorModal")}}
+        {{t "generic.cancel"}}
+      {{/ko-button}}
+      {{#ko-button type="alert" onClick=(action "removeTwoFactorAuth") disabled=remove2FAButtonDisabled}}
+        {{t "users.two_factor.disable.button"}}
+      {{/ko-button}}
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}
+
+{{#if deleteUserModal}}
+  {{#ko-modal modalStyle="width: 650px;" on-close=(action (mut deleteUserModal) false) on-confirm=(perform deleteUser) chromelessContent=true as |modal|}}
+    {{#if modal.isHeader}}
+      <div local-class="delete-modal-header">
+        <div local-class="delete-user-avatar">
+          {{#ko-user-avatar user=user size="xLarge" as |avatar|}}
+            {{avatar.image type="round"}}
+            {{avatar.online-indicator size="submedium" showTooltip=false}}
+          {{/ko-user-avatar}}
+        </div>
+        <span local-class="delete-user-header-title">
+          {{t "users.delete_user_with_name" name=user.fullName}}
+        </span>
+        <span local-class="delete-user-header-subtitle">
+          {{t "users.delete_user_warning"}} <a href="https://support.kayako.com/article/1450" target="_blank" rel="noopener noreferrer">{{t "generic.learn_more"}}</a>
+        </span>
+      </div>
+    {{/if}}
+    {{#if modal.isMain}}
+      <div local-class="delete-user-warnings">
+        <span local-class="delete-user-warning-title">
+          {{t "users.delete_user_warning_title"}}
+        </span>
+        <ul local-class="delete-user-warning-list">
+          <li>{{inline-svg "icon--alert--12"}}<span>{{t "users.delete_user_warnings.one"}}</span></li>
+          <li>{{inline-svg "icon--alert--12"}}<span>{{t "users.delete_user_warnings.two"}}</span></li>
+          <li>{{inline-svg "icon--alert--12"}}<span>{{t "users.delete_user_warnings.three"}}</span></li>
+        </ul>
+      </div>
+    {{/if}}
+    {{#if modal.isFooter}}
+      <div local-class="modalBottom">
+        <div local-class="delete-user-buttons">
+          <div local-class="closeModal">
+            {{#ko-button type="naked" onClick=(action (mut deleteUserModal) false)}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="alert" onClick=(perform deleteUser)}}
+            {{#if deleteUser.isRunning}}
+              {{ko-loader}}
+            {{else}}
+              {{t "users.delete_user"}}
+            {{/if}}
+          {{/ko-button}}
+        </div>
+      </div>
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}

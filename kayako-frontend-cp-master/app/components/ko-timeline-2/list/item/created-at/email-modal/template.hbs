@@ -1,0 +1,65 @@
+{{#ko-modal on-close=(action onClose) modalStyle="width: 720px; height: 800px;" noFooter=true as |modal|}}
+  {{#if modal.isMain}}
+    {{#with email as |email|}}
+      <article local-class="email-view">
+        <header local-class="email-header">
+          <ul local-class="email-details">
+            <li>
+              <label>{{t "cases.email_original_display.subject"}}</label>
+              <span class={{qa-cls "qa-subject"}}>{{email.subject}}</span>
+            </li>
+            <li>
+              <label>{{t "cases.email_original_display.from"}}</label>
+              <span class={{qa-cls "qa-from"}}>{{email.from}}</span>
+            </li>
+            <li>
+              <label>{{t "cases.email_original_display.to"}}</label>
+              <span class={{qa-cls "qa-to"}}>{{email.to}}</span>
+            </li>
+            <li>
+              <label>{{t "cases.email_original_display.received_at"}}</label>
+              <span class={{qa-cls "qa-received-at"}}>{{email.receivedAt}}</span>
+            </li>
+          </ul>
+        </header>
+
+        <div local-class="header-heading">
+          <div local-class="header-header">
+            {{t "generic.email_headers"}}
+          </div>
+
+          {{#ko-button type="default" onClick=(action "copyToClipboard" email.sourceContent)}}
+            {{t "generic.copy_to_clipboard"}}
+          {{/ko-button}}
+        </div>
+
+        <section local-class="email-content" class={{qa-cls "qa-content-source"}}>
+          <div local-class="fadeIn"></div>
+          {{ko-timeline-2/list/item/created-at/email-modal/iframe content=email.sourceContent qaClass=(qa-cls "qa-source-iframe")}}
+        </section>
+      </article>
+    {{else}}
+      <div local-class="wrapper">
+        {{#with errorType as |errorType|}}
+          {{#if (eq errorType 404)}}
+
+            <img class={{qa-cls "404-error-image"}} src="/images/errors/sleeping-cat.png">
+            <h1 class={{qa-cls "404-error-header"}}>{{t "cases.email_original_display.errors.404.header"}}</h1>
+            <p class={{qa-cls "404-error-description-1"}} local-class="error-description">{{t "cases.email_original_display.errors.404.description1"}}</p>
+            <p class={{qa-cls "404-error-description-2"}} local-class="error-description">{{format-html-message "cases.email_original_display.errors.404.description2"}}</p>
+
+          {{else if (eq errorType 500)}}
+
+            <img class={{qa-cls "500-error-image"}} src="/images/errors/cat-in-box.png">
+            <h1 class={{qa-cls "500-error-header"}}>{{t "cases.email_original_display.errors.500.header"}}</h1>
+            <p class={{qa-cls "500-error-description-1"}} local-class="error-description">{{t "cases.email_original_display.errors.500.description1"}}</p>
+            <p class={{qa-cls "500-error-description-2"}} local-class="error-description">{{format-html-message "cases.email_original_display.errors.500.description2"}}</p>
+
+          {{/if}}
+        {{else}}
+          {{ko-loader large=true}}
+        {{/with}}
+      </div>
+    {{/with}}
+  {{/if}}
+{{/ko-modal}}

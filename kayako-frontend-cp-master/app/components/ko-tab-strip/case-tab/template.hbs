@@ -1,0 +1,28 @@
+{{#ko-tab-strip/tab
+  qaClass="qa-case-tab"
+  tab=tab
+  label=label
+  on-close=on-close
+  as |tab|
+}}
+  {{#tab.icon}}
+    {{#ko-user-avatar user=caseRequester size="micro" as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator showTooltip=false}}
+    {{/ko-user-avatar}}
+  {{/tab.icon}}
+
+  {{tab.label}}
+
+  {{#if showPill}}
+    {{ko-tab-strip/case-tab/new-messages-pill unreadCount=conversation.readMarker.unreadCount}}
+  {{/if}}
+{{/ko-tab-strip/tab}}
+
+{{#with caseChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    on-join=(action updatePresenceMeta (hash is_viewing=true))
+    on-presence-change=(action (mut _casePresence))
+  }}
+{{/with}}

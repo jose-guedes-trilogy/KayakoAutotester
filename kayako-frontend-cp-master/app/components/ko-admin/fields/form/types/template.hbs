@@ -1,0 +1,55 @@
+{{#ko-admin/forms/group}}
+  <legend local-class="legend">{{t "admin.casefields.edit.heading.types"}}</legend>
+
+  {{#ko-form/field/help}}
+    {{t 'admin.casefields.edit.help.types.1'}}
+  {{/ko-form/field/help}}
+
+  {{#ko-simple-list as |list|}}
+    {{#each systemTypes as |type|}}
+      {{#list.row as |row|}}
+        {{#row.cell}}
+          <span><span local-class="label">{{type.label}}</span> <span local-class="caption">{{t "admin.caseforms.label.system"}}</span></span>
+        {{/row.cell}}
+      {{/list.row}}
+    {{/each}}
+
+    {{#each customTypes as |type|}}
+      {{#list.row onClick=(if (not originalType) (perform startEditing type)) as |row|}}
+        {{#if (eq type originalType)}}
+          {{#row.cell}}
+            {{ko-input disabled=type.isSaving qaClass="qa-custom-type-label-input" autofocus=true value=editedType.label onInput=(action (mut editedType.label) value="target.value")}}
+          {{/row.cell}}
+          {{#row.cell}}
+            <div local-class="buttons">
+              {{#if type.isSaving}}
+                <div local-class="loader">{{ko-loader}}</div>
+              {{else}}
+                {{#ko-button type="naked" qaClass="qa-custom-type-cancel" onClick=(perform cancelEditing)}}{{t "generic.cancel"}}{{/ko-button}}
+              {{/if}}
+              {{#ko-button type="primary" disabled=type.isSaving qaClass="qa-custom-type-save" onClick=(perform saveType)}}{{t "generic.save"}}{{/ko-button}}
+            </div>
+          {{/row.cell}}
+        {{else}}
+          {{#row.cell disabled=type.isSaving}}
+            <span local-class="label" class="qa-custom-type-label">{{type.label}}</span>
+          {{/row.cell}}
+          {{#row.actions loading=type.isSaving}}
+            {{#if (not editedType)}}
+              <a onclick={{perform startEditing type}} class={{qa-cls "qa-custom-type-edit"}}>{{t "generic.edit"}}</a>
+              | <a onclick={{action "removeType" type}} class={{qa-cls "qa-custom-type-delete"}}>{{t "generic.delete"}}</a>
+            {{/if}}
+          {{/row.actions}}
+        {{/if}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+
+  {{#if isPlanEnabled}}
+    <div local-class="add-type">
+      {{#ko-button disabled=(if editedType true false) qaClass="types__add-type-message" onClick=(perform addType)}}
+        {{t "admin.casefields.edit.add_new_type"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-admin/forms/group}}

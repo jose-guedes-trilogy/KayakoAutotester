@@ -1,0 +1,40 @@
+{{#ko-form
+fields=fields
+onSubmit=(action "submit")
+onSuccess=onCreate
+as |form|}}
+
+  {{#ko-agent-dropdown/layout as |block|}}
+    {{#if block.header}}
+      {{t 'generic.create_organization_panel.title'}}
+    {{/if}}
+
+    {{#if block.contents}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'generic.create_organization_panel.name_label'}}{{/ko-form/field/label}}
+        {{ko-input autofocus=true size="full" value=organization.name onInput=(action (mut organization.name) value="target.value") disabled=form.isSubmitting}}
+        {{ko-form/field/errors errors=organization.errors.name}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field field=fields.domains}}
+        {{#ko-form/field/label}}{{t "generic.create_organization_panel.domain_label"}}{{/ko-form/field/label}}
+        <div>
+          {{ko-select/multiple class=(qa-cls "qa-agent-dropdown_create-organization_domains") allowCreate=true selected=domains onValueAddition=(action "addDomain") onValueRemoval=(action "removeDomain")}}
+        </div>
+      {{/ko-form/field}}
+    {{/if}}
+
+    {{#if block.footer}}
+      {{t 'generic.create_organization_panel.info'}}
+    {{/if}}
+
+    {{#if block.buttons}}
+      {{ko-form/buttons
+      onCancel=onCancel
+      submitClass="qa-agent-dropdown-create-organization__submit"
+      submitLabel=(t "generic.create_organization_panel.submit")
+      cancelLabel=(t "generic.cancel")}}
+    {{/if}}
+
+  {{/ko-agent-dropdown/layout}}
+{{/ko-form}}

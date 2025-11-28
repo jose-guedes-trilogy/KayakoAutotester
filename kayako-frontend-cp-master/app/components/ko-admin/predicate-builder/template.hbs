@@ -1,0 +1,33 @@
+<div>
+  {{#each collections as |collection i|}}
+    <div id="{{concat "ko-predicate-builder" i}}" local-class="container" class="{{qa-cls "qa-predicate-builder" (concat "qa-predicate-builder" "-" i)}}">
+      {{#if (gt i 0)}}
+        <div local-class="label">{{t 'generic.and'}}</div>
+      {{/if}}
+
+      {{#if (and (gt collections.length 1) (not disabled))}}
+        <div local-class="remove" class="{{qa-cls "qa-predicate-builder__remove" (concat "qa-predicate-builder__remove" "-" i)}}" onclick={{action onCollectionRemoval collection (concat "ko-predicate-builder" i)}}>
+          {{ko-icon name="minusSquare" color="#D7DCDE"}}
+        </div>
+      {{/if}}
+      {{#each collection.propositions as |proposition index|}}
+        {{ko-admin/predicate-builder/proposition
+          class=(qa-cls "qa-predicate-builder--proposition" (concat "qa-predicate-builder--proposition" "-" i "-" index))
+          definitions=definitions
+          proposition=proposition
+          canDeleteProposition=(not (or (eq collection.propositions.length 1) disabled))
+          onPropositionDeletion=(action onPropositionDeletion collection)
+          onPropositionChange=(action "onPropositionChange" collection proposition)
+          disabled=disabled
+        }}
+      {{/each}}
+      {{#unless disabled}}
+        <div local-class="add" class="{{qa-cls "qa-predicate-builder__add"}}" onclick={{action onAdditionOfPropositionToCollection collection}}>{{t 'admin.predicate_builder.label.addition_of_proposition'}}</div>
+      {{/unless}}
+    </div>
+  {{/each}}
+
+  {{#unless disabled}}
+    <div local-class="new" class="{{qa-cls "qa-predicate-builder__new"}}" onclick={{onCollectionAddition}}>{{t 'generic.and'}}</div>
+  {{/unless}}
+</div>

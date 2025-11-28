@@ -1,0 +1,68 @@
+{{#ko-form
+  onSubmit=onSave
+  onSuccess=onSuccess
+}}
+  {{#ko-admin/page
+    title=(t "admin.twitter.edit.heading" screenName=account.screenName)
+    onCancel=onCancel
+    buttonText=(t "generic.save")
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t 'admin.twitter.heading.account_settings')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.twitter.label.brand'}}{{/ko-form/field/label}}
+        {{!TODO: localize when the field localization API has been written}}
+        {{#ko-select options=brands selected=editedAccount.brand size="medium" onChange=(action (mut editedAccount.brand)) as |brand|}}
+          {{brand.name}}
+        {{/ko-select}}
+        {{ko-form/field/errors errors=editedAccount.errors.brand}}
+        {{#ko-form/field/help}}{{t 'admin.twitter.help.brand'}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t 'admin.twitter.heading.capture_settings')}}
+      {{#ko-form/field/help}}
+        {{t 'admin.twitter.help.capture'}}
+      {{/ko-form/field/help}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.twitter.label.mentions'}}{{/ko-form/field/label}}
+        {{ko-toggle
+          activated=editedAccount.routeMentions
+          label=(t (if editedAccount.routeMentions 'admin.twitter.description_on.mentions' 'admin.twitter.description_off.mentions'))
+        }}
+        {{ko-form/field/errors errors=editedAccount.errors.routeMentions}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.twitter.label.direct_messages'}}{{/ko-form/field/label}}
+        {{ko-toggle
+          activated=editedAccount.routeMessages
+          label=(t (if editedAccount.routeMessages 'admin.twitter.description_on.direct_messages' 'admin.twitter.description_off.direct_messages'))
+        }}
+        {{ko-form/field/errors errors=editedAccount.errors.routeMessages}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.twitter.label.favourited_tweets'}}{{/ko-form/field/label}}
+        {{ko-toggle
+          activated=editedAccount.routeFavorites
+          label=(t (if editedAccount.routeFavorites 'admin.twitter.description_on.favourited_tweets' 'admin.twitter.description_off.favourited_tweets'))
+        }}
+        {{ko-form/field/errors errors=editedAccount.errors.routeFavorites}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t 'admin.twitter.heading.help_settings')}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t 'admin.twitter.label.display_public_tweets'}}{{/ko-form/field/label}}
+        {{ko-toggle
+          activated=editedAccount.showInHelpCenter
+          label=(t (if editedAccount.showInHelpCenter 'admin.twitter.description_on.display_public_tweets' 'admin.twitter.description_off.display_public_tweets'))
+        }}
+        {{ko-form/field/errors errors=editedAccount.errors.showInHelpCenter}}
+        {{#ko-form/field/help}}{{t 'admin.twitter.help.display_public_tweets'}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

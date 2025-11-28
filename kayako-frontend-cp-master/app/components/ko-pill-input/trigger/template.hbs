@@ -1,0 +1,27 @@
+{{#if (and (not select.disabled) select.loading)}}
+  <span local-class="loading"></span>
+{{/if}}
+<ul id="ember-power-select-multiple-options-{{select.uniqueId}}" class="ember-power-select-multiple-options">
+  {{#each select.selected as |opt index|}}
+    {{component selectedItemComponent index=index option=opt select=select searchField=searchField}}
+  {{/each}}
+  {{#if (not select.disabled)}}
+    <input
+      id={{extra.inputId}}
+      type="search"
+      local-class="input"
+      tabindex="0"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      value={{select.searchText}}
+      aria-controls={{listboxId}}
+      placeholder={{if select.selected.length "" placeholder}}
+      disabled={{select.disabled}}
+      oninput={{action "onInput"}}
+      onkeydown={{action "onKeydown"}}
+      onblur={{action "onBlur"}}
+    >
+  {{/if}}
+</ul>

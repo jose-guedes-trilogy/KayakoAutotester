@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+}
+
+.entity {
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.table {
+  margin-top: 30px;
+}
+
+.table.first {
+  margin-top: 0;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.description {
+  margin-bottom: 20px;
+  color: #838D94;
+}
+
+.searches {
+  position: relative;
+}

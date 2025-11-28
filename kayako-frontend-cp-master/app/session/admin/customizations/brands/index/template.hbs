@@ -1,0 +1,30 @@
+{{ko-admin/page
+  title=(t "admin.brands.headings.index")
+  buttonText=(t "admin.brands.buttons.add_brand")
+  onSave=(action "transitionToAddNewBrands")
+  needsPlanUpgrade=reachedLimit
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.brands.description"}}</p>
+  <p>{{t "admin.brands.description2"}}</p>
+  <p><strong>{{format-html-message "admin.brands.description3" link=(ko-admin/forms/link "https://support.kayako.com/article/1155-brands?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=brands" "admin.brands.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="brands"}}
+{{/if}}
+
+{{#ko-simple-list header=(t "generic.enabled") qaClass="qa-brands-enabled" as |list|}}
+  {{#each enabledBrands as |brand|}}
+    {{ko-admin/brands/list-row brand=brand list=list onDelete=(action "delete") onEdit=(action "editBrand") onMakeDefault=(action "makeDefault") onToggle=(action "toggleEnabledProperty")}}
+  {{/each}}
+{{/ko-simple-list}}
+
+{{#if disabledBrands.length}}
+  {{#ko-simple-list header=(t "generic.disabled") qaClass="qa-brands-disabled" as |list|}}
+    {{#each disabledBrands as |brand|}}
+      {{ko-admin/brands/list-row brand=brand list=list onDelete=(action "delete") onEdit=(action "editBrand") onMakeDefault=(action "makeDefault") onToggle=(action "toggleEnabledProperty")}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

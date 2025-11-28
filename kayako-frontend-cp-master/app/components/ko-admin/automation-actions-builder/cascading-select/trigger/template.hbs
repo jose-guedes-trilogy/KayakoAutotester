@@ -1,0 +1,28 @@
+<div id="ko-{{select.uniqueId}}" local-class="trigger">
+  {{#if (not select.disabled)}}
+    {{#if select.loading}}
+      <span local-class="loading"></span>
+    {{else}}
+      <i local-class="icon" class="{{if select.isOpen "i-search" "i-select"}}"></i>
+    {{/if}}
+  {{/if}}
+  <input
+    type="search"
+    local-class="input {{if (not select.isOpen) "input--hidden"}}"
+    tabindex="0"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+    role="textbox"
+    value={{value}}
+    placeholder={{extra.searchPlaceholder}}
+    onmousedown={{action "handleMouseDown"}}
+    oninput={{onInput}}
+    onfocus={{select.actions.open}}
+    onkeydown={{action "handleKeyDown"}}
+  >
+  {{#if (not select.isOpen)}}
+    <span local-class="placeholder">{{value}}</span>
+  {{/if}}
+</div>

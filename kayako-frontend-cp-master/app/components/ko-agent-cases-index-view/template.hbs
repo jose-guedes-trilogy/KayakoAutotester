@@ -1,0 +1,33 @@
+{{page-title activeView.title}}
+
+{{#with activeView.viewCount.realtimeChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    events=(hash CHANGE=(perform handleRealtimeChange))
+  }}
+{{/with}}
+
+{{#ko-cases-list
+  isLoading=casesLoading
+  cases=cases
+  onCaseListSort=(action "sortCaseList")
+  onClick=(action "transitionToCase")
+  columns=activeView.columns
+  title=activeView.title
+  orderBy=(or orderBy (lowercase activeView.orderBy))
+  onSetSelectedCaseIds=(action "setSelectedCaseIds")
+  onTrashCases=(action "trashCases")
+  afterMerge=(action afterMerge)
+  trashable=(not isTrash)
+  isTrash=isTrash
+  selectedCaseIds=selectedCaseIds
+  orderByColumn=(or orderByColumn (lowercase activeView.orderByColumn))
+  currentFocusedID=currentFocusedID
+  as |caseListPage|
+}}
+  {{#if (eq caseListPage "pagination")}}
+    {{#if showPagination}}
+      {{ko-pagination currentPage=page pageCount=totalPages}}
+    {{/if}}
+  {{/if}}
+{{/ko-cases-list}}

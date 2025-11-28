@@ -1,0 +1,26 @@
+<div local-class="container">
+  {{#ko-form/field}}
+    {{#ko-form/field/label}}
+      {{t "cases.text_editor.link_manager.link"}}
+    {{/ko-form/field/label}}
+    {{ko-input placeholder=(t "cases.text_editor.link_manager.url") value=url onInput=(action (mut url) value="target.value") autofocus=true qaClass="qa__ko-text-editor__link-url"}}
+  {{/ko-form/field}}
+
+
+  {{#ko-form/field}}
+    {{#ko-form/field/label}}
+      {{t "cases.text_editor.link_manager.shown_text"}}
+    {{/ko-form/field/label}}
+    {{ko-input placeholder=(t "cases.text_editor.link_manager.text") value=text onInput=(action (mut text) value="target.value") qaClass="qa__ko-text-editor__link-label"}}
+  {{/ko-form/field}}
+
+  {{ko-form/buttons
+  class=(local-class "buttonContainer")
+  submitLabel=(t "generic.add")
+  cancelLabel=(t "generic.cancel")
+  submitClass=(qa-cls "qa__ko-text-editor__link-submit")
+  isValid=url
+  onSubmit=(action onAddLink url text)
+  onCancel=onCancel
+  }}
+</div>

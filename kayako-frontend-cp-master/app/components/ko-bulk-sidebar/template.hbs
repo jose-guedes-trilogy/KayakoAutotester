@@ -1,0 +1,91 @@
+<div local-class="container">
+  <div local-class="title">
+    {{t "cases.list.bulkupdate.update_cases_title"}}
+  </div>
+  <div local-class="fields">
+    {{#if agents}}
+      {{ko-case-content/field/assignee
+        team=assignedTeam
+        agent=assignedAgent
+        field=assigneeField
+        agents=agents
+        teams=teams
+        onValueChange=(action "setAssignee")
+        isEdited=isAssigneeEdited
+        emptyLabel=(t "generic.no_changes")
+        hasEmptyOption=true
+      }}
+    {{else}}
+      <div local-class="field-placeholder">{{t "generic.loading_agents"}}</div>
+    {{/if}}
+
+    {{ko-case-content/field/status
+      title=(t "cases.status")
+      statuses=bulkCaseStatuses
+      qaClass="qa-ko-case-content__status"
+      value=caseStatus
+      isEdited=isCaseStatusEdited
+      onValueChange=(action "setCaseStatus")
+    }}
+
+    {{ko-info-bar/field/select
+      title=(t "cases.type")
+      options=bulkCaseTypes
+      value=caseType
+      isEdited=isCaseTypeEdited
+      onValueChange=(action "setCaseType")
+      labelPath="label"
+      hasEmptyOption=false
+    }}
+
+    {{ko-info-bar/field/select
+      title=(t "cases.priority")
+      options=bulkCasePriorities
+      value=casePriority
+      isEdited=isCasePriorityEdited
+      onValueChange=(action "setCasePriority")
+      labelPath="label"
+      hasEmptyOption=false
+    }}
+
+    {{ko-info-bar/field/select-multiple
+      allowCreate=true
+      title=(t "cases.tags")
+      isEdited=isTagsFieldEdited
+      value=tags
+      onValueAddition=(action "addTag")
+      onValueRemoval=(action "removeTag")
+      onSuggestion=(perform suggestTags)
+      placeholder=(t "cases.addtag")
+    }}
+
+    {{#if (variation "release-sidebar-custom-fields")}}
+      {{#each (sort-by "sortOrder:asc" (filter-by "isEnabled" true customFields)) as |field|}}
+        {{#with (ko-helper customFieldsList.componentFor field.fieldType) as |componentName|}}
+          {{component componentName
+            value=(get customFieldsState.idToEditedValueHash field.id)
+            options=field.options
+            title=field.title
+            isEdited=(get customFieldsState.idToIsEditedHash field.id)
+            isErrored=(get errorMap field.key)
+            onValueChange=(action "setCustomField" field)
+            hasUnsetOption=true
+            hasEmptyOption=(not field.isRequiredForAgents)
+            emptyLabel=(t "generic.no_changes")
+            idPath="id"
+            labelPath="value"
+          }}
+        {{/with}}
+      {{/each}}
+    {{/if}}
+  </div>
+  <div local-class="button-bar">
+    {{#ko-button type="naked" onClick=(action "cancel") qaClass="qa-bulk-sidebar_cancel"}}
+      {{t "generic.cancel"}}
+    {{/ko-button}}
+
+    {{#ko-button type="primary" size="medium" hasAnimation=true loading=isSaving disabled=(not isEdited) onClick=(action "submit") qaClass="qa-bulk-sidebar_update-cases"}}
+      {{t "cases.list.bulkupdate.updatecases"}}
+    {{/ko-button}}
+  </div>
+</div>

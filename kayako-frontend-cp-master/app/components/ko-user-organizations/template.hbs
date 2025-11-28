@@ -1,0 +1,14 @@
+{{#ko-info-bar/field/select
+  title=(t "organization.title")
+  options=organizations
+  value=selectedOrganization
+  onValueChange=(action "onOrganizationSelect")
+  isEdited=isOrganizationEdited
+  isErrored=isOrganizationErrored
+  isDisabled=isOrganizationDisabled
+  idPath="id"
+  labelPath="name"
+  hasEmptyOption=false
+  qaClass="qa-case-content-organization-select"
+}}
+{{/ko-info-bar/field/select}}

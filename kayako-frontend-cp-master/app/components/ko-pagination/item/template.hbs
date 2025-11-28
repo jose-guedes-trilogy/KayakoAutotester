@@ -1,0 +1,7 @@
+{{#link-to (query-params page=page)}}
+  <div local-class="container {{if isActive "active"}}">
+    <div local-class="item" class="{{if isActive (qa-cls "qa-pagination-active")}} {{qa-cls qaCls}}">
+      {{page}}
+    </div>
+  </div>
+{{/link-to}}

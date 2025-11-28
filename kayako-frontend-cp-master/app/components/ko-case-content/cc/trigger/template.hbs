@@ -1,0 +1,21 @@
+<div local-class="container" onmousedown={{action "stopPropagation"}}>
+  <ul id="ember-power-select-multiple-options-{{select.uniqueId}}" local-class="options">
+    {{#if (and placeholder (not searchEnabled))}}
+      <span class="ember-power-select-placeholder" local-class="placeholder">{{placeholder}}</span>
+    {{/if}}
+    {{#if searchEnabled}}
+      <input type="search" local-class="input"
+        tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+        id={{extra.inputId}}
+        value={{select.searchText}}
+        aria-controls={{listboxId}}
+        style={{triggerMultipleInputStyle}}
+        placeholder={{or placeholder (t "cases.text_editor.cc.placeholder")}}
+        disabled={{select.disabled}}
+        oninput={{action "onInput"}}
+        onFocus={{onFocus}}
+        onBlur={{onBlur}}
+        onkeydown={{action "handleKeydown"}}>
+    {{/if}}
+  </ul>
+</div>

@@ -1,0 +1,56 @@
+<div class="{{smallSlotClass}}">
+  {{#ko-form/field/label}}
+    {{t 'admin.engagements.actions.labels.from'}}
+  {{/ko-form/field/label}}
+  {{ko-admin/automation-actions-builder/autocomplete-team-or-agent/assignee
+      team=team
+      agent=agent
+      teams=teams
+      agents=agents
+      field=field
+      onValueChange=(action "changeAction")
+      isEdited=isAssigneeEdited
+    }}
+</div>
+<div class="{{bigSlotClass}}">
+  {{#ko-form/field/label}}
+    {{t 'admin.engagements.actions.labels.message'}}
+  {{/ko-form/field/label}}
+  {{ko-input value=automationAction.value multiline=true size="full"}}
+</div>
+{{#if (or agent team)}}
+  <div class="{{bigSlotClass}}">
+    {{#ko-checkbox
+      label=(t 'admin.engagements.actions.assign')
+      checked=automationAction.attributes.assign
+      disabled=isDisabled
+      checkboxWrap="checkbox-container"
+      isVerticallyCentered=true
+    }}
+      <div local-class="sender-name">
+        {{#if team}}
+          {{team.title}}
+        {{/if}}
+        {{#if (and team agent)}}
+          <div local-class="separator">
+            /
+          </div>
+        {{/if}}
+        {{#if agent}}
+          <div local-class="agent">
+            <div local-class="avatar">
+              {{#ko-user-avatar user=agent size="micro" as |avatar|}}
+                {{avatar.image}}
+                {{avatar.online-indicator}}
+              {{/ko-user-avatar}}
+            </div>
+            <span local-class="agent-name">
+              {{agent.fullName}}
+            </span>
+          </div>
+        {{/if}}
+      </div>
+    {{/ko-checkbox}}
+  </div>
+{{/if}}
+

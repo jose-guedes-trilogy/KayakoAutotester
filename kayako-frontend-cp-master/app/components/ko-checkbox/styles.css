@@ -1,0 +1,82 @@
+.checkboxWrap {
+  display: flex;
+  align-items: center;
+}
+
+.centerHorizontally {
+  justify-content: center;
+}
+
+.topAligned {
+  align-items: flex-start;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 10px;
+  background-color: #FFFFFF;
+  border: 1px solid #BEC4C7;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tick {
+  font-size: 10px;
+  font-weight: 600;
+  color: #616C73;
+  animation: fade-in 0.15s ease;
+
+  &:before {
+    vertical-align: inherit;
+  }
+}
+
+.size-small {
+  width: 12px;
+  height: 12px;
+  margin-top: 0;
+
+  .tick {
+    font-size: 9px;
+  }
+}
+
+.size-large {
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tickLarge {
+  @include font-size-with-line-height(13px);
+}
+
+.label {
+  margin-left: 4.5px;
+  cursor: pointer;
+}
+
+.labelDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,21 @@
+.text {
+  cursor: pointer;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  padding: 0;
+  background-color: inherit;
+  color: #3B4048;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}

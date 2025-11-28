@@ -1,0 +1,42 @@
+.pair {
+  display: flex;
+  margin-bottom: 9px;
+  padding-right: 40px;
+  align-items: center;
+
+  &:hover {
+    .remove-button {
+      visibility: visible;
+    }
+  }
+}
+
+.key {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  padding-right: 14px;
+  max-width: 300px;
+}
+
+.value {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  padding-right: 14px;
+  max-width: 300px;
+}
+
+.remove-button {
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.add-btn {
+  border: 0;
+  text-align: inherit;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  color: $primary-blue;
+}

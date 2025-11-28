@@ -1,0 +1,30 @@
+<div>
+  {{#each collections as |collection i|}}
+    <div id="{{concat "ko-predicate-builder" i}}" local-class="container" class="{{qa-cls "qa-predicate-builder"}}">
+      {{#if (gt i 0)}}
+        <div local-class="label">{{t 'generic.and'}}</div>
+      {{/if}}
+      {{#if (gt collections.length 1)}}
+        <div local-class="remove" class="{{qa-cls "qa-predicate-builder__remove"}}" onclick={{action onCollectionRemoval collection (concat "ko-predicate-builder" i)}}>
+          {{ko-icon name="minusSquare" color="#D7DCDE"}}
+        </div>
+      {{/if}}
+
+      {{#each collection.propositions as |proposition|}}
+        {{ko-admin/predicate-builder/proposition
+          class=(qa-cls "qa-predicate-builder--proposition")
+          definitions=collection.definitions
+          proposition=proposition
+          canDeleteProposition=(not (eq collection.propositions.length 1))
+          onPropositionDeletion=(action onPropositionDeletion collection)
+          onPropositionChange=(action "onPropositionChange" collection proposition)
+        }}
+      {{/each}}
+      {{#if collection.showAddNewCondition}}
+        <div local-class="add" class="{{qa-cls "qa-predicate-builder__add"}}" onclick={{action onAdditionOfPropositionToCollection collection}}>{{t 'admin.predicate_builder.label.addition_of_proposition'}}</div>
+      {{/if}}
+    </div>
+  {{/each}}
+
+  <div local-class="new" class="{{qa-cls "qa-predicate-builder__new"}}" onclick={{onCollectionAddition}}>{{t 'generic.and'}}</div>
+</div>

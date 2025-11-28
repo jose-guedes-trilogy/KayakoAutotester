@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="25px" viewBox="0 0 41 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--monitors_color--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon--monitors_color--48" transform="translate(-8.000000, -14.000000)" stroke="#87B8C0">
+            <g transform="translate(8.000000, 14.000000)">
+                <path d="M0.5,12.5 C0.5,12.5 8.4,0.5 20.5,0.5 C32.5,0.5 40.5,12.5 40.5,12.5 C40.5,12.5 32.4,24.5 20.5,24.5 C8.5,24.5 0.5,12.5 0.5,12.5 Z" id="Shape" fill="#FFFFFF"></path>
+                <circle id="Oval" fill="#F3F7F8" cx="20.5" cy="12.5" r="8"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,112 @@
+{{ko-admin/page
+  title=(t "admin.facebook.headings.index")
+  buttonClass=(qa-cls "qa-admin-facebook-page__add-page")
+  buttonText=(t "admin.facebook.buttons.create_account")
+  onSave=(route-action "showModal" true)
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.facebook.description"}}</p>
+  <p><strong>{{format-html-message "admin.facebook.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1149-adding-facebook-support?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=facebook" "admin.facebook.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not pages.length)}}
+  {{ko-admin/empty image="facebook"}}
+{{/if}}
+
+{{#if showModal}}
+  {{#ko-modal on-close=(route-action "showModal" false) on-confirm=(if (not (or saveInProgress submitDisabled)) (action "importPages")) width="400px" as |modal|}}
+    {{#if modal.isHeader}}
+      <span class={{qa-cls "qa-admin-facebook-page__add-page-modal-title"}}>{{t "admin.facebook.add_pages"}}</span>
+    {{/if}}
+    {{#if modal.isMain}}
+      <div local-class="availablePages">
+        {{#if fetchAvailablePages.isRunning}}
+          {{ko-loader}}
+        {{else}}
+          <ul>
+            {{#each availablePages as |page|}}
+              <li local-class="availablePage">
+                {{ko-checkbox label=page.title checked=page.import}}
+              </li>
+            {{else}}
+              <span local-class="no-pages">{{t "admin.facebook.no_pages"}}</span>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+      <div local-class="reconnect">
+        {{t "admin.facebook.see_facebook_account"}} <a onclick={{action "redirectToFacebookAuthenticationEndpoint" false}}>{{t "admin.facebook.connect_facebook_account"}}</a>
+      </div>
+    {{/if}}
+    {{#if modal.isFooter}}
+      <div local-class="cancel">
+        {{#ko-button type="naked" onClick=(route-action "showModal" false)}}
+          {{t "admin.facebook.cancel"}}
+        {{/ko-button}}
+      </div>
+
+      {{#ko-button type="primary" qaClass="qa-admin-facebook-page__save" disabled=(or saveInProgress submitDisabled) onClick=(action "importPages")}}
+        {{#if saveInProgress}}
+          {{ko-loader}}
+        {{else}}
+          {{t "admin.facebook.save"}}
+        {{/if}}
+      {{/ko-button}}
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}
+
+{{#if enabledPages.length}}
+  {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+    {{#each enabledPages as |page|}}
+      {{#list.row qaClass="qa-admin-facebook-page" onClick=(action "editPage" page) as |row|}}
+        {{#row.cell}}
+          <div>
+            <span local-class="title">{{page.title}}</span>
+            {{#if page.brand.name}} <span local-class="caption"> ({{page.brand.name}}) </span>{{/if}}
+
+            {{#if (eq page.status "NOT_AUTHORIZED")}}
+              <span local-class="error"> ({{t "admin.facebook.connection_lost"}})</span>
+            {{/if}}
+          </div>
+        {{/row.cell}}
+
+        {{#row.actions}}
+          {{#if (eq page.status "NOT_AUTHORIZED")}}
+            <a onclick={{action "redirectToFacebookAuthenticationEndpoint" true}}>{{t "admin.facebook.reconnect"}}</a> |
+          {{/if}}
+
+          {{#link-to "session.admin.channels.facebook.edit" page.id}}{{t "generic.edit"}}{{/link-to}} |
+          <a class="qa-admin-facebook-page__disable" onclick={{action "toggleEnabled" page}}>{{t "generic.disable"}}</a> |
+          <a class="qa-admin-facebook-page__delete" onclick={{action "deletePage" page}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledPages.length}}
+  {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+    {{#each disabledPages as |page|}}
+      {{#list.row as |row|}}
+        {{#row.cell disabled=true}}
+          <span>
+            <span local-class="title">{{page.title}}</span>
+            {{#if page.brand.name}} <span local-class="caption"> ({{page.brand.name}}) </span>{{/if}}
+
+            {{#if (eq page.status "NOT_AUTHORIZED")}}
+              <span local-class="error">({{t "admin.facebook.connection_lost"}})</span>
+            {{/if}}
+          </span>
+        {{/row.cell}}
+
+        {{#row.actions}}
+          {{#link-to "session.admin.channels.facebook.edit" page.id}}{{t "generic.edit"}}{{/link-to}} |
+          <a onclick={{action "toggleEnabled" page}}>{{t "generic.enable"}}</a> |
+          <a onclick={{action "deletePage" page}}>{{t "generic.delete"}}</a>
+        {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

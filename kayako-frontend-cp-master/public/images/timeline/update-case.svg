@@ -1,0 +1,17 @@
+<svg width="33px" height="33px" viewBox="34 59 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z" id="path-1"></path>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="16" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+  </defs>
+  <g id="icon--edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(34.000000, 59.000000)">
+    <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="Rectangle-185" fill="#EBEEF0"></path>
+    <g transform="translate(8.000000, 8.000000)">
+      <path d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z" id="Shape" fill="#DADDDF"></path>
+      <path d="M7.6,3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L13,8 L7.6,3 Z" id="Shape" fill="#FFFFFF"></path>
+      <use id="Shape" stroke="#838D94" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+      <rect id="Rectangle" fill="#838D94" transform="translate(10.474874, 5.474874) rotate(-45.000000) translate(-10.474874, -5.474874) " x="9.97487373" y="2.47487373" width="1" height="6"></rect>
+    </g>
+  </g>
+</svg>

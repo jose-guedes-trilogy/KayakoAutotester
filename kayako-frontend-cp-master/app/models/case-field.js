@@ -1,0 +1,26 @@
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  fielduuid: DS.attr('string'),
+  title: DS.attr('string', { defaultValue: '' }),
+  fieldType: DS.attr('string'),
+  key: DS.attr('string'),
+  isRequiredForAgents: DS.attr('boolean', { defaultValue: false }),
+  isRequiredOnResolution: DS.attr('boolean', { defaultValue: false }),
+  isVisibleToCustomers: DS.attr('boolean', { defaultValue: false }),
+  customerTitles: DS.hasMany('locale-field', { async: false }),
+  isCustomerEditable: DS.attr('boolean', { defaultValue: false }),
+  isRequiredForCustomers: DS.attr('boolean', { defaultValue: false }),
+  descriptions: DS.hasMany('locale-field', { async: false }),
+  regularExpression: DS.attr('string', { defaultValue: '' }),
+  sortOrder: DS.attr('number'),
+  isEnabled: DS.attr('boolean', { defaultValue: true }),
+  isSystem: DS.attr('boolean', { defaultValue: false }),
+  options: DS.hasMany('field-option', { async: false }),
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date'),
+  priorities: DS.hasMany('case-priority', { async: true }),
+  statuses: DS.hasMany('case-status', { async: true }),
+  types: DS.hasMany('case-type', { async: true }),
+  tag: DS.attr('string'),
+});

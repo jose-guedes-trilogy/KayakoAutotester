@@ -1,0 +1,49 @@
+{
+  "status": 200,
+  "data": {
+    "start_at": "2016-05-28T00:00:00+00:00",
+    "end_at": "2016-06-27T23:59:59+00:00",
+    "popular_searches": [
+      {
+        "name": "descaling rocket r58",
+        "average_result_count": 7,
+        "attempt_count": 64,
+        "last_attempted_at": "2016-05-28T12:14:34+00:00",
+        "resource_type": "report_helpcenter_query"
+      },
+      {
+        "name": "v60",
+        "average_result_count": 59,
+        "attempt_count": 37,
+        "last_attempted_at": "2016-05-30T03:12:01+00:00",
+        "resource_type": "report_helpcenter_query"
+      },
+      {
+        "name": "cappuccino or latte?",
+        "average_result_count": 55,
+        "attempt_count": 24,
+        "last_attempted_at": "2016-05-28T12:05:38+00:00",
+        "resource_type": "report_helpcenter_query"
+      }
+    ],
+    "failed_searches": [
+      {
+        "name": "yummy coffee",
+        "average_result_count": 0,
+        "attempt_count": 4,
+        "last_attempted_at": "2016-05-28T00:00:41+00:00",
+        "resource_type": "report_helpcenter_query"
+      },
+      {
+        "name": "tea",
+        "average_result_count": 0,
+        "attempt_count": 2,
+        "last_attempted_at": "2016-06-06T04:02:40+00:00",
+        "resource_type": "report_helpcenter_query"
+      }
+    ],
+    "resource_type": "report_helpcenter_search"
+  },
+  "resources": [],
+  "resource": "report_helpcenter_search"
+}

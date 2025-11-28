@@ -1,0 +1,131 @@
+{{#ko-form
+  onSubmit=(if isCreated (perform finish) (action "save"))
+  onSuccess=onSuccess
+as |form|}}
+  {{#ko-admin/page
+    title=(if app.isNew (t "admin.oauthapps.new.title") (t "admin.oauthapps.edit.title" name=app.name))
+    onCancel=(if (not isCreated) onCancel)
+    onDelete=onDelete
+    deleteText=(if (and canBeDeleted (not isCreated)) (t "generic.delete"))
+    buttonText=(if isCreated (t "admin.oauthapps.buttons.done") (t "generic.save"))
+    showFooter=true
+  }}
+
+    {{#if (not isCreated)}}
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.application")}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.name.title'}}{{/ko-form/field/label}}
+          {{ko-input value=editedApp.name onInput=(action (mut editedApp.name) value="target.value") disabled=form.isSubmitting qaClass="qa-oauth-apps-edit-name"}}
+        {{/ko-form/field}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.url.title'}}{{/ko-form/field/label}}
+          {{ko-input value=editedApp.url onInput=(action (mut editedApp.url) value="target.value") disabled=form.isSubmitting}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.url.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.description.title'}}{{/ko-form/field/label}}
+          {{ko-input multiline=true value=editedApp.description onInput=(action (mut editedApp.description) value="target.value") disabled=form.isSubmitting}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.description.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+      {{/ko-admin/forms/group}}
+
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.logo")}}
+        <div local-class="app-logo-container">
+          {{#if (or appLogo.url appLogo.data)}}
+            <img src="{{or appLogo.url appLogo.data}}" width="50" height="50" local-class="app-logo" class="{{qa-cls "qa-oauth-apps-edit-logo-image"}}">
+          {{/if}}
+          <div>
+            <div local-class="app-logo-upload">
+              {{ko-file-field id="oauth-client-logo-file-field" title="" local-class="file-field" viewName="attachFile" multiple=false on-change=(action "uploadLogo") disabled=form.isSubmitting}}
+              {{#ko-button onClick=(action "triggerUpload") disabled=form.isSubmitting qaClass="qa-oauth-apps-edit-logo-button"}}
+                {{#if (or appLogo.url appLogo.data)}}
+                  {{t "admin.oauthapps.edit.logo.button.change"}}
+                {{else}}
+                  {{t "admin.oauthapps.edit.logo.button.upload"}}
+                {{/if}}
+              {{/ko-button}}
+              {{#if isUploading}}
+                <div local-class="loader">{{ko-loader}}</div>
+              {{/if}}
+            </div>
+            {{#ko-form/field/help}}{{t "admin.oauthapps.edit.logo.description"}}{{/ko-form/field/help}}
+          </div>
+        </div>
+      {{/ko-admin/forms/group}}
+    {{/if}}
+
+    {{#if (not app.isNew)}}
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.credentials")}}
+        {{#if isCreated}}
+          {{ko-admin/forms/description description="admin.oauthapps.edit.credentials.notice"}}
+        {{/if}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.key.title'}}{{/ko-form/field/label}}
+          {{ko-input value=app.key disabled=true qaClass="qa-oauth-apps-edit-key"}}
+          {{#copy-button local-class="copy-button" clipboardText=app.key success=(action "copiedToClipboard")}}
+            {{t 'generic.copy_to_clipboard'}}
+          {{/copy-button}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.key.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+        {{#if app.secret}}
+          {{#ko-form/field}}
+            {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.secret.title'}}{{/ko-form/field/label}}
+            {{ko-input value=app.secret disabled=true qaClass="qa-oauth-apps-edit-secret"}}
+            {{#copy-button local-class="copy-button" clipboardText=app.secret success=(action "copiedToClipboard")}}
+              {{t 'generic.copy_to_clipboard'}}
+            {{/copy-button}}
+            {{#ko-form/field/help}}<span local-class="app-secret">{{t "admin.oauthapps.edit.secret.description"}}</span>{{/ko-form/field/help}}
+          {{/ko-form/field}}
+        {{/if}}
+      {{/ko-admin/forms/group}}
+    {{/if}}
+
+    {{#if (not isCreated)}}
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.scopes")}}
+        {{#ko-select selected=selectedScopeMode options=scopeModes onChange=(action (mut selectedScopeMode)) size="medium" disabled=form.isSubmitting qaClass="qa-oauth-apps-edit-scopes-mode" as |option|}}
+          {{t (concat "admin.oauthapps.edit.scopes." option)}}
+        {{/ko-select}}
+        {{#ko-form/field/help}}{{t "admin.oauthapps.edit.scopes.description"}}{{/ko-form/field/help}}
+        {{#if (eq selectedScopeMode 'specified')}}
+          <div local-class="app-scopes-container" class="{{qa-cls "qa-oauth-apps-edit-scopes-container"}}">
+            {{#each scopes as |scope|}}
+              {{#ko-form/field class=(local-class "app-item-container")}}
+                <div local-class="app-scope">
+                  {{ko-checkbox label=(t (concat "admin.oauthapps.scopes." scope.name ".title")) checked=scope.isEnabled onCheck=(action (mut scope.isEnabled)) disabled=form.isSubmitting qaClass="qa-oauth-apps-edit-scope-checkbox"}}
+                  {{#ko-form/field/help}}{{t (concat "admin.oauthapps.scopes." scope.name ".description")}}{{/ko-form/field/help}}
+                </div>
+                <div local-class="app-scope-access-level">
+                  {{#ko-select selected=scope.level options=scopeAccess onChange=(action (mut scope.level)) disabled=(or (not scope.isEnabled) form.isSubmitting) qaClass="qa-oauth-apps-edit-scope-level" as |level|}}
+                    {{t (concat "admin.oauthapps.scope_levels." level)}}
+                  {{/ko-select}}
+                </div>
+              {{/ko-form/field}}
+            {{/each}}
+          </div>
+        {{/if}}
+      {{/ko-admin/forms/group}}
+
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.author")}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.author.title'}}{{/ko-form/field/label}}
+          {{ko-input value=editedApp.author onInput=(action (mut editedApp.author) value="target.value") disabled=form.isSubmitting}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.author.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.author_url.title'}}{{/ko-form/field/label}}
+          {{ko-input value=editedApp.author_url onInput=(action (mut editedApp.author_url) value="target.value") disabled=form.isSubmitting}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.author_url.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+      {{/ko-admin/forms/group}}
+
+      {{#ko-admin/forms/group legend=(t "admin.oauthapps.edit.heading.oauth")}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t 'admin.oauthapps.edit.callback_url.title'}}{{/ko-form/field/label}}
+          {{ko-input value=editedApp.callback_url onInput=(action (mut editedApp.callback_url) value="target.value") disabled=form.isSubmitting}}
+          {{#ko-form/field/help}}{{t "admin.oauthapps.edit.callback_url.description"}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+      {{/ko-admin/forms/group}}
+    {{/if}}
+
+  {{/ko-admin/page}}
+{{/ko-form}}

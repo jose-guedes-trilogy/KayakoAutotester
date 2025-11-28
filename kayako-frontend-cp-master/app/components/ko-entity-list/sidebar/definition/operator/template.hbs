@@ -1,0 +1,22 @@
+<div>
+  <ul local-class="operator-list">
+    {{#each definition.operators as |operator|}}
+      <li local-class="operator">
+        {{ko-radio
+          label=(t (concat "admin.predicate_builder.operators." operator.label))
+          checked=(eq selectedOperator operator.label)
+          onChange=(action "onSelectedOperatorChange" operator)
+        }}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+<div local-class="input">
+  {{ko-entity-list/sidebar/definition/operator/input
+    definition=definition
+    operatorDefinition=operatorDefinitionForSelected
+    currentPropositions=currentPropositions
+    positionInPropositions=positionInPropositions
+    onPropositionsChange=onPropositionsChange
+  }}
+</div>

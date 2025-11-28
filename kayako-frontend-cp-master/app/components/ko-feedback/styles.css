@@ -1,0 +1,39 @@
+.container {
+  padding: 9px 18px;
+  border-bottom: 1px solid #e3e5e7;
+}
+
+.metric {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.caption {
+  margin-top: 4.5px;
+  font-size: 12px;
+  color: $grey-8;
+  text-align: center;
+}
+
+.no-feedback {
+  color: #838D94;
+}
+
+.list {
+  display: flex;
+}
+
+.item {
+  width: 33.333%;
+}
+
+.heading {
+  margin-bottom: 9px;
+  text-transform: uppercase;
+  @include font-size-with-line-height(12px);
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: #838D94;
+}

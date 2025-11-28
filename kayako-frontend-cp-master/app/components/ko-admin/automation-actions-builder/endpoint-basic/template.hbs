@@ -1,0 +1,14 @@
+<div class="{{bigSlotClass}}">
+  <br>
+  {{ko-form/field/label text=(t "admin.automation_actions_builder.labels.endpoint_message")}}
+  {{ko-input
+    name="endpoint-message"
+    value=automationAction.value
+    onInput=(action (mut automationAction.value) value="target.value")
+    size="full"
+    multiline=true
+    lines=6}}
+</div>
+<div class="{{bigSlotClass}}">
+  {{ko-admin/forms/description small=true link=(concat "https://support.kayako.com/article/1172-adding-dynamic-content-with-placeholders?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=" type "2") description="admin.automation_actions_builder.label.placeholders_allowed.description" linkText="admin.automation_actions_builder.label.placeholders_allowed.description_link"}}
+</div>

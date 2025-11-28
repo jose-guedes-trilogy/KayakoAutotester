@@ -1,0 +1,11 @@
+<div local-class="count-wrapper">
+  <svg width={{width}} height={{height}} version="1.1" xmlns="http://www.w3.org/2000/svg" fill={{background}}>
+    <polygon points={{points}} />
+  </svg>
+  <span local-class="metric-count">
+    {{count}}
+    {{#if (and showUsed (gt conversion 0))}}
+      <span local-class="conversion">{{conversion}}%</span>
+    {{/if}}
+  </span>
+</div>

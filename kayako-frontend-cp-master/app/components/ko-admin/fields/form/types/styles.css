@@ -1,0 +1,30 @@
+.buttons {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-type {
+  margin: 9px 0 18px;
+}
+
+.legend {
+  composes: legend from 'frontend-cp/components/ko-admin/forms/group/styles';
+  margin-bottom: 9px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.caption {
+  color: $grey-6;
+}

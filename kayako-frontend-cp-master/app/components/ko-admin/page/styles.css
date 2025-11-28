@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header--bar {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #D1D5D7;
+}
+
+.title {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.spacer {
+  height: 18px;
+}
+
+.footer {
+  padding-top: 27px;
+}
+
+.footer-upgrade {
+  padding-top: 27px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.caption {
+  color: $grey-6;
+}
+
+.beta-label {
+  background: #FFFFFF;
+  color: #3AA6C5;
+  padding: 1px 5px 2px;
+  font-size: 12px;
+  vertical-align: super;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid;
+  font-weight: 600;
+}

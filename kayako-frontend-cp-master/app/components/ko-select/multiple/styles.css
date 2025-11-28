@@ -1,0 +1,40 @@
+.trigger {
+  background: #fff;
+  padding: 1px 20px 1px 1px;
+  cursor: text;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  line-height: 2;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  min-height: 36px;
+  user-select: none;
+
+  &:focus, &--focused, &[aria-expanded="true"] {
+    @extend %brand-focus;
+  }
+
+  &[aria-disabled="true"] {
+    background-color: $grey-1;
+    pointer-events: none;
+  }
+
+  :global(.ember-power-select-multiple-remove-btn) {
+    cursor: pointer;
+    &:not(:hover) {
+      opacity: 0.5;
+    }
+  }
+
+  :global(.ember-power-select-status-icon) {
+    position: absolute;
+    display: inline-block;
+    top: 0; bottom: 0; margin: auto;
+  }
+}
+
+.dropdown {
+  composes: dropdown from '../shared';
+}

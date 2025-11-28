@@ -1,0 +1,27 @@
+{
+  "title": "Welcome to Kayako",
+  "back": "« Back to Login",
+  "email": "Email address",
+  "forgot": "Forgot password?",
+  "remember_me": "Remember me",
+  "login": "Login",
+  "newpassword": "New Password",
+  "verifycodelabel": "Enter verification code",
+  "password": "Password",
+  "repeatpassword": "Password (repeat)",
+  "resetpassword": "Reset password",
+  "resetinstruction": "Don’t worry - it happens to the best of us. To reset your password, enter the email address your normally use to login to Kayako.",
+  "resetbuttontext": "Send reset instructions",
+  "updatepassword": "Change password",
+  "welcome": "Welcome back to Kayako",
+  "divider_text": "OR",
+  "sign_in_with_google": "Sign in with Google",
+  "promotionlabel": "What’s new",
+  "promotiontitle": "The Ultimate Guide to Communicating Product Feedback →",
+  "promotiondescription": "A handy ebook for product driven support teams",
+  "error": {
+    "invalid_email": "Please enter a valid email address",
+    "email_not_found": "This email doesn’t exist",
+    "login_failed": "Email and password combination is incorrect"
+  }
+}

@@ -1,0 +1,60 @@
+.arrow {
+  position: relative;
+}
+
+.arrow::after, .arrow::before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow::after {
+  border-width: 7px;
+  margin-left: -7px;
+}
+
+.arrow::before {
+  border-top-color: #D1D5D7;
+  border-width: 8px;
+  margin-left: -8px;
+  z-index: $z-default;
+}
+
+.arrow-inset {
+  position: relative;
+}
+
+.arrow-inset::after, .arrow-inset::before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow-inset::after {
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.arrow-inset::before {
+  border-top-color: $grey-1;
+  transition: 0.2s border-top-color;
+  border-width: 8px;
+  margin-left: -8px;
+  z-index: $z-raised;
+  margin-top: -1px;
+}
+
+.arrow-inset:hover::before,
+.arrow-inset.active::before {
+  border-top-color: #FFF;
+}

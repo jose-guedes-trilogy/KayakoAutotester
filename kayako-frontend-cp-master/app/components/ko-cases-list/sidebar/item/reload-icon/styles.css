@@ -1,0 +1,8 @@
+/* Reload icon */
+.reload-icon {
+  display: none;
+}
+
+:global(.active:not(.ember-transitioning-out)) .reload-icon {
+  display: flex;
+}

@@ -1,0 +1,6 @@
+.card-icon {
+  background-image: url('/images/icons/cards/cards-sprite.png');
+  height: 21px;
+  width: 34px;
+  display: inline-block;
+}

@@ -1,0 +1,359 @@
+{
+  "title": "{account} - Powered By Kayako",
+  "home": "Home",
+  "validation_errors": "Please check you’ve filled everything in correctly",
+  "next": "Next",
+  "previous": "Previous",
+  "close": "Close",
+  "clear": "Clear",
+  "remove": "Remove",
+  "add": "Add",
+  "add_to": "Add to",
+  "back": "Back",
+  "done": "Done",
+  "new": "New",
+  "on": "on",
+  "primary": "Primary",
+  "create_link": "Create link",
+  "helpcenter": "Helpcenter",
+  "knowledgebase": "Knowledge Base Manager",
+  "impersonate": "Impersonate",
+  "you": "you",
+  "change_brand": "Change Brand",
+  "learn_more": "Learn more →",
+  "cancel_changes": "Cancel changes",
+  "to_select": "to select",
+  "to_browse": "to browse",
+  "datepicker": {
+    "clear": "Clear",
+    "close": "Close",
+    "today": "Today"
+  },
+  "dates": {
+    "relative_terms": {
+      "today": "Today",
+      "yesterday": "Yesterday"
+    }
+  },
+  "dateselect": {
+    "placeholder": "Select a date"
+  },
+  "filesize": "{size} {unit}",
+  "drilldown": {
+    "back": "Back"
+  },
+  "logout": "Logout",
+  "need_help": "Need help?",
+  "view_your_profile": "Profile",
+  "view_keyboard_shortcuts": "Keyboard shortcuts",
+  "paginatorof": "of {number, number}",
+  "popover": {
+    "next": "next",
+    "previous": "previous"
+  },
+  "add_a_note": "Add a note…",
+  "attachments": "{count} {count, plural, one {attachment} other {attachments}}",
+  "download_all": "Download all",
+  "texteditor": {
+    "attachment": "Attachment",
+    "authorship": "Authorship",
+    "cc": "CC",
+    "billing": "Billing",
+    "bold": "Bold",
+    "bullet": "Bullet",
+    "image": "Image",
+    "italic": "Italic",
+    "link": "Link",
+    "list": "List",
+    "notes_reminder": "This private note will only be seen by agents",
+    "case_notes_reminder": "This private conversation note will only be seen by agents",
+    "user_notes_reminder": "This private user note will only be seen by agents",
+    "org_notes_reminder": "This private organization note will only be seen by agents",
+    "image_upload_in_progress": "The image is still uploading. Please wait until it's done. If it takes too long, refresh the page and try again."
+  },
+  "users": "Users",
+  "enable": "Enable",
+  "enabled": "Enabled",
+  "disable": "Disable",
+  "disabled": "Disabled",
+  "delete": "Delete",
+  "edit": "Edit",
+  "send": "Send",
+  "summarize": "Summarize",
+  "view": "View",
+  "default": "Default",
+  "default_with_brackets": "(Default)",
+  "system": "System",
+  "profile": {
+    "position": "{position}",
+    "place": "{place}",
+    "openCases": "{number} Open Conversations",
+    "time": "Currently, {time}",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "viewProfile": "View profile"
+  },
+  "or_cancel": "or Cancel",
+  "make_default": "Make default",
+  "save": "Save",
+  "cancel": "Cancel",
+  "apply": "Apply",
+  "confirm_button": "Confirm",
+  "continue_button": "Continue",
+  "and": "And",
+  "or": "Or",
+  "also_viewing": "Also viewing",
+  "track_time": "Track time",
+  "time_spent": "Time spent",
+  "hours_abbreviation": "Hrs",
+  "day_abbreviation": "d",
+  "hour_abbreviation": "h",
+  "minute_abbreviation": "m",
+  "second_abbreviation": "s",
+  "SLA": "SLA",
+  "select_placeholder": "Select...",
+  "search_result_select_instruction": "Press enter",
+  "shared_with": "Shared with",
+  "find_out_more": "Find out more",
+  "loading_agents": "Loading agents…",
+  "esc": "esc",
+  "sort": {
+    "ASC": "Ascending",
+    "DESC": "Descending"
+  },
+  "update_properties": "Update properties",
+  "update_and_resend": "Update & resend",
+  "uploads": {
+    "dropzone": "Drag and drop files to upload",
+    "toolarge": "is too large. Attachments must be under {filesizeLimit, number}MB.",
+    "unknown": "upload failed. Please contact support",
+    "wrongtype": "is not allowed. Allowed file types: ",
+    "failed": "There was a problem uploading file(s)",
+    "twitter_validation_failed": "For Twitter reply you may attach up to 4 photos less than 3MB each, 1 animated GIF less than 3MB or 1 MP4 less than 15MB.",
+    "avatar_validation": "Please upload only JPG, GIF or PNG files less than 800KB in size.",
+    "facebook_not_allowed": "Attachments aren't supported yet for Facebook replies.",
+    "no_channel": "You need to select a channel before you can upload files.",
+    "not_allowed": "Uh oh! Seems like you can't upload a file here."
+  },
+  "confirm": {
+    "delete": "Are you sure you want to delete this?",
+    "trashcases": "Are you sure you want to trash these?",
+    "emptytrash": {
+      "header": "Are you sure you want to permanently remove all trashed conversations from Kayako?",
+      "body": "Warning: You can't undo this action.",
+      "confirm": "Empty trash"
+    },
+    "lose_changes": "You have unsaved changes on this page. Are you sure you want to discard these changes?",
+    "lose_changes_button": "Discard changes",
+    "lose_changes_header": "Discard changes?",
+    "delete_button": "Yes, delete"
+  },
+  "changes_saved": "Changes saved",
+  "casestrashed": "Conversations trashed",
+  "case_trashing_failed": "Oops! Something went wrong.",
+  "trash_emptied": "Conversations were permanently deleted",
+  "no_changes": "No Changes",
+  "create_user_panel": {
+    "title": "Create a new user",
+    "name_label": "First and last name",
+    "email_label": "Email address",
+    "name_required": "Name is required",
+    "email_invalid": "Invalid email address",
+    "submit": "Add user",
+    "info": "You can add additional contact details once you’ve created the user.",
+    "cancel": "cancel",
+    "user_exists": "This email already in use.",
+    "user_exists_toast": "This email already belongs to someone"
+  },
+  "organizations": {
+    "none": "No organizations",
+    "add_new": "Add new",
+    "primary_set": "{name} set as primary organization",
+    "load_error": "Failed to load organizations"
+  },
+  "create_organization_panel": {
+    "title": "Create a new organization",
+    "name_label": "Organization name",
+    "domain_label": "Email domain(s):",
+    "name_required": "Name is required",
+    "domain_required": "Email address is required",
+    "domain_invalid": "Invalid email address",
+    "submit": "Add organization",
+    "info": "You can add additional details and contact information once you’ve created the organization."
+  },
+  "user_logged_out": "You have been logged out",
+  "session_expired": "Your session has expired",
+  "license_expired": "Your request wasn’t saved because your subscription has expired.",
+  "license_expired_href": "Click here to renew your subscription",
+  "permissions_denied": "Sorry, you don’t have access to perform this action. Please ask for permissions from an admin.",
+  "user_credential_expired": "The credential (e.g. password) is valid but has expired",
+  "resource_not_found": "Resource does not exist or has been removed",
+  "generic_error": "Oops, something went wrong",
+  "create_case_panel": {
+    "title": "Create a new conversation",
+    "requester_label": "Requester/Recipient",
+    "requester_required": "Required",
+    "loading_label": "Loading users…",
+    "filter_label": "Showing {numFilteredUsers, number} of {numUsers, number}",
+    "info": "You can add more detail to this conversation after you’ve created it.",
+    "submit": "Create conversation",
+    "cancel": "cancel"
+  },
+  "identities": {
+    "component_title": "IDENTITIES",
+    "add_new": "Add new",
+    "add_email_identity": "Email",
+    "add_phone_identity": "Phone",
+    "add_twitter_identity": "Twitter",
+    "primary_comment": "(primary)",
+    "remove_identity": "Remove identity",
+    "validate_identity": "Send verification email",
+    "email_not_validated": "email not validated",
+    "copy_identity": "Copy",
+    "make_primary": "Make primary",
+    "mark_email_as_validated": {
+      "text": "Mark as verified",
+      "success_message": "{email} has been verified successfully"
+    },
+    "add": {
+      "email": "Add another email address",
+      "twitter": "Add another twitter handle",
+      "phone": "Add another phone number"
+    },
+    "placeholders": {
+      "email": "Email address",
+      "twitter": "Twitter handle",
+      "phone": "Phone number"
+    },
+    "errors": {
+      "invalid_email_format": "Email format invalid",
+      "invalid_twitter_handle_format": "Twitter handle format invalid"
+    },
+    "confirm_remove": "Are you sure you want to remove this identity?",
+    "added": {
+      "success_message": "Identity added successfully"
+    },
+    "removed": {
+      "success_message": "Identity removed successfully"
+    },
+    "see_profile": "See profile",
+    "unverified": "This identity has not been verified"
+  },
+  "error": {
+    "field_required": "This action requires the field to be specified",
+    "field_duplicate": "The value of the field is already used for another resource",
+    "field_empty": "The value of the field cannot be empty",
+    "field_invalid": "The value of the field is invalid"
+  },
+  "addtagname": "Add tag “{tag}”",
+  "units": {
+    "kB": "KB",
+    "MB": "MB",
+    "GB": "GB",
+    "B": "B",
+    "hours": "hours",
+    "days": "days"
+  },
+  "at_time": "at {time}",
+  "on_date": "on {date}",
+  "confirm_delete": {
+    "header": "Delete",
+    "body": "Delete this item?"
+  },
+  "input_date_range": {
+    "custom_range": "Custom range",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "last7days": "Last 7 Days",
+    "last30days": "Last 30 Days",
+    "this_month": "This Month",
+    "last_month": "Last Month"
+  },
+  "select": {
+    "select_or_type_to_search": "Select an option or type to search"
+  },
+  "copy_to_clipboard": "Copy to clipboard",
+  "copied_to_clipboard": "Copied to clipboard",
+  "errors": {
+    "not_found": {
+      "heading": "Sorry{name}, we couldn’t find that.",
+      "description1": "If you got here because you clicked on something in the product, please email us: <a href=\"mailto:support@kayako.com\">support@kayako.com</a>",
+      "description2": "Otherwise, please check the url is correct and try again!"
+    }
+  },
+  "settings": {
+    "12hour": "12 hours",
+    "24hour": "24 hours"
+  },
+  "times": "times",
+  "unsaved_tab_changes": "Wait! You have unsaved changes on this tab. Continuing will result in you losing these changes.",
+  "keyboard_shortcuts": {
+    "title": "Keyboard shortcuts",
+    "then": "then",
+    "or": "or",
+    "enter": "enter",
+    "ctrl": "ctrl",
+    "navigation": "Navigation",
+    "cases_users_and_orgs": "Conversations, users and organizations",
+    "general": "General",
+    "go_cases": "Go to conversations",
+    "go_insights": "Go to insights",
+    "go_admin": "Go to admin",
+    "previous_tab": "Previous tab",
+    "next_tab": "Next tab",
+    "close_tab": "Close tab",
+    "search": "Search",
+    "reply": "Switch to reply",
+    "note": "Switch to note",
+    "macro": "Select macro",
+    "assignee": "Select assignee",
+    "save": "Save/send",
+    "help": "Show this help",
+    "to_send": "to Send"
+  },
+  "updated": "Updated",
+  "update": "Update",
+  "published": "Published",
+  "draft": "Draft",
+  "pendingapproval": "Pending approval",
+  "pagination": {
+    "first": "First",
+    "last": "Last"
+  },
+  "selected": "Selected",
+  "timeline": {
+    "item": {
+      "copy_link": "Share a link to this post"
+    }
+  },
+  "you_are_online": "You are online",
+  "user_is_online": "{name} is online now",
+  "open_quotes": "“",
+  "close_quotes": "”",
+  "kie": {
+    "term_too_small": "Please enter at least 3 characters to search",
+    "invalid_format": "No results were found, please enter a valid email address to add a user"
+  },
+  "no_user_matching_term": "Uh oh! No one matching \"{term}\" was found",
+  "app_icon": "App Icon",
+  "pinned_notes": "{count} pinned {count, plural, one {note} other {notes}}",
+  "pin_failed": "Failed to pin note",
+  "unpin_failed": "Failed to unpin note",
+  "pinned_by": "Pinned by {name}",
+  "unpin": {
+    "case": "Unpin from conversation",
+    "user": "Unpin from user",
+    "org": "Unpin from organization"
+  },
+  "pin": {
+    "case": "Pin to conversation",
+    "user": "Pin to user",
+    "org": "Pin to organization"
+  },
+  "uploading_files": "Uploading files",
+  "app_version_out_of_date": "Kayako has been updated. Reload to use the latest version.",
+  "app_version_out_of_date_call_to_action": "Reload",
+  "email_headers": "Email Headers:",
+  "app_update_received_browser_tab_title": "New update!",
+  "block_subscription_downgrade": "You can't downgrade your support plan."
+}

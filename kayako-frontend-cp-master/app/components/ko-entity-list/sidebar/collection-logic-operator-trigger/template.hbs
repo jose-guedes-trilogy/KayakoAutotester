@@ -1,0 +1,10 @@
+<div local-class="container {{if select.isOpen "container-open"}}">
+  <div>
+    {{#if select.selected}}
+      {{t (concat "search.list.collection_" select.selected "_logic_operator")}}
+    {{/if}}
+  </div>
+  <div local-class="chevron {{if select.isOpen "chevron-up"}}">
+    {{inline-svg "chevron-down"}}
+  </div>
+</div>

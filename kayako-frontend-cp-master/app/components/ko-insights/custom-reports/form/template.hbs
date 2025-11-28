@@ -1,0 +1,98 @@
+{{#ko-admin/page
+  title=title
+  submitClass=(qa-cls "custom-reports__submit-button")
+  cancelButtonClass=(qa-cls "custom-reports__cancel-button")
+  deleteText=(if canBeDeleted (t "generic.delete"))
+  onDelete=(action "delete")
+  buttonText=(t "generic.save")
+  showFooter=true
+  onCancel=(action "cancel")
+  isSaving=save.isRunning
+  onSave=(perform save)
+  as |section|
+}}
+
+  {{#if (eq section "buttons")}}
+    {{#ko-form/buttons
+      submitLabel=(t "generic.save")
+      cancelLabel=(t "generic.cancel")
+      submitClass=(qa-cls "custom-reports__submit-button")
+      cancelButtonClass=(qa-cls "custom-reports__cancel-button")
+      onSubmit=(perform save)
+      onCancel=(action "cancel")
+      isSaving=save.isRunning
+    }}
+
+      {{#if (eq report.status "COMPLETED")}}
+        <div local-class="download-button">
+          {{#ko-button onClick=(action "download")}}
+            {{t "insights.custom_reports.report.download"}}
+          {{/ko-button}}
+        </div>
+      {{/if}}
+
+    {{/ko-form/buttons}}
+  {{/if}}
+
+
+  {{#if (eq section "contents")}}
+    {{#ko-admin/forms/group legend=(t "insights.custom_reports.form.details.legend")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "insights.custom_reports.form.label.field_title"}}{{/ko-form/field/label}}
+        {{ko-input placeholder=(t "insights.custom_reports.form.label.field_title_placeholder") qaClass="custom-reports__form__label" value=editedReport.label onInput=(action (mut editedReport.label) value="target.value") disabled=save.isRunning}}
+        {{ko-form/field/errors errors=editedReport.errors.label}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "insights.custom_reports.form.visibility.header")}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "insights.custom_reports.form.visibility.field_label"}}{{/ko-form/field/label}}
+
+        {{ko-radio label=(t "insights.custom_reports.form.visibility.private") checked=(eq editedReport.visibility "PRIVATE") onChange=(action (mut editedReport.visibility) "PRIVATE")}}
+        {{ko-radio label=(t "insights.custom_reports.form.visibility.public") checked=(eq editedReport.visibility "PUBLIC") onChange=(action (mut editedReport.visibility) "PUBLIC")}}
+
+        <div local-class="team-sharing">
+          {{ko-radio label=(t "insights.custom_reports.form.visibility.team") checked=(eq editedReport.visibility "TEAM") onChange=(action (mut editedReport.visibility) "TEAM")}}
+          <div local-class="team-selector">
+            {{ko-select/multiple
+              placeholder=(t "generic.select_placeholder")
+              options=availableTeams
+              selected=editedReport.visibilityToTeams
+              searchField="title"
+              onKeydown=(action "preventFormSubmission")
+              onChange=(action (mut editedReport.visibilityToTeams))
+            }}
+          </div>
+        </div>
+
+        {{ko-form/field/errors errors=editedReport.errors.teams}}
+      {{/ko-form/field}}
+
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group}}
+      <h5>{{t 'insights.custom_reports.form.predicates.heading'}}</h5>
+      {{#ko-form/field/help}}{{t 'insights.custom_reports.form.predicates.description'}}{{/ko-form/field/help}}
+      {{ko-admin/predicate-builder
+        definitions=definitions
+        collections=editedReport.predicateCollections
+        onCollectionAddition=(action "addCollection")
+        onCollectionRemoval=(action "removeCollection")
+        onAdditionOfPropositionToCollection=(action "createPropositionForCollection")
+        onPropositionDeletion=(action "removePropositionFromCollection")
+        onPropositionChange=(action "propositionChanged")
+      }}
+      {{ko-form/field/errors errors=editedReport.errors.predicateCollections}}
+    {{/ko-admin/forms/group}}
+
+    {{#if previewPredicates}}
+      {{#ko-admin/forms/group}}
+        {{ko-insights/custom-reports/form/preview
+          predicateCollections=previewPredicates
+        }}
+      {{/ko-admin/forms/group}}
+    {{/if}}
+
+  {{/if}}
+{{/ko-admin/page}}

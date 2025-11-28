@@ -1,0 +1,62 @@
+{{#if isGenerating}}
+  {{kre-channel
+    name=report.realtimeChannel
+    events=(hash CHANGE=(action "changed"))
+  }}
+{{/if}}
+
+<div local-class="report">
+  <div local-class="details">
+    <div local-class="details-header">
+      <span local-class="label">{{report.label}}</span>
+
+      {{#if isCompleted}}
+        <span local-class="details-separator">
+          &middot;
+        </span>
+
+        <span local-class="num-records">
+          {{t "insights.custom_reports.report.num_records" count=report.recordCount}}
+        </span>
+      {{/if}}
+    </div>
+
+    <div local-class="details-footer">
+      <div local-class="status-pill">
+        {{#if isGenerating}}
+          <div local-class="status-spinner">
+            {{ko-loader size="S"}}
+          </div>
+        {{/if}}
+        <div local-class="status-text status-text-{{dasherize report.status}}">
+          {{t (concat "insights.custom_reports.report.status." report.status)}}
+        </div>
+      </div>
+
+      <div local-class="status-time">
+        {{ko-datetime-format (or report.lastStatusUpdateAt report.createdAt)}}
+      </div>
+
+      <div local-class="details-separator">
+        &middot;
+      </div>
+
+      <div local-class="creator">
+        <div local-class="creator-label">{{t "insights.custom_reports.report.created_by"}}</div>
+        <div local-class="creator-avatar">{{ko-user-avatar user=report.creator size="micro"}}</div>
+        <div local-class="creator-name">{{report.creator.fullName}}</div>
+      </div>
+
+      {{#if report.lastDownloadedAt}}
+        <div local-class="details-separator">
+          &middot;
+        </div>
+
+        <div local-class="last-downloaded">
+          <div local-class="last-downloaded-label">{{t "insights.custom_reports.report.last_downloaded_at"}}</div>
+          <div local-class="last-downloaded-date">{{ko-datetime-format report.lastDownloadedAt}}</div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

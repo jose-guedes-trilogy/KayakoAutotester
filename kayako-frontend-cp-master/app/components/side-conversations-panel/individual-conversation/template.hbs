@@ -1,0 +1,115 @@
+<div>
+  <div local-class="side-panel-header">
+    {{#if (or isNew loadedConversation.length)}}
+      <div local-class="back-icon" onclick={{action "onBack"}}>
+        {{ko-icon name="chevronLeftLarge" color="#838D94"}}
+      </div>
+    {{/if}}
+    <div local-class="title" title={{title}}>
+      {{title}}
+      <div local-class="subtitle" title={{subtitle}}>
+        {{subtitle}}
+      </div>
+    </div>
+    {{#if (and (not isNew) loadedConversation.length)}}
+      <div local-class="header-actions">
+        <div local-class="action-button">
+          <button onclick={{action "updateConversationStatus"}}>
+            {{#if isConversationClosed}}
+              <span local-class="reopen-symbol">{{t "cases.side_conversations.reopen_symbol"}}</span>
+            {{else}}
+              {{ko-icon name="check" color="#838D94"}}
+            {{/if}}
+            {{actionButtonText}}
+          </button>
+        </div>
+        <div local-class="refresh-button" title="{{t "cases.side_conversations.refresh_conversation"}}" onclick={{action "reloadConversation"}}>
+          {{ko-icon name="refresh" color="#838D94"}}
+        </div>
+      </div>
+    {{/if}}
+  </div>
+  {{#ko-form class=(local-class "chat-container") isSubmitting=this.isSending as |form|}}
+    <div local-class='content'>
+      {{#unless isNew}}
+        {{side-conversations-panel/message-timeline
+          messages=loadedConversation
+        }}
+      {{/unless}}
+    </div>
+
+
+    {{#ko-form/field class=(local-class "reply-box")}}
+      {{#ko-form/field}} 
+        <div local-class="to-input">
+          {{ko-case-content/cc
+            onChange=(action "setToEmails")
+            onSearch=suggestPeople
+            selected=toEmails
+            isActive=true
+            hasCCInput=true
+            hideToggleButton=true
+            placeholder=(t "cases.side_conversations.to")
+          }}
+        </div>
+        {{ko-form/field/errors errors=errors.toEmails}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}} 
+        <div local-class="cc-input">
+          {{ko-case-content/cc
+            onChange=(action "setCCEmails")
+            onSearch=suggestPeople
+            selected=ccEmails
+            isActive=true
+            hasCCInput=true
+            hideToggleButton=true
+            placeholder=(t "cases.side_conversations.cc")
+          }}
+        </div>
+        {{ko-form/field/errors errors=errors.ccEmails}}
+      {{/ko-form/field}}
+
+      {{#if isNew}}
+        {{#ko-form/field}}
+          <input
+            local-class="subject-input"
+            id="subject-input"
+            size="full"
+            placeholder={{t "cases.enter_subject"}}
+            onchange={{action "updateSubject" value="target.value"}}
+          >
+          {{ko-form/field/errors errors=errors.subject}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#ko-text-editor
+        isRichFormattingAvailable=true
+        onAttachFiles=(action "onAttachFiles")
+        attachedFiles=this.attachments
+        onCancelAttachment=(action "cancelAttachment")
+        placeholder=(t "cases.contents.placeholder")
+        imageUploadStatus=(action "setImageUploadStatus")
+        isErrored=(if errors.emailContent true false)
+        allowFormatting=true
+        onTextChanged=(action "updateEmailContent")
+        value=emailContent
+        disabled=isSending
+        as |editor|
+      }}
+        {{#if editor.isFooter}}
+          <div local-class="send-button">
+            {{#ko-button type="primary" onClick=(action "send") hasAnimation=true loading=isSending disabled=isSendDisabled}}
+              {{#if uploadingFiles}}
+                <span>{{t "generic.uploading_files"}}&nbsp;&nbsp;&nbsp;</span>{{ko-loader class=(local-class "buttonLoading")}}
+              {{else}}
+                {{t "cases.send"}}
+              {{/if}}
+            {{/ko-button}}
+          </div>
+        {{/if}}
+      {{/ko-text-editor}}
+      {{ko-form/field/errors errors=errors.emailContent}}
+    {{/ko-form/field}}
+  {{/ko-form}}
+</div>

@@ -1,0 +1,12 @@
+.buttons {
+  display: flex;
+  flex-direction: flex-start;
+}
+
+.copy-button-wrapper {
+  margin-right: 10px;
+}
+
+.copy-button {
+  composes: primary from 'frontend-cp/components/ko-button/styles';
+}

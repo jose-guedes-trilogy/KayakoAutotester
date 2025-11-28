@@ -1,0 +1,36 @@
+.item {
+  text-decoration: none;
+  color: $grey-8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding-left: 22px;
+  padding-right: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 25px;
+
+  &:hover {
+    color: $primary-blue;
+  }
+
+  /* set by ember :( */
+  &:global(.active:not(.ember-transitioning-out)), &:global(.ember-transitioning-in) {
+    color: $primary-blue;
+    font-weight: 600;
+  }
+}
+
+.inactive-item {
+  text-decoration: none;
+  color: $grey-6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding-left: 22px;
+  padding-right: 6px;
+  font-size: 15px;
+  line-height: 25px;
+}

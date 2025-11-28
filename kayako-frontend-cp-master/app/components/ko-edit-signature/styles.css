@@ -1,0 +1,18 @@
+.input {
+  width: 100%;
+  min-height: 245px;
+  padding: 18px 45px 18px 18px;
+  resize: none;
+  border: none;
+  border-radius: 0;
+  overflow-y: auto;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}

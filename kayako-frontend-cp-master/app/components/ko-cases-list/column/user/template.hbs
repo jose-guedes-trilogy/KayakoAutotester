@@ -1,0 +1,25 @@
+{{#if (and model model.assignedAgent)}}
+  <div local-class="wrapper">
+    <div local-class="avatar">
+      {{#ko-user-avatar user=model.assignedAgent size="micro" as |avatar|}}
+        {{avatar.image}}
+        {{avatar.online-indicator showTooltip=false}}
+      {{/ko-user-avatar}}
+    </div>
+    <div local-class="name">
+      {{model.assignedAgent.fullName}}
+    </div>
+  </div>
+{{else if user}}
+  <div local-class="wrapper">
+    <div local-class="avatar">
+      {{#ko-user-avatar user=user size="micro" as |avatar|}}
+        {{avatar.image}}
+        {{avatar.online-indicator showTooltip=false}}
+      {{/ko-user-avatar}}
+    </div>
+    <div local-class="name">
+      {{user.fullName}}
+    </div>
+  </div>
+{{/if}}

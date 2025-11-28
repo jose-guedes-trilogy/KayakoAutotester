@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  margin-top: 36px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    .action {
+      visibility: visible;
+    }
+  }
+}
+
+.content {
+  width: 285px;
+  display: inline-block;
+  position: relative;
+  padding: 9px;
+  background: $grey-1;
+  border-radius: 2px;
+  color: #616C73;
+  user-select: none;
+}
+
+.action {
+  margin-left: 5px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.container { /* HACK */
+  :global(.sortable-item) {
+    margin-bottom: 9px;
+
+    &:global(.is-dragging) {
+      background-color: transparent !important;
+    }
+  }
+}

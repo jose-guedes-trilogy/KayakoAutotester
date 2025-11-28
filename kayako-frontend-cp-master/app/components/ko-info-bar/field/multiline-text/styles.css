@@ -1,0 +1,23 @@
+.multiline-text {
+  cursor: pointer;
+}
+
+.textarea {
+  width: 100%;
+  height: 70px;
+  border: none;
+  padding: 0;
+  background-color: inherit;
+  resize: none;
+  color: #3B4048;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}

@@ -1,0 +1,7 @@
+.trigger {
+  outline: none;
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-info-bar/shared';
+}

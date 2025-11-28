@@ -1,0 +1,20 @@
+version: '3'
+services:
+  frontend:
+    platform: linux/arm64/v8
+    image: kayako.arm64
+    restart: always
+    ports:
+      - "4200:4200"
+      - "7020:7020"
+    volumes:
+      - ./:/kayako-src
+    #  - ./nginx/brewfictus.crt:/etc/nginx/brewfictus.crt
+    #  - ./nginx/brewfictus.key:/etc/nginx/brewfictus.key
+    #  - ${CODE_PATH}:/var/www/html/product
+    networks:
+      default:
+        aliases:
+          - frontend.kayako.local
+    #links:
+    #  - product

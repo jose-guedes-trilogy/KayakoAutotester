@@ -1,0 +1,24 @@
+.add {
+  margin: 0 5px 0 24px;
+  flex-shrink: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  font-size: 12px;
+  color: $grey-6;
+  line-height: 24px;
+}
+
+.chevron {
+  visibility: hidden;
+  transition: transform 0.1s;
+}
+
+:global(.ember-power-select-trigger):hover .chevron {
+  visibility: visible;
+}
+
+:global(.ember-basic-dropdown-trigger)[aria-expanded="true"] .chevron {
+  visibility: visible;
+  transform: rotate(180deg);
+}

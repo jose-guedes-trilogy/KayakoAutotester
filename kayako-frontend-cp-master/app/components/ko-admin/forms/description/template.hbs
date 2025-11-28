@@ -1,0 +1,8 @@
+<p local-class="description {{if small "small"}}">
+  {{#if description}}
+    {{format-html-message description link=linkContents}}
+  {{/if}}
+  {{#if hasBlock}}
+    {{yield}}
+  {{/if}}
+</p>

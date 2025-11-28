@@ -1,0 +1,38 @@
+.container {
+  background-color: #ffffff;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.title {
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  color: #000;
+  font-size: 21px;
+  border-bottom: 1px solid $grey-3;
+}
+
+.fields {
+  background-color: #FAFAFA;
+}
+
+.button-bar {
+  padding: 18px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cancel {
+  padding: 0 12px;
+}
+
+.field-placeholder {
+  padding: 9px 18px;
+  border-bottom: 1px solid #D1D5D7;
+  font-size: 12px;
+  line-height: 1.5;
+}

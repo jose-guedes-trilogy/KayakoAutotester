@@ -1,0 +1,19 @@
+.main {
+  padding: 9px;
+}
+
+.header {
+  font-size: 21px;
+  color: #000000;
+  line-height: 27px;
+}
+
+.body {
+  padding-top: 6px;
+  font-size: 13px;
+  color: $grey-7;
+}
+
+.button {
+  margin-right: 8px;
+}

@@ -1,0 +1,135 @@
+.root {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.buttonLoading {
+  margin: 0 auto;
+}
+
+.timeline-header {
+  display: flex;
+  margin: auto 18px 0;
+  padding-top: 45px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid $grey-2;
+  align-items: flex-start;
+}
+
+.timeline-header-image {
+  margin: 5px 14px 0 0;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+  background-color: $grey-2;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.timeline-header-body {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.timeline-header-title {
+  line-height: 25px;
+  margin: 0;
+}
+
+.timeline-header-subtitle {
+  color: #838D93;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.timeline-preamble {
+  margin: 18px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #838D93;
+  max-width: 800px;
+
+  > p {
+    padding: 6px 0;
+  }
+}
+
+.submit-properties {
+  padding: 18px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  transition: padding 0.25s;
+
+  > button:first-of-type {
+    transition: height 0.25s;
+  }
+
+  > button {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  &.submitting {
+    padding: 18px;
+  }
+
+  &:not(.show-submit) {
+    padding: 18px;
+    > button:first-of-type {
+      height: 0;
+    }
+    .or-text {
+      width: 0;
+    }
+    .cancel-property-changes {
+      font-size: 14px;
+    }
+  }
+}
+
+.cancel-property-changes {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #5F6C73;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 3px;
+  transition: font-size 0.25s;
+}
+
+.or-text {
+  text-transform: lowercase;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.redirection-loader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .redirection-message {
+    color: #838D94;
+    margin-top: 12px;
+  }
+}
+
+.send-button {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}

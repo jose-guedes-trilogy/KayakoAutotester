@@ -1,0 +1,26 @@
+{{#if (variation "release-new-onboarding")}}
+  {{ko-on-boarding
+	  invitation=model.invitation
+    roles=model.roles
+		teams=model.teams
+		brand=model.brand
+		settings=model.settings
+		twitterAccount=model.twitterAccount
+		facebookPage=model.facebookPage
+		agentMetrics=model.agentMetrics
+		params=model.params
+		isRedirected=model.isRedirected
+	}}
+{{else}}
+  {{ko-on-boarding-old
+		invitation=model.invitation
+		roles=model.roles
+		teams=model.teams
+		brand=model.brand
+		settings=model.settings
+		twitterAccount=model.twitterAccount
+		facebookPage=model.facebookPage
+		agentMetrics=model.agentMetrics
+		params=model.params
+	}}
+{{/if}}

@@ -1,0 +1,126 @@
+<div local-class="container">
+  {{#if isSomeChecked}}
+    <div local-class="ribbon">
+      <span>{{t "search.bulk_update_conversations_warning"}}</span>
+    </div>
+  {{/if}}
+  <div local-class="title">
+    <input
+      id={{inputID}}
+      local-class="search-input" class="{{qa-cls "qa-session_agent_search__input"}}"
+      placeholder={{t "search.advanced_search_placeholder"}}
+      onkeydown={{action "inputKeyDown"}}
+      oninput={{action (mut searchTerm) value="target.value"}}
+      value={{searchTerm}}
+    >
+    <div local-class="bulk-actions">
+      {{#if (variation "release-merge-from-lists")}}
+        {{#if (gt selectedCaseIds.length 1)}}
+          <div local-class="merge-button">
+            {{#ko-button
+              onClick=(perform mergeCases)
+              qaClass="qa-search__merge"
+            }}
+              {{t "cases.merge"}}
+            {{/ko-button}}
+          </div>
+        {{/if}}
+      {{/if}}
+      <div local-class="trash-button">
+        {{#if (and isSomeChecked hasPermissionToTrashCases)}}
+          {{#ko-button type="alert" onClick=(action "trashCases") disabled=isUpdatingCases qaClass="qa-cases-list__trash"}}
+            {{#if isUpdatingCases}}
+              {{ko-loader}}
+            {{else}}
+              {{t "cases.trashcases"}}
+            {{/if}}
+          {{/ko-button}}
+        {{/if}}
+      </div>
+    </div>
+    <a local-class="help-link" target="_blank" rel="noopener noreferrer" href="https://support.kayako.com/article/1164-getting-more-out-of-the-kayako-search-bar?utm_source=app&amp;utm_campaign=in-product-help&amp;utm_medium=agentarea&amp;utm_content=search2">{{t "search.help_link"}}</a>
+  </div>
+
+  <div local-class="main">
+    {{ko-search-sidebar
+      resultGroup=group
+      totalCounts=totalCounts
+      onSelect=(action "showResultGroup")
+      selectedCaseIds=selectedCases
+      teams=teams
+      isSomeChecked=isSomeChecked
+      bulkUpdateComplete=(action "bulkUpdateComplete")
+      clearSelectedCaseIds=(action "clearSelectedCaseIds")
+    }}
+
+    <div local-class="right">
+      {{#if (and search.isRunning)}}
+        <div local-class="loader">
+          {{ko-loader size="L"}}
+        </div>
+      {{else if (and searchResults showResults)}}
+        {{#ko-table
+          selectable=(eq group "CASES")
+          as |table|}}
+          {{#ko-table/header
+            allRowsSelected=isEverythingChecked
+            selectable=(eq group "CASES")
+            onSelectAll=(action "selectAll")
+            onDeselectAll=(action "deselectAll")
+          }}
+            {{#each columnList as |column|}}
+              {{#ko-table/column
+                minWidth=(ko-helper minWidthForColumn column)
+                maxWidth=(ko-helper maxWidthForColumn column)
+                column=column
+              }}
+                <span>{{t (concat "search." group "." column)}}</span>
+              {{/ko-table/column}}
+            {{/each}}
+          {{/ko-table/header}}
+          {{#ko-table/body}}
+            {{#each searchResults as |result|}}
+              {{#ko-table/row
+                table=table
+                clickable=true
+                rowContext=result
+                onClick=(action "openResult" group)
+                selectableDisabled=(or isUpdatingCases (eq result.state "TRASH"))
+                onSelectChange=(action "toggleCheck" result)
+                selected=(contains result.id selectedCaseIds)
+                class=(local-class "row-styles")
+              }}
+                {{#each columnList as |column|}}
+                  {{#ko-table/cell
+                    minWidth=(ko-helper minWidthForColumn column)
+                    maxWidth=(ko-helper maxWidthForColumn column)
+                  }}
+                    {{component (ko-case-list-cell "componentName" column)
+                      column=column
+                      model=result
+                      propertyName=(ko-case-list-cell "propertyName" column)
+                    }}
+                  {{/ko-table/cell}}
+                {{/each}}
+              {{/ko-table/row}}
+            {{/each}}
+          {{/ko-table/body}}
+        {{/ko-table}}
+
+        {{#if results}}
+          {{#ko-pagination
+            currentPage=page
+            loadingPage=false
+            pageCount=totalPages as |number|
+          }}
+            {{#link-to (query-params page=number)}}{{/link-to}}
+          {{/ko-pagination}}
+        {{/if}}
+      {{else}}
+        <div local-class="not-found">
+          {{t (concat "search." group ".notfound")}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

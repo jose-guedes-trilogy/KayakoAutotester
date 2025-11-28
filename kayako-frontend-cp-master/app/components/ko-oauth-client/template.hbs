@@ -1,0 +1,27 @@
+<img src="{{or client.logo.url '/images/oauth/logo.png'}}" width="50" height="50" local-class="client-logo">
+
+<div local-class="client-row">
+  <div local-class="client-caption">
+    {{#if (and links client.url)}}
+      <a href="{{client.url}}" local-class="client-title" class="{{qa-cls "qa-oauth-client-title"}}" target="_blank" rel="noopener noreferrer">{{client.name}}</a>
+    {{else}}
+      <span local-class="client-title" class="{{qa-cls "qa-oauth-client-title"}}">{{client.name}}</span>
+    {{/if}}
+    {{#if client.author}}
+      {{#if (and links client.author_url)}}
+        <span local-class="client-author">(<a href="{{client.author_url}}" target="_blank" rel="noopener noreferrer">{{client.author}}</a>)</span>
+      {{else}}
+        <span local-class="client-author">({{client.author}})</span>
+      {{/if}}
+    {{/if}}
+  </div>
+  <div local-class="client-body">
+    {{#if client.description}}
+      <span local-class="client-description">{{client.description}}</span>
+      <span local-class="separator">•</span>
+    {{/if}}
+    <span local-class="client-details">
+      {{yield}}
+    </span>
+  </div>
+</div>

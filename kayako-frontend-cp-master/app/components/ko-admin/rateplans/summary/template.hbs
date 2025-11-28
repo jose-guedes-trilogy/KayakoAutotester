@@ -1,0 +1,59 @@
+<div local-class="plan-notification {{if stickySummary "sticky"}}">
+  <div local-class="flex-box">
+    <div local-class="flex-empty-column"></div>
+    <div local-class="flex-content-column {{if isDisabled "disabled"}}">
+
+      {{!-- Subtotal --}}
+      <div>
+        <div local-class="summary-label">
+          {{rateplanLabel}} ({{selectedNumberOfSeats}} {{t "account.trial.agents.input.label" count=selectedNumberOfSeats}})
+        </div>
+        <div local-class="summary-content">
+          {{#if calculatingSummary}}
+            <div local-class="inline-loader">{{ko-loader}}</div>
+          {{else}}
+            <strong> {{ko-admin/rateplans/currency subscriptionAmount currency}} {{t "admin.account.plans.subscription.key" term=selectedTerm}} </strong>
+          {{/if}}
+        </div>
+      </div>
+
+      {{!-- Renewal Date --}}
+      <div>
+        <div local-class="summary-label">
+          {{t "admin.account.plans.renewal.data.title"}}
+        </div>
+        <div local-class="summary-content">
+          {{format-date nextChargeDate format="full"}}
+        </div>
+      </div>
+
+      {{!-- Applicable Discount --}}
+      {{#if discountAmount}}
+        <div>
+          <div local-class="summary-label">
+            {{t "admin.account.plans.discount.title"}}
+          </div>
+          <div local-class="summary-content">
+            <span class="qa-class discount-amount">{{ko-admin/rateplans/currency discountAmount currency}}</span>
+          </div>
+        </div>
+      {{/if}}
+
+      {{!-- Paying Now --}}
+      {{#if (or grossTotal calculatingSummary)}}
+        <div>
+          <div local-class="summary-label">
+            {{t "admin.account.plans.paying.title"}}
+          </div>
+          <div local-class="summary-content">
+            {{#if calculatingSummary}}
+              <div local-class="inline-loader">{{ko-loader}}</div>
+            {{else}}
+              <strong class="qa-class gross-total"> {{ko-admin/rateplans/currency grossTotal currency}} </strong>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

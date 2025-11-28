@@ -1,0 +1,533 @@
+{
+  "conversation": "Conversation",
+  "activity": "Activity",
+  "addparticipant": "Add participant",
+  "instant_user_placeholder": "Enter the email address of the user",
+  "instant_user_in_case": "Enter the email address of the requester",
+  "instant_org_placeholder": "Enter the name of the organization",
+  "active_cases_text": "{count} {mode, select, self {} other {other }}active {count, plural, one {conversation} other {conversations}}",
+  "other_cases_text": "Other conversations",
+  "find_all_cases": "Find all <strong>{count}</strong> conversations",
+  "realtimeTyping": "{sentence} {total, plural, one {is} other {and {lastUser} are}} typing...",
+  "requester_needed_editor": "A case requester needs to be added before you can start sending replies...",
+  "requester_assignment_failed": "Requester couldn't be updated.",
+  "change_requester": "Change requester",
+  "enter_subject": "Enter a subject...",
+  "has_attachments": "This conversation has attachments",
+  "messenger_mode": "(via Messenger, and then via {email} if {name} misses it)",
+  "manage_views": "Manage Views",
+  "brand_changed": "Conversation brand was successfully changed to {brand}",
+  "options_will_be_deselected": "{count, plural, one {Option} other {All options}} will be de-selected",
+  "options_will_be_selected": "{count} {count, plural, one {option} other {options}} will be selected",
+  "all_options_will_be_selected": "All options will be selected",
+  "n_more": "{count} more",
+  "copy-someone-in": {
+    "title": "Copy someone in",
+    "description": "These people will be copied in on your reply.",
+    "input-placeholder": "Find user by email address",
+    "fing-out-more": "Find out more about CC recipients.",
+    "showing": "Showing {filtered} of {total} users",
+    "not-found": "No users found.<br/>You could try typing an email address to add it.",
+    "help-text": "These people will be copied in on your reply.",
+    "email-error": "Please enter a valid email address"
+  },
+  "contents": {
+    "placeholder": "Enter your reply here…"
+  },
+  "linkedCasesInline": "Link a conversation",
+  "assignee": {
+    "agent": "Assigned agent",
+    "team": "Assigned team"
+  },
+  "rating": "Rating",
+  "assignment-due-at": "Assignment due at",
+  "created-at": "Created at",
+  "creator": "Creator",
+  "team": "Team",
+  "brand": "Brand",
+  "source": "Source",
+  "created_at_via": "Created <strong>{at}</strong> via <strong>{via}</strong>",
+  "channeltype": "Channel type",
+  "last_completed_at": "Last completed at",
+  "article_created_at_by": "Created at {at} by {by}",
+  "last_reply_by_at": "Last reply by {by} at {at}",
+  "case": {
+    "created": "Conversation Created",
+    "updated": "Conversation Updated"
+  },
+  "cases": {
+    "updated": "Conversations Updated"
+  },
+  "columns": {
+    "channel": {
+      "title": "Source channel",
+      "placeholder": "Select a channel",
+      "channels": {
+        "MAIL": "Email",
+        "TWITTER": "Twitter",
+        "FACEBOOK": "Facebook",
+        "MESSENGER": "Messenger",
+        "HELPCENTER": "Help Center",
+        "SYSTEM": "System",
+        "NOTE": "Note"
+      }
+    },
+    "sla": "SLA",
+    "slafirstreply": "First reply",
+    "slanextbreach": "Next breach",
+    "slanextreply": "Next reply",
+    "slaresolution": "Resolution",
+    "conversation": "Conversation"
+  },
+  "requester-language": "Requester Language",
+  "organization": "Organization",
+  "last-update": "Last update",
+  "last-update-by-a-user": "Last update by a user",
+  "last-update-by-requester": "Last update by requester",
+  "last-update-by-assignee": "Last update by assignee",
+  "oldest-update-by-requester": "Oldest update by requester",
+  "completed": "Completed",
+  "last-replier": "Last replier",
+  "reply-due-at": "Reply due at",
+  "reply-twitter-message": "Send reply as link to the Help Center.",
+  "reply-twitter-tooltip": "Kayako will send a public Tweet to the requester containing a link to this conversation on the Help Center.",
+  "tweet": {
+    "public": "Public tweet",
+    "public-invite-dm": "Public, with invitation to DM",
+    "public-invite-dm-description": "Your reply will be public. @{handle} will receive a button to start a DM conversation",
+    "dm": "Direct Message"
+  },
+  "resolution-at": "Resolution at",
+  "title": "Conversations",
+  "inbox-button-title": "{inboxCount, plural, =0 {Conversations} =1 {# conversation in your inbox} other {# conversations in your inbox}}",
+  "due": "Due",
+  "lastreplier": "Last replier",
+  "lastupdated": "Last updated {time}",
+  "metric": {
+    "total": "{number, number} Total",
+    "unresolved": "Unresolved"
+  },
+  "addtag": "Add a tag...",
+  "tags": "Tags",
+  "note": "Note",
+  "priority": "Priority",
+  "requester": "Requester",
+  "caseformid": "Conversation form",
+  "satisfaction-status": "Satisfaction status",
+  "status": "Status",
+  "brandid": "Brand",
+  "subheader": "This is the beginning of the conversation started over {channel} by {name} on {date}",
+  "avatar": "Avatar",
+  "subject": "Subject",
+  "create": "Create",
+  "send": "Send",
+  "sending": "Sending...",
+  "send_and_update": "Send and update",
+  "updating": "Updating…",
+  "ticketid": "Conversation ID",
+  "type": "Type",
+  "macro": "Macro",
+  "applymacro": "Apply Macro",
+  "applymacroplaceholder": "Type to search macros",
+  "loadingmacro": "Loading macros...",
+  "channelType": {
+    "MAILBOX": "email",
+    "MAIL": "email",
+    "TWITTER": "Twitter",
+    "TWITTER_DM": "Twitter",
+    "CHAT": "Messenger",
+    "MESSENGER": "Messenger",
+    "FACEBOOK": "Facebook",
+    "none": "-",
+    "NOTE": "Note",
+    "HELPCENTER": "Help Center"
+  },
+  "channel": {
+    "confirm": {
+      "sanitize_text_header": "Clear formatting",
+      "sanitize_text": "Switching to this channel will clear any text formatting you’ve applied to your reply. Do you want to continue?"
+    }
+  },
+  "note_sanitize_text_header": "Clear formatting",
+  "note_sanitize_text": "Switching to a note will clear any text formatting you’ve applied to your reply. Do you want to continue?",
+  "new_case": "New conversation",
+  "new_case_subject_placeholder": "Click to set a subject...",
+  "new_case_tab_placeholder": "New Conversation",
+  "currentlyassignedto": "Currently assigned to",
+  "assignedtoagentteam": "{agent} in {team}",
+  "assignedtonobody": "nobody",
+  "mark_as_completed_and_close": "Complete",
+  "trash": {
+    "title": "Trash",
+    "success_message": "Conversation trashed successfully",
+    "restore": {
+      "success_message": "Conversation restored successfully"
+    }
+  },
+  "trashcases": "Trash",
+  "empty_trash": "Empty trash",
+  "trashed": "(Trashed)",
+  "restore": "Restore from trash",
+  "confirm": {
+    "trash_case_header": "Trash conversation",
+    "trash_case": "Are you sure you want to trash this conversation?",
+    "trash_case_button": "Trash"
+  },
+  "closed": "(Closed)",
+  "search": {
+    "label": "Search",
+    "request": {
+      "result_meta": "Showing {numDisplayResults} of {totalResults} users"
+    },
+    "open_in_background": "Opened {title} in the background"
+  },
+  "list": {
+    "casesnotfound": "This view doesn’t have any conversations yet.",
+    "bulkupdate": {
+      "updatecases": "Update conversations",
+      "update_cases_title": "Update Conversations"
+    }
+  },
+  "field_title": {
+    "requester": "Requester"
+  },
+  "notes": "Notes",
+  "form-select": "Form",
+  "sort": "Sort",
+  "filter": "Filter",
+  "unassigned": "(Unassigned)",
+  "timeline": {
+    "item": {
+      "via": {
+        "help_center": "via Help Center",
+        "mail": "via email",
+        "messenger": "via Messenger",
+        "twitter_dm": "via Twitter (Direct Message)",
+        "twitter": "via Twitter",
+        "facebook": "via Facebook",
+        "none": "NONE"
+      },
+      "side_conversation": {
+        "initiated": "initiated a side conversation"
+      }
+    },
+    "metadata": {
+      "page_url": {
+        "prefix": "on"
+      }
+    }
+  },
+  "filter_options": {
+    "posts": "Show messages only",
+    "notes": "Show notes",
+    "activities": "Show activities",
+    "posts_activities": "Show everything"
+  },
+  "posts": {
+    "load_more": "Load more",
+    "jump_to_latest": "Jump",
+    "unread_posts": "{num, plural, =1 {1 new message} other {# new messages}}"
+  },
+  "suspendedMessages": {
+    "sidebar_title": "Suspended",
+    "title": "Suspended messages",
+    "confirmDeleteAll": "Are you sure that you want to delete these messages. This action can’t be undone.",
+    "permanently_delete": "Permanently delete",
+    "table": {
+      "from": "From",
+      "subject": "Subject",
+      "createdAt": "Received",
+      "suspensionCode": "Suspension reason"
+    },
+    "emptyList": "No suspended messages."
+  },
+  "suspendedMessage": {
+    "title": "Suspended message",
+    "table": {
+      "from": "From",
+      "subject": "Subject",
+      "createdAt": "Received at",
+      "suspensionCode": "Suspension reason",
+      "to": "Sent to",
+      "html": "HTML Message",
+      "text": "Text Message"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "permanentlyDelete": "Permanently delete",
+      "allowThrough": "Allow through"
+    }
+  },
+  "sla": {
+    "in": "in",
+    "title": {
+      "RESOLUTION_TIME": "Resolution",
+      "FIRST_REPLY_TIME": "First reply",
+      "NEXT_REPLY_TIME": "Reply"
+    },
+    "phrase": {
+      "good": "completed in",
+      "bad": "overdue by",
+      "active": "in",
+      "paused": "paused, due in"
+    },
+    "tooltip": {
+      "metric": {
+        "RESOLUTION_TIME": "Resolution",
+        "FIRST_REPLY_TIME": "First reply",
+        "NEXT_REPLY_TIME": "Reply"
+      },
+      "made": "made",
+      "due": "due",
+      "was_due": "was due",
+      "operational_hours": {
+        "BUSINESS_HOURS": "business hours",
+        "CALENDAR_HOURS": "calendar hours"
+      },
+      "sentence": "{metric} {made_due} at <strong>{due_time}</strong>.<br/>Due time calculated according to <strong>{operational_hours}</strong>."
+    },
+    "status": {
+      "completed": "Resolution completed",
+      "slabreached": "Resolution breached"
+    }
+  },
+  "viewers": {
+    "updating": "updating this conversation",
+    "viewing": "viewing this conversation"
+  },
+  "agent": "AGENT",
+  "also_viewing": "Also viewing",
+  "more_info": {
+    "from": "From:",
+    "to": "To:",
+    "cc": "CC:",
+    "date": "Date:",
+    "subject": "Subject:",
+    "inline_to": "to",
+    "inline_with": "with",
+    "inline_and": "and",
+    "other": "other",
+    "others": "others",
+    "time_preposition": "at"
+  },
+  "log": {
+    "title": "The conversation has been updated"
+  },
+  "channel_selector": {
+    "trigger_fallback": "Reply"
+  },
+  "text_editor": {
+    "generate_ticket_summary": "Generate Ticket Summary",
+    "bold": "Bold",
+    "bold_shortcut": "Bold ({shortcutPrefix}B)",
+    "enable_copilot": "Enable AI Autocomplete",
+    "disable_copilot": "Disable AI Autocomplete",
+    "copilot_toggle_label": "",
+    "italic": "Italic",
+    "italic_shortcut": "Italic ({shortcutPrefix}I)",
+    "paragraph": "Paragraph",
+    "indent": "Indent",
+    "outdent": "Outdent",
+    "numbered_list": "Numbered list",
+    "bullet_list": "Bullet list",
+    "quote": "Quote",
+    "attach_file": "Attach a file",
+    "show_controls": "Show controls",
+    "link": "Link",
+    "insert_image": "Insert Image",
+    "replying_to": "Replying to:",
+    "cc": {
+      "label": "CC",
+      "placeholder": "Find user by email address",
+      "add_new_user": "Add a new user",
+      "nothing_found": "No one found matching <b>{searchText}</b>",
+      "use_email": "Use <b>{email}</b>"
+    },
+    "link_manager": {
+      "link": "Link",
+      "url": "URL",
+      "shown_text": "Shown text",
+      "text": "Text",
+      "quote": {
+        "increase": "Increase",
+        "decrease": "Decrease"
+      }
+    }
+  },
+  "timezone": {
+    "currently": "Currently {time}"
+  },
+  "merge": "Merge conversations",
+  "merge_conversation": {
+    "title": "Merge conversation",
+    "success_message": "Conversation has been merged.",
+    "modal": {
+      "header": "Select conversations to merge",
+      "header_search": "Search for conversations to merge",
+      "merge_confirmation_header": "Merge conversations",
+      "button": "Merge",
+      "recent_conversations_from": "Recent conversations from",
+      "conversations_selected": "Conversations selected",
+      "primary_conversation_message_bold": "conversations",
+      "primary_conversation_message_end": "will be merged into:",
+      "no_recent_cases": "No recent conversations found from {name}",
+      "select_conversation": "Select “{name}”",
+      "deselect_conversation": "De-select “{name}”"
+    }
+  },
+  "assign_to_me": "Assign to me",
+  "new_conversation": {
+    "header": "Create a new user",
+    "full_name": "First and last name",
+    "email": "Email address",
+    "confirm": "Add new user",
+    "cancel": "Cancel",
+    "extra": "You can add additional contact details once you've created the user.",
+    "user_created": "User has been created successfully.",
+    "incomplete_data": "Some required fields are missing.",
+    "current_status": "It's currently {time} where {name} is.",
+    "last_seen": "We last saw {name} {duration}.",
+    "active_conversation": "They have <a href='{link}'>1 other conversation active</a> which you might want to check out.",
+    "active_conversations": "They have <a href='{link}'>{count} other conversations active</a> which you might want to check out.",
+    "beginning": "This is the start of a new conversation with {name}. Make magic happen!"
+  },
+  "send_and": "Send and",
+  "see_more_cases": "View all {count} conversations",
+  "post": {
+    "status": {
+      "label": {
+        "CLIENT_WAITING": " ",
+        "CLIENT_SENDING": "Sending…",
+        "CLIENT_FAILED": " ",
+        "NOT_SENT": "Not Sent",
+        "SENT": "Sent",
+        "DELIVERED": "Delivered",
+        "SEEN": "Seen",
+        "REJECTED": "Bounced"
+      },
+      "tooltip_with_time": {
+        "CLIENT_WAITING": "Queued",
+        "CLIENT_SENDING": "Sending…",
+        "CLIENT_FAILED": "Failed",
+        "NOT_SENT": "Not Sent",
+        "SENT": "Sent at {time}",
+        "DELIVERED": "Delivered at {time}",
+        "SEEN": "Seen at {time}",
+        "REJECTED": "This message was rejected by the recipient’s mail server at {time}"
+      },
+      "tooltip_with_time_and_error": {
+        "REJECTED": "This message was rejected by the recipient’s mail server at {time} with the error <br> “<i>{error}</i>”",
+        "SENT": "Sent at {time}",
+        "DELIVERED": "Delivered at {time}",
+        "SEEN": "Seen at {time}"
+      },
+      "tooltip_without_time": {
+        "CLIENT_WAITING": "Queued",
+        "CLIENT_SENDING": "Sending…",
+        "CLIENT_FAILED": "Failed",
+        "NOT_SENT": "Not Sent",
+        "SENT": "Sent",
+        "DELIVERED": "Delivered",
+        "SEEN": "Seen",
+        "REJECTED": "This message was rejected by the recipient’s mail server"
+      }
+    }
+  },
+  "timetracking": {
+    "title": "Time tracking",
+    "input": {
+      "hours": "HH",
+      "minutes": "MM",
+      "seconds": "SS",
+      "placeholder": "00"
+    },
+    "billable": "Record as billable time",
+    "tracked_label": "Tracked time",
+    "tracked_placeholder": "Time tracked by your teammates will appear here.",
+    "activity_label": "Activity tracking",
+    "activity_placeholder": "Kayako automatically tracks the amount of time your teammates spend on conversations, which will start to appear here.",
+    "total": "Total",
+    "messages": {
+      "add": "New entry was added",
+      "update": "Tracking entry updated",
+      "delete": "Tracking entry deleted"
+    }
+  },
+  "post-failed": {
+    "label": "This message failed to send. Would you like to",
+    "resend": "Resend?"
+  },
+  "post-failed-rate-limit": {
+    "label": "Message was not sent as email limit is reached."
+  },
+  "post-failed-validation": {
+    "label": "Before Kayako can send this message, some of the conversation fields need your attention, on the right. 👉<br>Please check for any required or invalid field values, and click <strong>Update & Send</strong> when you’re done."
+  },
+  "show_email_with_original_styling": "Show original email",
+  "show_email_with_default_styling": "Show processed email",
+  "view_email_headers": "View email headers",
+  "email_original_display": {
+    "subject": "Subject:",
+    "from": "From:",
+    "to": "To:",
+    "received_at": "Received at:",
+    "html_content": "HTML",
+    "source_content": "Source",
+    "errors": {
+      "404": {
+        "header": "Uh oh...404!",
+        "description1": "We couldn't find the original email for the post you selected.",
+        "description2": "If you think it should exist, please let us know at <a href=\"mailto:support@kayako.com\">support@kayako.com</a>"
+      },
+      "500": {
+        "header": "Uh oh...Something broke!",
+        "description1": "Something went wrong on our end. Sorry about that!",
+        "description2": "Give it a moment and then try again."
+      }
+    }
+  },
+  "closed_pill_message_content": "+{count} more empty {count, plural, one {field} other {fields}}",
+  "open_pill_message_content": "hide empty fields",
+  "mailbox_not_allowed_in_cc_title": "Sorry, you can't CC an email that's been added as a channel.",
+  "mailbox_not_allowed_in_cc_subtitle": "To notify someone else on your team, try mentioning them in a note instead.",
+  "ai_suggestion_bubble": {
+    "read_more": "Read More",
+    "read_less": "Read Less",
+    "paste_as_is": "Paste As Is",
+    "edit_response": "Edit Response",
+    "high_confidence_claim": "Kayako has found a high confidence response to this inquiry.",
+    "summary_claim": "Kayako has generated a summary of this case. (This is not customer-facing.)",
+    "transcription_claim": "Kayako has transcribed the audio attachment. (This is not customer-facing.)",
+    "summarize_transcription_claim": "Kayako has summarized the transcription of the audio attachment. (This is not customer-facing.)"
+  },
+  "ai_summary": {
+    "add_button": "Add Summary",
+    "adding_button": "Adding Summary...",
+    "header": "AI Summary"
+  },
+  "side_conversations": {
+    "title": "Side Conversations",
+    "new_conversation": "New Side Conversation",
+    "next_button": "›",
+    "prev_button": "‹",
+    "mark_close": "Mark as Closed",
+    "reopen": "Reopen",
+    "reopen_symbol": "↪",
+    "first_page_button": "«",
+    "last_page_button": "»",
+    "add_conversation": "Add Conversation",
+    "to": "To:",
+    "cc": "cc:",
+    "refresh_conversation": "Refresh Conversation",
+    "open_conversations": "Open Conversations",
+    "closed_conversations": "Closed Conversations",
+    "closed_success": "Side conversation closed successfully",
+    "reopened_success": "Side conversation reopened successfully",
+    "status_update_error": "Failed to update side conversation status"
+  },
+  "chat": {
+    "with_ticket": "Ticket Assistant - Here to help you respond",
+    "placeholder": "Ask a question about this ticket",
+    "clear_chat": "Clear Chat"
+  }
+}

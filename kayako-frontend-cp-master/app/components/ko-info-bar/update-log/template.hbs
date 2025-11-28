@@ -1,0 +1,28 @@
+<div local-class="container">
+  <div local-class="log-title">
+    <span local-class="header">{{t "cases.log.title"}}</span>
+    <i local-class="close" class="i-cross i-size-18" onclick={{action onClose}}></i>
+  </div>
+  {{#liquid-bind summary as |currentModel|}}
+    <ul>
+      {{#each currentModel as |summaryEntry|}}
+        <li local-class="log-item">
+          <span local-class="box"></span>
+          <span local-class="name">
+            {{#ko-tooltip title=summaryEntry.fullName qaCls=(qa-cls "qa-username")}}
+              {{summaryEntry.fullName}}
+            {{/ko-tooltip}}
+          </span>
+          {{#if (gt summaryEntry.activityCount 1)}}
+            <span local-class="detail" class="{{qa-cls 'qa-number-of-times'}}">
+              {{summaryEntry.activityCount}} {{t "generic.times"}},
+            </span>
+          {{/if}}
+          {{#ko-tooltip side="top" tagName="span" title=(format-time summaryEntry.lastUpdatedAt format="tooltip") local-class="detail" class=(qa-cls 'qa-time-from-now')}}
+            {{ko-from-now summaryEntry.lastUpdatedAt}}
+          {{/ko-tooltip}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/liquid-bind}}
+</div>

@@ -1,0 +1,143 @@
+.component-description {
+  margin-bottom: 25px;
+  font-size: 15px;
+  color: $grey-6;
+  letter-spacing: 0;
+  line-height: 25px;
+}
+
+.token-container {
+  border-radius: 3px;
+}
+
+.token-input-label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333333;
+  letter-spacing: 0;
+  padding: 5px;
+}
+
+.token-input {
+  margin-bottom: 15px;
+}
+
+.instructions-container {
+  max-width: 650px;
+}
+
+.internal-separator {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid $grey-3;
+  margin: 50px 0;
+}
+
+.step {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.step-heading {
+  font-weight: 600;
+  font-size: 16px;
+  color: $grey-8;
+  letter-spacing: -0.22px;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  margin-right: 24px;
+}
+
+.step-content {
+  margin-top: 5px;
+  flex-shrink: 1;
+}
+
+.step-description-list {
+  padding-left: 40px;
+}
+
+.step-description-item {
+  padding: 10px 0;
+  font-size: 15px;
+  color: $grey-8;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(63, 170, 201, 0.45);
+    border-radius: 50%;
+    position: absolute;
+    top: 18px;
+    left: -22px;
+  }
+}
+
+.code-block-container {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid $grey-3;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.code-block {
+  width: em(440);
+  opacity: 0.91;
+  background: $grey-1;
+  counter-reset: line;
+  line-height: 0;
+  font-size: 14px;
+  color: $grey-8;
+
+  div {
+    line-height: 24px;
+
+    &:before {
+      user-select: none;
+      counter-increment: line;
+      background: #FFFFFF;
+      content: counter(line);
+      display: inline-flex;
+      padding: 0 8px;
+      opacity: 0.8;
+      font-size: 14px;
+      color: $grey-6;
+      line-height: 24px;
+    }
+  }
+}
+
+.external-article-wrapper {
+  margin-left: 55px;
+  border: 1px solid rgba(78, 175, 203, 0.5);
+  border-radius: 3px;
+  padding: 15px;
+  font-size: 15px;
+  letter-spacing: 0;
+  color: $grey-8;
+  line-height: 24px;
+}
+
+.lang-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #FFFFFF;
+  padding: 3px 8px;
+  font-weight: 600;
+  font-size: 12px;
+  color: $grey-5;
+  line-height: 21px;
+  border: 1px transparent;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}

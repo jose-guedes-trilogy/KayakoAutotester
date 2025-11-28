@@ -1,0 +1,25 @@
+.center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mailbox-cc {
+  padding: 6px 9px;
+}
+
+.mailbox-cc--title {
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+.mailbox-cc--subtitle {
+  font-size: 13px;
+  color: $grey-7;
+  line-height: 1.5;
+  margin-top: 3px;
+}

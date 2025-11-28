@@ -1,0 +1,57 @@
+.seeMore {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom: none;
+}
+
+.link {
+  color: #2D3138;
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    color: #2D3138;
+  }
+}
+
+.button {
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #4EAFCB;
+  color: #4EAFCB;
+  background: #FFFFFF;
+  background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.5) 0%, #FAFAFA 100%);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  padding: 6px 16px;
+  cursor: pointer;
+  animation: slide 0.4s;
+  will-change: opacity, transform;
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.button:hover {
+  background: #FFFFFF;
+  background-image: none;
+}

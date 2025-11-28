@@ -1,0 +1,32 @@
+<div id="{{uniqueId}}" local-class="power-select" class="{{if qaClass (qa-cls qaClass)}}">
+  {{#power-select
+    options=normalizedOptions
+    selected=normalizedValue
+    searchEnabled=false
+    search=search
+    searchField=labelPath
+    onchange=(action "selectItem")
+    tabindex=-1
+    disabled=isDisabled
+    loadingMessage=loadingMessage
+    triggerClass=(local-class "trigger")
+    dropdownClass=(local-class "dropdown")
+    extra=(hash
+      title=title
+      labelPath=labelPath
+      isErrored=isErrored
+      isEdited=isEdited
+      isKREEdited=isKREEdited
+      searchPlaceholder=searchPlaceholder
+      showBottomArrow=showBottomArrow
+    )
+    triggerComponent=(component "ko-info-bar/field/select/trigger" triggerValueComponent=triggerValueComponent)
+    as |option select|
+  }}
+    {{#if hasBlock}}
+      {{yield option select}}
+    {{else}}
+      {{sanitize-html (ko-embolden (if labelPath (get option labelPath) option) select.lastSearchedText) "bold"}}
+    {{/if}}
+  {{/power-select}}
+</div>

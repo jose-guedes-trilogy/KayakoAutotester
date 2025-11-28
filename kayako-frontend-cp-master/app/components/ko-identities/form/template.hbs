@@ -1,0 +1,20 @@
+{{#ko-form onSubmit=(action "save") as |form|}}
+  <div local-class="content">
+    <p local-class="title">{{t title}}</p>
+    {{ko-input type=inputType size="full"
+      value=mainField
+      onInput=(action (mut mainField) value="target.value")
+      placeholder=(t placeholder)
+      disabled=identity.isSaving
+    }}
+    {{ko-form/field/errors errors=identity.errors}}
+  </div>
+  <p local-class="buttons">
+    {{#ko-button type="naked" onClick=(action "cancel") disabled=form.isSubmitting}}
+      {{t "generic.cancel"}}
+    {{/ko-button}}
+    {{#ko-button type="primary" submit=true disabled=form.isSubmitting}}
+      {{t "generic.save"}}
+    {{/ko-button}}
+  </p>
+{{/ko-form}}

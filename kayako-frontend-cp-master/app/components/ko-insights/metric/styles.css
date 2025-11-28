@@ -1,0 +1,79 @@
+.metric {
+  border-bottom: 2px solid #EBEEF0;
+  padding: 5px;
+  width: 160px;
+  position: relative;
+  flex-shrink: 1;
+
+  &:hover {
+    .name {
+      cursor: help;
+    }
+  }
+}
+
+.first {
+  padding-left: 0;
+}
+
+.values {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.value {
+  font-size: 24px;
+  color: #838D94;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.name {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.delta {
+  color: #6CC54B;
+  font-size: 11px;
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deltaNegative {
+  color: #E96955;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  margin-right: 3px;
+  border-style: solid;
+}
+
+.triangleUpPositive {
+  margin-top: -4px;
+  border-width: 0 4px 5px;
+  border-color: transparent transparent #6CC54B;
+}
+
+.triangleUpNegative {
+  margin-top: -4px;
+  border-width: 0 4px 5px;
+  border-color: transparent transparent #E96955;
+}
+
+.triangleDownPositive {
+  margin-top: -2px;
+  border-width: 5px 4px 0;
+  border-color: #6CC54B transparent transparent;
+}
+
+.triangleDownNegative {
+  margin-top: -2px;
+  border-width: 5px 4px 0;
+  border-color: #E96955 transparent transparent;
+}

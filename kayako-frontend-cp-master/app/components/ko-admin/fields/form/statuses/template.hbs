@@ -1,0 +1,120 @@
+{{#ko-admin/forms/group}}
+  <legend local-class="legend">{{t 'admin.casefields.edit.heading.statuses'}}</legend>
+
+  {{#ko-form/field/help}}
+    {{t 'admin.casefields.edit.help.statuses.1'}}
+  {{/ko-form/field/help}}
+
+  {{#ko-form/field/help}}
+    {{t 'admin.casefields.edit.help.statuses.2'}}
+  {{/ko-form/field/help}}
+
+  {{#ko-simple-list as |list|}}
+    {{#each openStatuses as |status|}}
+      {{#if (eq status.statusType "PENDING")}}
+        {{#list.row qaClass="qa-pending-row" onClick=(if (not originalStatus) (perform startEditing status)) as |row|}}
+          {{#row.cell width="30%"}}
+            <span><span local-class="label">{{status.label}}</span> <span local-class="caption">{{t "admin.caseforms.label.system"}}</span></span>
+          {{/row.cell}}
+          {{#if (eq status originalStatus)}}
+            {{#row.cell}}
+              {{ko-toggle
+                qaClass="qa-pending-status-sla-toggle"
+                activated=editedStatus.isSlaActive
+                label=(if editedStatus.isSlaActive (t "admin.casefields.edit.statuses.label.is_sla_active") (t "admin.casefields.edit.statuses.label.is_sla_inactive"))}}
+            {{/row.cell}}
+            {{#row.cell}}
+              <div local-class="buttons">
+                {{#if status.isSaving}}
+                  <div local-class="loader">{{ko-loader}}</div>
+                {{else}}
+                  {{#ko-button type="naked" qaClass="qa-pending-status-cancel" onClick=(perform cancelEditing)}}{{t "generic.cancel"}}{{/ko-button}}
+                {{/if}}
+                {{#ko-button type="primary" disabled=status.isSaving qaClass="qa-pending-status-save" onClick=(perform saveStatus)}}{{t "generic.save"}}{{/ko-button}}
+              </div>
+            {{/row.cell}}
+          {{else}}
+            {{#row.cell disabled=status.isSaving}}
+              <span local-class="caption" class="{{qa-cls "qa-pending-status-sla-active"}}">
+                {{if status.isSlaActive (t "admin.casefields.edit.statuses.label.is_sla_active") (t "admin.casefields.edit.statuses.label.is_sla_inactive")}}
+              </span>
+            {{/row.cell}}
+            {{#row.actions loading=status.isSaving}}
+              {{#if (not editedStatus)}}
+                <a onclick={{perform startEditing status}} class={{qa-cls "qa-pending-status-edit"}}>{{t "generic.edit"}}</a>
+              {{/if}}
+            {{/row.actions}}
+          {{/if}}
+        {{/list.row}}
+      {{else}}
+        {{#list.row qaClass="qa-system-row" as |row|}}
+          {{#row.cell width="30%"}}
+            <span><span local-class="label">{{status.label}}</span> <span local-class="caption">{{t "admin.caseforms.label.system"}}</span></span>
+          {{/row.cell}}
+          {{#row.cell}}
+            <span local-class="caption">{{if status.isSlaActive (t "admin.casefields.edit.statuses.label.is_sla_active") (t "admin.casefields.edit.statuses.label.is_sla_inactive")}}</span>
+          {{/row.cell}}
+        {{/list.row}}
+      {{/if}}
+    {{/each}}
+
+    {{#if customStatuses.length}}
+      {{#ko-reorderable-list reorderAvailable=(not editedStatus) onReorder=(action "reorderList") items=customStatuses as |status|}}
+        {{#list.row qaClass="qa-custom-row" onClick=(if (not originalStatus) (perform startEditing status)) as |row|}}
+          {{#if (eq status originalStatus)}}
+            {{#row.cell width="30%"}}
+              {{ko-input disabled=status.isSaving qaClass="qa-custom-status-label-input" autofocus=true value=editedStatus.label size="full" onInput=(action (mut editedStatus.label) value="target.value")}}
+            {{/row.cell}}
+            {{#row.cell}}
+              {{ko-toggle
+                qaClass="qa-custom-status-sla-toggle"
+                activated=editedStatus.isSlaActive
+                label=(if editedStatus.isSlaActive (t "admin.casefields.edit.statuses.label.is_sla_active") (t "admin.casefields.edit.statuses.label.is_sla_inactive"))}}
+            {{/row.cell}}
+            {{#row.cell}}
+              <div local-class="buttons">
+                {{#if status.isSaving}}
+                  <div local-class="loader">{{ko-loader}}</div>
+                {{else}}
+                  {{#ko-button type="naked" qaClass="qa-custom-status-cancel" onClick=(perform cancelEditing)}}{{t "generic.cancel"}}{{/ko-button}}
+                {{/if}}
+                {{#ko-button type="primary" disabled=status.isSaving qaClass="qa-custom-status-save" onClick=(perform saveStatus)}}{{t "generic.save"}}{{/ko-button}}
+              </div>
+            {{/row.cell}}
+          {{else}}
+            {{#row.cell disabled=status.isSaving width="30%"}}
+              <span local-class="label" class="{{qa-cls "qa-custom-status-label"}}">{{status.label}}</span>
+            {{/row.cell}}
+            {{#row.cell disabled=status.isSaving}}
+              <span local-class="caption" class="{{qa-cls "qa-custom-status-sla-active"}}">
+                {{if status.isSlaActive (t "admin.casefields.edit.statuses.label.is_sla_active") (t "admin.casefields.edit.statuses.label.is_sla_inactive")}}
+              </span>
+            {{/row.cell}}
+            {{#row.actions loading=status.isSaving}}
+              {{#if (not editedStatus)}}
+                <a onclick={{perform startEditing status}} class={{qa-cls "qa-custom-status-edit"}}>{{t "generic.edit"}}</a>
+                | <a onclick={{action "removeStatus" status}} class={{qa-cls "qa-custom-status-delete"}}>{{t "generic.delete"}}</a>
+              {{/if}}
+            {{/row.actions}}
+          {{/if}}
+        {{/list.row}}
+      {{/ko-reorderable-list}}
+    {{/if}}
+
+    {{#each closedStatuses as |status|}}
+      {{#list.row qaClass="qa-system-row" as |row|}}
+        {{#row.cell}}
+          <span><span local-class="label">{{status.label}}</span> <span local-class="caption">{{t "admin.caseforms.label.system"}}</span></span>
+        {{/row.cell}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+
+  {{#if isPlanEnabled}}
+    <div local-class="add-status">
+      {{#ko-button disabled=(if editedStatus true false) qaClass="statuses__add-status-message" onClick=(perform addStatus)}}
+        {{t "admin.casefields.edit.add_new_status"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-admin/forms/group}}

@@ -1,0 +1,12 @@
+<div local-class="container">
+  <div local-class="avatar">
+    {{#ko-user-avatar user=extra.user size="medium" as |avatar|}}
+      {{avatar.image}}
+      {{avatar.online-indicator}}
+    {{/ko-user-avatar}}
+  </div>
+  <div local-class="right">
+    <span local-class="name">{{extra.user.fullName}}</span>
+    <span local-class="email">{{extra.user.primaryEmail.email}}</span>
+  </div>
+</div>

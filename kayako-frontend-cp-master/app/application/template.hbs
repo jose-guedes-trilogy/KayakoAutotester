@@ -1,0 +1,56 @@
+<div local-class='container'>
+  {{smart-banner
+    iconUrl="/images/brand/kayako-logo.png"
+  }}
+
+  {{#if (variation "release-app-version-notification")}}
+    {{app-version-notifier
+      appVersion=appVersion
+      activeVersion=activeVersion
+      notificationFrequency=notificationFrequency
+    }}
+  {{/if}}
+
+  {{#if (variation "release-kre-connection-ribbon")}}
+    {{kre-connection-ribbon}}
+  {{/if}}
+
+  {{#if session.impersonationToken}}
+    {{ko-impersonation-bar}}
+  {{/if}}
+
+  <div local-class='app-wrapper'>
+    {{outlet}}
+  </div>
+
+  {{lightning-preview-ribbon}}
+
+  {{#if (variation "release-apps")}}
+    {{apps-dev-mode-ribbon}}
+  {{/if}}
+
+  {{#if plan.isTrial}}
+    {{ko-messenger}}
+  {{/if}}
+</div>
+
+<div id="modals"></div>
+{{ko-confirm-modal}}
+{{ko-merge-conversation-modal}}
+<div local-class="notifications">
+  {{#each notifications as |notification|}}
+    {{ko-toast
+      type=notification.type
+      dismissable=notification.dismissable
+      autodismiss=notification.autodismiss
+      href=notification.href
+      hrefTarget=notification.hrefTarget
+      hrefText=notification.hrefText
+      title=notification.title
+      body=notification.body
+      close=(action "onNotificationClosed" notification)
+    }}
+  {{/each}}
+</div>
+
+{{!-- {{appcues-beacon key="grammarly dectected" shouldTrack=grammarlyDetected}} --}}

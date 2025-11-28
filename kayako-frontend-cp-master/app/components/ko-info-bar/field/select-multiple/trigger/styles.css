@@ -1,0 +1,63 @@
+.trigger {
+  cursor: pointer;
+  line-height: 18px;
+  color: #3B4048;
+
+  min-height: 28px;
+  position: relative;
+  border-bottom: 1px solid #D1D5D7;
+  padding: 9px 18px;
+  transition: 0.2s background-color, 0.1s box-shadow;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: #FFFFFF;
+  }
+
+  flex-grow: 1;
+
+  :global(.ember-power-select-status-icon) {
+    display: none;
+  }
+
+  :global(.ember-power-select-multiple-options) {
+    margin: 0 -2px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.input {
+  background: 0 0;
+  border: none;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 2px;
+  min-width: 50px;
+  outline: 0;
+  padding: 0 23px 0 0;
+  -webkit-appearance: none;
+}
+
+.title {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.loading {
+  composes: loading-icon from 'frontend-cp/components/ko-select/shared';
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  margin: auto;
+}

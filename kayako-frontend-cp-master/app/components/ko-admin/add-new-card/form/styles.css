@@ -1,0 +1,9 @@
+.form-body iframe {
+  background: transparent !important;
+}
+
+.loader {
+  display: flex;
+  height: 150px;
+  align-items: center;
+}

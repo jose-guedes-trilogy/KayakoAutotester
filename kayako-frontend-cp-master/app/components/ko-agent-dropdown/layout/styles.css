@@ -1,0 +1,21 @@
+.header {
+  padding: 11.5px 13.5px; /* I do not wish to talk about this, this is so it lines up with the search bar ಠ_ಠ. */
+  background-color: #000;
+  border-bottom: 1px solid $grey-3;
+}
+
+.contents {
+  padding: 13.5px;
+  background-color: #FFFFFF;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.footer {
+  margin: 13.5px 0 18px;
+  font-size: 12px;
+  color: $grey-6;
+}

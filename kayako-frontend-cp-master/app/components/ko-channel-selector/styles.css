@@ -1,0 +1,99 @@
+.channel-selector {
+  margin: 0 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 1;
+
+  :global(.ember-power-select-trigger) {
+    display: flex;
+    align-items: center;
+  }
+
+  :global(.ember-power-select.opened) :global(.ember-power-select-trigger) {
+    background-image: none;
+  }
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+  margin-left: -8px;
+
+  :global([aria-current="true"]) {
+    path {
+      fill: #FFF;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.item-text {
+  margin-left: 9px;
+}
+
+.trigger {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-image: none;
+  line-height: 1;
+  min-height: 0;
+  white-space: nowrap;
+  flex-shrink: 1;
+  &:focus {
+    outline: none;
+    border: none;
+    &:after {
+      transform: none;
+    }
+  }
+  &[aria-disabled="true"] {
+    background: transparent;
+  }
+  &:not([dir="rtl"]) {
+    padding-right: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: $primary-blue;
+    transform: scaleY(0);
+    transition: background-color 0.15s;
+  }
+}
+
+.trigger--active {
+  &:after {
+    transform: none;
+  }
+  &.trigger--dormant {
+    &:after {
+      background-color: $grey-3;
+    }
+  }
+  :global(.channel-type--twitter) & {
+    &:after {
+      background-color: #1DA1F2;
+    }
+  }
+  :global(.channel-type--facebook) & {
+    &:after {
+      background-color: #3B5998;
+    }
+  }
+
+  :global(.channel-type--messenger) & {
+    &:after {
+      background-color: #F1703F;
+    }
+  }
+}

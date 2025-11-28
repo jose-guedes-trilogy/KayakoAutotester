@@ -1,0 +1,264 @@
+<div local-class="container">
+  <div local-class="header">
+    <div local-class="entity"></div>
+    <div local-class="filters">
+      <div local-class="filtersControls">
+        {{ko-input-date-range
+        rangeStart=startAt
+        rangeEnd=endAt
+        onPickerHidden=onDateRangeChange
+        }}
+      </div>
+    </div>
+  </div>
+
+  <div local-class="metricsContainer">
+    {{#ko-insights/loader/cases/metrics metricsQueryParams=metricsQueryParams as |data|}}
+      {{#ko-insights/loader/cases/csat metricsQueryParams=metricsQueryParams as |csat|}}
+        <div local-class="metrics">
+          {{ko-insights/metric
+          type="number"
+          section="case"
+          name=data.totalCreatedCases.name
+          value=data.totalCreatedCases.value
+          previous=data.totalCreatedCases.previous
+          delta=data.totalCreatedCases.delta_percent
+          }}
+
+          {{ko-insights/metric
+          type="number"
+          section="case"
+          name=casesCompletionMetric.name
+          value=casesCompletionMetric.value
+          previous=casesCompletionMetric.previous
+          delta=casesCompletionMetric.delta_percent
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          isLoading=csat.request.isPending
+          name=csat.metric.name
+          value=(if csat.metric.value (concat (round csat.metric.value 1) "%"))
+          previous=(if csat.metric.value (concat (round csat.metric.previous 1) "%"))
+          delta=csat.metric.delta_percent
+          }}
+
+          {{ko-insights/metric
+          type="number"
+          section="case"
+          name=data.customersHelped.name
+          value=data.customersHelped.value
+          previous=data.customersHelped.previous
+          delta=data.customersHelped.delta_percent
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          name=casesResponse.metric.name
+          value=casesResponseMetricValue
+          previous=casesResponseMetricPrevious
+          delta=casesResponse.metric.delta_percent
+          deltaInverted=true
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          name=casesResolution.metric.name
+          value=casesResolutionMetricValue
+          previous=casesResolutionMetricPrevious
+          delta=casesResolution.metric.delta_percent
+          deltaInverted=true
+          }}
+        </div>
+        <div local-class="metrics">
+          {{ko-insights/metric
+          section="case"
+          name=data.percentageFirstContactResolved.name
+          value=(if data.percentageFirstContactResolved.value (concat (round data.percentageFirstContactResolved.value 1) "%"))
+          previous=(if data.percentageFirstContactResolved.previous (concat (round data.percentageFirstContactResolved.previous 1) "%"))
+          delta=data.percentageFirstContactResolved.delta_percent
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          name=data.averageFirstResponseTime.name
+          value=data.averageFirstResponseTimeValue
+          previous=data.averageFirstResponseTimeValuePrevious
+          delta=data.averageFirstResponseTime.delta_percent
+          deltaInverted=true
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          name=data.averageFirstAssignmentTime.name
+          value=data.averageFirstAssignmentTimeValue
+          previous=data.averageFirstAssignmentTimePrevious
+          delta=data.averageFirstAssignmentTime.delta_percent
+          deltaInverted=true
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          type="number"
+          name=data.averageRepliesToResolution.name
+          value=(if data.averageRepliesToResolution.value (concat (round data.averageRepliesToResolution.value 1000)) 0)
+          previous=(if data.averageRepliesToResolution.previous (concat (round data.averageRepliesToResolution.previous 1000)) 0)
+          delta=data.averageRepliesToResolution.delta_percent
+          deltaInverted=true
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          type="number"
+          name=data.averageTeamChanges.name
+          value=data.averageTeamChanges.value
+          previous=data.averageTeamChanges.previous
+          delta=data.averageTeamChanges.delta_percent
+          deltaInverted=true
+          }}
+
+          {{ko-insights/metric
+          section="case"
+          type="number"
+          name=data.averageAssigneeChanges.name
+          value=data.averageAssigneeChanges.value
+          previous=data.averageAssigneeChanges.previous
+          delta=data.averageAssigneeChanges.delta_percent
+          deltaInverted=true
+          }}
+        </div>
+
+        {{#if data.request.isPending}}
+          {{ko-insights/loader size="M"}}
+        {{/if}}
+      {{/ko-insights/loader/cases/csat}}
+    {{/ko-insights/loader/cases/metrics}}
+  </div>
+
+  <div local-class="filters">
+    <div local-class="filtersControls">
+      {{ko-insights/interval-toggle
+        value=interval
+        onChange=onIntervalChange
+      }}
+    </div>
+  </div>
+
+  <div local-class="chart">
+    {{#ko-insights/loader/cases/cases-completed onUpdate=(action (mut casesCompletion)) metricsQueryParams=metricsQueryParams as |data|}}
+      <div local-class="questionBlock">
+        <div local-class="question">
+          <h3 local-class="questionTitle">{{t "insights.agents.cases_completed"}}</h3>
+          <div local-class="answer">
+            {{#if data.metric.value}}
+              {{format-html-message "insights.agents.cases_completed_explanation" value=(format-number (or data.metric.value 0))}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+
+      <div local-class="insights">
+        {{#if data.series}}
+          {{ko-insights/charts/case-completion
+            data=data.series
+            interval=interval
+          }}
+        {{/if}}
+
+        {{#if data.request.isPending}}
+          {{ko-insights/loader size="M"}}
+        {{/if}}
+      </div>
+    {{/ko-insights/loader/cases/cases-completed}}
+  </div>
+
+  <div local-class="twoColumns">
+    <div local-class="column50">
+      <div local-class="chart">
+        <div local-class="questionBlock">
+          <div local-class="question">
+            <h3 local-class="questionTitle">
+              {{t "insights.cases.average_response_time_by_interval"}}
+            </h3>
+            <div local-class="questionSpacing"></div>
+          </div>
+        </div>
+
+        <div local-class="insights">
+          {{#ko-insights/loader/cases/case-response onUpdate=(action (mut casesResponse)) metricsQueryParams=metricsQueryParams as |data|}}
+            {{#if data.series}}
+              {{ko-insights/charts/case-response
+                data=data.series
+                interval=interval
+              }}
+            {{/if}}
+
+            {{#if data.request.isPending}}
+              {{ko-insights/loader size="M"}}
+            {{/if}}
+          {{/ko-insights/loader/cases/case-response}}
+        </div>
+      </div>
+    </div>
+    <div local-class="column50">
+      <div local-class="chart">
+        {{#ko-insights/loader/cases/case-resolution onUpdate=(action (mut casesResolution)) metricsQueryParams=metricsQueryParams as |data|}}
+          <div local-class="questionBlock">
+            <div local-class="question">
+              <h3 local-class="questionTitle">
+                {{t "insights.cases.average_resolution_time_by_interval"}}
+              </h3>
+              <div local-class="questionSpacing"></div>
+            </div>
+          </div>
+
+          <div local-class="insights">
+            {{#if data.series}}
+              {{ko-insights/charts/avg-resolution-time
+                data=data.series
+                interval=interval
+              }}
+            {{/if}}
+
+            {{#if data.request.isPending}}
+              {{ko-insights/loader size="M"}}
+            {{/if}}
+          </div>
+        {{/ko-insights/loader/cases/case-resolution}}
+      </div>
+    </div>
+  </div>
+
+  <div local-class="chart">
+    {{#ko-insights/loader/cases/channel metricsQueryParams=metricsQueryParams as |data|}}
+      <div local-class="questionBlock">
+        <div local-class="question">
+          <h3 local-class="questionTitle">
+            {{format-html-message "insights.cases.messages_received_by_channel"}}
+          </h3>
+          <div local-class="answer">
+            {{#if data.totalMessages}}
+              {{format-html-message "insights.cases.messages_received_by_channel_explanation" value=(format-number data.totalMessages)}}
+            {{/if}}
+          </div>
+        </div>
+
+        <div local-class="filter">
+        </div>
+      </div>
+
+      <div local-class="insights insightsChannelChart">
+        {{#if data.series}}
+          {{ko-insights/charts/messages-received-by-channel
+            data=data.series
+            interval=interval
+          }}
+        {{/if}}
+
+        {{#if data.request.isPending}}
+          {{ko-insights/loader size="M"}}
+        {{/if}}
+      </div>
+    {{/ko-insights/loader/cases/channel}}
+  </div>
+</div>

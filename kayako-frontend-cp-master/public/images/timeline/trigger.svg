@@ -1,0 +1,19 @@
+<svg width="33px" height="33px" viewBox="84 59 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d="M11,0 L5,0 C2.2,0 0,2.2 0,5 C0,7.8 2.2,10 5,10 L11,10 C13.8,10 16,7.8 16,5 C16,2.2 13.8,0 11,0 Z" id="path-1"></path>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="10" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+    <path d="M5,8 C3.3,8 2,6.7 2,5 C2,3.3 3.3,2 5,2 C6.7,2 8,3.3 8,5 C8,6.7 6.7,8 5,8 Z" id="path-3"></path>
+    <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="6" height="6" fill="white">
+      <use xlink:href="#path-3"></use>
+    </mask>
+  </defs>
+  <g id="icon--trigger" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(84.000000, 59.000000)">
+    <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="Rectangle-185" fill="#EBEEF0"></path>
+    <g transform="translate(8.000000, 11.000000)" stroke="#838D94" stroke-width="2">
+      <use id="Shape" mask="url(#mask-2)" fill="#FFFFFF" xlink:href="#path-1"></use>
+      <use id="Path" mask="url(#mask-4)" fill="#DADDDF" xlink:href="#path-3"></use>
+    </g>
+  </g>
+</svg>

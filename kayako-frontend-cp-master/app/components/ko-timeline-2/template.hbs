@@ -1,0 +1,102 @@
+{{#if
+  (or
+    timeline.fetchMostRecent.isRunning
+    timeline.fetchPosition.isRunning
+  )
+}}
+  <div local-class="container">
+    <div local-class="loader">
+      {{ko-loader large=true}}
+    </div>
+  </div>
+{{else}}
+  {{#if shouldDisplayBlueBar}}
+    <div local-class="jump-bar">
+      {{ko-timeline-2/jump-bar
+        unreadCount=model.readMarker.unreadCount
+        moreNewerPosts=timeline.moreNewerPosts
+        on-jump=(action "jumpToLatest")
+        on-clear=(action "markAllAsSeen")
+      }}
+    </div>
+  {{/if}}
+
+  <div local-class="previous-activities-container-wrapper">
+    <div local-class="container">
+      {{#if (not allPosts.length)}}
+        {{yield}}
+      {{else}}
+        {{#if moreOlderPosts}}
+          <div local-class={{if timeline.fetchOlder.isRunning "loader--running" "loader--idle"}}>
+            {{ko-loader large=true}}
+          </div>
+        {{/if}}
+
+        {{#if hasPostsPriorToConversationCreation}}
+          <div local-class="previous-activities-container">
+            {{ko-timeline-2/list
+              parent=model
+              posts=postsPriorToConversationCreation
+              caseFields=caseFields
+              scrollPostIntoView=(action "scrollPostIntoView")
+              canResend=canResend
+              isItemMenuOpen=isItemMenuOpen
+              onCopyLink=(action onCopyLink)
+              onReplyToPost=(action onReplyToPost)
+              onReplyWithQuote=(action onReplyWithQuote)
+              onAddCC=(action onAddCC)
+              publicReplyChannels=publicReplyChannels
+              timelineContext=timeline.parentType
+              onItemMenuOpen=(action (mut isItemMenuOpen))
+              setReplyContent=(action setReplyContent)
+              openReply=(action openReply)
+              submitReply=(action submitReply)
+              toggleSideConversationPanel=toggleSideConversationPanel
+            }}
+            {{#if hasPostsPriorToConversationCreation}}
+              <div local-class="previous-activities">
+                <span local-class="previous-activities-blob">
+                  <span local-class="previous-activities-arrow">&uarr;</span>
+                  {{format-html-message "timeline.past_activities" count=postsPriorToConversationCreation.length}}
+                </span>
+              </div>
+            {{/if}}
+          </div>
+          {{yield}}
+        {{else if (not moreOlderPosts)}}
+          {{yield}}
+        {{/if}}
+
+        {{#ko-timeline-2/list/days items=postsAfterConversationCreation as |postsInDay|}}
+          {{ko-timeline-2/list
+            parent=model
+            posts=postsInDay
+            caseFields=caseFields
+            publicReplyChannels=publicReplyChannels
+            timelineContext=timeline.parentType
+            lastReadPost=timeline.lastReadPost
+            scrollPostIntoView=(action "scrollPostIntoView")
+            canResend=canResend
+            isItemMenuOpen=isItemMenuOpen
+            onCopyLink=(action onCopyLink)
+            onReplyToPost=(action onReplyToPost)
+            onReplyWithQuote=(action onReplyWithQuote)
+            onAddCC=(action onAddCC)
+            onResend=(action onResend)
+            onItemMenuOpen=(action (mut isItemMenuOpen))
+            setReplyContent=(action setReplyContent)
+            openReply=(action openReply)
+            submitReply=(action submitReply)
+            toggleSideConversationPanel=toggleSideConversationPanel
+          }}
+        {{/ko-timeline-2/list/days}}
+
+        {{#if timeline.moreNewerPosts}}
+          <div local-class={{if timeline.fetchNewer.isRunning "loader--running" "loader--idle"}}>
+            {{ko-loader large=true}}
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}

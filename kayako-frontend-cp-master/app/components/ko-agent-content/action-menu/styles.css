@@ -1,0 +1,13 @@
+.trigger {
+  composes: trigger from 'frontend-cp/components/ko-power-select-triggers/chevron/styles';
+}
+
+.dropdown-body {
+  background-color: #fff;
+  padding: 6px 0;
+  margin-top: 5px;
+  border: 1px solid $grey-3;
+  border-radius: 2px;
+  box-shadow: $box-shadow2;
+  width: 200px;
+}

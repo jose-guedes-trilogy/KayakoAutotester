@@ -1,0 +1,2349 @@
+{
+  "navigation": {
+    "home": "Home",
+    "settings": "Settings",
+    "channels": "Channels",
+    "channels_description": "Manage the channels you use to communicate with customers via email and social media.",
+    "messenger": "Messenger",
+    "messenger_description": "Set up your Kayako Messenger and talk to your customers via live chat.",
+    "conversations": "Conversations",
+    "conversations_description": "Organize your conversations with custom views and forms.",
+    "customizations": "Customizations",
+    "customizations_description": "Add new custom fields and edit email templates to make Kayako your own.",
+    "team_settings": "Team settings",
+    "team_settings_description": "Organize your agents into functional groups with team and account settings.",
+    "automation": "Automation",
+    "automation_description": "Work smarter and keep everything on track with automations and SLAs.",
+    "integrations": "Integrations",
+    "integrations_description": "Supercharge your Kayako with over 600+ apps and integrations.",
+    "security": "Security",
+    "security_description": "Use security policies to keep your Kayako secure.",
+    "account": "Account",
+    "account_description": "Manage your Kayako account and billing details."
+  },
+  "home_page_title": "Admin home",
+  "administration": "Administration",
+  "beta": "Beta",
+  "apps": {
+    "title": "Apps",
+    "manage": {
+      "title": "Manage Apps",
+      "description": "All about apps",
+      "actions": {
+        "configure": "Configure",
+        "install": "Install",
+        "uninstall": "Uninstall",
+        "details": "Details"
+      },
+      "notifications": {
+        "installed_app": "Installed the app",
+        "uninstalled_app": "Uninstalled the app"
+      }
+    },
+    "endpoints": {
+      "title": "Endpoints",
+      "description": "Put Kayako at the heart of your existing organization’s workflow. Endpoints enable you to notify external apps and systems about your conversations. Each endpoint defines a specific destination outside of Kayako, such as a Slack channel. Once you’ve created an endpoint, you can send conversation data to it using conversation automations.",
+      "description2": "{link}.",
+      "description_link": "Learn more about endpoints",
+      "title-singular": "Endpoint",
+      "buttons": {
+        "add": "New endpoint"
+      },
+      "headings": {
+        "new": "New",
+        "edit": "Edit"
+      },
+      "types": {
+        "email": {
+          "title": "Email",
+          "description": "Send an email to any email address"
+        },
+        "slack": {
+          "title": "Slack",
+          "description": "Post updates to a Slack channel as a message"
+        },
+        "webhook": {
+          "title": "Webhook (HTTP request)",
+          "description": "Send a HTTP request to a custom URL with a payload"
+        }
+      },
+      "confirm_content_change": {
+        "body": "Any automations which use a custom payload will need to be verified",
+        "title": "Change content type?"
+      },
+      "form": {
+        "title": "Title",
+        "description": "Provide a title for this endpoint to give others a bit of context, such as <em>Notify #support</em>.",
+        "email": {
+          "destination": "Destination email address",
+          "subject": "Email subject"
+        },
+        "slack": {
+          "title": "Slack Webhook URL",
+          "channel": "Slack Webhook Channel",
+          "description": "Don’t have one? Create one here: <a target=\"_blank\" rel=\"noopener noreferrer\" href=\"https://my.slack.com/services/new/incoming-webhook/\">my.slack.com/services/new/incoming-webhook</a>"
+        },
+        "webhook": {
+          "title": "HTTP Request",
+          "payload_url": {
+            "title": "Request URL",
+            "description": "Specify the URL that Kayako will perform the HTTP request to."
+          },
+          "request_method": {
+            "title": "Request Method",
+            "content_type": "Request content type"
+          },
+          "auth_method": {
+            "title": "Authentication Method",
+            "none": "None",
+            "basic": "Basic Authentication",
+            "bearer": "Bearer Token",
+            "apikey": "API Key"
+          },
+          "http_auth": {
+            "title": "Send authentication headers with this request",
+            "username": "Username",
+            "password": "Password"
+          },
+          "bearer_auth": {
+            "token": "Token"
+          },
+          "apikey_auth": {
+            "key": "Header Name",
+            "value": "Value"
+          },
+          "custom_headers": {
+            "title": "Headers",
+            "key_placeholder": "Name",
+            "value_placeholder": "Value",
+            "add": "Add header",
+            "max_reached": "Maximum of {max} headers reached.",
+            "description": "Add custom HTTP headers to be sent with each request to this endpoint. You can add upto {max} headers."
+          }
+        }
+      },
+      "list": {
+        "problem_reaching": "Problem reaching endpoint",
+        "EMAIL": {
+          "description": "Email"
+        },
+        "HTTP": {
+          "description": "HTTP Webhook"
+        },
+        "SLACK": {
+          "description": "Slack"
+        },
+        "last_triggered": "last triggered {date}",
+        "http": {
+          "title": "Title",
+          "description": "Title"
+        },
+        "details": "click for details"
+      },
+      "labels": {
+        "confirm_delete": "Delete Endpoint",
+        "delete_confirmation": "Are you sure you wish to delete this endpoint?"
+      },
+      "failure": {
+        "title": "There was a problem reaching this endpoint",
+        "description": "We tried to contact this endpoint on {date} and received the following response:"
+      }
+    },
+    "salesforce": {
+      "title": "Salesforce",
+      "heading": "Connect the dots with Kayako for Salesforce",
+      "better_conversations": {
+        "title": "Have better conversations",
+        "description": "Gain context into the conversations your customer is having with your support team."
+      },
+      "bridge_gaps": {
+        "title": "Bridge the gaps",
+        "description": "Break down the barriers and share knowledge between Sales, Success, and Support"
+      },
+      "collaborations": {
+        "title": "Collaboration made easy",
+        "description": "Sales teams can get involved in customer conversations and offer additional insight for your Support team."
+      },
+      "lowdown": {
+        "title": "Get the lowdown",
+        "description": "Gives your team a single view of customer conversations within Salesforce."
+      },
+      "cta": "Check out Kayako for Salesforce",
+      "help_link": "or check out the help center article"
+    },
+    "zapier": {
+      "title": "Zapier",
+      "heading": "Integrate 100s of apps with Zapier",
+      "subtitle": "Extend the power of Kayako across all the apps your team already uses, using Zapier.",
+      "integrate_without_code": {
+        "title": "Integrate without code",
+        "description": "Kayako integrates with Zapier, opening up integration with 100s of popular apps and platforms."
+      },
+      "activate_super_powers": {
+        "title": "Activate super powers",
+        "description": "Build smart workflows across multiple apps in just a few clicks, to automate things in and outside of Kayako."
+      },
+      "cta": "Check out Zapier"
+    },
+    "api": {
+      "title": "API",
+      "tabs": {
+        "api": "API",
+        "oauth_apps": "OAuth apps"
+      },
+      "heading": "Build better customer service",
+      "subtitle": "Extend the potential of Kayako with its robust APIs that your developers will love to use.",
+      "platform_to_grow_with": {
+        "title": "A platform to grow with",
+        "description": "Build integrations with other tools and your own backend systems using Kayako’s open APIs."
+      },
+      "ideas": {
+        "title": "Bright ideas",
+        "description": "There’s a whole community and ecosystem of Kayako experts, developers and integration partners to help you achieve your ambitious projects (and quick wins!)."
+      },
+      "cta": "Visit the developer center"
+    },
+    "webhooks": {
+      "heading": {
+        "settings": "Webhook settings",
+        "token": "Webhook token",
+        "edit": "Webhooks / Edit",
+        "new": "Webhooks / New"
+      },
+      "title": "Webhooks",
+      "button": {
+        "add": "New webhook"
+      },
+      "description": "Webhooks are a simple way to capture customer activity in an external app and display it in Kayako timelines. For example, you could push a user’s account billing failure to a Kayako webhook. Kayako can then display that activity in the customer’s profile and case timelines, giving your team all the context they need to support your customers better.",
+      "description2": "{link}.",
+      "description_link": "Learn more about webhooks",
+      "description3": "Tip: Use Kayako + Zapier for common web applications",
+      "label": {
+        "label": "Label",
+        "description": "Description"
+      },
+      "descriptions": {
+        "help": "A description of what you’ll use the webhook for, so remember the next time you see it."
+      },
+      "token": {
+        "help": "This is your webhook token. Keep it safe and share it securely - anyone can push events to user timelines in your Kayako using this webhook token"
+      },
+      "delete": {
+        "success_message": "Event Webhook deleted successfully"
+      },
+      "labels": {
+        "confirm_delete": "Delete Webhook",
+        "delete_confirmation": "Are you sure you wish to delete this webhook?"
+      }
+    },
+    "timetracking": {
+      "title": "Time tracking",
+      "heading": "Make every second count, with time tracking",
+      "sub_heading": "Optimize your team's performance and understand where complex issues are coming from.",
+      "feature_1_title": "Track worked and billed time",
+      "feature_1_description": "Start a timer or manually enter time worked or billable per conversation. Get an instant view of time worked per conversation, or report on total time.",
+      "feature_2_title": "Automatically track conversation views",
+      "feature_2_description": "Get a better understanding of where your team spend the most time with automatic productivity tracking. Available on select plans only.",
+      "enabled": "Time tracking is enabled",
+      "disabled": "Time tracking is disabled",
+      "notification": "Time tracking {isEnabled, plural, =1 {enabled} other {disabled}}"
+    },
+    "atlasai": {
+      "title": "Atlas AI",
+      "enabled": "Atlas AI is enabled and building a knowledge base. It may take a while to become active.",
+      "will_be_enabled": "Atlas AI will be enabled",
+      "will_be_disabled": "Atlas AI will be disabled",
+      "active": "Atlas AI is active",
+      "disabled": "Atlas AI is disabled",
+      "endpoint": {
+        "payload_url": {
+          "title": "Payload URL"
+        },
+        "api_key": {
+          "title": "API Key"
+        }
+      }
+    }
+  },
+  "views": {
+    "title": "Views",
+    "description": "Views organize conversations based on certain criteria, and are central to your team’s workflow. Defining views allows you to look at your support queue from many angles. For example, you can create a view to show only conversations assigned to your team, only conversations of a particular priority, only conversations from a particular organization. {link}.",
+    "description_link": "Learn more about adding and editing views",
+    "buttons": {
+      "add_new": "New view"
+    },
+    "heading": {
+      "edit": "Views / Edit",
+      "new": "Views / New",
+      "view_details": "View details",
+      "sharing": "Sharing",
+      "predicate_builder": "Include conversations that match the following in this view",
+      "configure_layout": "Columns",
+      "sorting": "Sort order"
+    },
+    "label": {
+      "view_title": "View title",
+      "sharing": "Make this view available to",
+      "configure_layout": "Customize what information is shown in this view by adding, removing and reordering fields below. You can add up to 10 columns in your view",
+      "sorting": "Select the default sort order for conversations in this view."
+    },
+    "radio": {
+      "label": {
+        "me": "Just myself",
+        "all": "Every agent",
+        "specific": "Specific teams"
+      }
+    },
+    "sharing": {
+      "ALL": "ALL",
+      "SELF": "just myself"
+    },
+    "description_sorting_ascending": "Ascending means smallest to largest, oldest to most recent, lowest priority to highest priority, A to Z.",
+    "description_sorting_descending": "Descending means largest to smallest, most recent to oldest, highest priority to lowest priority, Z to A.",
+    "edit": {
+      "description_on": {
+        "is_enabled": "View is active"
+      },
+      "description_off": {
+        "is_enabled": "View is inactive"
+      },
+      "select_columns": "Please specify at least one column in \"Configure Columns\""
+    },
+    "order_saved": {
+      "message": "New order of views saved"
+    },
+    "enabled": {
+      "message": "View enabled successfully"
+    },
+    "disabled": {
+      "message": "View disabled successfully"
+    },
+    "deleted": {
+      "message": "View deleted successfully"
+    },
+    "confirm_delete": {
+      "title": "Delete view",
+      "body": "Are you sure you want to delete the view? This cannot be undone."
+    }
+  },
+  "businesshours": {
+    "title": "Business hours",
+    "description": "Business hours tell Kayako what days and hours of the week your team is working. Once you add your business hours, you can make sure your SLAs and automations are only active when your team is.",
+    "description2": "{link}.",
+    "description_link": "Learn more about business hours",
+    "info": "Click and drag to toggle your hours",
+    "holidays": {
+      "title": "Holidays",
+      "info": "You can use holidays to create exceptions to your regular business hour schedules. For example, you might add a holiday for reduced office hours, or perhaps for a day off (we hope that’s not wishful thinking!)",
+      "label": {
+        "title": "Holiday title"
+      },
+      "addaholiday": "Add a holiday",
+      "saveholiday": "Save holiday"
+    },
+    "headings": {
+      "index": "Business hours",
+      "new": "Business hours / New",
+      "edit": "Business hours / {title}"
+    },
+    "buttons": {
+      "add": "New business hours"
+    },
+    "heading": {
+      "details": "Details"
+    },
+    "label": {
+      "title": "Title",
+      "title_placeholder": "e.g. London office hours"
+    },
+    "labels": {
+      "confirm_delete": "Delete Business Hour",
+      "delete_confirmation": "Are you sure you wish to delete this business hour?"
+    }
+  },
+  "triggers": {
+    "title": "Triggers",
+    "description": "Execute advanced workflows with Kayako, without having to make your team remember tricky processes for making sure conversations are dealt with properly. Configure rules to perform actions on conversations based on specific criteria, such as marking high priority to conversations based on a tag.",
+    "description2": "Set up your triggers or {link}.",
+    "description_link": "learn more about them",
+    "last_triggered": "last triggered {date}",
+    "buttons": {
+      "add": "New trigger"
+    },
+    "headings": {
+      "new": "Triggers / New",
+      "edit": "Triggers / {title}"
+    },
+    "heading": {
+      "details": "Rule details",
+      "rule": "Rule settings"
+    },
+    "label": {
+      "title": "Rule title",
+      "title_placeholder": "e.g. Notify assignee of update",
+      "rule": "Trigger this rule for conversation updates made via"
+    },
+    "rule": {
+      "help": "Conversation updates can be triggered by events over a specific channel. If you restrict your rule to a specific channel or event, you’ll be able to build rules using advanced channel-specific criteria."
+    },
+    "channel": {
+      "placeholder": "Select a channel",
+      "ANY": "Any",
+      "API": "API",
+      "MAIL": "Email",
+      "TWITTER": "X",
+      "FACEBOOK": "Facebook",
+      "CHAT": "Messenger",
+      "MESSENGER": "Messenger",
+      "HELPCENTER": "Help Center",
+      "SYSTEM": "System"
+    },
+    "event": {
+      "placeholder": "Select a event",
+      "ANY": "Any",
+      "INCOMING_MAIL": "Incoming email message",
+      "MENTION": "@mention",
+      "DIRECT_MESSAGE": "Direct Message",
+      "SAVED_SEARCH": "Tweet from saved search",
+      "WALL_POST": "Facebook Wall Post",
+      "MESSAGE": "Facebook Message",
+      "SLA_BREACHED": "SLA breach",
+      "TRIGGER": "Trigger rule action",
+      "MONITOR": "Monitor rule action"
+    },
+    "actions": {
+      "heading": "Perform the following actions",
+      "info": "If the conditions match, the rule will fire and the actions will be executed. Note that any conversation update actions, such as changing the priority of a conversation, will take place before any notifications are sent out."
+    },
+    "conditions": {
+      "heading": "When these conditions are met",
+      "description": "Rules are used to automatically perform actions when certain conditions are met. If the rule’s conditions match, the rule will fire and the actions further down in the page will be executed. {link}.",
+      "description_link": "Find out about trigger rules"
+    },
+    "enabled": {
+      "success_message": "Trigger enabled successfully"
+    },
+    "disabled": {
+      "success_message": "Trigger disabled successfully"
+    },
+    "delete": {
+      "success_message": "Trigger deleted successfully"
+    },
+    "labels": {
+      "confirm_delete": "Delete trigger",
+      "delete_confirmation": "Are you sure you wish to delete this trigger?"
+    }
+  },
+  "staff": {
+    "title": "Agent directory",
+    "description": "Create and keep track of your agents, super agents, collaborators, and administrators all in one place. Stay organized by knowing exactly which teams individuals are a part of.",
+    "description2": "{link1} | {link2}",
+    "description_link": "What’s a collaborator?",
+    "description_link2": "Learn more about user roles",
+    "labels": {
+      "filter": "Type to filter"
+    },
+    "2fa": "2FA",
+    "2fa_enabled": "Two-factor authentication enabled",
+    "2fa_not_setup": "Two-factor authentication not set up",
+    "view_user": "Open",
+    "buttons": {
+      "add": "Invite team members"
+    },
+    "member": {
+      "new": "Add new team members"
+    },
+    "members_invited": {
+      "notification": "Team members invited"
+    },
+    "bulk_invitation": {
+      "fields": {
+        "role": {
+          "label": "Role",
+          "tooltip": "Each member of your team gets a user role – like collaborator, agent, or admin – which controls their level of access."
+        },
+        "name": {
+          "label": "Name"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "teams": {
+          "label": "Teams",
+          "tooltip": "Use teams to organize your staff into functional groups. You can create teams in the admin area."
+        }
+      },
+      "buttons": {
+        "add_team_member": {
+          "label": "+ Add a new team member",
+          "onboarding_label": "Invite another"
+        }
+      }
+    }
+  },
+  "teams": {
+    "title": "Teams",
+    "description": "Keep tip top control over your workflow and conversation permissions with Teams. Customize your conversation workflow and manage permissions with ease. Creating teams makes it easy to assign incoming conversations to the team that can best resolve them, and are a key part of organizing your conversation workflow.",
+    "description2": "Create your teams here, or {link}.",
+    "description_link": "learn more about setting them up",
+    "agent": "{numAgents, plural, =1 {agent} other {agents}}",
+    "headings": {
+      "index": "Teams",
+      "edit": "Teams / {title}",
+      "new": "Teams / New"
+    },
+    "buttons": {
+      "add": "New team"
+    },
+    "labels": {
+      "filter_teams": "Type to filter",
+      "filter_agents": "Add someone to this team",
+      "delete_team": "Delete team",
+      "delete_team_confirmation": "Are you sure you wish to delete this team?",
+      "confirm_delete": "Delete team",
+      "edit": {
+        "name": "Team name"
+      }
+    },
+    "legend": {
+      "edit": {
+        "details": "Team details"
+      }
+    },
+    "info": {
+      "title": "Team members",
+      "content": "Click on agents from the list below to add or remove from the team"
+    },
+    "confirm_delete": {
+      "title": "Delete team",
+      "body": "Are you sure you want to delete this team? This cannot be undone."
+    }
+  },
+  "roles": {
+    "title": "Roles and permissions",
+    "title_short": "Roles & Permissions",
+    "description": "Maximum security, minimum effort! Different role types make it easy to manage what users can and can't do in Kayako. Customers on the Scale and Enterprise plans can create and customize additional user roles for more granular control.",
+    "description2": "{link}.",
+    "description_link": "Learn more about customizing roles and permissions",
+    "description3": "Tip: Use your Collaborators to improve internal collaboration between teams. They’re free!",
+    "index": {
+      "add_new_button": "New role",
+      "deletion_successful_notification": "Role deleted successfully"
+    },
+    "system": "(System)",
+    "type": {
+      "admin": "Administrator",
+      "agent": "Agent",
+      "collaborator": "Collaborator",
+      "customer": "Customer",
+      "owner": "Owner"
+    },
+    "agent_case_access_type": {
+      "self": "Assigned to agent",
+      "teams": "Assigned to agent’s teams",
+      "all": "All"
+    },
+    "form": {
+      "new_title": "New",
+      "role_type_field_help": "Some permissions are enforced by Kayako and are non-configurable. These permissions depend on the <strong>role type</strong> selected here. For example, an ‘Admin’ role type will grant access to the admin area (and will enable some Admin-specific permissions below).",
+      "role_type_field_help_link": "Find out more about roles",
+      "title_field_label": "Role name",
+      "title_field_label_placeholder": "e.g. Superagent!",
+      "role_type_field_label": "Role type",
+      "details_group_legend": "Role details",
+      "cases_group_legend": "Conversations",
+      "chats_group_legend": "Messenger",
+      "help_center_group_legend": "Help Center",
+      "user_administration_group_legend": "User administration",
+      "system_administration_group_legend": "System administration",
+      "insights_group_legend": "Insights",
+      "agent_case_access_field_label": "Conversations this agent can access",
+      "agent_case_access_field_help": "This permission can be overridden per-agent, by editing an agent’s profile.",
+      "cases_create_reply_permission_label": "Reply publicly to conversations",
+      "cases_split_and_merge_permission_label": "Split and merge conversations",
+      "cases_split_and_merge_permission_help": "Allows this agent to split conversations into new conversations, and merge two existing conversations into one.",
+      "cases_trash_permission_label": "Trash conversations",
+      "cases_trash_permission_help": "Allow this agent to trash conversations and remove individual conversation replies and notes.",
+      "cases_view_suspended_permission_label": "View suspended messages",
+      "cases_view_suspended_permission_help": "Allow this agent to view suspended messages.",
+      "cases_view_trash_permission_label": "View trashed conversations",
+      "cases_view_trash_permission_help": "Allow this agent to view trashed conversations.",
+      "users_and_orgs_group_legend": "Users and organizations",
+      "users_and_orgs_create_update_permission_label": "Create and update users and organizations",
+      "users_and_orgs_create_update_permission_help": "Allows an agent to create and update user profiles (such as their name, identities and the values of custom user fields). Regardless of this permission, agents can update their own profile.​",
+      "users_and_orgs_delete_permission_label": "Delete users and organizations",
+      "users_and_orgs_delete_permission_help": "Allows this agent to delete other users. Regardless of this setting, only admin type users can delete other agents and admins, and agent type users can only delete customers.",
+      "help_center_manage_permission_label": "Manage the Help Center",
+      "help_center_manage_permission_help": "Allows the agent to manage the structure of the Help Center, including creating and editing categories, sections and permissions. Note that only admin type users with the ‘Manage channels’ permission are able to change the configuration and look and feel of the Help Center.",
+      "help_center_manage_articles_permission_label": "Create and edit articles",
+      "help_center_manage_articles_permission_help": "Allows the agent to create and edit articles in the Help Center. Note: that Collaborators cannot create or edit Help Center content.",
+      "help_center_publish_articles_permission_label": "Publish articles",
+      "insights_access_permission_label": "Can access insights",
+      "insights_access_permission_help": "Grants the user access to the insights area, where they can review conversations, agent, and Help Center metrics, as well as run custom reports.",
+      "help_center_publish_articles_permission_help": "Allows the agent to publish Help Center articles (by changing the status of a Help Center article to Published). Note: Collaborators cannot create or edit Help Center content.",
+      "teams_manage_permission_label": "Manage teams",
+      "teams_manage_permission_help": "Allows this admin to manage teams and organize other agents into teams.",
+      "roles_and_permissions_manage_permission_label": "Manage roles and permissions",
+      "roles_and_permissions_manage_permission_help": "Allows this admin to manage roles and permissions.",
+      "apps_manage_permission_label": "Manage apps and integrations",
+      "endpoints_manage_permission_label": "Manage endpoints",
+      "channels_manage_permission_label": "Manage channels",
+      "channels_manage_permission_help": "Allows this admin to manage channels and related settings, such as connecting new Twitter accounts, the look and feel of the Help Center, connecting new Twitter accounts and API keys.",
+      "brands_manage_permission_label": "Manage brands",
+      "case_views_manage_permission_label": "Manage views",
+      "case_macros_manage_permission_label": "Manage macros",
+      "automations_manage_permission_label": "Manage automations",
+      "automations_manage_permission_help": "Allows this admin to manage trigger rules and monitor rules.",
+      "slas_and_business_hours_manage_permission_label": "Manage SLAs and business hours",
+      "slas_and_business_hours_manage_permission_help": "Allows this admin to manage SLAs and business hours.",
+      "case_fields_manage_permission_label": "Manage conversation fields",
+      "case_fields_manage_permission_help": "Allows this admin to create, update and delete custom conversation fields, and customize system conversation fields (such as priority, status and type).",
+      "users_and_organization_fields_manage_permission_label": "Manage custom user and organization fields",
+      "users_and_organization_fields_manage_permission_help": "Allows this admin to create, update and delete custom user and organization profile fields.",
+      "settings_manage_permission_label": "Manage system configuration",
+      "settings_manage_permission_help": "Allows the admin to manage system settings and configuration, such as security settings, authentication options and blocklist.",
+      "localization_manage_permission_label": "Manage localization"
+    }
+  },
+  "fields": {
+    "type": {
+      "field_options": {
+        "add_option": "Add an option",
+        "missing_options": "Please provide at least one option"
+      }
+    },
+    "new": {
+      "heading": "New"
+    },
+    "edit": {
+      "heading": "Edit"
+    },
+    "add_new_field": "New field"
+  },
+  "organizationfields": {
+    "title": "Organization fields",
+    "description": "Capture the most relevant information on the organizations you support with custom organization fields. You can see your enabled organization fields in the sidebar of an organization page.",
+    "description2": "{link}.",
+    "description_link": "Learn more about customizing fields",
+    "new": {
+      "heading": "Organization fields / New"
+    },
+    "enabled": {
+      "success_message": "Organization field enabled successfully"
+    },
+    "disabled": {
+      "success_message": "Organization field disabled successfully"
+    },
+    "delete": {
+      "success_message": "Organization field deleted successfully"
+    },
+    "labels": {
+      "confirm_delete": "Delete Organization Field",
+      "delete_confirmation": "Are you sure you wish to delete this organization field?"
+    }
+  },
+  "userfields": {
+    "title": "User fields",
+    "description": "Create context for your customers (and agents) with custom user fields. User profiles enriched with extra information set your team up for success before the conversation even starts. If you want, you can make these fields visible and editable by your customers too!",
+    "description2": "{link}.",
+    "description_link": "Learn more about customizing fields",
+    "buttons": {
+      "add_new_userfield": "New field"
+    },
+    "new": {
+      "heading": "User fields / New"
+    },
+    "enabled": {
+      "success_message": "User field enabled successfully"
+    },
+    "disabled": {
+      "success_message": "User field disabled successfully"
+    },
+    "delete": {
+      "success_message": "User field deleted successfully"
+    },
+    "labels": {
+      "confirm_delete": "Delete User Field",
+      "delete_confirmation": "Are you sure you wish to delete this user field?"
+    }
+  },
+  "caseforms": {
+    "title": "Forms",
+    "description": "Forms let you customize which fields are shown on a conversation or new request form (for your customers). For example, you may wish to offer different fields for ‘warranty return requests’ and ‘support requests’. Forms can be visible to just your team as well as your customers, and can also be used in views, triggers and monitors. {link}.",
+    "description_link": "Learn more about forms",
+    "buttons": {
+      "add_new_caseform": "New form"
+    },
+    "headings": {
+      "enabled_fields": "Enabled Fields",
+      "disabled_fields": "Disabled Fields"
+    },
+    "label": {
+      "system": "(System)",
+      "brand": "Brand",
+      "field_title": "Form title for agents",
+      "field_title_placeholder": "e.g. Support",
+      "is_visible_to_customers": "Customers can see and select this form",
+      "customer_form_title": "Form title for customers",
+      "customer_form_title_placeholder": "e.g. Make a support request",
+      "customer_form_description": "Form description for customers",
+      "add_new_field": "Add new field"
+    },
+    "heading": {
+      "customer_settings": "Customers",
+      "configure_form": "Form fields",
+      "agent_settings": "Agents"
+    },
+    "help": {
+      "brand": "Forms can be linked to specific Brands. Kayako will only show this form to your customers when they start a new conversation in this Brand’s Help Center.",
+      "is_visible_to_customers": "When customers can see and select forms, they will be able to select a form when submitting a new request in the Help Center. This means that forms can be used to direct customers to create different types of request and to provide specific pieces of information for that request type.",
+      "api_key": "The field key is unique to this form and is used to reference fields using the Kayako API and in search.",
+      "configure_fields": "System fields are included in each form by default. Add and arrange custom conversation fields to the form below. You can manage conversation fields in the [Covnersation fields] section."
+    },
+    "new": {
+      "heading": "Forms / New"
+    },
+    "edit": {
+      "heading": "Forms / Edit",
+      "description_on": {
+        "is_enabled": "Form is enabled"
+      },
+      "description_off": {
+        "is_enabled": "Form is disabled"
+      }
+    },
+    "remove_from_form": "Remove from form",
+    "confirm_delete": {
+      "title": "Delete form",
+      "body": "Are you sure you want to delete the form? This cannot be undone."
+    },
+    "form": {
+      "brand": {
+        "all": "All Brands"
+      }
+    }
+  },
+  "custom_fields": {
+    "title": "Custom fields",
+    "title_breadcrumbs": "Customizations / Custom fields"
+  },
+  "casefields": {
+    "title": "Conversation fields",
+    "headings": {
+      "enabled_fields": "Enabled Fields",
+      "disabled_fields": "Disabled Fields"
+    },
+    "edit": {
+      "heading": {
+        "priorities": "Priorities",
+        "types": "Available types",
+        "agent_settings": "Agent settings",
+        "customer_settings": "Customer settings",
+        "field_options": "Field options",
+        "field_settings": "Field settings",
+        "regex": "Regular expression",
+        "statuses": "Statuses"
+      },
+      "label": {
+        "field_options": "The drop-down field will contain the options specified below.",
+        "is_required_for_agents_when_updating_case": "Creating, replying to or updating a conversation",
+        "is_required_for_agents_when_resolving_case": "Resolving a conversation",
+        "field_title": "Field title",
+        "field_tag": "Field tag",
+        "is_visible_to_customers": "Customers can see this field",
+        "is_required_for_agents": "For agents, this field is required when:",
+        "customer_field_title": "Field title for customers",
+        "customer_field_description": "Field description for customers",
+        "is_editable_by_customers": "Customers can edit this field",
+        "is_required_for_customers": "This field is required for customers",
+        "api_key": "API field key",
+        "priorities": "The conversation priority field can be used to prioritize conversations in your workflow. On the Enterprise plan, you can customize the list of conversation priorities. The order of priorities matter: your priorities should go from lowest to highest. If you remove a priority, all conversations using that priority will be set to no priority."
+      },
+      "add_new_type": "Add a type",
+      "add_new_priority": "Add a priority",
+      "help": {
+        "field_title": "This is the title that is displayed to your agents",
+        "field_tag": "This is the associated tag that is displayed to your agents", 
+        "customer_field_description": "This will be displayed to your customers",
+        "is_editable_by_customers": "Enable this setting to allow your customers to change the value of this field from the Help Center or through the API.",
+        "is_required_for_customers": "Enable this setting to require your customers to complete this field when creating or updating a conversation from the Help Center or through the API.",
+        "is_required_for_customers_user_profile": "Enable this setting to require your customers to complete this field when creating or updating a user profile from the Help Center or through the API.",
+        "is_required_for_customers_conversation": "Enable this setting to require your customers to complete this field when creating or updating a conversation from the Help Center or through the API.",
+        "api_key": "The field key is unique to this field and is used to reference fields using the Kayako API and in search.",
+        "is_enabled": "Disabled conversation fields will not be available on conversations or forms, but any existing data will still be searchable and can be referenced in reporting.",
+        "statuses": {
+          "1": "Conversation statuses typically map to your workflow and how you handle customer requests and conversations. Throughout its life, a conversation will move through various statuses. On the Enterprise plan, you can customize the list of conversation statuses.",
+          "2": "If SLAs are enabled in Kayako, you can determine whether or not SLA timers will pause on particular statuses. For example, you may not want the time a conversation spends while set to Pending (while you are waiting for a customer to get back to you) to count towards your SLA targets."
+        },
+        "types": {
+          "1": "The conversation type field can be used to categorize the types of conversations you have with customers. For example, you might want to differentiate between things to do internally (tasks) from customer questions and from customer feedback. On the Enterprise plan, you can customize the list of conversation types."
+        }
+      },
+      "description_on": {
+        "is_enabled": "Field is enabled"
+      },
+      "description_off": {
+        "is_enabled": "Field is disabled"
+      },
+      "add_new_status": "Add a status",
+      "statuses": {
+        "label": {
+          "is_sla_active": "SLA timers active",
+          "is_sla_inactive": "SLA timers inactive"
+        }
+      }
+    },
+    "type": {
+      "text": {
+        "name": "Text",
+        "description": "Small, single-line text boxes that allow users to enter a short string of text."
+      },
+      "textarea": {
+        "name": "Multi-line text",
+        "description": "Larger text areas spanning multiple lines that allow users to enter larger blocks of text."
+      },
+      "regex": {
+        "name": "Regular expression",
+        "description": "Text box that will only permit users to enter values that match a regular expression."
+      },
+      "radio": {
+        "name": "Radio buttons (single choice)",
+        "description": "List of options with radio buttons. Users can select one option."
+      },
+      "dropdown": {
+        "name": "Dropdown list (single choice)",
+        "description": "List of options in a dropdown menu. Users can select one option."
+      },
+      "numeric": {
+        "name": "Numerical input",
+        "description": "Small text box that will permit users to enter only whole numbers (integers)."
+      },
+      "decimal": {
+        "name": "Decimal input",
+        "description": "Small text box that will permit users to enter only numbers or decimal values."
+      },
+      "file": {
+        "name": "File upload",
+        "description": "Upload field that allows users to attach files."
+      },
+      "yesno": {
+        "name": "Yes/No toggle",
+        "description": "Toggle switch that allows users to select Yes or No."
+      },
+      "date": {
+        "name": "Date",
+        "description": "Pop-up calendar that users can select a date from."
+      },
+      "checkbox": {
+        "name": "Checkboxes (multiple choices)",
+        "description": "List of options with checkboxes next to them. Users can select multiple options.",
+        "field_options": {
+          "title": "Option title",
+          "tag": "Option tag"
+        }
+      },
+      "priority": {
+        "name": "Priority"
+      },
+      "team": {
+        "name": "Team"
+      },
+      "assignee": {
+        "name": "Assignee"
+      },
+      "type": {
+        "name": "Type"
+      },
+      "status": {
+        "name": "Status"
+      },
+      "subject": {
+        "name": "Subject"
+      },
+      "message": {
+        "name": "Message"
+      },
+      "select": {
+        "name": "Select"
+      },
+      "cascadingselect": {
+        "name": "Cascading select",
+        "description": "Allow users to drill down through categories to organize a lot of select options."
+      }
+    },
+    "buttons": {
+      "add_new_casefield": "New field",
+      "complete_locale_edit": "Done"
+    },
+    "description": "Give your team the gift of customer context with custom conversation fields. By enriching your customers’ profiles, you set your agents up to tailor a great customer experience - every time. Build better triggers and automation with custom fields, too!",
+    "description2": "{link}.",
+    "description_link": "Learn more about customizing fields",
+    "new": {
+      "heading": "Conversation fields / New"
+    },
+    "enabled": {
+      "success_message": "Conversation field enabled successfully"
+    },
+    "disabled": {
+      "success_message": "Conversation field disabled successfully"
+    },
+    "delete": {
+      "success_message": "Conversation field deleted successfully"
+    },
+    "help": {
+      "regex": "Enter a regular expression that will be evaluated against your users’ input. If the regular expression evaluates to false, the input will be deemed invalid."
+    },
+    "labels": {
+      "confirm_delete": "Delete Conversation Field",
+      "delete_confirmation": "Are you sure you wish to delete this conversation field?"
+    }
+  },
+  "twitter": {
+    "title": "X",
+    "description": "Love your X followers? Let them love you back. Respond to your followers on their preferred channel at scale. Connect X accounts to Kayako to have conversations through Posts, Direct Messages, and @mention activity - all within one conversation.",
+    "description2": "{link}.",
+    "description_link": "Learn more about X support",
+    "headings": {
+      "index": "X"
+    },
+    "edit": {
+      "heading": "X / @{screenName}"
+    },
+    "buttons": {
+      "create_account": "Connect new account"
+    },
+    "heading": {
+      "account_settings": "Account settings",
+      "capture_settings": "What to capture",
+      "help_settings": "Help Center"
+    },
+    "label": {
+      "brand": "Brand",
+      "mentions": "Mentions",
+      "favourited_tweets": "Favorited Posts",
+      "direct_messages": "Direct Messages",
+      "display_public_tweets": "Show latest Posts from this account in the Help Center"
+    },
+    "help": {
+      "brand": "Kayako will link any Posts or messages received by this handle to this brand.",
+      "capture": "Kayako can capture various events (such as messages) through this channel account into conversations. Select which kind of events you want Kayako to capture.",
+      "display_public_tweets": "Kayako can display the latest non-@mention Posts sent from this account in your Help Center. This is useful if you use this account to keep your customers up to date with news and events."
+    },
+    "description_on": {
+      "mentions": "Capturing @mentions",
+      "favourited_tweets": "Capturing Favorited Posts",
+      "direct_messages": "Capturing Direct Messages",
+      "display_public_tweets": "Showing latest Posts"
+    },
+    "description_off": {
+      "mentions": "Not capturing @mentions",
+      "favourited_tweets": "Not capturing Favorited Posts",
+      "direct_messages": "Not capturing Direct Messages",
+      "display_public_tweets": "Not showing latest Posts"
+    },
+    "connection_lost": "connection lost",
+    "reconnect": "Reconnect",
+    "deleted": {
+      "message": "X account disconnected successfully"
+    },
+    "enabled": {
+      "message": "X account enabled successfully"
+    },
+    "disabled": {
+      "message": "X account disabled successfully"
+    }
+  },
+  "predicate_builder": {
+    "cases": {
+      "subject": "Conversation: Subject",
+      "casestatusid": "Conversation: Status",
+      "casetypeid": "Conversation: Type",
+      "channeltype": "Conversation: Channel Type",
+      "channel": "Conversation: Channel Type",
+      "casepriorityid": "Conversation: Priority ID",
+      "state": "Conversation: State",
+      "brandid": "Conversation: Brand",
+      "assigneeteamid": "Conversation: Assigned Agent Team",
+      "assigneeagentid": "Conversation: Assigned Agent",
+      "requesterid": "Conversation: Requester",
+      "lastcompletedat": "Conversation: Last Completed",
+      "updatedat": "Conversation: Updated At",
+      "createdat": "Conversation: Created At",
+      "postcount": "Conversation: Number of Posts"
+    },
+    "caseslametrics": {
+      "isbreached": "Conversation: SLA Breached"
+    },
+    "label": {
+      "addition_of_proposition": "+ Add a new condition"
+    },
+    "tags": {
+      "name": "Conversation: Tags"
+    },
+    "followers": {
+      "userid": "Conversation: Following"
+    },
+    "users": {
+      "organizationid": "Conversation: Organization"
+    },
+    "languages": {
+      "locale": "Languages: Locale"
+    },
+    "operators": {
+      "none": "contains",
+      "is": "is",
+      "is_not": "is not",
+      "string_contains": "contains",
+      "string_contains_insensitive": "contains",
+      "string_does_not_contain_insensitive": "does not contain",
+      "string_does_not_contain": "does not contain",
+      "comparison_equalto": "equal to",
+      "comparison_not_equalto": "not equal to",
+      "comparison_lessthan": "less than",
+      "comparison_lessthan_or_equalto": "less than or equal to",
+      "comparison_greaterthan": "greater than",
+      "comparison_greaterthan_or_equalto": "greater than or equal to",
+      "collection_contains_insensitive": "contains all of the following",
+      "collection_does_not_contain": "does not contain",
+      "collection_does_not_contain_insensitive": "does not contain any of the following",
+      "collection_contains_any_insensitive": "contains any one of the following",
+      "date_after": "after",
+      "date_after_or_on": "after or on",
+      "date_before": "before",
+      "date_before_or_on": "before or on",
+      "date_is": "is",
+      "date_is_not": "is not",
+      "time_greaterthan": "greater than",
+      "time_greaterthan_businesshours": "greater than (business hours)",
+      "time_greaterthan_or_equalto": "greater than or equal to",
+      "time_greaterthan_or_equalto_businesshours": "greater than or equal to (business hours)",
+      "time_lessthan": "less than",
+      "time_lessthan_businesshours": "less than (business hours)",
+      "time_lessthan_or_equalto": "less than or equal to",
+      "time_lessthan_or_equalto_businesshours": "less than or equal to (business hours)",
+      "contains_one_of_the_following": "contains one of the following",
+      "contains_none_of_the_following": "contains none of the following",
+      "contains_all_of_the_following": "contains all of the following",
+      "history_changed": "changed",
+      "history_not_changed": "not changed",
+      "history_changed_to": "changed to",
+      "history_not_changed_to": "not changed to",
+      "history_changed_from": "changed from",
+      "history_not_changed_from": "not changed from",
+      "string_regularexpression": "matches regular expression"
+    },
+    "miscellaneous_operators": {
+      "none": "contains",
+      "collection_contains_any_insensitive": "equal to"
+    },
+    "group": {
+      "CASES": "Conversations",
+      "REQUESTER": "Requester",
+      "ORGANIZATION": "Organization",
+      "SLA": "SLA",
+      "CASES_UPDATE_EVENT": "Conversations Update Event",
+      "FACEBOOK": "Facebook",
+      "TWITTER": "Twitter",
+      "SYSTEM": "System",
+      "POST": "Post",
+      "MAIL": "Mail",
+      "MESSENGER": "Messenger",
+      "ENGAGEMENT": "Engagement",
+      "SATISFACTION": "Satisfaction"
+    },
+    "current_user": "(current user)",
+    "select_condition": "Select a condition",
+    "select_operator": "Select an operator",
+    "date_relative": {
+      "value": {
+        "none": "None",
+        "today": "Today",
+        "currentweek": "Current Week",
+        "currentmonth": "Current Month",
+        "currentyear": "Current Year",
+        "tomorrow": "Tomorrow",
+        "nextweek": "Next Week",
+        "nextmonth": "Next Month",
+        "nextyear": "Next Year",
+        "next7days": "Next 7 Days",
+        "next30days": "Next 30 Days",
+        "next90days": "Next 90 Days",
+        "next180days": "Next 180 Days",
+        "next365days": "Next 365 Days",
+        "yesterday": "Yesterday",
+        "lastweek": "Last Week",
+        "lastmonth": "Last Month",
+        "lastyear": "Last Year",
+        "last7days": "Last 7 Days",
+        "last30days": "Last 30 Days",
+        "last90days": "Last 90 Days",
+        "last180days": "Last 180 Days",
+        "last365days": "Last 365 Days"
+      }
+    },
+    "hours": "hours",
+    "boolean": {
+      "true": "Yes",
+      "false": "No"
+    }
+  },
+  "automation_actions_builder": {
+    "group": {
+      "CASE": "Conversation",
+      "NOTIFICATION": "Notification",
+      "FLOW_CONTROL": "Flow control",
+      "ENDPOINT": "Endpoint",
+      "CUSTOM_FIELD": "Custom field",
+      "REQUESTER": "Requester",
+      "ORGANIZATION": "Organization"
+    },
+    "operators": {
+      "CHANGE": "change",
+      "INCREASE": "increase",
+      "DECREASE": "decrease",
+      "REVERT": "revert to original",
+      "ADD": "add",
+      "REMOVE": "remove",
+      "REPLACE": "replace",
+      "SEND": "send"
+    },
+    "select_action": "Select an action",
+    "select_operator": "Select an operator",
+    "select_receiver": "Select receiver",
+    "placeholders": {
+      "priority": "Select a priority",
+      "status": "Select a status",
+      "type": "Select a type",
+      "team": "Select a team",
+      "reply-type": "Select a reply type",
+      "assignee": "Select an assignee",
+      "default": "Select an option"
+    },
+    "labels": {
+      "subject": "Subject",
+      "message": "Message",
+      "endpoint_message": "Message to send",
+      "request_payload": "Request payload",
+      "request_parameters": "Parameters"
+    },
+    "label": {
+      "addition_of_action": "+ Add a new action",
+      "add_parameter": "+ Add a new parameter",
+      "request_parameters": {
+        "description": "These parameters will be appended or posted (depending on the Endpoint method type) to the HTTP request to the Endpoint URL. You can use placeholders here. {link}."
+      },
+      "request_payload": {
+        "description": "The simple payload format will send a standard set of conversation attributes to the Endpoint, or you can specify your own attributes and values. {link}.",
+        "description_link": "Find out more about HTTP requests Endpoints"
+      },
+      "http_simple": "Simple (standard payload format)",
+      "http_custom": "Custom (specify your own payload format)",
+      "placeholders_allowed": {
+        "description": "You can use placeholders here. {link}.",
+        "description_link": "Find out more about placeholders"
+      }
+    },
+    "values": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "parameters": {
+      "name": "Parameter name",
+      "value": "Value"
+    },
+    "endpoint_description": {
+      "xml": "This endpoint expects content in XML format",
+      "json": "This endpoint expects content in JSON format"
+    }
+  },
+  "macros": {
+    "title": "Macros",
+    "description": "Save time and automate the lowest common denominator in your workload. Commonly repeated replies can be sent in a just a few clicks, such as public replies and private notes, or updating conversation fields. Your team can choose from a list of macros when replying to a conversation in the agent area, and save themselves many clicks with just one macro.",
+    "description2": "{link}.",
+    "description_link": "Learn more about macros",
+    "usage_count": "Used {count, plural, =1 {1 time} other {# times}}",
+    "last_used_at": "last used {date}",
+    "new": {
+      "heading": "Macros / New"
+    },
+    "edit": {
+      "heading": "Macros / Edit"
+    },
+    "heading": {
+      "details": "Macro details",
+      "sharing": "Sharing",
+      "actions": "Perform the following actions"
+    },
+    "label": {
+      "title": "Macro title",
+      "title_placeholder": "e.g. Assign to me",
+      "title_description": "To group your macros into categories, you can add a category name, followed by a ‘\\\\’, and then the macro name. For example, a macro called ‘FAQs\\\\How do I upgrade?’ will appear in the ‘Macros’ dropdown under an ‘FAQs’ category.",
+      "visibility_type": "Make this macro available to",
+      "new_action": "Please select an action",
+      "change_to": "change to"
+    },
+    "radio": {
+      "label": {
+        "me": "Just myself",
+        "all": "Every agent",
+        "specific": "A specific team"
+      }
+    },
+    "buttons": {
+      "add_new_macro": "New macro"
+    },
+    "actions": {
+      "reply_type": {
+        "reply": "Reply",
+        "note": "Note",
+        "label": "Set reply type"
+      },
+      "reply_contents": {
+        "label": "Add reply text"
+      },
+      "type": {
+        "label": "Change type"
+      },
+      "add_tags": {
+        "label": "Add tags"
+      },
+      "remove_tags": {
+        "label": "Remove tags"
+      },
+      "priority": {
+        "label": "Priority"
+      },
+      "status": {
+        "label": "Change status"
+      },
+      "assignee": {
+        "label": "Change assignee"
+      }
+    },
+    "errors": {
+      "actions": {
+        "required": "Please add at least one action"
+      }
+    },
+    "assign": {
+      "unassigned": "(Unassigned)",
+      "current_agent": "(Current user)"
+    }
+  },
+  "monitors": {
+    "title": "Monitors",
+    "description": "Let Kayako keep an eye on conversations that need attention or require automated workflow actions. If a conversation matches the conditions of one or more monitors, Kayako performs the monitor’s actions on those conversations automatically, such as stopping notifications or halting future rules.",
+    "description2": "{link}.",
+    "description_link": "Learn more about monitors",
+    "last_fired": "last fired {date}",
+    "buttons": {
+      "add": "New monitor"
+    },
+    "headings": {
+      "new": "Monitors / New",
+      "edit": "Monitors / {title}"
+    },
+    "heading": {
+      "details": "Rule details"
+    },
+    "label": {
+      "title": "Rule title",
+      "title_placeholder": "e.g. Close conversations after 72 hours"
+    },
+    "labels": {
+      "confirm_delete": "Delete Monitor",
+      "delete_confirmation": "Are you sure you wish to delete this Monitor?"
+    },
+    "actions": {
+      "heading": "Perform the following actions",
+      "info": "If the conditions match, the rule will fire and the actions will be executed. Note that any conversation update actions, such as changing the prority of a conversation, will take place before any notifications are sent out."
+    },
+    "conditions": {
+      "heading": "When these conditions are met",
+      "description": "Monitors will periodically check all non-closed conversations to see if they meet the conditions below. If the rule’s conditions match, the rule will fire and the actions further down in the page will be executed. {link}.",
+      "description_link": "Find out more about monitor rules"
+    },
+    "enabled": {
+      "success_message": "Monitor enabled successfully"
+    },
+    "disabled": {
+      "success_message": "Monitor disabled successfully"
+    },
+    "delete": {
+      "success_message": "Monitor deleted successfully"
+    }
+  },
+  "security": {
+    "authentication": {
+      "title": "Authentication",
+      "title_breadcrumbs": "Security / Authentication"
+    },
+    "settings": {
+      "title": "User registration",
+      "title_breadcrumbs": "Security / User registration"
+    },
+    "policy": {
+      "title": "Security policies",
+      "title_breadcrumbs": "Security / Policies"
+    }
+  },
+  "settings": {
+    "security": {
+      "tabs": {
+        "agents": "Agents",
+        "customers": "Customers",
+        "help_center": "Help Center content"
+      },
+      "agents": {
+        "authentication": {
+          "heading": "Authentication",
+          "mode": {
+            "title": "Agent authentication mode",
+            "options": {
+              "internal": "Standard Kayako login",
+              "jwt": "Single sign-on (JWT)"
+            },
+            "description": "The way your team will be authenticated when logging in to the agent area."
+          },
+          "google": {
+            "title": "Log in via Google",
+            "description": "Allow users to log in to the agent area using their Google account."
+          }
+        },
+        "google": {
+          "allowed_domains": {
+            "title": "Google domains allowed for login",
+            "description": "Only users with addresses at the domain(s) above will be able to log into Kayako with their Google account. Separate multiple domains with a comma, for example: @kayako.com, @brewfictus.com.",
+            "placeholder": "@kayako.com @kayako.in"
+          }
+        },
+        "sso": {
+          "heading": "Single sign-on (JWT)",
+          "description": "Single sign-on in Kayako works by sending your users to a remote system to be authenticated. This system then sends the user back to Kayako with instructions to automatically log them in. JWT (JSON Web Tokens) is the protocol used to securely communicate that authentication information between Kayako and your remote system.",
+          "login_url": {
+            "title": "Remote login URL",
+            "description": "This is the URL your agents will be redirected to when they try to access the agent area if they’re not already authenticated. This is where remote authentication will take place."
+          },
+          "logout_url": {
+            "title": "Remote logout URL",
+            "description": "This is the URL your agents will be taken to when they log out of the agent area. This is where they’ll be logged out using your remote authentication routine."
+          },
+          "shared_secret": {
+            "title": "Shared SSO secret",
+            "description": "This is the secret token that’s shared between Kayako and your remote authentication service. This should be kept secret - with it, someone could authenticate themselves to your Kayako."
+          },
+          "service_name": {
+            "title": "Remote system name",
+            "description": "This is a short, descriptive name for your remote authentication service. For example, if you’re authenticating using the user identities from your company’s website, you could call it ‘Website’.",
+            "notice": "IMPORTANT: If you’re using the same remote service for agents and customers, this field must be exactly the same for both."
+          }
+        },
+        "security_policy": {
+          "heading": "Security policy",
+          "session_expiry": {
+            "title": "Session expiry",
+            "description": "Users will be automatically logged out after this many hours of inactivity."
+          },
+          "max_login_attempts": {
+            "title": "Maximum number of login attempts",
+            "description": "After this number of failed logins, Kayako will prevent further login attempts for 2 minutes, then 4 minutes, then 8 minutes and so on."
+          },
+          "password_expiry": {
+            "title": "Password expiry",
+            "description": "After this number of <b>days</b>, users will be required to set a new passwords. If you do not want passwords to expire, set this to 0."
+          }
+        },
+        "password_policy": {
+          "heading": "Password policy",
+          "description": "Passwords will need to meet the requirements specified below. By default, Kayako will prevent your users from using weak and common word passwords (such as <i>password1</i> and <i>abc123</i>).",
+          "minumum_length": {
+            "title": "Minimum password length"
+          },
+          "minumum_numbers": {
+            "title": "Minimum numbers"
+          },
+          "minumum_symbols": {
+            "title": "Minimum symbols"
+          },
+          "require_mixed_case": {
+            "title": "Require a mixed case",
+            "options": {
+              "0": "No",
+              "1": "Yes"
+            }
+          },
+          "maximum_consecutive_characters": {
+            "title": "Maximum consecutive characters",
+            "description": "(0 for unlimited)"
+          }
+        },
+        "ip_restrictions": {
+          "heading": "IP restrictions",
+          "description": "You can restrict access to the agent area to specific IP addresses. Users who are not connected to the network IP addresses specified here will not be able to log in to the agent area.",
+          "description2": "You can list multiple IP addresses separated by a new line. Each entry can be a full IP address (192.123.123.123), an IP address range (192.123.123.0-192.123.123.123) or a subnet mask 192.168.123.0/25)."
+        },
+        "html_content": {
+          "heading": "HTML content",
+          "title": "Allow potentially unsafe HTML in Help Center articles",
+          "description": "Allowing unsafe HTML (such as <script> and <iframe>) is a potential security risk, as it may allow your agents to embed unsafe code into Help Center articles. By default, Kayako will strip out any potentially unsafe tags. However, you may need to use tags like these to embed forms and other rich media in your articles, in which case you may consider enabling this setting."
+        }
+      },
+      "customers": {
+        "authentication": {
+          "heading": "Authentication",
+          "mode": {
+            "title": "Customer authentication mode",
+            "options": {
+              "internal": "Standard Kayako login",
+              "jwt": "Single sign-on (JWT)"
+            },
+            "description": "The way your customers will be authenticated when logging in to the Help Center."
+          },
+          "twitter": {
+            "title": "Log in via X",
+            "description": "Allow users to log in to the Help Center using their X account."
+          },
+          "facebook": {
+            "title": "Log in via Facebook",
+            "description": "Allow users to log in to the Help Center using their Facebook account."
+          },
+          "google": {
+            "title": "Log in via Google",
+            "description": "Allow users to log in to the Help Center using their Google account."
+          }
+        },
+        "sso": {
+          "heading": "SSO (JWT)",
+          "description": "Single sign-on in Kayako works by sending your users to a remote system to be authenticated. This system then sends the user back to Kayako with instructions to automatically log them in. JWT (JSON Web Tokens) is the protocol used to securely communicate that authentication information between Kayako and your remote system.",
+          "login_url": {
+            "title": "Remote login URL",
+            "description": "This is the URL your customers will be redirected to when they try to access the customer's area if they’re not already authenticated. This is where remote authentication will take place."
+          },
+          "logout_url": {
+            "title": "Remote logout URL",
+            "description": "This is the URL your customers will be taken to when they log out of the customer's area. This is where they’ll be logged out using your remote authentication routine."
+          },
+          "shared_secret": {
+            "title": "Shared SSO secret",
+            "description": "This is the secret token that’s shared between Kayako and your remote authentication service. This should be kept secret - with it, someone could authenticate themselves to your Kayako."
+          },
+          "service_name": {
+            "title": "Remote system name",
+            "description": "This is a short, descriptive name for your remote authentication service. For example, if you’re authenticating using the user identities from your company’s website, you could call it ‘Website’.",
+            "notice": "IMPORTANT: If you’re using the same remote service for agents and customers, this field must be exactly the same for both."
+          }
+        },
+        "security_policy": {
+          "heading": "Security policy",
+          "session_expiry": {
+            "title": "Session expiry",
+            "description": "Users will be automatically logged out after this many hours of inactivity."
+          },
+          "max_login_attempts": {
+            "title": "Maximum number of login attempts",
+            "description": "After this number of failed logins, Kayako will prevent further login attempts for 2 minutes, then 4 minutes, then 8 minutes and so on."
+          },
+          "password_expiry": {
+            "title": "Password expiry",
+            "description": "After this number of <b>days</b>, users will be required to set a new passwords. If you do not want passwords to expire, set this to 0."
+          }
+        },
+        "password_policy": {
+          "heading": "Password policy",
+          "description": "Passwords will need to meet the requirements specified below. By default, Kayako will prevent your users from using weak and common word passwords (such as <i>password1</i> and <i>abc123</i>).",
+          "minumum_length": {
+            "title": "Minimum password length"
+          },
+          "minumum_numbers": {
+            "title": "Minimum numbers"
+          },
+          "minumum_symbols": {
+            "title": "Minimum symbols"
+          },
+          "require_mixed_case": {
+            "title": "Require a mixed case",
+            "options": {
+              "0": "No",
+              "1": "Yes"
+            }
+          },
+          "maximum_consecutive_characters": {
+            "title": "Maximum consecutive characters",
+            "description": "(0 for unlimited)"
+          }
+        }
+      }
+    },
+    "users": {
+      "registration": {
+        "heading": "User registration",
+        "allow_requests_from_unregistered": {
+          "title": "Allow new conversations from unregistered users",
+          "description": "When this is disabled, any incoming conversations from unregistered users will be suspended by Kayako."
+        },
+        "require_captcha": {
+          "title": "Require CAPTCHA for new registrations",
+          "description": "Kayako will ask the user registering in the Help Center to complete a simple CAPTCHA, provided by reCAPTCHA. This helps prevent automated spam registrations."
+        },
+        "email_whitelist": {
+          "title": "Email safelist",
+          "description": "Users with email addresses that match emails or email domains in the safelist will be allowed to register and Kayako will accept incoming email from them, even if they are blocked in the blocklist.  Specify full email addresses (e.g. hello@brewfictus.com) or email domains (e.g. brewfictus.com), each separated by a new line."
+        },
+        "email_blacklist": {
+          "title": "Email blocklist",
+          "description": "Users with email addresses that match emails or email domains in the blocklist will be prevented from registering and any incoming email messages from matching email addresses will be suspended. You can enter email addresses and domains separated by a new line, or use * as a wildcard to blocklist everything and enable the safelist."
+        }
+      }
+    }
+  },
+  "sla": {
+    "title": "SLAs",
+    "description": "Let’s get proactive! Use SLAs (service level agreements) to set and measure targets unique to your business, such as reply times or giving certain customers a bit of extra TLC. Create more visibility when problems arise while also keeping your team engaged and focused on their goals.",
+    "description2": "Set up your SLAs now or {link}.",
+    "description_link": "learn more about them",
+    "service_level_agreements": "SLAs",
+    "buttons": {
+      "add_new": "New SLA"
+    },
+    "enabled": {
+      "message": "SLA enabled successfully"
+    },
+    "disabled": {
+      "message": "SLA disabled successfully"
+    },
+    "delete": {
+      "success_message": "SLA deleted successfully"
+    },
+    "headings": {
+      "edit": "SLAs / {title}",
+      "new": "SLAs / New"
+    },
+    "edit": {
+      "details": "SLA details",
+      "title": "SLA title",
+      "title_placeholder": "e.g. Enterprise plan customers",
+      "description": "Description",
+      "is_enabled": "SLA is enabled",
+      "is_disabled": "SLA is disabled",
+      "filters": {
+        "heading": "Apply this SLA to conversations which match the following",
+        "description": "This SLA will apply to conversations which match the conditions you specify below."
+      },
+      "targets": {
+        "heading": "Targets",
+        "description": "Specify goals for each metric across different conversation priorities.",
+        "no_priority": "No priority set",
+        "units": {
+          "minutes": "minutes",
+          "hours": "hours",
+          "days": "days"
+        },
+        "first_reply_time": "First reply time",
+        "next_reply_time": "Next reply time",
+        "resolution_time": "Resolution time"
+      },
+      "operational_hours": {
+        "description": "Specify whether these metrics will be measured according to your business hours or to calendar hours (24 hours a day).",
+        "title": "Operational hours",
+        "business_hours": "Business hours",
+        "calendar_hours": "Calendar hours"
+      },
+      "note": "When conversations are set to certain statuses, SLA timers may pause (for example, while you are waiting to hear back from the customer). This behaviour can be configured under status settings."
+    },
+    "labels": {
+      "confirm_delete": "Delete SLA",
+      "delete_confirmation": "Are you sure you wish to delete this SLA?"
+    }
+  },
+  "facebook": {
+    "headings": {
+      "index": "Facebook"
+    },
+    "description": "Listen and respond to your fans through Facebook with Kayako. Create conversations with your customers through your Pages. Kayako captures any incoming messages and turn them into new conversations or include them in existing ones.",
+    "description2": "{link}.",
+    "description_link": "Learn more about connecting to Facebook",
+    "buttons": {
+      "create_account": "Connect a new page"
+    },
+    "enabled": {
+      "message": "Facebook page enabled successfully"
+    },
+    "disabled": {
+      "message": "Facebook page disabled successfully"
+    },
+    "deleted": {
+      "message": "Facebook page disconnected successfully"
+    },
+    "connection_lost": "connection lost",
+    "reconnect": "Reconnect",
+    "cancel": "Cancel",
+    "add_pages": "Connect Page",
+    "save": "Save",
+    "no_pages": "No pages found",
+    "see_facebook_account": "Don’t see your Facebook page?",
+    "connect_facebook_account": "Connect your Facebook account",
+    "edit": {
+      "heading": "Facebook / @{pageTitle}"
+    },
+    "heading": {
+      "page_settings": "Page settings"
+    },
+    "label": {
+      "brand": "Brand"
+    },
+    "help": {
+      "brand": "Kayako will link any conversations created as a result of events over this channel account to this brand."
+    }
+  },
+  "email": {
+    "unverified": "Unverified Addresses",
+    "title": "Email",
+    "description": "Talk to your customers on their preferred medium, from your preferred email address. For every email address you add, Kayako will convert all incoming messages into new conversations, or add the message existing ones, to create a clean and organized unified inbox.",
+    "description2": "Add your email addresses here, or {link}.",
+    "description_link": "learn more about the email channel",
+    "tabs": {
+      "mailboxes": "Addresses",
+      "settings": "Settings"
+    },
+    "headings": {
+      "index": "Email",
+      "settings": "Email / Settings"
+    },
+    "buttons": {
+      "add_mailbox": "New address"
+    },
+    "enabled": {
+      "message": "Email enabled successfully"
+    },
+    "disabled": {
+      "message": "Email disabled successfully"
+    },
+    "deleted": {
+      "message": "Email deleted successfully"
+    },
+    "default": {
+      "message": "Email successfully made default"
+    },
+    "settings": {
+      "heading": {
+        "receiving_email": "Receiving email",
+        "sending_email": "Sending email"
+      },
+      "wildcard_email": {
+        "title": "Wildcard email address",
+        "description": "Kayako will catch email sent to any variation of support@{domain} (such as hello@{domain}, marypoppins@{domain}), even if there isn’t a corresponding address for the destination address. This may be useful if you wish to catch email where users mistype your email address, such as suport@{domain}."
+      },
+      "html_replies": {
+        "title": "Show replies in original format (BETA)",
+        "description": "Kayako shows replies in plain text by default. Turning this setting on will render replies in its original (HTML or Plain) form. This may include styling, tables, lists etc"
+      },
+      "personalize_replies": {
+        "title": "Personalize the ‘from’ in email replies",
+        "description": "Kayako will use your agent’s personal name as the ‘From’ name for email replies to your customers. For example, if you reply to an email sent to support@{domain}, the ‘From’ email header will look like this: “\\{Current Agent’s Name\\} <support@{domain}>”."
+      },
+      "custom_dkim": {
+        "title": "Use DKIM to authenticate emails sent using your custom domain name",
+        "description": "Kayako supports DKIM for custom email domains. For example, if you added support@yourdomain.com as an address in Kayako, you can set up DKIM on yourdomain.com to authenticate {domain} as an approved sender of email on behalf of yourdomain.com. Only enable this setting once you have completed your DKIM setup."
+      }
+    },
+    "create": {
+      "title": "Email / New"
+    },
+    "edit": {
+      "title": "Email / {address}",
+      "heading": {
+        "account_settings": "Account settings"
+      },
+      "address": {
+        "title": "Address",
+        "description": "You can create any number of anything-you-like@{domain} addresses, or you can use your own custom email addresses, such as support@yourdomainname.com, provided you can forward email sent to that address to Kayako."
+      },
+      "brand": {
+        "title": "Brand",
+        "description": "Kayako will link messages sent to {address} with this brand."
+      }
+    },
+    "new": {
+      "brand": {
+        "description": "Kayako will link messages sent to this address with this brand."
+      }
+    },
+    "dns": {
+      "title": "DNS Configuration",
+      "new": "We will check DNS configuration once this mailbox is created.",
+      "type": "Type",
+      "domain": "Domain",
+      "expected_value": "Expected Value",
+      "actual_value": "Actual Value",
+      "status": "Status",
+      "valid": "Valid",
+      "invalid": "Invalid",
+      "reload": "Refresh",
+      "error": "Failed to load DNS configuration.",
+      "info": "If you’re not sure what to do with this information, we suggest you show the table above to whoever manages your DNS."
+    }
+  },
+  "messenger": {
+    "title": "Configure",
+    "page_title": "Configure Messenger",
+    "tabNumbers": {
+      "one": "1. ",
+      "two": "2. ",
+      "three": "3. ",
+      "four": "4. ",
+      "five": "5. "
+    },
+    "confirm_lose_changes": "You have unsaved changes for your messenger. Are you sure you want to discard these changes?",
+    "tabs": {
+      "brandSelection": {
+        "title": "Brand",
+        "description": "Kayako Messenger is the best way to talk live with your customers on your website and in your web and mobile apps. Unlike clunky live chat widgets and forms, Kayako Messenger is modern, beautiful and fast.",
+        "brand_label": "Brand",
+        "brand_helptext": "You can customize a unique Kayako Messenger experience for each of your brands. Select the one you wish to customize here.",
+        "next_step": "Next - customize"
+      },
+      "customize": {
+        "number": "1.",
+        "title": "Customize",
+        "description": "Kayako Messenger is the best way to talk live with your customers on your website and in your web and mobile apps. Unlike clunky live chat widgets and forms, Kayako Messenger is modern, beautiful and fast.",
+        "title_label": "Home screen title",
+        "title_default_value": "Hello! 👋",
+        "title_helptext": "Introduce your Kayako Messenger to your customers with a friendly title. They'll see the home screen when they first open Messenger.",
+        "welcome_label": "Home screen welcome text",
+        "welcome_default_value": "Welcome to {brand}. Let's chat — start a new conversation below.",
+        "welcome_helptext": "You can optionally add some extra text under the home screen title.",
+        "background_label": "Background color",
+        "texture_label": "Background texture",
+        "color_label": "Accent color",
+        "color_label_helptext": "The accent color is used for things like buttons and toggles on your Messenger.",
+        "brand_label": "Brand",
+        "brand_helptext": "Link this Messenger to a particular brand, so your customers get the right experience when starting conversations or accessing Help Center content through Messenger.",
+        "next_step": "Next — choose apps",
+        "response_time": {
+          "label": "Response time",
+          "help_text": "Tweak response time expectation for your customers when they start a new conversation",
+          "currently": "It is currently",
+          "options": {
+            "reply_in_few_minutes": "Usually replies in a few minutes",
+            "reply_in_under_minutes": "Usually replies in under {minutes} {minutes, plural, one {minute} other {minutes}}",
+            "reply_in_under_hour": "Usually replies within an hour",
+            "reply_in_few_hours": "Usually replies within a few hours",
+            "reply_in_a_day": "Typically responds in a day",
+            "reply_asap": "Will get back to you as soon as they can"
+          }
+        }
+      },
+      "widgets": {
+        "number": "2.",
+        "title": "Apps",
+        "description": "You can add apps to the Kayako Messenger home screen provide helpful content to your customers before they need to start a conversation.",
+        "home_screen_feedback": "Let us know what else you'd like to see on the home screen.",
+        "heading": "Manage apps",
+        "online_team_title": "Recently active teammates",
+        "online_team_description": "Put a face to your Messenger and show the avatars of recently active teammates to your customers.",
+        "online_team_description_release-messenger-link-business-hours": "Put a face to your Messenger and show the avatars of recently active teammates to your customers. This app will only be shown within your business hours.",
+        "articles_title": "Help Center articles",
+        "articles_description": "Display the three most recent articles from the Help Center section you select.",
+        "twitter_title": "Recent Tweets",
+        "twitter_description": "Share recent tweets from one of your connected X accounts.",
+        "twitter_not_connected": "No X accounts connected",
+        "next_step": "Next — Get embed code",
+        "next-step-release-messenger-persistent": "Next - options"
+      },
+      "options": {
+        "title": "Options",
+        "description": "Kayako Messenger intelligently sets your customer's expectations. They can see when you'll be available, and when they message you they'll know how long they'll need to wait for a reply.",
+        "response_time": {
+          "label": "Response time",
+          "help_text": "Inside of your business hours, Kayako Messenger will let your customers know when they can expect a response from your team. Configure how Messenger does that below.",
+          "auto_tooltip_text": "Kayako learns your team's typical reponse time",
+          "smart_tooltip_text": "Kayako learns your team’s response times based on replies to conversations made within your business hours.",
+          "currently": "It is currently",
+          "options": {
+            "auto": "Auto",
+            "smart_mode": "Smart response time",
+            "it_is_currently": "It is currently ",
+            "reply_in_few_minutes": "Typically replies in a few minutes",
+            "reply_in_under_minutes": "Typically replies in under {minutes} {minutes, plural, one {minute} other {minutes}}",
+            "reply_in_under_hour": "Typically replies within an hour",
+            "reply_in_few_hours": "Typically replies in a few hours",
+            "reply_in_a_day": "Typically replies in a day",
+            "reply_asap": "Will reply as soon as they can"
+          }
+        },
+        "business_hours": {
+          "label": "Business hours",
+          "disabled": "-",
+          "help_text": "Kayako Messenger will tell your customers when your team is available according to the business hours you set below. Outside of these hours, Messenger will tell customers when you'll be back. Customers will still be able to message you, and your team can get back to them later.",
+          "config_link": "You can configure business hours here."
+        },
+        "hc_suggestions": {
+          "label": "Help Center article suggestions",
+          "disabled_text": "You must have at least 10 public Help Center articles to use this feature.",
+          "help_text": "Suggest up to three relevant articles based on keywords in the customer's question."
+        },
+        "save_configuration": "Save configuration",
+        "save_success": "Settings saved successfully"
+      },
+      "embed": {
+        "number": "3.",
+        "title": "Embed code",
+        "description": "Now that you've customized your Kayako Messenger, you need to embed the following JavaScript code in your web pages and web apps - wherever you want to display Kayako Messenger.",
+        "embed_label": "Embed code",
+        "embed_helptext": "Embed this code on your web pages (just before the &lt;/body&gt; tag) wherever you want to display Kayako Messenger.",
+        "embed_button_text": "Copy embed code",
+        "publish_title": "Kayako Messenger in Help Center",
+        "publish_button": "Publish to {brand} Help Center",
+        "publish_helptext": "This will publish this embed code and the customizations you have made to your Help Center.",
+        "publish_success": "Help Center has been updated",
+        "install_on_web_label": "Install Kayako Messenger on the web",
+        "install_on_web_help_text": "Embed this code on your web pages (just before the </body> tag) wherever you want to display Kayako Messenger.",
+        "sdk_label": "Add Kayako Messenger to your mobile apps",
+        "sdk_help_text": "Use Kayako Messenger's native SDKs for iOS and Android to provide your customers with a beautiful mobile messaging experience.",
+        "sdk_button_text": "Check out the SDKs"
+      }
+    },
+    "preview": {
+      "presence_title": "We are here to help",
+      "presence_online": "is online",
+      "presence_online_plural": "are online",
+      "articles_title": "Product updates",
+      "tweets_title": "Recent Tweets",
+      "no_tweets": "No tweets to display.",
+      "placeholder": "Type something...",
+      "button_text": "Start a conversation",
+      "messenger_by": "Messenger by",
+      "kayako": "Kayako",
+      "label": "Preview"
+    },
+    "identity_verification": {
+      "title": "Identity verification",
+      "title_breadcrumbs": "Identity verification",
+      "buttons": {
+        "copy": "Copy token"
+      },
+      "tabs": {
+        "web": "Web",
+        "android": "Android",
+        "ios": "iOS"
+      },
+      "notifications": {
+        "token_update": "Token updated successfully",
+        "error": "Failed to update token"
+      },
+      "web": {
+        "heading": "Web",
+        "description": "Continue conversations in Messenger over devices and applications. Identify your users as soon as they log into your application.",
+        "steps": {
+          "heading": "How to identify Web application users",
+          "description": "Identifying your web application users is as simple as placing a secure identification call to Messenger. Just copy the device token and pass that along with the steps to your development team to get the ball rolling."
+        },
+        "step_1": {
+          "heading": "Place an identify() call to Messenger after your users have logged in to identify them in Kayako",
+          "description_item_1": "If you just want to identify user, set 'name' and 'email', and pass 'signature' as an empty string.",
+          "description_item_2": "If you also want to make all existing user conversations available in Messenger, you will need to send a valid 'signature'. This lets you share conversations across devices.",
+          "description_item_3": "You can generate signature on server side and hash it using SHA256 HMAC encryption to return all conversations linked to the identified user. Timestamp should be unix timestamp in seconds."
+        },
+        "step_2": {
+          "heading": "Place a forget() call before logging out your users to forget their identity",
+          "comment": "Apply your logout mechanism by a callback"
+        },
+        "token_label": "Web device token",
+        "external_article": {
+          "text": "Learn more on calling Messenger methods.",
+          "link_text": " Read docs &#8594;"
+        }
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy Links",
+    "description": "Here should be all descriptions for every type of privacy policy links.",
+    "buttons": {
+      "save": "Save",
+      "add_new_privacy_policy": "Add new privacy policy"
+    },
+    "types": {
+      "cookie": "Cookie",
+      "register": "Register"
+    },
+    "headings": {
+      "index": "Privacy Policy Links"
+    },
+    "confirm_delete": {
+      "title": "Delete Privacy policy",
+      "body": "Are you sure you want to delete this Privacy Policy URL?"
+    },
+    "create": {
+      "title": "New / Privacy Policy"
+    },
+    "form": {
+      "url": "Url",
+      "url_description": "Url for privacy policy",
+      "choose_privacy_types": "Choose privacy policy type",
+      "choose_locale": "Choose locale of privacy policy",
+      "make_default": "Make this default Privacy Polict URL"
+    },
+    "privacy_types":{
+      "cookie": "Cookie",
+      "register": "Register"
+    }
+  },
+  "localization": {
+    "title": "Localization",
+    "description": "Deliver a tailored customer experience on a worldwide scale with localization. Support as many languages as your customers need, along with easy translation for your agents. Under Settings, you can select your default language, time zone preferences, and time format for newly created users. Enabling a language makes it available to your customers, and you'll be able to localize your content (such as Help Center articles and custom field titles) into it.",
+    "description2": "{link}.",
+    "description_link": "Learn more about localization",
+    "description3": "Interface translations for your Help Center are currently in beta. Try them out, and provide your feedback about the language style and tone: ",
+    "description_email": "{email}",
+    "headings": {
+      "index": "Localization"
+    },
+    "localized": "(Officially supported)",
+    "enabled": {
+      "message": "Language enabled successfully"
+    },
+    "disabled": {
+      "message": "Language disabled successfully"
+    },
+    "tabs": {
+      "languages": "Languages",
+      "settings": "Settings"
+    },
+    "settings": {
+      "title": "Settings",
+      "heading": {
+        "account_defaults": "Account defaults"
+      },
+      "default_language": {
+        "title": "Language",
+        "description": "Specify the default language for your Kayako. Users can still change their own language from their user profile and in the Help Center."
+      },
+      "timezone": {
+        "title": "Timezone",
+        "description": "Choose the default timezone for your Kayako. Users can still change their own timezone from their user profile."
+      },
+      "time_format": {
+        "title": "Time format",
+        "description": "Select whether Kayako timestamps should be displayed in the 12- or 24-hour format."
+      }
+    }
+  },
+  "account": {
+    "limit": {
+      "reached": "Upgrade to add more"
+    },
+    "plans": {
+      "title": "Plan",
+      "compare": {
+        "title": "Compare Plans"
+      },
+      "select": {
+        "title": "Choose Plans"
+      },
+      "upgrade": "Update Subscription",
+      "upgradeCancel": "Cancel",
+      "seats": {
+        "title": "No. Of Agents:",
+        "cannotIncrease": "You have reached the limit of seats allowed by this plan. Please contact support for available options"
+      },
+      "plan": {
+        "cannotSwitch": "Cannot switch plan. The current number of agents on your account are exceeding the limit of agents on new plan"
+      },
+      "term": {
+        "cannotSwitch": "{plan} plan is not available for {term} billing",
+        "savings": {
+          "title": "save",
+          "term": "/year"
+        }
+      },
+      "subscription": {
+        "updated": "Your plan has been updated successfully",
+        "title": "Subscription",
+        "key": "per {term, select, MONTH {month} ANNUAL {year}}"
+      },
+      "terms": {
+        "MONTH": "Billed monthly",
+        "ANNUAL": "Billed annually"
+      },
+      "collaborators": "{count, plural, =1 {# Collaborator} =999 {Unlimited Collaborators} other {# Collaborators}}",
+      "priceFor": {
+        "flatFee": "up to {seats} agents",
+        "perAgent": "per agent / mo",
+        "perCollaborator": "per collab / mo"
+      },
+      "notAvailable": "not available",
+      "renewal": {
+        "data": {
+          "title": "Renewal date"
+        }
+      },
+      "discount": {
+        "title": "Discount"
+      },
+      "paying": {
+        "title": "Paying now"
+      },
+      "upgrade_to_create_new_roles": "Upgrade to create new roles"
+    }
+  },
+  "brands": {
+    "title": "Brands",
+    "description": "Consistency is key to memorable customer service. Bring the whole organization onto Kayako to deliver one tailored customer experience across the board. De-duplicate effort and banish the back-and-forth across brands and teams. Create diverse customer experiences for your unique customer types, whether that’s by product type or multiple divisions.",
+    "description2": "Each brand has its own help center and email templates, and can be linked to particular channels (such as X accounts and email addresses).",
+    "description3": "{link}.",
+    "description_link": "Learn more about multi-brand support in Kayako",
+    "headings": {
+      "index": "Brands"
+    },
+    "enabled": {
+      "message": "Brand enabled successfully"
+    },
+    "disabled": {
+      "message": "Brand disabled successfully"
+    },
+    "delete": {
+      "message": "Deleting a Brand will delete its Help Center, all its content and all of your template customizations. This is not reversible. Are you sure you wish to continue?"
+    },
+    "deleted": {
+      "message": "Brand deleted successfully"
+    },
+    "default": {
+      "message": "Brand successfully made default"
+    },
+    "buttons": {
+      "add_brand": "Create a new Brand"
+    },
+    "create": {
+      "title": "Brands / New"
+    },
+    "edit": {
+      "title": "Brands / {name}",
+      "heading": {
+        "brand_settings": "Brand settings",
+        "domain": "Domain",
+        "alias": "Custom domain",
+        "custom_ssl": "Custom SSL"
+      },
+      "name": {
+        "title": "Brand name",
+        "placeholder": "e.g. Brewfictus USA"
+      },
+      "locale": {
+        "title": "Language",
+        "description": "This is the default language that will be used for this Brand, if a user has not specified their own."
+      },
+      "domain": {
+        "description": "Each one of your Brands has its own unique domain name and its Help Center. To start with, every Brand has a .kayako.com domain. After you’ve got a .kayako.com name for your Brand, you can set up a custom domain for the Brand too.",
+        "description2": "You can configure a custom domain name and custom SSL certificate for this new Brand after you have created it.",
+        "invalid_characters": "A domain should contain letters and/or numbers and can contain dashes",
+        "too_short": "Choose a name that has 3 or more characters",
+        "available": ":-) this domain name is available!",
+        "not_available": ":-( this domain is not available, try another one"
+      },
+      "alias": {
+        "description": "You can map your own domain name to the Kayako domain above for this Brand. This is called <em>host mapping</em> and involves some DNS configuration work. If you aren’t able to do this configuration now, you can always add a custom domain to this Brand later.",
+        "placeholder": "e.g. support.brewfictus.com"
+      },
+      "dns": {
+        "check": "Check DNS configuration",
+        "valid": "Looks good from here!",
+        "invalid": "Unfortunately we couldn’t validate that {alias} name has been correctly mapped to {subDomain}.{domain}. If you’re sure it has, you can proceed. If not, please contact your system administrator or Kayako support for assistance."
+      },
+      "ssl": {
+        "description": "All .kayako.com instances are secured by SSL (https) by default. However, the Kayako SSL certificate is not valid for custom subdomains, i.e. 'support.yourcompany.com'. If you want to use a custom subdomain for your Kayako Help Center, you are required to provide your own SSL certificate."
+      },
+      "ssl_certificate_not_set": "SSL certificate not set",
+      "ssl_certificate_set": "SSL certificate set",
+      "ssl_certificate_replace": "Replace certificate",
+      "set_ssl_certificate": "Set certificate",
+      "ssl_certificate": {
+        "title": "SSL certificate"
+      },
+      "private_key": {
+        "title": "Private key",
+        "description": "Make sure your private key has not been encrypted with a passphrase (otherwise, we won’t be able to use it to secure connections with your custom domain name)."
+      }
+    }
+  },
+  "email_templates": {
+    "title": "Email templates"
+  },
+  "oauthapps": {
+    "title": "API / OAuth apps",
+    "description": "OAuth is an authentication protocol that keeps the connections between Kayako and external applications secure. Register your app here to generate an OAuth access key and secret, which the app can use to access Kayako securely. {link}.",
+    "description_link": "Learn more about enabling OAuth access to Kayako",
+    "last_used_at": "Last used on {date}",
+    "never_used": "Never used",
+    "delete": {
+      "message": "Deleting means your users will not be able to access their Kayako accounts through {name}. This is not reversible. Are you sure you want to continue?",
+      "button": "Continue"
+    },
+    "buttons": {
+      "add": "New OAuth app",
+      "done": "Done"
+    },
+    "new": {
+      "title": "API / OAuth apps / New"
+    },
+    "scopes": {
+      "users": {
+        "title": "Users",
+        "description": "Users and their identities, organizations and their contacts, teams, and related custom fields."
+      },
+      "conversations": {
+        "title": "Conversations",
+        "description": "Conversations, macros, satisfaction ratings, custom fields, etc."
+      },
+      "insights": {
+        "title": "Insights",
+        "description": "Reporting metrics for teams, conversations, help center activity, and SLAs."
+      },
+      "search": {
+        "title": "Unified search",
+        "description": "Indirect access to users, conversations, and other objects."
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "Roles and permissions, settings, brands and templates, automations, SLAs and more."
+      }
+    },
+    "scope_levels": {
+      "write": "Full access",
+      "read": "Read-only"
+    },
+    "edit": {
+      "title": "API / OAuth apps / {name}",
+      "heading": {
+        "application": "Application",
+        "logo": "Logo",
+        "credentials": "Credentials",
+        "author": "Creator",
+        "scopes": "Scopes",
+        "oauth": "OAuth"
+      },
+      "credentials": {
+        "notice": "Save a local copy of these. You'll need to add them to the app so it can use them to access Kayako."
+      },
+      "name": {
+        "title": "Name"
+      },
+      "url": {
+        "title": "Website",
+        "description": "Add a link to the app's website, where users can go to download and find out more information."
+      },
+      "description": {
+        "title": "Description",
+        "description": "Add a brief description of the app to display in user-facing authorization screens. 200 characters max."
+      },
+      "logo": {
+        "button": {
+          "upload": "Upload",
+          "change": "Change"
+        },
+        "description": "Help users identify the application with a logo. We recommend a logo size of 100px x 100px."
+      },
+      "key": {
+        "title": "Consumer Key",
+        "description": "Include this key in any authorization requests made by the app."
+      },
+      "secret": {
+        "title": "Consumer Secret",
+        "description": "This secret key is only shown once - save a copy of it now. Make sure this secret is never human-readable in the app."
+      },
+      "scopes": {
+        "description": "Define the types of data the application can access, by selecting a particular scope.",
+        "all": "All scopes (unlimited access)",
+        "specified": "Specified scopes"
+      },
+      "author": {
+        "title": "Name",
+        "description": "Add the name of the company, organization, or individual who built the application."
+      },
+      "author_url": {
+        "title": "Website",
+        "description": "Specify a URL to the company, organization, or individual's web page, if any."
+      },
+      "callback_url": {
+        "title": "Callback URL",
+        "description": "Enter the URL that users will be redirected to, once they have successfully authorized the app. If you're not sure what to put here, ask the app developers. Leave this field blank if you don't want to restrict which redirect URLs the application can use."
+      },
+      "upload": {
+        "failure": "Failed to upload logo image",
+        "incorrect_file_type": "<strong>{filename}</strong> isn't allowed, please try again with a JPG, GIF, or PNG file."
+      }
+    }
+  },
+  "manage": {
+    "brands": {
+      "edit": {
+        "tabs": {
+          "settings": "Settings",
+          "email_templates": "Email templates"
+        },
+        "templates": {
+          "description": "You can customize Kayako’s email templates to match your brand’s look and feel. Email templates support placeholders can be customized using the Kayako template syntax.",
+          "heading": {
+            "reply": "Reply",
+            "notification": "Notification",
+            "satisfaction_survey": "Satisfaction survey"
+          },
+          "reply": {
+            "description": "Applies to any conversation reply that’s emailed to a customer."
+          },
+          "notification": {
+            "description": "Applies to any email Kayako sends automatically, such as email verifications, password resets, and notifications from triggers or monitors."
+          },
+          "satisfaction_survey": {
+            "description": "Applies to the surveys sent by the ‘Satisfaction Survey’ automation action."
+          }
+        }
+      }
+    }
+  },
+  "engagements": {
+    "title": "Engagement rules",
+    "description": "Recognize when a customer needs help. Proactively start conversations with engagement messages based on your customer’s history and behavior, then direct them to the most appropriate team or agents for real-time support.",
+    "description2": "{link}",
+    "description_link": "Learn more about proactive engagement",
+    "headings": {
+      "new": "Engagement rules / New",
+      "edit": "Engagement rules / {title}"
+    },
+    "heading": {
+      "details": "Rule details"
+    },
+    "labels": {
+      "title": "Rule title",
+      "title_placeholder": "e.g. Engage user",
+      "confirm_delete": "Delete engagement",
+      "delete_confirmation": "Are you sure you wish to delete this engagement?"
+    },
+    "buttons": {
+      "add": "New engagement rule"
+    },
+    "conditions": {
+      "heading": "When these conditions are met",
+      "description": "Rules are used to automatically perform actions when certain conditions are met. If the rule’s conditions match, the rule will fire and the actions further down in the page will be executed.",
+      "description_link": "Find out about visitor engagement rules."
+    },
+    "preview": {
+      "reply_to": "Reply to {name}",
+      "time": "Just now",
+      "message_placeholder": "This is a placeholder text. This will go away as soon as you start typing.",
+      "sender_name_placeholder": "John Doe",
+      "avatar_alt": "A"
+    },
+    "actions": {
+      "heading": "Send the following message",
+      "info": "If the conditions match, the rules will fire and the following message will appear to the customer.",
+      "assign": "Assign all conversations to ",
+      "labels": {
+        "from": "From",
+        "message": "Message"
+      }
+    },
+    "notifications": {
+      "success": {
+        "engagement_enabled": "Engagement enabled successfully",
+        "engagement_disabled": "Engagement disabled successfully"
+      },
+      "error": {
+        "toggle_status": "Failed to toggle engagement status ",
+        "reorder": "Failed to reorder engagements"
+      }
+    },
+    "index": {
+      "headers": {
+        "rules": "Rules",
+        "delivered": "Delivered",
+        "clicked": "Clicked",
+        "conversations": "Conversations"
+      }
+    }
+  },
+  "knowledgebase": {
+    "all_articles": "All Articles",
+    "my_published_articles": "My Published Articles",
+    "drafts": "Drafts",
+    "title": "Knowledgebase",
+    "new_article": "New Article",
+    "edit_article": "Edit Article",
+    "filters": {
+      "add": "Add Filter",
+      "apply": "Apply",
+      "reset": "Reset Filter",
+      "value_placeholder": "Filter Value",
+      "column": "Column",
+      "operator": "Operator",
+      "value": "Value"
+    },
+    "sidebar": {
+      "create_article": "Create New Article",
+      "all_articles": "All Articles",
+      "my_published_articles": "My Published Articles",
+      "drafts": "Drafts"
+    },
+    "table_headings": {
+      "id": "ID",
+      "title": "Title",
+      "section": "Section",
+      "category": "Category",
+      "brand": "Brand",
+      "created_by": "Created By",
+      "status": "Status",
+      "last_modified": "Last Modified"
+    },
+    "pagination": {
+      "next": "Next ›",
+      "last": "Last »",
+      "previous": "‹ Previous",
+      "first": "« First"
+    },
+    "file_upload": {
+      "choose_files": "Choose files",
+      "drag_and_drop": "or drag and drop files"
+    },
+    "brand": "Brand",
+    "created_by": "Created By",
+    "last_modified":"Last Modified on",
+    "content": "Content",
+    "attachments": "Attachments",
+    "tags": "Tags",
+    "download_attachment": "Download",
+    "view_attachment": "View",
+    "article_title_placeholder": "Add a title...",
+    "tags_label": "Tags",
+    "article_settings": {
+      "status": "Status",
+      "published": "Published",
+      "draft": "Draft",
+      "section": "Show in section",
+      "author": "Author",
+      "allow_comments": "Allow comments",
+      "pin_article": "Pin this article on top of the section",
+      "search_keywords": "Search keywords",
+      "search_keywords_help": "Add additional words or phrases, separated by commas, that your readers might use to search for this article.",
+      "language": "Language"
+    },
+    "trasharticles": {
+      "button": "Trash",
+      "confirmation": "Are you sure you want to delete the selected Articles?",
+      "failed": "Failed to delete the selected Articles"
+    },
+    "errors": {
+      "title_required": "Article title is required for {localeLanguage}",
+      "content_required": "Article content is required for {localeLanguage}",
+      "wait_for_upload": "Please wait for file(s) to upload",
+      "file_too_large": "File is too large.",
+      "file_upload_error": "Unable to upload the file. Please try again.",
+      "key_required": "Column is required",
+      "operator_required": "Operator is required",
+      "value_required": "Value is required",
+      "fetch_articles": "Failed to fetch articles. Please try again later."
+    },
+    "loading_articles" : "Loading Articles...",
+    "no_articles": "No Articles Available",
+    "search_section_placeholder": "Search for a section..."
+  }
+}

@@ -1,0 +1,27 @@
+{{#with casesView.viewCount.realtimeChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    events=(hash CHANGE=(action handleCountChange))
+  }}
+{{/with}}
+
+{{#link-to "session.agent.cases.index.view" casesView local-class=(join-classes "item" (if disabled "disabled")) class=qaClass click=(action "refresh")}}
+  {{#if icon}}
+    <div local-class="icon">
+      {{ko-icon color="#BEC4C7" name=icon}}
+    </div>
+  {{/if}}
+
+  <div local-class="text" title="{{casesView.title}}">{{casesView.title}}</div>
+  {{ko-cases-list/sidebar/item/reload-icon
+    isRefreshingCases=isRefreshingCases
+    casesView=casesView
+    currentCachedView=currentCachedView}}
+  {{#if (and (not disabled) viewHasCount)}}
+    {{#if casesView.viewCount.hasKnownAccuracy}}
+      <span local-class="counter {{if isInbox "inbox"}}">
+        {{if hasRelativeAccuracy '~'}}{{casesView.viewCount.count}}
+      </span>
+    {{/if}}
+  {{/if}}
+{{/link-to}}

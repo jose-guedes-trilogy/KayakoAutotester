@@ -1,0 +1,21 @@
+{{#ko-form onSubmit=(perform save) as |form|}}
+  {{#ko-admin/page
+    title=(concat (t "admin.apps.manage.title") " / " app.name)
+    onCancel=onCancel
+    deleteText=(t "admin.apps.manage.actions.uninstall")
+    onDelete=(perform uninstall)
+    buttonText=(t "generic.save")
+  }}
+
+    {{#each prompts as |prompt|}}
+      {{ko-admin/apps/manage/edit/prompt
+        prompt=prompt
+        installedApp=installedApp
+        prompts=installedApp.iprompts
+        app=installedApp.app
+        on-change=(action "updateValue" prompt.key)
+      }}
+    {{/each}}
+
+  {{/ko-admin/page}}
+{{/ko-form}}

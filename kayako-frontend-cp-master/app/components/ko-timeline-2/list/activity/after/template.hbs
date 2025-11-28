@@ -1,0 +1,20 @@
+{{#if action.newValue}}
+  {{#if (or
+    (eq action.field "assigneeagentid")
+    (eq action.field "requesterid")
+  )}}
+    <div local-class="property-avatar">
+      {{#ko-user-avatar size="micro" as |avatar|}}
+        {{avatar.image url=action.newObject.image}}
+      {{/ko-user-avatar}}
+    </div>
+  {{/if}}
+
+  {{#if (eq action.field "casestatusid")}}
+    {{ko-status-pill label=action.newValue type=(ko-contextual-helper caseStatusType this statusId)}}
+  {{else}}
+    {{action.newValue}}
+  {{/if}}
+{{else}}
+  {{t "timeline.property_empty_value"}}
+{{/if}}

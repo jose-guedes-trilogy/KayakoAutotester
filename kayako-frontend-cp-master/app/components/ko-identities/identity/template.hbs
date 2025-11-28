@@ -1,0 +1,20 @@
+{{#power-select
+  options=options
+  onchange=(action "selectItem")
+  triggerClass=(local-class "trigger")
+  triggerComponent="ko-identities/identity/trigger"
+  dropdownClass=(local-class "dropdown")
+  searchEnabled=false
+  extra=(hash
+    identity=identity
+    index=index
+    type=type
+  )
+  as |option|
+}}
+  {{#if (eq option.id "open_profile")}}
+    <a local-class="link" href="https://twitter.com/{{identity.screenName}}" target="_blank" rel="noopener noreferrer">{{option.label}}</a>
+  {{else}}
+    {{option.label}}
+  {{/if}}
+{{/power-select}}

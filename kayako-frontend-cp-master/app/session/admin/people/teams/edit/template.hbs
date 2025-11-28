@@ -1,0 +1,10 @@
+{{ko-admin/team
+  title=(t "admin.teams.headings.edit" title=team.title)
+  team=team
+  editedTeam=editedTeam
+  schema=schema
+  businessHours=businessHours
+  onCancel=(action "redirectToIndex")
+  onDelete=(action "deleted")
+  onSuccess=(action "updated")
+}}

@@ -1,0 +1,141 @@
+{{#ko-form
+  onSubmit=(action "save")
+  onSuccess=onSuccess
+as |form|}}
+  {{#ko-admin/page
+    title=(if brand.isNew (t "admin.brands.create.title") (t "admin.brands.edit.title" name=brand.name))
+    onCancel=onCancel
+    buttonText=(t "generic.save")
+    showFooter=true
+    tabs=tabs
+    isValid=isValid
+  }}
+    {{#ko-admin/forms/group legend=(t "admin.brands.edit.heading.brand_settings")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.brands.edit.name.title"}}{{/ko-form/field/label}}
+
+        {{ko-input placeholder=(t "admin.brands.edit.name.placeholder") qaClass="qa-brand-edit-name" disabled=form.isSubmitting value=editedBrand.name onInput=(action (mut editedBrand.name) value="target.value")}}
+
+        {{ko-form/field/errors errors=editedBrand.errors.name}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field class=(qa-cls 'qa-brand-edit-locale')}}
+        {{#ko-form/field/label}}{{t "admin.brands.edit.locale.title"}}{{/ko-form/field/label}}
+
+        {{ko-select disabled=form.isSubmitting size="medium" selected=editedBrand.locale searchField="nativeName" options=enabledLocales onChange=(action (mut editedBrand.locale))}}
+
+        {{ko-form/field/errors errors=editedBrand.errors.locale}}
+
+        {{#ko-form/field/help}}{{t "admin.brands.edit.locale.description"}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.brands.edit.heading.domain")}}
+      {{#ko-form/field/help}}{{t "admin.brands.edit.domain.description"}}{{/ko-form/field/help}}
+
+      <div local-class="domain">
+        <div local-class="domain-input">
+          {{ko-admin/brands/form/domain-input qaClass="qa-brand-edit-subdomain" value=editedBrand.subDomain disabled=(or (not brand.isNew) form.isSubmitting) domain=editedBrand.domain onInput=(perform checkDomainAvailability)}}
+        </div>
+        {{#if checkDomainAvailability.isRunning}}
+          <div>{{ko-loader}}</div>
+        {{else}}
+          <span local-class="{{checkDomainAvailability.last.value.status}}">{{checkDomainAvailability.last.value.message}}</span>
+        {{/if}}
+      </div>
+
+      {{ko-form/field/errors errors=editedBrand.errors.subDomain}}
+
+      {{#ko-form/field/help}}{{t "admin.brands.edit.domain.description2"}}{{/ko-form/field/help}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.brands.edit.heading.alias")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/help}}{{format-html-message "admin.brands.edit.alias.description"}}{{/ko-form/field/help}}
+
+        <div local-class="alias-container">
+          {{ko-input placeholder=(t "admin.brands.edit.alias.placeholder") qaClass="qa-brand-edit-alias" disabled=(or checkAliasValidity.isRunning form.isSubmitting) value=editedBrand.alias onInput=(action (mut editedBrand.alias) value="target.value")}}
+
+          <div local-class="check-dns-button">
+            {{#ko-button disabled=(or isAliasEmpty checkAliasValidity.isRunning) onClick=(perform checkAliasValidity)}}{{t "admin.brands.edit.dns.check"}}{{/ko-button}}
+          </div>
+
+          {{#if checkAliasValidity.isRunning}}
+            <div>{{ko-loader}}</div>
+          {{/if}}
+        </div>
+
+        {{#if (eq checkAliasValidity.last.value.status "valid")}}
+          <div local-class="dns-valid">{{t "admin.brands.edit.dns.valid"}}</div>
+        {{else if (eq checkAliasValidity.last.value.status "invalid")}}
+          <div local-class="dns-invalid">{{t "admin.brands.edit.dns.invalid" subDomain=editedBrand.subDomain domain=editedBrand.domain alias=checkAliasValidity.last.value.alias}}</div>
+        {{/if}}
+
+        {{ko-form/field/errors errors=editedBrand.errors.alias}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.brands.edit.heading.custom_ssl")}}
+      {{#ko-form/field/help}}{{t "admin.brands.edit.ssl.description"}}{{/ko-form/field/help}}
+
+      {{#if (not settingSsl)}}
+        <div local-class="ssl-label">
+          {{t (if brand.isSslEnabled "admin.brands.edit.ssl_certificate_set" "admin.brands.edit.ssl_certificate_not_set")}}
+          <div local-class="ssl-icon">
+            {{#if brand.isSslEnabled}}
+              <span local-class="ssl-set-icon" class="i-check-circle"></span>
+            {{else}}
+              <span local-class="ssl-not-set-icon" class="i-cross-circle"></span>
+            {{/if}}
+          </div>
+          {{#ko-button qaClass="qa-brand-edit-ssl-edit" onClick=(action "startSettingSsl")}}
+            {{t (if brand.isSslEnabled "admin.brands.edit.ssl_certificate_replace" "admin.brands.edit.set_ssl_certificate")}}
+          {{/ko-button}}
+        </div>
+      {{else}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t "admin.brands.edit.ssl_certificate.title"}}{{/ko-form/field/label}}
+
+          <div local-class="textarea" class="fs-hide">
+            {{ko-input
+              multiline=true
+              monospace=true
+              lines=6
+              size="full"
+              value=editedBrand.sslCertificate
+              qaClass="qa-brand-edit-ssl-certificate"
+              disabled=form.isSubmitting
+              onInput=(action (mut editedBrand.sslCertificate) value="target.value")
+            }}
+          </div>
+
+          {{ko-form/field/errors errors=editedBrand.errors.sslCertificate}}
+        {{/ko-form/field}}
+
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t "admin.brands.edit.private_key.title"}}{{/ko-form/field/label}}
+          {{#ko-form/field/help}}{{t "admin.brands.edit.private_key.description"}}{{/ko-form/field/help}}
+
+          <div local-class="textarea" class="fs-hide">
+            {{ko-input
+              multiline=true
+              monospace=true
+              lines=6
+              size="full"
+              value=editedBrand.privateKey
+              qaClass="qa-brand-edit-private-key"
+              disabled=form.isSubmitting
+              onInput=(action (mut editedBrand.privateKey) value="target.value")
+            }}
+          </div>
+
+          {{ko-form/field/errors errors=editedBrand.errors.privateKey}}
+        {{/ko-form/field}}
+
+        <div local-class="cancel-ssl-button">
+          {{#ko-button onClick=(action "stopSettingSsl")}}{{t "generic.cancel"}}{{/ko-button}}
+        </div>
+      {{/if}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

@@ -1,0 +1,122 @@
+<div
+  local-class="post {{if activityFacade.eventUrl "external-url"}}"
+  class="
+    {{qa-cls "ko-feed_item"}}
+    {{if isMessageOrNote "message-or-note"}}
+    {{if isItemMenuOpen "menus-already-open" "no-menus-open"}}
+  "
+  data-id="{{post.id}}"
+  data-note-id="{{if (eq post.original.postType "note") post.original.id}}"
+>
+  {{#if post.original}}
+    {{#if (or post.original.postType post.original.isLegacyPostType)}}
+      <div local-class="item">
+        {{#if (and (not post.original.isAiDraft) (not post.original.noteType))}}
+          {{ko-timeline-2/list/item
+            event=post
+            posts=posts
+            parent=parent
+            isReplyDisabled=isReplyDisabled
+            isCasePage=true
+            canReplyToPost=(contains post.sourceChannel publicReplyChannels)
+            canResend=canResend
+            isItemMenuOpen=isItemMenuOpen
+            onReplyToPost=(action onReplyToPost post)
+            onReplyWithQuote=(action onReplyWithQuote post)
+            onAddCC=onAddCC
+            onCopyLink=onCopyLink
+            onResend=onResend
+            onItemMenuOpen=onItemMenuOpen
+            toggleSideConversationPanel=toggleSideConversationPanel
+          }}
+        {{/if}}
+
+        {{#if post.original.isAiDraft}}
+          {{ko-timeline-2/list/ai-suggestion-bubble
+            text=post.original.bodyText
+            htmlContent=post.original.bodyHtml
+            parent=parent
+            event=post
+            noteType=post.original.noteType
+            contextTitle=(if (eq post.original.noteType "AI_RESPONSE")
+                          (t "cases.ai_suggestion_bubble.high_confidence_claim")
+                          (if (eq post.original.noteType "AI_TRANSCRIPTION")
+                            (t "cases.ai_suggestion_bubble.transcription_claim")
+                            (if (eq post.original.noteType "AI_TRANSC_SUMMARY")
+                              (t "cases.ai_suggestion_bubble.summarize_transcription_claim")
+                              (t "cases.ai_suggestion_bubble.summary_claim"))))
+            setReplyContent=setReplyContent
+            openReply=openReply
+            submitReply=submitReply
+          }}
+        {{/if}}
+      </div>
+    {{else if post.original.isActivity}}
+      {{#if activityFacade.isOrgOrUserNote}}
+        <div local-class="item">
+          {{ko-timeline-2/list/item
+            event=post
+            posts=posts
+            parent=parent
+            isReplyDisabled=true
+            isCasePage=true
+            canReplyToPost=false
+            canResend=canResend
+            isOrgOrUserNote=true
+            isItemMenuOpen=isItemMenuOpen
+            onCopyLink=onCopyLink
+            onItemMenuOpen=onItemMenuOpen
+            toggleSideConversationPanel=toggleSideConversationPanel
+          }}
+        </div>
+      {{else if activityFacade.isLarge}}
+        <div local-class="large">
+          {{ko-timeline-2/list/activity/large
+            activity=activity
+            type=activityFacade.largeType
+          }}
+        </div>
+      {{else}}
+        <div local-class="standard">
+          {{ko-timeline-2/list/activity/standard
+            activity=activity
+            caseFields=caseFields
+            scroll-into-view=(action scroll-into-view post)
+            timelineContext=timelineContext
+            model=parent
+          }}
+        </div>
+        {{#if activityFacade.eventUrl}}
+          <div local-class="event-url-container">
+            <a local-class="event-url" target="_blank" rel="noopener noreferrer" href={{activityFacade.eventUrl}}>
+              <img src="/images/timeline/external-link.svg" width="16" height="16">
+            </a>
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+
+    {{#if (and (not activityFacade.isCompletedAsPartOfOtherUpdates) isLastReadPost)}}
+      <div local-class="new-messages-separator" class={{qa-cls "qa-new-messages-separator"}}>
+        <span local-class="new-messages-separator__text">{{t "timeline.new_messages"}}</span>
+      </div>
+    {{/if}}
+  {{/if}}
+</div>
+
+{{#if activityFacade.isCompletedAsPartOfOtherUpdates}}
+  <div local-class="post" class={{qa-cls "ko-feed_item"}}>
+    <div local-class="large">
+      {{ko-timeline-2/list/activity/large
+        activity=activity
+        type=activityFacade.largeType
+      }}
+    </div>
+
+    {{#if isLastReadPost}}
+      <div local-class="new-messages-separator" class={{qa-cls "qa-new-messages-separator"}}>
+        <span local-class="new-messages-separator__text">{{t "timeline.new_messages"}}</span>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}

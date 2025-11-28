@@ -1,0 +1,15 @@
+<div local-class="container container--{{size}}" class="{{if qaClass (qa-cls qaClass)}}" onClick={{action "onClick"}}>
+  {{ko-select/multiple/internal
+    allowCreate=true
+    disabled=isDisabled
+    onValueAddition=onValueAddition
+    onValueRemoval=onValueRemoval
+    renderInPlace=false
+    placeholder=placeholder
+    searchField=searchField
+    triggerClass=(join-classes (local-class "trigger") (if focused (local-class "trigger--focused")))
+    triggerComponent="ko-pill-input/trigger"
+    selected=value
+    extra=(hash inputId=inputId)
+  }}
+</div>

@@ -1,0 +1,24 @@
+.token-avatar {
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  margin-left: 1px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.actor {
+  font-weight: 600;
+}
+
+.entity {
+  font-weight: 600;
+}
+
+.text {
+
+}
+
+.link {
+  color: inherit;
+}

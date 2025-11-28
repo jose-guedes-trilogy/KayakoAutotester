@@ -1,0 +1,115 @@
+{{#ko-form
+  onSubmit=(action "save")
+  onSuccess=onSuccess
+as |form|}}
+  {{#ko-admin/page
+    title=(if mailbox.isNew (t "admin.email.create.title") (t "admin.email.edit.title" address=mailbox.address))
+    onCancel=onCancel
+    buttonText=(t "generic.save")
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t "admin.email.edit.heading.account_settings")}}
+      {{#if mailbox.isNew}}
+        {{#ko-form/field}}
+          {{#ko-form/field/label}}{{t "admin.email.edit.address.title"}}{{/ko-form/field/label}}
+
+          {{ko-input qaClass="qa-email-edit-address" disabled=form.isSubmitting value=editedMailbox.address onInput=(action (mut editedMailbox.address) value="target.value")}}
+
+          {{ko-form/field/errors errors=editedMailbox.errors.address}}
+
+          {{#ko-form/field/help}}{{t "admin.email.edit.address.description" domain=domain}}{{/ko-form/field/help}}
+        {{/ko-form/field}}
+      {{/if}}
+
+      {{#ko-form/field class=(qa-cls 'qa-email-edit-brand')}}
+        {{#ko-form/field/label}}{{t "admin.email.edit.brand.title"}}{{/ko-form/field/label}}
+
+        {{ko-select disabled=form.isSubmitting size="medium" selected=editedMailbox.brand searchField="name" options=enabledBrands onChange=(action (mut editedMailbox.brand))}}
+
+        {{ko-form/field/errors errors=editedMailbox.errors.brand}}
+
+        {{#if mailbox.isNew}}
+          {{#ko-form/field/help}}{{t "admin.email.new.brand.description"}}{{/ko-form/field/help}}
+        {{else}}
+          {{#ko-form/field/help}}{{t "admin.email.edit.brand.description" address=mailbox.address}}{{/ko-form/field/help}}
+        {{/if}}
+      {{/ko-form/field}}
+
+      {{#if showDNS}}
+
+        {{#if mailbox.isNew}}
+          <div>
+            {{t "admin.email.dns.new"}}
+          </div>
+
+        {{else}}
+          <h3 local-class="heading">
+            {{t "admin.email.dns.title"}}
+          </h3>
+
+          {{#if fetchConfiguration.isRunning}}
+
+            <div local-class="loader">
+              {{ko-loader}}
+            </div>
+
+          {{else if dnsError}}
+
+            <div local-class="error">
+              {{t "admin.email.dns.error"}}
+
+              <button local-class="reload" onclick={{perform fetchConfiguration}}>
+                {{t "admin.email.dns.reload"}}
+              </button>.
+            </div>
+
+          {{else if dnsConfiguration}}
+            <table local-class="table">
+              <thead>
+                <tr local-class="table-header-row">
+                  <th local-class="table-header-cell dns-type">{{t "admin.email.dns.type"}}</th>
+                  <th local-class="table-header-cell">{{t "admin.email.dns.domain"}}</th>
+                  <th local-class="table-header-cell">{{t "admin.email.dns.expected_value"}}</th>
+                  <th local-class="table-header-cell">{{t "admin.email.dns.actual_value"}}</th>
+                  <th local-class="table-header-cell dns-status">{{t "admin.email.dns.status"}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each dnsConfiguration.dns_records as |record|}}
+                  <tr local-class="table-row">
+                    <td local-class="table-cell dns-type">{{record.type}}</td>
+                    <td local-class="table-cell wrap-text">{{record.domain}}</td>
+                    <td local-class="table-cell wrap-text">{{record.expected_value}}</td>
+                    <td local-class="table-cell wrap-text">
+                      {{#each record.actual_values as |value|}}
+                        <p>{{value}}</p>
+                      {{/each}}
+                    </td>
+                    <td local-class="table-cell dns-status {{if record.is_valid "valid-cell" "invalid-cell"}}">
+                      {{#if record.is_valid}}
+                        <span class="i-tick"></span>
+                        {{t "admin.email.dns.valid"}}
+                      {{else}}
+                        <span class="i-cross-bold"></span>
+                        {{t "admin.email.dns.invalid"}}
+                      {{/if}}
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+
+            <p local-class="info">
+              {{t "admin.email.dns.info"}}
+
+              <button local-class="reload" onclick={{perform fetchConfiguration}}>
+                {{t "admin.email.dns.reload"}}
+              </button>.
+            </p>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

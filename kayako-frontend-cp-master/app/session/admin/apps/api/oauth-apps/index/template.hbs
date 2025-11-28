@@ -1,0 +1,36 @@
+{{ko-admin/page
+  title=(t "admin.oauthapps.title")
+  buttonText=(t "admin.oauthapps.buttons.add")
+  onSave=(action "transitionToNewOAuthAppRoute")
+  tabs=tabs
+}}
+
+{{ko-admin/forms/description
+  description="admin.oauthapps.description"
+  linkText="admin.oauthapps.description_link"
+  link="https://support.kayako.com/article/1327?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=forms"
+}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="oauth-apps"}}
+{{/if}}
+
+{{#ko-simple-list as |list|}}
+  {{#each model as |app|}}
+    {{#list.row onClick=(action "editOAuthApp" app) as |row|}}
+      {{#row.cell}}
+        {{#ko-oauth-client client=app}}
+          {{#if app.lastUsedAt}}
+            {{t "admin.oauthapps.last_used_at" date=(format-date app.lastUsedAt format="ll")}}
+          {{else}}
+            {{t "admin.oauthapps.never_used"}}
+          {{/if}}
+        {{/ko-oauth-client}}
+      {{/row.cell}}
+      {{#row.actions}}
+        <a onclick={{action "editOAuthApp" app}}>{{t "generic.edit"}}</a> |
+        <a onclick={{action "deleteOAuthApp" app}}>{{t "generic.delete"}}</a>
+      {{/row.actions}}
+    {{/list.row}}
+  {{/each}}
+{{/ko-simple-list}}

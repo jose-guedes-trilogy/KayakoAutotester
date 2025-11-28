@@ -1,0 +1,10 @@
+.row {
+  display: flex;
+  height: 48px;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  width: 25%;
+}

@@ -1,0 +1,35 @@
+
+.day-separator {
+  display: block;
+  position: relative;
+  margin: 9px 18px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.day-separator:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  background-color: #EBEEF0;
+}
+
+.day-separator__text {
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  margin: auto;
+  padding: 0 18px;
+}
+
+.day-separator__relative-term {
+  font-weight: 600;
+}
+
+.day-separator__date {
+  font-weight: 600;
+}

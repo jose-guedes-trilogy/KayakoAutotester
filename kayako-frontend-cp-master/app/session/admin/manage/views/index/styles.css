@@ -1,0 +1,9 @@
+.title {
+  flex-shrink: 2;
+  font-weight: 600;
+}
+
+.caption {
+  flex-shrink: 2;
+  color: $grey-6;
+}

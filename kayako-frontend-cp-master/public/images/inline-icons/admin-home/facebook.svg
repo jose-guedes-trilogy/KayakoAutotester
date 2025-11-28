@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--facebook--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="46" height="46" rx="4"></rect>
+        <path d="M23.99998,46 L23.95412,32 L17.99998,32 L17.99998,26 L23.99998,26 L23.99998,22 C23.99998,16.6016 28.34302,14 33.15876,14 C35.46554,14 37.44812,14.17174 38.02588,14.2485 L38.02588,19.89014 L34.68592,19.89166 C32.06686,19.89166 30,21.1362 30,22.96248 L30,26 L37.94028,26 L35.94028,32 L29.99998,32 L29.99998,46 L23.99998,46 Z" id="path-2"></path>
+    </defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon--facebook--48" transform="translate(-5.000000, -5.000000)">
+            <g transform="translate(5.000000, 5.000000)">
+                <g id="Rectangle">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#838D94" stroke-width="1" x="0.5" y="0.5" width="45" height="45" rx="4"></rect>
+                </g>
+                <g id="Shape" fill-rule="nonzero">
+                    <use fill="#DADDDF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <path stroke="#838D94" stroke-width="1" d="M24.4983448,45.5 L29.49998,45.5 L29.49998,31.5 L35.5799004,31.5 L37.2465671,26.5 L29.5,26.5 L29.5,22.96248 C29.5,20.8392859 31.7652801,19.39166 34.6856925,19.3916601 L37.52588,19.3903675 L37.52588,14.694575 C36.5012551,14.5920858 34.7773895,14.5 33.15876,14.5 C28.0814057,14.5 24.49998,17.3121278 24.49998,22 L24.49998,26.5 L18.49998,26.5 L18.49998,31.5 L24.4524848,31.5 L24.4983448,45.5 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+{{ko-admin/page title=(t "insights.cases.page.title")}}
+
+{{ko-insights/section/cases
+  metricsQueryParams=metricsQueryParams
+  startAt=startAt
+  endAt=endAt
+  interval=interval
+  onDateRangeChange=(action "dateRangeHidden")
+  onIntervalChange=(action "intervalChanged")
+}}

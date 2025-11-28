@@ -1,0 +1,23 @@
+{{#ko-info-bar/item
+class=(local-class "multiline-text")
+isEdited=isEdited
+isKREEdited=isKREEdited
+hasError=isErrored
+isActive=isActive
+isDisabled=isDisabled
+onClick=(action "click")
+}}
+  <span local-class="header">{{title}}</span>
+  <div>
+    <textarea
+      local-class="textarea"
+      id={{uniqueId}}
+      value={{value}}
+      oninput={{action onValueChange value="target.value"}}
+      onfocus={{action "focus"}}
+      onblur={{action "blur" value="target"}}
+      disabled={{isDisabled}}
+      placeholder={{emptyLabel}}
+    />
+  </div>
+{{/ko-info-bar/item}}

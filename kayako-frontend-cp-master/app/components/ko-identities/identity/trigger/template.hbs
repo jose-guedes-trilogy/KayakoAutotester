@@ -1,0 +1,17 @@
+{{#if (eq extra.index 0)}}
+  {{inline-svg extra.type}}
+{{/if}}
+
+<div local-class="name" title={{name}}>
+  {{name}}
+</div>
+
+{{#if (and extra.identity.canBeValidated (not extra.identity.isValidated))}}
+  {{#ko-tooltip side="top" title=(t "generic.identities.unverified") delay=600}}
+    {{ko-icon name="caution" color="#BEC4C7"}}
+  {{/ko-tooltip}}
+{{/if}}
+
+<div local-class="chevron">
+  {{ko-icon name="chevronDownLarge" color="#666666"}}
+</div>

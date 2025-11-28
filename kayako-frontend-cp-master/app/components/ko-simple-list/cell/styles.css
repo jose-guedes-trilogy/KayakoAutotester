@@ -1,0 +1,9 @@
+.cell {
+  padding-left: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.disabled {
+  opacity: 0.5;
+}

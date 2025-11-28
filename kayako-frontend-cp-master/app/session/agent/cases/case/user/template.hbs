@@ -1,0 +1,13 @@
+{{page-title user.fullName}}
+
+{{ko-user-content
+  user=user
+  case=case
+  state=state
+  onCreateNewCase=(action "createNewCase")
+  tabsComponent="ko-tabs/case"
+  userContext="case"
+  caseFields=caseFields
+  timeline=timeline
+  timestamp=timestamp
+}}

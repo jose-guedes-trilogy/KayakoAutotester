@@ -1,0 +1,114 @@
+{
+  "new_tab_title": "New Search",
+  "noresults": "No results found",
+  "no_results_found": {
+    "line1": "Sorry, no results found for <strong>{searchQuery}</strong>",
+    "line2": "Try a different search"
+  },
+  "search_box_placeholder": "Search",
+  "placeholder": "Search conversations, users, organizations & articles",
+  "advanced_search_placeholder": "Search conversations, users, organizations & articles",
+  "query_validation_error_title": "Search query is too short",
+  "query_validation_error": "Please enter at least 3 characters to search",
+  "nopreview": "Mouse over a search result to see a preview.",
+  "start_typing_to_search": "Start typing to search",
+  "help_link": "Search help →",
+  "matchingsnippet": "Matching text",
+  "nosnippet": "Sorry, we don’t have a preview for this result.",
+  "seemore": "See more in advanced search",
+  "clear_search": "Clear search",
+  "CASES": {
+    "caseid": "Conversation ID",
+    "conversation": "Conversation",
+    "casepriorityid": "Priority",
+    "casestatusid": "Status",
+    "assigneeagentid": "Assigned agent",
+    "notfound": "There are no conversations here.",
+    "updatedat": "Last updated",
+    "convComposite": "Conversation"
+  },
+  "USERS": {
+    "id": "User ID",
+    "fullname": "Name",
+    "email": "Primary email",
+    "organizationName": "Organization",
+    "createdat": "First seen",
+    "lastActivityAt": "Last seen",
+    "lastseenat": "Last seen",
+    "notfound": "There are no users here.",
+    "userAvatar": "",
+    "userComposite": "User"
+  },
+  "ORGANIZATIONS": {
+    "id": "Organization ID",
+    "name": "Name",
+    "createdat": "First seen",
+    "updatedat": "Last updated",
+    "organizationAvatar": "",
+    "notfound": "There are no organizations here.",
+    "orgComposite": "Organization"
+  },
+  "recent_searches": "Recent searches",
+  "search_suggestions": "Search Suggestions",
+  "suggestions": {
+    "cases_from_requester": "Find other conversations from requester",
+    "cases_from_user": "Find conversations from this user",
+    "open_cases_from_requester": "Open conversations from requester",
+    "similarly_tagged_cases": "Similarly tagged conversations",
+    "similarly_tagged_users": "Similarly tagged users",
+    "similarly_tagged_organizations": "Similarly tagged organizations",
+    "similar_created_at": "Cases created around the same time as this one",
+    "open_cases_from_user": "Open conversations from this user",
+    "users_from_organization": "Find users from this organization",
+    "cases_from_organization": "Find conversations from this organization",
+    "my_open_cases": "Open conversations assigned to me"
+  },
+  "help": {
+    "narrow_your_search": "Narrow your search",
+    "in": "in:",
+    "cases_users_orgs_articles": "conversations, users, organizations, articles",
+    "created": "created:",
+    "created_date": "2016-03-24",
+    "updated": "updated>",
+    "updated_date": "2016-01-22",
+    "completed": "completed<",
+    "completed_date": "2016-01-22",
+    "tag": "tag:",
+    "tag_value": "feedback",
+    "team": "team:",
+    "team_value": "name",
+    "assignee": "assignee:",
+    "assignee_value": "a name",
+    "subject": "subject:",
+    "subject_value": "a subject",
+    "status": "status:",
+    "status_value": "open",
+    "channel": "channel:",
+    "channel_value": "twitter",
+    "more_help": "More search modifiers"
+  },
+  "and_more_domains": "and {count, plural, =1 {1 domain} other {# domains}} more ",
+
+  "merge": {
+    "placeholder": "Search for conversations to merge..."
+  },
+
+  "list": {
+    "add_condition": "Add condition",
+    "remove_condition": "Remove condition",
+    "collection_AND_logic_operator": "Match all",
+    "collection_AND_long_logic_operator": "Match all attributes",
+    "collection_OR_logic_operator": "Match any",
+    "collection_OR_long_logic_operator": "Match any attribute",
+    "AND_logic_operator": "AND",
+    "OR_logic_operator": "OR"
+  },
+
+  "user_list": {
+    "user_attributes": "user attributes"
+  },
+  "organization_list": {
+    "organization_attributes": "organization attributes"
+  },
+  "bulk_update_conversations_warning": "Reindexing data updated using Bulk edit/delete operation may take time causing inconsistency in the search results."
+}

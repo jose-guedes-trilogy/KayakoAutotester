@@ -1,0 +1,28 @@
+.row {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.rowDetail {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.label {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.description {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  color:  #838D94;
+  font-size: 12px;
+}
+
+.caption {
+  color: $grey-6;
+}

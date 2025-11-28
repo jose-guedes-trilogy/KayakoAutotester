@@ -1,0 +1,25 @@
+<!--
+  This is used in tests/integration/components/ko-app-slot/app/component-test.js
+-->
+<script>
+  window.MESSAGES_RECEIVED = [];
+  setup();
+
+  window.onmessage = function(m) {
+    if (window.bufferedOnMessage) {
+      window.bufferedOnMessage(m);
+    }
+
+    window.MESSAGES_RECEIVED.push(m);
+  }
+
+  function setup() {
+    if (!window.bufferedOnMessage) {
+      setTimeout(setup, 10);
+    } else {
+      window.MESSAGES_RECEIVED.forEach(m => {
+        window.bufferedOnMessage(m);
+      });
+    }
+  }
+</script>

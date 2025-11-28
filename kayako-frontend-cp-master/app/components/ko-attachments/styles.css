@@ -1,0 +1,37 @@
+.attachments {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.attachments-header {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  margin-top: 14px;
+  font-size: 14px;
+  color: $grey-6;
+}
+
+.attachments-count {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 5px;
+  }
+}
+
+.separator {
+  margin: 0 5px;
+  color: $grey-4;
+}
+
+.download-all {
+  color: $color-link-hover;
+  transition: 0.3s color ease;
+}
+
+.download-all:hover {
+  color: $primary-blue;
+}

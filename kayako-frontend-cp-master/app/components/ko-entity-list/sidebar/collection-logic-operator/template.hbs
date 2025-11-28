@@ -1,0 +1,22 @@
+<div local-class="container">
+  {{#power-select
+    horizontalPosition="right"
+    verticalPosition="below"
+    matchTriggerWidth=false
+    renderInPlace=false
+    searchEnabled=false
+    dropdownClass=(local-class "dropdown")
+    options=collectionOperators
+    selected=currentCollectionOperator
+    onchange=setCollectionOperator
+    triggerComponent=(component "ko-entity-list/sidebar/collection-logic-operator-trigger")
+    triggerClass=(join-classes
+      (local-class "trigger")
+      (if focused (local-class "trigger--focused"))
+    )
+
+    as |option|
+  }}
+    {{t (concat "search.list.collection_" option "_long_logic_operator")}}
+  {{/power-select}}
+</div>

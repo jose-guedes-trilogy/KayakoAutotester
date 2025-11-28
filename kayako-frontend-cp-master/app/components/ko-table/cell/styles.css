@@ -1,0 +1,29 @@
+.container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #EBEEF0;
+  padding: 5px 17px 5px 0;
+
+  &:first-of-type {
+    padding-left: 17px;
+  }
+}
+
+.compact {
+  padding: 0;
+}
+
+.dasherize {
+  border-left: 2px dashed $grey-2;
+}
+
+.ellipsis {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

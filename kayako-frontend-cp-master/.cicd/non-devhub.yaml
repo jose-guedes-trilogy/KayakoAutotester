@@ -1,0 +1,80 @@
+version: v2
+navigator:
+  name: Gaurav Mehta
+  email: gaurav.mehta@devfactory.com
+repo:
+  companyName: Crossover
+  productName: Kayako TNK
+  repoUrl: https://github.com/trilogy-group/kayako-frontend-cp
+  repoBranch: master
+  repoType: Distributable artifacts
+  githubTokenSecretId: github-access
+buildDeps:
+jenkins:
+  productPath: /kayako
+  agentLabel:
+  pipelines:
+    ci:
+      handlerFilter: # Wildcard branch filter for CI multi-branch pipeline
+      environment:
+    ib:
+      deployEnv: qa
+      environment:
+    rc:
+      deployEnv: stage
+      environment:
+build:
+  techStack:
+  buildOs:
+  toolchainVersion:
+  buildTool:
+  preBuild:
+  buildCommand: echo 'Called build buildCommand'
+  credentials:
+unit_test:
+  utFramework:
+  preTest:
+  testCommand: echo 'Called testCommand'
+integration_test:
+  integrationTestFramework: NA
+  preIntegrationTest:
+  integrationTestCommand: echo 'Called integrationTestCommand'
+package:
+  packageTool: zip
+  packageCommand: echo 'package command'
+  artifactDir:
+  credentials:
+    - class: usernamePassword
+      credentialsId: central.jnk.nexus
+      usernameVariable: NEXUS_USER
+      passwordVariable: NEXUS_PASS
+deploy_dev:
+  deploy:
+    deployCommand: echo 'No dev environment'
+    deploymentCheck: echo 'No dev environment'
+    envVars: null
+    run: echo 'No such environment'
+deploy_qa:
+  deploy:
+    deployCommand: echo 'No deployment'
+    deploymentCheck: echo 'No deployment'
+    envVars: null
+    run: echo 'Not run-able'
+deploy_reg:
+  deploy:
+    deployCommand: echo 'No reg environment'
+    deploymentCheck: echo 'No reg environment'
+    envVars: null
+    run: echo 'No such environment'
+deploy_stage:
+  deploy:
+    deployCommand: echo 'No deployment'
+    deploymentCheck: echo 'No deployment'
+    envVars: null
+    run: echo 'Not run-able'
+deploy_prod:
+  deploy:
+    deployCommand: echo 'No prod environment'
+    deploymentCheck: echo 'No prod environment'
+    envVars: null
+    run: echo 'No such environment'

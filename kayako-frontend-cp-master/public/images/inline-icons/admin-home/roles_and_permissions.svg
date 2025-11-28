@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="45px" viewBox="0 0 37 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--roles_and_permissions--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="icon--roles_and_permissions--48" transform="translate(-10.000000, -6.000000)" stroke="#838D94">
+            <g transform="translate(10.000000, 6.000000)" id="Shape">
+                <path d="M24.5,0.5 L2.5,0.5 L2.5,0.5 C1.3954305,0.5 0.5,1.3954305 0.5,2.5 L0.5,42.5 L0.5,42.5 C0.5,43.6045695 1.3954305,44.5 2.5,44.5 L34.5,44.5 L34.5,44.5 C35.6045695,44.5 36.5,43.6045695 36.5,42.5 L36.5,12.5 L24.5,0.5 Z" fill="#FFFFFF"></path>
+                <path d="M24.5,0.5 L24.5,10.5 L24.5,10.5 C24.5,11.6045695 25.3954305,12.5 26.5,12.5 L36.5,12.5 L24.5,0.5 Z" fill="#DADDDF"></path>
+                <path d="M18.7037037,14.0625 L21.5185185,14.0625"></path>
+                <polyline points="7.44444444 14.0625 8.85185185 15.46875 13.0740741 11.25"></polyline>
+                <path d="M18.7037037,23.90625 L27.1481481,23.90625"></path>
+                <polyline points="7.44444444 23.90625 8.85185185 25.3125 13.0740741 21.09375"></polyline>
+                <path d="M18.7037037,33.75 L27.1481481,33.75"></path>
+                <path d="M7.44444444,33.75 L10.2592593,33.75"></path>
+            </g>
+        </g>
+    </g>
+</svg>

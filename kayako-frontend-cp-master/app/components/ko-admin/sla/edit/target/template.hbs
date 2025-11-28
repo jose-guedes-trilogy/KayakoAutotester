@@ -1,0 +1,8 @@
+<div local-class="value">
+  {{ko-input size="full" value=value onChange=(action "setValue" value="target.value")}}
+</div>
+<div local-class="unit">
+  {{#ko-select selected=unit options=units onChange=(action "setUnit") as |item|}}
+    {{item.label}}
+  {{/ko-select}}
+</div>

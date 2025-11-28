@@ -1,0 +1,46 @@
+<li local-class="definition-item">
+  <div local-class="heading" onclick={{action "onCheck"}}>
+    {{ko-checkbox
+      checked=hasPropositions
+      onCheck=(action "onCheck")
+    }}
+    <div local-class="definition-label">
+      <div local-class="icon-padding">
+        {{inline-svg (ko-icon-for-definition definition)}}
+      </div>
+      <div local-class="label-text">
+        {{definition.label}}
+      </div>
+    </div>
+  </div>
+  {{#liquid-if hasPropositions}}
+    {{#each currentPropositions as |currentProposition i|}}
+      <div local-class="proposition">
+        {{#if (gt i 0)}}
+          {{#ko-entity-list/sidebar/proposition-logic-operator
+            operators=propositionOperators
+            selectedOperator=currentPropositionOperator
+            onOperatorChange=(action "setPropositionOperator")
+            as |operator|
+          }}
+            {{t (concat "search.list." operator "_logic_operator")}}
+          {{/ko-entity-list/sidebar/proposition-logic-operator}}
+        {{/if}}
+        <div local-class="remove" onclick={{action "onRemoveProposition" i currentProposition}}>
+          {{inline-svg "predicate/minus"}}
+        </div>
+        {{ko-entity-list/sidebar/definition/operator
+          definition=definition
+          currentPropositions=currentPropositions
+          positionInPropositions=i
+          onPropositionsChange=onPropositionsChange
+        }}
+      </div>
+    {{/each}}
+    <div local-class="add-container">
+      {{#ko-button type="default" onClick=(action "onAddProposition")}}
+        {{t "search.list.add_condition"}}
+      {{/ko-button}}
+    </div>
+  {{/liquid-if}}
+</li>

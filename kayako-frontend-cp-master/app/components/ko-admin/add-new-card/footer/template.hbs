@@ -1,0 +1,14 @@
+{{#if iframeLoaded}}
+  {{#if hasBlock}}
+    {{yield}}
+  {{else}}
+    <div local-class="form-footer">
+      <div local-class="cancel">
+        {{#ko-button type="naked" onClick=onCancel}}{{t "account.billing.card.cancel"}}{{/ko-button}}
+      </div>
+      {{#ko-button type="primary" onClick=saveNewCard}}
+        {{t "account.billing.card.save"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/if}}

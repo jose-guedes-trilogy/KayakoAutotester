@@ -1,0 +1,165 @@
+.avatarContainer {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 2px;
+}
+
+.avatarUnassigned {
+  width: 42px;
+  height: 42px;
+}
+
+.agentAvatarContainer {
+  border: 2px solid #FFFFFF;
+  border-radius: 2px 2px 0;
+
+  display: flex;
+  background: #FFF;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.agentAvatar {
+  width: 16px;
+  height: 16px;
+}
+
+.title {
+  margin-right: 5px;
+  font-weight: 600;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 600px;
+  flex-shrink: 1;
+}
+
+.separator {
+  margin-right: 5px;
+  color: #A1AAAF;
+}
+
+.requesterFullName {
+  margin-right: 5px;
+}
+
+.status {
+  margin-right: 8px;
+}
+
+.bottom-text {
+  color: #838D94;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+  display: flex;
+
+  > span:last-of-type {
+    flex-shrink: 1;
+    display: inline-flex;
+  }
+}
+
+.bullet {
+  margin: 0 3px;
+}
+
+.preview {
+  color: #838D94;
+  display: inline;
+  margin-left: 5px;
+}
+
+.preview-message {
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
+.appended-button {
+  margin-left: 12px;
+  color: #3ea9c9;
+  padding: 6.5px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: #3ea9c9;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.append-button {
+  margin-left: 12px;
+  color: #838D94;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.remove-button {
+  margin-left: 12px;
+  color: #838D94;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
+  box-shadow: $box-shadow1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+
+  [data-name="plus"] {
+    transform: rotate(45deg);
+  }
+}
+
+.showPrimaryBadge {
+  display: flex;
+}
+
+.subject-text {
+  color: #000;
+  display: inline;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-icon {
+  margin-right: 5px;
+  display: inline-block;
+  > div {
+    display: inline;
+  }
+}
+
+.attachments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}

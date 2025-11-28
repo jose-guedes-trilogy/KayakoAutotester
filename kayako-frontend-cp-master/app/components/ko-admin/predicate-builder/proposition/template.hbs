@@ -1,0 +1,150 @@
+<div id={{uniqueId}} local-class="container" class="{{class}}">
+  <div local-class="label">
+    {{t "generic.or"}}
+  </div>
+
+  <div local-class="layout">
+    <div local-class="item">
+      {{#ko-select
+        disabled=disabled
+        class=(qa-cls "qa-proposition--column")
+        selected=definition
+        options=groupedDefinitions
+        placeholder=(t "admin.predicate_builder.select_condition")
+        onChange=(action "selectDefinition")
+        searchEnabled=true
+        searchField="groupLabel"
+        triggerField="groupLabel"
+      as |definition|}}
+        {{definition.label}}
+      {{/ko-select}}
+    </div>
+    {{#if definition}}
+      <div local-class="item">
+        {{#if (eq definitionInputType "boolean-true")}}
+        {{else if (eq definitionInputType "boolean-false")}}
+        {{else}}
+          {{#ko-select
+            disabled=disabled
+            class=(qa-cls "qa-proposition--operator")
+            selected=proposition.operator
+            options=definition.operators
+            placeholder=(t "admin.predicate_builder.select_operator")
+            onChange=(action "changeOperator")
+          as |operator|}}
+            {{#if isMiscellaneousProposition}}
+              {{t (concat "admin.predicate_builder.miscellaneous_operators." (or operator "none"))}}
+            {{else}}
+              {{t (concat "admin.predicate_builder.operators." (or operator "none"))}}
+            {{/if}}
+          {{/ko-select}}
+        {{/if}}
+      </div>
+      {{#if (and proposition.operator (not-eq proposition.operator 'history_changed') (not-eq proposition.operator 'history_not_changed'))}}
+        <div local-class="item">
+          {{#if (eq definitionInputType "multiple")}}
+            {{ko-select/multiple
+              disabled=disabled
+              class=(qa-cls "qa-proposition--property")
+              searchField="string"
+              selected=value
+              options=multipleRemainingOptions
+              onChange=(action "setMultipleValue")
+            }}
+          {{else if (eq definitionInputType "autocomplete")}}
+            {{#ko-select
+              disabled=disabled
+              class=(qa-cls "qa-proposition--property")
+              selected=value
+              searchEnabled=true
+              options=definition.values
+              beforeOptionsComponent=(if definition.values "ko-admin/predicate-builder/proposition/before-options")
+              search=(action "searchAutocomplete")
+              searchField=autocompleteOptionLabelPath
+              onChange=(action "selectAutocompleteValue")
+              as |value|
+            }}
+              {{#if value.string}}
+                {{value.string}}
+              {{else}}
+                {{get value autocompleteOptionLabelPath}}
+              {{/if}}
+            {{/ko-select}}
+          {{else if (eq definitionInputType "tags")}}
+            <div>
+              {{ko-select/multiple
+                disabled=disabled
+                class=(qa-cls "qa-proposition--property")
+                allowCreate=true
+                selected=value
+                onValueAddition=(action "addTagToValue")
+                onValueRemoval=(action "removeTagFromValue")
+                onSuggestion=(if (variation "release-predicate-builder-tag-suggestions")
+                                 (perform suggestTags))
+              }}
+            </div>
+          {{else if (eq definitionInputType "options")}}
+            {{#ko-select
+              disabled=disabled
+              class=(qa-cls "qa-proposition--property")
+              searchField="string"
+              selected=value
+              options=definition.values
+              searchEnabled=true
+              onChange=(action "selectValue")
+            as |value|}}
+              {{value.string}}
+            {{/ko-select}}
+          {{else if (eq definitionInputType "date-relative")}}
+            {{#ko-select
+              disabled=disabled
+              class=(qa-cls "qa-proposition--property")
+              searchField="string"
+              selected=value
+              options=dateRelativeValues
+              searchEnabled=true
+              onChange=(action "setValue")
+              as |value|
+            }}
+              {{t (concat "admin.predicate_builder.date_relative.value." (or value "none"))}}
+            {{/ko-select}}
+          {{else if (eq definitionInputType "date-absolute")}}
+            {{ko-date-select
+              disabled=disabled
+              value=proposition.value
+              onChange=(action "setValue")
+            }}
+          {{else if (eq definitionInputType "boolean-true")}}
+          {{else if (eq definitionInputType "boolean-false")}}
+          {{else if (eq definitionInputType "time")}}
+            <div local-class="input-time-group">
+              <div local-class="input-time">
+                {{ko-input size="full"  value=value onInput=(action "convertValueToSeconds" value="target.value")}}
+              </div>
+              <span local-class="input-time-label">{{t "admin.predicate_builder.hours"}}</span>
+            </div>
+          {{else if (eq definitionInputType "boolean")}}
+            {{#ko-select
+              disabled=disabled
+              options=booleanOptions
+              selected=proposition.value
+              onChange=(action "setValue")
+              as |option|
+            }}
+              {{t (concat "admin.predicate_builder.boolean." option)}}
+            {{/ko-select}}
+          {{else}}
+            {{ko-input qaClass="qa-predicate-builder_proposition__input" size="full" value=proposition.value onInput=(action "setValue" value="target.value")}}
+          {{/if}}
+        </div>
+      {{/if}}
+    {{/if}}
+    <div local-class="actions">
+      {{#if canDeleteProposition}}
+        <div local-class="remove" onclick={{action onPropositionDeletion proposition uniqueId}}>
+          {{ko-icon name="minusCircle" color="#BEC4C7" size=16}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

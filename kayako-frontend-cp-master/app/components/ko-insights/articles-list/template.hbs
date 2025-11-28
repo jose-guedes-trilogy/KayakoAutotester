@@ -1,0 +1,28 @@
+{{#ko-table as |table|}}
+  {{#ko-table/header}}
+    {{#each columnList as |column|}}
+      {{#ko-table/column
+        column=column
+        maxWidth=(ko-helper maxWidthForColumn column.id)
+      }}
+        {{component (ko-helper componentForHeader column) tagName="span"}}
+      {{/ko-table/column}}
+    {{/each}}
+  {{/ko-table/header}}
+
+  {{#ko-table/body}}
+    {{#each sortedArticles as |article|}}
+      {{#ko-table/row
+        table=table
+        clickable=false
+        class=(local-class "row")
+      }}
+        {{#each columnList as |column|}}
+          {{#ko-table/cell maxWidth=(ko-helper maxWidthForColumn column.id)}}
+            {{component (ko-helper componentForColumn column) article=article}}
+          {{/ko-table/cell}}
+        {{/each}}
+      {{/ko-table/row}}
+    {{/each}}
+  {{/ko-table/body}}
+{{/ko-table}}

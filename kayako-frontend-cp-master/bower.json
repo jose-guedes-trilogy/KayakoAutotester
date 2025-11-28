@@ -1,0 +1,19 @@
+{
+  "name": "frontend-cp",
+  "dependencies": {
+    "pretender": "https://github.com/pretenderjs/pretender.git#1.4.2",
+    "Faker": "https://registry.npmjs.org/faker/-/faker-3.1.0.tgz",
+    "sinonjs": "https://github.com/sinonjs/sinon.git#1.17.1",
+    "sanitize.js": "kayako/Sanitize.js#set-attribute",
+    "tooltipster": "https://github.com/calebjacob/tooltipster.git#4.1.2",
+    "bugsnag": "https://github.com/bugsnag/bugsnag-js.git#3.0.7",
+    "mousetrap": "https://github.com/ccampbell/mousetrap.git#1.6.0",
+    "spectrum": "https://github.com/bgrins/spectrum.git#1.8.0",
+    "jquery": "https://github.com/jquery/jquery.git#1.10.0",
+    "FakeXMLHttpRequest": "https://github.com/pretenderjs/FakeXMLHttpRequest.git#1.4.0",
+    "route-recognizer": "https://github.com/tildeio/route-recognizer.git#0.2"
+  },
+  "resolutions": {
+    "route-recognizer": "https://github.com/tildeio/route-recognizer.git#0.2"
+  }
+}

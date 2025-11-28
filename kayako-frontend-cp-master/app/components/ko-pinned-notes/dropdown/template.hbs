@@ -1,0 +1,55 @@
+<div local-class="root">
+  {{#each (sort-by "createdAt:desc" notes) as |note i|}}
+    {{#if note.isPinned}}
+      <a local-class="note-item" class="{{qa-cls "qa-pinned-notes--item"}}" onclick={{action "openPinnedNote" note}}>
+        <div local-class="unpin-note {{if (eq noteBeingUnpinned note) "processing"}}" onclick={{action "unpinNote" note}}>
+          {{#ko-tooltip
+            tagName="div"
+            side="top"
+            title=(sanitize-html (concat
+              "<div>"
+              (ko-contextual-helper pinTooltipText this note)
+              "</div>"
+              (t "generic.pinned_by" name=note.pinnedBy.fullName)
+            ) "server-html-content")
+            delay=300
+          }}
+            {{inline-svg "timeline/unpin.svg"}}
+          {{/ko-tooltip}}
+        </div>
+        <div local-class="note-item-inner">
+          <div local-class="title">
+            <div local-class="involved-users">
+              <div local-class="note-meta">
+                <div local-class="avatar">{{ko-user-avatar size="micro" user=note.user}}</div>
+                <div local-class="name" class="{{qa-cls "qa-pinned-notes--agent"}}">{{note.user.fullName}}</div>
+              </div>
+            </div>
+            <div local-class="status">
+              <div local-class="last-updated" class="{{qa-cls "qa-pinned-notes--updated-time"}}">
+                {{ko-from-now note.createdAt short=true}}
+              </div>
+              <span
+                local-class="note-parent
+                  {{if (eq (ko-contextual-helper getNoteParentType this note) "cases") "cases-note"}}
+                  ">
+                {{#if (eq (ko-contextual-helper getNoteParentType this note) "cases")}}
+                  {{~inline-svg (ko-contextual-helper getNoteParentIcon this note)}}
+                {{else if (eq (ko-contextual-helper getNoteParentType this note) "users")}}
+                  {{~inline-svg "avatar"}}
+                {{else if (eq (ko-contextual-helper getNoteParentType this note) "organizations")}}
+                  {{~ko-org-logo org=(ko-contextual-helper getNoteParentIcon this note) size=16 local-class="note-org-logo"}}
+                {{/if}}
+              </span>
+            </div>
+          </div>
+          <div local-class="subject">
+            <span local-class="subject-content" class="{{qa-cls "qa-pinned-notes--subject"}}">
+              {{ko-truncate-multiline text=note.bodyText lines=2}}
+            </span>
+          </div>
+        </div>
+      </a>
+    {{/if}}
+  {{/each}}
+</div>

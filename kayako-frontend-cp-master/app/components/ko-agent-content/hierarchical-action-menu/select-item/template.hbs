@@ -1,0 +1,7 @@
+<div local-class="item {{if isHighlighted "highlighted"}}">
+  {{#if itemHasProperties}}
+    <div>{{item.text}}</div> {{#if item.isDefault}}<span local-class="default">&nbsp;{{t "generic.default_with_brackets"}}</span>{{/if}} {{#if item.isSelected}}<span local-class="selected">&nbsp;{{if isHighlighted (inline-svg "tick") (inline-svg "tick--green")}}</span>{{/if}}
+  {{else}}
+    {{sanitize-html item "server-html-content"}}
+  {{/if}}
+</div>

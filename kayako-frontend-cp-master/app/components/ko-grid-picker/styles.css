@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+
+  cursor: pointer;
+
+  border-right: 1px solid $grey-2;
+  border-bottom: 1px solid $grey-2;
+
+  &:hover {
+    background-color: $grey-2;
+  }
+
+  &.selected {
+    background-color: $color-good;
+  }
+}
+
+.row {
+  display: flex;
+  border-left: 1px solid $grey-2;
+
+  &:first-child .cell {
+    border-top: 1px solid $grey-2;
+  }
+}
+
+.legend {
+  display: flex;
+}
+
+.legend-cell {
+  width: 30px;
+  line-height: 30px;
+  text-align: right;
+  color:$grey-6;
+  transform: translateX(-15px) rotate(270deg);
+  margin-top: 10px;
+}

@@ -1,0 +1,139 @@
+{{#if (eq role "enable")}}
+  {{!-- Enable two-factor auth --}}
+  {{#ko-modal
+    on-close=(action onClose)
+    modalStyle=(if (eq visibleStep "done") "width: 600px;height:654px" "width:600px;height:580px")
+    noHeaderContent=(if (eq visibleStep "done") true)
+    chromelessContent=true as |modal|}}
+
+    {{#if modal.isHeader}}
+      {{#unless (eq visibleStep "done")}}
+        {{t "users.two_factor.enable.title"}}
+      {{/unless}}
+    {{/if}}
+
+    {{#if modal.isMain}}
+      <div local-class="modal-container" class={{qa-cls "modal-container"}}>
+        <div local-class="modal-content {{if (eq visibleStep "getStarted") "is-visible"}} {{if (eq previousStep "getStarted") "out"}}">
+          <div local-class="padded-content">
+            <img class="u-mbottom" src="/images/user/window.png" width="341" height="224">
+            <p class="u-mbottom--mini">{{t "users.two_factor.enable.get_started"}}</p>
+            <p><a href="https://support.kayako.com/article/1198-securing-your-user-account-with-two-factor-authentication-2fa" rel="noopener noreferrer" target="_blank">{{t "users.two_factor.enable.learn_more"}}</a></p>
+          </div>
+        </div>
+        <div local-class="modal-content {{if (eq visibleStep "getApp") "is-visible"}} {{if (eq previousStep "getApp") "out"}}">
+          <div local-class="padded-content">
+            <img class="u-mbottom" src="/images/user/devices.png" width="212">
+            <p class="u-mbottom--mini">{{t "users.two_factor.enable.get_app"}}</p>
+            <p>{{format-html-message "users.two_factor.enable.recommended_apps"}}</p>
+          </div>
+        </div>
+        <div local-class="modal-content {{if (eq visibleStep "verify") "is-visible"}} {{if (eq previousStep "verify") "out--quick"}}">
+          <div local-class="padded-content">
+            <p class="u-mbottom--tiny">{{t "users.two_factor.enable.add_kayako"}}</p>
+            <div local-class="qr-image-container">
+              {{#if token}}
+                <img class="u-mbottom--tiny" src="data:{{ token.qr_code_type }};base64,{{ token.qr_code }}" width="200" height="200">
+              {{/if}}
+            </div>
+            <p class="u-mbottom--tiny">{{t "users.two_factor.enable.enter_otp"}}</p>
+            <form onsubmit={{action "verifyQrCode"}}>
+              {{ko-otp-input
+                uniqueId="verify-qr-code"
+                value=authCode
+                maxlength=6
+              }}
+            </form>
+          </div>
+        </div>
+        <div local-class="modal-content {{if (eq visibleStep "done") "is-visible"}}">
+          <div local-class="modal-content__inner">
+            <div local-class="padded-content">
+              <div local-class="all-set-icon">
+                <img src="/images/user/lock.svg" height="32">
+              </div>
+              <p local-class="all-set-heading">{{t "users.two_factor.enable.success_title"}}</p>
+              <p class="u-mbottom">{{t "users.two_factor.enable.success_description"}}</p>
+            </div>
+            <div local-class="highlighted">
+              <p class="u-mbottom--mini text--secondary">{{t "users.two_factor.enable.backup_codes"}}</p>
+              <ul local-class="recovery-codes">
+                {{#each recoveryCodes as |code|}}
+                  <li local-class="recovery-codes__item">{{code}}</li>
+                {{/each}}
+              </ul>
+              <div local-class="copy-button-container">
+                {{#copy-button local-class="copy-button" clipboardText=recoveryCodeList success=(action "copiedToClipboard")}}
+                  {{t "generic.copy_to_clipboard"}}
+                {{/copy-button}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if modal.isFooter}}
+      <div class="u-relative">
+        <div local-class="modal-action-button {{if (eq visibleStep "getStarted") "is-visible"}}">
+          <div class="u-mright--tiny">
+            {{#ko-button type="naked" onClick=(action onClose)}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="primary" size="medium" onClick=(action "switchModalContent" "getApp") qaClass="goto-step-2"}}
+            {{t "users.two_factor.enable.get_started_button"}}
+          {{/ko-button}}
+        </div>
+        <div local-class="modal-action-button {{if (eq visibleStep "getApp") "is-visible"}}">
+          <div class="u-mright--tiny">
+            {{#ko-button type="naked" onClick=(action onClose)}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="primary" size="medium" onClick=(action "switchModalContent" "verify") qaClass="goto-step-3"}}
+            {{t "users.two_factor.enable.ready_button"}}
+          {{/ko-button}}
+        </div>
+        <div local-class="modal-action-button {{if (eq visibleStep "verify") "is-visible"}}">
+          <div class="u-mright--tiny">
+            {{#ko-button type="naked" onClick=(action onClose)}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="primary" size="medium" onClick=(action "verifyQrCode") hasAnimation=true loading=disableButton disabled=verifyButtonDisabled qaClass="verify"}}
+            {{t "users.two_factor.enable.verify_button"}}
+          {{/ko-button}}
+        </div>
+        <div local-class="modal-action-button {{if (eq visibleStep "done") "is-visible"}}">
+          <div class="u-mright--tiny">
+            {{#ko-button type="naked" onClick=(action onClose)}}
+              {{t "generic.cancel"}}
+            {{/ko-button}}
+          </div>
+          {{#ko-button type="primary" size="medium" onClick=(action onClose) qaClass="done"}}
+            {{t "generic.done"}}
+          {{/ko-button}}
+        </div>
+      </div>
+    {{/if}}
+  {{/ko-modal}}
+{{else}}
+  {{!-- Disable two-factor auth --}}
+  {{#ko-modal on-close=(action onClose) width="430px" showHeader=false chromelessContent=true as |modal|}}
+    {{#if modal.isMain}}
+      <div local-class="padded-content--small">
+        <p local-class="disable-otp-title">{{t "users.two_factor.disable.headline"}}</p>
+        <p local-class="disable-otp-subtitle">{{t "users.two_factor.disable.subheading"}}</p>
+      </div>
+    {{/if}}
+    {{#if modal.isFooter}}
+      {{#ko-button type="naked" onClick=(action onClose)}}
+        {{t "generic.cancel"}}
+      {{/ko-button}}
+      {{#ko-button type="alert" onClick=(action "removeTwoFactorAuth") disabled=disableButton}}
+        {{t "users.two_factor.disable.button"}}
+      {{/ko-button}}
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}

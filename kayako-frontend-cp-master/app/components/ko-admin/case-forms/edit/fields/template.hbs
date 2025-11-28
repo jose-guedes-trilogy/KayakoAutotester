@@ -1,0 +1,34 @@
+<div local-class="list">
+  {{#ko-reorderable-list handleOutside=true onReorder=(action "reorderFields") items=caseFields as |field|}}
+    <div local-class="row" class="{{qa-cls "qa-admin_case-forms_edit_fields__row"}}">
+      <div local-class="cell">
+        <span local-class="caption"><span local-class="title">{{field.title}}</span> {{#if field.isSystem}} {{t "admin.caseforms.label.system"}} {{/if}}</span>
+      </div>
+      <div local-class="cell">
+        <span local-class="caption">{{t (ko-intl-key-for-field-type field.fieldType)}}</span>
+      </div>
+      <div local-class="action-cell">
+        {{#unless field.isSystem}}
+          <span
+            local-class="action"
+            class="{{qa-cls "qa-ko-admin_case-forms_edit_fields__action"}}"
+            onclick={{action onCaseFieldRemoval field}}>
+            {{t "admin.caseforms.remove_from_form"}}
+          </span>
+        {{/unless}}
+      </div>
+    </div>
+  {{/ko-reorderable-list}}
+</div>
+
+{{#if unusedCaseFields}}
+  {{#ko-select
+    class=(qa-cls "qa-admin_case-forms_edit_fields__configure-dropdown")
+    placeholder=(t "admin.caseforms.label.add_new_field")
+    options=unusedCaseFields
+    onChange=onCaseFieldAddition
+    size="medium"
+  as |field|}}
+    {{field.title}}
+  {{/ko-select}}
+{{/if}}

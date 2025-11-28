@@ -1,0 +1,27 @@
+.button {
+  margin-right: 8px;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-header {
+  font-weight: 600;
+  vertical-align: top;
+  padding: 9px;
+  text-align: left;
+  width: 30%;
+}
+
+.table-cell {
+  vertical-align: top;
+  padding: 9px;
+}
+
+.message-text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

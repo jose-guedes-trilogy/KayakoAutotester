@@ -1,0 +1,10 @@
+.loading {
+  font-size: 12px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: transparent;
+  background: $grey-2;
+}

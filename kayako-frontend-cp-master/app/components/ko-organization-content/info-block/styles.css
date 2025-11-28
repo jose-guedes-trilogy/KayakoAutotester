@@ -1,0 +1,86 @@
+.container {
+  padding: 18px 18px 9px;
+  color: $grey-8;
+  background: #FFFFFF;
+  border-bottom: 1px solid $grey-3;
+}
+
+.info-card {
+  margin-bottom: 9px;
+}
+
+.organization-info {
+  display: flex;
+  align-items: center;
+}
+
+.organization-name {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  font-weight: 600;
+  flex-shrink: 1;
+}
+
+.timeline-header-image {
+  margin-right: 14px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  height: 42px;
+  width: 42px;
+  border-radius: 5px;
+  background: $grey-2;
+}
+
+.rows {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.title {
+  height: 15px;
+  width: 80%;
+  background: $grey-2;
+  margin-left: 15px;
+  border-radius: 7px;
+}
+
+.subtitle {
+  height: 10px;
+  width: 60%;
+  background: $grey-2;
+  margin-left: 15px;
+  border-radius: 5px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  height: 17px;
+  width: 17px;
+  background: $grey-2;
+  border-radius: 50%;
+}
+
+.description {
+  width: 50%;
+  height: 10px;
+  background: $grey-2;
+  margin-left: 10px;
+  border-radius: 5px;
+}

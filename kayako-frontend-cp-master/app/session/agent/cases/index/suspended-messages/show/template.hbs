@@ -1,0 +1,57 @@
+{{#ko-modal on-close=(route-action "onClose") as |modal|}}
+  {{#if modal.isHeader}}
+    {{t "cases.suspendedMessage.title"}}
+  {{/if}}
+  {{#if modal.isMain}}
+    <table local-class="table">
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        <th local-class="table-header">{{t 'cases.suspendedMessage.table.from'}}:</th>
+        <td local-class="table-cell">{{model.from}}</td>
+      </tr>
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        <th local-class="table-header">{{t 'cases.suspendedMessage.table.subject'}}:</th>
+        <td local-class="table-cell">{{model.subject}}</td>
+      </tr>
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        <th local-class="table-header">{{t 'cases.suspendedMessage.table.suspensionCode'}}:</th>
+        <td local-class="table-cell">{{model.suspensionCode}}</td>
+      </tr>
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        <th local-class="table-header">{{t 'cases.suspendedMessage.table.createdAt'}}:</th>
+        <td local-class="table-cell">{{model.createdAt}}</td>
+      </tr>
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        <th local-class="table-header">{{t 'cases.suspendedMessage.table.to'}}:</th>
+        <td local-class="table-cell">{{model.to}}</td>
+      </tr>
+      <tr class={{qa-cls "qa-suspended-message-modal__table-row"}}>
+        {{#if model.html}}
+          <th local-class="table-header">{{t 'cases.suspendedMessage.table.html'}}:</th>
+        {{else}}
+          <th local-class="table-header">{{t 'cases.suspendedMessage.table.text'}}:</th>
+          <td local-class="table-cell">
+            <div local-class="message-text">
+              {{~#if model.text}}
+                {{~model.text~}}
+              {{else}}
+                {{~model.source~}}
+              {{/if}}
+            </div>
+          </td>
+        {{/if}}
+      </tr>
+    </table>
+    {{#if model.html}}
+      {{ko-email-iframe content=model.html}}
+    {{/if}}
+  {{/if}}
+  {{#if modal.isFooter}}
+    <div local-class="button">
+      {{#ko-button type="naked" href=(href-to "session.agent.cases.index.suspended-messages.index")}}{{t "cases.suspendedMessage.actions.cancel"}}{{/ko-button}}
+    </div>
+    <div local-class="button">
+      {{#ko-button type="alert" onClick=(route-action "permanentlyDelete")}}{{t "cases.suspendedMessage.actions.permanentlyDelete"}}{{/ko-button}}
+    </div>
+    {{#ko-button type="primary" onClick=(route-action "allowThrough")}}{{t "cases.suspendedMessage.actions.allowThrough"}}{{/ko-button}}
+  {{/if}}
+{{/ko-modal}}

@@ -1,0 +1,17 @@
+<div local-class="index">
+  <div local-class="sidebar">
+    {{#if selectedCaseIds}}
+      {{ko-bulk-sidebar
+        selectedCaseIds=selectedCaseIds
+        teams=teams
+        onBulkUpdateCases=(action "bulkUpdateComplete")
+        onCancel=(action "clearSelectedCaseIds")
+      }}
+    {{else}}
+      {{ko-cases-list/sidebar inboxView=inboxView customViews=customViews}}
+    {{/if}}
+  </div>
+  <div local-class="content">
+    {{outlet}}
+  </div>
+</div>

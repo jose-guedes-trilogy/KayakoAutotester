@@ -1,0 +1,16 @@
+<svg width="33px" height="33px" viewBox="184 109 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <path d="M1,0.0413950144 C0.45,0.0413950144 0,0.549395014 0,1.11139501 L0,12.089395 C0,12.651395 0.45,13.041395 1,13.041395 L2,13.041395 L2,15.417395 C2,15.981395 2.404,16.076395 2.902,15.832395 L8.28,13.041395 L15,13.041395 C15.55,13.041395 16,12.651395 16,12.089395 L16,1.11139501 C16,0.549395014 15.55,0.0413950144 15,0.0413950144 L1,0.0413950144 L1,0.0413950144 Z" id="path-1"></path>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="16" height="15.91721" fill="white">
+      <use xlink:href="#path-1"></use>
+    </mask>
+  </defs>
+  <g id="icon--hc_comment" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(184.000000, 109.000000)">
+    <path d="M0,16 C0,7.163444 7.16150109,0 16,0 L16,0 C24.836556,0 32,7.16150109 32,16 L32,16 C32,24.836556 24.8384989,32 16,32 L16,32 C7.163444,32 0,24.8384989 0,16 L0,16 Z" id="Rectangle-185" fill="#EBEEF0"></path>
+    <g transform="translate(8.000000, 9.000000)">
+      <use id="Path" stroke="#838D94" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-1"></use>
+      <rect id="Rectangle-18" fill="#838D94" x="4" y="4" width="8" height="2" rx="1"></rect>
+      <rect id="Rectangle-18" fill="#838D94" x="4" y="7" width="6" height="2" rx="1"></rect>
+    </g>
+  </g>
+</svg>

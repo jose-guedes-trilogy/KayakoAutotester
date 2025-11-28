@@ -1,0 +1,582 @@
+{{ko-search-suggestions activePage="case" target=case}}
+
+{{#unless isBeingCreated}}
+  {{kre-channel
+    name=case.realtimeChannel
+    on-presence-change=(action (mut channelPresence))
+    on-join=(action updatePresenceMeta case (hash is_foreground=true))
+  }}
+
+  {{kre-channel
+    name=editedCase.requester.presenceChannel
+    on-presence-change=(action "requesterPresenceChanged")
+  }}
+{{/unless}}
+
+{{#ko-agent-content/layout as |name|}}
+  {{#if (eq name "heading")}}
+    {{#if showTabs}}
+      {{#component tabsComponent model=tabsModel setOrganizationModeOn=(action "setOrganizationModeOn") processingOrg=(or persistOrgToUser.isRunning unsetOrgInProgress) removedOrg=removedOrg}}
+        {{#if (not isBeingCreated)}}
+          <div local-class="id">
+            <span local-class="id-hash">#</span> {{case.id}}
+          </div>
+
+          {{#if (plan-has 'side_conversations')}}
+            <div local-class="side-conversations {{if isSideConversationPanelOpen 'selected'}}" title="{{t "cases.side_conversations.title"}}" aria-disabled={{isSaving}} onclick={{action "toggleSideConversationPanel"}}>
+              {{ko-icon name="conversation" color="#838D94"}}
+            </div>
+          {{/if}}
+        {{/if}}
+
+        
+
+        {{#if case.slaMetrics}}
+          <div local-class="sla">
+            <div local-class="sla-bar sla-bar--{{slaBarStatus}}">
+              <span local-class="sla-icon sla-icon--{{slaBarStatus}}">
+                {{inline-svg slaIcon}}
+              </span>
+              <span local-class="sla-text">
+                {{t (concat "cases.sla.title." relavantSla.metricType)}}
+                {{t metricString}}
+                {{#ko-sla/remaining metric=relavantSla onBreachChange=(action "breachChange" value) as |remaining|}}
+                  <span local-class="sla-progress {{if remaining.shimmer "show-shimmer"}}" style={{remaining.timePassed}}></span>
+                  <span>
+                    {{remaining.timeRemaining}}
+                  </span>
+                {{/ko-sla/remaining}}
+              </span>
+            </div>
+            <div local-class="sla-dropdown">
+              {{ko-case/sla-dropdown sla=case.slaVersion slaMetrics=sortedMetrics}}
+            </div>
+          </div>
+        {{/if}}
+
+        {{#unless isBeingCreated}}
+          {{ko-time-tracking case=case timerValueState=state.timerValue isBillableState=state.isBillable preserveTimer=(action "preserveTimer")}}
+        {{/unless}}
+
+        {{#unless (or isCaseClosed isBeingCreated)}}
+          {{#if (and (not isCaseCompleted) (not isCaseTrashed))}}
+            <div local-class="complete" title="{{t "cases.mark_as_completed_and_close"}}" aria-disabled={{isSaving}} onclick={{if (not isSaving) (perform state.completeAndClose completedStatus)}}>
+              {{#if state.completeAndClose.isRunning}}
+                {{ko-loader}}
+              {{else}}
+                {{ko-icon name="check" color="#838D94"}}
+              {{/if}}
+            </div>
+            {{#if canTrashCase}}
+              <div local-class="trash" title="{{t "cases.trash.title"}}" aria-disabled={{isSaving}} onclick={{if (not isSaving) (perform state.trashCase)}}>
+                {{#if state.performTrashCase.isRunning}}
+                  {{ko-loader}}
+                {{else}}
+                  {{ko-icon name="trash" color="#838D94"}}
+                {{/if}}
+              </div>
+            {{/if}}
+          {{/if}}
+        {{/unless}}
+        {{#unless isBeingCreated}}
+          {{#ko-agent-content/hierarchical-action-menu
+            class=(qa-cls "qa-ko-case-content__action-menu")
+            items=navigationMenuItems
+          as |option|
+          }}
+            {{option}}
+          {{/ko-agent-content/hierarchical-action-menu}}
+        {{/unless}}
+      {{/component}}
+    {{else}}
+      {{ko-instant-entity
+        elementId=(concat elementId "-kie")
+        qaClass="qa-ko-case-content__requester-field"
+        mode=(if setOrganizationMode "organization" "user")
+        action=(if setOrganizationMode "setInstantOrg" "setInstantUser")
+        instantEntityTerm=instantEntityTerm
+        instantEntityResults=instantEntityResults
+        isProcessRunning=(or createUser.isRunning createOrg.isRunning)
+        cancelAction=(if setOrganizationMode (action "setOrganizationModeOff") (if setRequesterMode (action "setRequesterModeOff") false))
+        forceFocus=(or setOrganizationMode setRequesterMode)
+        isCase=true
+        keyboardAction=(action "handleInstantEntityTabbing")
+      }}
+    {{/if}}
+  {{/if}}
+
+  {{#if (and (eq name "timeline") hasUser)}}
+    {{#ko-timeline-2
+      timeline=timeline
+      postId=postId
+      noteId=noteId
+      filter=filter
+      model=case
+      isReplyDisabled=isReplyDisabled
+      canResend=(not canUpdateAndResend)
+      caseFields=caseFields
+      publicReplyChannels=publicReplyChannels
+      onReplyToPost=(perform replyToPost)
+      onReplyWithQuote=(action "quote")
+      onAddCC=(action "dispatch" "addCC")
+      onCopyLink=(action "copyLink")
+      onResend=(action "dispatch" "resend")
+      onDidFetchMostRecent=(action "mostRecentFetched")
+      setReplyContent=(action "dispatch" "setPostContent")
+      openReply=(action "openReply" true)
+      submitReply=(action "submit")
+      toggleSideConversationPanel=(action "toggleSideConversationPanel")
+    }}
+      <div local-class="timeline-header">
+        <div local-class="timeline-header-image">
+          {{ko-user-avatar user=editedCase.requester size="medium"}}
+        </div>
+        <div local-class="timeline-header-body">
+          <h3 local-class="timeline-header-title" class="{{qa-cls "qa-case-content_timeline-header-title"}}">
+            {{ko-editable-text
+              qaClass=(qa-cls "qa-ko-case-content__subject")
+              value=caseSubject
+              isEdited=state.isSubjectEdited
+              isPusherEdited=propertiesChangeViaPusher.subject
+              onValueChange=(action "dispatch" "setSubject")
+              isErrored=errorMap.subject
+              isDisabled=areFieldsDisabled
+              onKeyDown=(action "handleTabbingFromSubject")
+              placeholder=(t "cases.new_case_subject_placeholder")
+              size="large"
+            }}
+          </h3>
+          <div local-class="timeline-header-subtitle">
+            {{#if case.id}}
+              <p title={{format-date case.createdAt format="LLL"}}
+                 class="{{qa-cls "qa-ko-case-content__subject-subtitle"}}"
+                 local-class="subtitle"
+              >
+                {{t "cases.subheader"
+                  channel=(t (concat "cases.channelType." (or case.sourceChannel.channelType "none")))
+                  name=case.creator.fullName
+                  date=(format-date (ko-intl-datetime-format case.createdAt) format="lll")
+                }}
+              </p>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/ko-timeline-2}}
+  {{/if}}
+
+  {{#if (and (eq name "side-panel") (plan-has 'side_conversations') case.id)}}
+    {{side-conversations-panel 
+      isVisible=isSideConversationPanelOpen
+      timeline=timeline
+      case=case
+      currentConversation=currentSideConversation
+    }}
+  {{/if}}
+
+  {{#if (eq name "reply-area")}}
+    {{#if state.inReplyToPost}}
+      <div local-class="in-reply-to">
+        {{#if state.inReplyToPost.isFulfilled}}
+          <div local-class="in-reply-to-remove" onclick={{action "dispatch" "removeInReplyTo"}}>
+            {{ko-icon name="cross" color="#FFFFFF" size=10}}
+          </div>
+          <span local-class="in-reply-to-text">
+            <span local-class="in-reply-to-header">{{format-html-message "cases.text_editor.replying_to"}}</span>
+            <span local-class="in-reply-to-user"><img src="{{state.inReplyToPost.creator.avatar}}"><span>{{state.inReplyToPost.creator.fullname}}</span></span>
+            <span local-class="in-reply-to-message">
+              {{state.inReplyToPost.contents}}
+            </span>
+          </span>
+        {{else}}
+          <div local-class="in-reply-to-loader">{{ko-loader}}</div>
+        {{/if}}
+      </div>
+    {{/if}}
+    {{#if typingString}}
+      <div local-class="typing-area">{{typingString}}</div>
+    {{/if}}
+    {{#if (not (or isCaseClosed isCaseTrashed))}}
+      {{#ko-text-editor
+        class=editorClass
+        keyDown=(action "handleTabbingFromReply")
+        isLoading=isLoading
+        isRichFormattingAvailable=isRichFormattingAvailable
+        onAttachFiles=(if supportsAttachments (action "onAttachFiles"))
+        dropzoneError=dropzoneError
+        placeholder=(t (if state.isNote "generic.add_a_note" "cases.contents.placeholder"))
+        isErrored=errorMap.contents
+        allowFormatting=isShowingControls
+        isNote=state.isNote
+        imageUploadStatus=(action "setImageUploadStatus")
+        onTextChanged=(action "dispatch" "setPostContent")
+        value=postContent
+        onCancelAttachment=(action "dispatch" "cancelAttachment")
+        attachedFiles=attachedPostFiles
+        disabled=composeReplyDisabled
+        autofocus=caseSubject
+        showMacros=true
+        messengerHelpText=messengerHelpText
+        showSubmitTip=hasReplyContent
+        footerText=(if (and state.isNote (not case.isNew)) noteDestination.description)
+        case=case
+        fetchNewerPosts=fetchNewerPostsAfterReply
+      as |editor|}}
+
+        {{#if (and editor.at-mention-support atMentionsSupported)}}
+          {{editor.at-mention-support}}
+        {{/if}}
+
+        {{#if editor.isHeader}}
+          {{#unless (and hasUser (not publicReplyChannels.length))}}
+            {{ko-channel-selector
+              onclick=(action "openReply" true)
+              isNote=state.isNote
+              noUser=noUser
+              channels=wrappedPublicReplyChannels
+              channel=wrappedSelectedChannel
+              onchange=(action "setChannel")
+              disabled=(or noUser state.isNote)
+              qaClass="qa-post__channel-selector"
+            }}
+          {{/unless}}
+
+          {{#ko-text-editor/mode-selector active=state.isNote isCase=(not state.isNote) onClick=(action "openNote") class=(if state.atMentionsSupported "appcues-note-tab") qaClass="qa__ko-case-content__note-mode"}}
+            {{t "cases.notes"}}
+          {{/ko-text-editor/mode-selector}}
+          {{#if (or loadMacros.isRunning getChannel.isRunning)}}
+            <div local-class="text-editor-loader" title={{t "cases.loadingmacro"}}>{{ko-loader}}</div>
+          {{/if}}
+        {{/if}}
+
+        {{#if editor.isToolbar}}
+          {{#if isAgentOrHigher}}
+            {{ko-case/macro-selector macros=macros
+              isDisabled=areFieldsDisabled
+              onMacroSelect=(action "dispatch" "applyMacro" case sessionService.user)
+            }}
+          {{/if}}
+        {{/if}}
+
+        {{#if editor.isTextArea}}
+        {{/if}}
+
+        {{#if editor.isFooter}}
+          <div local-class="editor-footer-left">
+            {{#if (eq channel.channelType "MAIL")}}
+              {{ko-case-content/cc
+                onChange=(action "dispatch" "setCCs")
+                onSearch=suggestPeople
+                selected=replyOptions.cc
+                isActive=state.isCCActive
+                hasCCInput=state.hasCCInput
+                onToggle=(action "dispatch" "toggleCC")
+                onCCInput=(action "dispatch" "checkCCInput")
+                local-class=(join-classes "cc-component" (unless (variation "release-cc-list-improvements") "wrap-ccs"))
+              }}
+            {{else if (eq channel.channelType "TWITTER")}}
+              <div local-class="replyOptions">
+                {{#ko-select
+                  placeholder=twitterReplyValue.text
+                  value=twitterReplyValue.id
+                  options=twitterReplyOptions
+                  onChange=(action "setTwitterType")
+                  matchTriggerWidth=false
+                as |field|}}
+                  {{field.text}}
+                {{/ko-select}}
+
+                {{#if twitterReplyValue.description}}
+                  <span local-class="replyOptionDescription">{{twitterReplyValue.description}}</span>
+                {{/if}}
+              </div>
+            {{/if}}
+          </div>
+          <div local-class="editor-footer-right">
+            {{#if hasTextLimit}}
+              <span local-class="charLimit {{if (lt replyCharactersCount 0) "charLimitNegative"}}">
+                {{replyCharactersCount}}
+              </span>
+            {{/if}}
+            {{#if (and state.isNote (not case.isNew))}}
+              {{ko-note-destination selected=noteDestination.id options=noteDestinations onChange=(action "setNoteDestination") local-class=(if (not showSendButton) "note-destination-no-send-button")}}
+            {{/if}}
+            {{#if (not state.isAssignedToMeBeforeEditing isLoading state.isNote)}}
+              {{#if state.isCurrentUserInMultipleTeams}}
+                <div local-class="assign-to-me-container">
+                  {{#basic-dropdown
+                    horizontalPosition="left"
+                    verticalPosition="above" as |dropdown|
+                   }}
+                    {{#dropdown.trigger local-class="assign-to-me-trigger"}}
+                      {{t 'cases.assign_to_me'}}
+                    {{/dropdown.trigger}}
+                    {{#dropdown.content local-class="assign-to-me-options"}}
+                      {{#each state.session.user.teams as |team|}}
+                        {{ko-agent-content/action-menu/item title=team.title
+                          onClick=(action "dispatch" "assignToMeInTeam" team)
+                          onClose=(action dropdown.actions.close)
+                        }}
+                      {{/each}}
+                    {{/dropdown.content}}
+                  {{/basic-dropdown}}
+                </div>
+              {{else}}
+                <div local-class="assign-to-me-container" onClick={{action "dispatch" "assignToMe"}}>
+                  {{t 'cases.assign_to_me'}}
+                </div>
+              {{/if}}
+            {{/if}}
+            {{#if showSendButton}}
+              {{#ko-button
+                type=(if state.isNote "note-with-options" "primary-with-options")
+                hasAnimation=true
+                disabled=submitReplyDisabled
+                loading=(or addExternalNote.isRunning hasUpdateSendingOperations)
+                onClick=(action "submit")
+                qaClass="qa-case-content__submit"
+              }}
+                {{#if uploadingFiles}}
+                  <span>{{t "generic.uploading_files"}}&nbsp;&nbsp;&nbsp;</span>{{ko-loader class=(local-class "buttonLoading")}}
+                {{else if state.reloadCase.isRunning}}
+                  {{t "cases.updating"}}
+                {{else if (or isSaving addExternalNote.isRunning)}}
+                  {{t "cases.sending"}}
+                {{else if (and (variation "release-send-and-status") state.isOnlyStatusEdited (not case.isNew))}}
+                  {{ko-case-content/field/status/swatch-with-label
+                    selected=editedCase.status
+                    prefix=(t 'cases.send_and')
+                    swatchHasBorder=true
+                  }}
+                {{else if (and state.arePropertiesEdited (not case.isNew))}}
+                  {{t "cases.send_and_update"}}
+                {{else}}
+                  {{t "cases.send"}}
+                {{/if}}
+              {{/ko-button}}
+              {{#power-select
+                options=orderedStatusesExcludingCurrent
+                selected=editedCase.status
+                disabled=(or submitReplyDisabled (not editedCase.requester))
+                searchEnabled=false
+                verticalPosition="above"
+                horizontalPosition="right"
+                matchTriggerWidth=false
+                onchange=(action 'sendAndSet')
+                tabindex=-1
+                triggerClass=(join-classes (local-class "send-and-set-trigger") (if state.isNote (local-class "note-trigger")))
+                dropdownClass=(local-class "send-and-set-options")
+                extra=(hash
+                  title=statusField.title
+                  isErrored=isErrored
+                  isEdited=isEdited
+                )
+                triggerComponent=(component "ko-power-select-triggers/chevron" color="#FFF" disabled=submitDisabled)
+                as |option select|
+              }}
+                {{ko-case-content/field/status/swatch-with-label
+                  selected=option
+                  prefix=(t 'cases.send_and')
+                  swatchHasBorder=(eq option select.highlighted)
+                }}
+              {{/power-select}}
+            {{/if}}
+          </div>
+        {{/if}}
+      {{/ko-text-editor}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq name "sidebar")}}
+    {{ko-case-content/info-block user=editedCase.requester case=case processingOrg=persistOrgToUser.isRunning updateOrgRemovalState=(action "updateOrgRemovalState")}}
+    {{ko-identities parent=editedCase.requester primaryOnly=true canAddNewIdentity=false}}
+    {{#unless case.isNew}}
+      {{ko-pinned-notes model=case fetchNotes=fetchNotes}}
+    {{/unless}}
+    {{ko-user-cases user=editedCase.requester case=case}}
+    {{#if (and planHasAgentCollisions channelPresence)}}
+      {{ko-info-bar/viewing-users presence=channelPresence}}
+    {{/if}}
+
+    {{#liquid-if updateLog.length}}
+      {{ko-info-bar/update-log
+        onClose=(action "dispatch" "resetUpdateLog")
+        updateLog=updateLog}}
+    {{/liquid-if}}
+
+    {{#if (variation "release-apps")}}
+      {{ko-app-slot
+        name="case-sidebar"
+        case=case
+        user=requester
+        organization=requester.organization
+      }}
+    {{/if}}
+
+    {{#if (plan-has "multi_org_users")}}
+      {{ko-case-content/field/organization
+        user=editedCase.requester
+        qaClass="qa-case-content-organization-select"
+        value=editedCase.organization
+        onValueChange=(action "dispatch" "setOrganization")
+        isEdited=state.isOrganizationEdited
+        isKREEdited=propertiesChangeViaKRE.organization
+        isErrored=errorMap.organization_id
+        isDisabled=areFieldsDisabled
+        isNewCase=isBeingCreated
+      }}
+    {{/if}}
+
+    {{#if assigneeField}}
+      {{ko-case-content/field/assignee
+        team=editedCase.assignedTeam
+        agent=editedCase.assignedAgent
+        teams=teams
+        agents=agents
+        field=assigneeField
+        onValueChange=(action "dispatch" "setAssignee")
+        isEdited=state.isAssigneeEdited
+        isKREEdited=propertiesChangeViaKRE.assignee
+        isErrored=(or errorMap.assigned_agent_id errorMap.assigned_team_id)
+        isDisabled=areFieldsDisabled
+      }}
+    {{/if}}
+
+    {{#if statusField}}
+      {{ko-case-content/field/status
+        qaClass="qa-ko-case-content__status"
+        value=editedCase.status
+        title=statusField.title
+        statuses=orderedStatuses
+        onValueChange=(action "dispatch" "setStatus")
+        isEdited=state.isStatusEdited
+        isKREEdited=propertiesChangeViaKRE.status
+        isErrored=errorMap.status_id
+        isDisabled=areFieldsDisabled
+      }}
+    {{/if}}
+
+    {{#if typeField}}
+      {{ko-case-content/field/type
+        qaClass="qa-ko-case-content__type"
+        value=editedCase.caseType
+        field=typeField
+        types=types
+        onValueChange=(action "dispatch" "setType")
+        isEdited=state.isTypeEdited
+        isKREEdited=propertiesChangeViaKRE.caseType
+        isErrored=errorMap.type_id
+        isDisabled=areFieldsDisabled
+      }}
+    {{/if}}
+
+    {{#if priorityField}}
+      {{ko-case-content/field/priority
+        qaClass="qa-ko-case-content__priority"
+        value=editedCase.priority
+        field=priorityField
+        priorities=priorities
+        onValueChange=(action "dispatch" "setPriority")
+        isEdited=state.isPriorityEdited
+        isKREEdited=propertiesChangeViaKRE.priority
+        isErrored=errorMap.priority_id
+        isDisabled=areFieldsDisabled
+      }}
+    {{/if}}
+
+    {{ko-info-bar/field/select-multiple
+      allowCreate=true
+      allowDelete=(not isCaseClosed)
+      allowAddDuringSearch=true
+      qaClass="qa-ko-case-content__tags"
+      title=(t "cases.tags")
+      isEdited=state.isTagsFieldEdited
+      isDisabled=areFieldsDisabled
+      isErrored=errorMap.tags
+      isKREEdited=propertiesChangeViaKRE.tags
+      value=visibleTags
+      onValueAddition=(action "dispatch" "addTag" case)
+      onValueRemoval=(action "dispatch" "removeTag")
+      onSuggestion=(perform suggestTags)
+      placeholder=(t "cases.addtag")
+    }}
+
+    {{ko-case-content/field/forms
+      selectedForm=editedCase.form
+      forms=enabledCaseForms
+      onFormSelected=(action "dispatch" "setForm")
+      isEdited=state.isFormEdited
+      isKREEdited=propertiesChangeViaKRE.form
+      isErrored=errorMap.form_id
+      isDisabled=areFieldsDisabled
+      showBottomArrow=showFormBottomArrow
+    }}
+
+    {{#each caseOrFormFields as |field|}}
+      {{#if (ko-helper customFieldsList.componentFor field.fieldType)}}
+        {{#if field.isEnabled}}
+          {{component (ko-helper customFieldsList.componentFor field.fieldType)
+            value=(get state.customFields.idToEditedValueHash field.id)
+            options=field.options
+            title=field.title
+            isErrored=(get errorMap field.key)
+            isEdited=(get state.customFields.idToIsEditedHash field.id)
+            isKREEdited=(get propertiesChangeViaKRE.customFields field.id)
+            isDisabled=areFieldsDisabled
+            onValueChange=(action "dispatch" "setCustomField" field)
+            hasEmptyOption=(not field.isRequiredForAgents)
+            idPath="id"
+            labelPath="value"
+          }}
+        {{/if}}
+      {{/if}}
+    {{/each}}
+
+    {{#if emptyFieldCount}}
+      <div onclick={{action (action (mut showAllCustomFields) (not showAllCustomFields)) }} local-class="pill-container">
+        <div local-class="pill-message">
+          <div local-class="content">
+            {{#if showAllCustomFields}}
+              {{t "cases.open_pill_message_content"}}
+            {{else}}
+              {{t "cases.closed_pill_message_content" count=emptyFieldCount}}
+            {{/if}}
+          </div>
+          <div local-class="arrow {{if showAllCustomFields "arrow-up"}}">{{inline-svg "chevron-down"}}</div>
+        </div>
+      </div>
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq name "submit-button")}}
+    {{#if (or updateProperties.isRunning canUpdateAndResend (and state.arePropertiesEdited (not hasQueue) (not isBeingCreated)))}}
+      {{#transition-group transition-class="update-button"}}
+        <div local-class="submit-properties
+          {{if (or updateProperties.isRunning (not hasReplyContent)) "show-submit"}}
+          {{if submitDisabled "submitting"}}"
+        >
+          {{#ko-button
+            type="primary"
+            hasAnimation=true
+            full=true
+            size="medium"
+            onClick=(perform (if canUpdateAndResend updateAndResend updateProperties))
+            loading=(if canUpdateAndResend state.deliveryLoop.isRunning submitDisabled)
+            qaClass=(if canUpdateAndResend "qa-ko-case-content__update-and-resend" "qa-case-content__submit-properties")
+          }}
+            {{t (if canUpdateAndResend "generic.update_and_resend" "generic.update_properties")}}
+          {{/ko-button}}
+          {{#unless (or isSaving addExternalNote.isRunning canUpdateAndResend updateProperties.isRunning)}}
+            <button class="{{qa-cls 'qa-ko-case-content__cancel'}}" local-class="cancel-property-changes" onclick={{action "resetProperties"}} disabled={{submitDisabled}}>
+              <span local-class="or-text">{{t "generic.or"}}&nbsp;</span>
+              <span>{{t "generic.cancel"}}</span>
+            </button>
+          {{/unless}}
+        </div>
+      {{/transition-group}}
+    {{/if}}
+  {{/if}}
+{{/ko-agent-content/layout}}
+
+{{ko-case-ai-chat case=case}}
+{{!-- {{appcues-beacon key="messenger conversation" shouldTrack=wrappedSelectedChannel.shouldDeliverViaMessenger}} --}}

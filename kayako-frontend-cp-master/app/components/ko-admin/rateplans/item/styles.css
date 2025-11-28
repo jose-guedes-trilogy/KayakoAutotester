@@ -1,0 +1,53 @@
+.cell {
+  background: $grey-1;
+  border: 2px solid #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  position: relative;
+}
+
+.cell.selected {
+  background: #fff;
+  border-color: $color-good;
+  padding-bottom: 54px;
+}
+
+.cell.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.plan-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 27px;
+}
+
+.plan-name {
+  color: $grey-8;
+  font-size: 16px;
+  font-weight: 600;
+  width: 150px;
+}
+
+.plan-description {
+  color: $grey-6;
+  font-size: 14px;
+  width: 300px;
+}
+
+.plan-maths {
+  display: flex;
+  width: 180px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.label-helper {
+  color: $grey-8;
+  font-size: 14px;
+  margin-top: 6px;
+  display: inline-block;
+  font-weight: 600;
+}

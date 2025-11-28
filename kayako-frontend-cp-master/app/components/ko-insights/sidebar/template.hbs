@@ -1,0 +1,125 @@
+{{#ko-sidebar as |sidebar|}}
+  {{#sidebar.group title=(t 'insights.sidebar.general.title') as |group|}}
+    {{#group.item route='session.agent.insights.general.cases' as |item|}}
+      {{t 'insights.sidebar.general.cases.title'}}
+    {{/group.item}}
+
+    {{#if (variation "release-restrict-insights")}}
+      {{#if hasAgentTeamInsights}}
+        {{#group.item route='session.agent.insights.general.agents' as |item|}}
+          {{t 'insights.sidebar.general.agents.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.general.agents.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.general.agents.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{else}}
+      {{#group.item route='session.agent.insights.general.agents' as |item|}}
+        {{t 'insights.sidebar.general.agents.title'}}
+      {{/group.item}}
+    {{/if}}
+
+    {{#if (variation "release-restrict-insights")}}
+      {{#if hasAgentTeamInsights}}
+        {{#group.item route='session.agent.insights.general.teams' as |item|}}
+          {{t 'insights.sidebar.general.teams.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.general.teams.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.general.teams.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{else}}
+      {{#group.item route='session.agent.insights.general.teams' as |item|}}
+        {{t 'insights.sidebar.general.teams.title'}}
+      {{/group.item}}
+    {{/if}}
+  {{/sidebar.group}}
+
+  {{#if (variation "release-restrict-insights")}}
+    {{#sidebar.group title=(t 'insights.sidebar.sla.title') as |group|}}
+      {{#if hasSLAs}}
+        {{#group.item route='session.agent.insights.sla.overview' as |item|}}
+          {{t 'insights.sidebar.sla.overview.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.sla.overview.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.sla.overview.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{/sidebar.group}}
+  {{else}}
+    {{#if hasSLAs}}
+      {{#sidebar.group title=(t 'insights.sidebar.sla.title') as |group|}}
+        {{#group.item route='session.agent.insights.sla.overview' as |item|}}
+          {{t 'insights.sidebar.sla.overview.title'}}
+        {{/group.item}}
+      {{/sidebar.group}}
+    {{/if}}
+  {{/if}}
+
+  {{#sidebar.group title=(t 'insights.sidebar.help_center.title') as |group|}}
+    {{#if (variation "release-restrict-insights")}}
+      {{#if hasHelpCenterInsights}}
+        {{#group.item route='session.agent.insights.help-center.searches' as |item|}}
+          {{t 'insights.sidebar.help_center.searches.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.help_center.searches.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.help_center.searches.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{else}}
+      {{#group.item route='session.agent.insights.help-center.searches' as |item|}}
+        {{t 'insights.sidebar.help_center.searches.title'}}
+      {{/group.item}}
+    {{/if}}
+
+    {{#if (variation "release-restrict-insights")}}
+      {{#if hasHelpCenterInsights}}
+        {{#group.item route='session.agent.insights.help-center.articles' as |item|}}
+          {{t 'insights.sidebar.help_center.articles.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.help_center.articles.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.help_center.articles.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{else}}
+      {{#group.item route='session.agent.insights.help-center.articles' as |item|}}
+        {{t 'insights.sidebar.help_center.articles.title'}}
+      {{/group.item}}
+    {{/if}}
+  {{/sidebar.group}}
+
+  {{#sidebar.group title=(t 'insights.sidebar.reporting.title') as |group|}}
+    {{#if (variation "release-restrict-insights")}}
+      {{#if hasCustomReportingInsights}}
+        {{#group.item route='session.agent.insights.reporting.custom-reports' as |item|}}
+          {{t 'insights.sidebar.reporting.custom_reports.title'}}
+        {{/group.item}}
+      {{else}}
+        {{#ko-tooltip title=(t 'insights.sidebar.reporting.custom_reports.upgrade') delay=100}}
+          {{#group.item inactive=true as |item|}}
+            {{t 'insights.sidebar.reporting.custom_reports.title'}}
+          {{/group.item}}
+        {{/ko-tooltip}}
+      {{/if}}
+    {{else}}
+      {{#group.item route='session.agent.insights.reporting.custom-reports' as |item|}}
+        {{t 'insights.sidebar.reporting.custom_reports.title'}}
+      {{/group.item}}
+    {{/if}}
+  {{/sidebar.group}}
+{{/ko-sidebar}}

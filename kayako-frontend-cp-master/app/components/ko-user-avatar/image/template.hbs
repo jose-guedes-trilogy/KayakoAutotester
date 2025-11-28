@@ -1,0 +1,16 @@
+<img
+  src={{url}}
+  alt=""
+  local-class="image {{avatarSizeClass}} {{if isRound "round"}}"
+  class="
+    {{qa-cls (concat "qa-avatar-type-" type)}}
+    {{qa-cls (concat "qa-avatar-size-" size)}}
+    {{qa-cls "qa-avatar-image"}}
+    {{qa-cls (concat "qa-avatar-loaded-" _isImageLoaded)}}
+  "
+  onload={{action imageDidLoad}}
+>
+
+{{#if (not _isImageLoaded)}}
+  <div local-class="loading" class={{qa-cls "qa-avatar-loading"}}></div>
+{{/if}}

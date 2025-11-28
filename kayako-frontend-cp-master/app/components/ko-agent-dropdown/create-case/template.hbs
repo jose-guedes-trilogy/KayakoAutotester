@@ -1,0 +1,47 @@
+{{#ko-agent-dropdown/layout as |block|}}
+  {{#if block.header}}
+    {{t 'generic.create_case_panel.title'}}
+  {{/if}}
+
+  {{#if block.contents}}
+    <div class="{{qa-cls "qa-agent-dropdown-create-case__input"}}">
+      {{#ko-form/field field=fields.requester}}
+        {{#ko-form/field/label}}{{t 'generic.create_case_panel.requester_label'}}{{/ko-form/field/label}}
+        {{#ko-select selected=fields.requester.value searchField="fullName" search=(action "searchUsers") onChange=(action "selectRequester") as |user|}}
+          <div local-class="dropdownUser">
+            <img local-class="dropdownUserImage" src={{user.avatar}}>
+            <div>
+              <div local-class="userInfo">
+                <span local-class="title">{{user.fullName}}</span>
+                {{#if user.organization}}<span>, <span local-class="caption">{{user.organization.name}}</span></span>{{/if}}
+              </div>
+              <p local-class="caption">
+                {{user.primaryEmailAddress}}
+              </p>
+            </div>
+          </div>
+        {{else}}
+          <li class="ember-power-select-option">
+            {{t 'search.no_results'}}
+          </li>
+        {{/ko-select}}
+      {{/ko-form/field}}
+      {{#if isLoading}}{{ko-loader}}{{/if}}
+    </div>
+  {{/if}}
+
+  {{#if block.footer}}
+    {{t 'generic.create_case_panel.info'}}
+  {{/if}}
+
+  {{#if block.buttons}}
+    <div local-class="buttons">
+      {{#ko-button type="naked" onClick=onCancel}}
+        {{t "generic.cancel"}}
+      {{/ko-button}}
+      {{#ko-button type="primary" disabled=(not fields.requester.value.id) onClick=(action "submit") qaClass="qa-agent-dropdown-create-case__submit"}}
+        {{t "generic.next"}}
+      {{/ko-button}}
+    </div>
+  {{/if}}
+{{/ko-agent-dropdown/layout}}

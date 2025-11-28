@@ -1,0 +1,20 @@
+name: Run Test Suite
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  run-tests:
+    name: "Run Test Suite"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build the runner Docker image
+        run: docker build . --file ember-test.Dockerfile --tag kayako-frontend-cp-local
+      # Linting is run during test too, but it doesn't fail the CI, hence we need to run "build" explicitly, this will report lint issues
+      - name: Lint
+        run: docker run -e env=development kayako-frontend-cp-local npm run build
+      - name: Run tests
+        run: docker run -e env=development kayako-frontend-cp-local npm run ember-cli test

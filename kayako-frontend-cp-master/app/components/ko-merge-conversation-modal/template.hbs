@@ -1,0 +1,126 @@
+{{#if activeMerge}}
+  {{#ko-modal
+    chromelessContent=true
+    footerContentJustifiedSpaceBetween=true
+    borderTop=false
+    on-close=(action "onCancel")
+    on-confirm=(action "onConfirm")
+    border="bottom"
+    as |modal|}}
+    {{#if modal.isHeader}}
+      {{#if showConfirmation}}
+        {{activeMerge.mergeConfirmationHeader}}
+      {{else}}
+        {{#if (or isSearching (not hasSuggestions))}}
+          {{t "cases.merge_conversation.modal.header_search"}}
+        {{else}}
+          {{activeMerge.header}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
+
+    {{#if modal.isMain}}
+      {{#if showConfirmation}}
+        <div local-class="primary-conversation-container">
+          <p local-class="primary-conversation-message"><b>{{numSelectedConversations}} {{activeMerge.primaryConversationMessageBold}}</b> {{activeMerge.primaryConversationMessageEnd}}</p>
+          <div local-class="primary-conversation">
+            {{ko-universal-search/result
+              result=oldestCase
+              isReadOnly=true
+              showPrimaryBadge=true
+            }}
+          </div>
+        </div>
+        <div local-class="main-confirmation">
+          <div local-class="selected-conversations">
+            <ul>
+              {{#each convosToBeMerged as |convo|}}
+                {{ko-universal-search/result
+                  result=convo
+                  showRemoveIcon=(not (eq activeMerge.currentCase.id convo.id))
+                  appended=true
+                  isReadOnly=true
+                  isHighlighted=(eq convo highlightedResult)
+                  onHighlight=(action "highlightResult")
+                  onClickRemoveIcon=(action "updateMergeList")
+                }}
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      {{else}}
+        {{ko-universal-search
+          groupSelect=true
+          displayInline=true
+          highlightInputOnFocus=true
+          hasInlineInputBorder=true
+          showSearchHints=false
+          showHelpBlock=false
+          showSeeMoreButton=false
+          highlightInputOnFocus=true
+          hasInlineInputBorder=true
+          searchWithin=searchWithinQuery
+          resultsToExclude=searchExclusions
+          onLoadSearchRoute=(action "updateMergeList")
+          onSearchStateChange=(action "updateSearchState")
+        }}
+        {{#if (not isSearching)}}
+          <div local-class="main">
+            {{#if numSelectedConversations}}
+              <div local-class="selected-conversations">
+                <p local-class="selected-heading">{{selectedLabel}}</p>
+                <ul>
+                  {{#each selectedConversations as |convo|}}
+                    {{ko-universal-search/result
+                      result=convo
+                      showAppendIcon=true
+                      appended=true
+                      isHighlighted=(eq convo highlightedResult)
+                      onHighlight=(action "highlightResult")
+                      onSelectHighlightedResult=(action "updateMergeList")
+                    }}
+                  {{/each}}
+                </ul>
+              </div>
+            {{/if}}
+            {{ko-merge-conversation-modal/suggestions
+              requester=requester
+              idsToExclude=suggestionExclusions
+              onSelectResult=(action "updateMergeList")
+              onFetchSuggestions=(action "onFetchSuggestions")
+            }}
+          </div>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+
+    {{#if modal.isFooter}}
+      {{#if activeMerge.skipSelection}}
+        <span local-class="spacer"></span>
+      {{else if showConfirmation}}
+        {{#ko-button type="naked" onClick=(action "onBackFromConfirmation")}}
+          {{activeMerge.backLabel}}
+        {{/ko-button}}
+      {{else}}
+        <p local-class="conversations-selected">{{numSelectedConversations}} {{activeMerge.conversationsSelectedLabel}}</p>
+      {{/if}}
+      <div local-class="buttons">
+        {{#if showConfirmation}}
+          {{#ko-button type="primary" onClick=(action "onConfirm") qaClass="qa-ko-merge-conversation-modal__confirm"}}
+            {{#if performMerge.isRunning}}
+              <div local-class="button-loading-container">
+                {{ko-loader class=(local-class "buttonLoading")}}
+              </div>
+            {{else}}
+              {{activeMerge.mergeLabel}}
+            {{/if}}
+          {{/ko-button}}
+        {{else}}
+          {{#ko-button type="primary" onClick=(action "onNext") qaClass="qa-ko-merge-conversation-modal__next"}}
+            {{activeMerge.nextLabel}}
+          {{/ko-button}}
+        {{/if}}
+      </div>
+    {{/if}}
+  {{/ko-modal}}
+{{/if}}

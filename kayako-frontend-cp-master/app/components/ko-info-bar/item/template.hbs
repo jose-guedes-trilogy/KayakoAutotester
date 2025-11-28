@@ -1,0 +1,13 @@
+<div id={{id}} class="{{class}} {{if qaClass (qa-cls qaClass)}}"
+  local-class="container
+    {{if isEdited "containerEdited"}}
+    {{if isKREEdited "containerKREEdited"}}
+    {{if hasError "containerError"}}
+    {{if isActive "containerActive"}}
+    {{if isDisabled "containerDisabled"}}
+  "
+  onclick={{action onClick}}
+  onmousedown={{action onMouseDown}}
+>
+  {{yield}}
+</div>

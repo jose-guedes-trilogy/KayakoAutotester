@@ -1,0 +1,80 @@
+{{#if show}}
+  {{#if post.recipients}}
+    {{#if (eq postType "side_conversation")}}
+      <div local-class="to-text">{{t "cases.more_info.inline_with"}}</div>
+    {{else}}
+      <div local-class="to-text">{{t "cases.more_info.inline_to"}}</div>
+    {{/if}}
+    {{#each recipients as |recipient index|}}
+      {{#if (ko-helper isLastCC recipients.length othersCount index)}}
+        {{t "cases.more_info.inline_and"}}&nbsp;
+      {{/if}}
+      <span local-class="email-item-cc email-item-content {{if (and (ko-helper isOnlyRecipient recipients.length othersCount index) (not (eq postType "side_conversation"))) "shrink"}}" onclick={{action onAddCC recipient.identity}} class={{concat "email-item-cc-" index}}>
+        {{#ko-tooltip side="top" tagName="span" title=(concat recipient.messageRecipientType ": " recipient.identity.email) delay=200}}
+          <span local-class="email-item">{{recipient.identity.email}}</span>
+        {{/ko-tooltip}}
+      </span>
+      {{!-- Note: The "shrink" class is not applied to "side_conversation" because it creates issues with displaying the TO/CC email addresses --}}
+    {{/each}}
+  {{/if}}
+  {{#if (gt othersCount 0)}}
+    {{t "cases.more_info.inline_and"}}
+    <span local-class="others-text">{{othersCount}} {{othersText}}</span>
+  {{/if}}
+{{/if}}
+{{#basic-dropdown as |dropdown|}}
+  {{#dropdown.trigger local-class="sandbox-trigger" tabindex=-1}}
+    <span local-class="details-chevron {{if dropdown.isOpen "active"}}">
+      {{ko-icon name="triangleDown" color="#BEC4C7"}}
+    </span>
+  {{/dropdown.trigger}}
+
+  {{#dropdown.content local-class="sandbox-dropdown"}}
+    <table local-class="chevron-info-box">
+      {{#if post.email}}
+        <tr>
+          <td local-class="left">{{t "cases.more_info.from"}}</td>
+          <td local-class="cell"  onclick={{action onAddCC post.email}}>{{post.fullname}} <span local-class="grey mail-text">{{post.email}}</span></td>
+        </tr>
+      {{/if}}
+      {{#if toRecipients}}
+        <tr>
+          <td local-class="left">{{t "cases.more_info.to"}}</td>
+          <td local-class="cell">
+            {{#each toRecipients as |recipient|}}
+              <div onclick={{action onAddCC recipient.identity}}>
+                {{#with recipient.name as |name|}}{{name}} {{/with}}<span local-class="grey mail-text">{{recipient.identity.email}}</span>
+              </div>
+            {{/each}}
+          </td>
+        </tr>
+      {{/if}}
+      {{#if ccRecipients}}
+        <tr>
+          <td local-class="left">{{t "cases.more_info.cc"}}</td>
+          <td local-class="cell cc-item">
+            {{#each ccRecipients as |recipient|}}
+              <div onclick={{action onAddCC recipient.identity}}>{{recipient.identity.email}}</div>
+            {{/each}}
+          </td>
+        </tr>
+      {{/if}}
+      {{#with post.createdAt as |createdAt|}}
+        <tr>
+          <td local-class="left">{{t "cases.more_info.date"}}</td>
+          <td local-class="cell">
+            {{format-date (ko-intl-datetime-format createdAt) year="numeric" month="long" day="numeric"}}
+            {{t "cases.more_info.time_preposition"}}
+            {{format-time (ko-intl-datetime-format createdAt) hour="2-digit" minute="2-digit" format="hh:mm"}}
+          </td>
+        </tr>
+      {{/with}}
+      {{#if post.subject}}
+        <tr>
+          <td local-class="left">{{t "cases.more_info.subject"}}</td>
+          <td local-class="cell">{{caseSubject}}</td>
+        </tr>
+      {{/if}}
+    </table>
+  {{/dropdown.content}}
+{{/basic-dropdown}}

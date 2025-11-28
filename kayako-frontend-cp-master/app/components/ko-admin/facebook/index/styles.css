@@ -1,0 +1,45 @@
+.availablePages {
+  min-height: 15px;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.availablePage {
+  margin-bottom: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.no-pages {
+  font-size: 18px;
+}
+
+.no-pages {
+  color: $grey-3;
+}
+
+.reconnect {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.error {
+  color: $color-bad;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.caption {
+  color: $grey-6;
+}
+
+.cancel {
+  margin-right: 8px;
+}

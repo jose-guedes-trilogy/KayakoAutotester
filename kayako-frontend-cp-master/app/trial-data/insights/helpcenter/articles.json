@@ -1,0 +1,68 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "id": 1,
+      "titles": [
+        {
+          "id": 1,
+          "resource_type": "locale_field"
+        }
+      ],
+      "upvote_count": 6,
+      "total_comments": 3,
+      "views": 240,
+      "resource_type": "article"
+    },
+    {
+      "id": 2,
+      "titles": [
+        {
+          "id": 2,
+          "resource_type": "locale_field"
+        }
+      ],
+      "upvote_count": 5,
+      "total_comments": 6,
+      "views": 131,
+      "resource_type": "article"
+    },
+    {
+      "id": 3,
+      "titles": [
+        {
+          "id": 3,
+          "resource_type": "locale_field"
+        }
+      ],
+      "upvote_count": 4,
+      "total_comments": 1,
+      "views": 65,
+      "resource_type": "article"
+    }
+  ],
+  "resources": {
+    "locale_field": {
+      "1": {
+        "id": 1,
+        "locale": "en-us",
+        "translation": "Getting started with the Hario V60",
+        "resource_type": "locale_field"
+      },
+      "2": {
+        "id": 2,
+        "locale": "en-us",
+        "translation": "Gaggia D90 Evolution spec sheet",
+        "resource_type": "locale_field"
+      },
+      "3": {
+        "id": 3,
+        "locale": "en-us",
+        "translation": "Aeropress inversion brewing",
+        "resource_type": "locale_field"
+      }
+    }
+  },
+  "resource": "article",
+  "total_count": 3
+}

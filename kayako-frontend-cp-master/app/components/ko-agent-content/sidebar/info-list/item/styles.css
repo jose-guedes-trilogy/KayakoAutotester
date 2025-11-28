@@ -1,0 +1,14 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.list-item:not(:last-child) {
+  margin-bottom: 9px;
+}
+
+.content {
+  line-height: 26px;
+  padding-left: 8px;
+}

@@ -1,0 +1,19 @@
+{{#ko-modal on-close=(action "onClose") on-confirm=(action "onClose") width="800px" as |modal|}}
+  {{#if modal.isHeader}}
+    {{t "admin.apps.endpoints.failure.title"}}
+  {{/if}}
+
+  {{#if modal.isMain}}
+    <div>
+      {{t "admin.apps.endpoints.failure.description" date=(format-date model.lastAttemptAt format="LLL")}}
+    </div>
+
+    <pre local-class="preFormatted">{{model.lastAttemptMessage}}</pre>
+  {{/if}}
+
+  {{#if modal.isFooter}}
+    {{#ko-button type="primary" onClick=(action "onClose")}}
+      {{t "generic.close"}}
+    {{/ko-button}}
+  {{/if}}
+{{/ko-modal}}

@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 540px;
+}
+
+.sidebar {
+  background-color: $grey-1;
+  border-left: 1px solid $grey-3;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 280px;
+  flex-grow: 1;
+  max-width: 320px;
+  position: relative;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-shrink: 1;
+  flex-grow: 1;
+  z-index: 0;
+}
+
+.spacer {
+  height: 100px;
+}
+
+.submit-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(-180deg, rgba(247, 248, 249, 0) 0%, rgba(247, 248, 249, 0.9) 41%, #F7F8F9 100%);
+}
+
+.heading {
+  padding: 0 18px;
+}
+
+.timeline {
+  flex-grow: 1;
+  flex-shrink: 100000;
+  flex-basis: 0px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media print {
+  .timeline {
+    overflow: visible !important;
+  }
+}
+
+.reply-area {
+  display: block;
+  position: relative;
+  flex-direction: column;
+  flex-shrink: 1;
+  padding: 16px 18px 0;
+}
+
+.side-panel {
+  height: 100%;
+}

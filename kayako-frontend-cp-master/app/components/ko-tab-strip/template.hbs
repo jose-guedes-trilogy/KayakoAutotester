@@ -1,0 +1,7 @@
+<div local-class="tabs">
+  {{yield
+    (hash
+      tabs=(component "ko-tab-strip/tabs" tabs=tabs on-close=(action "closeTab"))
+    )
+  }}
+</div>

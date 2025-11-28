@@ -1,0 +1,19 @@
+.row {
+  display: flex;
+  align-items: stretch;
+  min-height: 48px;
+  padding-right: 18px;
+  border-bottom: 1px solid $grey-3;
+
+  > * {
+    min-height: 47px; /* see https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items */
+  }
+
+  &:hover {
+    background-color: $grey-1;
+  }
+}
+
+.row--actionable {
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.summary {
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: 15px;
+  margin-right: 15px;
+  color: #2D3138;
+  word-wrap: break-word;
+}

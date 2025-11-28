@@ -1,0 +1,33 @@
+{{#list.row onClick=(action onEdit brand) as |row|}}
+  {{#row.cell disabled=(not brand.isEnabled)}}
+    <span>
+      <span local-class="brandName">{{brand.name}}</span>
+      <span local-class="caption">
+        {{#if brand.alias}}
+          ({{brand.alias}})
+        {{else}}
+          ({{brand.subDomain}}.{{brand.domain}})
+        {{/if}}
+      </span>
+      {{#if brand.isDefault}}
+        <span local-class="caption">({{t "generic.default"}})</span>
+      {{/if}}
+    </span>
+  {{/row.cell}}
+  {{#row.actions}}
+    <a href={{href-to "session.admin.customizations.brands.edit" brand.id}} class={{qa-cls "qa-brand-edit"}}>{{t "generic.edit"}}</a>
+    {{#if (not brand.isDefault)}}
+      |
+      <a
+        onclick={{action onToggle brand}}
+        class={{qa-cls (if brand.isEnabled "qa-brand-disable" "qa-brand-enable")}}
+      >
+        {{t (if brand.isEnabled "generic.disable" "generic.enable")}}
+      </a>
+      {{#if brand.isEnabled}}
+        | <a onclick={{action onMakeDefault brand}} class={{qa-cls "qa-brand-make-default"}}>{{t "generic.make_default"}}</a>
+      {{/if}}
+      | <a onclick={{action onDelete brand}} class={{qa-cls "qa-brand-delete"}}>{{t "generic.delete"}}</a>
+    {{/if}}
+  {{/row.actions}}
+{{/list.row}}

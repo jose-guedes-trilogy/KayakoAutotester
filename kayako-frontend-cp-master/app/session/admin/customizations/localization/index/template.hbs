@@ -1,0 +1,31 @@
+{{#ko-admin/page
+  title=(t "admin.localization.headings.index")
+  tabs=tabs
+}}
+{{/ko-admin/page}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.localization.description"}}</p>
+  <p><strong>{{format-html-message "admin.localization.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1154-localization?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=localization" "admin.localization.description_link")}}</strong></p>
+  <p><br><strong>{{t "admin.localization.description3"}}<a href="mailto:support@kayako.com">{{t "admin.localization.description_email" email="support@kayako.com"}}</a></strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="localization"}}
+{{/if}}
+
+{{#if enabledLanguagesSorted.length}}
+  {{#ko-simple-list header=(t "generic.enabled") qaClass="qa-languages-enabled" as |list|}}
+    {{#each enabledLanguagesSorted as |language|}}
+      {{ko-admin/localization/list-row language=language list=list canToggle=(gt enabledLanguagesSorted.length 1)}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if disabledLanguagesSorted.length}}
+  {{#ko-simple-list header=(t "generic.disabled") qaClass="qa-languages-disabled" as |list|}}
+    {{#each disabledLanguagesSorted as |language|}}
+      {{ko-admin/localization/list-row language=language list=list}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

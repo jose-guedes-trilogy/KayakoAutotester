@@ -1,0 +1,50 @@
+.container {
+  :global(.sortable-item) {
+    transition: all 0.125s;
+
+    &:global(.is-dragging) {
+      transition-duration: 0s;
+      z-index: 50;
+      position: relative;
+      background-color: #F7F8F9;
+    }
+  }
+}
+
+.list {
+  list-style: none;
+}
+
+.item {
+  position: relative;
+  padding-left: 13.5px;
+  margin-left: -13.5px;
+
+  &:hover {
+    @include child-icon {
+      visibility: visible;
+    }
+  }
+}
+
+.handle {
+  cursor: grab;
+
+  @include icon {
+    @extend %u-v-center;
+    left: 4.5px;
+    visibility: hidden;
+    color: #CBCFD1;
+    @include font-size-with-line-height(30px);
+  }
+}
+
+.handleOutside {
+  @include icon {
+    left: -10px;
+  }
+}
+
+:global(#ember-testing .sortable-item) {
+  transition: all 0s !important;
+}

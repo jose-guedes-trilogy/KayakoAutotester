@@ -1,0 +1,20 @@
+<div local-class="trigger" onmousedown={{action "stopPropagation"}}>
+  <input
+    type="search"
+    local-class="input"
+    tabindex="0"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+    aria-controls={{listboxId}}
+    placeholder={{placeholder}}
+    disabled={{select.disabled}}
+    value={{textValue}}
+    onkeydown={{action 'handleKeydown'}}
+    oninput={{action "handleInput"}}
+  >
+  {{#if select.loading}}
+    <span local-class="loading"></span>
+  {{/if}}
+</div>

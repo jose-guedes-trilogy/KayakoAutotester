@@ -1,0 +1,27 @@
+{{#ko-info-bar/field/drill-down
+  title=field.title
+  options=assigneeValues
+  actionReceiver=drillDownComponent
+  value=currentlySelectedValue
+  isEdited=isEdited
+  isKREEdited=isKREEdited
+  isErrored=isErrored
+  isDisabled=isDisabled
+  onValueChange=(action "assigneeSelected")
+  emptyLabel=emptyLabel
+  hasEmptyOption=hasEmptyOption
+  showFullPathOnLeaves=true
+  triggerValueComponent=(component "ko-case-content/field/assignee/trigger-value" team=team agent=agent emptyLabel=emptyLabel hideYouLabel=true)
+  as |option select|
+}}
+  {{#if option.object}}
+    {{component
+      "ko-case-content/field/assignee/trigger-value"
+      team=option.object.team
+      agent=option.object.agent
+      highlight=select.lastSearchedText
+    }}
+  {{else}}
+    {{option.value}}
+  {{/if}}
+{{/ko-info-bar/field/drill-down}}

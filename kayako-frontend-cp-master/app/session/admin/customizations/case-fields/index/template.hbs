@@ -1,0 +1,13 @@
+{{#with (hash
+  canAddFields=(or (plan-has "custom_user_organization_fields") (not (variation "release-restrict-fields")))
+) as |flags|}}
+  {{#ko-admin/page
+    title=(t "admin.custom_fields.title_breadcrumbs")
+    tabs=tabs
+    buttonText=(t "admin.casefields.buttons.add_new_casefield")
+    needsPlanUpgrade=(not flags.canAddFields)
+    onSave=(action "transitionToNewCaseFieldRoute")
+  }}
+    {{ko-admin/fields/index model=model}}
+  {{/ko-admin/page}}
+{{/with}}

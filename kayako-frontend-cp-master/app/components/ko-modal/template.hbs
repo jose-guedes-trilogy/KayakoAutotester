@@ -1,0 +1,37 @@
+{{#ko-overlay qaClass=qaClass}}
+  <div local-class="container">
+    <div local-class="content" style={{modalStyle}}>
+      {{#if showHeader}}
+        <div local-class="
+          header
+          {{if on-close "header-with-icon"}}
+          {{if noHeaderContent "no-header-content"}}
+          {{if (and borderTop (not noHeaderContent)) "has-border"}}
+        ">
+          <h4 local-class="header-text">
+            {{yield (hash isHeader=true)}}
+          </h4>
+          {{#if (and showCloseButton on-close)}}
+            <div local-class="close" onclick={{on-close}}>
+              {{ko-icon name="modalClose" color="#838D94"}}
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+      <div local-class="main {{if (not chromelessContent) "main--chrome"}}">
+        <div>
+          {{yield (hash isMain=true)}}
+        </div>
+      </div>
+      {{#unless noFooter}}
+        <div local-class="
+          footer
+          {{if footerContentJustifiedSpaceBetween "spaced-footer"}}
+          {{if borderBottom "has-border"}}
+        ">
+          {{yield (hash isFooter=true)}}
+        </div>
+      {{/unless}}
+    </div>
+  </div>
+{{/ko-overlay}}

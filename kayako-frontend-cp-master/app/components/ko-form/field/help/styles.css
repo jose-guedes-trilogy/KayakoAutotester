@@ -1,0 +1,8 @@
+.help {
+  margin: 0 0 18px;
+  color: $grey-6;
+
+  * + & {
+    margin-top: 9px;
+  }
+}

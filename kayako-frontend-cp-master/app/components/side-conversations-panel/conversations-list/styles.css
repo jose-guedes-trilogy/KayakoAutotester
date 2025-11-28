@@ -1,0 +1,132 @@
+.side-panel-header {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 16px;
+  border-bottom: 1px solid $grey-3;
+  height: 52px;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 380px;
+}
+
+.add-button {
+  display: inline-flex;
+  margin-left: auto;
+  cursor: pointer;
+  padding: 2px;
+
+  &:hover:not([aria-disabled]) {
+    background-color: $grey-1;
+
+    svg path {
+      fill: $primary-blue
+    }
+  }
+}
+
+.conversation-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  height: calc(100vh - 128px);
+}
+
+.conversation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conversation-group-header {
+  padding: 8px 14px;
+  background-color: $grey-1;
+  font-size: 14px;
+  font-weight: 600;
+  color: $grey-7;
+}
+
+.conversation-item {
+  padding: 14px;
+  border-bottom: 1px solid $grey-2;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.conversation-item:hover {
+  background-color: $grey-1;
+}
+
+.conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conversation-subject {
+  font-weight: bold;
+  font-size: 14px;
+  color: $grey-8;
+  max-width: 248px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conversation-time {
+  font-size: 12px;
+  color: $grey-7;
+}
+
+.conversation-participants {
+  font-size: 12px;
+  color: $grey-7;
+  margin-bottom: 8px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: left;
+  margin-top: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.pagination .selected {
+  border: 1px solid #000000;
+}
+
+.pagination button {
+  padding: 4px 8px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
+}
+
+.pagination button:hover {
+  background-color: #f8f9fa;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 176px);
+}
+
+.conversation-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

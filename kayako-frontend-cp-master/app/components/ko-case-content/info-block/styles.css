@@ -1,0 +1,9 @@
+.container {
+  padding: 18px 0 9px;
+  color: $grey-8;
+  background: #FFFFFF;
+}
+
+.info-card {
+  margin-bottom: 9px;
+}

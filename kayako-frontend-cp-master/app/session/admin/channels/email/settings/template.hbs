@@ -1,0 +1,62 @@
+{{#ko-form
+  onSubmit=(action "save")
+  onSuccess=(action "handleSuccess")
+as |form|}}
+  {{#ko-admin/page
+    title=(t "admin.email.headings.settings")
+    tabs=tabs
+    buttonText=(if hasChanges (t "generic.save"))
+    onCancel=(if hasChanges (action "cancel"))
+    showFooter=true
+  }}
+
+    {{#ko-admin/forms/group legend=(t "admin.email.settings.heading.receiving_email")}}
+      {{#ko-form/field}}
+        {{ko-checkbox
+          label=(t "admin.email.settings.wildcard_email.title")
+          checked=(eq editedSettings.email_wildcard_email.value "1")
+          onCheck=(action "editBooleanSetting" "email_wildcard_email")
+          disabled=form.isSubmitting
+        }}
+
+        {{#ko-form/field/help}}{{t "admin.email.settings.wildcard_email.description" domain=domain}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+      
+      {{#ko-form/field}}
+        {{ko-checkbox
+          label=(t "admin.email.settings.html_replies.title")
+          checked=(eq editedSettings.email_email_inbound_html.value "1")
+          onCheck=(action "editBooleanSetting" "email_email_inbound_html")
+          disabled=form.isSubmitting
+        }}
+
+        {{#ko-form/field/help}}{{t "admin.email.settings.html_replies.description" domain=domain}}{{/ko-form/field/help}}
+      {{/ko-form/field}}      
+    {{/ko-admin/forms/group}}
+
+    {{#ko-admin/forms/group legend=(t "admin.email.settings.heading.sending_email")}}
+      {{#ko-form/field}}
+        {{ko-checkbox
+          label=(t "admin.email.settings.personalize_replies.title")
+          checked=(eq editedSettings.email_personalize_replies.value "1")
+          onCheck=(action "editBooleanSetting" "email_personalize_replies")
+          disabled=form.isSubmitting
+        }}
+
+        {{#ko-form/field/help}}{{t "admin.email.settings.personalize_replies.description" domain=domain}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{ko-checkbox
+          label=(t "admin.email.settings.custom_dkim.title")
+          checked=(eq editedSettings.email_custom_dkim.value "1")
+          onCheck=(action "editBooleanSetting" "email_custom_dkim")
+          disabled=form.isSubmitting
+        }}
+
+        {{#ko-form/field/help}}{{t "admin.email.settings.custom_dkim.description" domain=domain}}{{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+  {{/ko-admin/page}}
+{{/ko-form}}

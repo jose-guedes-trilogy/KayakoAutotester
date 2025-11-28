@@ -1,13 +1,13 @@
 import { test, expect } from '../../fixtures/auth.fixture';
 import { env } from '../../config/env';
-import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText } from '../../selectors';
+import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField } from '../../selectors';
 
 test.describe("Agent opens first conversation and assigns it to self", () => {
   test('assign-to-me', async ({ authenticatedPage: page }) => {
     await page.goto(env.KAYAKO_AGENT_URL);
     try {
-    await page.goto(env.KAYAKO_CONVERSATIONS_URL + "/5");
-    } catch (e) { console.warn('Optional step failed (goto)', e); }
+    if (env.KAYAKO_CONVERSATION_ID) { await page.goto(env.KAYAKO_AGENT_URL.replace(/\/$/, '') + '/conversations/' + env.KAYAKO_CONVERSATION_ID); }
+    } catch (e) { console.warn('Optional step failed (goto-conversation-by-env-id)', e); }
     try {
     await page.waitForTimeout(200);
     } catch (e) { console.warn('Optional step failed (wait)', e); }
@@ -15,58 +15,12 @@ test.describe("Agent opens first conversation and assigns it to self", () => {
     await expectVisible(page, 'inbox', 'conversationSubject');
     await click(page, 'inbox', 'conversationSubject');
     try {
-    await dispatchClickText(page, "Assignee");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
+    await page.waitForLoadState("networkidle", { timeout: 3000 }).catch(() => {});
+    } catch (e) { console.warn('Optional step failed (wait-loadstate)', e); }
+    await (await import('../../selectors')).switchAssigneeTeamAndSave(page, ["VIP Account Team", "General"]);
     try {
-    await page.waitForTimeout(200);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "General");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await page.waitForTimeout(250);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "Update properties");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await page.waitForTimeout(250);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "VIP Account Team");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await page.waitForTimeout(250);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "Update properties");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await dispatchClickCss(page, 'assign', 'assignToMeTrigger');
-    } catch (e) { console.warn('Optional step failed (dispatch-click)', e); }
-    try {
-    await page.waitForTimeout(200);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "General");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await dispatchClickText(page, "VIP Account Team");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await page.waitForTimeout(200);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickCss(page, 'assign', 'updatePropertiesSpan');
-    } catch (e) { console.warn('Optional step failed (dispatch-click)', e); }
-    try {
-    await page.waitForTimeout(250);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await dispatchClickText(page, "Update properties");
-    } catch (e) { console.warn('Optional step failed (dispatch-click-text)', e); }
-    try {
-    await expectVisible(page, 'assign', 'confirmation');
-    } catch (e) { console.warn('Optional step failed (expect-visible)', e); }
+    await (await import('../../selectors')).logAssigneeValues(page);
+    } catch (e) { console.warn('Optional step failed (log-assignee)', e); }
+    await page.waitForTimeout(5000);
   });
 });

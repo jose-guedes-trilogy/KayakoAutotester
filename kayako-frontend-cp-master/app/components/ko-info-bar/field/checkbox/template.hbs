@@ -1,0 +1,58 @@
+{{#ko-info-bar/item
+  isEdited=isEdited
+  isKREEdited=isKREEdited
+  hasError=isErrored
+  isDisabled=isDisabled
+}}
+  {{#if hasUnsetOption}}
+    {{#basic-dropdown
+      renderInPlace=true
+      onOpen=(action "toggleDropdown" true)
+      onClose=(action "toggleDropdown" false)
+    as |dd|}}
+      {{#dd.trigger}}
+        <span local-class="header">{{title}}</span>
+        {{displayValue}}
+      {{/dd.trigger}}
+
+      {{#dd.content}}
+        <div local-class="unset-mode-dropdown">
+          {{#each options as |option|}}
+            <div local-class="option">
+              {{ko-checkbox
+                checked=(ko-helper isChecked value option.id)
+                label=option.value
+                isTopAligned=true
+                disabled=isDisabled
+                onCheck=(action "valueChanged" option.id)
+              }}
+            </div>
+          {{/each}}
+
+          <hr local-class="separator">
+
+          <div local-class="actions">
+            {{#ko-button type="naked" onClick=(action reset dd.actions.close)}}
+              {{t "generic.cancel_changes"}}
+            {{/ko-button}}
+            {{#ko-button type="primary" onClick=(action dd.actions.close)}}
+              {{t "generic.done"}}
+            {{/ko-button}}
+          </div>
+        </div>
+      {{/dd.content}}
+    {{/basic-dropdown}}
+  {{else}}
+    <span local-class="header">{{title}}</span>
+    {{#each options as |option|}}
+      {{ko-checkbox
+        checked=(ko-helper isChecked value option.id)
+        label=option.value
+        disabled=isDisabled
+        canBeUnset=hasUnsetOption
+        onCheck=(action "valueChanged" option.id)
+      }}
+    {{/each}}
+  {{/if}}
+
+{{/ko-info-bar/item}}

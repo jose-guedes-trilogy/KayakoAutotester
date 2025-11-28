@@ -1,0 +1,21 @@
+{{#ko-admin/page
+  title=(t "admin.apps.atlasai.title")
+  buttonText=(if (or isEdited isRunning) (t "generic.save"))
+  showFooter=false
+  isSaving=isRunning
+  onSave=(perform save)
+  isEdited=isEdited
+}}
+
+  {{#ko-admin/forms/group}}
+    {{#ko-form/field}}
+      {{ko-toggle
+        activated=isEnabled
+        label=label
+        onToggle=(action "toggle")
+        isDisabled=isRunning
+      }}
+      {{ko-form/field/errors errors=editedCaseForm.errors.isEnabled}}
+    {{/ko-form/field}}
+  {{/ko-admin/forms/group}}
+{{/ko-admin/page}}

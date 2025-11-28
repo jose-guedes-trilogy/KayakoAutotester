@@ -1,0 +1,109 @@
+{{#if (variation "release-messenger-link-business-hours")}}
+  <span local-class="label"><strong>{{t "admin.messenger.tabs.options.business_hours.label"}}</strong></span>
+  <div local-class="business-hours">
+    <div>
+      {{#ko-form/field/help}}{{t "admin.messenger.tabs.options.business_hours.help_text"}}{{/ko-form/field/help}}
+    </div>
+    <div local-class="select-field">
+      {{#ko-select
+        placeholder=(t "generic.select_placeholder")
+        options=businessHoursWithPlaceholder
+        onChange=(action "onBusinessHourChange")
+        selected=linkedBusinessHour
+        allowClear=true
+      as |businessHour|}}
+        {{#if businessHour}}
+          {{businessHour.title}}
+        {{else}}
+          {{t "admin.messenger.tabs.options.business_hours.disabled"}}
+        {{/if}}
+      {{/ko-select}}
+    </div>
+    {{#link-to "session.admin.people.businesshours"}}
+      {{t "admin.messenger.tabs.options.business_hours.config_link"}}
+    {{/link-to}}
+  </div>
+{{/if}}
+
+<br>
+
+<span local-class="label"><strong>{{t "admin.messenger.tabs.options.response_time.label"}}</strong></span>
+<div>
+  {{#ko-form/field/help}}{{t "admin.messenger.tabs.options.response_time.help_text"}}{{/ko-form/field/help}}
+</div>
+<div local-class="reply-time-locale">
+  {{#if (variation "release-messenger-smart-reply-time-expectation")}}
+    <div local-class="radio-container">
+      <div local-class="radio">
+        {{!-- 
+          label is blank because it only supports text, we need a tooltip as well
+          so I've placed div in its place.
+        --}}
+        {{ko-radio label="" checked=(eq replyTimeLocale '') onChange=(action (mut replyTimeLocale) "")}}
+      </div>
+      <div local-class="label">
+        <span local-class="text" onclick={{action (mut replyTimeLocale) ""}} >
+          {{t "admin.messenger.tabs.options.response_time.options.smart_mode"}}
+        </span>
+        <div local-class="tooltip-container">
+          {{#ko-tooltip side="top" title=(t "admin.messenger.tabs.options.response_time.smart_tooltip_text") delay=200}}
+            {{ko-icon name="help" color="#BEC4C7"}}
+          {{/ko-tooltip}}
+        </div>
+        <div local-class="current-expectation">
+          <i> {{currentExpectation}} </i>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div local-class="radio-container">
+      <div local-class="radio">
+        {{!-- 
+          label is blank because it only supports text, we need a tooltip as well
+          so I've placed div in its place.
+        --}}
+        {{ko-radio label="" checked=(eq replyTimeLocale '') onChange=(action (mut replyTimeLocale) "")}}
+      </div>
+      <div local-class="label">
+        <span local-class="text" onclick={{action (mut replyTimeLocale) ""}} >
+          {{t "admin.messenger.tabs.options.response_time.options.auto"}}
+        </span>
+        <div local-class="tooltip-container">
+          {{#ko-tooltip side="top" title=(t "admin.messenger.tabs.options.response_time.auto_tooltip_text") delay=200}}
+            {{ko-icon name="help" color="#BEC4C7"}}
+          {{/ko-tooltip}}
+        </div>
+        <div local-class="current-expectation">
+          <i> {{currentExpectation}} </i>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+  {{ko-radio label=(t "admin.messenger.tabs.options.response_time.options.reply_in_few_hours") checked=(eq replyTimeLocale 'reply.in.few.hours') onChange=(action (mut replyTimeLocale) "reply.in.few.hours")}}
+  {{ko-radio label=(t "admin.messenger.tabs.options.response_time.options.reply_in_few_minutes") checked=(eq replyTimeLocale 'reply.in.few.minutes') onChange=(action (mut replyTimeLocale) "reply.in.few.minutes")}}
+  {{ko-radio label=(t "admin.messenger.tabs.options.response_time.options.reply_asap") checked=(eq replyTimeLocale 'reply.asap') onChange=(action (mut replyTimeLocale) "reply.asap")}}
+</div>
+
+{{#if (variation "release-messenger-helpcenter-suggestions")}}
+  <br>
+  <div local-class="suggestions-settings-container {{if isSuggestionsFeatureDisabled "disabled"}}">
+    <div local-class="form-field">
+      <div local-class="checkbox">
+        {{ko-checkbox checked=enableSuggestions onCheck=(action "onSuggestionsToggle")}}
+      </div>
+      <div local-class="label" onclick={{action "onSuggestionsToggle"}}>
+        <strong local-class="text">{{t "admin.messenger.tabs.options.hc_suggestions.label"}}</strong>
+      </div>
+      {{#if isSuggestionsFeatureDisabled }}
+        <div local-class="tooltip-container">
+          {{#ko-tooltip side="top" title=(t "admin.messenger.tabs.options.hc_suggestions.disabled_text") delay=100}}
+            {{inline-svg "icon--alert--12"}}
+          {{/ko-tooltip}}
+        </div>
+      {{/if}}
+    </div>
+    <div>
+      {{#ko-form/field/help}}{{t "admin.messenger.tabs.options.hc_suggestions.help_text"}}{{/ko-form/field/help}}
+    </div>
+  </div>
+{{/if}}

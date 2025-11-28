@@ -1,0 +1,25 @@
+<div class="{{bigSlotClass}}">
+  <br>
+  {{ko-form/field/label text=(t "admin.automation_actions_builder.labels.request_payload")}}
+  {{ko-admin/forms/description small=true link=(concat "https://support.kayako.com/article/1146-sending-case-notifications-to-external-systems-with-endpoints?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=" type "3") description="admin.automation_actions_builder.label.request_payload.description" linkText="admin.automation_actions_builder.label.request_payload.description_link"}}
+  {{ko-radio qaClass="ko-admin_automation-actions-builder_endpoint-http--simple" label=(t "admin.automation_actions_builder.label.http_simple") checked=(eq payloadFormat 'simple') onChange=(action (mut payloadFormat) 'simple')}}
+  {{ko-radio qaClass="ko-admin_automation-actions-builder_endpoint-http--custom" label=(t "admin.automation_actions_builder.label.http_custom") checked=(eq payloadFormat 'custom') onChange=(action (mut payloadFormat) 'custom')}}
+</div>
+{{#if (eq payloadFormat 'custom')}}
+  <div class="{{bigSlotClass}}">
+    <br>
+    {{ko-form/field/label text=(t "admin.automation_actions_builder.labels.request_parameters")}}
+    {{ko-admin/forms/description small=true link=(concat "https://support.kayako.com/article/1172-adding-dynamic-content-with-placeholders?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=" type "2") description="admin.automation_actions_builder.label.request_parameters.description" linkText="admin.automation_actions_builder.label.placeholders_allowed.description_link"}}
+    {{#key-value-collection-builder
+      collection=parameters
+      name="parameters"
+      keyPlaceholder=(t "admin.automation_actions_builder.parameters.name")
+      valuePlaceholder=(t "admin.automation_actions_builder.parameters.value")
+      add=(action "addParameter")
+      remove=(action "removeParameter")
+      updatePair=(action "updatePair")
+    }}
+      {{t 'admin.automation_actions_builder.label.add_parameter'}}
+    {{/key-value-collection-builder}}
+  </div>
+{{/if}}

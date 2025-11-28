@@ -1,0 +1,52 @@
+.plans-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.listfilters {
+  display: flex;
+}
+
+.radio {
+  margin-right: 15px;
+  display: flex;
+}
+
+.term_savings {
+  color: $color-good;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.compare-plans {
+
+}
+
+.update-message {
+  position: relative;
+  margin: 0;
+  padding: 40px 0 5px 20px;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 42px; left: 0;
+    width: 10px; height: 17px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 10,0 10,17 5,14 0,17" fill="#{$color-good}" /></svg>');
+    background-repeat: no-repeat;
+  }
+}
+
+.update-message-title {
+  margin: 0;
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 600;
+}
+
+.update-message-body {
+  color: $grey-6;
+}

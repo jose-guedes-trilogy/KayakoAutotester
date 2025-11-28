@@ -1,0 +1,11 @@
+.icon {
+  margin-right: 9px;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.caption {
+  color: $grey-6;
+}

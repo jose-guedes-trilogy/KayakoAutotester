@@ -1,0 +1,15 @@
+{{#if (variation "release-new-custom-reports-ui")}}
+  {{ko-insights/custom-reports/index-new
+    reports=reports
+    onEditReport=(action "editReport")
+    onAddReport=(action "newReport")
+  }}
+{{else}}
+  {{ko-insights/custom-reports/index
+    reports=reports
+    onEditReport=(action "editReport")
+    onAddReport=(action "newReport")
+  }}
+{{/if}}
+
+{{ko-pagination currentPage=page pageCount=pages}}

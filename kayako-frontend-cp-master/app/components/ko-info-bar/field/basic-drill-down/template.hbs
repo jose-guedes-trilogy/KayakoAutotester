@@ -1,0 +1,48 @@
+{{#if hasBlock}}
+  {{#ko-select/drill-down
+    actionReceiver=actionReceiver
+    options=options
+    value=value
+    onValueChange=onValueChange
+    emptyLabel=emptyLabel
+    hasEmptyOption=hasEmptyOption
+    triggerComponent=(component "ko-select/trigger" triggerValueComponent=triggerValueComponent)
+    triggerClass=(local-class "trigger")
+    isDisabled=isDisabled
+    showFullPathOnLeaves=showFullPathOnLeaves
+    dropdownClass=(local-class "dropdown")
+    renderInPlace=renderInPlace
+    tabIndex=-1
+    extra=(hash
+      title=title
+      isEdited=isEdited
+      isKREEdited=isKREEdited
+      isErrored=isErrored
+    )
+    as |option select|
+  }}
+    {{yield option select}}
+  {{/ko-select/drill-down}}
+{{else}}
+  {{ko-select/drill-down
+    actionReceiver=actionReceiver
+    options=options
+    value=value
+    onValueChange=onValueChange
+    emptyLabel=emptyLabel
+    hasEmptyOption=hasEmptyOption
+    triggerComponent=(component "ko-select/trigger" triggerValueComponent=triggerValueComponent)
+    triggerClass=(local-class "trigger")
+    isDisabled=isDisabled
+    showFullPathOnLeaves=showFullPathOnLeaves
+    dropdownClass=(local-class "dropdown")
+    renderInPlace=renderInPlace
+    tabIndex=-1
+    extra=(hash
+      title=title
+      isEdited=isEdited
+      isKREEdited=isKREEdited
+      isErrored=isErrored
+    )
+  }}
+{{/if}}

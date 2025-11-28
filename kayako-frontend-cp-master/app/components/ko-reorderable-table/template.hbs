@@ -1,0 +1,12 @@
+<div local-class="container" class="{{class}}">
+  {{#sortable-group class=(qa-cls "qa-reordable-table") local-class="list" tagName="tbody" onChange=onReorder as |group|}}
+    {{#each items as |item|}}
+      {{#sortable-item local-class="item" tagName="tr" model=item group=group handle=(concat "." (local-class "handle"))}}
+        {{#if reorderAvailable}}
+          <td class="i-dragstrip" local-class="handle {{if handleOutside "handleOutside"}}"></td>
+        {{/if}}
+        {{yield item}}
+      {{/sortable-item}}
+    {{/each}}
+  {{/sortable-group}}
+</div>

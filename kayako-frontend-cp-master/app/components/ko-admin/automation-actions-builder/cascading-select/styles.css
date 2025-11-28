@@ -1,0 +1,7 @@
+.trigger {
+  composes: trigger from 'frontend-cp/components/ko-select/shared';
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+}

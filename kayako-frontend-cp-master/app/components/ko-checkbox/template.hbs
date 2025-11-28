@@ -1,0 +1,19 @@
+<div local-class="checkboxWrap {{if isHorizontallyCentered "centerHorizontally"}} {{if isTopAligned "topAligned"}}" onclick={{action "click"}} onkeydown={{action "keyDown"}} onkeyup={{action "keyUp"}}>
+  <div local-class="checkbox {{if size (concat "size-" size)}} {{if disabled "disabled"}}"
+    class="{{qa-cls qaClass}} {{checkboxClass}}"
+    role="checkbox"
+    aria-checked="{{checked}}"
+    tabindex="{{tabindex}}"
+    aria-disabled="{{if disabled 'true' 'false'}}"
+    aria-live="{{ariaLive}}"
+    id="{{uniqueId}}"
+    onclick={{action "toggleCheckbox"}}>
+    {{#if checked}}
+      <i local-class="tick {{if large "tickLarge"}}" class="i-tick"></i>
+    {{/if}}
+  </div>
+  {{#if label}}
+    <label local-class="label {{if disabled "labelDisabled"}}" for="{{uniqueId}}" onclick={{action "toggleCheckbox"}}>{{label}}</label>
+  {{/if}}
+  {{yield}}
+</div>

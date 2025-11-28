@@ -1,0 +1,25 @@
+.trigger {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding: 5px 18px;
+  outline: none;
+
+  > svg {
+    width: 16px;
+  }
+
+  &:hover, &[aria-expanded="true"] {
+    background-color: #EBEEF0;
+  }
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-info-bar/shared';
+}
+
+.link {
+  display: block;
+  padding: 7px 8px;
+  margin: -7px -8px;
+}

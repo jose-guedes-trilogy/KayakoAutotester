@@ -1,0 +1,35 @@
+{{#ko-form/field}}
+  {{#ko-form/field/label}}
+    {{prompt.label}}
+  {{/ko-form/field/label}}
+
+  {{!-- TODO - support more field types --}}
+
+  {{#if (eq inputType "json")}}
+    {{ember-ace
+      lines=15
+      highlightActiveLine=true
+      theme="ace/theme/chrome"
+      mode="ace/mode/json"
+      value=prompt.value
+      update=on-change
+    }}
+  {{else if (eq inputType "app")}}
+    {{ko-admin/apps/manage/edit/prompt/app
+      prompt=prompt
+      src=appURL
+      installedApp=installedApp
+      prompts=prompts
+      app=app
+      on-change=on-change
+    }}
+  {{else}}
+    {{ko-input
+      value=prompt.value
+      type=prompt.inputType
+      onInput=(action on-change value="target.value")
+    }}
+  {{/if}}
+
+  {{!-- {{ko-form/field/errors errors=editedEndpoint.errors.title}} --}}
+{{/ko-form/field}}

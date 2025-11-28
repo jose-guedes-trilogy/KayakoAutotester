@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"><!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+ <title>check</title>
+ <desc>Created with Sketch.</desc>
+ <defs>
+  <path id="path-1" d="m0 16c0-8.8366 7.1615-16 16-16 8.837 0 16 7.1615 16 16 0 8.837-7.162 16-16 16-8.8366 0-16-7.162-16-16z"/>
+  <mask id="mask-2" maskContentUnits="userSpaceOnUse" height="32" width="32" y="0" x="0" maskUnits="objectBoundingBox" fill="white">
+   <use xlink:href="#path-1"/>
+  </mask>
+ </defs>
+ <g id="🚧-Onboarding" fill-rule="evenodd" fill="none">
+  <g id="Onboarding---1---Complete" transform="translate(-206 -253)">
+   <g id="check" transform="translate(206 253)">
+    <use id="Rectangle-13" xlink:href="#path-1" mask="url(#mask-2)" stroke="#98A162" stroke-width="2" fill="#98A162"/>
+    <path id="7" fill="#fff" d="m13.542 10.615c0 0.512 0.304 0.832 0.768 0.832 0.944 0 1.78-0.062 3.956-0.062-0.608 2.528-2.528 8.096-2.544 9.68 0 1.12 0.592 1.472 1.072 1.472 0.768 0 0.992-0.672 0.992-1.536 0-1.984 2.672-9.552 2.672-10.176 0-0.56-0.416-1.0881-1.136-1.1841-0.784-0.112-2.832-0.176-3.824-0.176-1.12 0-0.66-0.0343-1.46 0.1897-0.272 0.08-0.496 0.5924-0.496 0.9604z" transform="translate(17 16) scale(-1 1) rotate(120) translate(-17 -16)"/>
+   </g>
+  </g>
+ </g>
+</svg>

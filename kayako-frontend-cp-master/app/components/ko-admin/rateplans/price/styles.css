@@ -1,0 +1,16 @@
+.plan-price-amount {
+  font-size: 30px;
+  line-height: 30px;
+  color: $grey-8;
+}
+
+.plan-price {
+  text-align: center;
+  width: 80px;
+}
+
+.label-helper {
+  color: $grey-6;
+  font-size: 12px;
+  margin-top: 4px;
+}

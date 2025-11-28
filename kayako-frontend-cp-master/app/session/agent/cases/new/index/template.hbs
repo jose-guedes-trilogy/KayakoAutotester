@@ -1,0 +1,19 @@
+{{page-title (t "cases.new_case")}}
+
+{{ko-case-content
+  case=case
+  state=state
+  postId=postId
+  onCaseCreate=(action "transitionToNewlyCreatedCase")
+  isBeingCreated=true
+  filter=filter
+  caseFields=caseFields
+  caseForms=caseForms
+  priorities=priorities
+  statuses=statuses
+  types=types
+  teams=teams
+  agents=agents
+  tabsComponent="ko-tabs/new-case"
+  tabsModel=case
+}}

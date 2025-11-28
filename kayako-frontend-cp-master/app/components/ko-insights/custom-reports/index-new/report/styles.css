@@ -1,0 +1,121 @@
+.report {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+
+  display: flex;
+  align-items: stretch;
+}
+
+.details {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 0 14px 24px;
+}
+
+.details-header {
+  display: flex;
+  padding-bottom: 9px;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.details-footer {
+  display: flex;
+  color: $grey-6;
+  font-size: 15px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.details-separator {
+  padding: 0 4.5px;
+}
+
+.last-downloaded {
+  display: flex;
+  align-items: center;
+}
+
+.last-downloaded-label {
+  margin-right: 4px;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+}
+
+.creator-label {
+  margin-right: 4px;
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &.is-waiting {
+    background-color: #FAF4E3;
+  }
+
+  &.is-completed {
+    background-color: rgba(78, 172, 94, 0.13);
+  }
+
+  &.is-failed {
+    background-color: $trivial-red;
+  }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  animation: rotate 2s linear infinite;
+}
+
+.spinner-path {
+  stroke: rgba(224, 175, 42, 0.8);
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

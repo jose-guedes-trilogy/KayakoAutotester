@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  margin: 10px;
+}
+
+.image {
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.body {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.header {
+  line-height: 25px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.subheader {
+  font-size: 14px;
+  line-height: 16px;
+  color: $grey-6
+}

@@ -1,0 +1,44 @@
+{{#ko-tabs as |tabs|}}
+  {{#if tabs.isTabs}}
+    {{#if (and hasOrganization (not processingOrg))}}
+      {{#ko-tabs/tab routeName="session.agent.cases.case.organization"}}
+        {{organizationName}}
+      {{/ko-tabs/tab}}
+    {{else}}
+      {{#ko-tabs/tab click=(if (not processingOrg) (action "triggerSetOrganization"))}}
+        <span local-class="set-organization {{if processingOrg "setting-organization"}}">{{if processingOrg (or model.requester.organization.name removedOrg) (t "organization.set_organization")}}</span>
+      {{/ko-tabs/tab}}
+    {{/if}}
+
+    {{#if hasUser}}
+      {{#ko-tabs/tab routeName="session.agent.cases.case.user"}}
+        {{model.requester.fullName}}
+        {{#if (not model.requester.isEnabled)}}
+          <span local-class="disabled">
+            {{t "users.disabled"}}
+          </span>
+        {{/if}}
+      {{/ko-tabs/tab}}
+    {{/if}}
+
+    {{#ko-tabs/tab shrink=true routeName="session.agent.cases.case.index"}}
+      <span local-class="subject">
+        {{subject}}
+      </span>
+      {{#if (eq model.state "TRASH")}}
+        <span local-class="disabled">
+          {{t "cases.trashed"}}
+        </span>
+      {{/if}}
+
+      {{#if (eq model.status.statusType "CLOSED")}}
+        <span local-class="disabled">
+          {{t "cases.closed"}}
+        </span>
+      {{/if}}
+    {{/ko-tabs/tab}}
+  {{/if}}
+  {{#if tabs.isRight}}
+    {{yield}}
+  {{/if}}
+{{/ko-tabs}}

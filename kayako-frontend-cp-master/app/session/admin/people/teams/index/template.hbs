@@ -1,0 +1,37 @@
+{{ko-admin/page
+  title=(t "admin.teams.headings.index")
+  buttonText=(t "admin.teams.buttons.add")
+  onSave=(action "transitionToAddNewTeam")
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.teams.description"}}</p>
+  <p><strong>{{format-html-message "admin.teams.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1156-grouping-staff-users-into-teams?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=teams" "admin.teams.description_link")}}</strong></p>
+{{/ko-admin/forms/description}}
+
+{{#if (not model.length)}}
+  {{ko-admin/empty image="teams"}}
+{{/if}}
+
+<div local-class="search">
+  {{ko-input/search value=filter onInput=(action (mut filter) value="target.value")
+    placeholder=(t "admin.teams.labels.filter_teams")
+  }}
+</div>
+
+{{#ko-simple-list as |list|}}
+  {{#each filteredResults as |team|}}
+    {{#list.row onClick=(action "editTeam" team) qaClass="qa-teams-row" as |row|}}
+      {{#row.cell}}
+        <span local-class="team-title">{{team.title}}</span>
+      {{/row.cell}}
+      {{#row.cell}}
+        <span local-class="secondary">{{team.memberCount}} {{t "admin.teams.agent" numAgents=team.memberCount}}</span>
+      {{/row.cell}}
+      {{#row.actions}}
+        <a href={{href-to "session.admin.people.teams.edit" team.id}}>{{t "generic.edit"}}</a>
+        | <a onclick={{perform deleteTeam team}}>{{t "generic.delete"}}</a>
+      {{/row.actions}}
+    {{/list.row}}
+  {{/each}}
+{{/ko-simple-list}}

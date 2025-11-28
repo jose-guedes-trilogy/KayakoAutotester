@@ -1,0 +1,225 @@
+.statusIcon {
+  :global(.ember-power-select-status-icon) {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 6px;
+    border: 0;
+
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    width: 13px;
+    height: 13px;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &:before {
+      color: #A1AAAF;
+      content: "\e61c";
+    }
+  }
+}
+
+.trigger {
+  composes: statusIcon;
+  position: relative;
+  line-height: 2.3;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  min-height: 34px;
+  user-select: none;
+  font-size: 14px;
+  height: 34px;
+  box-sizing: content-box;
+  background: #FFFFFF;
+  border: 1px solid $grey-3;
+  border-radius: 3px;
+  cursor: pointer;
+  padding-right: 0;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  display: flex;
+
+  &:focus, &--focused, &[aria-expanded="true"] {
+    @extend %brand-focus;
+  }
+
+  &[aria-disabled="true"] {
+    background-color: $grey-1;
+    color: $grey-6;
+    pointer-events: none;
+  }
+
+  :global(.ember-power-select-placeholder) {
+    color: #999999;
+    display: block;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  :global(.ember-power-select-clear-btn) {
+    position: absolute;
+    cursor: pointer;
+  }
+
+  /* Multiple select */
+  :global(.ember-power-select-trigger-multiple-input) {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    display: inline-block;
+    line-height: inherit;
+    -webkit-appearance: none;
+    outline: none;
+    padding: 0;
+    background-color: transparent;
+    text-indent: 2px;
+
+    &:disabled {
+      background-color: #EEEEEE;
+    }
+
+    /* There's a browser bug where this selectos cannot be chained with commas */
+    &::placeholder {
+      opacity: 1;
+      color: #999999;
+    }
+  }
+}
+
+.dropdown {
+  border: 1px solid #d1d5d7;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 6px 0;
+  box-shadow: $box-shadow2;
+  z-index: 1100;  /* making sure to show it on top of modal */
+  line-height: 2;
+
+  &:global(.ember-basic-dropdown-content--above) {
+    margin-top: -3px;
+  }
+
+  &:global(.ember-basic-dropdown-content--below), &:global(.ember-basic-dropdown-content--in-place) {
+    margin-top: 3px;
+  }
+
+  :global(.ember-power-select-options) {
+    list-style: none;
+    padding: 0;
+    user-select: none;
+
+    &[role="listbox"] {
+      overflow-y: auto;
+      max-height: 300px;
+      margin: 0 -1px;
+    }
+  }
+
+  :global(.ember-power-select-group[aria-disabled="true"]) {
+    font-style: italic;
+    color: #999999;
+    cursor: not-allowed;
+  }
+
+  :global(.ember-power-select-group .ember-power-select-option) {
+    padding-left: 18px;
+  }
+
+  :global(.ember-power-select-group-name) {
+    margin-top: 6px;
+    display: block;
+    cursor: default;
+    font-weight: 600;
+  }
+
+  :global(.ember-power-select-option) {
+    font-size: 15px;
+    line-height: 23px;
+    padding: 7px 15px;
+    cursor: pointer;
+    color: $grey-8;
+    transition: background-color 0.1s, box-shadow 0.1s;
+
+    & > * {
+      color: $grey-8
+    }
+
+    &[aria-current="true"] {
+      background-color: #49AFCD;
+      box-shadow: inset 0 -18px 40px -20px #29A0C2;
+      color: #FFFFFF;
+
+      & > * {
+        color: #FFFFFF;
+      }
+    }
+
+    &[aria-disabled="true"] {
+      color: #838D94;
+      font-style: italic;
+    }
+  }
+
+  :global(.ember-power-select-group)[aria-disabled="true"] :global(.ember-power-select-option),
+  :global(.ember-power-select-option)[aria-disabled="true"] {
+    color: #999999;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  :global(.ember-power-select-selected-item), :global(.ember-power-select-placeholder) {
+    margin-left: 8px;
+  }
+
+  :global(.ember-power-select-group) {
+    :global(.ember-power-select-group) {
+      :global(.ember-power-select-group-name) {
+        padding-left: 24px;
+      }
+      :global(.ember-power-select-option) {
+        padding-left: 40px;
+      }
+    }
+    :global(.ember-power-select-option) {
+      padding-left: 24px;
+    }
+    :global(.ember-power-select-group-name) {
+      padding-left: 8px;
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .loading-icon is also used on its own elsewhere without positioning */
+.loading-icon, .loading {
+  height: 20px;
+  width: 20px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,100,100'%3E%3Cpath fill='none' stroke='%23D1D5D7' stroke-width='7' stroke-miterlimit='10' d='M12.6,77.6C7,70,3.6,60.3,3.6,50,3.6,24.3,24.2,3.5,50,3.5S96.5,24.3,96.5,50c0,5.4-1,10.5-2.6,15.3'/%3E%3C/svg%3E");
+  animation: rotating 0.7s linear infinite;
+}
+
+.loading {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  bottom: 0;
+  margin: 0;
+}

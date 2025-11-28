@@ -1,0 +1,29 @@
+<div local-class="container"
+     onmouseup={{action "handleMouseUp"}}
+     onmousedown={{action "handleMouseDown"}}
+     onmousemove={{action "handleMouseMove"}}>
+  <div>
+    {{yield}}
+  </div>
+
+  <div>
+    {{#each grid as |row rowIndex|}}
+      <div local-class="row">
+        {{#each row as |col colIndex|}}
+          <div local-class="cell {{if col "selected"}}"
+            data-col="{{colIndex}}"
+            data-row="{{rowIndex}}">
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+
+    <div local-class="legend">
+      {{#each displayLegend as |label|}}
+        <div local-class="legend-cell">
+          {{label}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

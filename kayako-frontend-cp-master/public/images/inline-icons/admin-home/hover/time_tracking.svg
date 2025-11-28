@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="37px" height="45px" viewBox="0 0 37 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon--time_tracking_color--48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Admin-home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon--time_tracking_color--48" transform="translate(-10.000000, -6.000000)" stroke="#98A162">
+            <g transform="translate(10.000000, 6.000000)">
+                <circle id="Oval" fill="#F4F5EF" stroke-linecap="square" cx="18.5" cy="26.5" r="18"></circle>
+                <path d="M12.5,0.5 L24.5,0.5" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M18.5,0.5 L18.5,5.5" id="Shape" stroke-linecap="round" stroke-linejoin="round"></path>
+                <polyline id="Shape" stroke-linecap="round" stroke-linejoin="round" points="18.5 18.5 18.5 26.5 26.5 26.5"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

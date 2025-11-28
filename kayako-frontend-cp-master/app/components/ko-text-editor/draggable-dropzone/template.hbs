@@ -1,0 +1,17 @@
+<div local-class="dropzone" ondragenter={{action "dragEnter"}} ondragover={{action "dragOver"}} ondragleave={{action "dragLeave"}} ondrop={{action "drop"}}>
+  {{yield (hash onDrop=(action "dropOnEditor"))}}
+
+  {{#if active}}
+    <div local-class="border {{unless isUploadEnabled "disabled"}}">
+      <span local-class="message">
+        {{#if isUploadEnabled}}
+          {{t "generic.uploads.dropzone"}}
+        {{else if dropzoneError}}
+          {{dropzoneError}}
+        {{else}}
+          {{t "generic.uploads.not_allowed"}}
+        {{/if}}
+      </span>
+    </div>
+  {{/if}}
+</div>

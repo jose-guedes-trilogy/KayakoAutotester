@@ -1,0 +1,16 @@
+.trigger {
+  padding: 0 18px 0 9px;
+  cursor: pointer;
+  line-height: 32px;
+  height: 32px;
+
+  &:focus {
+    @extend %brand-focus;
+  }
+}
+
+.icon {
+  @extend %u-v-center;
+  right: 4.5px;
+  color: #A1AAAF;
+}

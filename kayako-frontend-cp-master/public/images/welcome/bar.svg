@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="480px" height="28px" viewBox="0 0 480 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>bar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bar">
+            <path d="M1,27 L480,27 L479,27 L479,3.99683887 C479,2.34509203 477.653097,1 475.994546,1 L4.00545448,1 C2.3406632,1 1,2.3394454 1,3.99683887 L1,27 Z M0,3.99683887 C0,1.78944571 1.78609092,0 4.00545448,0 L475.994546,0 C478.206697,0 480,1.79412025 480,3.99683887 L480,28 L0,28 L0,3.99683887 L0,3.99683887 Z" id="Rectangle-1378-Copy-2" fill="#D1D5D7"></path>
+            <path d="M1,4.00793008 C1,2.34669617 2.35009865,1 3.99015761,1 L476.009842,1 C477.661261,1 479,2.34312337 479,4.00793008 L479,27 L1,27 L1,4.00793008 Z" id="Rectangle-1378-Copy-2" fill="#FFFFFF"></path>
+            <ellipse id="Oval-2" fill="#F48C66" cx="15.5" cy="14.5" rx="4.5" ry="4.5"></ellipse>
+            <ellipse id="Oval-2-Copy" fill="#F9D480" cx="30.5" cy="14.5" rx="4.5" ry="4.5"></ellipse>
+            <ellipse id="Oval-2-Copy-2" fill="#ADB483" cx="45.5" cy="14.5" rx="4.5" ry="4.5"></ellipse>
+        </g>
+    </g>
+</svg>

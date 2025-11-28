@@ -1,0 +1,29 @@
+<article local-class="automation-action" class="{{qa-cls "qa-action-row"}}">
+  <div local-class="small-slot">
+    {{#ko-select
+      selected=definition
+      options=groupedDefinitions
+      placeholder=(t "admin.automation_actions_builder.select_action")
+      onChange=(action "onChangeAction" currentAction definition)
+      searchEnabled=true
+      searchField="groupLabel"
+      triggerField="groupLabel"
+      as |definition|}}
+      {{definition.label}}
+    {{/ko-select}}
+  </div>
+  {{component
+    (automation-action-builder-component-name definition)
+    type=type
+    automationAction=currentAction
+    definition=definition
+    smallSlotClass=(local-class "small-slot")
+    bigSlotClass=(local-class "big-slot")}}
+  {{#if showRemoveActionButton}}
+    <div local-class="actions">
+      <div local-class="remove-action-btn" onclick={{action "onRemoveAction" currentAction definition}}>
+        {{ko-icon name="minusSquare" color="#BEC4C7"}}
+      </div>
+    </div>
+  {{/if}}
+</article>

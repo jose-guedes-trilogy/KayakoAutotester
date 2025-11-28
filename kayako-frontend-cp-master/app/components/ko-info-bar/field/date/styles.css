@@ -1,0 +1,35 @@
+.date {
+  cursor: pointer;
+}
+
+.icon {
+  @include icon {
+    position: absolute;
+    right: 18px;
+    top: 20px; /* not a regular spacing variable - used for centering */
+    color: #A1AAAF;
+  }
+}
+
+.focus {
+  width: 0;
+  height: 0;
+}
+
+.header {
+  color: $grey-6;
+  @include font-size-with-line-height(12px);
+  display: block;
+}
+
+.dropdownMenu {
+  list-style-type: none;
+  position: relative;
+  cursor: pointer;
+  background: #FFFFFF;
+  margin: 0px -18px -9px;
+
+  &:focus {
+    outline: none;
+  }
+}

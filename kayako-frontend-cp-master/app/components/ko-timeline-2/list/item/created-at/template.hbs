@@ -1,0 +1,13 @@
+{{#if postIsEmailFromCustomer}}
+  <span class="{{qa-cls "qa-created-at-email-link"}} original-email-popup-link" local-class="title link" {{action (action (mut showModal) true)}}>{{yield}}</span>
+
+  {{#if showModal}}
+    {{ko-timeline-2/list/item/created-at/email-modal model=model onClose=(action (mut showModal) false)}}
+  {{/if}}
+{{else if postIsTwitter}}
+  <a href="{{href}}" class="{{qa-cls "qa-created-at-twitter-link"}}" local-class="title link" onclick={{action "openExternal" href}}>
+    {{yield}}
+  </a>
+{{else}}
+  <span class="{{qa-cls "qa-created-at-string"}}" local-class="title">{{yield}}</span>
+{{/if}}

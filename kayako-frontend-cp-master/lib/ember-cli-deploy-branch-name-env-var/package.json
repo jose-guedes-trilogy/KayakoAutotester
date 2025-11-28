@@ -1,0 +1,7 @@
+{
+  "name": "ember-cli-deploy-branch-name-env-var",
+  "keywords": [
+    "ember-addon",
+    "ember-cli-deploy-plugin"
+  ]
+}

@@ -1,0 +1,215 @@
+<div local-class="messenger-page">
+  <h3 local-class="page-title">{{t "admin.messenger.page_title"}}</h3>
+
+  <ul local-class="tabs">
+    <li local-class="tabs__item {{if (eq activeTab "customize") "is-active"}}" onClick={{action "switchTab" "customize"}}>
+      <span local-class="tabs__number">{{t "admin.messenger.tabs.customize.number"}}</span>
+      {{t "admin.messenger.tabs.customize.title"}}
+    </li>
+    <li local-class="tabs__item {{if (eq activeTab "widgets") "is-active"}}" onClick={{action "switchTab" "widgets"}}>
+      <span local-class="tabs__number">{{t "admin.messenger.tabs.widgets.number"}}</span>
+      {{t "admin.messenger.tabs.widgets.title"}}
+    </li>
+    <li local-class="tabs__item {{if (eq activeTab "embed") "is-active"}}" onClick={{action "switchTab" "embed"}}>
+      <span local-class="tabs__number">{{t "admin.messenger.tabs.embed.number"}}</span>
+      {{t "admin.messenger.tabs.embed.title"}}
+    </li>
+  </ul>
+
+  <div local-class="container">
+
+    {{!---------------
+     ----Options ----
+    -----------------}}
+    <div local-class="column column--options">
+      <div local-class="tab-container">
+
+        {{!-- Tab: Customize --}}
+        <div local-class="tab-content {{if (eq activeTab "customize") "is-active"}}">
+          <div local-class="text--light mbottom">
+            {{t "admin.messenger.tabs.customize.description"}}
+          </div>
+
+          <div local-class="tab-content__wrapper">
+            {{#if hasMultipleBrands}}
+              {{#ko-form/field}}
+                <label local-class="label">
+                  {{t "admin.messenger.tabs.customize.brand_label"}}
+                </label>
+                <div local-class="mbottom--tiny">
+                  {{#ko-select
+                    options=brands
+                    onChange=(action "brandChanged")
+                    qaClass="brand"
+                    selected=brand as |brand|}}
+                    {{ brand.name }}
+                  {{/ko-select}}
+                </div>
+                <div local-class="text--small">
+                  {{#ko-form/field/help}}
+                    {{t "admin.messenger.tabs.customize.brand_helptext"}}
+                  {{/ko-form/field/help}}
+                </div>
+              {{/ko-form/field}}
+            {{/if}}
+            
+            {{ko-admin/messenger/customize
+              brand=brand
+              title=title
+              titleLocaleFields=titleLocaleFields
+              welcomeMessage=welcomeMessage
+              welcomeMessageLocaleFields=welcomeMessageLocaleFields
+              replyTimeLocale=replyTimeLocale
+              primaryColor=primaryColor
+              activeGradient=activeGradient
+              activeSolidColor=activeSolidColor
+              activePattern=activePattern
+              backgroundMode=backgroundMode
+              messengerPage=true}}
+
+          </div>
+          <div local-class="next-button-spacer">
+            {{#ko-button type="primary" size="medium" onClick=(action "switchTab" "widgets")}}
+              {{t "admin.messenger.tabs.customize.next_step"}}
+            {{/ko-button}}
+          </div>
+        </div>
+
+        {{!-- Tab: Widgets --}}
+        <div local-class="tab-content tab-content--wide {{if (eq activeTab "widgets") "is-active"}}">
+
+          <div local-class="text--light mbottom">
+            {{t "admin.messenger.tabs.widgets.description"}}
+          </div>
+          <div local-class="widget-title">
+            {{t "admin.messenger.tabs.widgets.heading"}}
+          </div>
+
+          <div local-class="widget">
+            <p local-class="widget__label">{{t "admin.messenger.tabs.widgets.online_team_title"}}</p>
+            <div local-class="widget__content">
+              <div local-class="widget__switch">
+                <p local-class="widget__help-text">{{t "admin.messenger.tabs.widgets.online_team_description"}}</p>
+                {{ko-toggle activated=isOnlinePresenceEnabled}}
+              </div>
+            </div>
+          </div>
+
+          <div local-class="widget {{if hasNoSections "is-disabled"}}">
+            <p local-class="widget__label">{{t "admin.messenger.tabs.widgets.articles_title"}}</p>
+            <div local-class="widget__content">
+              <div local-class="widget__switch mbottom--tiny">
+                <p local-class="widget__help-text">{{t "admin.messenger.tabs.widgets.articles_description"}}</p>
+                {{ko-toggle activated=isArticlesEnabled}}
+              </div>
+              <div local-class="widget__dropdown mbottom--tiny">
+                {{ko-select/drill-down
+                  options=categoriesTree
+                  value=selectedSectionId
+                  onValueChange=(action "setSection")
+                  triggerComponent="ko-select/trigger"
+                  dropdownClass=(local-class "dropdown")
+                  triggerClass=(local-class "trigger")
+                }}
+              </div>
+            </div>
+          </div>
+
+          <div local-class="widget">
+            <p local-class="widget__label">{{t "admin.messenger.tabs.widgets.twitter_title"}}</p>
+            <div local-class="widget__content">
+              {{#if isTwitterConnected}}
+                <div local-class="widget__switch">
+                  <p local-class="widget__help-text">{{t "admin.messenger.tabs.widgets.twitter_description"}}</p>
+                  {{ko-toggle activated=isTwitterEnabled}}
+                </div>
+                <div local-class="widget__dropdown">
+                  {{#ko-select
+                    options=twitterAccounts
+                    onChange=(action "twitterAccountChanged")
+                    placeholder="Select account"
+                    selected=selectedTwitterAccount as |account|}}
+                    {{ account.screenName }}
+                  {{/ko-select}}
+                </div>
+              {{else}}
+                <p local-class="text--light">{{t "admin.messenger.tabs.widgets.twitter_not_connected"}}</p>
+              {{/if}}
+            </div>
+          </div>
+          <div local-class="next-button-spacer">
+            {{#ko-button type="primary" size="medium" onClick=(action "switchTab" "embed")}}
+              {{t "admin.messenger.tabs.widgets.next_step"}}
+            {{/ko-button}}
+          </div>
+        </div>
+
+        {{!-- Tab: Embed code --}}
+        <div local-class="tab-content {{if (eq activeTab "embed") "is-active"}}">
+          <div local-class="text--light mbottom">
+            {{format-html-message "admin.messenger.tabs.embed.description"}}
+          </div>
+          <div local-class="tab-content__wrapper">
+            <div local-class="mbottom">
+              {{#ko-form/field}}
+                <label local-class="label">
+                  {{t "admin.messenger.tabs.embed.embed_label"}}
+                </label>
+                {{ko-input value=generatedCode multiline=true readonly=true size="full" lines=6 qaClass='generated-code'}}
+                <div local-class="text--small">
+                  {{#ko-form/field/help}}
+                    {{format-html-message "admin.messenger.tabs.embed.embed_helptext"}}
+                  {{/ko-form/field/help}}
+                </div>
+                {{#copy-button local-class="copy-button" clipboardText=generatedCode success=(action "copiedToClipboard")}}
+                  {{t "admin.messenger.tabs.embed.embed_button_text"}}
+                {{/copy-button}}
+              {{/ko-form/field}}
+            </div>
+
+            <label local-class="label">
+              {{t "admin.messenger.tabs.embed.publish_title"}}
+            </label>
+            <div local-class="mbottom--tiny">
+              {{#ko-button hasAnimation=true loading=publish.isRunning type="primary" size="medium" onClick=(perform publish)}}
+                {{t "admin.messenger.tabs.embed.publish_button" brand=brand.name}}
+              {{/ko-button}}
+            </div>
+            <div local-class="text--small">
+              {{#ko-form/field/help}}
+                {{t "admin.messenger.tabs.embed.publish_helptext"}}
+              {{/ko-form/field/help}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{!---------------------
+      ---Messenger Widget---
+    -----------------------}}
+    <div local-class="column column--preview">
+      {{#sticky-element top=110}}
+        {{ko-admin/messenger/preview
+          preview=(hash
+            title=title
+            welcomeMessage=welcomeMessage
+            patternUrl=patternUrl
+            activeGradient=activeGradient
+            activeSolidColor=activeSolidColor
+            backgroundMode=backgroundMode
+            isLightText=isLightText
+            primaryColor=primaryColor
+            isOnlinePresenceEnabled=isOnlinePresenceEnabled
+            isArticlesEnabled=isArticlesEnabled
+            isTwitterEnabled=isTwitterEnabled
+            lastActiveAgents=metrics.lastActiveAgents
+            articles=articles
+            tweets=tweets
+            fetchingTweets=fetchTweets.isRunning
+          )
+        }}
+      {{/sticky-element}}
+    </div>
+  </div>
+</div>

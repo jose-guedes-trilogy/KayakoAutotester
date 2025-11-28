@@ -1,0 +1,48 @@
+{{ko-admin/page
+  title=(t "admin.staff.title")
+  buttonText=(if canAddTeamMembers (t "admin.staff.buttons.add"))
+  buttonClass=(qa-cls "qa-add-member-button")
+  onSave=(route-action "addTeamMembers")
+}}
+
+{{#ko-admin/forms/description}}
+  <p>{{t "admin.staff.description"}}</p>
+  <p>
+    <strong>
+      {{format-html-message "admin.staff.description2"
+        link1=(ko-admin/forms/link "https://support.kayako.com/article/1193-getting-help-from-beyond-your-support-team-with-collaborators" "admin.staff.description_link")
+        link2=(ko-admin/forms/link "https://support.kayako.com/article/1183-assigning-user-roles-to-your-team-and-customers?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=teamdirectory2" "admin.staff.description_link2")
+      }}
+    </strong>
+  </p>
+{{/ko-admin/forms/description}}
+
+{{#if staff.length}}
+  <div local-class="search">
+    {{ko-input/search value=filter onInput=(action (mut filter) value="target.value")
+    placeholder=(t "admin.staff.labels.filter")
+    }}
+  </div>
+
+  {{#if enabledUsers.length}}
+    {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+      {{#each enabledUsers as |user|}}
+        {{ko-admin/staff/list-row list=list user=user}}
+      {{/each}}
+    {{/ko-simple-list}}
+  {{/if}}
+
+  {{#if disabledUsers.length}}
+    {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+      {{#each disabledUsers as |user|}}
+        {{ko-admin/staff/list-row list=list user=user}}
+      {{/each}}
+    {{/ko-simple-list}}
+  {{/if}}
+{{/if}}
+
+{{#unless filteredStaff.length}}
+  {{ko-admin/empty image="team-directory" text=(if filter.length (t "generic.no_user_matching_term" term=filter))}}
+{{/unless}}
+
+{{outlet}}

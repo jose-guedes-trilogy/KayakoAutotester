@@ -1,0 +1,86 @@
+{{#ko-form
+  onSubmit=(action "save")
+  onSuccess=(action "success")}}
+  {{#ko-admin/page
+    title=(concat (t "admin.roles.title") " / "
+          (if role.isNew (t "admin.roles.form.new_title") role.title))
+    buttonText=(t "generic.save")
+    deleteText=(if canBeDeleted (t "generic.delete"))
+    onDelete=(action "deleteRole")
+    onCancel=attrs.onCancel
+    showFooter=true
+  }}
+    {{#ko-admin/forms/group legend=(t "admin.roles.form.details_group_legend")}}
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.roles.form.title_field_label"}}{{/ko-form/field/label}}
+        {{ko-input placeholder=(t "admin.roles.form.title_field_label_placeholder") qaClass="ko-admin_roles_form__title" value=role.title onInput=(action (mut role.title) value="target.value")}}
+        {{ko-form/field/errors errors=role.errors.title}}
+      {{/ko-form/field}}
+
+      {{#ko-form/field}}
+        {{#ko-form/field/label}}{{t "admin.roles.form.role_type_field_label"}}{{/ko-form/field/label}}
+
+        {{#ko-select
+          class=(qa-cls "qa-ko-admin_roles_form__role-type")
+          size="medium"
+          placeholder=(t "generic.select_placeholder")
+          options=roles.availableTypes
+          selected=roleType
+          disabled=(not role.isNew)
+          onChange=(action "selectRoleType")
+        as |option|}}
+          {{option.label}}
+        {{/ko-select}}
+
+        {{ko-form/field/errors errors=role.errors.roleType}}
+
+        {{#ko-form/field/help}}
+          {{format-html-message "admin.roles.form.role_type_field_help"}}
+
+          <a href="https://support.kayako.com/article/1183-assigning-user-roles-to-your-team-and-customers?utm_source=app&amp;utm_campaign=in-product-help&amp;utm_medium=adminarea&amp;utm_content=editrole" target="_blank" rel="noopener noreferrer" local-class="help-link">
+            {{t "admin.roles.form.role_type_field_help_link"}}
+          </a>.
+        {{/ko-form/field/help}}
+      {{/ko-form/field}}
+    {{/ko-admin/forms/group}}
+
+    {{#each availablePermissionGroups as |permissionGroup|}}
+      {{#ko-admin/forms/group legend=(t (concat "admin.roles.form." permissionGroup.translationKey "_group_legend"))}}
+        {{#if (eq permissionGroup.name "cases")}}
+          {{#ko-form/field}}
+            {{#ko-form/field/label}}{{t "admin.roles.form.agent_case_access_field_label"}}{{/ko-form/field/label}}
+
+            {{#ko-select
+              size="medium"
+              class=(qa-cls "qa-ko-admin_roles_form__agent-case-access-type")
+              placeholder=(t "generic.select_placeholder")
+              options=roles.availableAgentCaseAccessTypes
+              selected=agentCaseAccessType
+              onChange=(action "selectAgentCaseAccessType")
+            as |agentCaseAccessType|}}
+              {{agentCaseAccessType.label}}
+            {{/ko-select}}
+
+            {{#ko-form/field/help}}{{t "admin.roles.form.agent_case_access_field_help"}}{{/ko-form/field/help}}
+            {{ko-form/field/errors errors=role.errors.agentCaseAccess}}
+          {{/ko-form/field}}
+        {{/if}}
+
+        {{#each permissionGroup.permissions as |permission|}}
+          {{#ko-form/field}}
+            {{ko-checkbox
+              label=(t (concat "admin.roles.form." permission.translationKey "_permission_label"))
+              checked=permission.isEnabled
+              qaClass=permission.qaClass}}
+
+            {{#if permission.hasHelpText}}
+              {{#ko-form/field/help}}
+                {{t (concat "admin.roles.form." permission.translationKey "_permission_help")}}
+              {{/ko-form/field/help}}
+            {{/if}}
+          {{/ko-form/field}}
+        {{/each}}
+      {{/ko-admin/forms/group}}
+    {{/each}}
+  {{/ko-admin/page}}
+{{/ko-form}}

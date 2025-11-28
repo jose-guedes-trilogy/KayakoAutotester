@@ -1,0 +1,16 @@
+.count-wrapper {
+  position: relative;
+}
+
+.metric-count {
+  position: absolute;
+  top: 25px;
+  left: 12px;
+  line-height: 20px;
+}
+
+.conversion {
+  color: #4EAC5E;
+  margin-left: 10px;
+  font-weight: 600;
+}

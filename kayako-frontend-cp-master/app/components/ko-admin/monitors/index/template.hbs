@@ -1,0 +1,65 @@
+{{#ko-admin/page
+  title=(t "admin.monitors.title")
+  buttonText=(t "admin.monitors.buttons.add")
+as |section|}}
+  {{#if (eq section "buttons")}}
+    {{#ko-button href=(href-to "session.admin.automation.monitors.new") type="primary"}}{{t "admin.monitors.buttons.add"}}{{/ko-button}}
+  {{/if}}
+
+  {{#if (eq section "contents")}}
+    {{#ko-admin/forms/description}}
+      <p>{{t "admin.monitors.description"}}</p>
+      <p><strong>{{format-html-message "admin.monitors.description2" link=(ko-admin/forms/link "https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=monitors1" "admin.monitors.description_link")}}</strong></p>
+    {{/ko-admin/forms/description}}
+
+    {{#if (not monitors.length)}}
+      {{ko-admin/empty image="monitors"}}
+    {{/if}}
+
+    {{#if sortedEnabledMonitors.length}}
+      {{#ko-simple-list header=(t "generic.enabled") as |list|}}
+        {{#ko-reorderable-list class=(qa-cls "qa-admin_monitors--enabled") onReorder=(action "reorder") items=sortedEnabledMonitors as |monitor|}}
+          {{#list.row onClick=(action edit monitor) as |row|}}
+            {{#row.cell width="60%"}}
+              <span local-class="title">{{monitor.title}}</span>
+            {{/row.cell}}
+            {{#row.cell}}
+              <span local-class="caption">{{if monitor.lastExecutedAt (t "admin.monitors.last_fired" date=(ko-from-now monitor.lastExecutedAt))}}</span>
+            {{/row.cell}}
+            {{#row.actions}}
+              {{#link-to "session.admin.automation.monitors.edit" monitor.id}}{{t "generic.edit"}}{{/link-to}}
+              <span local-class="caption">|</span>
+              <a href="#" onclick={{action "toggleStatus" monitor}}>{{t "generic.disable"}}</a>
+              <span local-class="caption">|</span>
+              <a href="#" onclick={{action "delete" monitor}}>{{t "generic.delete"}}</a>
+            {{/row.actions}}
+          {{/list.row}}
+        {{/ko-reorderable-list}}
+      {{/ko-simple-list}}
+    {{/if}}
+
+    {{#if sortedDisabledMonitors.length}}
+      {{#ko-simple-list header=(t "generic.disabled") as |list|}}
+        <ul class={{qa-cls "qa-admin_monitors--disabled"}}>
+          {{#each sortedDisabledMonitors as |monitor|}}
+            {{#list.row onClick=(action edit monitor) as |row|}}
+              {{#row.cell width="60%" disabled=true}}
+                <span local-class="title">{{monitor.title}}</span>
+              {{/row.cell}}
+              {{#row.cell disabled=true}}
+                <span local-class="caption">{{if monitor.lastExecutedAt (t "admin.monitors.last_fired" date=(ko-from-now monitor.lastExecutedAt))}}</span>
+              {{/row.cell}}
+              {{#row.actions}}
+                {{#link-to "session.admin.automation.monitors.edit" monitor.id}}{{t "generic.edit"}}{{/link-to}}
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "toggleStatus" monitor}}>{{t "generic.enable"}}</a>
+                <span local-class="caption">|</span>
+                <a href="#" onclick={{action "delete" monitor}}>{{t "generic.delete"}}</a>
+              {{/row.actions}}
+            {{/list.row}}
+          {{/each}}
+        </ul>
+      {{/ko-simple-list}}
+    {{/if}}
+  {{/if}}
+{{/ko-admin/page}}

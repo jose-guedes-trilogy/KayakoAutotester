@@ -1,0 +1,19 @@
+{{#ko-notification-center/-base-notification notification=notification close=close as |notification|}}
+  {{#if avatarUrl}}
+    {{#notification.avatar}}
+      <span><img local-class="avatar" src="{{avatarUrl}}"></span>
+    {{/notification.avatar}}
+  {{else if isBreach}}
+    {{#notification.avatar}}
+      <span local-class="avatar-container for-breach">{{inline-svg "notification-center/breach"}}</span>
+    {{/notification.avatar}}
+  {{else}}
+    {{#notification.avatar}}
+      <span local-class="avatar-container">{{inline-svg "notification-center/events"}}</span>
+    {{/notification.avatar}}
+  {{/if}}
+
+  {{#notification.summary}}
+    {{ko-notification-summary summary}}
+  {{/notification.summary}}
+{{/ko-notification-center/-base-notification}}

@@ -1,0 +1,8 @@
+<div local-class="list" class="{{if qaClass (qa-cls qaClass)}}">
+  {{#if header}}
+    <div local-class="header">{{header}}</div>
+  {{/if}}
+  {{yield (hash
+    row=(component "ko-simple-list/row")
+  )}}
+</div>

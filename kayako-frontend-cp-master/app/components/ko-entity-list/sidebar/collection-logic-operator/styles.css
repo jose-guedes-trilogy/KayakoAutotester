@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  padding: 20px 0 11px 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: $grey-7;
+}
+
+.trigger {
+  composes: trigger from 'frontend-cp/components/ko-select/shared';
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: $grey-1;
+}
+
+.trigger--focused {
+  composes: trigger--focused from 'frontend-cp/components/ko-select/shared';
+}
+
+.dropdown {
+  composes: dropdown from 'frontend-cp/components/ko-select/shared';
+  width: 285px
+}
+

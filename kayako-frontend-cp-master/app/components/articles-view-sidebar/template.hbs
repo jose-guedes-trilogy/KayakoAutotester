@@ -1,0 +1,18 @@
+<div local-class="sidebar">
+  <ul local-class="article-list">
+    {{#link-to "session.agent.knowledgebase.create-article" tagName="li" local-class="article-item create-article"}}
+      {{t 'admin.knowledgebase.sidebar.create_article'}}
+    {{/link-to}}
+    <li local-class="article-item {{if (eq this.selectedStatus "ALL") "selected"}}" onclick={{action "filterByStatus" "ALL"}}>
+      {{t 'admin.knowledgebase.sidebar.all_articles'}} <span local-class="article-count">{{this.articleCounts.allCount}}</span>
+    </li>
+
+    <li local-class="article-item {{if (eq this.selectedStatus "PUBLISHED") "selected"}}" onclick={{action "filterByStatus" "PUBLISHED"}}>
+      {{t 'admin.knowledgebase.sidebar.my_published_articles'}} <span local-class="article-count">{{this.articleCounts.myPublishedCount}}</span>
+    </li>
+
+    <li local-class="article-item {{if (eq this.selectedStatus "DRAFT") "selected"}}" onclick={{action "filterByStatus" "DRAFT"}}>
+      {{t 'admin.knowledgebase.sidebar.drafts'}} <span local-class="article-count">{{this.articleCounts.draftCount}}</span>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,60 @@
+.header {
+  max-width: 900px;
+  margin: 0 auto 36px;
+}
+
+.contentBlock {
+  width: 560px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-top: 18px;
+  margin-bottom: 12px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #838D94;
+  text-align: center;
+  margin-bottom: 46px;
+}
+
+.content {
+  display: flex;
+}
+
+.messagesBlock {
+  width: 280px;
+  margin-right: 50px;
+}
+
+.imageBlock {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  text-align: right;
+}
+
+.definitionList {
+  margin-top: 10px;
+}
+
+.definitionTitle {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2D3138;
+}
+
+.definitionText {
+  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.findOutCTA {
+  display: flex;
+}

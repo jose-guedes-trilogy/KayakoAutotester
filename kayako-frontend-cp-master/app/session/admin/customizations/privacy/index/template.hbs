@@ -1,0 +1,51 @@
+{{ko-admin/page
+  title=(t "admin.privacy.title")
+  buttonText=(t "admin.privacy.buttons.add_new_privacy_policy")
+  buttonClass=(qa-cls "qa-admin_privacy_links__new-button")
+  cancelButtonClass=(qa-cls "qa-admin_privacy_links__cancel-button")
+  onSave=(action "transitionToNewPrivacyPolicyLinkRoute")
+}}
+
+{{#if registerPrivacyLinks.length}}
+  {{#ko-simple-list header=(t "admin.privacy.types.register") qaClass="qa-admin-registration_privacy-list" as |list|}}
+    {{#each registerPrivacyLinks as |privacy|}}
+      {{#list.row onClick=(action "editPrivacy" privacy) qaClass="qa-admin_case-registration_privacy-row" as |row|}}
+        {{#row.cell disabled=true}}
+          <span local-class="title">{{privacy.locale}}</span>
+          {{#if privacy.url}} <span local-class="caption"> ({{privacy.url}}) </span>{{/if}}
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "editPrivacy" privacy}}>{{t "generic.edit"}}</a>
+          {{#if privacy.canBeMadeDefault}}
+            | <a onclick={{action "makeDefault" privacy}}>{{t "generic.make_default"}}</a>
+          {{/if}}
+          {{#if privacy.canBeDeleted}}
+            | <a onclick={{action "showDeleteConfirmation" privacy}}>{{t "generic.delete"}}</a>
+          {{/if}}
+      {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}
+
+{{#if cookiePrivacyLinks.length}}
+  {{#ko-simple-list header=(t "admin.privacy.types.cookie") qaClass="qa-admin-cookie_privacy-list" as |list|}}
+    {{#each cookiePrivacyLinks as |privacy|}}
+      {{#list.row onClick=(action "editPrivacy" privacy) qaClass="qa-admin_case-cookie_privacy-row" as |row|}}
+        {{#row.cell disabled=true}}
+          <span local-class="title">{{privacy.locale}}</span>
+          {{#if privacy.url}} <span local-class="caption"> ({{privacy.url}}) </span>{{/if}}
+        {{/row.cell}}
+        {{#row.actions}}
+          <a onclick={{action "editPrivacy" privacy}}>{{t "generic.edit"}}</a>
+          {{#if privacy.canBeMadeDefault}}
+            | <a onclick={{action "makeDefault" privacy}}>{{t "generic.make_default"}}</a>
+          {{/if}}
+          {{#if privacy.canBeDeleted}}
+            | <a onclick={{action "showDeleteConfirmation" privacy}}>{{t "generic.delete"}}</a>
+          {{/if}}
+      {{/row.actions}}
+      {{/list.row}}
+    {{/each}}
+  {{/ko-simple-list}}
+{{/if}}

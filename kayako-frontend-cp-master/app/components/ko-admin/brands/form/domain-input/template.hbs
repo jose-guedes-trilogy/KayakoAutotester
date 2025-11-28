@@ -1,0 +1,11 @@
+<div local-class="container {{if focused "focused"}}" class="{{if qaClass (qa-cls qaClass)}}">
+  <input
+    local-class="input"
+    value={{value}}
+    disabled={{disabled}}
+    onfocus={{action "focus"}}
+    onblur={{action "blur"}}
+    oninput={{onInput}}
+   >
+  <div local-class="domain"><span>.{{domain}}</span></div>
+</div>

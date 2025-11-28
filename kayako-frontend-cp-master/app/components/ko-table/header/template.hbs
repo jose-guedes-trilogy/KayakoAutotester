@@ -1,0 +1,11 @@
+<thead local-class="container">
+  <tr local-class="row">
+    {{#if selectable}}
+      {{#ko-table/column minWidth=49 maxWidth=49}}
+        {{ko-checkbox checked=allRowsSelected onCheck=(action "selectAll")}}
+      {{/ko-table/column}}
+    {{/if}}
+
+    {{yield}}
+  </tr>
+</thead>

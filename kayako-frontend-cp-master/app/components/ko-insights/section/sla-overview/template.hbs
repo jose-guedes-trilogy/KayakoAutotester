@@ -1,0 +1,46 @@
+{{#ko-insights/loader/sla metricsQueryParams=metricsQueryParams queryTerm=slaQueryTerm slaId=slaId as |data|}}
+  <div local-class="container">
+    <div local-class="header">
+      <div local-class="entity">
+        <h4 local-class="title">{{t "insights.sla.sla_target_performance_for"}}</h4>
+
+        {{#if (and data.filteredSlas data.slaItem)}}
+          {{#ko-select
+            selected=data.slaItem
+            options=data.filteredSlas
+            onChange=onActorChange
+            search=(action (mut slaQueryTerm))
+            matchTriggerWidth=false
+          as |field|}}
+            {{field.title}}
+          {{/ko-select}}
+        {{/if}}
+      </div>
+      <div local-class="filters">
+        <div local-class="filtersControls">
+          {{ko-input-date-range
+          rangeStart=startAt
+          rangeEnd=endAt
+          onPickerHidden=onDateRangeChange
+          }}
+        </div>
+      </div>
+    </div>
+
+    <div local-class="charts">
+      {{#if (and data.slaTarget data.slaPerformance)}}
+        {{ko-insights/sla-resolution-target
+        section="sla"
+        data=data.slaTarget
+        performance=data.slaPerformance
+        interval=interval
+        onIntervalChange=onIntervalChange
+        }}
+      {{/if}}
+
+      {{#if data.request.isPending}}
+        {{ko-insights/loader size="M"}}
+      {{/if}}
+    </div>
+  </div>
+{{/ko-insights/loader/sla}}

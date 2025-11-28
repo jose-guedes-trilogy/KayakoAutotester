@@ -1,0 +1,23 @@
+{{#each automationActions as |automationAction|}}
+  {{#with (hash definition=(find-by 'name' automationAction.name definitions)) as |scope|}}
+    <article local-class="automation-action" class="{{qa-cls "qa-action-row"}}">
+      <div local-class="automation-action-form">
+        {{component
+          (automation-action-builder-component-name scope.definition)
+          type=type
+          team=team
+          agent=agent
+          teams=teams
+          agents=agents
+          onTeamChange=(action (mut team))
+          onAgentChange=(action (mut agent))
+          automationAction=automationAction
+          definition=scope.definition
+          smallSlotClass=(local-class "small-slot")
+          bigSlotClass=(local-class "big-slot")
+        }}
+      </div>
+      {{ko-admin/engagement-actions-builder/preview message=(ko-breaklines automationAction.value) team=team agent=agent}}
+    </article>
+  {{/with}}
+{{/each}}

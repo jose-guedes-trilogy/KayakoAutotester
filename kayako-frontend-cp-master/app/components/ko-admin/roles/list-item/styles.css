@@ -1,0 +1,17 @@
+.action {
+  &::after {
+    content: ' | ';
+  }
+
+  &:last-child::after {
+    content: '';
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.caption {
+  color: $grey-6;
+}

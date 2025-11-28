@@ -1,0 +1,48 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px 0 $case-default;
+}
+
+.label {
+  color: #FFF;
+  letter-spacing: 0.5px;
+  font-size: 10px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 9px;
+}
+
+.status-draft,
+.status-new,
+.status-open {
+  background-color: $case-open;
+  border-bottom: 1px solid darken($case-open, 15%);
+}
+
+.status-pendingapproval,
+.status-pending,
+.status-custom {
+  background-color: $case-pending;
+  border-bottom: 1px solid darken($case-pending, 15%);
+}
+
+.status-published,
+.status-completed {
+  background-color: $case-completed;
+  border-bottom: 1px solid darken($case-completed, 15%);
+}
+
+.status-closed {
+  background-color: $case-closed;
+  border-bottom: 1px solid darken($case-closed, 15%);
+}
+
+.status-primary {
+  background-color: $case-primary;
+  border-bottom: 1px solid darken($case-primary, 15%);
+}

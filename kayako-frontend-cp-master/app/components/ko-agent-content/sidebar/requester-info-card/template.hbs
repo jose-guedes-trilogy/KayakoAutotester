@@ -1,0 +1,44 @@
+<div local-class="info-card">
+
+  {{#if (and isMe (eq userContext "user"))}}
+    {{ko-avatar-update user=user}}
+  {{else}}
+    {{#link-to (if (eq userContext "user") "session.agent.users.user" (if isNewCase "session.agent.cases.new.user" "session.agent.cases.case.user")) local-class="avatar"}}
+      {{#ko-user-avatar user=user size="medium" as |avatar|}}
+        {{avatar.image}}
+        {{avatar.online-indicator}}
+      {{/ko-user-avatar}}
+    {{/link-to}}
+  {{/if}}
+
+  <div local-class="requester-overview">
+    <div local-class="requester-name overview-row" class="{{qa-cls "qa-agent-content_timeline-header__header"}}">
+      {{yield}}
+    </div>
+    {{#if (and user.organization (not processingOrg))}}
+      <div local-class="overview-row">
+        <div local-class="organization-row">
+          {{ko-org-logo org=user.organization size=14 local-class="org-logo"}}
+          {{#if (eq userContext "user")}}
+            {{#link-to "session.agent.users.user.organization" local-class="requester-organization"}}
+              {{user.organization.name}}
+            {{/link-to}}
+          {{else}}
+            {{#link-to (if isNewCase "session.agent.cases.new.organization" "session.agent.cases.case.organization") local-class="requester-organization"}}
+              {{user.organization.name}}
+            {{/link-to}}
+          {{/if}}
+          <div local-class="cancel-icon" onclick={{action "unsetOrganization"}}>
+            {{#ko-tooltip local-class="unset-tooltip" side="top" title=(t "organization.unset_org" name=user.fullName)}}
+              {{ko-icon name="cross" color="#FFFFFF" size=8}}
+            {{/ko-tooltip}}
+          </div>
+        </div>
+      </div>
+    {{else if (or unsetOrgFromUser.isRunning processingOrg)}}
+      <div local-class="org-removal-loader">
+        <span>{{ko-loader}}</span><span local-class="org-removal-text">{{or user.organization.name removedOrg}}</span>
+      </div>
+    {{/if}}
+  </div>
+</div>

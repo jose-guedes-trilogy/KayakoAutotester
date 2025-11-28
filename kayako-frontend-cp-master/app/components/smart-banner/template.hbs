@@ -1,0 +1,21 @@
+{{#if showBanner}}
+  <div local-class="inner">
+    <div local-class="app-details">
+      <a href="#" local-class="close-button" onclick={{action 'closeBanner'}}>
+        {{ko-icon name="cross" color="#838D94" size=14}}
+      </a>
+      <div local-class="icon">
+        <img src="{{iconUrl}}" alt="{{t 'generic.app_icon' fallback="App Icon"}}">
+      </div>
+      <div local-class="info">
+        <strong local-class="title">{{title}}</strong>
+        <span local-class="description">{{description}}</span>
+      </div>
+    </div>
+    <div local-class="view-button">
+      {{#ko-button href=link type="highlight" size="medium" onClick=(action 'openLink')}}
+        <span>{{linkText}}</span>
+      {{/ko-button}}
+    </div>
+  </div>
+{{/if}}

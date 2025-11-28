@@ -1,0 +1,16 @@
+{{#if _userOnline}}
+  {{#if showTooltip}}
+    {{#ko-tooltip local-class="tooltip" qaCls="qa-avatar-tooltip" side="top" content=tooltipLabel delay=750}}
+      <span local-class="online-indicator {{concat "online-indicator--" size}}" class={{qa-cls "qa-avatar-online-indicator"}}></span>
+    {{/ko-tooltip}}
+  {{else}}
+    <span local-class="online-indicator {{concat "online-indicator--" size}}" class={{qa-cls "qa-avatar-online-indicator"}}></span>
+  {{/if}}
+{{/if}}
+
+{{#with user.presenceChannel as |channel|}}
+  {{kre-channel
+    name=channel
+    on-presence-change=(action "onPresenceChanged")
+  }}
+{{/with}}
