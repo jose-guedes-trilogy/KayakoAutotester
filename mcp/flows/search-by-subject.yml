@@ -1,0 +1,30 @@
+name: search-by-subject
+description: Agent searches for a conversation by subject and opens it
+steps:
+  - type: goto
+    url: env.KAYAKO_AGENT_URL
+  - type: expect-visible
+    selectorKey: login.submitButton
+  - type: fill
+    selectorKey: login.emailInput
+    value: env.KAYAKO_USERNAME
+  - type: fill
+    selectorKey: login.passwordInput
+    value: env.KAYAKO_PASSWORD
+  - type: click
+    selectorKey: login.submitButton
+  - type: expect-visible
+    selectorKey: search.input
+  - type: fill
+    selectorKey: search.input
+    value: "[AUTOTEST]"  # replace with a stable subject prefix present in your data
+  - type: press
+    key: "Enter"
+  - type: expect-visible
+    selectorKey: search.resultItem
+  - type: click
+    selectorKey: search.resultItem
+  - type: expect-visible
+    selectorKey: conversation.subjectHeading
+
+

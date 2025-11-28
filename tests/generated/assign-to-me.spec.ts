@@ -1,0 +1,17 @@
+import { test, expect } from '../../fixtures/auth.fixture';
+import { env } from '../../config/env';
+import { click, fill as fillSel, expectVisible } from '../../selectors';
+
+test.describe("Agent opens first conversation and assigns it to self", () => {
+  test('assign-to-me', async ({ authenticatedPage: page }) => {
+    await page.goto(env.KAYAKO_AGENT_URL);
+    await expectVisible(page, 'nav', 'conversationsLink');
+    await click(page, 'nav', 'conversationsLink');
+    await expectVisible(page, 'inbox', 'firstItem');
+    await click(page, 'inbox', 'firstItem');
+    await expectVisible(page, 'assign', 'openAssigneeMenu');
+    await click(page, 'assign', 'openAssigneeMenu');
+    await click(page, 'assign', 'selfOption');
+    await expectVisible(page, 'assign', 'confirmation');
+  });
+});

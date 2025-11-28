@@ -50,17 +50,21 @@ function generateTest(flow: Flow): string {
       }
       case 'fill': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
+        // Skip login.* interactions because fixture authenticates already
+        if (group === 'login') break;
         const valueExpr = resolveEnvToken((step as any).value);
         lines.push(`    await fillSel(page, '${group}', '${key}', ${valueExpr});`);
         break;
       }
       case 'click': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
+        if (group === 'login') break;
         lines.push(`    await click(page, '${group}', '${key}');`);
         break;
       }
       case 'expect-visible': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
+        if (group === 'login') break;
         lines.push(`    await expectVisible(page, '${group}', '${key}');`);
         break;
       }
@@ -78,6 +82,7 @@ function generateTest(flow: Flow): string {
         const s = step as any;
         if (s.selectorKey) {
           const { group, key } = selectorGroupAndKey(s.selectorKey);
+          if (group === 'login') break;
           lines.push(`    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.press(${JSON.stringify(s.key)}); }`);
         } else {
           lines.push(`    await page.keyboard.press(${JSON.stringify(s.key)});`);

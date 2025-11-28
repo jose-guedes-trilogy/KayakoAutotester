@@ -49,6 +49,107 @@
       "[class*='sidebar'] a[href*='conversations']",
       "nav a:has-text('Conversations')"
     ]
+  },
+  // Agent inbox selectors
+  "inbox": {
+    // First conversation item in the list (clicking opens the conversation)
+    "firstItem": [
+      "[class*='conversation-list'] [class*='item'] a",
+      "[class*='conversation-list'] [class*='item']",
+      "[class*='list'] a[href*='/agent/conversations/']"
+    ],
+    // 'All' filter chip in the inbox (fallback to text)
+    "filterAll": [
+      "[class*='filter'][class*='all']",
+      "[class*='filters'] [class*='chip']:has-text('All')",
+      "text=/^\\s*All\\s*$/i"
+    ]
+  },
+  // Open conversation view selectors
+  "conversation": {
+    // Subject heading of an open conversation
+    "subjectHeading": [
+      "role=heading[level=1]",
+      "[class*='conversation-header'] h1",
+      "h1"
+    ],
+    // Requester/customer identifier shown near the header
+    "requester": [
+      "[class*='requester']",
+      "[class*='conversation-header'] [class*='requester']",
+      "text=/Requester|From/i"
+    ],
+    // Status pill/chip in the header
+    "statusPill": [
+      "[class*='status'][class*='pill']",
+      "[class*='status']",
+      "text=/Open|Pending|Closed|Resolved/i"
+    ],
+    // Any timeline entry (used to validate new notes/updates)
+    "timelineEntry": [
+      "[class*='timeline'] [class*='entry']",
+      "[class*='timeline'] [class*='item']"
+    ]
+  },
+  // Reply/Note composer selectors
+  "composer": {
+    // Rich text editor area (prefers contenteditable; falls back to textarea)
+    "editor": [
+      "[class*='composer'] [contenteditable='true']",
+      "[class*='editor'][contenteditable='true']",
+      "textarea"
+    ],
+    // Toggle to switch to Internal note (or similar)
+    "internalNoteToggle": [
+      "role=button[name=/Internal note|Note/i]",
+      "[class*='composer'] button:has-text('Internal note')",
+      "text=/Internal note/i"
+    ],
+    // Send/Update button for replies
+    "sendButton": [
+      "role=button[name=/Send|Update/i]",
+      "[class*='composer'] button[type='submit']",
+      "[class*='composer'] button:has-text('Send')"
+    ],
+    // Add/Save note button (when composer is in internal note mode)
+    "addNoteButton": [
+      "role=button[name=/Add note|Save/i]",
+      "[class*='composer'] button:has-text('Add note')",
+      "[class*='composer'] button:has-text('Save')"
+    ]
+  },
+  // Assignee/assignment selectors
+  "assign": {
+    // Button or control to open assignee menu
+    "openAssigneeMenu": [
+      "role=button[name=/Assign|Assignee/i]",
+      "[class*='assignee'] button",
+      "[class*='assignment'] button"
+    ],
+    // 'Assign to me' or 'Me' option within the menu
+    "selfOption": [
+      "role=option[name=/Me|Myself/i]",
+      "text=/Assign to me|Self/i"
+    ],
+    // Confirmation/feedback after assigning (toast or header chip)
+    "confirmation": [
+      "[class*='toast']:has-text(/assign|assignee|updated/i)",
+      "[class*='assignee']:has-text(/Me|Myself|You/i)"
+    ]
+  },
+  // Global search selectors
+  "search": {
+    // Global search input (top bar)
+    "input": [
+      "role=textbox[name=/Search/i]",
+      "input[placeholder*='Search']",
+      "[class*='search'] input"
+    ],
+    // First search result that links to a conversation
+    "resultItem": [
+      "[class*='search'] [class*='result'] a[href*='/agent/conversations/']",
+      "[class*='results'] a[href*='/agent/conversations/']"
+    ]
   }
 }
 
