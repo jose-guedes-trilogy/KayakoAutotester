@@ -1,19 +1,7 @@
 name: demo-new-fields
 description: Fill all newly supported field types (radio, text, textarea, regex, integer, decimal, checkboxes)
 steps:
-  - type: goto-conversation-by-env-id
-    optional: true
-  - type: wait-loadstate
-    state: networkidle
-  # Fallback open first conversation if no ID
-  - type: goto
-    url: env.KAYAKO_CONVERSATIONS_URL
-  - type: expect-visible
-    selectorKey: inbox.conversationSubject
-  - type: click
-    selectorKey: inbox.conversationSubject
-  - type: wait-loadstate
-    state: networkidle
+  - type: access-conversation
   # Radio (dropdown-like) -> pick first available option if unspecified
   - type: set-custom-field
     fieldType: radio

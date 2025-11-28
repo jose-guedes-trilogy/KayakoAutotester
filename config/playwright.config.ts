@@ -11,11 +11,26 @@ export default defineConfig({
   expect: {
     timeout: 15000,
   },
-  reporter: [
-    ['html'],
+  reporter: (() => {
+    const runId = process.env.RUN_ID?.trim();
+    if (!runId) {
+      return [
+        // Ensure progress goes to stdout for the orchestrator live logs
+        ['list'],
+        ['html', { open: 'never' }],
     ['junit', { outputFile: 'test-results/junit.xml' }],
-    ['json', { outputFile: 'test-results/results.json' }],
-  ],
+        ['json', { outputFile: 'test-results/results.json' }],
+      ] as any;
+    }
+    const base = path.join(process.cwd(), 'runs', runId);
+    return [
+      // Ensure progress goes to stdout for the orchestrator live logs
+      ['list'],
+      ['html', { open: 'never', outputFolder: path.join(base, 'html') }],
+      ['junit', { outputFile: path.join(base, 'junit.xml') }],
+      ['json', { outputFile: path.join(base, 'report.json') }],
+    ] as any;
+  })(),
   use: {
     baseURL: env.KAYAKO_AGENT_URL,
     headless: true,
@@ -33,9 +48,21 @@ export default defineConfig({
       ],
     },
     trace: 'on-first-retry',
-    video: 'retain-on-failure',
-    screenshot: 'only-on-failure',
+    video: (() => {
+      const v = (process.env.KAYAKO_VIDEO || '').trim().toLowerCase();
+      if (v === 'on' || v === 'on-first-retry' || v === 'retain-on-failure' || v === 'off') return v as any;
+      return 'retain-on-failure';
+    })(),
+    screenshot: (() => {
+      const s = (process.env.KAYAKO_SCREENSHOT || '').trim().toLowerCase();
+      if (s === 'on' || s === 'off' || s === 'only-on-failure') return s as any;
+      return 'only-on-failure';
+    })(),
   },
+  outputDir: (() => {
+    const runId = process.env.RUN_ID?.trim();
+    return runId ? path.join(process.cwd(), 'runs', runId, 'artifacts') : path.join(__dirname, '..', 'test-results');
+  })(),
   projects: [
     {
       name: 'chromium',
@@ -44,7 +71,6 @@ export default defineConfig({
     { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
     { name: 'webkit', use: { ...devices['Desktop Safari'], video: 'off', trace: 'off' } },
   ],
-  outputDir: path.join(__dirname, '..', 'test-results'),
 });
 
 

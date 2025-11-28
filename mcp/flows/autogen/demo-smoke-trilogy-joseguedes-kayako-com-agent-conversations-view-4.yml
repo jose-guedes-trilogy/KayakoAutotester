@@ -1,0 +1,54 @@
+name: demo-smoke-trilogy-joseguedes-kayako-com-agent-conversations-view-4
+description: Composite demo - set multiple fields, add tags, set status, assert
+  DOM, and snapshot
+  (https://trilogy-joseguedes.kayako.com/agent/conversations/view/4)
+steps:
+  - type: goto
+    url: https://trilogy-joseguedes.kayako.com/agent/conversations/view/4
+  - type: access-conversation
+  - type: set-custom-fields
+    fields:
+      - fieldType: yesno
+        label: Yes/no toggle
+        value: true
+      - fieldType: date
+        label: Date of purchase
+        value: 2025-04-05
+      - fieldType: text
+        label: Text
+        value: Composite Text
+      - fieldType: textarea
+        label: Multiline text
+        value: |-
+          Composite
+          Flow
+          Text
+      - fieldType: integer
+        label: Integers
+        value: 77
+      - fieldType: decimal
+        label: Decimals
+        value: 9.99
+      - fieldType: checkbox
+        label: Checkboxes
+        value:
+          - Option-A-Title
+  - type: add-tags
+    values:
+      - vip
+      - follow-up
+  - type: set-status
+    value: Open
+  - type: expect-request
+    urlPattern: "**/api/**"
+    method: POST
+    timeoutMs: 5000
+    optional: true
+  - type: assert-tags-contain
+    values:
+      - vip
+  - type: expect-screenshot
+    name: info-panel.png
+    selectorKey: info.panel
+  - type: wait
+    value: "1000"

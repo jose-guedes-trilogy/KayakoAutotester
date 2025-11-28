@@ -23,6 +23,7 @@ const EnvSchema = z.object({
   PW_REPORTER: z.string().optional(),
   KAYAKO_CONVERSATION_ID: z.string().optional(),
   KAYAKO_PREFERRED_TEAM: z.string().optional(),
+  KAYAKO_INBOX_VIEW_ID: z.string().optional(),
 });
 
 const parsed = EnvSchema.safeParse(process.env);
@@ -38,12 +39,18 @@ if (!parsed.success) {
 }
 
 const base = parsed.data;
+const inboxViewId = (base.KAYAKO_INBOX_VIEW_ID || '1').trim() || '1';
+const agentBase = base.KAYAKO_AGENT_URL.replace(/\/$/, '');
 export const env = {
   ...base,
-  KAYAKO_CONVERSATIONS_URL: `${base.KAYAKO_AGENT_URL.replace(/\/$/, '')}/conversations`,
+  KAYAKO_INBOX_VIEW_ID: inboxViewId,
+  KAYAKO_CONVERSATIONS_URL: `${agentBase}/conversations`,
+  KAYAKO_INBOX_VIEW_URL: `${agentBase}/conversations/view/${inboxViewId}`,
 } as const;
 export type Env = z.infer<typeof EnvSchema> & {
   KAYAKO_CONVERSATIONS_URL: string;
+  KAYAKO_INBOX_VIEW_ID: string;
+  KAYAKO_INBOX_VIEW_URL: string;
 };
 
 

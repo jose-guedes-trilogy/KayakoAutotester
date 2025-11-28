@@ -1,34 +1,17 @@
+import type { Page } from '@playwright/test';
 import { test, expect } from '../../fixtures/auth.fixture';
 import { env } from '../../config/env';
-import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField } from '../../selectors';
+import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectRequest, accessConversation } from '../../selectors';
 
-test.describe("Agent applies the \"Send to Customer\" macro on a conversation", () => {
-  test('apply-send-to-customer', async ({ authenticatedPage: page }) => {
-    await page.goto(env.KAYAKO_AGENT_URL);
-    try {
-    if (env.KAYAKO_CONVERSATION_ID) { await page.goto(env.KAYAKO_AGENT_URL.replace(/\/$/, '') + '/conversations/' + env.KAYAKO_CONVERSATION_ID); }
-    } catch (e) { console.warn('Optional step failed (goto-conversation-by-env-id)', e); }
-    try {
-    await page.waitForTimeout(200);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
-    try {
-    await page.goto(env.KAYAKO_CONVERSATIONS_URL);
-    } catch (e) { console.warn('Optional step failed (goto)', e); }
-    try {
-    await expectVisible(page, 'inbox', 'conversationSubject');
-    } catch (e) { console.warn('Optional step failed (expect-visible)', e); }
-    try {
-    await click(page, 'inbox', 'conversationSubject');
-    } catch (e) { console.warn('Optional step failed (click)', e); }
-    try {
-    await page.waitForLoadState("networkidle", { timeout: 3000 }).catch(() => {});
-    } catch (e) { console.warn('Optional step failed (wait-loadstate)', e); }
-    try {
+const queueMode = process.env.KAYAKO_RUN_MODE === 'queue';
+
+export async function runFlow(page: Page): Promise<void> {
+    await accessConversation(page);
     await dispatchClickCss(page, 'macro', 'macroSelectorTrigger');
-    } catch (e) { console.warn('Optional step failed (dispatch-click)', e); }
+    await page.waitForTimeout(250);
     try {
-    await page.waitForTimeout(200);
-    } catch (e) { console.warn('Optional step failed (wait)', e); }
+    await expectVisible(page, 'macro', 'macroDropdownContainer');
+    } catch (e) { console.warn('Optional step failed (expect-visible)', e); }
     try {
     await dispatchClickCss(page, 'macro', 'macroOptionSendToCustomer');
     } catch (e) { console.warn('Optional step failed (dispatch-click)', e); }
@@ -36,6 +19,13 @@ test.describe("Agent applies the \"Send to Customer\" macro on a conversation", 
     try {
     await page.waitForLoadState("networkidle", { timeout: 3000 }).catch(() => {});
     } catch (e) { console.warn('Optional step failed (wait-loadstate)', e); }
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(1500);
+}
+
+if (!queueMode) {
+  test.describe("Agent applies the \"Send to Customer\" macro on a conversation", () => {
+    test('apply-send-to-customer', async ({ authenticatedPage: page }) => {
+      await runFlow(page);
+    });
   });
-});
+}

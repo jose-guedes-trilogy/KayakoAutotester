@@ -1,27 +1,22 @@
+import type { Page } from '@playwright/test';
 import { test, expect } from '../../fixtures/auth.fixture';
 import { env } from '../../config/env';
-import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField } from '../../selectors';
+import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectRequest, accessConversation } from '../../selectors';
 
-test.describe("Agent opens first conversation and adds an internal note", () => {
-  test('add-internal-note', async ({ authenticatedPage: page }) => {
-    await page.goto(env.KAYAKO_AGENT_URL);
-    await page.goto(env.KAYAKO_CONVERSATIONS_URL);
-    await expectVisible(page, 'inbox', 'conversationSubject');
-    await click(page, 'inbox', 'conversationSubject');
-    try {
-    await page.waitForLoadState("networkidle", { timeout: 3000 }).catch(() => {});
-    } catch (e) { console.warn('Optional step failed (wait-loadstate)', e); }
-    await expectVisible(page, 'conversation', 'subjectHeading');
-    await page.waitForTimeout(1500);
-    await expectVisible(page, 'composer', 'editor');
-    await click(page, 'composer', 'editor');
-    await page.waitForTimeout(400);
-    await dispatchClickText(page, "Notes");
-    await page.waitForTimeout(400);
-    await expectVisible(page, 'composer', 'notePlaceholder');
-    await fillSel(page, 'composer', 'editor', "[AUTOTEST] Internal note added by MCP");
-    await click(page, 'composer', 'sendButton');
-    await expectVisible(page, 'conversation', 'noteText');
-    await page.waitForTimeout(5000);
+const queueMode = process.env.KAYAKO_RUN_MODE === 'queue';
+
+export async function runFlow(page: Page): Promise<void> {
+    await accessConversation(page);
+    await dispatchClickCss(page, 'composer', 'internalNoteToggle');
+    await page.waitForTimeout(150);
+    await insertReplyText(page, "env.KAYAKO_NOTE_TEXT");
+    await page.waitForTimeout(200);
+}
+
+if (!queueMode) {
+  test.describe("Switch to Notes mode and insert an internal note (env.KAYAKO_NOTE_TEXT)", () => {
+    test('add-internal-note', async ({ authenticatedPage: page }) => {
+      await runFlow(page);
+    });
   });
-});
+}

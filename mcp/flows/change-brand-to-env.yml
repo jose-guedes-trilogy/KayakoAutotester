@@ -1,0 +1,15 @@
+name: change-brand-to-env
+description: Change the conversation brand using env.KAYAKO_BRAND_NAME
+steps:
+  - type: access-conversation
+  - type: dispatch-click
+    selectorKey: brand.changeBrandTrigger
+  - type: wait
+    value: "200"
+  - type: dispatch-click-text
+    value: env.KAYAKO_BRAND_NAME
+  - type: wait-loadstate
+    state: networkidle
+    optional: true
+
+

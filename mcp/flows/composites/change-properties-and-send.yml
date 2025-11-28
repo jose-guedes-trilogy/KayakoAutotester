@@ -1,0 +1,23 @@
+name: composite-change-properties-and-send
+description: Update ticket properties (status/custom fields) and send a reply.
+steps:
+  - type: access-conversation
+
+  - type: set-status
+    value: env.DEFAULT_STATUS
+
+  - type: set-custom-field
+    fieldType: dropdown
+    label: "Priority"
+    value: env.DEFAULT_PRIORITY
+
+  - type: set-custom-field
+    fieldType: text
+    label: "Text"
+    value: "Updated via composite"
+
+  - type: click-send-button
+
+  - type: wait
+    value: "500"
+

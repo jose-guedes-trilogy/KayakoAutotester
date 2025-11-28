@@ -1,0 +1,62 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="9.687588">
+<testsuite name="runtime\queue-runner.spec.ts" timestamp="2025-11-25T14:53:48.589Z" hostname="chromium" tests="1" failures="1" skipped="0" time="7.7" errors="0">
+<testcase name="Queued flows › run queued flows serially" classname="runtime\queue-runner.spec.ts" time="7.7">
+<failure message="queue-runner.spec.ts:8:7 run queued flows serially" type="FAILURE">
+<![CDATA[  [chromium] › runtime\queue-runner.spec.ts:8:7 › Queued flows › run queued flows serially › Flow: add-tags-and-status 
+
+    Error: Playwright Test did not expect test.describe() to be called here.
+    Most common reasons include:
+    - You are calling test.describe() in a configuration file.
+    - You are calling test.describe() in a file that is imported by the configuration file.
+    - You have two different versions of @playwright/test. This usually happens
+      when one of the dependencies in your package.json depends on @playwright/test.
+
+       at generated\add-tags-and-status.spec.ts:14
+
+      12 | }
+      13 |
+    > 14 | test.describe("Add a couple of tags and set status to Pending", () => {
+         |      ^
+      15 |   test('add-tags-and-status', async ({ authenticatedPage: page }) => {
+      16 |     await runFlow(page);
+      17 |   });
+        at Object.<anonymous> (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\add-tags-and-status.spec.ts:14:6)
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\runtime\queue-runner.spec.ts:16:21
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\runtime\queue-runner.spec.ts:15:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\0ea43b85-e0cd-4c6c-9300-2a20b5218d34\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\runs\0ea43b85-e0cd-4c6c-9300-2a20b5218d34\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\0ea43b85-e0cd-4c6c-9300-2a20b5218d34\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-25T14:53:50.914Z] [INFO] [auth.fixture] Starting login flow for authenticatedPage
+[2025-11-25T14:53:50.925Z] [INFO] [LoginPage] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-25T14:53:53.991Z] [INFO] [selectors] Loaded selectors.jsonc (mtime %d) [33m1764013286171.8535[39m
+[2025-11-25T14:53:54.371Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-25T14:53:54.390Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-25T14:53:54.534Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-25T14:53:54.545Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-25T14:53:54.679Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-25T14:53:54.697Z] [INFO] [selectors] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-25T14:53:57.756Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-25T14:53:57.772Z] [INFO] [selectors] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-25T14:53:57.780Z] [INFO] [auth.fixture] Login successful
+[2025-11-25T14:53:57.791Z] [INFO] [auth.fixture] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\video.webm]]
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

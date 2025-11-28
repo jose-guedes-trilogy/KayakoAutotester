@@ -1,0 +1,9 @@
+name: close-active-tab
+description: Close the currently active conversation tab
+steps:
+  - type: dispatch-click
+    selectorKey: tabs.tabCloseButton
+  - type: wait
+    value: "200"
+
+

@@ -1,0 +1,13 @@
+name: switch-assignee-and-save
+description: Switch the assignee team (prefers VIP Account Team, then General) and save
+steps:
+  - type: access-conversation
+  - type: switch-assignee-and-save
+    order:
+      - "VIP Account Team"
+      - "General"
+  - type: log-assignee
+  - type: wait
+    value: "200"
+
+

@@ -59,6 +59,8 @@
     ],
     // Main list/container region for conversations
     "container": [
+      // CSS Modules: cases list container
+      "[class*='ko-cases-list__container_']",
       "[class*='conversation'][class*='list']",
       "[class*='content'] [class*='conversation']",
       "[class*='list']"
@@ -66,8 +68,32 @@
   },
   // Agent inbox selectors
   "inbox": {
+    // Sidebar container listing saved views/queues
+    "sidebar": [
+      "[class*='ko-cases-list_sidebar__sidebar_']"
+    ],
+    // Any queue/view entry link inside the sidebar
+    "sidebarItem": [
+      "[class*='ko-cases-list_sidebar_item__item_']"
+    ],
+    // Currently active queue entry (highlighted state)
+    "sidebarActiveItem": [
+      "[class*='ko-cases-list_sidebar_item__item_'][class*='active']"
+    ],
+    // Suspended messages shortcut in sidebar footer
+    "sidebarSuspendedLink": [
+      "[class*='ko-cases-list_sidebar__item_'][href*='suspended']"
+    ],
+    // Numeric counter badge shown on sidebar entries
+    "sidebarCounter": [
+      "[class*='ko-cases-list_sidebar_item__counter_']",
+      "[class*='ko-cases-list_sidebar__counter_']"
+    ],
     // First conversation item in the list (clicking opens the conversation)
     "firstItem": [
+      // CSS Modules: normalized cases list row anchor
+      "[class*='ko-cases-list__row_'] a",
+      "[class*='ko-cases-list__row_']",
       "[class*='conversation-list'] [class*='item'] a",
       "[class*='conversation-list'] [class*='item']",
       "[class*='list'] a[href*='/agent/conversations/']",
@@ -78,15 +104,74 @@
     ],
     // Subject element within a conversation row
     "conversationSubject": [
+      // CSS Modules: subject cell within cases list
+      "[class*='ko-cases-list__title_']",
       "[class*='cases-list'] [class*='subject']",
       "[class*='conversation'] [class*='subject']",
       "[class*='subject']"
+    ],
+    // Merge action control in cases list (QA hook; only when Ember.testing)
+    "mergeAction": [
+      "[class*='qa-ko-cases-list__merge']"
+    ],
+    // Status value cell inside a list row
+    "rowStatus": [
+      "[class*='ko-cases-list_column_casestatusid__status_']",
+      "[class*='ko-cases-list_column_conv-composite__status_']"
+    ],
+    // Human-readable requester/customer column within a row
+    "rowRequester": [
+      "[class*='ko-cases-list_column_conversation__requester_']"
+    ],
+    // Relative time badge (e.g., "22h") within a row
+    "rowAgo": [
+      "[class*='ko-cases-list_column_conversation__ago_'] span"
+    ],
+    // Preview/snippet text portion of the row
+    "rowPreview": [
+      "[class*='ko-cases-list_column_conversation__preview_']"
     ],
     // 'All' filter chip in the inbox (fallback to text)
     "filterAll": [
       "[class*='filter'][class*='all']",
       "[class*='filters'] [class*='chip']:has-text('All')",
       "text=/^\\s*All\\s*$/i"
+    ],
+    // Table element that renders the conversation list
+    "table": [
+      "[class*='ko-table__table_']"
+    ],
+    // Header row above the inbox table
+    "tableHeaderRow": [
+      "[class*='ko-table_header__row_']"
+    ],
+    // Master checkbox for bulk selection
+    "bulkSelectCheckbox": [
+      "[class*='ko-table_header__row_'] [class*='ko-checkbox__checkbox_']"
+    ],
+    // Wrapper for each table row
+    "rowContainer": [
+      "[class*='ko-table_row__container_']"
+    ],
+    // First visible ticket row inside the table body
+    "firstTicketRow": [
+      "[class*='ko-table_body__tbody_'] > *:first-child"
+    ],
+    // Checkbox for an individual conversation row
+    "rowCheckbox": [
+      "[class*='ko-cases-list__row_'] [class*='ko-checkbox__checkbox_']"
+    ],
+    // Pagination container located below the table
+    "pagination": [
+      "[class*='ko-pagination__pagination-wapper_']"
+    ],
+    // Pagination button/link
+    "paginationItem": [
+      "[class*='ko-pagination_item__item_']"
+    ],
+    // Active pagination button
+    "paginationActiveItem": [
+      "[class*='ko-pagination_item__container_'][class*='active'] [class*='ko-pagination_item__item_']"
     ]
   },
   // Open conversation view selectors
@@ -100,6 +185,18 @@
       "h1",
       "h3"
     ],
+    // Side conversations toggle button in the header
+    "sideConversationsToggle": [
+      "[class*='ko-case-content__side-conversations_']"
+    ],
+    // Complete/close the case button in the header
+    "completeCaseButton": [
+      "[class*='ko-case-content__complete_']"
+    ],
+    // Trash/Delete the case button in the header
+    "trashCaseButton": [
+      "[class*='ko-case-content__trash_']"
+    ],
     // Requester/customer identifier shown near the header
     "requester": [
       "[class*='requester']",
@@ -108,14 +205,34 @@
     ],
     // Status pill/chip in the header
     "statusPill": [
+      // CSS Modules: status swatch/pill variants
+      "[class*='ko-case-content_field_status_swatch-with-label__swatch_']",
+      "[class*='ko-status-pill__status_']",
+      "[class*='ko-status-swatch__status-']",
       "[class*='status'][class*='pill']",
       "[class*='status']",
       "text=/Open|Pending|Closed|Resolved/i"
     ],
     // Any timeline entry (used to validate new notes/updates)
     "timelineEntry": [
+      // CSS Modules: timeline v2 item containers
+      "[class*='ko-timeline-2_list_item__item_']",
+      "[class*='ko-timeline-2_list_item__post_']",
+      "[class*='ko-timeline-2_list_item__note_']",
       "[class*='timeline'] [class*='entry']",
       "[class*='timeline'] [class*='item']"
+    ],
+    // Jump bar control to navigate timeline
+    "timelineJumpBar": [
+      "[class*='ko-timeline-2__jump-bar_']"
+    ],
+    // Load more/previous activities control in timeline
+    "timelineLoadMore": [
+      "[class*='ko-timeline-2__load-link_']"
+    ],
+    // Cancel properties changes (footer control)
+    "updatePropertiesCancel": [
+      "[class*='ko-case-content__cancel-property-changes_']"
     ],
     // Specific note content text we insert for validation
     "noteText": [
@@ -125,9 +242,26 @@
   },
   // Reply/Note composer selectors
   "composer": {
-    // Rich text editor area (prefers contenteditable; falls back to textarea)
+    // Editor container (root) for the rich text composer
+    "editorContainer": [
+      // Prefer resilient CSS modules class match
+      "[class*='ko-text-editor__root_']"
+    ],
+    // Editor input area (Froala contenteditable surface)
+    "editorInput": [
+      // Exact Froala surface selector (preferred for reliability)
+      "div.fr-element.fr-view",
+      // Resilient fallback using class contains
+      "[class*='fr-element'][class*='fr-view']"
+    ],
+    // Rich text editor area (primary target for typing and fill; includes robust fallbacks)
     "editor": [
+      // Prefer the Froala contenteditable surface first
+      "div.fr-element.fr-view",
       "[class*='fr-element'][class*='fr-view']",
+      // CSS Modules: Froala editor wrappers inside ko-text-editor (fallbacks)
+      "[class*='ko-text-editor__fr-view_']",
+      "[class*='ko-text-editor__froalaTextArea_']",
       "[class*='composer'] [contenteditable]",
       "[class*='composer'] [contenteditable='true']",
       "[class*='editor'][contenteditable]",
@@ -137,26 +271,79 @@
       "[contenteditable='plaintext-only']",
       "textarea"
     ],
+    // Editor toolbar controls
+    "toolbarBoldButton": [
+      "svg[data-name='bold']"
+    ],
+    "toolbarItalicButton": [
+      "svg[data-name='italic']"
+    ],
+    "toolbarLinkInsert": [
+      "svg[data-name='link']"
+    ],
+    "toolbarBulletedList": [
+      "svg[data-name='bulletList']"
+    ],
+    "toolbarNumberedList": [
+      "svg[data-name='numberList']"
+    ],
+    // Inline attachment file input in composer footer
+    "inlineAttachmentInput": [
+      "input[class*='ko-text-editor__fileField_']"
+    ],
+    // Channel selector (e.g., Email vs Messenger)
+    "channelSwitcherTrigger": [
+      "[class*='ko-channel-selector__trigger_']"
+    ],
+    // Footer attachments icon/button
+    "attachmentsIcon": [
+      "[class*='ko-text-editor__clip-icon_']"
+    ],
+    // Send-and-set chevron trigger next to Send button
+    "sendAndSetTrigger": [
+      "[class*='ko-case-content__send-and-set-trigger_']"
+    ],
+    // CC component controls
+    "ccTrigger": [
+      "[class*='ko-case-content_cc__trigger_']"
+    ],
+    "ccContainer": [
+      "[class*='ko-case-content_cc__cc_']",
+      "[class*='ko-case-content__cc-component_']"
+    ],
+    // CC search input when the dropdown is open
+    "ccSearchInput": [
+      "[id^='ember-basic-dropdown-content-'] .ember-power-select-search-input"
+    ],
+    // Selected CC pill and its remove button
+    "ccSelectedPill": [
+      "[class*='ko-case-content_cc__option-item_']"
+    ],
+    "ccRemovePill": [
+      "[class*='ko-case-content_cc__option-item-close_']"
+    ],
     // Toggle back to Reply mode (when in Notes)
     "replyToggle": [
-      "div[class*='ko-channel-selector_selected-channel__container_']",
+      "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']",
+      "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']:has-text('Reply')",
+      "[class*='ko-text-editor_mode-selector__case-mode_']:has-text('Reply')",
       "role=button[name='Reply']",
       "role=tab[name='Reply']",
       "[role='tab']:has-text('Reply')",
-      "[class*='ko-text-editor_mode-selector__root_'] div:has-text('Reply')",
-      "[class*='mode-selector'] div:has-text('Reply')",
-      "text=Reply"
+      "[class*='mode-selector']:has-text('Reply')",
+      "text=/^\\s*Reply\\s*$/"
     ],
     // Toggle to switch to Internal note (or similar)
     "internalNoteToggle": [
+      "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']",
+      "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']:has-text('Notes')",
+      "[class*='ko-text-editor_mode-selector__case-mode_']:has-text('Notes')",
       "role=button[name='Internal note']",
       "role=tab[name='Note']",
       "[role='tab']:has-text('Note')",
-      "[class*='ko-text-editor_mode-selector__root_'] div:has-text('Notes')",
-      "[class*='ko-text-editor_mode-selector__case-mode_']",
-      "[class*='text-editor_mode-selector'] div:has-text('Notes')",
-      "[class*='mode-selector'] div:has-text('Notes')",
-      "text=Notes"
+      "[class*='text-editor_mode-selector']:has-text('Notes')",
+      "[class*='mode-selector']:has-text('Notes')",
+      "text=/^\\s*Notes\\s*$/"
     ],
     // Send/Update button for replies
     "sendButton": [
@@ -166,7 +353,9 @@
       "button[type='submit']:has-text('Send and update')",
       "button[type='submit']:has-text('Send')",
       "[class*='composer'] button[type='submit']",
-      "[class*='composer'] button:has-text('Send')"
+      "[class*='composer'] button:has-text('Send')",
+      // QA hook (present only when Ember.testing is true)
+      "[class*='qa-case-content__submit']"
     ],
     // Placeholder shown when composer is in Notes mode
     "notePlaceholder": [
@@ -307,10 +496,16 @@
   "macro": {
     // Button or control to open the macro selection menu
     "macroSelectorTrigger": [
-      "div.ember-power-select-trigger[class*='ko-case_macro-selector__trigger_']",
-      "[class*='ko-case_macro-selector_trigger__trigger_']",
+      // Prefer direct module class for trigger (works regardless of extra classes)
+      "[class*='ko-case_macro-selector__trigger_']",
+      // Fallback: trigger inside the macro selector container
+      "[class*='ko-case_macro-selector__container_'] .ember-power-select-trigger",
+      // Very broad fallback: any ember-power-select trigger that has a Macro label nearby
+      "div.ember-power-select-trigger:has-text('Macro')",
       // Text fallback last:
-      "text=Macro"
+      "text=Macro",
+      "text=/\\bMacros?\\b/i",
+      "role=button[name=/\\bMacro\\b|\\bMacros\\b/i]"
     ],
     // "Send to Customer" macro option in the dropdown
     "macroOptionSendToCustomer": [
@@ -329,6 +524,7 @@
     // Trigger to open the status selection dropdown
     "statusFieldTrigger": [
       "div[class*='ko-info-bar_field_select__trigger_']:has-text('Status')",
+      "div[class*='ember-power-select-trigger']:has-text('Status')",
       "role=button[name='Status']",
       "text=Status"
     ],
@@ -463,6 +659,18 @@
       "[role='checkbox']",
       "div[class*='ko-checkbox__checkbox_']"
     ],
+    // Wrapper div for each checkbox option in multi-select fields
+    "checkboxGroup": [
+      "[class*='ko-checkbox__checkboxWrap_']"
+    ],
+    // Visible checkbox label element (text shown beside option)
+    "checkboxLabel": [
+      "[class*='ko-checkbox__label_']"
+    ],
+    // Header text element for checkbox fields
+    "checkboxHeader": [
+      "[class*='ko-info-bar_field_checkbox__header_']"
+    ],
     // Generic text input(s) within a field container
     "textInput": [
       "input[class*='ko-info-bar_field_text__input_']",
@@ -483,6 +691,125 @@
     "radio": [
       "input[type='radio']",
       "[role='radio']"
+    ]
+  },
+  // Session header tab strip for open conversations
+  "tabs": {
+    // Active tab link for the current conversation
+    "activeTabLink": [
+      "a[class*='ko-tab-strip_tab__link_'][class*='active']",
+      "[class*='ko-tab-strip_tab__tab_'] a[class*='ko-tab-strip_tab__link_'][class*='active']"
+    ],
+    // Any tab link (use with :has-text() to target by subject)
+    "tabLink": [
+      "a[class*='ko-tab-strip_tab__link_']"
+    ],
+    // Close button inside a tab
+    "tabCloseButton": [
+      "div[class*='ko-tab-strip_tab__close_']"
+    ],
+    // Global “New” (+) trigger to open new items
+    "newTabTrigger": [
+      "div[class*='ko-agent-dropdown__trigger_']",
+      "role=button[name=/New/i]"
+    ]
+  },
+  // Case header controls specific to the open conversation
+  "caseHeader": {
+    // Visible case id container (e.g., '# 123')
+    "caseIdContainer": [
+      "div[class*='ko-case-content__id_']"
+    ],
+    // Chevron/hierarchical action menu in the header
+    "actionMenuTrigger": [
+      "div[class*='ko-agent-content_hierarchical-action-menu__trigger_']",
+      "div[class*='ko-power-select-triggers_chevron__trigger_']"
+    ],
+    // Subject/title container in the timeline header
+    "subjectTitle": [
+      "h3[class*='ko-case-content__timeline-header-title_']",
+      "[class*='ko-editable-text__emphasizedText_']"
+    ]
+  },
+  // Brand selector in the header area
+  "brand": {
+    // Trigger labeled “Change Brand”
+    "changeBrandTrigger": [
+      "div[class*='ko-info-bar_field_select__trigger_']:has(span[class*='ko-info-bar_field_select_trigger__header_']:has-text('Change Brand'))",
+      "div[id^='ko-info-bar-select-trigger-ember'][class*='ko-info-bar_field_select_trigger__trigger_']:has(span:has-text('Change Brand'))",
+      "role=button[name=/Change Brand/i]"
+    ]
+  },
+  // Timeline extras for posts/notes/actions
+  "timelineExtra": {
+    // Day separator row within the timeline
+    "daySeparator": [
+      "div[class*='ko-timeline-2_list_days__day-separator_']"
+    ],
+    // Post/menu wrapper shown on hover
+    "postMenu": [
+      "div[class*='ko-timeline-2_list_item__menu_']"
+    ],
+    // Quote button within a post menu
+    "menuQuoteButton": [
+      "div[class*='ko-timeline-2_list_item__quote-icon_']"
+    ],
+    // Share-link item within a post menu (uses aria-label)
+    "menuShareLink": [
+      "div[class*='ko-timeline-2_list_item__menu-item_'] [aria-label*='Share a link']",
+      "[aria-label*='Share a link to this post']"
+    ]
+  },
+  // Quick switcher for other active conversations of the same user
+  "userCases": {
+    "trigger": [
+      "div[class*='ko-user-cases__active-cases-trigger_']",
+      "div[class*='ko-user-cases__sandbox-trigger_']"
+    ],
+    "dropdown": [
+      "div[class*='ko-user-cases__sandbox-dropdown_']"
+    ],
+    "caseItem": [
+      "a[class*='ko-user-cases_dropdown__case-item_']"
+    ],
+    "caseStatus": [
+      "div[class*='ko-user-cases_dropdown__case-status_']"
+    ],
+    "caseSubject": [
+      "div[class*='ko-user-cases_dropdown__subject_']"
+    ]
+  },
+  // Requester identities (sidebar) controls
+  "identities": {
+    "trigger": [
+      "div[class*='ko-identities_identity__trigger_']"
+    ],
+    "name": [
+      "div[class*='ko-identities_identity_trigger__name_']"
+    ]
+  },
+  // Layout shell / session header controls shared across agent pages
+  "shell": {
+    // Primary “New” button in the session header
+    "newButton": [
+      "[class*='ko-agent-dropdown__trigger_']"
+    ],
+    // Trial banner text (days left) shown beside the header
+    "trialBanner": [
+      "[class*='ko-trial-notification__upgrade-text_']"
+    ],
+    // Notification bell icon trigger
+    "notificationBell": [
+      "[class*='ko-notification-center-new__bell_']"
+    ],
+    // Agent profile/avatar trigger in the header
+    "profileMenuTrigger": [
+      "[class*='ko-profile-menu__trigger_']"
+    ],
+    // Search icon button in the header
+    "headerSearch": [
+      "[class*='session__search-icon_']",
+      "svg[data-name='searchBox']"
     ]
   }
 }

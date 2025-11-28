@@ -1,0 +1,19 @@
+name: composite-apply-macro-and-close
+description: Apply macro, finalize reply, update status, and save assignee.
+steps:
+  - type: access-conversation
+
+  - type: apply-macro-send-to-customer
+
+  - type: switch-to-reply
+
+  - type: click-send-button
+
+  - type: set-status
+    value: "Closed"
+
+  - type: switch-assignee-and-save
+
+  - type: wait
+    value: "1000"
+

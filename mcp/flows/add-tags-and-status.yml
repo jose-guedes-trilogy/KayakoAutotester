@@ -1,0 +1,16 @@
+name: add-tags-and-status
+description: Add a couple of tags and set status to Pending
+steps:
+  - type: access-conversation
+  - type: add-tags
+    values:
+      - "autotest-tag"
+      - "autotest-tag-2"
+  - type: set-status
+    value: "Pending"
+  - type: wait
+    value: "200"
+  - type: assert-status
+    value: "Pending"
+
+

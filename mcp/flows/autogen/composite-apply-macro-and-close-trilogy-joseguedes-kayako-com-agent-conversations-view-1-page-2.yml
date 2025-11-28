@@ -1,0 +1,15 @@
+name: composite-apply-macro-and-close-trilogy-joseguedes-kayako-com-agent-conversations-view-1-page-2
+description: Apply macro, finalize reply, update status, and save assignee.
+  (https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2)
+steps:
+  - type: goto
+    url: https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2
+  - type: access-conversation
+  - type: apply-macro-send-to-customer
+  - type: switch-to-reply
+  - type: click-send-button
+  - type: set-status
+    value: Closed
+  - type: switch-assignee-and-save
+  - type: wait
+    value: "1000"

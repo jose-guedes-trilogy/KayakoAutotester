@@ -15,6 +15,14 @@
 - Headless vs headed:
   - Headed often exposes different (friendlier) rendering behavior for dynamic apps. When encountering white/blank screens or empty snapshots in CI or local headless runs, retry with `--headed` and longer timeouts.
 
+## Automation pipeline instrumentation
+
+- Every Playwright process now reads `RUN_ID`, `KAYAKO_CRAWL_ID`, and `KAYAKO_FLOW_ID` (if defined) and appends them to logger prefixes. This makes it trivial to correlate HUD lines, orchestrator logs, and artifacts with a crawl or generated flow.
+- The orchestrator accepts an optional `context` payload when starting a run; it persists those IDs in `storage/runs.json` and injects them into the Playwright environment so downstream tooling (HTML capture, selector extraction, screenshot diffing) can tag files deterministically.
+- HTML capture scripts (`scripts/dump-page-html.ts`) and the structure runner (`scripts/capture-structure.ts`) should inherit `KAYAKO_CRAWL_ID` so console output and artifacts are grouped per crawl session.
+- The crawler writes `storage/map/graph.json` with one record per crawl; the structure capture tool reads the same file to decide which URLs to snapshot. Keep this file under git so changes to the crawl map can be reviewed.
+- Selector suggestion output (`selectors/extracted/pending.json`) must be triaged regularly. Treat it like a “lint” artifact—empty pending file should be the norm. Capture the date of the last triage in PR descriptions.
+
 ## Test-specific notes
 
 - Login button gating (enablement):

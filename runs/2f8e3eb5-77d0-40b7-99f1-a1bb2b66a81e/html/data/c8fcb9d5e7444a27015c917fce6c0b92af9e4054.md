@@ -1,0 +1,585 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e6]:
+    - navigation [ref=e7]:
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /agent/conversations
+        - link "30" [ref=e10] [cursor=pointer]:
+          - /url: /agent/conversations
+          - img [ref=e11]
+          - generic [ref=e15]: "30"
+        - link "Users" [ref=e16] [cursor=pointer]:
+          - /url: /agent/users
+          - img [ref=e17]
+        - link "Organizations" [ref=e21] [cursor=pointer]:
+          - /url: /agent/organizations
+          - img [ref=e22]
+        - link "Insights" [ref=e28] [cursor=pointer]:
+          - /url: /agent/insights
+          - img [ref=e29]
+        - link "Knowledge Base Manager" [ref=e33] [cursor=pointer]:
+          - /url: /agent/knowledgebase
+          - img [ref=e34]
+        - link "Helpcenter" [ref=e37] [cursor=pointer]:
+          - /url: /
+          - img [ref=e38]
+    - generic [ref=e42]:
+      - banner [ref=e43]:
+        - button "New" [ref=e45] [cursor=pointer]:
+          - generic [ref=e47]:
+            - img [ref=e48]
+            - generic [ref=e50]: New
+        - generic [ref=e51]:
+          - generic [ref=e53]:
+            - strong [ref=e54]: 28 days
+            - text: left in trial.
+          - img [ref=e57] [cursor=pointer]
+          - button [ref=e60]:
+            - img [ref=e62] [cursor=pointer]
+          - button [ref=e64] [cursor=pointer]
+      - generic [ref=e68]:
+        - generic [ref=e70]:
+          - link "Inbox 30" [ref=e71] [cursor=pointer]:
+            - /url: /agent/conversations/view/1
+            - img [ref=e73]
+            - generic "Inbox" [ref=e75]
+            - img [ref=e78]
+            - generic [ref=e80]: "30"
+          - separator [ref=e81]
+          - link "All open conversations in my teams 1" [ref=e82] [cursor=pointer]:
+            - /url: /agent/conversations/view/2
+            - generic "All open conversations in my teams" [ref=e83]
+            - generic [ref=e84]: "1"
+          - link "My active conversations 3" [ref=e85] [cursor=pointer]:
+            - /url: /agent/conversations/view/3
+            - generic "My active conversations" [ref=e86]
+            - generic [ref=e87]: "3"
+          - link "Recently updated conversations in my teams" [ref=e88] [cursor=pointer]:
+            - /url: /agent/conversations/view/4
+            - generic "Recently updated conversations in my teams" [ref=e89]
+          - separator [ref=e90]
+          - link "Suspended" [ref=e91] [cursor=pointer]:
+            - /url: /agent/conversations/suspended-messages
+            - generic [ref=e92]: Suspended
+          - link "Trash" [ref=e93] [cursor=pointer]:
+            - /url: /agent/conversations/view/5
+            - generic "Trash" [ref=e94]
+        - generic [ref=e96]:
+          - heading "Inbox" [level=4] [ref=e98]
+          - table [ref=e100]:
+            - rowgroup [ref=e101]:
+              - row "Conversation Status Assignee Latest agent reply Created Team Source channel" [ref=e102]:
+                - cell [ref=e103]:
+                  - checkbox [ref=e106] [cursor=pointer]
+                - cell "Conversation" [ref=e107]:
+                  - generic [ref=e108]: Conversation
+                - cell "Status" [ref=e109] [cursor=pointer]:
+                  - generic [ref=e110]: Status
+                - cell "Assignee" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: Assignee
+                - cell "Latest agent reply" [ref=e113] [cursor=pointer]:
+                  - generic [ref=e114]: Latest agent reply
+                - cell "Created" [ref=e115] [cursor=pointer]:
+                  - generic [ref=e116]: Created
+                - cell "Team" [ref=e117] [cursor=pointer]:
+                  - generic [ref=e118]: Team
+                - cell "Source channel" [ref=e119] [cursor=pointer]:
+                  - generic [ref=e120]: Source channel
+            - rowgroup [ref=e121]:
+              - row "Example Customer 20h Test conv • env.INTERNAL_NOTE_TEXT New Example Customer 20 hours ago 6 months ago VIP Account Team Email" [ref=e122] [cursor=pointer]:
+                - cell [ref=e123]:
+                  - checkbox [ref=e126]
+                - cell "Example Customer 20h Test conv • env.INTERNAL_NOTE_TEXT" [ref=e127]:
+                  - generic [ref=e133]:
+                    - generic [ref=e134]:
+                      - generic [ref=e135]: Example Customer
+                      - img [ref=e138]
+                      - generic [ref=e140]: 20h
+                    - generic [ref=e141]:
+                      - generic [ref=e142]: Test conv
+                      - generic [ref=e143]: •
+                      - generic [ref=e144]: env.INTERNAL_NOTE_TEXT
+                - cell "New" [ref=e145]:
+                  - generic [ref=e149]: New
+                - cell "Example Customer" [ref=e150]:
+                  - generic [ref=e156]: Example Customer
+                - cell "20 hours ago" [ref=e157]:
+                  - generic [ref=e159]: 20 hours ago
+                - cell "6 months ago" [ref=e160]:
+                  - generic [ref=e162]: 6 months ago
+                - cell "VIP Account Team" [ref=e163]:
+                  - generic [ref=e164]: VIP Account Team
+                - cell "Email" [ref=e165]:
+                  - generic [ref=e166]: Email
+              - row "Example Customer 2d [TEST PREFIX] Test • Internal note New 3 days ago 6 months ago Email" [ref=e167] [cursor=pointer]:
+                - cell [ref=e168]:
+                  - checkbox [ref=e171]
+                - cell "Example Customer 2d [TEST PREFIX] Test • Internal note" [ref=e172]:
+                  - generic [ref=e178]:
+                    - generic [ref=e179]:
+                      - generic [ref=e180]: Example Customer
+                      - generic [ref=e181]: 2d
+                    - generic [ref=e182]:
+                      - generic [ref=e183]: "[TEST PREFIX] Test"
+                      - generic [ref=e184]: •
+                      - generic [ref=e185]: Internal note
+                - cell "New" [ref=e186]:
+                  - generic [ref=e190]: New
+                - cell [ref=e191]
+                - cell "3 days ago" [ref=e192]:
+                  - generic [ref=e194]: 3 days ago
+                - cell "6 months ago" [ref=e195]:
+                  - generic [ref=e197]: 6 months ago
+                - cell [ref=e198]
+                - cell "Email" [ref=e199]:
+                  - generic [ref=e200]: Email
+              - row "Python Millionaire Jul 10 Abcasdas • José Guedes GFI - Kerio Control Support Team New 5 months ago 5 months ago Messenger" [ref=e201] [cursor=pointer]:
+                - cell [ref=e202]:
+                  - checkbox [ref=e205]
+                - cell "Python Millionaire Jul 10 Abcasdas • José Guedes GFI - Kerio Control Support Team" [ref=e206]:
+                  - generic [ref=e211]:
+                    - generic [ref=e212]:
+                      - generic [ref=e213]: Python Millionaire
+                      - generic [ref=e214]: Jul 10
+                    - generic [ref=e215]:
+                      - generic [ref=e216]: Abcasdas
+                      - generic [ref=e217]: •
+                      - img [ref=e220]
+                      - generic [ref=e223]: José Guedes GFI - Kerio Control Support Team
+                - cell "New" [ref=e224]:
+                  - generic [ref=e228]: New
+                - cell [ref=e229]
+                - cell "5 months ago" [ref=e230]:
+                  - generic [ref=e232]: 5 months ago
+                - cell "5 months ago" [ref=e233]:
+                  - generic [ref=e235]: 5 months ago
+                - cell [ref=e236]
+                - cell "Messenger" [ref=e237]:
+                  - generic [ref=e238]: Messenger
+              - row "John Doe Nov 12 123123123123123123123123 • [AUTOTEST] Internal note added by MCP Open 15 days ago 5 months ago Email" [ref=e239] [cursor=pointer]:
+                - cell [ref=e240]:
+                  - checkbox [ref=e243]
+                - cell "John Doe Nov 12 123123123123123123123123 • [AUTOTEST] Internal note added by MCP" [ref=e244]:
+                  - generic [ref=e249]:
+                    - generic [ref=e250]:
+                      - generic [ref=e251]: John Doe
+                      - generic [ref=e252]: Nov 12
+                    - generic [ref=e253]:
+                      - generic [ref=e254]: "123123123123123123123123"
+                      - generic [ref=e255]: •
+                      - generic [ref=e256]: "[AUTOTEST] Internal note added by MCP"
+                - cell "Open" [ref=e257]:
+                  - generic [ref=e261]: Open
+                - cell [ref=e262]
+                - cell "15 days ago" [ref=e263]:
+                  - generic [ref=e265]: 15 days ago
+                - cell "5 months ago" [ref=e266]:
+                  - generic [ref=e268]: 5 months ago
+                - cell [ref=e269]
+                - cell "Email" [ref=e270]:
+                  - generic [ref=e271]: Email
+              - row "Dummy Nov 12 [TEST PREFIX] Conversation 1 [Older conversation] • [AUTOTEST] Internal note added by MCP New 15 days ago 6 months ago Email" [ref=e272] [cursor=pointer]:
+                - cell [ref=e273]:
+                  - checkbox [ref=e276]
+                - cell "Dummy Nov 12 [TEST PREFIX] Conversation 1 [Older conversation] • [AUTOTEST] Internal note added by MCP" [ref=e277]:
+                  - generic [ref=e282]:
+                    - generic [ref=e283]:
+                      - generic [ref=e284]: Dummy
+                      - generic [ref=e285]: Nov 12
+                    - generic [ref=e286]:
+                      - generic [ref=e287]: "[TEST PREFIX] Conversation 1 [Older conversation]"
+                      - generic [ref=e288]: •
+                      - generic: "[AUTOTEST] Internal note added by MCP"
+                - cell "New" [ref=e289]:
+                  - generic [ref=e293]: New
+                - cell [ref=e294]
+                - cell "15 days ago" [ref=e295]:
+                  - generic [ref=e297]: 15 days ago
+                - cell "6 months ago" [ref=e298]:
+                  - generic [ref=e300]: 6 months ago
+                - cell [ref=e301]
+                - cell "Email" [ref=e302]:
+                  - generic [ref=e303]: Email
+              - row "Python Millionaire Jul 16 Holy BRAHM! • Test2 New 4 months ago 4 months ago Messenger" [ref=e304] [cursor=pointer]:
+                - cell [ref=e305]:
+                  - checkbox [ref=e308]
+                - cell "Python Millionaire Jul 16 Holy BRAHM! • Test2" [ref=e309]:
+                  - generic [ref=e314]:
+                    - generic [ref=e315]:
+                      - generic [ref=e316]: Python Millionaire
+                      - generic [ref=e317]: Jul 16
+                    - generic [ref=e318]:
+                      - generic [ref=e319]: Holy BRAHM!
+                      - generic [ref=e320]: •
+                      - img [ref=e323]
+                      - generic [ref=e326]: Test2
+                - cell "New" [ref=e327]:
+                  - generic [ref=e331]: New
+                - cell [ref=e332]
+                - cell "4 months ago" [ref=e333]:
+                  - generic [ref=e335]: 4 months ago
+                - cell "4 months ago" [ref=e336]:
+                  - generic [ref=e338]: 4 months ago
+                - cell [ref=e339]
+                - cell "Messenger" [ref=e340]:
+                  - generic [ref=e341]: Messenger
+              - 'row "Python Millionaire Jul 8 Holy BRAHM!! • Exactly — you’ll need to change it in two places: New 5 months ago 5 months ago Messenger" [ref=e342] [cursor=pointer]':
+                - cell [ref=e343]:
+                  - checkbox [ref=e346]
+                - cell "Python Millionaire Jul 8 Holy BRAHM!! • Exactly — you’ll need to change it in two places:" [ref=e347]:
+                  - generic [ref=e352]:
+                    - generic [ref=e353]:
+                      - generic [ref=e354]: Python Millionaire
+                      - generic [ref=e355]: Jul 8
+                    - generic [ref=e356]:
+                      - generic [ref=e358]: Holy BRAHM!!
+                      - generic [ref=e359]: •
+                      - img [ref=e362]
+                      - generic [ref=e365]: "Exactly — you’ll need to change it in two places:"
+                - cell "New" [ref=e366]:
+                  - generic [ref=e370]: New
+                - cell [ref=e371]
+                - cell "5 months ago" [ref=e372]:
+                  - generic [ref=e374]: 5 months ago
+                - cell "5 months ago" [ref=e375]:
+                  - generic [ref=e377]: 5 months ago
+                - cell [ref=e378]
+                - cell "Messenger" [ref=e379]:
+                  - generic [ref=e380]: Messenger
+              - row "Python Millionaire Jul 8 Hi • Again New 5 months ago 5 months ago Messenger" [ref=e381] [cursor=pointer]:
+                - cell [ref=e382]:
+                  - checkbox [ref=e385]
+                - cell "Python Millionaire Jul 8 Hi • Again" [ref=e386]:
+                  - generic [ref=e391]:
+                    - generic [ref=e392]:
+                      - generic [ref=e393]: Python Millionaire
+                      - generic [ref=e394]: Jul 8
+                    - generic [ref=e395]:
+                      - generic [ref=e397]: Hi
+                      - generic [ref=e398]: •
+                      - img [ref=e401]
+                      - generic [ref=e403]: Again
+                - cell "New" [ref=e404]:
+                  - generic [ref=e408]: New
+                - cell [ref=e409]
+                - cell "5 months ago" [ref=e410]:
+                  - generic [ref=e412]: 5 months ago
+                - cell "5 months ago" [ref=e413]:
+                  - generic [ref=e415]: 5 months ago
+                - cell [ref=e416]
+                - cell "Messenger" [ref=e417]:
+                  - generic [ref=e418]: Messenger
+              - row "Python Millionaire Jul 2 Test attach • https://supportportal-df.atlassian.net/jira/your-work https://trilogy-joseguedes.kayako.com/ https://github.com/trilogy-group/eng-maintenance/issues/12920 New 5 months ago 5 months ago Email" [ref=e419] [cursor=pointer]:
+                - cell [ref=e420]:
+                  - checkbox [ref=e423]
+                - cell "Python Millionaire Jul 2 Test attach • https://supportportal-df.atlassian.net/jira/your-work https://trilogy-joseguedes.kayako.com/ https://github.com/trilogy-group/eng-maintenance/issues/12920" [ref=e424]:
+                  - generic [ref=e429]:
+                    - generic [ref=e430]:
+                      - generic [ref=e431]: Python Millionaire
+                      - img [ref=e434]
+                      - generic [ref=e436]: Jul 2
+                    - generic [ref=e437]:
+                      - generic [ref=e439]: Test attach
+                      - generic [ref=e440]: •
+                      - img [ref=e443]
+                      - generic [ref=e445]: https://supportportal-df.atlassian.net/jira/your-work https://trilogy-joseguedes.kayako.com/ https://github.com/trilogy-group/eng-maintenance/issues/12920
+                - cell "New" [ref=e446]:
+                  - generic [ref=e450]: New
+                - cell [ref=e451]
+                - cell "5 months ago" [ref=e452]:
+                  - generic [ref=e454]: 5 months ago
+                - cell "5 months ago" [ref=e455]:
+                  - generic [ref=e457]: 5 months ago
+                - cell [ref=e458]
+                - cell "Email" [ref=e459]:
+                  - generic [ref=e460]: Email
+              - row "Python Millionaire Jul 2 Test • - AWESOME!!!!!!!!!!!!!! Start adding functionality to Gmail and GSuite as well. For example, integrate with \"my tickets\" to add a ticket. Add search functionality, both Kayako's and the embeddings. New 5 months ago 5 months ago Messenger" [ref=e461] [cursor=pointer]:
+                - cell [ref=e462]:
+                  - checkbox [ref=e465]
+                - cell "Python Millionaire Jul 2 Test • - AWESOME!!!!!!!!!!!!!! Start adding functionality to Gmail and GSuite as well. For example, integrate with \"my tickets\" to add a ticket. Add search functionality, both Kayako's and the embeddings." [ref=e466]:
+                  - generic [ref=e471]:
+                    - generic [ref=e472]:
+                      - generic [ref=e473]: Python Millionaire
+                      - generic [ref=e474]: Jul 2
+                    - generic [ref=e475]:
+                      - generic [ref=e477]: Test
+                      - generic [ref=e478]: •
+                      - img [ref=e481]
+                      - generic [ref=e484]: "- AWESOME!!!!!!!!!!!!!! Start adding functionality to Gmail and GSuite as well. For example, integrate with \"my tickets\" to add a ticket. Add search functionality, both Kayako's and the embeddings."
+                - cell "New" [ref=e485]:
+                  - generic [ref=e489]: New
+                - cell [ref=e490]
+                - cell "5 months ago" [ref=e491]:
+                  - generic [ref=e493]: 5 months ago
+                - cell "5 months ago" [ref=e494]:
+                  - generic [ref=e496]: 5 months ago
+                - cell [ref=e497]
+                - cell "Messenger" [ref=e498]:
+                  - generic [ref=e499]: Messenger
+              - row "Python Millionaire Jul 2 Test attachments • - THE OMNIBROWSER!!! AI-powered Chrome extensions make the browser a million times more powerful New 5 months ago 5 months ago Email" [ref=e500] [cursor=pointer]:
+                - cell [ref=e501]:
+                  - checkbox [ref=e504]
+                - cell "Python Millionaire Jul 2 Test attachments • - THE OMNIBROWSER!!! AI-powered Chrome extensions make the browser a million times more powerful" [ref=e505]:
+                  - generic [ref=e510]:
+                    - generic [ref=e511]:
+                      - generic [ref=e512]: Python Millionaire
+                      - img [ref=e515]
+                      - generic [ref=e517]: Jul 2
+                    - generic [ref=e518]:
+                      - generic [ref=e520]: Test attachments
+                      - generic [ref=e521]: •
+                      - img [ref=e524]
+                      - generic [ref=e526]: "- THE OMNIBROWSER!!! AI-powered Chrome extensions make the browser a million times more powerful"
+                - cell "New" [ref=e527]:
+                  - generic [ref=e531]: New
+                - cell [ref=e532]
+                - cell "5 months ago" [ref=e533]:
+                  - generic [ref=e535]: 5 months ago
+                - cell "5 months ago" [ref=e536]:
+                  - generic [ref=e538]: 5 months ago
+                - cell [ref=e539]
+                - cell "Email" [ref=e540]:
+                  - generic [ref=e541]: Email
+              - 'row "José Guedes Jun 25 Re: John Doe has replied to a conversation • Reply test New 5 months ago 5 months ago Email" [ref=e542] [cursor=pointer]':
+                - cell [ref=e543]:
+                  - checkbox [ref=e546]
+                - 'cell "José Guedes Jun 25 Re: John Doe has replied to a conversation • Reply test" [ref=e547]':
+                  - generic [ref=e552]:
+                    - generic [ref=e553]:
+                      - generic [ref=e554]: José Guedes
+                      - generic [ref=e555]: Jun 25
+                    - generic [ref=e556]:
+                      - generic [ref=e558]: "Re: John Doe has replied to a conversation"
+                      - generic [ref=e559]: •
+                      - generic: Reply test
+                - cell "New" [ref=e560]:
+                  - generic [ref=e564]: New
+                - cell [ref=e565]
+                - cell "5 months ago" [ref=e566]:
+                  - generic [ref=e568]: 5 months ago
+                - cell "5 months ago" [ref=e569]:
+                  - generic [ref=e571]: 5 months ago
+                - cell [ref=e572]
+                - cell "Email" [ref=e573]:
+                  - generic [ref=e574]: Email
+              - 'row "Taylor West Jun 24 Getting comfortable with Kayako: a sample conversation • What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Mustafa, Open 5 months ago 7 months ago General Email" [ref=e575] [cursor=pointer]':
+                - cell [ref=e576]:
+                  - checkbox [ref=e579]
+                - 'cell "Taylor West Jun 24 Getting comfortable with Kayako: a sample conversation • What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Mustafa," [ref=e580]':
+                  - generic [ref=e585]:
+                    - generic [ref=e586]:
+                      - generic [ref=e587]: Taylor West
+                      - generic [ref=e588]: Jun 24
+                    - generic [ref=e589]:
+                      - generic [ref=e591]: "Getting comfortable with Kayako: a sample conversation"
+                      - generic [ref=e592]: •
+                      - generic: What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Mustafa,
+                - cell "Open" [ref=e593]:
+                  - generic [ref=e597]: Open
+                - cell [ref=e598]
+                - cell "5 months ago" [ref=e599]:
+                  - generic [ref=e601]: 5 months ago
+                - cell "7 months ago" [ref=e602]:
+                  - generic [ref=e604]: 7 months ago
+                - cell "General" [ref=e605]:
+                  - generic [ref=e606]: General
+                - cell "Email" [ref=e607]:
+                  - generic [ref=e608]: Email
+              - row "José Guedes May 15 Test email • Abc New 6 months ago 6 months ago Email" [ref=e609] [cursor=pointer]:
+                - cell [ref=e610]:
+                  - checkbox [ref=e613]
+                - cell "José Guedes May 15 Test email • Abc" [ref=e614]:
+                  - generic [ref=e619]:
+                    - generic [ref=e620]:
+                      - generic [ref=e621]: José Guedes
+                      - generic [ref=e622]: May 15
+                    - generic [ref=e623]:
+                      - generic [ref=e625]: Test email
+                      - generic [ref=e626]: •
+                      - img [ref=e629]
+                      - generic [ref=e632]: Abc
+                - cell "New" [ref=e633]:
+                  - generic [ref=e637]: New
+                - cell [ref=e638]
+                - cell "6 months ago" [ref=e639]:
+                  - generic [ref=e641]: 6 months ago
+                - cell "6 months ago" [ref=e642]:
+                  - generic [ref=e644]: 6 months ago
+                - cell [ref=e645]
+                - cell "Email" [ref=e646]:
+                  - generic [ref=e647]: Email
+              - row "RobertGam Jun 20 Testing • MEssage New - 5 months ago Help Center" [ref=e648] [cursor=pointer]:
+                - cell [ref=e649]:
+                  - checkbox [ref=e652]
+                - cell "RobertGam Jun 20 Testing • MEssage" [ref=e653]:
+                  - generic [ref=e658]:
+                    - generic [ref=e659]:
+                      - generic [ref=e660]: RobertGam
+                      - generic [ref=e661]: Jun 20
+                    - generic [ref=e662]:
+                      - generic [ref=e664]: Testing
+                      - generic [ref=e665]: •
+                      - generic [ref=e666]: MEssage
+                - cell "New" [ref=e667]:
+                  - generic [ref=e671]: New
+                - cell [ref=e672]
+                - cell "-" [ref=e673]:
+                  - generic [ref=e675]: "-"
+                - cell "5 months ago" [ref=e676]:
+                  - generic [ref=e678]: 5 months ago
+                - cell [ref=e679]
+                - cell "Help Center" [ref=e680]:
+                  - generic [ref=e681]: Help Center
+              - row "John Doe Jun 18 Testing • What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Vijay, New 5 months ago 6 months ago API" [ref=e682] [cursor=pointer]:
+                - cell [ref=e683]:
+                  - checkbox [ref=e686]
+                - cell "John Doe Jun 18 Testing • What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Vijay," [ref=e687]:
+                  - generic [ref=e692]:
+                    - generic [ref=e693]:
+                      - generic [ref=e694]: John Doe
+                      - generic [ref=e695]: Jun 18
+                    - generic [ref=e696]:
+                      - generic [ref=e698]: Testing
+                      - generic [ref=e699]: •
+                      - generic [ref=e700]: What is your proposed action? • Send to customer =============================================================== What is the PR to the customer? Dear Vijay,
+                - cell "New" [ref=e701]:
+                  - generic [ref=e705]: New
+                - cell [ref=e706]
+                - cell "5 months ago" [ref=e707]:
+                  - generic [ref=e709]: 5 months ago
+                - cell "6 months ago" [ref=e710]:
+                  - generic [ref=e712]: 6 months ago
+                - cell [ref=e713]
+                - cell "API" [ref=e714]:
+                  - generic [ref=e715]: API
+              - row "joe.gedds.developer@gmail.com Jun 17 Test • Test Open 5 months ago 5 months ago Messenger" [ref=e716] [cursor=pointer]:
+                - cell [ref=e717]:
+                  - checkbox [ref=e720]
+                - cell "joe.gedds.developer@gmail.com Jun 17 Test • Test" [ref=e721]:
+                  - generic [ref=e726]:
+                    - generic [ref=e727]:
+                      - generic [ref=e728]: joe.gedds.developer@gmail.com
+                      - generic [ref=e729]: Jun 17
+                    - generic [ref=e730]:
+                      - generic [ref=e732]: Test
+                      - generic [ref=e733]: •
+                      - img [ref=e736]
+                      - generic [ref=e738]: Test
+                - cell "Open" [ref=e739]:
+                  - generic [ref=e743]: Open
+                - cell [ref=e744]
+                - cell "5 months ago" [ref=e745]:
+                  - generic [ref=e747]: 5 months ago
+                - cell "5 months ago" [ref=e748]:
+                  - generic [ref=e750]: 5 months ago
+                - cell [ref=e751]
+                - cell "Messenger" [ref=e752]:
+                  - generic [ref=e753]: Messenger
+              - row "Dummy Jun 11 Test conversation - Attachment • 1 New 6 months ago 6 months ago Email" [ref=e754] [cursor=pointer]:
+                - cell [ref=e755]:
+                  - checkbox [ref=e758]
+                - cell "Dummy Jun 11 Test conversation - Attachment • 1" [ref=e759]:
+                  - generic [ref=e764]:
+                    - generic [ref=e765]:
+                      - generic [ref=e766]: Dummy
+                      - img [ref=e769]
+                      - generic [ref=e771]: Jun 11
+                    - generic [ref=e772]:
+                      - generic [ref=e774]: Test conversation - Attachment
+                      - generic [ref=e775]: •
+                      - generic [ref=e776]: "1"
+                - cell "New" [ref=e777]:
+                  - generic [ref=e781]: New
+                - cell [ref=e782]
+                - cell "6 months ago" [ref=e783]:
+                  - generic [ref=e785]: 6 months ago
+                - cell "6 months ago" [ref=e786]:
+                  - generic [ref=e788]: 6 months ago
+                - cell [ref=e789]
+                - cell "Email" [ref=e790]:
+                  - generic [ref=e791]: Email
+              - row "José Guedes Jun 6 Conversation added via API • Replied to CC message New 6 months ago 6 months ago API" [ref=e792] [cursor=pointer]:
+                - cell [ref=e793]:
+                  - checkbox [ref=e796]
+                - cell "José Guedes Jun 6 Conversation added via API • Replied to CC message" [ref=e797]:
+                  - generic [ref=e802]:
+                    - generic [ref=e803]:
+                      - generic [ref=e804]: José Guedes
+                      - generic [ref=e805]: Jun 6
+                    - generic [ref=e806]:
+                      - generic [ref=e808]: Conversation added via API
+                      - generic [ref=e809]: •
+                      - generic [ref=e810]: Replied to CC message
+                - cell "New" [ref=e811]:
+                  - generic [ref=e815]: New
+                - cell [ref=e816]
+                - cell "6 months ago" [ref=e817]:
+                  - generic [ref=e819]: 6 months ago
+                - cell "6 months ago" [ref=e820]:
+                  - generic [ref=e822]: 6 months ago
+                - cell [ref=e823]
+                - cell "API" [ref=e824]:
+                  - generic [ref=e825]: API
+              - row "José Guedes May 24 Te • 123 New Example Customer 6 months ago 6 months ago General Help Center" [ref=e826] [cursor=pointer]:
+                - cell [ref=e827]:
+                  - checkbox [ref=e830]
+                - cell "José Guedes May 24 Te • 123" [ref=e831]:
+                  - generic [ref=e836]:
+                    - generic [ref=e837]:
+                      - generic [ref=e838]: José Guedes
+                      - generic [ref=e839]: May 24
+                    - generic [ref=e840]:
+                      - generic [ref=e842]: Te
+                      - generic [ref=e843]: •
+                      - img [ref=e846]
+                      - generic [ref=e849]: "123"
+                - cell "New" [ref=e850]:
+                  - generic [ref=e854]: New
+                - cell "Example Customer" [ref=e855]:
+                  - generic [ref=e861]: Example Customer
+                - cell "6 months ago" [ref=e862]:
+                  - generic [ref=e864]: 6 months ago
+                - cell "6 months ago" [ref=e865]:
+                  - generic [ref=e867]: 6 months ago
+                - cell "General" [ref=e868]:
+                  - generic [ref=e869]: General
+                - cell "Help Center" [ref=e870]:
+                  - generic [ref=e871]: Help Center
+          - generic [ref=e873]:
+            - link "1" [ref=e874] [cursor=pointer]:
+              - /url: /agent/conversations/view/1
+              - generic [ref=e876]: "1"
+            - link "2" [ref=e877] [cursor=pointer]:
+              - /url: /agent/conversations/view/1?page=2
+              - generic [ref=e879]: "2"
+```

@@ -1,51 +1,31 @@
 {
   "cookies": [
     {
-      "name": "_hjSessionUser_5108220",
-      "value": "eyJpZCI6IjY3NjdiNWQ5LTkyNzgtNTNjMS05OTc2LWRhOTQ0YzQ4ODI3NiIsImNyZWF0ZWQiOjE3NjMxMzAwMjUzMTYsImV4aXN0aW5nIjpmYWxzZX0=",
-      "domain": ".kayako.com",
-      "path": "/",
-      "expires": 1794666025,
-      "httpOnly": false,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
-      "name": "_hjSession_5108220",
-      "value": "eyJpZCI6IjIyZWVhZmMyLWQ1NmUtNDBmNy04YjY0LTQ0NWY5ZGQ3YmQ5ZCIsImMiOjE3NjMxMzAwMjUzMTYsInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MH0=",
-      "domain": ".kayako.com",
-      "path": "/",
-      "expires": 1763131825,
-      "httpOnly": false,
-      "secure": true,
-      "sameSite": "None"
-    },
-    {
       "name": "ajs_anonymous_id",
-      "value": "266492fd-f673-45b6-b8b9-69284b519aa1",
+      "value": "8624d866-34d1-491a-978b-e989f2711ab7",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1794666029,
+      "expires": 1795785102,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_ga",
-      "value": "GA1.2.242843019.1763130026",
+      "value": "GA1.2.299697411.1764249089",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1797690025.971729,
+      "expires": 1798809088.714152,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_gid",
-      "value": "GA1.2.961880282.1763130026",
+      "value": "GA1.2.1489042943.1764249089",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1763216425,
+      "expires": 1764335488,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -55,14 +35,34 @@
       "value": "1",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1763130085,
+      "expires": 1764249148,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
+      "name": "_hjSessionUser_5108220",
+      "value": "eyJpZCI6IjlhZWM3OTI5LTE0Y2UtNWZiMS1iYzE3LThhNmIwM2ViNWVlMyIsImNyZWF0ZWQiOjE3NjQyNDkwOTgzNzgsImV4aXN0aW5nIjpmYWxzZX0=",
+      "domain": ".kayako.com",
+      "path": "/",
+      "expires": 1795785098,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_hjSession_5108220",
+      "value": "eyJpZCI6ImM5YmRkY2JlLTY2OGQtNGNlNi1iYWY4LTk0Y2YzNmVlNzI4MyIsImMiOjE3NjQyNDkwOTgzNzksInMiOjAsInIiOjAsInNiIjowLCJzciI6MCwic2UiOjAsImZzIjoxLCJzcCI6MH0=",
+      "domain": ".kayako.com",
+      "path": "/",
+      "expires": 1764250898,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
       "name": "novo_sessionid",
-      "value": "daoYzYV5rTgMKDs1jkxSGeWJPb5a139e0084a167736a3340ba10ea727f41b77b0Mb9S6RUvD8SDgG6gEHC9GSGwclr6Y",
+      "value": "OauGKMKWND4nuIY3gfrLGX9GPMm46e3113759157ff3ba9052ca72e2e2112851d997zipiOYNTBJMskRcWe1b3L3xIg3z50o",
       "domain": ".trilogy-joseguedes.kayako.com",
       "path": "/",
       "expires": -1,
@@ -75,7 +75,7 @@
       "value": "634ffa0b-004c-51fd-8e5f-f4c139348bf3",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1794666029,
+      "expires": 1795785102,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -85,27 +85,27 @@
       "value": "1741342",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1794666026,
+      "expires": 1795785099,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "mp_579b34232c0f05a689695b45692796d1_mixpanel",
-      "value": "%7B%22distinct_id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22%24device_id%22%3A%22c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa%22%2C%22mp_lib%22%3A%22Segment%3A%20web%22%2C%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22mp_name_tag%22%3A%22jose.guedes.translation%40gmail.com%22%2C%22groupId%22%3A%221741342%22%2C%22role_type%22%3A%22AGENT%22%2C%22instance_name%22%3A%22trilogy-joseguedes.kayako.com%22%2C%22locale%22%3A%22en-us%22%2C%22id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22%24created%22%3A%222025-05-13T18%3A08%3A32.000Z%22%2C%22%24email%22%3A%22jose.guedes.translation%40gmail.com%22%2C%22%24first_name%22%3A%22Example%22%2C%22%24last_name%22%3A%22Customer%22%2C%22%24name%22%3A%22Example%20Customer%22%7D",
+      "value": "%7B%22distinct_id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22%24device_id%22%3A%224536c514-7435-4623-8751-a22c1ad23c5e%22%2C%22mp_lib%22%3A%22Segment%3A%20web%22%2C%22%24initial_referrer%22%3A%22%24direct%22%2C%22%24initial_referring_domain%22%3A%22%24direct%22%2C%22__mps%22%3A%7B%7D%2C%22__mpso%22%3A%7B%7D%2C%22__mpus%22%3A%7B%7D%2C%22__mpa%22%3A%7B%7D%2C%22__mpu%22%3A%7B%7D%2C%22__mpr%22%3A%5B%5D%2C%22__mpap%22%3A%5B%5D%2C%22%24user_id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22mp_name_tag%22%3A%22jose.guedes.translation%40gmail.com%22%2C%22groupId%22%3A%221741342%22%2C%22role_type%22%3A%22AGENT%22%2C%22instance_name%22%3A%22trilogy-joseguedes.kayako.com%22%2C%22locale%22%3A%22en-us%22%2C%22id%22%3A%22634ffa0b-004c-51fd-8e5f-f4c139348bf3%22%2C%22%24created%22%3A%222025-05-13T18%3A08%3A32.000Z%22%2C%22%24email%22%3A%22jose.guedes.translation%40gmail.com%22%2C%22%24first_name%22%3A%22Example%22%2C%22%24last_name%22%3A%22Customer%22%2C%22%24name%22%3A%22Example%20Customer%22%7D",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1794666030,
+      "expires": 1795785102,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_ga_6FK24FDMG6",
-      "value": "GS2.2.s1763130026$o1$g1$t1763130029$j57$l0$h0",
+      "value": "GS2.2.s1764249089$o1$g1$t1764249102$j47$l0$h0",
       "domain": ".kayako.com",
       "path": "/",
-      "expires": 1797690029.999469,
+      "expires": 1798809102.586199,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
@@ -121,7 +121,7 @@
         },
         {
           "name": "ko:device:fingerprint",
-          "value": "\"a9a884bc-3eff-4100-98a0-1715405d6a86\""
+          "value": "\"61af6efe-2ddc-4155-963c-c8fcc17497db\""
         },
         {
           "name": "ajs_group_id",
@@ -129,7 +129,7 @@
         },
         {
           "name": "ko:push:uuid",
-          "value": "\"75147fbc-242c-4745-bd6b-fb122a2bd0ce\""
+          "value": "\"a105bcfc-a53c-481b-b9fb-10c47efe8a63\""
         },
         {
           "name": "ajs_group_properties",
@@ -137,7 +137,7 @@
         },
         {
           "name": "ko:app-version-notifier:v1",
-          "value": "{\"version\":\"38002dd19e\",\"lastNotifiedAt\":\"2025-11-14T14:20:25.284Z\"}"
+          "value": "{\"version\":\"38002dd19e\",\"lastNotifiedAt\":\"2025-11-27T13:11:27.453Z\"}"
         },
         {
           "name": "loglevel",
@@ -145,27 +145,27 @@
         },
         {
           "name": "propositions",
-          "value": "{\"browser_language\":\"en-us\",\"number_of_visits\":1,\"time_on_site\":2333,\"last_active_at\":1763130029903,\"engage_user\":false,\"page_url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"page_title\":\"Welcome to Kayako\",\"referral_url\":\"\",\"ignore_engagement_rule_ids\":[],\"visited_urls\":[\"/agent/login\"]}"
+          "value": "{\"browser_language\":\"en-us\",\"number_of_visits\":1,\"time_on_site\":2193,\"last_active_at\":1764249102462,\"engage_user\":false,\"page_url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"page_title\":\"Welcome to Kayako\",\"referral_url\":\"\",\"ignore_engagement_rule_ids\":[],\"visited_urls\":[\"/agent/login\"]}"
         },
         {
           "name": "__mpq_579b34232c0f05a689695b45692796d1_pp",
-          "value": "[{\"id\":\"7pi9dzcyij5htxxs\",\"flushAfter\":1763130036891,\"payload\":{\"$set_once\":{\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\"},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}},{\"id\":\"7mjr28u43oo3bvmy\",\"flushAfter\":1763130036893,\"payload\":{\"$set\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$browser_version\":141,\"groupId\":\"1741342\",\"role_type\":\"AGENT\",\"instance_name\":\"trilogy-joseguedes.kayako.com\",\"locale\":\"en-us\",\"id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$created\":\"2025-05-13T18:08:32.000Z\",\"$email\":\"jose.guedes.translation@gmail.com\",\"$first_name\":\"Example\",\"$last_name\":\"Customer\",\"$name\":\"Example Customer\"},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}},{\"id\":\"6ge77r6855p46evo\",\"flushAfter\":1763130036893,\"payload\":{\"$union\":{},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}}]"
+          "value": "[{\"id\":\"5aymzvfkajofzrga\",\"flushAfter\":1764249109603,\"payload\":{\"$set_once\":{\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\"},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"4536c514-7435-4623-8751-a22c1ad23c5e\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}},{\"id\":\"3pt64wt0kxrjag6k\",\"flushAfter\":1764249109606,\"payload\":{\"$set\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$browser_version\":141,\"groupId\":\"1741342\",\"role_type\":\"AGENT\",\"instance_name\":\"trilogy-joseguedes.kayako.com\",\"locale\":\"en-us\",\"id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$created\":\"2025-05-13T18:08:32.000Z\",\"$email\":\"jose.guedes.translation@gmail.com\",\"$first_name\":\"Example\",\"$last_name\":\"Customer\",\"$name\":\"Example Customer\"},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"4536c514-7435-4623-8751-a22c1ad23c5e\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}},{\"id\":\"xmvrdpvczale2hnp\",\"flushAfter\":1764249109606,\"payload\":{\"$union\":{},\"$token\":\"579b34232c0f05a689695b45692796d1\",\"$distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"4536c514-7435-4623-8751-a22c1ad23c5e\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\"}}]"
         },
         {
           "name": "kayako:messenger:https://support.kayako.com/api/v1:settings/current",
-          "value": "{\"timestamp\":1763130027309,\"data\":{\"id\":1,\"brand\":{\"id\":2,\"name\":\"Kayako Success\",\"sub_domain\":\"support\",\"domain\":\"kayako.com\",\"alias\":null,\"locale\":{\"id\":1,\"resource_type\":\"locale\"},\"is_ssl_enabled\":false,\"is_default\":true,\"is_enabled\":true,\"created_at\":\"2016-01-16T05:47:57+00:00\",\"updated_at\":\"2023-01-03T12:31:58+00:00\",\"resource_type\":\"brand\",\"resource_url\":\"https://support.kayako.com/api/v1/brands/2\"},\"reply_time_expectation\":\"FEW_MINS\",\"home_titles\":[{\"id\":4677,\"locale\":\"en-us\",\"translation\":\"Online with Kayako\",\"created_at\":\"2018-02-22T08:52:31+00:00\",\"updated_at\":\"2021-10-21T07:16:45+00:00\",\"resource_type\":\"locale_field\",\"resource_url\":\"https://support.kayako.com/api/v1/locale/fields/4677\"}],\"home_subtitles\":[{\"id\":4678,\"locale\":\"en-us\",\"translation\":\"Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)\\n\\n\",\"created_at\":\"2018-02-22T08:52:31+00:00\",\"updated_at\":\"2021-10-21T08:15:58+00:00\",\"resource_type\":\"locale_field\",\"resource_url\":\"https://support.kayako.com/api/v1/locale/fields/4678\"}],\"metadata\":{\"widgets\":{\"presence\":{\"enabled\":false},\"twitter\":{\"enabled\":false,\"twitterHandle\":\"21652408\"},\"articles\":{\"enabled\":false,\"sectionId\":\"235\"}},\"styles\":{\"primaryColor\":\"#3fb9f1\",\"homeBackground\":\"#007AFF\",\"homePattern\":\"https://assets.kayako.com/messenger/pattern-3.svg\",\"homeTextColor\":\"#FFFFFF\"}},\"businesshour\":{\"id\":7,\"title\":\"CS Business Hours\",\"zones\":{\"monday\":[9,10,11,12,13,14,15,16],\"tuesday\":[9,10,11,12,13,14,15,16],\"wednesday\":[9,10,11,12,13,14,15,16],\"thursday\":[9,10,11,12,13,14,15,16],\"friday\":[9,10,11,12,13,14,15,16],\"saturday\":[],\"sunday\":[]},\"holidays\":[],\"is_default\":false,\"created_at\":\"2021-10-20T14:10:57+00:00\",\"updated_at\":\"2021-10-20T14:10:57+00:00\",\"resource_type\":\"business_hour\",\"resource_url\":\"https://support.kayako.com/api/v1/businesshours/7\"},\"enable_suggestions\":false,\"resource_type\":\"messenger_setting\"}}"
+          "value": "{\"timestamp\":1764249100012,\"data\":{\"id\":1,\"brand\":{\"id\":2,\"name\":\"Kayako Success\",\"sub_domain\":\"support\",\"domain\":\"kayako.com\",\"alias\":null,\"locale\":{\"id\":1,\"resource_type\":\"locale\"},\"is_ssl_enabled\":false,\"is_default\":true,\"is_enabled\":true,\"created_at\":\"2016-01-16T05:47:57+00:00\",\"updated_at\":\"2023-01-03T12:31:58+00:00\",\"resource_type\":\"brand\",\"resource_url\":\"https://support.kayako.com/api/v1/brands/2\"},\"reply_time_expectation\":\"FEW_MINS\",\"home_titles\":[{\"id\":4677,\"locale\":\"en-us\",\"translation\":\"Online with Kayako\",\"created_at\":\"2018-02-22T08:52:31+00:00\",\"updated_at\":\"2021-10-21T07:16:45+00:00\",\"resource_type\":\"locale_field\",\"resource_url\":\"https://support.kayako.com/api/v1/locale/fields/4677\"}],\"home_subtitles\":[{\"id\":4678,\"locale\":\"en-us\",\"translation\":\"Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)\\n\\n\",\"created_at\":\"2018-02-22T08:52:31+00:00\",\"updated_at\":\"2021-10-21T08:15:58+00:00\",\"resource_type\":\"locale_field\",\"resource_url\":\"https://support.kayako.com/api/v1/locale/fields/4678\"}],\"metadata\":{\"widgets\":{\"presence\":{\"enabled\":false},\"twitter\":{\"enabled\":false,\"twitterHandle\":\"21652408\"},\"articles\":{\"enabled\":false,\"sectionId\":\"235\"}},\"styles\":{\"primaryColor\":\"#3fb9f1\",\"homeBackground\":\"#007AFF\",\"homePattern\":\"https://assets.kayako.com/messenger/pattern-3.svg\",\"homeTextColor\":\"#FFFFFF\"}},\"businesshour\":{\"id\":7,\"title\":\"CS Business Hours\",\"zones\":{\"monday\":[9,10,11,12,13,14,15,16],\"tuesday\":[9,10,11,12,13,14,15,16],\"wednesday\":[9,10,11,12,13,14,15,16],\"thursday\":[9,10,11,12,13,14,15,16],\"friday\":[9,10,11,12,13,14,15,16],\"saturday\":[],\"sunday\":[]},\"holidays\":[],\"is_default\":false,\"created_at\":\"2021-10-20T14:10:57+00:00\",\"updated_at\":\"2021-10-20T14:10:57+00:00\",\"resource_type\":\"business_hour\",\"resource_url\":\"https://support.kayako.com/api/v1/businesshours/7\"},\"enable_suggestions\":false,\"resource_type\":\"messenger_setting\"}}"
         },
         {
           "name": "__mpq_579b34232c0f05a689695b45692796d1_ev",
-          "value": "[{\"id\":\"cz8de9e2hml5wgfg\",\"flushAfter\":1763130035933,\"payload\":{\"event\":\"Loaded a Page\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$current_url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"$browser_version\":141,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"Segment: web\",\"$lib_version\":\"2.72.0\",\"$insert_id\":\"tafnhdxmnsdf97g6\",\"time\":1763130025.932,\"distinct_id\":\"$device:c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"path\":\"/agent/login\",\"referrer\":\"\",\"search\":\"\",\"title\":\"login-agent\",\"url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"category\":\"Unknown\",\"name\":\"login-agent\",\"token\":\"579b34232c0f05a689695b45692796d1\"}}},{\"id\":\"gwaq9kifsckvtm9a\",\"flushAfter\":1763130036892,\"payload\":{\"event\":\"$identify\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$current_url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"$browser_version\":141,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"Segment: web\",\"$lib_version\":\"2.72.0\",\"$insert_id\":\"q3knkyfkqt9kqegy\",\"time\":1763130026.892,\"distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$anon_distinct_id\":\"$device:c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"token\":\"579b34232c0f05a689695b45692796d1\"}}},{\"id\":\"5sodbclpt03nns2f\",\"flushAfter\":1763130040001,\"payload\":{\"event\":\"Loaded a Page\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$current_url\":\"https://trilogy-joseguedes.kayako.com/agent/conversations/view/1\",\"$browser_version\":141,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"Segment: web\",\"$lib_version\":\"2.72.0\",\"$insert_id\":\"ypq0vbvzoyvupk7c\",\"time\":1763130030.001,\"distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"c0bcfc9d-d5f3-4273-8c98-5eb70a0b30aa\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"mp_name_tag\":\"jose.guedes.translation@gmail.com\",\"groupId\":\"1741342\",\"role_type\":\"AGENT\",\"instance_name\":\"trilogy-joseguedes.kayako.com\",\"locale\":\"en-us\",\"id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$created\":\"2025-05-13T18:08:32.000Z\",\"$email\":\"jose.guedes.translation@gmail.com\",\"$first_name\":\"Example\",\"$last_name\":\"Customer\",\"$name\":\"Example Customer\",\"path\":\"/agent/conversations/view/1\",\"referrer\":\"\",\"search\":\"\",\"title\":\"session.agent.cases.index.view\",\"url\":\"https://trilogy-joseguedes.kayako.com/agent/conversations/view/1\",\"category\":\"Agent\",\"name\":\"session.agent.cases.index.view\",\"token\":\"579b34232c0f05a689695b45692796d1\"}}}]"
+          "value": "[{\"id\":\"7l0w6i2ld3i37zqb\",\"flushAfter\":1764249109605,\"payload\":{\"event\":\"$identify\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$current_url\":\"https://trilogy-joseguedes.kayako.com/agent/login\",\"$browser_version\":141,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"Segment: web\",\"$lib_version\":\"2.72.0\",\"$insert_id\":\"8754o3ihh5h26i3g\",\"time\":1764249099.604,\"distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"4536c514-7435-4623-8751-a22c1ad23c5e\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$anon_distinct_id\":\"$device:4536c514-7435-4623-8751-a22c1ad23c5e\",\"token\":\"579b34232c0f05a689695b45692796d1\"}}},{\"id\":\"5oo1uvan5oatq409\",\"flushAfter\":1764249112589,\"payload\":{\"event\":\"Loaded a Page\",\"properties\":{\"$os\":\"Windows\",\"$browser\":\"Chrome\",\"$current_url\":\"https://trilogy-joseguedes.kayako.com/agent/conversations/view/1\",\"$browser_version\":141,\"$screen_height\":720,\"$screen_width\":1280,\"mp_lib\":\"Segment: web\",\"$lib_version\":\"2.72.0\",\"$insert_id\":\"6j1budongqlileid\",\"time\":1764249102.588,\"distinct_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$device_id\":\"4536c514-7435-4623-8751-a22c1ad23c5e\",\"$initial_referrer\":\"$direct\",\"$initial_referring_domain\":\"$direct\",\"$user_id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"mp_name_tag\":\"jose.guedes.translation@gmail.com\",\"groupId\":\"1741342\",\"role_type\":\"AGENT\",\"instance_name\":\"trilogy-joseguedes.kayako.com\",\"locale\":\"en-us\",\"id\":\"634ffa0b-004c-51fd-8e5f-f4c139348bf3\",\"$created\":\"2025-05-13T18:08:32.000Z\",\"$email\":\"jose.guedes.translation@gmail.com\",\"$first_name\":\"Example\",\"$last_name\":\"Customer\",\"$name\":\"Example Customer\",\"path\":\"/agent/conversations/view/1\",\"referrer\":\"\",\"search\":\"\",\"title\":\"session.agent.cases.index.view\",\"url\":\"https://trilogy-joseguedes.kayako.com/agent/conversations/view/1\",\"category\":\"Agent\",\"name\":\"session.agent.cases.index.view\",\"token\":\"579b34232c0f05a689695b45692796d1\"}}}]"
         },
         {
           "name": "ko:core:csrf",
-          "value": "\"Le6KwskD7BZlukcY5p7i9gJ3ONilLDB80jXQqa7JfDpxU6CZpjAQ8F7QHWqt5Sm5KVHCZ0pLCc731JpCsw8ZHi4dIqB3iuLNqZSs\""
+          "value": "\"6t76aTfK2ygCyl9yWUAcOqxLAraPzuH8tyxjTxusUpUiu1SoPmT1DZndfcdmDSPf3GjVTEqA1JAfu6gzBR4c7wpRFU0vzKtRFy1W\""
         },
         {
           "name": "fingerprint_id",
-          "value": "b52f80b2-b59f-46f4-b092-be59e440520f"
+          "value": "35505e8a-8b17-4bd6-9106-50beaaadb44d"
         },
         {
           "name": "ko:locale:user-locale-v2",
@@ -173,7 +173,7 @@
         },
         {
           "name": "ajs_anonymous_id",
-          "value": "\"266492fd-f673-45b6-b8b9-69284b519aa1\""
+          "value": "\"8624d866-34d1-491a-978b-e989f2711ab7\""
         },
         {
           "name": "ajs_user_id",

@@ -1,0 +1,2349 @@
+{
+  "generatedAt": "2025-11-18T21:42:06.972Z",
+  "source": "scripts/extract-selectors.ts",
+  "basePath": "kayako-frontend-cp-master/app",
+  "inputList": "(scan:components/ko-case-content,components/ko-timeline-2,components/ko-case,components/ko-case-ai-chat,components/ko-info-bar)",
+  "summary": {
+    "filesListed": 114,
+    "filesProcessed": 114,
+    "cssFilesProcessed": 50,
+    "hbsFilesProcessed": 64,
+    "filesMissing": 0,
+    "totalCssClasses": 447,
+    "totalQaTokens": 45,
+    "totalUniqueSelectors": 492,
+    "durationMs": 55
+  },
+  "results": [
+    {
+      "file": "app/components/ko-case-content/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content",
+      "classNames": [
+        "arrow",
+        "arrow-up",
+        "assign-to-me-container",
+        "assign-to-me-options",
+        "assign-to-me-trigger",
+        "brand-menu-text",
+        "cancel-property-changes",
+        "cc-component",
+        "channel-type--facebook",
+        "channel-type--messenger",
+        "channel-type--twitter",
+        "charLimit",
+        "charLimitNegative",
+        "complete",
+        "dropdownContent",
+        "editor-footer-left",
+        "editor-footer-right",
+        "editorWithError",
+        "icon",
+        "id",
+        "id-hash",
+        "in-reply-to",
+        "in-reply-to-header",
+        "in-reply-to-indicator",
+        "in-reply-to-loader",
+        "in-reply-to-message",
+        "in-reply-to-remove",
+        "in-reply-to-text",
+        "in-reply-to-user",
+        "item-wrap",
+        "itemContainer",
+        "minus",
+        "note-destination-no-send-button",
+        "note-trigger",
+        "or-text",
+        "pill-container",
+        "pill-message",
+        "replyOptionDescription",
+        "replyOptions",
+        "root",
+        "selected",
+        "send-and-set-options",
+        "send-and-set-trigger",
+        "show-shimmer",
+        "show-submit",
+        "side-conversations",
+        "sla",
+        "sla-bar",
+        "sla-bar--breached",
+        "sla-dropdown",
+        "sla-icon",
+        "sla-progress",
+        "sla-text",
+        "submit-properties",
+        "submitting",
+        "text-editor-loader",
+        "timeline-header",
+        "timeline-header-body",
+        "timeline-header-image",
+        "timeline-header-subtitle",
+        "timeline-header-title",
+        "trash",
+        "typing-area",
+        "update-button-enter",
+        "update-button-enter-active",
+        "update-button-leave-active",
+        "wrap-ccs"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content__arrow_\"]",
+        "[class*=\"ko-case-content__arrow-up_\"]",
+        "[class*=\"ko-case-content__assign-to-me-container_\"]",
+        "[class*=\"ko-case-content__assign-to-me-options_\"]",
+        "[class*=\"ko-case-content__assign-to-me-trigger_\"]",
+        "[class*=\"ko-case-content__brand-menu-text_\"]",
+        "[class*=\"ko-case-content__cancel-property-changes_\"]",
+        "[class*=\"ko-case-content__cc-component_\"]",
+        "[class*=\"ko-case-content__channel-type--facebook_\"]",
+        "[class*=\"ko-case-content__channel-type--messenger_\"]",
+        "[class*=\"ko-case-content__channel-type--twitter_\"]",
+        "[class*=\"ko-case-content__charLimit_\"]",
+        "[class*=\"ko-case-content__charLimitNegative_\"]",
+        "[class*=\"ko-case-content__complete_\"]",
+        "[class*=\"ko-case-content__dropdownContent_\"]",
+        "[class*=\"ko-case-content__editor-footer-left_\"]",
+        "[class*=\"ko-case-content__editor-footer-right_\"]",
+        "[class*=\"ko-case-content__editorWithError_\"]",
+        "[class*=\"ko-case-content__icon_\"]",
+        "[class*=\"ko-case-content__id_\"]",
+        "[class*=\"ko-case-content__id-hash_\"]",
+        "[class*=\"ko-case-content__in-reply-to_\"]",
+        "[class*=\"ko-case-content__in-reply-to-header_\"]",
+        "[class*=\"ko-case-content__in-reply-to-indicator_\"]",
+        "[class*=\"ko-case-content__in-reply-to-loader_\"]",
+        "[class*=\"ko-case-content__in-reply-to-message_\"]",
+        "[class*=\"ko-case-content__in-reply-to-remove_\"]",
+        "[class*=\"ko-case-content__in-reply-to-text_\"]",
+        "[class*=\"ko-case-content__in-reply-to-user_\"]",
+        "[class*=\"ko-case-content__item-wrap_\"]",
+        "[class*=\"ko-case-content__itemContainer_\"]",
+        "[class*=\"ko-case-content__minus_\"]",
+        "[class*=\"ko-case-content__note-destination-no-send-button_\"]",
+        "[class*=\"ko-case-content__note-trigger_\"]",
+        "[class*=\"ko-case-content__or-text_\"]",
+        "[class*=\"ko-case-content__pill-container_\"]",
+        "[class*=\"ko-case-content__pill-message_\"]",
+        "[class*=\"ko-case-content__replyOptionDescription_\"]",
+        "[class*=\"ko-case-content__replyOptions_\"]",
+        "[class*=\"ko-case-content__root_\"]",
+        "[class*=\"ko-case-content__selected_\"]",
+        "[class*=\"ko-case-content__send-and-set-options_\"]",
+        "[class*=\"ko-case-content__send-and-set-trigger_\"]",
+        "[class*=\"ko-case-content__show-shimmer_\"]",
+        "[class*=\"ko-case-content__show-submit_\"]",
+        "[class*=\"ko-case-content__side-conversations_\"]",
+        "[class*=\"ko-case-content__sla_\"]",
+        "[class*=\"ko-case-content__sla-bar_\"]",
+        "[class*=\"ko-case-content__sla-bar--breached_\"]",
+        "[class*=\"ko-case-content__sla-dropdown_\"]",
+        "[class*=\"ko-case-content__sla-icon_\"]",
+        "[class*=\"ko-case-content__sla-progress_\"]",
+        "[class*=\"ko-case-content__sla-text_\"]",
+        "[class*=\"ko-case-content__submit-properties_\"]",
+        "[class*=\"ko-case-content__submitting_\"]",
+        "[class*=\"ko-case-content__text-editor-loader_\"]",
+        "[class*=\"ko-case-content__timeline-header_\"]",
+        "[class*=\"ko-case-content__timeline-header-body_\"]",
+        "[class*=\"ko-case-content__timeline-header-image_\"]",
+        "[class*=\"ko-case-content__timeline-header-subtitle_\"]",
+        "[class*=\"ko-case-content__timeline-header-title_\"]",
+        "[class*=\"ko-case-content__trash_\"]",
+        "[class*=\"ko-case-content__typing-area_\"]",
+        "[class*=\"ko-case-content__update-button-enter_\"]",
+        "[class*=\"ko-case-content__update-button-enter-active_\"]",
+        "[class*=\"ko-case-content__update-button-leave-active_\"]",
+        "[class*=\"ko-case-content__wrap-ccs_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-case-content-organization-select",
+        "qa-case-content__submit",
+        "qa-case-content_timeline-header-title",
+        "qa-ko-case-content__action-menu",
+        "qa-ko-case-content__cancel",
+        "qa-ko-case-content__priority",
+        "qa-ko-case-content__requester-field",
+        "qa-ko-case-content__status",
+        "qa-ko-case-content__subject",
+        "qa-ko-case-content__subject-subtitle",
+        "qa-ko-case-content__tags",
+        "qa-ko-case-content__type",
+        "qa-post__channel-selector",
+        "qa__ko-case-content__note-mode"
+      ],
+      "selectors": [
+        "[class*=\"qa-case-content-organization-select\"]",
+        "[class*=\"qa-case-content__submit\"]",
+        "[class*=\"qa-case-content_timeline-header-title\"]",
+        "[class*=\"qa-ko-case-content__action-menu\"]",
+        "[class*=\"qa-ko-case-content__cancel\"]",
+        "[class*=\"qa-ko-case-content__priority\"]",
+        "[class*=\"qa-ko-case-content__requester-field\"]",
+        "[class*=\"qa-ko-case-content__status\"]",
+        "[class*=\"qa-ko-case-content__subject\"]",
+        "[class*=\"qa-ko-case-content__subject-subtitle\"]",
+        "[class*=\"qa-ko-case-content__tags\"]",
+        "[class*=\"qa-ko-case-content__type\"]",
+        "[class*=\"qa-post__channel-selector\"]",
+        "[class*=\"qa__ko-case-content__note-mode\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/cc/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_cc",
+      "classNames": [
+        "add-icon",
+        "cc",
+        "cc--collapsed",
+        "cc--on",
+        "cc-expand-item",
+        "cc-list-and-input",
+        "dropdown",
+        "email",
+        "ember-power-select-option",
+        "ember-power-select-options",
+        "hide",
+        "name",
+        "option",
+        "option-item",
+        "option-item-close",
+        "option-item-membrane",
+        "option-item-title",
+        "root",
+        "text",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_cc__add-icon_\"]",
+        "[class*=\"ko-case-content_cc__cc_\"]",
+        "[class*=\"ko-case-content_cc__cc--collapsed_\"]",
+        "[class*=\"ko-case-content_cc__cc--on_\"]",
+        "[class*=\"ko-case-content_cc__cc-expand-item_\"]",
+        "[class*=\"ko-case-content_cc__cc-list-and-input_\"]",
+        "[class*=\"ko-case-content_cc__dropdown_\"]",
+        "[class*=\"ko-case-content_cc__email_\"]",
+        "[class*=\"ko-case-content_cc__ember-power-select-option_\"]",
+        "[class*=\"ko-case-content_cc__ember-power-select-options_\"]",
+        "[class*=\"ko-case-content_cc__hide_\"]",
+        "[class*=\"ko-case-content_cc__name_\"]",
+        "[class*=\"ko-case-content_cc__option_\"]",
+        "[class*=\"ko-case-content_cc__option-item_\"]",
+        "[class*=\"ko-case-content_cc__option-item-close_\"]",
+        "[class*=\"ko-case-content_cc__option-item-membrane_\"]",
+        "[class*=\"ko-case-content_cc__option-item-title_\"]",
+        "[class*=\"ko-case-content_cc__root_\"]",
+        "[class*=\"ko-case-content_cc__text_\"]",
+        "[class*=\"ko-case-content_cc__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/cc/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/info-block/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_info-block",
+      "classNames": [
+        "container",
+        "info-card"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_info-block__container_\"]",
+        "[class*=\"ko-case-content_info-block__info-card_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/info-block/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/cc/above/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_cc_above",
+      "classNames": [
+        "center",
+        "mailbox-cc",
+        "mailbox-cc--subtitle",
+        "mailbox-cc--title"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_cc_above__center_\"]",
+        "[class*=\"ko-case-content_cc_above__mailbox-cc_\"]",
+        "[class*=\"ko-case-content_cc_above__mailbox-cc--subtitle_\"]",
+        "[class*=\"ko-case-content_cc_above__mailbox-cc--title_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/cc/above/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/cc/options/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/cc/trigger/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_cc_trigger",
+      "classNames": [
+        "container",
+        "input",
+        "options",
+        "placeholder"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_cc_trigger__container_\"]",
+        "[class*=\"ko-case-content_cc_trigger__input_\"]",
+        "[class*=\"ko-case-content_cc_trigger__options_\"]",
+        "[class*=\"ko-case-content_cc_trigger__placeholder_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/cc/trigger/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/assignee/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/forms/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/organization/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/priority/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/requester/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/status/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/type/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/assignee/trigger-value/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_field_assignee_trigger-value",
+      "classNames": [
+        "agent",
+        "agent-name",
+        "avatar",
+        "separator",
+        "team",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_field_assignee_trigger-value__agent_\"]",
+        "[class*=\"ko-case-content_field_assignee_trigger-value__agent-name_\"]",
+        "[class*=\"ko-case-content_field_assignee_trigger-value__avatar_\"]",
+        "[class*=\"ko-case-content_field_assignee_trigger-value__separator_\"]",
+        "[class*=\"ko-case-content_field_assignee_trigger-value__team_\"]",
+        "[class*=\"ko-case-content_field_assignee_trigger-value__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/field/assignee/trigger-value/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/requester/trigger-value/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_field_requester_trigger-value",
+      "classNames": [
+        "avatar",
+        "container"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_field_requester_trigger-value__avatar_\"]",
+        "[class*=\"ko-case-content_field_requester_trigger-value__container_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/field/requester/trigger-value/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-content/field/status/swatch-with-label/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-content_field_status_swatch-with-label",
+      "classNames": [
+        "container",
+        "label",
+        "prefix",
+        "swatch"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-content_field_status_swatch-with-label__container_\"]",
+        "[class*=\"ko-case-content_field_status_swatch-with-label__label_\"]",
+        "[class*=\"ko-case-content_field_status_swatch-with-label__prefix_\"]",
+        "[class*=\"ko-case-content_field_status_swatch-with-label__swatch_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-content/field/status/swatch-with-label/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2",
+      "classNames": [
+        "container",
+        "jump-bar",
+        "load-link",
+        "loader",
+        "loader--idle",
+        "loader--running",
+        "previous-activities",
+        "previous-activities-arrow",
+        "previous-activities-blob",
+        "previous-activities-container",
+        "previous-activities-container-wrapper"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2__container_\"]",
+        "[class*=\"ko-timeline-2__jump-bar_\"]",
+        "[class*=\"ko-timeline-2__load-link_\"]",
+        "[class*=\"ko-timeline-2__loader_\"]",
+        "[class*=\"ko-timeline-2__loader--idle_\"]",
+        "[class*=\"ko-timeline-2__loader--running_\"]",
+        "[class*=\"ko-timeline-2__previous-activities_\"]",
+        "[class*=\"ko-timeline-2__previous-activities-arrow_\"]",
+        "[class*=\"ko-timeline-2__previous-activities-blob_\"]",
+        "[class*=\"ko-timeline-2__previous-activities-container_\"]",
+        "[class*=\"ko-timeline-2__previous-activities-container-wrapper_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/jump-bar/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_jump-bar",
+      "classNames": [
+        "jump",
+        "jump-arrow",
+        "jump-bar",
+        "jump-message",
+        "jump-text",
+        "mark-as-seen"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_jump-bar__jump_\"]",
+        "[class*=\"ko-timeline-2_jump-bar__jump-arrow_\"]",
+        "[class*=\"ko-timeline-2_jump-bar__jump-bar_\"]",
+        "[class*=\"ko-timeline-2_jump-bar__jump-message_\"]",
+        "[class*=\"ko-timeline-2_jump-bar__jump-text_\"]",
+        "[class*=\"ko-timeline-2_jump-bar__mark-as-seen_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/jump-bar/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/ai-suggestion-bubble/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_ai-suggestion-bubble",
+      "classNames": [
+        "action-button-container",
+        "ai-suggestion-action-button",
+        "ai-suggestion-bubble",
+        "ai-suggestion-container",
+        "ai-suggestion-content",
+        "ai-suggestion-content-wrapper",
+        "ai-suggestion-icon",
+        "ai-suggestion-read-more-button",
+        "ai-suggestion-text",
+        "expanded",
+        "full-screen-loader"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__action-button-container_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-action-button_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-bubble_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-container_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-content_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-content-wrapper_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-icon_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-read-more-button_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-text_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__expanded_\"]",
+        "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__full-screen-loader_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/ai-suggestion-bubble/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/days/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_days",
+      "classNames": [
+        "day-separator",
+        "day-separator__date",
+        "day-separator__relative-term",
+        "day-separator__text"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_days__day-separator_\"]",
+        "[class*=\"ko-timeline-2_list_days__day-separator__date_\"]",
+        "[class*=\"ko-timeline-2_list_days__day-separator__relative-term_\"]",
+        "[class*=\"ko-timeline-2_list_days__day-separator__text_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/days/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item",
+      "classNames": [
+        "attachment-container-flap-hide",
+        "attachments-header",
+        "body",
+        "br-wrapper",
+        "br-wrapper--multiple",
+        "br-wrapper--single",
+        "case",
+        "client-failed-message",
+        "content",
+        "creator",
+        "extended-info",
+        "failed",
+        "header",
+        "header-container",
+        "hidden-item",
+        "html-content",
+        "iframe-content",
+        "item",
+        "joined-with-next",
+        "joined-with-next-note",
+        "joined-with-previous",
+        "joined-with-previous-note",
+        "mention-wormhole",
+        "menu",
+        "menu-item",
+        "menu-open",
+        "menu-wrapper",
+        "message-count",
+        "metadata-page-url",
+        "no-menus-open",
+        "note",
+        "note-summary",
+        "pinned",
+        "pinned-by",
+        "pinned-by-avatar",
+        "post",
+        "processing",
+        "quote-icon",
+        "role",
+        "sending",
+        "separator",
+        "side-column",
+        "side-conversation",
+        "side-time",
+        "status",
+        "status-separator",
+        "subtitle",
+        "time",
+        "title",
+        "waiting",
+        "yellow"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item__attachment-container-flap-hide_\"]",
+        "[class*=\"ko-timeline-2_list_item__attachments-header_\"]",
+        "[class*=\"ko-timeline-2_list_item__body_\"]",
+        "[class*=\"ko-timeline-2_list_item__br-wrapper_\"]",
+        "[class*=\"ko-timeline-2_list_item__br-wrapper--multiple_\"]",
+        "[class*=\"ko-timeline-2_list_item__br-wrapper--single_\"]",
+        "[class*=\"ko-timeline-2_list_item__case_\"]",
+        "[class*=\"ko-timeline-2_list_item__client-failed-message_\"]",
+        "[class*=\"ko-timeline-2_list_item__content_\"]",
+        "[class*=\"ko-timeline-2_list_item__creator_\"]",
+        "[class*=\"ko-timeline-2_list_item__extended-info_\"]",
+        "[class*=\"ko-timeline-2_list_item__failed_\"]",
+        "[class*=\"ko-timeline-2_list_item__header_\"]",
+        "[class*=\"ko-timeline-2_list_item__header-container_\"]",
+        "[class*=\"ko-timeline-2_list_item__hidden-item_\"]",
+        "[class*=\"ko-timeline-2_list_item__html-content_\"]",
+        "[class*=\"ko-timeline-2_list_item__iframe-content_\"]",
+        "[class*=\"ko-timeline-2_list_item__item_\"]",
+        "[class*=\"ko-timeline-2_list_item__joined-with-next_\"]",
+        "[class*=\"ko-timeline-2_list_item__joined-with-next-note_\"]",
+        "[class*=\"ko-timeline-2_list_item__joined-with-previous_\"]",
+        "[class*=\"ko-timeline-2_list_item__joined-with-previous-note_\"]",
+        "[class*=\"ko-timeline-2_list_item__mention-wormhole_\"]",
+        "[class*=\"ko-timeline-2_list_item__menu_\"]",
+        "[class*=\"ko-timeline-2_list_item__menu-item_\"]",
+        "[class*=\"ko-timeline-2_list_item__menu-open_\"]",
+        "[class*=\"ko-timeline-2_list_item__menu-wrapper_\"]",
+        "[class*=\"ko-timeline-2_list_item__message-count_\"]",
+        "[class*=\"ko-timeline-2_list_item__metadata-page-url_\"]",
+        "[class*=\"ko-timeline-2_list_item__no-menus-open_\"]",
+        "[class*=\"ko-timeline-2_list_item__note_\"]",
+        "[class*=\"ko-timeline-2_list_item__note-summary_\"]",
+        "[class*=\"ko-timeline-2_list_item__pinned_\"]",
+        "[class*=\"ko-timeline-2_list_item__pinned-by_\"]",
+        "[class*=\"ko-timeline-2_list_item__pinned-by-avatar_\"]",
+        "[class*=\"ko-timeline-2_list_item__post_\"]",
+        "[class*=\"ko-timeline-2_list_item__processing_\"]",
+        "[class*=\"ko-timeline-2_list_item__quote-icon_\"]",
+        "[class*=\"ko-timeline-2_list_item__role_\"]",
+        "[class*=\"ko-timeline-2_list_item__sending_\"]",
+        "[class*=\"ko-timeline-2_list_item__separator_\"]",
+        "[class*=\"ko-timeline-2_list_item__side-column_\"]",
+        "[class*=\"ko-timeline-2_list_item__side-conversation_\"]",
+        "[class*=\"ko-timeline-2_list_item__side-time_\"]",
+        "[class*=\"ko-timeline-2_list_item__status_\"]",
+        "[class*=\"ko-timeline-2_list_item__status-separator_\"]",
+        "[class*=\"ko-timeline-2_list_item__subtitle_\"]",
+        "[class*=\"ko-timeline-2_list_item__time_\"]",
+        "[class*=\"ko-timeline-2_list_item__title_\"]",
+        "[class*=\"ko-timeline-2_list_item__waiting_\"]",
+        "[class*=\"ko-timeline-2_list_item__yellow_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "ko-feed_item__content",
+        "qa-ko-timeline_item__subtitle",
+        "qa-ko-timeline_item_menu__reply",
+        "qa-pin-timeline-note",
+        "qa-resend-button"
+      ],
+      "selectors": [
+        "[class*=\"ko-feed_item__content\"]",
+        "[class*=\"qa-ko-timeline_item__subtitle\"]",
+        "[class*=\"qa-ko-timeline_item_menu__reply\"]",
+        "[class*=\"qa-pin-timeline-note\"]",
+        "[class*=\"qa-resend-button\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/post/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_post",
+      "classNames": [
+        "event-url",
+        "event-url-container",
+        "external-url",
+        "item",
+        "large",
+        "located",
+        "new-messages-separator",
+        "new-messages-separator__text",
+        "no-menus-open",
+        "note",
+        "post",
+        "standard"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_post__event-url_\"]",
+        "[class*=\"ko-timeline-2_list_post__event-url-container_\"]",
+        "[class*=\"ko-timeline-2_list_post__external-url_\"]",
+        "[class*=\"ko-timeline-2_list_post__item_\"]",
+        "[class*=\"ko-timeline-2_list_post__large_\"]",
+        "[class*=\"ko-timeline-2_list_post__located_\"]",
+        "[class*=\"ko-timeline-2_list_post__new-messages-separator_\"]",
+        "[class*=\"ko-timeline-2_list_post__new-messages-separator__text_\"]",
+        "[class*=\"ko-timeline-2_list_post__no-menus-open_\"]",
+        "[class*=\"ko-timeline-2_list_post__note_\"]",
+        "[class*=\"ko-timeline-2_list_post__post_\"]",
+        "[class*=\"ko-timeline-2_list_post__standard_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/post/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "ko-feed_item",
+        "qa-new-messages-separator"
+      ],
+      "selectors": [
+        "[class*=\"ko-feed_item\"]",
+        "[class*=\"qa-new-messages-separator\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/large/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_large",
+      "classNames": [
+        "activity-time",
+        "breach",
+        "comment-container",
+        "completed",
+        "confetti",
+        "inline-property-avatar",
+        "large",
+        "large-activity-detail-text",
+        "large-activity-icon",
+        "large-activity-text",
+        "rating",
+        "rating-comment-text",
+        "rating-comment-text-open-quote",
+        "rating-summary",
+        "restored",
+        "trash"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_large__activity-time_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__breach_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__comment-container_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__completed_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__confetti_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__inline-property-avatar_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__large_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__large-activity-detail-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__large-activity-icon_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__large-activity-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__rating_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__rating-comment-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__rating-comment-text-open-quote_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__rating-summary_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__restored_\"]",
+        "[class*=\"ko-timeline-2_list_activity_large__trash_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/large/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/after/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_after",
+      "classNames": [
+        "property-avatar"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_after__property-avatar_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/after/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/standard/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_standard",
+      "classNames": [
+        "activity",
+        "activity-line-major",
+        "activity-line-minor",
+        "activity-text",
+        "activity-time",
+        "box",
+        "comment-block-container",
+        "comment-container",
+        "has-token-avatar",
+        "helpcenter-comment-text",
+        "helpcenter-comment-text-open-quote",
+        "properties",
+        "property",
+        "property-name",
+        "property-value",
+        "small-dot-spacer",
+        "suggestion-index",
+        "suggestion-text",
+        "suggestions",
+        "suggestions-wrapper",
+        "timeline-link"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_standard__activity_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__activity-line-major_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__activity-line-minor_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__activity-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__activity-time_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__box_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__comment-block-container_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__comment-container_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__has-token-avatar_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__helpcenter-comment-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__helpcenter-comment-text-open-quote_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__properties_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__property_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__property-name_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__property-value_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__small-dot-spacer_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__suggestion-index_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__suggestion-text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__suggestions_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__suggestions-wrapper_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard__timeline-link_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/standard/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/summary-text/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_summary-text",
+      "classNames": [
+        "actor",
+        "entity",
+        "link",
+        "text",
+        "token-avatar"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_summary-text__actor_\"]",
+        "[class*=\"ko-timeline-2_list_activity_summary-text__entity_\"]",
+        "[class*=\"ko-timeline-2_list_activity_summary-text__link_\"]",
+        "[class*=\"ko-timeline-2_list_activity_summary-text__text_\"]",
+        "[class*=\"ko-timeline-2_list_activity_summary-text__token-avatar_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/summary-text/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/at-mention/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_at-mention",
+      "classNames": [
+        "mention",
+        "mention-anchor",
+        "mention-me"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_at-mention__mention_\"]",
+        "[class*=\"ko-timeline-2_list_item_at-mention__mention-anchor_\"]",
+        "[class*=\"ko-timeline-2_list_item_at-mention__mention-me_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/at-mention/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-mention",
+        "qa-mention-anchor"
+      ],
+      "selectors": [
+        "[class*=\"qa-mention\"]",
+        "[class*=\"qa-mention-anchor\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_created-at",
+      "classNames": [
+        "link",
+        "title"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_created-at__link_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at__title_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-created-at-email-link",
+        "qa-created-at-string",
+        "qa-created-at-twitter-link"
+      ],
+      "selectors": [
+        "[class*=\"qa-created-at-email-link\"]",
+        "[class*=\"qa-created-at-string\"]",
+        "[class*=\"qa-created-at-twitter-link\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/attachment/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_attachment",
+      "classNames": [
+        "action",
+        "actions",
+        "attachment",
+        "attachment-container",
+        "details",
+        "download",
+        "flap-hide",
+        "full-screen-loader",
+        "meta",
+        "name",
+        "name-element",
+        "no-thumb",
+        "preview",
+        "size",
+        "small",
+        "thumbnail",
+        "thumbnail-link"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_attachment__action_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__actions_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__attachment_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__attachment-container_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__details_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__download_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__flap-hide_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__full-screen-loader_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__meta_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__name_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__name-element_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__no-thumb_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__preview_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__size_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__small_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__thumbnail_\"]",
+        "[class*=\"ko-timeline-2_list_item_attachment__thumbnail-link_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/attachment/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/email-info/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_email-info",
+      "classNames": [
+        "cell",
+        "left"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_email-info__cell_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info__left_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/email-info/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/before-after/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_before-after",
+      "classNames": [
+        "arrow",
+        "property-avatar",
+        "property-old-value"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_before-after__arrow_\"]",
+        "[class*=\"ko-timeline-2_list_activity_before-after__property-avatar_\"]",
+        "[class*=\"ko-timeline-2_list_activity_before-after__property-old-value_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/before-after/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/menu/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_menu",
+      "classNames": [
+        "dropdown-body",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_menu__dropdown-body_\"]",
+        "[class*=\"ko-timeline-2_list_item_menu__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/menu/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-list-item-menu__dropdown"
+      ],
+      "selectors": [
+        "[class*=\"qa-list-item-menu__dropdown\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/email-info-inline/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_email-info-inline",
+      "classNames": [
+        "active",
+        "cc-item",
+        "cell",
+        "chevron-info-box",
+        "details-chevron",
+        "email-item",
+        "email-item-cc",
+        "email-item-content",
+        "email-item-solo",
+        "grey",
+        "hide",
+        "left",
+        "mail-text",
+        "no-comma",
+        "others-text",
+        "sandbox-trigger",
+        "shrink",
+        "to-text",
+        "top"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__active_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__cc-item_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__cell_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__chevron-info-box_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__details-chevron_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-cc_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-content_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-solo_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__grey_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__hide_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__left_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__mail-text_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__no-comma_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__others-text_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__sandbox-trigger_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__shrink_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__to-text_\"]",
+        "[class*=\"ko-timeline-2_list_item_email-info-inline__top_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/email-info-inline/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/status/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_status",
+      "classNames": [
+        "client-failed",
+        "delivered",
+        "dropdown-trigger",
+        "email",
+        "icon",
+        "label",
+        "name",
+        "not-sent",
+        "recipient",
+        "recipients-list",
+        "rejected",
+        "seen",
+        "sent",
+        "status"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_status__client-failed_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__delivered_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__dropdown-trigger_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__email_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__icon_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__label_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__name_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__not-sent_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__recipient_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__recipients-list_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__rejected_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__seen_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__sent_\"]",
+        "[class*=\"ko-timeline-2_list_item_status__status_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/status/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/standard/actions-summary-text/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_activity_standard_actions-summary-text",
+      "classNames": [
+        "inline-property-avatar",
+        "status-pill",
+        "summary-line-actions"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__inline-property-avatar_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__status-pill_\"]",
+        "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__summary-line-actions_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/activity/standard/actions-summary-text/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/email-modal/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_created-at_email-modal",
+      "classNames": [
+        "email-content",
+        "email-details",
+        "email-header",
+        "email-view",
+        "error-description",
+        "fadeIn",
+        "header-header",
+        "header-heading",
+        "wrapper"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-content_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-details_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-header_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-view_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__error-description_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__fadeIn_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__header-header_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__header-heading_\"]",
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal__wrapper_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/email-modal/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "404-error-description-1",
+        "404-error-description-2",
+        "404-error-header",
+        "404-error-image",
+        "500-error-description-1",
+        "500-error-description-2",
+        "500-error-header",
+        "500-error-image",
+        "qa-content-source",
+        "qa-from",
+        "qa-received-at",
+        "qa-source-iframe",
+        "qa-subject",
+        "qa-to"
+      ],
+      "selectors": [
+        "[class*=\"404-error-description-1\"]",
+        "[class*=\"404-error-description-2\"]",
+        "[class*=\"404-error-header\"]",
+        "[class*=\"404-error-image\"]",
+        "[class*=\"500-error-description-1\"]",
+        "[class*=\"500-error-description-2\"]",
+        "[class*=\"500-error-header\"]",
+        "[class*=\"500-error-image\"]",
+        "[class*=\"qa-content-source\"]",
+        "[class*=\"qa-from\"]",
+        "[class*=\"qa-received-at\"]",
+        "[class*=\"qa-source-iframe\"]",
+        "[class*=\"qa-subject\"]",
+        "[class*=\"qa-to\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/menu/item/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_menu_item",
+      "classNames": [
+        "disabled",
+        "item"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_menu_item__disabled_\"]",
+        "[class*=\"ko-timeline-2_list_item_menu_item__item_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/menu/item/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-item-menu-item"
+      ],
+      "selectors": [
+        "[class*=\"qa-item-menu-item\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/email-modal/iframe/styles.css",
+      "type": "css",
+      "moduleToken": "ko-timeline-2_list_item_created-at_email-modal_iframe",
+      "classNames": [
+        "iframe"
+      ],
+      "selectors": [
+        "[class*=\"ko-timeline-2_list_item_created-at_email-modal_iframe__iframe_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-timeline-2/list/item/created-at/email-modal/iframe/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case/macro-selector/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case_macro-selector",
+      "classNames": [
+        "container",
+        "dropdown",
+        "ember-power-select-search",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-case_macro-selector__container_\"]",
+        "[class*=\"ko-case_macro-selector__dropdown_\"]",
+        "[class*=\"ko-case_macro-selector__ember-power-select-search_\"]",
+        "[class*=\"ko-case_macro-selector__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case/macro-selector/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case/sla-dropdown/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case_sla-dropdown",
+      "classNames": [
+        "sidebar",
+        "table",
+        "title"
+      ],
+      "selectors": [
+        "[class*=\"ko-case_sla-dropdown__sidebar_\"]",
+        "[class*=\"ko-case_sla-dropdown__table_\"]",
+        "[class*=\"ko-case_sla-dropdown__title_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case/sla-dropdown/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case/macro-selector/trigger/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case_macro-selector_trigger",
+      "classNames": [
+        "icon",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-case_macro-selector_trigger__icon_\"]",
+        "[class*=\"ko-case_macro-selector_trigger__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case/macro-selector/trigger/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case/sla-dropdown/metric/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case_sla-dropdown_metric",
+      "classNames": [
+        "data",
+        "is-breached",
+        "label",
+        "metric",
+        "metric-active",
+        "metric-bad",
+        "metric-good",
+        "metric-paused",
+        "progress",
+        "progress-bar",
+        "progress-bar--active",
+        "progress-bar--bad",
+        "progress-bar--good",
+        "shimmer",
+        "table",
+        "time"
+      ],
+      "selectors": [
+        "[class*=\"ko-case_sla-dropdown_metric__data_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__is-breached_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__label_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__metric_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__metric-active_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__metric-bad_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__metric-good_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__metric-paused_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__progress_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__progress-bar_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__progress-bar--active_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__progress-bar--bad_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__progress-bar--good_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__shimmer_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__table_\"]",
+        "[class*=\"ko-case_sla-dropdown_metric__time_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case/sla-dropdown/metric/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-case-ai-chat/styles.css",
+      "type": "css",
+      "moduleToken": "ko-case-ai-chat",
+      "classNames": [
+        "active",
+        "ai-message",
+        "chat-bubble",
+        "chat-icon",
+        "chat-input",
+        "chat-output",
+        "chat-popup",
+        "chat-popup-header",
+        "clear-button",
+        "close-chat",
+        "input-container",
+        "input-row",
+        "loading-indicator",
+        "open",
+        "send-button",
+        "show",
+        "trial-position",
+        "typing-dots",
+        "user-message"
+      ],
+      "selectors": [
+        "[class*=\"ko-case-ai-chat__active_\"]",
+        "[class*=\"ko-case-ai-chat__ai-message_\"]",
+        "[class*=\"ko-case-ai-chat__chat-bubble_\"]",
+        "[class*=\"ko-case-ai-chat__chat-icon_\"]",
+        "[class*=\"ko-case-ai-chat__chat-input_\"]",
+        "[class*=\"ko-case-ai-chat__chat-output_\"]",
+        "[class*=\"ko-case-ai-chat__chat-popup_\"]",
+        "[class*=\"ko-case-ai-chat__chat-popup-header_\"]",
+        "[class*=\"ko-case-ai-chat__clear-button_\"]",
+        "[class*=\"ko-case-ai-chat__close-chat_\"]",
+        "[class*=\"ko-case-ai-chat__input-container_\"]",
+        "[class*=\"ko-case-ai-chat__input-row_\"]",
+        "[class*=\"ko-case-ai-chat__loading-indicator_\"]",
+        "[class*=\"ko-case-ai-chat__open_\"]",
+        "[class*=\"ko-case-ai-chat__send-button_\"]",
+        "[class*=\"ko-case-ai-chat__show_\"]",
+        "[class*=\"ko-case-ai-chat__trial-position_\"]",
+        "[class*=\"ko-case-ai-chat__typing-dots_\"]",
+        "[class*=\"ko-case-ai-chat__user-message_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-case-ai-chat/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/shared.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_shared.css",
+      "classNames": [
+        "dropdown",
+        "ember-basic-dropdown-content--above",
+        "ember-basic-dropdown-content--below"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_shared.css__dropdown_\"]",
+        "[class*=\"ko-info-bar_shared.css__ember-basic-dropdown-content--above_\"]",
+        "[class*=\"ko-info-bar_shared.css__ember-basic-dropdown-content--below_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/item/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_item",
+      "classNames": [
+        "container",
+        "containerActive",
+        "containerDisabled",
+        "containerEdited",
+        "containerError",
+        "containerKREEdited"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_item__container_\"]",
+        "[class*=\"ko-info-bar_item__containerActive_\"]",
+        "[class*=\"ko-info-bar_item__containerDisabled_\"]",
+        "[class*=\"ko-info-bar_item__containerEdited_\"]",
+        "[class*=\"ko-info-bar_item__containerError_\"]",
+        "[class*=\"ko-info-bar_item__containerKREEdited_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/item/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/update-log/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_update-log",
+      "classNames": [
+        "box",
+        "close",
+        "container",
+        "detail",
+        "header",
+        "log-item",
+        "log-title",
+        "name",
+        "tooltipstered"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_update-log__box_\"]",
+        "[class*=\"ko-info-bar_update-log__close_\"]",
+        "[class*=\"ko-info-bar_update-log__container_\"]",
+        "[class*=\"ko-info-bar_update-log__detail_\"]",
+        "[class*=\"ko-info-bar_update-log__header_\"]",
+        "[class*=\"ko-info-bar_update-log__log-item_\"]",
+        "[class*=\"ko-info-bar_update-log__log-title_\"]",
+        "[class*=\"ko-info-bar_update-log__name_\"]",
+        "[class*=\"ko-info-bar_update-log__tooltipstered_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/update-log/template.hbs",
+      "type": "hbs",
+      "qaTokens": [
+        "qa-number-of-times",
+        "qa-time-from-now",
+        "qa-username"
+      ],
+      "selectors": [
+        "[class*=\"qa-number-of-times\"]",
+        "[class*=\"qa-time-from-now\"]",
+        "[class*=\"qa-username\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/viewing-users/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_viewing-users",
+      "classNames": [
+        "avatar",
+        "avatar-image",
+        "avatars",
+        "container",
+        "header",
+        "inactive",
+        "spinner",
+        "spinner-bounce",
+        "spinner-bounce1",
+        "spinner-bounce2",
+        "updating"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_viewing-users__avatar_\"]",
+        "[class*=\"ko-info-bar_viewing-users__avatar-image_\"]",
+        "[class*=\"ko-info-bar_viewing-users__avatars_\"]",
+        "[class*=\"ko-info-bar_viewing-users__container_\"]",
+        "[class*=\"ko-info-bar_viewing-users__header_\"]",
+        "[class*=\"ko-info-bar_viewing-users__inactive_\"]",
+        "[class*=\"ko-info-bar_viewing-users__spinner_\"]",
+        "[class*=\"ko-info-bar_viewing-users__spinner-bounce_\"]",
+        "[class*=\"ko-info-bar_viewing-users__spinner-bounce1_\"]",
+        "[class*=\"ko-info-bar_viewing-users__spinner-bounce2_\"]",
+        "[class*=\"ko-info-bar_viewing-users__updating_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/viewing-users/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/basic-drill-down/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_basic-drill-down",
+      "classNames": [
+        "dropdown",
+        "ember-power-select-option",
+        "ember-power-select-options",
+        "i-chevron-large-left",
+        "i-chevron-large-right",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_basic-drill-down__dropdown_\"]",
+        "[class*=\"ko-info-bar_field_basic-drill-down__ember-power-select-option_\"]",
+        "[class*=\"ko-info-bar_field_basic-drill-down__ember-power-select-options_\"]",
+        "[class*=\"ko-info-bar_field_basic-drill-down__i-chevron-large-left_\"]",
+        "[class*=\"ko-info-bar_field_basic-drill-down__i-chevron-large-right_\"]",
+        "[class*=\"ko-info-bar_field_basic-drill-down__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/basic-drill-down/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/cascadingselect/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/date/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_date",
+      "classNames": [
+        "date",
+        "dropdownMenu",
+        "focus",
+        "header",
+        "icon"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_date__date_\"]",
+        "[class*=\"ko-info-bar_field_date__dropdownMenu_\"]",
+        "[class*=\"ko-info-bar_field_date__focus_\"]",
+        "[class*=\"ko-info-bar_field_date__header_\"]",
+        "[class*=\"ko-info-bar_field_date__icon_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/date/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/checkbox/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_checkbox",
+      "classNames": [
+        "actions",
+        "header",
+        "option",
+        "separator",
+        "unset-mode-dropdown"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_checkbox__actions_\"]",
+        "[class*=\"ko-info-bar_field_checkbox__header_\"]",
+        "[class*=\"ko-info-bar_field_checkbox__option_\"]",
+        "[class*=\"ko-info-bar_field_checkbox__separator_\"]",
+        "[class*=\"ko-info-bar_field_checkbox__unset-mode-dropdown_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/checkbox/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/decimal/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/drill-down/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_drill-down",
+      "classNames": [
+        "dropdown",
+        "ember-power-select-option",
+        "ember-power-select-options",
+        "i-chevron-large-left",
+        "i-chevron-large-right",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_drill-down__dropdown_\"]",
+        "[class*=\"ko-info-bar_field_drill-down__ember-power-select-option_\"]",
+        "[class*=\"ko-info-bar_field_drill-down__ember-power-select-options_\"]",
+        "[class*=\"ko-info-bar_field_drill-down__i-chevron-large-left_\"]",
+        "[class*=\"ko-info-bar_field_drill-down__i-chevron-large-right_\"]",
+        "[class*=\"ko-info-bar_field_drill-down__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/drill-down/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/numeric/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/radio/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/multiline-text/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_multiline-text",
+      "classNames": [
+        "header",
+        "multiline-text",
+        "textarea"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_multiline-text__header_\"]",
+        "[class*=\"ko-info-bar_field_multiline-text__multiline-text_\"]",
+        "[class*=\"ko-info-bar_field_multiline-text__textarea_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/multiline-text/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/regex/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_select",
+      "classNames": [
+        "dropdown",
+        "power-select",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_select__dropdown_\"]",
+        "[class*=\"ko-info-bar_field_select__power-select_\"]",
+        "[class*=\"ko-info-bar_field_select__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select-multiple/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_select-multiple",
+      "classNames": [
+        "dropdown",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_select-multiple__dropdown_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select-multiple/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/text/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_text",
+      "classNames": [
+        "header",
+        "input",
+        "text"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_text__header_\"]",
+        "[class*=\"ko-info-bar_field_text__input_\"]",
+        "[class*=\"ko-info-bar_field_text__text_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/text/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/yesno/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/arrow/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_select_arrow",
+      "classNames": [
+        "active",
+        "arrow",
+        "arrow-inset"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_select_arrow__active_\"]",
+        "[class*=\"ko-info-bar_field_select_arrow__arrow_\"]",
+        "[class*=\"ko-info-bar_field_select_arrow__arrow-inset_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/arrow/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/trigger/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_select_trigger",
+      "classNames": [
+        "header",
+        "icon",
+        "input",
+        "input--hidden",
+        "loading",
+        "middle-ellipsis-span",
+        "placeholder",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_select_trigger__header_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__icon_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__input_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__input--hidden_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__loading_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+        "[class*=\"ko-info-bar_field_select_trigger__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select/trigger/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select-multiple/trigger/styles.css",
+      "type": "css",
+      "moduleToken": "ko-info-bar_field_select-multiple_trigger",
+      "classNames": [
+        "ember-power-select-multiple-options",
+        "ember-power-select-status-icon",
+        "input",
+        "loading",
+        "title",
+        "trigger"
+      ],
+      "selectors": [
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__ember-power-select-multiple-options_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__ember-power-select-status-icon_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__input_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__loading_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__title_\"]",
+        "[class*=\"ko-info-bar_field_select-multiple_trigger__trigger_\"]"
+      ]
+    },
+    {
+      "file": "app/components/ko-info-bar/field/select-multiple/trigger/template.hbs",
+      "type": "hbs",
+      "qaTokens": [],
+      "selectors": []
+    }
+  ],
+  "selectors": [
+    "[class*=\"404-error-description-1\"]",
+    "[class*=\"404-error-description-2\"]",
+    "[class*=\"404-error-header\"]",
+    "[class*=\"404-error-image\"]",
+    "[class*=\"500-error-description-1\"]",
+    "[class*=\"500-error-description-2\"]",
+    "[class*=\"500-error-header\"]",
+    "[class*=\"500-error-image\"]",
+    "[class*=\"ko-case-ai-chat__active_\"]",
+    "[class*=\"ko-case-ai-chat__ai-message_\"]",
+    "[class*=\"ko-case-ai-chat__chat-bubble_\"]",
+    "[class*=\"ko-case-ai-chat__chat-icon_\"]",
+    "[class*=\"ko-case-ai-chat__chat-input_\"]",
+    "[class*=\"ko-case-ai-chat__chat-output_\"]",
+    "[class*=\"ko-case-ai-chat__chat-popup-header_\"]",
+    "[class*=\"ko-case-ai-chat__chat-popup_\"]",
+    "[class*=\"ko-case-ai-chat__clear-button_\"]",
+    "[class*=\"ko-case-ai-chat__close-chat_\"]",
+    "[class*=\"ko-case-ai-chat__input-container_\"]",
+    "[class*=\"ko-case-ai-chat__input-row_\"]",
+    "[class*=\"ko-case-ai-chat__loading-indicator_\"]",
+    "[class*=\"ko-case-ai-chat__open_\"]",
+    "[class*=\"ko-case-ai-chat__send-button_\"]",
+    "[class*=\"ko-case-ai-chat__show_\"]",
+    "[class*=\"ko-case-ai-chat__trial-position_\"]",
+    "[class*=\"ko-case-ai-chat__typing-dots_\"]",
+    "[class*=\"ko-case-ai-chat__user-message_\"]",
+    "[class*=\"ko-case-content__arrow-up_\"]",
+    "[class*=\"ko-case-content__arrow_\"]",
+    "[class*=\"ko-case-content__assign-to-me-container_\"]",
+    "[class*=\"ko-case-content__assign-to-me-options_\"]",
+    "[class*=\"ko-case-content__assign-to-me-trigger_\"]",
+    "[class*=\"ko-case-content__brand-menu-text_\"]",
+    "[class*=\"ko-case-content__cancel-property-changes_\"]",
+    "[class*=\"ko-case-content__cc-component_\"]",
+    "[class*=\"ko-case-content__channel-type--facebook_\"]",
+    "[class*=\"ko-case-content__channel-type--messenger_\"]",
+    "[class*=\"ko-case-content__channel-type--twitter_\"]",
+    "[class*=\"ko-case-content__charLimitNegative_\"]",
+    "[class*=\"ko-case-content__charLimit_\"]",
+    "[class*=\"ko-case-content__complete_\"]",
+    "[class*=\"ko-case-content__dropdownContent_\"]",
+    "[class*=\"ko-case-content__editor-footer-left_\"]",
+    "[class*=\"ko-case-content__editor-footer-right_\"]",
+    "[class*=\"ko-case-content__editorWithError_\"]",
+    "[class*=\"ko-case-content__icon_\"]",
+    "[class*=\"ko-case-content__id-hash_\"]",
+    "[class*=\"ko-case-content__id_\"]",
+    "[class*=\"ko-case-content__in-reply-to-header_\"]",
+    "[class*=\"ko-case-content__in-reply-to-indicator_\"]",
+    "[class*=\"ko-case-content__in-reply-to-loader_\"]",
+    "[class*=\"ko-case-content__in-reply-to-message_\"]",
+    "[class*=\"ko-case-content__in-reply-to-remove_\"]",
+    "[class*=\"ko-case-content__in-reply-to-text_\"]",
+    "[class*=\"ko-case-content__in-reply-to-user_\"]",
+    "[class*=\"ko-case-content__in-reply-to_\"]",
+    "[class*=\"ko-case-content__item-wrap_\"]",
+    "[class*=\"ko-case-content__itemContainer_\"]",
+    "[class*=\"ko-case-content__minus_\"]",
+    "[class*=\"ko-case-content__note-destination-no-send-button_\"]",
+    "[class*=\"ko-case-content__note-trigger_\"]",
+    "[class*=\"ko-case-content__or-text_\"]",
+    "[class*=\"ko-case-content__pill-container_\"]",
+    "[class*=\"ko-case-content__pill-message_\"]",
+    "[class*=\"ko-case-content__replyOptionDescription_\"]",
+    "[class*=\"ko-case-content__replyOptions_\"]",
+    "[class*=\"ko-case-content__root_\"]",
+    "[class*=\"ko-case-content__selected_\"]",
+    "[class*=\"ko-case-content__send-and-set-options_\"]",
+    "[class*=\"ko-case-content__send-and-set-trigger_\"]",
+    "[class*=\"ko-case-content__show-shimmer_\"]",
+    "[class*=\"ko-case-content__show-submit_\"]",
+    "[class*=\"ko-case-content__side-conversations_\"]",
+    "[class*=\"ko-case-content__sla-bar--breached_\"]",
+    "[class*=\"ko-case-content__sla-bar_\"]",
+    "[class*=\"ko-case-content__sla-dropdown_\"]",
+    "[class*=\"ko-case-content__sla-icon_\"]",
+    "[class*=\"ko-case-content__sla-progress_\"]",
+    "[class*=\"ko-case-content__sla-text_\"]",
+    "[class*=\"ko-case-content__sla_\"]",
+    "[class*=\"ko-case-content__submit-properties_\"]",
+    "[class*=\"ko-case-content__submitting_\"]",
+    "[class*=\"ko-case-content__text-editor-loader_\"]",
+    "[class*=\"ko-case-content__timeline-header-body_\"]",
+    "[class*=\"ko-case-content__timeline-header-image_\"]",
+    "[class*=\"ko-case-content__timeline-header-subtitle_\"]",
+    "[class*=\"ko-case-content__timeline-header-title_\"]",
+    "[class*=\"ko-case-content__timeline-header_\"]",
+    "[class*=\"ko-case-content__trash_\"]",
+    "[class*=\"ko-case-content__typing-area_\"]",
+    "[class*=\"ko-case-content__update-button-enter-active_\"]",
+    "[class*=\"ko-case-content__update-button-enter_\"]",
+    "[class*=\"ko-case-content__update-button-leave-active_\"]",
+    "[class*=\"ko-case-content__wrap-ccs_\"]",
+    "[class*=\"ko-case-content_cc__add-icon_\"]",
+    "[class*=\"ko-case-content_cc__cc--collapsed_\"]",
+    "[class*=\"ko-case-content_cc__cc--on_\"]",
+    "[class*=\"ko-case-content_cc__cc-expand-item_\"]",
+    "[class*=\"ko-case-content_cc__cc-list-and-input_\"]",
+    "[class*=\"ko-case-content_cc__cc_\"]",
+    "[class*=\"ko-case-content_cc__dropdown_\"]",
+    "[class*=\"ko-case-content_cc__email_\"]",
+    "[class*=\"ko-case-content_cc__ember-power-select-option_\"]",
+    "[class*=\"ko-case-content_cc__ember-power-select-options_\"]",
+    "[class*=\"ko-case-content_cc__hide_\"]",
+    "[class*=\"ko-case-content_cc__name_\"]",
+    "[class*=\"ko-case-content_cc__option-item-close_\"]",
+    "[class*=\"ko-case-content_cc__option-item-membrane_\"]",
+    "[class*=\"ko-case-content_cc__option-item-title_\"]",
+    "[class*=\"ko-case-content_cc__option-item_\"]",
+    "[class*=\"ko-case-content_cc__option_\"]",
+    "[class*=\"ko-case-content_cc__root_\"]",
+    "[class*=\"ko-case-content_cc__text_\"]",
+    "[class*=\"ko-case-content_cc__trigger_\"]",
+    "[class*=\"ko-case-content_cc_above__center_\"]",
+    "[class*=\"ko-case-content_cc_above__mailbox-cc--subtitle_\"]",
+    "[class*=\"ko-case-content_cc_above__mailbox-cc--title_\"]",
+    "[class*=\"ko-case-content_cc_above__mailbox-cc_\"]",
+    "[class*=\"ko-case-content_cc_trigger__container_\"]",
+    "[class*=\"ko-case-content_cc_trigger__input_\"]",
+    "[class*=\"ko-case-content_cc_trigger__options_\"]",
+    "[class*=\"ko-case-content_cc_trigger__placeholder_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__agent-name_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__agent_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__avatar_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__separator_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__team_\"]",
+    "[class*=\"ko-case-content_field_assignee_trigger-value__trigger_\"]",
+    "[class*=\"ko-case-content_field_requester_trigger-value__avatar_\"]",
+    "[class*=\"ko-case-content_field_requester_trigger-value__container_\"]",
+    "[class*=\"ko-case-content_field_status_swatch-with-label__container_\"]",
+    "[class*=\"ko-case-content_field_status_swatch-with-label__label_\"]",
+    "[class*=\"ko-case-content_field_status_swatch-with-label__prefix_\"]",
+    "[class*=\"ko-case-content_field_status_swatch-with-label__swatch_\"]",
+    "[class*=\"ko-case-content_info-block__container_\"]",
+    "[class*=\"ko-case-content_info-block__info-card_\"]",
+    "[class*=\"ko-case_macro-selector__container_\"]",
+    "[class*=\"ko-case_macro-selector__dropdown_\"]",
+    "[class*=\"ko-case_macro-selector__ember-power-select-search_\"]",
+    "[class*=\"ko-case_macro-selector__trigger_\"]",
+    "[class*=\"ko-case_macro-selector_trigger__icon_\"]",
+    "[class*=\"ko-case_macro-selector_trigger__trigger_\"]",
+    "[class*=\"ko-case_sla-dropdown__sidebar_\"]",
+    "[class*=\"ko-case_sla-dropdown__table_\"]",
+    "[class*=\"ko-case_sla-dropdown__title_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__data_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__is-breached_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__label_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__metric-active_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__metric-bad_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__metric-good_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__metric-paused_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__metric_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__progress-bar--active_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__progress-bar--bad_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__progress-bar--good_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__progress-bar_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__progress_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__shimmer_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__table_\"]",
+    "[class*=\"ko-case_sla-dropdown_metric__time_\"]",
+    "[class*=\"ko-feed_item\"]",
+    "[class*=\"ko-feed_item__content\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__dropdown_\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__ember-power-select-option_\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__ember-power-select-options_\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__i-chevron-large-left_\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__i-chevron-large-right_\"]",
+    "[class*=\"ko-info-bar_field_basic-drill-down__trigger_\"]",
+    "[class*=\"ko-info-bar_field_checkbox__actions_\"]",
+    "[class*=\"ko-info-bar_field_checkbox__header_\"]",
+    "[class*=\"ko-info-bar_field_checkbox__option_\"]",
+    "[class*=\"ko-info-bar_field_checkbox__separator_\"]",
+    "[class*=\"ko-info-bar_field_checkbox__unset-mode-dropdown_\"]",
+    "[class*=\"ko-info-bar_field_date__date_\"]",
+    "[class*=\"ko-info-bar_field_date__dropdownMenu_\"]",
+    "[class*=\"ko-info-bar_field_date__focus_\"]",
+    "[class*=\"ko-info-bar_field_date__header_\"]",
+    "[class*=\"ko-info-bar_field_date__icon_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__dropdown_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__ember-power-select-option_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__ember-power-select-options_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__i-chevron-large-left_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__i-chevron-large-right_\"]",
+    "[class*=\"ko-info-bar_field_drill-down__trigger_\"]",
+    "[class*=\"ko-info-bar_field_multiline-text__header_\"]",
+    "[class*=\"ko-info-bar_field_multiline-text__multiline-text_\"]",
+    "[class*=\"ko-info-bar_field_multiline-text__textarea_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple__dropdown_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple__trigger_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__ember-power-select-multiple-options_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__ember-power-select-status-icon_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__input_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__loading_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__title_\"]",
+    "[class*=\"ko-info-bar_field_select-multiple_trigger__trigger_\"]",
+    "[class*=\"ko-info-bar_field_select__dropdown_\"]",
+    "[class*=\"ko-info-bar_field_select__power-select_\"]",
+    "[class*=\"ko-info-bar_field_select__trigger_\"]",
+    "[class*=\"ko-info-bar_field_select_arrow__active_\"]",
+    "[class*=\"ko-info-bar_field_select_arrow__arrow-inset_\"]",
+    "[class*=\"ko-info-bar_field_select_arrow__arrow_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__header_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__icon_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__input--hidden_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__input_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__loading_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+    "[class*=\"ko-info-bar_field_select_trigger__trigger_\"]",
+    "[class*=\"ko-info-bar_field_text__header_\"]",
+    "[class*=\"ko-info-bar_field_text__input_\"]",
+    "[class*=\"ko-info-bar_field_text__text_\"]",
+    "[class*=\"ko-info-bar_item__containerActive_\"]",
+    "[class*=\"ko-info-bar_item__containerDisabled_\"]",
+    "[class*=\"ko-info-bar_item__containerEdited_\"]",
+    "[class*=\"ko-info-bar_item__containerError_\"]",
+    "[class*=\"ko-info-bar_item__containerKREEdited_\"]",
+    "[class*=\"ko-info-bar_item__container_\"]",
+    "[class*=\"ko-info-bar_shared.css__dropdown_\"]",
+    "[class*=\"ko-info-bar_shared.css__ember-basic-dropdown-content--above_\"]",
+    "[class*=\"ko-info-bar_shared.css__ember-basic-dropdown-content--below_\"]",
+    "[class*=\"ko-info-bar_update-log__box_\"]",
+    "[class*=\"ko-info-bar_update-log__close_\"]",
+    "[class*=\"ko-info-bar_update-log__container_\"]",
+    "[class*=\"ko-info-bar_update-log__detail_\"]",
+    "[class*=\"ko-info-bar_update-log__header_\"]",
+    "[class*=\"ko-info-bar_update-log__log-item_\"]",
+    "[class*=\"ko-info-bar_update-log__log-title_\"]",
+    "[class*=\"ko-info-bar_update-log__name_\"]",
+    "[class*=\"ko-info-bar_update-log__tooltipstered_\"]",
+    "[class*=\"ko-info-bar_viewing-users__avatar-image_\"]",
+    "[class*=\"ko-info-bar_viewing-users__avatar_\"]",
+    "[class*=\"ko-info-bar_viewing-users__avatars_\"]",
+    "[class*=\"ko-info-bar_viewing-users__container_\"]",
+    "[class*=\"ko-info-bar_viewing-users__header_\"]",
+    "[class*=\"ko-info-bar_viewing-users__inactive_\"]",
+    "[class*=\"ko-info-bar_viewing-users__spinner-bounce1_\"]",
+    "[class*=\"ko-info-bar_viewing-users__spinner-bounce2_\"]",
+    "[class*=\"ko-info-bar_viewing-users__spinner-bounce_\"]",
+    "[class*=\"ko-info-bar_viewing-users__spinner_\"]",
+    "[class*=\"ko-info-bar_viewing-users__updating_\"]",
+    "[class*=\"ko-timeline-2__container_\"]",
+    "[class*=\"ko-timeline-2__jump-bar_\"]",
+    "[class*=\"ko-timeline-2__load-link_\"]",
+    "[class*=\"ko-timeline-2__loader--idle_\"]",
+    "[class*=\"ko-timeline-2__loader--running_\"]",
+    "[class*=\"ko-timeline-2__loader_\"]",
+    "[class*=\"ko-timeline-2__previous-activities-arrow_\"]",
+    "[class*=\"ko-timeline-2__previous-activities-blob_\"]",
+    "[class*=\"ko-timeline-2__previous-activities-container-wrapper_\"]",
+    "[class*=\"ko-timeline-2__previous-activities-container_\"]",
+    "[class*=\"ko-timeline-2__previous-activities_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__jump-arrow_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__jump-bar_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__jump-message_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__jump-text_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__jump_\"]",
+    "[class*=\"ko-timeline-2_jump-bar__mark-as-seen_\"]",
+    "[class*=\"ko-timeline-2_list_activity_after__property-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_activity_before-after__arrow_\"]",
+    "[class*=\"ko-timeline-2_list_activity_before-after__property-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_activity_before-after__property-old-value_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__activity-time_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__breach_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__comment-container_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__completed_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__confetti_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__inline-property-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__large-activity-detail-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__large-activity-icon_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__large-activity-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__large_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__rating-comment-text-open-quote_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__rating-comment-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__rating-summary_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__rating_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__restored_\"]",
+    "[class*=\"ko-timeline-2_list_activity_large__trash_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__activity-line-major_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__activity-line-minor_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__activity-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__activity-time_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__activity_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__box_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__comment-block-container_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__comment-container_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__has-token-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__helpcenter-comment-text-open-quote_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__helpcenter-comment-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__properties_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__property-name_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__property-value_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__property_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__small-dot-spacer_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__suggestion-index_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__suggestion-text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__suggestions-wrapper_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__suggestions_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard__timeline-link_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__inline-property-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__status-pill_\"]",
+    "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__summary-line-actions_\"]",
+    "[class*=\"ko-timeline-2_list_activity_summary-text__actor_\"]",
+    "[class*=\"ko-timeline-2_list_activity_summary-text__entity_\"]",
+    "[class*=\"ko-timeline-2_list_activity_summary-text__link_\"]",
+    "[class*=\"ko-timeline-2_list_activity_summary-text__text_\"]",
+    "[class*=\"ko-timeline-2_list_activity_summary-text__token-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__action-button-container_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-action-button_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-bubble_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-container_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-content-wrapper_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-content_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-icon_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-read-more-button_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__ai-suggestion-text_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__expanded_\"]",
+    "[class*=\"ko-timeline-2_list_ai-suggestion-bubble__full-screen-loader_\"]",
+    "[class*=\"ko-timeline-2_list_days__day-separator_\"]",
+    "[class*=\"ko-timeline-2_list_days__day-separator__date_\"]",
+    "[class*=\"ko-timeline-2_list_days__day-separator__relative-term_\"]",
+    "[class*=\"ko-timeline-2_list_days__day-separator__text_\"]",
+    "[class*=\"ko-timeline-2_list_item__attachment-container-flap-hide_\"]",
+    "[class*=\"ko-timeline-2_list_item__attachments-header_\"]",
+    "[class*=\"ko-timeline-2_list_item__body_\"]",
+    "[class*=\"ko-timeline-2_list_item__br-wrapper--multiple_\"]",
+    "[class*=\"ko-timeline-2_list_item__br-wrapper--single_\"]",
+    "[class*=\"ko-timeline-2_list_item__br-wrapper_\"]",
+    "[class*=\"ko-timeline-2_list_item__case_\"]",
+    "[class*=\"ko-timeline-2_list_item__client-failed-message_\"]",
+    "[class*=\"ko-timeline-2_list_item__content_\"]",
+    "[class*=\"ko-timeline-2_list_item__creator_\"]",
+    "[class*=\"ko-timeline-2_list_item__extended-info_\"]",
+    "[class*=\"ko-timeline-2_list_item__failed_\"]",
+    "[class*=\"ko-timeline-2_list_item__header-container_\"]",
+    "[class*=\"ko-timeline-2_list_item__header_\"]",
+    "[class*=\"ko-timeline-2_list_item__hidden-item_\"]",
+    "[class*=\"ko-timeline-2_list_item__html-content_\"]",
+    "[class*=\"ko-timeline-2_list_item__iframe-content_\"]",
+    "[class*=\"ko-timeline-2_list_item__item_\"]",
+    "[class*=\"ko-timeline-2_list_item__joined-with-next-note_\"]",
+    "[class*=\"ko-timeline-2_list_item__joined-with-next_\"]",
+    "[class*=\"ko-timeline-2_list_item__joined-with-previous-note_\"]",
+    "[class*=\"ko-timeline-2_list_item__joined-with-previous_\"]",
+    "[class*=\"ko-timeline-2_list_item__mention-wormhole_\"]",
+    "[class*=\"ko-timeline-2_list_item__menu-item_\"]",
+    "[class*=\"ko-timeline-2_list_item__menu-open_\"]",
+    "[class*=\"ko-timeline-2_list_item__menu-wrapper_\"]",
+    "[class*=\"ko-timeline-2_list_item__menu_\"]",
+    "[class*=\"ko-timeline-2_list_item__message-count_\"]",
+    "[class*=\"ko-timeline-2_list_item__metadata-page-url_\"]",
+    "[class*=\"ko-timeline-2_list_item__no-menus-open_\"]",
+    "[class*=\"ko-timeline-2_list_item__note-summary_\"]",
+    "[class*=\"ko-timeline-2_list_item__note_\"]",
+    "[class*=\"ko-timeline-2_list_item__pinned-by-avatar_\"]",
+    "[class*=\"ko-timeline-2_list_item__pinned-by_\"]",
+    "[class*=\"ko-timeline-2_list_item__pinned_\"]",
+    "[class*=\"ko-timeline-2_list_item__post_\"]",
+    "[class*=\"ko-timeline-2_list_item__processing_\"]",
+    "[class*=\"ko-timeline-2_list_item__quote-icon_\"]",
+    "[class*=\"ko-timeline-2_list_item__role_\"]",
+    "[class*=\"ko-timeline-2_list_item__sending_\"]",
+    "[class*=\"ko-timeline-2_list_item__separator_\"]",
+    "[class*=\"ko-timeline-2_list_item__side-column_\"]",
+    "[class*=\"ko-timeline-2_list_item__side-conversation_\"]",
+    "[class*=\"ko-timeline-2_list_item__side-time_\"]",
+    "[class*=\"ko-timeline-2_list_item__status-separator_\"]",
+    "[class*=\"ko-timeline-2_list_item__status_\"]",
+    "[class*=\"ko-timeline-2_list_item__subtitle_\"]",
+    "[class*=\"ko-timeline-2_list_item__time_\"]",
+    "[class*=\"ko-timeline-2_list_item__title_\"]",
+    "[class*=\"ko-timeline-2_list_item__waiting_\"]",
+    "[class*=\"ko-timeline-2_list_item__yellow_\"]",
+    "[class*=\"ko-timeline-2_list_item_at-mention__mention-anchor_\"]",
+    "[class*=\"ko-timeline-2_list_item_at-mention__mention-me_\"]",
+    "[class*=\"ko-timeline-2_list_item_at-mention__mention_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__action_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__actions_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__attachment-container_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__attachment_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__details_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__download_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__flap-hide_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__full-screen-loader_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__meta_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__name-element_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__name_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__no-thumb_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__preview_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__size_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__small_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__thumbnail-link_\"]",
+    "[class*=\"ko-timeline-2_list_item_attachment__thumbnail_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at__link_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at__title_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-content_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-details_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-header_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__email-view_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__error-description_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__fadeIn_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__header-header_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__header-heading_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal__wrapper_\"]",
+    "[class*=\"ko-timeline-2_list_item_created-at_email-modal_iframe__iframe_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__active_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__cc-item_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__cell_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__chevron-info-box_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__details-chevron_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-cc_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-content_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item-solo_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__grey_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__hide_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__left_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__mail-text_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__no-comma_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__others-text_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__sandbox-trigger_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__shrink_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__to-text_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info-inline__top_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info__cell_\"]",
+    "[class*=\"ko-timeline-2_list_item_email-info__left_\"]",
+    "[class*=\"ko-timeline-2_list_item_menu__dropdown-body_\"]",
+    "[class*=\"ko-timeline-2_list_item_menu__trigger_\"]",
+    "[class*=\"ko-timeline-2_list_item_menu_item__disabled_\"]",
+    "[class*=\"ko-timeline-2_list_item_menu_item__item_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__client-failed_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__delivered_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__dropdown-trigger_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__email_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__icon_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__label_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__name_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__not-sent_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__recipient_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__recipients-list_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__rejected_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__seen_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__sent_\"]",
+    "[class*=\"ko-timeline-2_list_item_status__status_\"]",
+    "[class*=\"ko-timeline-2_list_post__event-url-container_\"]",
+    "[class*=\"ko-timeline-2_list_post__event-url_\"]",
+    "[class*=\"ko-timeline-2_list_post__external-url_\"]",
+    "[class*=\"ko-timeline-2_list_post__item_\"]",
+    "[class*=\"ko-timeline-2_list_post__large_\"]",
+    "[class*=\"ko-timeline-2_list_post__located_\"]",
+    "[class*=\"ko-timeline-2_list_post__new-messages-separator_\"]",
+    "[class*=\"ko-timeline-2_list_post__new-messages-separator__text_\"]",
+    "[class*=\"ko-timeline-2_list_post__no-menus-open_\"]",
+    "[class*=\"ko-timeline-2_list_post__note_\"]",
+    "[class*=\"ko-timeline-2_list_post__post_\"]",
+    "[class*=\"ko-timeline-2_list_post__standard_\"]",
+    "[class*=\"qa-case-content-organization-select\"]",
+    "[class*=\"qa-case-content__submit\"]",
+    "[class*=\"qa-case-content_timeline-header-title\"]",
+    "[class*=\"qa-content-source\"]",
+    "[class*=\"qa-created-at-email-link\"]",
+    "[class*=\"qa-created-at-string\"]",
+    "[class*=\"qa-created-at-twitter-link\"]",
+    "[class*=\"qa-from\"]",
+    "[class*=\"qa-item-menu-item\"]",
+    "[class*=\"qa-ko-case-content__action-menu\"]",
+    "[class*=\"qa-ko-case-content__cancel\"]",
+    "[class*=\"qa-ko-case-content__priority\"]",
+    "[class*=\"qa-ko-case-content__requester-field\"]",
+    "[class*=\"qa-ko-case-content__status\"]",
+    "[class*=\"qa-ko-case-content__subject\"]",
+    "[class*=\"qa-ko-case-content__subject-subtitle\"]",
+    "[class*=\"qa-ko-case-content__tags\"]",
+    "[class*=\"qa-ko-case-content__type\"]",
+    "[class*=\"qa-ko-timeline_item__subtitle\"]",
+    "[class*=\"qa-ko-timeline_item_menu__reply\"]",
+    "[class*=\"qa-list-item-menu__dropdown\"]",
+    "[class*=\"qa-mention\"]",
+    "[class*=\"qa-mention-anchor\"]",
+    "[class*=\"qa-new-messages-separator\"]",
+    "[class*=\"qa-number-of-times\"]",
+    "[class*=\"qa-pin-timeline-note\"]",
+    "[class*=\"qa-post__channel-selector\"]",
+    "[class*=\"qa-received-at\"]",
+    "[class*=\"qa-resend-button\"]",
+    "[class*=\"qa-source-iframe\"]",
+    "[class*=\"qa-subject\"]",
+    "[class*=\"qa-time-from-now\"]",
+    "[class*=\"qa-to\"]",
+    "[class*=\"qa-username\"]",
+    "[class*=\"qa__ko-case-content__note-mode\"]"
+  ]
+}

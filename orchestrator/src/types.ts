@@ -55,9 +55,17 @@ export const RunOptionsSchema = z.object({
   screenshot: z.enum(['on','off','only-on-failure']).optional(),
 });
 
+export const RunContextSchema = z.object({
+  crawlId: z.string().optional(),
+  flowId: z.string().optional(),
+}).optional();
+
 export const CreateRunSchema = z.object({
   target: RunTargetSchema.optional(),
   options: RunOptionsSchema.optional(),
+  context: RunContextSchema,
+  // Optional environment variables to inject into the Playwright process (e.g., KAYAKO_CONVERSATION_ID)
+  env: z.record(z.string()).optional(),
 });
 
 export type CreateRunRequest = z.infer<typeof CreateRunSchema>;
@@ -72,6 +80,7 @@ export interface RunRecord {
   args: string[];
   htmlReportUrl?: string;
   artifactsDir?: string;
+  context?: z.infer<typeof RunContextSchema>;
   summary?: {
     total: number;
     passed: number;

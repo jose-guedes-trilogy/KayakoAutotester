@@ -1,0 +1,268 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\add-internal-note.spec.ts",
+      "file": "generated/add-internal-note.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Switch to Notes mode and insert an internal note (env.KAYAKO_NOTE_TEXT)",
+          "file": "generated/add-internal-note.spec.ts",
+          "line": 17,
+          "column": 8,
+          "specs": [
+            {
+              "title": "add-internal-note",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 19568,
+                      "error": {
+                        "message": "Error: Unable to navigate from inbox to conversation (stuck at https://trilogy-joseguedes.kayako.com/agent/conversations/view/1)",
+                        "stack": "Error: Unable to navigate from inbox to conversation (stuck at https://trilogy-joseguedes.kayako.com/agent/conversations/view/1)\n    at accessConversation (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1701:11)\n    at runFlow (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-internal-note.spec.ts:9:5)\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-internal-note.spec.ts:19:7",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                          "column": 11,
+                          "line": 1701
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\selectors\\index.ts:1701\n\n\u001b[0m \u001b[90m 1699 |\u001b[39m     \u001b[36mconst\u001b[39m failureUrl \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39murl()\u001b[33m;\u001b[39m\n \u001b[90m 1700 |\u001b[39m     logger\u001b[33m.\u001b[39merror(\u001b[32m'Inbox row click did not navigate to detail view (url=%s)'\u001b[39m\u001b[33m,\u001b[39m failureUrl)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1701 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Unable to navigate from inbox to conversation (stuck at ${failureUrl})`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m      |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 1702 |\u001b[39m   }\n \u001b[90m 1703 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m3000\u001b[39m })\u001b[33m.\u001b[39m\u001b[36mcatch\u001b[39m(() \u001b[33m=>\u001b[39m undefined)\u001b[33m;\u001b[39m\n \u001b[90m 1704 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                            "column": 11,
+                            "line": 1701
+                          },
+                          "message": "Error: Unable to navigate from inbox to conversation (stuck at https://trilogy-joseguedes.kayako.com/agent/conversations/view/1)\n\n\u001b[90m   at \u001b[39m..\\selectors\\index.ts:1701\n\n\u001b[0m \u001b[90m 1699 |\u001b[39m     \u001b[36mconst\u001b[39m failureUrl \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39murl()\u001b[33m;\u001b[39m\n \u001b[90m 1700 |\u001b[39m     logger\u001b[33m.\u001b[39merror(\u001b[32m'Inbox row click did not navigate to detail view (url=%s)'\u001b[39m\u001b[33m,\u001b[39m failureUrl)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1701 |\u001b[39m     \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Unable to navigate from inbox to conversation (stuck at ${failureUrl})`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m      |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 1702 |\u001b[39m   }\n \u001b[90m 1703 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForLoadState(\u001b[32m'networkidle'\u001b[39m\u001b[33m,\u001b[39m { timeout\u001b[33m:\u001b[39m \u001b[35m3000\u001b[39m })\u001b[33m.\u001b[39m\u001b[36mcatch\u001b[39m(() \u001b[33m=>\u001b[39m undefined)\u001b[33m;\u001b[39m\n \u001b[90m 1704 |\u001b[39m }\u001b[0m\n\u001b[2m    at accessConversation (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1701:11)\u001b[22m\n\u001b[2m    at runFlow (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-internal-note.spec.ts:9:5)\u001b[22m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-internal-note.spec.ts:19:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T13:06:28.880Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:28.894Z] [INFO] [LoginPage run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.411Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Loaded selectors.jsonc (mtime %d) \u001b[33m1764176183526.7112\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.451Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.464Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.612Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.625Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.767Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:31.782Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.397Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.412Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.418Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.425Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.427Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:35.430Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] No conversation ID provided and not on a conversation; opening first conversation from inbox\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:37.586Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:37.616Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:37.657Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child\n"
+                        },
+                        {
+                          "text": "[2025-11-27T13:06:37.678Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Clicking %s.%s (selector=%s, fallbackIndex=%d) inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child \u001b[33m0\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-27T13:06:47.839Z] [ERROR] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Inbox row click did not navigate to detail view (url=%s) https://trilogy-joseguedes.kayako.com/agent/conversations/view/1\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-27T13:06:28.070Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\artifacts\\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\artifacts\\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\\artifacts\\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                        "column": 11,
+                        "line": 1701
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2b3eefd7c4d424b25748-d2601c95c04c598e74a6",
+              "file": "generated/add-internal-note.spec.ts",
+              "line": 18,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T13:06:26.778Z",
+    "duration": 25677.036,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,166 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="25.340041">
+<testsuite name="runtime\queue-runner.spec.ts" timestamp="2025-11-25T15:16:46.185Z" hostname="chromium" tests="1" failures="1" skipped="0" time="21.35" errors="0">
+<testcase name="Queued flows › run queued flows serially" classname="runtime\queue-runner.spec.ts" time="21.35">
+<failure message="queue-runner.spec.ts:8:7 run queued flows serially" type="FAILURE">
+<![CDATA[  [chromium] › runtime\queue-runner.spec.ts:8:7 › Queued flows › run queued flows serially › Flow: add-tags-and-status 
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "Pending"
+    Received string:    ""
+
+       at ..\selectors\index.ts:1667
+
+      1665 | export async function expectStatusLabel(page: Page, expected: string): Promise<void> {
+      1666 |   const actual = await getConversationStatusText(page);
+    > 1667 |   expect((actual || '').trim()).toContain(expected.trim());
+           |                                 ^
+      1668 | }
+      1669 |
+      1670 | export async function expectTagsContain(page: Page, expectedTags: string[]): Promise<void> {
+        at expectStatusLabel (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\selectors\index.ts:1667:33)
+        at runFlow (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\add-tags-and-status.spec.ts:15:3)
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\runtime\queue-runner.spec.ts:23:9
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\runtime\queue-runner.spec.ts:15:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\d52a98a0-cf1c-4932-848b-9ae85ef806c1\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\runs\d52a98a0-cf1c-4932-848b-9ae85ef806c1\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\d52a98a0-cf1c-4932-848b-9ae85ef806c1\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-25T15:16:48.150Z] [INFO] [auth.fixture] Starting login flow for authenticatedPage
+[2025-11-25T15:16:48.159Z] [INFO] [LoginPage] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-25T15:16:51.361Z] [INFO] [selectors] Loaded selectors.jsonc (mtime %d) [33m1764013286171.8535[39m
+[2025-11-25T15:16:51.717Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-25T15:16:51.734Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-25T15:16:51.884Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-25T15:16:51.900Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-25T15:16:52.042Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-25T15:16:52.055Z] [INFO] [selectors] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-25T15:16:55.669Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-25T15:16:55.691Z] [INFO] [selectors] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-25T15:16:55.698Z] [INFO] [auth.fixture] Login successful
+[2025-11-25T15:16:55.709Z] [INFO] [auth.fixture] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-25T15:16:55.951Z] [INFO] [selectors] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-25T15:16:55.954Z] [INFO] [selectors] Navigating to target conversation by ID: %s https://trilogy-joseguedes.kayako.com/agent/conversations/35
+[2025-11-25T15:16:59.743Z] [INFO] [selectors] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-25T15:16:59.745Z] [INFO] [selectors] Already on target conversation %s; skipping navigation 35
+[2025-11-25T15:16:59.745Z] [INFO] [selectors] Adding tags: %o [ [32m'autotest-tag'[39m, [32m'autotest-tag-2'[39m ]
+[2025-11-25T15:16:59.801Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')
+[2025-11-25T15:16:59.819Z] [INFO] [selectors] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') [33m0[39m
+[2025-11-25T15:17:00.199Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']
+[2025-11-25T15:17:01.276Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag “autotest-tag”
+[2025-11-25T15:17:01.284Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag “autotest-tag”'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:01.285Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag "autotest-tag"
+[2025-11-25T15:17:01.295Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag "autotest-tag"'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:01.295Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s autotest-tag
+[2025-11-25T15:17:01.302Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'autotest-tag'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:01.669Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-25T15:17:01.729Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']
+[2025-11-25T15:17:02.735Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag “autotest-tag-2”
+[2025-11-25T15:17:02.743Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag “autotest-tag-2”'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:02.744Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag "autotest-tag-2"
+[2025-11-25T15:17:02.750Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag "autotest-tag-2"'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:02.750Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s autotest-tag-2
+[2025-11-25T15:17:02.760Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {
+  needle: [32m'autotest-tag-2'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-25T15:17:03.127Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-25T15:17:03.153Z] [INFO] [selectors] Setting status: %s Pending
+[2025-11-25T15:17:08.516Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Pending
+[2025-11-25T15:17:08.580Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']
+[2025-11-25T15:17:08.607Z] [DEBUG] [selectors] Update properties container visible after status change
+[2025-11-25T15:17:08.837Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s conversation statusPill [class*='ko-case-content_field_status_swatch-with-label__swatch_']
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\video.webm]]
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-25T15:17:01.701Z] [WARN] [selectors] Tag not confirmed by pills after add attempt: %s (pills=%o) autotest-tag [ [32m'abcdsads'[39m ]
+[2025-11-25T15:17:03.153Z] [WARN] [selectors] Tag not confirmed by pills after add attempt: %s (pills=%o) autotest-tag-2 [ [32m'abcdsads'[39m ]
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

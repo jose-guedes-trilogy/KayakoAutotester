@@ -1,0 +1,67 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="25.677036">
+<testsuite name="generated\add-internal-note.spec.ts" timestamp="2025-11-27T13:06:27.002Z" hostname="chromium" tests="1" failures="1" skipped="0" time="19.568" errors="0">
+<testcase name="Switch to Notes mode and insert an internal note (env.KAYAKO_NOTE_TEXT) › add-internal-note" classname="generated\add-internal-note.spec.ts" time="19.568">
+<failure message="add-internal-note.spec.ts:18:9 add-internal-note" type="FAILURE">
+<![CDATA[  [chromium] › generated\add-internal-note.spec.ts:18:9 › Switch to Notes mode and insert an internal note (env.KAYAKO_NOTE_TEXT) › add-internal-note 
+
+    Error: Unable to navigate from inbox to conversation (stuck at https://trilogy-joseguedes.kayako.com/agent/conversations/view/1)
+
+       at ..\selectors\index.ts:1701
+
+      1699 |     const failureUrl = page.url();
+      1700 |     logger.error('Inbox row click did not navigate to detail view (url=%s)', failureUrl);
+    > 1701 |     throw new Error(`Unable to navigate from inbox to conversation (stuck at ${failureUrl})`);
+           |           ^
+      1702 |   }
+      1703 |   await page.waitForLoadState('networkidle', { timeout: 3000 }).catch(() => undefined);
+      1704 | }
+        at accessConversation (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\selectors\index.ts:1701:11)
+        at runFlow (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\add-internal-note.spec.ts:9:5)
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\add-internal-note.spec.ts:19:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\runs\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e\artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-27T13:06:28.880Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Starting login flow for authenticatedPage
+[2025-11-27T13:06:28.894Z] [INFO] [LoginPage run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-27T13:06:31.411Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Loaded selectors.jsonc (mtime %d) [33m1764176183526.7112[39m
+[2025-11-27T13:06:31.451Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-27T13:06:31.464Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-27T13:06:31.612Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-27T13:06:31.625Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-27T13:06:31.767Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-27T13:06:31.782Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-27T13:06:35.397Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-27T13:06:35.412Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-27T13:06:35.418Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Login successful
+[2025-11-27T13:06:35.425Z] [INFO] [auth.fixture run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-27T13:06:35.427Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-27T13:06:35.430Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] No conversation ID provided and not on a conversation; opening first conversation from inbox
+[2025-11-27T13:06:37.586Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child
+[2025-11-27T13:06:37.616Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child [33m0[39m
+[2025-11-27T13:06:37.657Z] [DEBUG] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child
+[2025-11-27T13:06:37.678Z] [INFO] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Clicking %s.%s (selector=%s, fallbackIndex=%d) inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child [33m0[39m
+
+[[ATTACHMENT|artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\video.webm]]
+
+[[ATTACHMENT|artifacts\generated-add-internal-not-38748-NOTE-TEXT-add-internal-note-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-27T13:06:47.839Z] [ERROR] [selectors run=2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e] Inbox row click did not navigate to detail view (url=%s) https://trilogy-joseguedes.kayako.com/agent/conversations/view/1
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

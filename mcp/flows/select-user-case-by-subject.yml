@@ -1,0 +1,19 @@
+name: select-user-case-by-subject
+description: Open the user cases dropdown and select a case by subject (env.KAYAKO_OTHER_SUBJECT)
+steps:
+  - type: access-conversation
+  - type: dispatch-click
+    selectorKey: userCases.trigger
+  - type: expect-visible
+    selectorKey: userCases.dropdown
+    optional: true
+  - type: dispatch-click-text
+    value: env.KAYAKO_OTHER_SUBJECT
+  - type: wait-loadstate
+    state: networkidle
+    optional: true
+  - type: expect-url-contains
+    value: "/agent/conversations/"
+    optional: true
+
+

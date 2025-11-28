@@ -1,0 +1,1875 @@
+{
+  "crawls": {
+    "crawl-2025-11-26t15-01-56-077z": {
+      "crawlId": "crawl-2025-11-26t15-01-56-077z",
+      "startedAt": "2025-11-26T15:01:56.079Z",
+      "updatedAt": "2025-11-26T15:05:11.214Z",
+      "baseUrl": "https://trilogy-joseguedes.kayako.com/agent",
+      "nodes": {
+        "https://trilogy-joseguedes.kayako.com/agent/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "depth": 0,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:09.751Z",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:18.061Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/users": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/users?page=2"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:26.588Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/organizations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:35.067Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/insights": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:43.550Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/knowledgebase": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:52.038Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/": {
+          "url": "https://trilogy-joseguedes.kayako.com/",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:02:57.462Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:05.943Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:14.441Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:22.912Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:31.415Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:39.918Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:48.393Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "depth": 1,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:18.080Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:03:56.861Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/users?page=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:26.602Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/users"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:05.340Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:43.562Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:13.839Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:43.562Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:22.318Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:24.791Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/new": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/2",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/3",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/4"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:27.292Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:30.200Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/profile/edit": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/otp"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:33.447Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/url",
+            "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/download"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:37.351Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:40.414Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/category/add": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:43.181Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:45.826Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:48.951Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:51.649Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:54.801Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:04:58.635Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:05:01.486Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:05:03.700Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:05:06.039Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/category/2-test": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2",
+            "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:05:08.525Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "depth": 2,
+          "status": "success",
+          "discoveredAt": "2025-11-26T15:02:57.476Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/en-us",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+            "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+            "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+            "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1",
+            "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=2"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-26T15:05:10.953Z"
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/2": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/2",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:27.303Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/3": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/3",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:27.303Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/4": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/4",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:27.303Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/profile/otp": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/profile/otp",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:33.459Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/url": {
+          "url": "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/url",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:37.363Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/download": {
+          "url": "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/download",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:37.363Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:48.962Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=1",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:04:54.812Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:05:06.050Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:05:06.050Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "children": []
+        },
+        "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=2",
+          "depth": 3,
+          "status": "skipped",
+          "discoveredAt": "2025-11-26T15:05:10.964Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "children": []
+        }
+      },
+      "edges": [
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users?page=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/add"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users?page=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/users?page=2",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/general/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights/sla/overview"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/add"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/3"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new/4"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/otp"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/url"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/35",
+          "to": "https://trilogy-joseguedes.kayako.com/api/v1/conversations/35/messages/680/attachments/10/download"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/conversation/view/5",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/add",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/1-welcome-to-your-new-help-center",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/1-getting-started"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/2-ajahnbrahmisholy",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/1-welcome"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/article/add?category_id=2",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test?edit=1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/add?category_id=2"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversation/new"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/conversations"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/profile/edit"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/category/2-test"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/3-art-1"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/en-us/section/2-sec-1",
+          "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=2"
+        }
+      ]
+    }
+  },
+  "lastCrawlId": "crawl-2025-11-26t15-01-56-077z"
+}

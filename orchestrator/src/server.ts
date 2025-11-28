@@ -11,8 +11,95 @@ import { artifactsDirForRun, readRuns, readTests, repoRoot, upsertRun, writeTest
 import { spawnNpm, spawnNpx } from './utils/spawn';
 import YAML from 'yaml';
 import fg from 'fast-glob';
-import { parse as parseJsonc } from 'jsonc-parser';
+import { parse as parseJsonc, modify as jsoncModify, applyEdits as jsoncApplyEdits } from 'jsonc-parser';
 import fsNative from 'fs';
+
+type CrawlGraph = {
+  crawls: Record<
+    string,
+    {
+      startedAt?: string;
+      updatedAt?: string;
+      nodes: Record<string, { url: string; status: string }>;
+    }
+  >;
+  lastCrawlId?: string;
+};
+
+type CrawlSummary = {
+  crawlId: string;
+  totalNodes: number;
+  successNodes: number;
+  startedAt?: string;
+  updatedAt?: string;
+};
+
+type StructureSummary = {
+  crawlId: string;
+  dir: string;
+  fileCount: number;
+  mtimeMs: number;
+};
+
+const structureRoot = path.join(repoRoot(), 'artifacts', 'structure');
+const selectorSuggestionsFile = path.join(repoRoot(), 'selectors', 'extracted', 'pending.json');
+const crawlGraphPath = path.join(repoRoot(), 'storage', 'map', 'graph.json');
+
+async function readCrawlSummaries(): Promise<CrawlSummary[]> {
+  try {
+    const raw = await fs.readFile(crawlGraphPath, 'utf8');
+    const graph = JSON.parse(raw) as CrawlGraph;
+    return Object.entries(graph.crawls || {}).map(([crawlId, crawl]) => {
+      const nodes = Object.values(crawl.nodes || {});
+      const successNodes = nodes.filter((n) => n.status === 'success').length;
+      return {
+        crawlId,
+        totalNodes: nodes.length,
+        successNodes,
+        startedAt: crawl.startedAt,
+        updatedAt: crawl.updatedAt,
+      };
+    });
+  } catch {
+    return [];
+  }
+}
+
+async function readStructureSummaries(): Promise<StructureSummary[]> {
+  try {
+    const entries = await fs.readdir(structureRoot, { withFileTypes: true });
+    const dirs = entries.filter((entry) => entry.isDirectory());
+    const summaries: StructureSummary[] = [];
+    for (const entry of dirs) {
+      const dir = path.join(structureRoot, entry.name);
+      const stat = await fs.stat(dir);
+      const files = await fg(['**/*.html', '**/*.png'], { cwd: dir, onlyFiles: true });
+      summaries.push({
+        crawlId: entry.name,
+        dir: path.relative(repoRoot(), dir).replace(/\\/g, '/'),
+        fileCount: files.length,
+        mtimeMs: stat.mtimeMs,
+      });
+    }
+    summaries.sort((a, b) => b.mtimeMs - a.mtimeMs);
+    return summaries;
+  } catch {
+    return [];
+  }
+}
+
+async function readSelectorSuggestionSummary(): Promise<{ pendingCount: number; file?: string } | null> {
+  try {
+    const raw = await fs.readFile(selectorSuggestionsFile, 'utf8');
+    const data = JSON.parse(raw) as { suggestions?: Array<any> };
+    return {
+      pendingCount: data.suggestions?.length || 0,
+      file: path.relative(repoRoot(), selectorSuggestionsFile).replace(/\\/g, '/'),
+    };
+  } catch {
+    return null;
+  }
+}
 
 // Add live selector validation via a small ts-node script
 async function runSelectorValidate(body: any) {
@@ -61,7 +148,18 @@ app.use(
     },
   }),
 );
-app.use(compression());
+// Avoid compressing Server-Sent Events; compression can buffer SSE and prevent real-time logs
+app.use(
+  compression({
+    filter: (req: express.Request, res: express.Response) => {
+      const url = req.url || '';
+      if (url.startsWith('/api/runs/') && url.endsWith('/stream')) {
+        return false;
+      }
+      return compression.filter(req, res);
+    },
+  }),
+);
 app.use(express.json({ limit: '2mb' }));
 app.use(morgan('dev'));
 
@@ -69,6 +167,18 @@ app.use(morgan('dev'));
 app.use('/report', express.static(path.join(repoRoot(), 'playwright-report')));
 // Serve a minimal control UI at /control
 app.use('/control', express.static(path.join(__dirname, '..', 'public')));
+
+// Serve per-run HTML reports and artifacts from runs/<RUN_ID> when available
+app.use('/runs/:id/html', (req, res, next) => {
+  const id = String(req.params.id || '');
+  const dir = path.join(repoRoot(), 'runs', id, 'html');
+  express.static(dir)(req, res, next);
+});
+app.use('/runs/:id/artifacts', (req, res, next) => {
+  const id = String(req.params.id || '');
+  const dir = path.join(repoRoot(), 'runs', id, 'artifacts');
+  express.static(dir)(req, res, next);
+});
 
 // Health check
 app.get('/health', (_req, res) => res.json({ ok: true }));
@@ -162,6 +272,50 @@ app.get('/api/flows', async (_req, res) => {
   res.json({ flows: items });
 });
 
+// Read a specific flow file's raw YAML content
+app.get('/api/flows/:file/content', async (req, res) => {
+  try {
+    const file = String(req.params.file || '');
+    if (!/^[a-zA-Z0-9._-]+\.yml$/i.test(file)) {
+      return res.status(400).json({ error: 'invalid file' });
+    }
+    const p = path.join(repoRoot(), 'mcp', 'flows', file);
+    if (!(await fs.pathExists(p))) return res.status(404).json({ error: 'Flow not found' });
+    const content = await fs.readFile(p, 'utf8');
+    res.json({ file, content });
+  } catch (e: any) {
+    res.status(500).json({ error: e?.message || 'Failed to read flow' });
+  }
+});
+
+// Save (create/update) a flow file from raw YAML content
+app.post('/api/flows/save', async (req, res) => {
+  try {
+    const { file, content } = req.body || {};
+    if (typeof file !== 'string' || typeof content !== 'string') {
+      return res.status(400).json({ error: 'file and content required' });
+    }
+    if (!/^[a-zA-Z0-9._-]+\.yml$/i.test(file)) {
+      return res.status(400).json({ error: 'invalid file' });
+    }
+    // Validate parsable YAML and minimal shape
+    try {
+      const parsed = YAML.parse(String(content));
+      if (!parsed || typeof parsed !== 'object' || !Array.isArray((parsed as any).steps)) {
+        return res.status(400).json({ error: 'YAML must include steps: [...]' });
+      }
+    } catch (e: any) {
+      return res.status(400).json({ error: `Invalid YAML: ${e?.message || 'parse error'}` });
+    }
+    const p = path.join(repoRoot(), 'mcp', 'flows', file);
+    await fs.mkdirp(path.dirname(p));
+    await fs.writeFile(p, String(content), 'utf8');
+    res.json({ ok: true, file });
+  } catch (e: any) {
+    res.status(500).json({ error: e?.message || 'Failed to save flow' });
+  }
+});
+
 // Convert a specific flow file to spec
 app.post('/api/flows/convert', async (req, res) => {
   const root = repoRoot();
@@ -205,6 +359,44 @@ app.get('/api/selectors', async (_req, res) => {
   }
 });
 
+// Update selectors for a specific group/key in selectors.jsonc, preserving comments
+app.post('/api/selectors/update', async (req, res) => {
+  const root = repoRoot();
+  const file = path.join(root, 'selectors', 'selectors.jsonc');
+  const { group, key, candidates } = req.body || {};
+  if (typeof group !== 'string' || typeof key !== 'string' || !Array.isArray(candidates)) {
+    return res.status(400).json({ error: 'group, key, candidates[] required' });
+  }
+  // sanitize and de-duplicate
+  const rawList = candidates.map((s: any) => String(s || '').trim()).filter((s: string) => s.length > 0);
+  const seen = new Set<string>();
+  const list: string[] = [];
+  for (const s of rawList) {
+    if (seen.has(s)) continue;
+    seen.add(s);
+    list.push(s);
+  }
+  // prefer [class*= selectors first to increase resilience
+  list.sort((a, b) => {
+    const ra = /^\s*\[class\*\=/.test(a) ? 0 : 1;
+    const rb = /^\s*\[class\*\=/.test(b) ? 0 : 1;
+    if (ra !== rb) return ra - rb;
+    return a.localeCompare(b);
+  });
+  try {
+    const text = fsNative.readFileSync(file, 'utf8');
+    const pathJson = [group, key];
+    const edits = jsoncModify(text, pathJson, list, {
+      formattingOptions: { insertSpaces: true, tabSize: 2, eol: '\n' },
+    });
+    const newText = jsoncApplyEdits(text, edits);
+    fsNative.writeFileSync(file, newText, 'utf8');
+    res.json({ ok: true, group, key, candidates: list });
+  } catch (e: any) {
+    res.status(500).json({ error: e?.message || 'Failed to update selectors.jsonc' });
+  }
+});
+
 // List generated tests (specs) under tests/generated
 app.get('/api/specs', async (_req, res) => {
   const root = repoRoot();
@@ -236,6 +428,33 @@ app.get('/api/runs/:id', async (req, res) => {
   }
 });
 
+// List video artifacts (.webm) for a specific run, newest first
+app.get('/api/runs/:id/videos', async (req, res) => {
+  try {
+    const id = String(req.params.id || '');
+    // Ensure run exists
+    await runs.getRun(id);
+    const root = repoRoot();
+    const dir = path.join(root, 'runs', id, 'artifacts');
+    if (!(await fs.pathExists(dir))) {
+      return res.json({ videos: [] });
+    }
+    const files = await fg(['**/*.webm'], { cwd: dir, absolute: true }).catch(() => [] as string[]);
+    const items = await Promise.all(
+      files.map(async (abs) => {
+        const stat = await fs.stat(abs).catch(() => null as any);
+        const rel = path.relative(dir, abs).replace(/\\/g, '/');
+        const url = `/runs/${encodeURIComponent(id)}/artifacts/${rel}`;
+        return { url, file: rel, mtimeMs: stat ? stat.mtimeMs : 0, size: stat ? stat.size : 0 };
+      }),
+    );
+    items.sort((a, b) => b.mtimeMs - a.mtimeMs);
+    res.json({ videos: items });
+  } catch (e: any) {
+    res.status(500).json({ error: e?.message || 'Failed to list videos' });
+  }
+});
+
 app.post('/api/runs', async (req, res) => {
   const parse = CreateRunSchema.safeParse(req.body || {});
   if (!parse.success) {
@@ -251,12 +470,73 @@ app.post('/api/runs/:id/stop', async (req, res) => {
   res.json({ ok });
 });
 
+// Force kill all running Playwright processes (escape hatch)
+app.post('/api/runs/kill-all', async (_req, res) => {
+  const count = await runs.killAll();
+  res.json({ ok: true, count });
+});
+
+app.get('/api/crawls', async (_req, res) => {
+  const crawls = await readCrawlSummaries();
+  res.json({ crawls });
+});
+
+app.get('/api/reporting', async (_req, res) => {
+  const [crawls, structures, selectorSuggestions] = await Promise.all([
+    readCrawlSummaries(),
+    readStructureSummaries(),
+    readSelectorSuggestionSummary(),
+  ]);
+  const runsList = await readRuns();
+  const runsSummary = runsList.reduce(
+    (acc, run) => {
+      acc.total += 1;
+      if (run.status === 'running') acc.running += 1;
+      else if (run.status === 'passed') acc.passed += 1;
+      else if (run.status === 'failed') acc.failed += 1;
+      return acc;
+    },
+    { total: 0, running: 0, passed: 0, failed: 0 },
+  );
+  const specFiles = await fg(['*.spec.ts'], { cwd: path.join(repoRoot(), 'tests', 'generated'), onlyFiles: true }).catch(
+    () => [] as string[],
+  );
+  const compositeSpecsCount = specFiles.filter((f) => path.basename(f).startsWith('composite-')).length;
+  res.json({
+    crawls,
+    structures,
+    selectorSuggestions,
+    runsSummary,
+    specsCount: specFiles.length,
+    compositeSpecsCount,
+  });
+});
+// Receive direct log lines from test processes and broadcast to SSE
+app.post('/api/runs/:id/log', async (req, res) => {
+  const id = String(req.params.id || '');
+  const body = (req.body || {}) as { line?: string };
+  const line = String(body.line ?? '').trim();
+  if (!line) {
+    return res.status(400).json({ error: 'line required' });
+  }
+  try {
+    // Ensure run exists (throws if not)
+    await runs.getRun(id);
+    runs.ingestExternalLog(id, line);
+    res.json({ ok: true });
+  } catch (e: any) {
+    res.status(404).json({ error: e?.message || 'Run not found' });
+  }
+});
+
 // SSE log stream
 app.get('/api/runs/:id/stream', async (req, res) => {
   const id = String(req.params.id || '');
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
+  // Prevent intermediaries from buffering
+  res.setHeader('X-Accel-Buffering', 'no');
   res.flushHeaders?.();
   const client = {
     id: Math.random().toString(36).slice(2),
@@ -264,7 +544,18 @@ app.get('/api/runs/:id/stream', async (req, res) => {
     close: () => res.end(),
   };
   runs.attachClient(id, client);
-  req.on('close', () => runs.detachClient(id, client));
+  // Heartbeat to keep connection alive and help proxies flush
+  const iv = setInterval(() => {
+    try {
+      res.write('event: ping\ndata: {}\n\n');
+    } catch {
+      // ignore
+    }
+  }, 15000);
+  req.on('close', () => {
+    clearInterval(iv);
+    runs.detachClient(id, client);
+  });
 });
 
 // Selectors lint (exec existing script)

@@ -1,0 +1,15 @@
+name: composite-add-internal-note
+description: Switch to internal note mode, add text, and send.
+steps:
+  - type: access-conversation
+
+  - type: switch-to-internal-note
+
+  - type: insert-reply-text
+    value: env.INTERNAL_NOTE_TEXT
+
+  - type: click-send-button
+
+  - type: wait
+    value: "500"
+

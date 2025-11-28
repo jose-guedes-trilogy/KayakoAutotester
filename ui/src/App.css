@@ -2,7 +2,7 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left; /* align left */
 }
 
 .logo {
@@ -39,4 +39,21 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Inputs: lighter borders and rounded corners */
+input, textarea, select {
+  border: 1px solid #e3e8ef;
+  border-radius: 8px;
+  padding: 6px 8px;
+  background: #fff;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #c7d0e4;
+  box-shadow: 0 0 0 2px rgba(99, 132, 231, 0.15);
+}
+
+button {
+  border-radius: 8px;
 }

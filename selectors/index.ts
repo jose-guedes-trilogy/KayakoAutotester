@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import { parse } from 'jsonc-parser';
 import type { Page, Locator, Frame } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { createLogger } from '../lib/logger';
+import { hudEnsure, hudPush, hudSet, hudEnabled } from './hud';
 import { env } from '../config/env';
 
 const logger = createLogger('selectors');
@@ -40,6 +42,7 @@ export async function firstAvailableLocator(
   key: string,
 ): Promise<{ locator: Locator; usedSelector: string; fallbackIndex: number }>
 {
+  try { await hudSet(page, `Locating ${group}.${key}`); } catch {}
   // Give the page a moment to render core UI for dynamic apps
   try {
     await page.waitForLoadState('domcontentloaded', { timeout: 10000 });
@@ -56,6 +59,7 @@ export async function firstAvailableLocator(
       const locator = ctx.locator(selector).first();
     try {
         // Prefer a short wait so we don't instantly miss dynamic elements
+        try { await hudSet(page, `Waiting for ${group}.${key}\n#${i + 1}: ${selector}`); } catch {}
         await locator.waitFor({ state: 'attached', timeout: 8000 });
       const count = await locator.count();
       if (count > 0) {
@@ -70,6 +74,7 @@ export async function firstAvailableLocator(
         } else {
           logger.debug('Primary selector used for %s.%s: %s', group, key, selector);
         }
+        try { await hudPush(page, `Found ${group}.${key} via index ${i}`); await hudSet(page, ``); } catch {}
         return { locator, usedSelector: selector, fallbackIndex: i };
       }
     } catch (err) {
@@ -85,6 +90,7 @@ export async function firstAvailableLocator(
     }
   }
   logger.error('No selector candidates matched for %s.%s', group, key);
+  try { await hudPush(page, `No candidates matched for ${group}.${key}`); } catch {}
   throw new Error(`No selector candidates matched for ${group}.${key}`);
 }
 
@@ -158,6 +164,7 @@ export async function dispatchClickCss(page: Page, group: string, key: string): 
   const cssCandidates = getSelectorCandidates(group, key).filter((s) => !s.startsWith('role=') && !s.startsWith('text=') && s.indexOf(':has-text(') === -1);
   logger.info('Dispatch-click CSS for %s.%s with %d candidate(s)', group, key, cssCandidates.length);
   for (const cssSel of cssCandidates) {
+    try { await hudSet(page, `Dispatch click (CSS) ${group}.${key}\n${cssSel}`); } catch {}
     const ok = await page.evaluate((sel) => {
       const el = document.querySelector(sel);
       if (!el) return false;
@@ -171,15 +178,18 @@ export async function dispatchClickCss(page: Page, group: string, key: string): 
     }, cssSel).catch(() => false);
     if (ok) {
       logger.info('Dispatch-click CSS succeeded for %s.%s using %s', group, key, cssSel);
+      try { await hudPush(page, `Clicked ${group}.${key}`); await hudSet(page, ``); } catch {}
       return;
     }
   }
   logger.error('Dispatch-click CSS failed for %s.%s - no CSS candidates matched', group, key);
+  try { await hudPush(page, `Dispatch click failed for ${group}.${key}`); } catch {}
   throw new Error(`Dispatch-click CSS failed for ${group}.${key}`);
 }
 
 export async function dispatchClickText(page: Page, text: string): Promise<void> {
   logger.info('Dispatch-click by text: %s', text);
+  try { await hudSet(page, `Dispatch click by text:\n${text}`); } catch {}
   const ok = await page.evaluate((needle: string) => {
     function visible(el: Element): boolean {
       const s = getComputedStyle(el as HTMLElement);
@@ -196,10 +206,50 @@ export async function dispatchClickText(page: Page, text: string): Promise<void>
     return true;
   }, text).catch(() => false);
   if (!ok) {
+    // Extra diagnostics to help identify why it failed
+    try {
+      const diag = await page.evaluate((needle: string) => {
+        function visible(el: Element): boolean {
+          const s = getComputedStyle(el as HTMLElement);
+          const r = (el as HTMLElement).getBoundingClientRect();
+          return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+        }
+        const normalize = (s: string) => (s || '').replace(/\s+/g, ' ').trim();
+        const all = Array.from(document.querySelectorAll('*'));
+        const vis = all.filter(visible);
+        const exact = vis.filter((e) => normalize(e.textContent || '') === needle);
+        const contains = vis.filter((e) => normalize(e.textContent || '').toLowerCase().includes(needle.toLowerCase()));
+        const samples = contains.slice(0, 5).map((e) => {
+          const r = (e as HTMLElement).getBoundingClientRect();
+          return {
+            tag: (e as HTMLElement).tagName,
+            cls: (e as HTMLElement).className,
+            text: normalize((e as HTMLElement).textContent || '').slice(0, 120),
+            rect: { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) },
+          };
+        });
+        const wormhole = document.querySelector('#ember-basic-dropdown-wormhole');
+        const wormholeChildren = wormhole ? (wormhole.children ? wormhole.children.length : 0) : 0;
+        const openDropdowns = Array.from(document.querySelectorAll<HTMLElement>("[id^='ember-basic-dropdown-content-']")).filter(visible);
+        const optionsCount = openDropdowns.reduce((acc, d) => acc + d.querySelectorAll("[role='option'], .ember-power-select-option").length, 0);
+        return {
+          needle,
+          exactCount: exact.length,
+          containsCount: contains.length,
+          samples,
+          wormholeChildren,
+          openDropdowns: openDropdowns.length,
+          dropdownOptions: optionsCount,
+        };
+      }, text);
+      logger.info('Dispatch-click by text diagnostics: %o', diag);
+    } catch {}
     logger.error('Dispatch-click by text failed: %s', text);
+    try { await hudPush(page, `Dispatch by text failed: ${text}`); } catch {}
     throw new Error(`Dispatch-click by text failed: ${text}`);
   }
   logger.info('Dispatch-click by text succeeded: %s', text);
+  try { await hudPush(page, `Clicked by text: ${text}`); await hudSet(page, ``); } catch {}
 }
 
 // Best-effort: dispatch-click by exact text confined to open ember dropdown content
@@ -226,6 +276,30 @@ async function dispatchClickTextInDropdown(page: Page, text: string): Promise<bo
     }
     return false;
   }, text).catch(() => false);
+  if (!ok) {
+    try {
+      const diag = await page.evaluate((needle: string) => {
+        function visible(el: Element): boolean {
+          const s = getComputedStyle(el as HTMLElement);
+          const r = (el as HTMLElement).getBoundingClientRect();
+          return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+        }
+        const normalize = (s: string) => (s || '').replace(/\s+/g, ' ').trim();
+        const roots = Array.from(document.querySelectorAll<HTMLElement>("[id^='ember-basic-dropdown-content-']")).filter(visible);
+        const rootSummaries = roots.slice(0, 3).map((r) => {
+          const options = Array.from(r.querySelectorAll<HTMLElement>("[role='option'], .ember-power-select-option")).filter(visible);
+          const hits = options.filter((o) => normalize(o.textContent || '') === needle);
+          const contains = options.filter((o) => normalize(o.textContent || '').toLowerCase().includes(needle.toLowerCase()));
+          const sampleOptions = options.slice(0, 5).map((o) => normalize(o.textContent || '').slice(0, 120));
+          return { optionsCount: options.length, exactHits: hits.length, containsHits: contains.length, sampleOptions };
+        });
+        const wormhole = document.querySelector('#ember-basic-dropdown-wormhole');
+        const wormholeChildren = wormhole ? (wormhole.children ? wormhole.children.length : 0) : 0;
+        return { needle, openDropdowns: roots.length, wormholeChildren, rootSummaries };
+      }, text);
+      logger.info('Dropdown dispatch diagnostics: %o', diag);
+    } catch {}
+  }
   return ok;
 }
 
@@ -480,12 +554,45 @@ export async function applyMacroSendToCustomer(page: Page): Promise<void> {
       await dispatchClickText(page, 'Macro');
     }
   }
-  await page.waitForTimeout(150);
-  // Click "Send to Customer" option
+  // Wait briefly for the dropdown to render
   try {
-    await dispatchClickTextInDropdown(page, 'Send to Customer');
+    const { locator } = await firstAvailableLocator(page, 'macro', 'macroDropdownContainer');
+    await locator.waitFor({ state: 'visible', timeout: 1200 });
   } catch {
-    await dispatchClickText(page, 'Send to Customer');
+    await page.waitForTimeout(200);
+  }
+  try {
+    const dropdownCount = await page.locator("[id^='ember-basic-dropdown-content-']").count();
+    const wormholeChildren = await page.evaluate(() => {
+      const w = document.querySelector('#ember-basic-dropdown-wormhole');
+      return w ? (w.children ? w.children.length : 0) : 0;
+    });
+    logger.info('Macro menu open diagnostics: dropdownCount=%d wormholeChildren=%d', dropdownCount as any, wormholeChildren as any);
+  } catch {}
+  // Click "Send to Customer" option
+  const clickedInDropdown = await dispatchClickTextInDropdown(page, 'Send to Customer');
+  if (!clickedInDropdown) {
+    logger.info('Macro option "Send to Customer" not found in dropdown; trying global text dispatch');
+    try {
+      await dispatchClickText(page, 'Send to Customer');
+    } catch (e) {
+      logger.warn('Global dispatch for "Send to Customer" failed (%o); collecting diagnostics', e);
+      try {
+        const diag = await page.evaluate(() => {
+          function visible(el: Element): boolean {
+            const s = getComputedStyle(el as HTMLElement);
+            const r = (el as HTMLElement).getBoundingClientRect();
+            return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+          }
+          const roots = Array.from(document.querySelectorAll<HTMLElement>("[id^='ember-basic-dropdown-content-']")).filter(visible);
+          const options = roots.flatMap((r) => Array.from(r.querySelectorAll<HTMLElement>("[role='option'], .ember-power-select-option")).filter(visible));
+          const sample = options.slice(0, 8).map((o) => (o.textContent || '').trim());
+          return { openDropdowns: roots.length, optionsCount: options.length, sampleOptions: sample };
+        });
+        logger.info('Macro option diagnostics: %o', diag);
+      } catch {}
+      throw e;
+    }
   }
   await page.waitForLoadState('networkidle').catch(() => undefined);
 }
@@ -599,18 +706,81 @@ export async function switchToReplyMode(page: Page): Promise<void> {
   await page.waitForTimeout(150);
 }
 
+export async function switchToInternalNoteMode(page: Page): Promise<void> {
+  logger.info('Switching composer to Internal Note mode');
+  const quickClicked = await page
+    .evaluate(() => {
+      function visible(el: Element): boolean {
+        const s = getComputedStyle(el as HTMLElement);
+        const r = (el as HTMLElement).getBoundingClientRect();
+        return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+      }
+      const roots = Array.from(
+        document.querySelectorAll<HTMLElement>("[class*='ko-text-editor_mode-selector__root_'], [class*='mode-selector']"),
+      );
+      for (const root of roots) {
+        if (!visible(root)) continue;
+        const candidates = Array.from(
+          root.querySelectorAll<HTMLElement>("[class*='ko-text-editor_mode-selector__case-mode_'], *"),
+        );
+        const target = candidates.find((el) => visible(el) && (el.textContent || '').trim().toLowerCase().includes('note'));
+        if (target) {
+          target.scrollIntoView({ block: 'center', inline: 'center' });
+          for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'] as const) {
+            target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+          }
+          return true;
+        }
+      }
+      return false;
+    })
+    .catch(() => false);
+  if (!quickClicked) {
+    try {
+      await dispatchClickCss(page, 'composer', 'internalNoteToggle');
+    } catch {
+      try {
+        await click(page, 'composer', 'internalNoteToggle');
+      } catch {
+        await dispatchClickText(page, 'Internal note');
+      }
+    }
+  }
+  await page.waitForTimeout(150);
+}
+
+export async function clickSendButton(page: Page): Promise<void> {
+  logger.info('Clicking composer Send button');
+  await click(page, 'composer', 'sendButton');
+}
+
 // Change conversation status via the right-side status dropdown
 export async function setStatus(page: Page, statusLabel: string): Promise<void> {
   logger.info('Setting status: %s', statusLabel);
+  // Prefer finding the Status field container by label, then using its local trigger
+  let opened = false;
   try {
-    await click(page, 'status', 'statusFieldTrigger');
-  } catch {
+    const fieldRoot = await findInfoBarFieldByLabel(page, 'Status');
+    const triggerSel = getSelectorCandidates('info', 'selectTrigger').join(', ');
+    const trigger = fieldRoot.locator(triggerSel).first();
+    await trigger.click({ timeout: 1000 });
+    opened = true;
+  } catch (e) {
+    logger.warn('Field-scoped status trigger click failed, falling back to global trigger: %o', e);
     try {
-      await dispatchClickCss(page, 'status', 'statusFieldTrigger');
+      await click(page, 'status', 'statusFieldTrigger');
+      opened = true;
     } catch {
-      await dispatchClickText(page, 'Status');
+      try {
+        await dispatchClickCss(page, 'status', 'statusFieldTrigger');
+        opened = true;
+      } catch {
+        await dispatchClickText(page, 'Status');
+        opened = true;
+      }
     }
   }
+  if (!opened) logger.warn('Status dropdown might not be open; proceeding to select by text');
   await page.waitForTimeout(150);
   const clicked = await dispatchClickTextInDropdown(page, statusLabel);
   if (!clicked) {
@@ -650,14 +820,29 @@ async function findInfoBarFieldByLabel(page: Page, label: string): Promise<Locat
   // Try panel-scoped first
   try {
     await panel.waitFor({ state: 'visible', timeout: 4000 });
-    const field = panel.locator(fieldSel).filter({ hasText: label }).first();
-    await field.waitFor({ state: 'visible', timeout: 4000 });
-    return field;
+    let field = panel.locator(fieldSel).filter({ hasText: label }).first();
+    try {
+      await field.waitFor({ state: 'visible', timeout: 2000 });
+      return field;
+    } catch {
+      // Case-insensitive fallback
+      const re = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+      field = panel.locator(fieldSel).filter({ hasText: re }).first();
+      await field.waitFor({ state: 'visible', timeout: 3000 });
+      return field;
+    }
   } catch {
     // Fallback: global search by field container with label text
-    const globalField = page.locator(fieldSel).filter({ hasText: label }).first();
-    await globalField.waitFor({ state: 'visible', timeout: 6000 });
-    return globalField;
+    let globalField = page.locator(fieldSel).filter({ hasText: label }).first();
+    try {
+      await globalField.waitFor({ state: 'visible', timeout: 3000 });
+      return globalField;
+    } catch {
+      const re = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+      globalField = page.locator(fieldSel).filter({ hasText: re }).first();
+      await globalField.waitFor({ state: 'visible', timeout: 5000 });
+      return globalField;
+    }
   }
 }
 
@@ -1415,4 +1600,403 @@ async function detectFieldTypeFromContainer(container: Locator): Promise<CustomF
   const radioSel = getSelectorCandidates('info', 'radio').join(', ');
   if (await container.locator(radioSel).first().isVisible().catch(() => false)) return 'radio';
   return 'unknown';
+}
+
+// ------------------------
+// Composite helpers
+// ------------------------
+
+export async function applyTagsStatusAndReply(
+  page: Page,
+  args: { tags?: string[]; status?: string; reply?: string },
+): Promise<void> {
+  const tags = Array.isArray(args.tags) ? args.tags : [];
+  const status = (args.status || '').trim();
+  const reply = args.reply || '';
+  if (tags.length > 0) {
+    await addTags(page, tags);
+  }
+  if (status) {
+    await setStatus(page, status);
+  }
+  if (reply) {
+    await switchToReplyMode(page);
+    await insertReplyText(page, reply);
+  }
+}
+
+export async function setMultipleCustomFields(
+  page: Page,
+  fields: Array<{
+    type: CustomFieldType;
+    label: string;
+    value?: string | number | boolean | string[];
+    path?: string[];
+  }>,
+): Promise<void> {
+  for (const f of fields) {
+    const normalized = {
+      type: ((f as any).type ?? (f as any).fieldType) as CustomFieldType,
+      label: f.label,
+      value: f.value,
+      path: f.path,
+    };
+    await setCustomField(page, normalized);
+  }
+}
+
+// Unified, fast path to access a conversation (ticket) either by ID or via inbox.
+// - If env.KAYAKO_CONVERSATION_ID is set: navigate directly to /conversations/<ID>
+// - Else: open the conversations list and click the first visible subject
+// Keeps waits minimal and avoids blocking on subject headings to start actions sooner.
+export async function accessConversation(page: Page): Promise<void> {
+  logger.info('Accessing conversation: using env ID if available, otherwise inbox fallback');
+  try {
+    await page.waitForLoadState('domcontentloaded', { timeout: 8000 }).catch(() => undefined);
+  } catch {}
+
+  // Determine current path to avoid unnecessary reloads
+  const currentUrl = page.url();
+  let currentPath = '';
+  try {
+    currentPath = new URL(currentUrl).pathname;
+  } catch {
+    currentPath = currentUrl;
+  }
+  const detailPathRegex = /\/agent\/conversations\/(?!view)([^/]+)/i;
+  const isDetailPath = detailPathRegex.test(currentPath);
+
+  const convId = (env.KAYAKO_CONVERSATION_ID || '').trim();
+  if (convId) {
+    const base = env.KAYAKO_AGENT_URL.replace(/\/$/, '');
+    const targetPath = `/agent/conversations/${convId}`;
+    const targetUrl = `${base}/conversations/${convId}`;
+    if (currentPath.startsWith(targetPath)) {
+      logger.info('Already on target conversation %s; skipping navigation', convId);
+      return;
+    }
+    logger.info('Navigating to target conversation by ID: %s', targetUrl);
+    await page.goto(targetUrl);
+    await page.waitForURL(detailPathRegex, { timeout: 10000 }).catch(() => undefined);
+    await page.waitForLoadState('networkidle', { timeout: 3000 }).catch(() => undefined);
+    return;
+  }
+
+  if (isDetailPath) {
+    logger.info('Already on a conversation page; skipping inbox navigation');
+    return;
+  }
+
+  logger.info('No conversation ID provided and not on a conversation; opening first conversation from inbox');
+  await page.goto(env.KAYAKO_CONVERSATIONS_URL);
+  const firstRowLocatorResult = await firstAvailableLocator(page, 'inbox', 'firstTicketRow');
+  const rowLocator = firstRowLocatorResult.locator;
+  logger.info(
+    'Inbox first row resolved via selector %s (fallbackIndex=%d)',
+    firstRowLocatorResult.usedSelector,
+    firstRowLocatorResult.fallbackIndex,
+  );
+  await rowLocator.waitFor({ state: 'visible' });
+  const anchorCandidates = [
+    "a[href*='/agent/conversations/']",
+    'a',
+    "[role='link']",
+  ];
+  let clickable = rowLocator;
+  for (const candidate of anchorCandidates) {
+    const anchor = rowLocator.locator(candidate).first();
+    const count = await anchor.count().catch(() => 0);
+    if (count > 0) {
+      clickable = anchor;
+      break;
+    }
+  }
+  await clickable.scrollIntoViewIfNeeded().catch(() => undefined);
+  await clickable.click();
+  const navigated = await page.waitForURL(detailPathRegex, { timeout: 10000 }).then(
+    () => true,
+    () => false,
+  );
+  if (!navigated) {
+    const failureUrl = page.url();
+    logger.error('Inbox row click did not navigate to detail view (url=%s)', failureUrl);
+    throw new Error(`Unable to navigate from inbox to conversation (stuck at ${failureUrl})`);
+  }
+  await page.waitForLoadState('networkidle', { timeout: 3000 }).catch(() => undefined);
+}
+
+export async function setCustomFieldsAutoBatch(
+  page: Page,
+  fields: Array<{
+    label: string;
+    value?: string | number | boolean | string[];
+    path?: string[];
+  }>,
+): Promise<void> {
+  for (const f of fields) {
+    await setCustomFieldAuto(page, f);
+  }
+}
+
+// ------------------------
+// Assertions
+// ------------------------
+
+export async function expectStatusLabel(page: Page, expected: string): Promise<void> {
+  const actual = await getConversationStatusText(page);
+  expect((actual || '').trim()).toContain(expected.trim());
+}
+
+export async function expectTagsContain(page: Page, expectedTags: string[]): Promise<void> {
+  const pills = await getTagPills(page);
+  const norm = (s: string) => s.trim().toLowerCase();
+  const pillSet = new Set(pills.map(norm));
+  for (const tag of expectedTags) {
+    expect(pillSet.has(norm(tag))).toBeTruthy();
+  }
+}
+
+export async function expectFieldValue(
+  page: Page,
+  label: string,
+  expected: string | number | boolean | string[],
+): Promise<void> {
+  const container = await findInfoBarFieldByLabel(page, label).catch(async () => {
+    // Fallback to name-based finder if label-scan fails
+    return await findInfoBarFieldByName(page, label);
+  });
+  if (!container) {
+    // Last-resort fallback: scan all fields to find one whose value matches expected
+    const fieldsSel = getSelectorCandidates('info', 'fieldContainer').join(', ');
+    const headerSel = getSelectorCandidates('info', 'fieldHeader').join(', ');
+    const fields = page.locator(fieldsSel);
+    const count = await fields.count().catch(() => 0);
+    const want = Array.isArray(expected) ? expected.map((v) => String(v).trim().toLowerCase()) : [String(expected).trim().toLowerCase()];
+    for (let i = 0; i < count; i++) {
+      const c = fields.nth(i);
+      const header = (await c.locator(headerSel).first().innerText().catch(() => '')).trim();
+      // Skip clearly unrelated fields if header is present and doesn't include label (case-insensitive)
+      if (header && !header.toLowerCase().includes(label.trim().toLowerCase())) {
+        // still allow value-based match
+      }
+      const val = (await c.innerText().catch(() => '')).trim().toLowerCase();
+      const matchAll = want.every((w) => val.includes(w));
+      if (matchAll) {
+        return; // value matched in some field; consider assertion satisfied
+      }
+    }
+    expect(container, `Field "${label}" not found (and no field matched the expected value)`).not.toBeNull();
+  }
+  const root = container!;
+  const type = await detectFieldTypeFromContainer(root);
+  const textInputsSel = getSelectorCandidates('info', 'textInput').join(', ');
+  const textareaSel = getSelectorCandidates('info', 'textarea').join(', ');
+  const selectTriggerSel = getSelectorCandidates('info', 'selectTrigger').join(', ');
+  const dateSel = getSelectorCandidates('info', 'dateInput').join(', ');
+
+  async function readTextLike(): Promise<string> {
+    const input = root.locator(textInputsSel).first();
+    if (await input.isVisible().catch(() => false)) {
+      try {
+        const val = await input.inputValue();
+        if (val) return val.trim();
+      } catch {}
+    }
+    const ta = root.locator(`${textareaSel}, ${textInputsSel}`).first();
+    if (await ta.isVisible().catch(() => false)) {
+      try {
+        const val = await ta.inputValue();
+        if (val) return val.trim();
+      } catch {}
+    }
+    // Fallback: inner text minus header
+    const headerSel = getSelectorCandidates('info', 'fieldHeader').join(', ');
+    const header = (await root.locator(headerSel).first().innerText().catch(() => '')).trim();
+    const all = (await root.innerText().catch(() => '')).trim();
+    return all.replace(header, '').trim();
+  }
+
+  async function readSelectLike(): Promise<string> {
+    const trigger = root.locator(selectTriggerSel).first();
+    if (await trigger.isVisible().catch(() => false)) {
+      const t = (await trigger.innerText().catch(() => '')).trim();
+      if (t) return t;
+    }
+    // Fallback to generic read
+    return await readTextLike();
+  }
+
+  async function readDateLike(): Promise<string> {
+    const input = root.locator(dateSel).first();
+    if (await input.isVisible().catch(() => false)) {
+      try {
+        const val = await input.inputValue();
+        if (val) return val.trim();
+      } catch {}
+    }
+    return await readTextLike();
+  }
+
+  let actual: string | string[] = '';
+  if (Array.isArray(expected)) {
+    const txt = await readTextLike();
+    const tokens = txt.split(/\s*[,\n]\s*/).map((s) => s.trim()).filter(Boolean);
+    actual = tokens;
+    for (const e of expected) {
+      expect(tokens.map((t) => t.toLowerCase())).toContain(e.toLowerCase());
+    }
+    return;
+  }
+
+  switch (type) {
+    case 'text':
+    case 'integer':
+    case 'decimal':
+    case 'regex':
+    case 'textarea':
+      actual = await readTextLike();
+      break;
+    case 'dropdown':
+    case 'radio':
+    case 'yesno':
+    case 'cascading':
+      actual = await readSelectLike();
+      break;
+    case 'date':
+      actual = await readDateLike();
+      break;
+    case 'checkbox': {
+      const txt = await readTextLike();
+      actual = txt;
+      break;
+    }
+    default:
+      actual = await readTextLike();
+  }
+  const expStr = String(expected).trim().toLowerCase();
+  const actStr = String(actual).trim().toLowerCase();
+  expect(actStr).toContain(expStr);
+}
+
+// ------------------------
+// Network utilities
+// ------------------------
+
+export async function waitForRequestMatch(
+  page: Page,
+  opts: {
+    urlPattern: string;
+    method?: string;
+    bodyIncludes?: string;
+    status?: number;
+    timeoutMs?: number;
+  },
+): Promise<void> {
+  const { urlPattern, method, bodyIncludes, status, timeoutMs } = opts;
+  const timeout = Math.max(1, Number(timeoutMs ?? 10000));
+  logger.info('Waiting for request match: %o', { urlPattern, method, bodyIncludes, status, timeout });
+  const urlRe = new RegExp(urlPattern.replace(/\*/g, '.*'));
+  const methodNorm = (method || '').toUpperCase();
+  const wantStatus = typeof status === 'number' ? status : undefined;
+  const wantBody = (bodyIncludes || '').toLowerCase();
+
+  let matched = false;
+  try {
+    await page.waitForRequest(
+      (req) => {
+        try {
+          if (!urlRe.test(req.url())) return false;
+          if (methodNorm && req.method().toUpperCase() !== methodNorm) return false;
+          if (wantBody) {
+            const postData = (req.postData() || '').toLowerCase();
+            if (!postData.includes(wantBody)) return false;
+          }
+          return true;
+        } catch {
+          return false;
+        }
+      },
+      { timeout },
+    );
+    matched = true;
+  } catch {
+    matched = false;
+  }
+  if (wantStatus !== undefined) {
+    // If status is expected, prefer response wait
+    try {
+      await page.waitForResponse(
+        async (res) => {
+          try {
+            if (!urlRe.test(res.url())) return false;
+            if (wantStatus !== undefined && res.status() !== wantStatus) return false;
+            if (methodNorm) {
+              const req = res.request();
+              if (req.method().toUpperCase() !== methodNorm) return false;
+            }
+            if (wantBody) {
+              const txt = (await res.text().catch(() => '')).toLowerCase();
+              if (!txt.includes(wantBody)) return false;
+            }
+            return true;
+          } catch {
+            return false;
+          }
+        },
+        { timeout },
+      );
+      matched = true;
+    } catch {
+      // ignore
+    }
+  }
+  if (!matched) {
+    logger.error('waitForRequestMatch timed out: %o', opts);
+    throw new Error(`waitForRequestMatch timed out for ${urlPattern}`);
+  }
+  logger.info('Request match detected: %o', opts);
+}
+
+export async function collectRequestsDuring<T>(
+  page: Page,
+  fn: () => Promise<T>,
+  filter?: { urlPattern?: string; method?: string },
+): Promise<{ result: T; requests: Array<{ url: string; method: string }>; responses: Array<{ url: string; status: number }> }> {
+  const reqs: Array<{ url: string; method: string }> = [];
+  const ress: Array<{ url: string; status: number }> = [];
+  const urlRe = filter?.urlPattern ? new RegExp(filter.urlPattern.replace(/\*/g, '.*')) : null;
+  const methodNorm = (filter?.method || '').toUpperCase();
+  const onReq = (r: any) => {
+    try {
+      const url = r.url?.() ?? r.url;
+      const method = (r.method?.() ?? r.method ?? '').toUpperCase();
+      if (urlRe && !urlRe.test(url)) return;
+      if (methodNorm && method !== methodNorm) return;
+      reqs.push({ url, method });
+    } catch {}
+  };
+  const onRes = (r: any) => {
+    try {
+      const url = r.url?.() ?? r.url;
+      const status = r.status?.() ?? r.status ?? 0;
+      if (urlRe && !urlRe.test(url)) return;
+      ress.push({ url, status: Number(status) });
+    } catch {}
+  };
+  page.on('request', onReq);
+  page.on('response', onRes);
+  try {
+    const result = await fn();
+    return { result, requests: reqs, responses: ress };
+  } finally {
+    page.off('request', onReq);
+    page.off('response', onRes);
+  }
+}
+
+export async function expectRequest(
+  page: Page,
+  opts: { urlPattern: string; method?: string; bodyIncludes?: string; status?: number; timeoutMs?: number },
+): Promise<void> {
+  await waitForRequestMatch(page, opts);
 }

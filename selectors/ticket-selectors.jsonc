@@ -1,0 +1,90 @@
+// Kayako Ticket (Conversation) page selectors
+// Organized by major areas: page, header, tabs, timeline, composer, sidebar, identities, userCases
+{
+  "page": {
+    "root": "div[class*=\"ko-case-content__root_\"]",
+    "content": "div[class*=\"ko-agent-content_layout__content_\"]",
+    "heading": "div[class*=\"ko-agent-content_layout__heading_\"]",
+    "timeline": "div[class*=\"ko-agent-content_layout__timeline_\"]",
+    "replyArea": "div[class*=\"ko-agent-content_layout__reply-area_\"]",
+    "sidebar": "div[class*=\"ko-agent-content_layout__sidebar_\"]",
+    "fieldsColumn": "div[class*=\"ko-agent-content_layout__fields_\"]"
+  },
+  "header": {
+    "caseIdContainer": "div[class*=\"ko-case-content__id_\"]",
+    "completeButton": "div[class*=\"ko-case-content__complete_\"]",
+    "trashButton": "div[class*=\"ko-case-content__trash_\"]",
+    "brandSelectorTrigger": "div[class*=\"ko-info-bar_field_select__trigger_\"]:has(span[class*=\"ko-info-bar_field_select_trigger__header_\"]:has-text(\"Change Brand\"))",
+    "actionMenuTrigger": "div[class*=\"ko-agent-content_hierarchical-action-menu__trigger_\"], div[class*=\"ko-power-select-triggers_chevron__trigger_\"]",
+    "subjectTitle": "h3[class*=\"ko-case-content__timeline-header-title_\"]"
+  },
+  "tabs": {
+    "container": "div[class*=\"ko-tab-strip__tabs_\"]",
+    "link": "a[class*=\"ko-tab-strip_tab__link_\"]",
+    "activeLink": "a[class*=\"ko-tab-strip_tab__link_\"][class*=\"active\"]",
+    "closeButton": "div[class*=\"ko-tab-strip_tab__close_\"]",
+    "newTrigger": "div[class*=\"ko-agent-dropdown__trigger_\"]"
+  },
+  "timeline": {
+    "container": "div[class*=\"ko-timeline-2__container_\"]",
+    "header": "div[class*=\"ko-case-content__timeline-header_\"]",
+    "headerImage": "div[class*=\"ko-case-content__timeline-header-image_\"]",
+    "headerBody": "div[class*=\"ko-case-content__timeline-header-body_\"]",
+    "headerTitle": "h3[class*=\"ko-case-content__timeline-header-title_\"]",
+    "headerSubtitle": "div[class*=\"ko-case-content__timeline-header-subtitle_\"]",
+    "daySeparator": "div[class*=\"ko-timeline-2_list_days__day-separator_\"]",
+    "itemContainer": "div[class*=\"ko-timeline-2_list_item__item_\"], div[class*=\"ko-timeline-2_list_item__post_\"], div[class*=\"ko-timeline-2_list_item__note_\"]",
+    "itemBody": "div[class*=\"ko-timeline-2_list_item__body_\"]",
+    "itemMenu": "div[class*=\"ko-timeline-2_list_item__menu_\"]",
+    "itemMenuQuote": "div[class*=\"ko-timeline-2_list_item__quote-icon_\"]",
+    "itemMenuShare": "div[class*=\"ko-timeline-2_list_item__menu-item_\"] [aria-label*=\"Share a link\"], [aria-label*=\"Share a link to this post\"]",
+    "statusLabel": "div[class*=\"ko-timeline-2_list_item_status__label_\"]"
+  },
+  "composer": {
+    "root": "div[class*=\"ko-text-editor__root_\"]",
+    "container": "div[class*=\"ko-text-editor__container_\"]",
+    "header": "div[class*=\"ko-text-editor__header_\"]",
+    "channelTrigger": "div[class*=\"ko-channel-selector__trigger_\"]",
+    "selectedChannel": "div[class*=\"ko-channel-selector_selected-channel__container_\"]",
+    "modeSelector": "div[class*=\"ko-text-editor_mode-selector__root_\"], div[class*=\"mode-selector\"]",
+    "replyTab": "[role='tab']:has-text('Reply')",
+    "notesTab": "[role='tab']:has-text('Notes')",
+    "contentsContainer": "div[class*=\"ko-text-editor__contents-container_\"]",
+    "editorContainer": "div[class*=\"ko-text-editor__froalaTextArea_\"], div[class*=\"ko-text-editor__fr-view_\"]",
+    "editorSurface": "div.fr-element.fr-view, [class*='fr-element'][class*='fr-view']",
+    "toolbarBold": "svg[data-name='bold']",
+    "toolbarItalic": "svg[data-name='italic']",
+    "toolbarLink": "svg[data-name='link']",
+    "toolbarBulleted": "svg[data-name='bulletList']",
+    "toolbarNumbered": "svg[data-name='numberList']",
+    "attachmentsIcon": "div[class*=\"ko-text-editor__clip-icon_\"]",
+    "fileField": "input[class*=\"ko-text-editor__fileField_\"]",
+    "macroTrigger": "div[class*=\"ko-case_macro-selector__trigger_\"], div[class*=\"ko-case_macro-selector_trigger__trigger_\"]",
+    "ccTrigger": "div[class*=\"ko-case-content_cc__cc_\"]",
+    "ccListContainer": "div[class*=\"ko-case-content_cc__cc-list-and-input_\"]",
+    "sendButton": "button[type='submit']:has-text(\"Send\"), button:has-text(\"Send and update\"), [class*='qa-case-content__submit']",
+    "sendAndSetTrigger": "div[class*=\"ko-case-content__send-and-set-trigger_\"]"
+  },
+  "sidebar": {
+    "requesterCard": "div[class*=\"ko-agent-content_sidebar_requester-info-card__info-card_\"]",
+    "requesterName": "div[class*=\"ko-agent-content_sidebar_requester-info-card__requester-name_\"]",
+    "infoListItem": "li[class*=\"ko-agent-content_sidebar_info-list_item__list-item_\"]",
+    "tagsTrigger": "div[class*=\"ko-info-bar_field_select-multiple__trigger_\"]",
+    "fieldContainer": "div[class*=\"ko-info-bar_item__container_\"]",
+    "selectTrigger": "div[class*=\"ko-info-bar_field_select__trigger_\"], div.ember-power-select-trigger",
+    "dateField": "div[class*=\"ko-info-bar_field_date__date_\"]",
+    "dateDropdown": "div[class*=\"ko-info-bar_field_date__dropdownMenu_\"], div[class*=\"ko-datepicker__container_\"]"
+  },
+  "identities": {
+    "trigger": "div[class*=\"ko-identities_identity__trigger_\"]",
+    "name": "div[class*=\"ko-identities_identity_trigger__name_\"]"
+  },
+  "userCases": {
+    "trigger": "div[class*=\"ko-user-cases__active-cases-trigger_\"], div[class*=\"ko-user-cases__sandbox-trigger_\"]",
+    "dropdown": "div[class*=\"ko-user-cases__sandbox-dropdown_\"]",
+    "caseItem": "a[class*=\"ko-user-cases_dropdown__case-item_\"]",
+    "status": "div[class*=\"ko-user-cases_dropdown__case-status_\"]",
+    "subject": "div[class*=\"ko-user-cases_dropdown__subject_\"]"
+  }
+}
+

@@ -1,18 +1,7 @@
 name: demo-custom-fields
 description: Demonstrate setting yes/no, cascading select (multi-level), and date fields
 steps:
-  - type: goto-conversation-by-env-id
-  - type: wait-loadstate
-    state: networkidle
-  # Fallback open first conversation if no ID
-  - type: goto
-    url: env.KAYAKO_CONVERSATIONS_URL
-  - type: expect-visible
-    selectorKey: inbox.conversationSubject
-  - type: click
-    selectorKey: inbox.conversationSubject
-  - type: wait-loadstate
-    state: networkidle
+  - type: access-conversation
   # Yes/No toggle -> Yes
   - type: set-custom-field
     fieldType: yesno

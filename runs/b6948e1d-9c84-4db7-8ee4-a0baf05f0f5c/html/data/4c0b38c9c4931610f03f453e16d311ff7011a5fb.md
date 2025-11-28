@@ -1,0 +1,207 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: Kayako has been updated. Reload to use the latest version.
+      - generic [ref=e8] [cursor=pointer]: Reload
+    - generic [ref=e9]:
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - link "Home" [ref=e12] [cursor=pointer]:
+            - /url: /agent/conversations
+          - link "NaN conversations in your inbox" [ref=e13] [cursor=pointer]:
+            - /url: /agent/conversations
+            - img [ref=e14]
+          - link "Users" [ref=e18] [cursor=pointer]:
+            - /url: /agent/users
+            - img [ref=e19]
+          - link "Organizations" [ref=e23] [cursor=pointer]:
+            - /url: /agent/organizations
+            - img [ref=e24]
+          - link "Insights" [ref=e30] [cursor=pointer]:
+            - /url: /agent/insights
+            - img [ref=e31]
+          - link "Knowledge Base Manager" [ref=e35] [cursor=pointer]:
+            - /url: /agent/knowledgebase
+            - img [ref=e36]
+          - link "Helpcenter" [ref=e39] [cursor=pointer]:
+            - /url: /
+            - img [ref=e40]
+      - generic [ref=e44]:
+        - banner [ref=e45]:
+          - button "New" [ref=e47] [cursor=pointer]:
+            - generic [ref=e49]:
+              - img [ref=e50]
+              - generic [ref=e52]: New
+          - generic [ref=e53]:
+            - generic [ref=e55]:
+              - strong [ref=e56]: 30 days
+              - text: left in trial.
+            - img [ref=e59] [cursor=pointer]
+            - button [ref=e62]:
+              - img [ref=e64] [cursor=pointer]
+            - button [ref=e66] [cursor=pointer]
+        - generic [ref=e71]:
+          - generic [ref=e73]:
+            - link "Inbox" [ref=e74] [cursor=pointer]:
+              - /url: /agent/conversations/view/1
+              - img [ref=e76]
+              - generic "Inbox" [ref=e78]
+              - img [ref=e81]
+            - separator [ref=e83]
+            - link "All open conversations in my teams" [ref=e84] [cursor=pointer]:
+              - /url: /agent/conversations/view/2
+              - generic "All open conversations in my teams" [ref=e85]
+            - link "My active conversations" [ref=e86] [cursor=pointer]:
+              - /url: /agent/conversations/view/3
+              - generic "My active conversations" [ref=e87]
+            - link "Recently updated conversations in my teams" [ref=e88] [cursor=pointer]:
+              - /url: /agent/conversations/view/4
+              - generic "Recently updated conversations in my teams" [ref=e89]
+            - separator [ref=e90]
+            - link "Suspended" [ref=e91] [cursor=pointer]:
+              - /url: /agent/conversations/suspended-messages
+              - generic [ref=e92]: Suspended
+            - link "Trash" [ref=e93] [cursor=pointer]:
+              - /url: /agent/conversations/view/5
+              - generic "Trash" [ref=e94]
+          - generic [ref=e96]:
+            - heading "Inbox" [level=4] [ref=e98]
+            - table [ref=e100]:
+              - rowgroup [ref=e101]:
+                - row "Conversation Status Assignee Latest agent reply Created Team Source channel" [ref=e102]:
+                  - cell [ref=e103]:
+                    - checkbox [ref=e106] [cursor=pointer]
+                  - cell "Conversation" [ref=e107]:
+                    - generic [ref=e108]: Conversation
+                  - cell "Status" [ref=e109] [cursor=pointer]:
+                    - generic [ref=e110]: Status
+                  - cell "Assignee" [ref=e111] [cursor=pointer]:
+                    - generic [ref=e112]: Assignee
+                  - cell "Latest agent reply" [ref=e113] [cursor=pointer]:
+                    - generic [ref=e114]: Latest agent reply
+                  - cell "Created" [ref=e115] [cursor=pointer]:
+                    - generic [ref=e116]: Created
+                  - cell "Team" [ref=e117] [cursor=pointer]:
+                    - generic [ref=e118]: Team
+                  - cell "Source channel" [ref=e119] [cursor=pointer]:
+                    - generic [ref=e120]: Source channel
+              - rowgroup [ref=e121]:
+                - row [ref=e123] [cursor=pointer]:
+                  - cell [ref=e124]:
+                    - checkbox [disabled] [ref=e127]
+                  - cell [ref=e128]
+                  - cell [ref=e142]
+                  - cell [ref=e145]
+                  - cell [ref=e148]
+                  - cell [ref=e151]
+                  - cell [ref=e154]
+                  - cell [ref=e157]
+                  - cell [ref=e160]
+                - row [ref=e164] [cursor=pointer]:
+                  - cell [ref=e165]:
+                    - checkbox [disabled] [ref=e168]
+                  - cell [ref=e169]
+                  - cell [ref=e183]
+                  - cell [ref=e186]
+                  - cell [ref=e189]
+                  - cell [ref=e192]
+                  - cell [ref=e195]
+                  - cell [ref=e198]
+                  - cell [ref=e201]
+                - row [ref=e205] [cursor=pointer]:
+                  - cell [ref=e206]:
+                    - checkbox [disabled] [ref=e209]
+                  - cell [ref=e210]
+                  - cell [ref=e224]
+                  - cell [ref=e227]
+                  - cell [ref=e230]
+                  - cell [ref=e233]
+                  - cell [ref=e236]
+                  - cell [ref=e239]
+                  - cell [ref=e242]
+                - row [ref=e246] [cursor=pointer]:
+                  - cell [ref=e247]:
+                    - checkbox [disabled] [ref=e250]
+                  - cell [ref=e251]
+                  - cell [ref=e265]
+                  - cell [ref=e268]
+                  - cell [ref=e271]
+                  - cell [ref=e274]
+                  - cell [ref=e277]
+                  - cell [ref=e280]
+                  - cell [ref=e283]
+                - row [ref=e287] [cursor=pointer]:
+                  - cell [ref=e288]:
+                    - checkbox [disabled] [ref=e291]
+                  - cell [ref=e292]
+                  - cell [ref=e306]
+                  - cell [ref=e309]
+                  - cell [ref=e312]
+                  - cell [ref=e315]
+                  - cell [ref=e318]
+                  - cell [ref=e321]
+                  - cell [ref=e324]
+                - row [ref=e328] [cursor=pointer]:
+                  - cell [ref=e329]:
+                    - checkbox [disabled] [ref=e332]
+                  - cell [ref=e333]
+                  - cell [ref=e347]
+                  - cell [ref=e350]
+                  - cell [ref=e353]
+                  - cell [ref=e356]
+                  - cell [ref=e359]
+                  - cell [ref=e362]
+                  - cell [ref=e365]
+                - row [ref=e369] [cursor=pointer]:
+                  - cell [ref=e370]:
+                    - checkbox [disabled] [ref=e373]
+                  - cell [ref=e374]
+                  - cell [ref=e388]
+                  - cell [ref=e391]
+                  - cell [ref=e394]
+                  - cell [ref=e397]
+                  - cell [ref=e400]
+                  - cell [ref=e403]
+                  - cell [ref=e406]
+                - row [ref=e410] [cursor=pointer]:
+                  - cell [ref=e411]:
+                    - checkbox [disabled] [ref=e414]
+                  - cell [ref=e415]
+                  - cell [ref=e429]
+                  - cell [ref=e432]
+                  - cell [ref=e435]
+                  - cell [ref=e438]
+                  - cell [ref=e441]
+                  - cell [ref=e444]
+                  - cell [ref=e447]
+```

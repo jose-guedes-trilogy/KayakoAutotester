@@ -1,0 +1,13 @@
+name: composite-add-internal-note-trilogy-joseguedes-kayako-com-agent-conversations-view-3
+description: Switch to internal note mode, add text, and send.
+  (https://trilogy-joseguedes.kayako.com/agent/conversations/view/3)
+steps:
+  - type: goto
+    url: https://trilogy-joseguedes.kayako.com/agent/conversations/view/3
+  - type: access-conversation
+  - type: switch-to-internal-note
+  - type: insert-reply-text
+    value: env.INTERNAL_NOTE_TEXT
+  - type: click-send-button
+  - type: wait
+    value: "500"

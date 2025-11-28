@@ -1,0 +1,331 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/b5264527-019b-49d2-86e6-7243e2144c15/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/b5264527-019b-49d2-86e6-7243e2144c15/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/b5264527-019b-49d2-86e6-7243e2144c15/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\add-tags-and-status.spec.ts",
+      "file": "generated/add-tags-and-status.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Add a couple of tags and set status to Pending",
+          "file": "generated/add-tags-and-status.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "add-tags-and-status",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 22109,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Pending\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Pending\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\n    at expectStatusLabel (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1667:33)\n    at runFlow (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-tags-and-status.spec.ts:11:5)\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-tags-and-status.spec.ts:16:5",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                          "column": 33,
+                          "line": 1667
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\selectors\\index.ts:1667\n\n\u001b[0m \u001b[90m 1665 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m expectStatusLabel(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m expected\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n \u001b[90m 1666 |\u001b[39m   \u001b[36mconst\u001b[39m actual \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getConversationStatusText(page)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1667 |\u001b[39m   expect((actual \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim())\u001b[33m.\u001b[39mtoContain(expected\u001b[33m.\u001b[39mtrim())\u001b[33m;\u001b[39m\n \u001b[90m      |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 1668 |\u001b[39m }\n \u001b[90m 1669 |\u001b[39m\n \u001b[90m 1670 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m expectTagsContain(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m expectedTags\u001b[33m:\u001b[39m string[])\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                            "column": 33,
+                            "line": 1667
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Pending\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\selectors\\index.ts:1667\n\n\u001b[0m \u001b[90m 1665 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m expectStatusLabel(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m expected\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\n \u001b[90m 1666 |\u001b[39m   \u001b[36mconst\u001b[39m actual \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getConversationStatusText(page)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1667 |\u001b[39m   expect((actual \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim())\u001b[33m.\u001b[39mtoContain(expected\u001b[33m.\u001b[39mtrim())\u001b[33m;\u001b[39m\n \u001b[90m      |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 1668 |\u001b[39m }\n \u001b[90m 1669 |\u001b[39m\n \u001b[90m 1670 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m expectTagsContain(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m expectedTags\u001b[33m:\u001b[39m string[])\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m\n\u001b[2m    at expectStatusLabel (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1667:33)\u001b[22m\n\u001b[2m    at runFlow (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-tags-and-status.spec.ts:11:5)\u001b[22m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\generated\\add-tags-and-status.spec.ts:16:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-25T14:53:11.120Z] [INFO] [auth.fixture] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:11.128Z] [INFO] [LoginPage] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:14.363Z] [INFO] [selectors] Loaded selectors.jsonc (mtime %d) \u001b[33m1764013286171.8535\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.226Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.241Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.385Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.425Z] [INFO] [selectors] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.585Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:15.598Z] [INFO] [selectors] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.143Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.174Z] [INFO] [selectors] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.198Z] [INFO] [auth.fixture] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.216Z] [INFO] [auth.fixture] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.218Z] [INFO] [selectors] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:19.222Z] [INFO] [selectors] Navigating to target conversation by ID: %s https://trilogy-joseguedes.kayako.com/agent/conversations/35\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:23.155Z] [INFO] [selectors] Adding tags: %o [ \u001b[32m'autotest-tag'\u001b[39m, \u001b[32m'autotest-tag-2'\u001b[39m ]\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:23.219Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:23.240Z] [INFO] [selectors] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:23.617Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.647Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag “autotest-tag”\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.656Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag “autotest-tag”'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.657Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag \"autotest-tag\"\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.668Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag \"autotest-tag\"'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.669Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s autotest-tag\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:24.678Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'autotest-tag'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:25.054Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:25.121Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.223Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag “autotest-tag-2”\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.235Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag “autotest-tag-2”'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.236Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Add tag \"autotest-tag-2\"\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.245Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag \"autotest-tag-2\"'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.246Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s autotest-tag-2\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.256Z] [INFO] [selectors] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'autotest-tag-2'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.627Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.656Z] [INFO] [selectors] Setting status: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:32.001Z] [DEBUG] [selectors] Dispatch-click in dropdown by text: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:32.067Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:32.087Z] [DEBUG] [selectors] Update properties container visible after status change\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:32.321Z] [DEBUG] [selectors] Primary selector used for %s.%s: %s conversation statusPill [class*='ko-case-content_field_status_swatch-with-label__swatch_']\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-25T14:53:25.087Z] [WARN] [selectors] Tag not confirmed by pills after add attempt: %s (pills=%o) autotest-tag [ \u001b[32m'abcdsads'\u001b[39m ]\n"
+                        },
+                        {
+                          "text": "[2025-11-25T14:53:26.655Z] [WARN] [selectors] Tag not confirmed by pills after add attempt: %s (pills=%o) autotest-tag-2 [ \u001b[32m'abcdsads'\u001b[39m ]\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-25T14:53:10.187Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\artifacts\\generated-add-tags-and-sta-52c5b-Pending-add-tags-and-status-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\artifacts\\generated-add-tags-and-sta-52c5b-Pending-add-tags-and-status-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\b5264527-019b-49d2-86e6-7243e2144c15\\artifacts\\generated-add-tags-and-sta-52c5b-Pending-add-tags-and-status-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                        "column": 33,
+                        "line": 1667
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2861ac832181b46e8445-b7188bdc0568772e2d6c",
+              "file": "generated/add-tags-and-status.spec.ts",
+              "line": 15,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-25T14:53:08.456Z",
+    "duration": 41003.293000000005,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

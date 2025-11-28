@@ -13,6 +13,7 @@ type Step =
   | { type: 'click'; selectorKey: string }
   | { type: 'dispatch-click'; selectorKey: string }
   | { type: 'dispatch-click-text'; value: string }
+  | { type: 'access-conversation' }
   | { type: 'expect-visible'; selectorKey: string }
   | { type: 'wait-hidden'; selectorKey: string }
   | { type: 'wait-loadstate'; state?: 'load' | 'domcontentloaded' | 'networkidle' }
@@ -26,6 +27,9 @@ type Step =
   | { type: 'add-tags'; values: string[] }
   | { type: 'insert-reply-text'; value: string }
   | { type: 'switch-to-reply' }
+  | { type: 'switch-to-internal-note' }
+  | { type: 'click-send-button' }
+  | { type: 'apply-macro-send-to-customer' }
   | { type: 'set-status'; value: string }
   | {
       type: 'set-custom-field';
@@ -44,6 +48,47 @@ type Step =
       label: string;
       value?: string | number | boolean | string[];
       path?: string[];
+    }
+  // Composite and assertions
+  | {
+      type: 'set-custom-fields';
+      fields: Array<{
+        fieldType:
+          | 'text'
+          | 'textarea'
+          | 'radio'
+          | 'dropdown'
+          | 'checkbox'
+          | 'integer'
+          | 'decimal'
+          | 'yesno'
+          | 'cascading'
+          | 'date'
+          | 'regex';
+        label: string;
+        value?: string | number | boolean | string[];
+        path?: string[];
+      }>;
+    }
+  | {
+      type: 'assert-field-value';
+      label: string;
+      expected: string | number | boolean | string[];
+    }
+  | { type: 'assert-tags-contain'; values: string[] }
+  | { type: 'assert-status'; value: string }
+  | {
+      type: 'expect-request';
+      urlPattern: string;
+      method?: string;
+      bodyIncludes?: string;
+      status?: number;
+      timeoutMs?: number;
+    }
+  | {
+      type: 'expect-screenshot';
+      name?: string;
+      selectorKey?: string; // optional: if present, snapshot the locator instead of the whole page
     };
 
 type Flow = {
@@ -71,102 +116,125 @@ function selectorGroupAndKey(selectorKey: string): { group: string; key: string 
 
 function generateTest(flow: Flow): string {
   const lines: string[] = [];
+  lines.push("import type { Page } from '@playwright/test';");
   lines.push("import { test, expect } from '../../fixtures/auth.fixture';");
   lines.push("import { env } from '../../config/env';");
-  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField } from '../../selectors';");
+  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, switchToInternalNoteMode, clickSendButton, setStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectRequest, accessConversation, applyMacroSendToCustomer } from '../../selectors';");
   lines.push('');
-  lines.push(`test.describe(${JSON.stringify(flow.description ?? flow.name)}, () => {`);
-  lines.push(`  test('${flow.name}', async ({ authenticatedPage: page }) => {`);
+  lines.push("const queueMode = process.env.KAYAKO_RUN_MODE === 'queue';");
+  lines.push('');
+  const body: string[] = [];
+  let sawGotoByEnvId = false;
   for (const step of flow.steps) {
     const optional = (step as any).optional === true;
     const optBegin = optional ? `    try {` : '';
     const optEnd = optional ? `    } catch (e) { console.warn('Optional step failed (${(step as any).type})', e); }` : '';
     switch (step.type) {
+      case 'access-conversation': {
+        if (optional) body.push(optBegin);
+        body.push(`    await accessConversation(page);`);
+        if (optional) body.push(optEnd);
+        break;
+      }
       case 'goto': {
-        if (optional) lines.push(optBegin);
-        lines.push(`    await page.goto(${resolveEnvToken((step as any).url)});`);
-        if (optional) lines.push(optEnd);
+        const rawUrl = (step as any).url as string;
+        const expr = resolveEnvToken(rawUrl);
+        if (sawGotoByEnvId && rawUrl === 'env.KAYAKO_CONVERSATIONS_URL') {
+          if (optional) body.push(optBegin);
+          body.push(`    if (!env.KAYAKO_CONVERSATION_ID) { await page.goto(${expr}); }`);
+          if (optional) body.push(optEnd);
+        } else {
+          if (optional) body.push(optBegin);
+          body.push(`    await page.goto(${expr});`);
+          if (optional) body.push(optEnd);
+        }
         break;
       }
       case 'goto-conversation-by-env-id': {
-        if (optional) lines.push(optBegin);
-        lines.push(
+        if (optional) body.push(optBegin);
+        body.push(
           "    if (env.KAYAKO_CONVERSATION_ID) { await page.goto(env.KAYAKO_AGENT_URL.replace(/\\/$/, '') + '/conversations/' + env.KAYAKO_CONVERSATION_ID); }",
         );
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optEnd);
+        sawGotoByEnvId = true;
         break;
       }
       case 'fill': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
-        // Skip login.* interactions because fixture authenticates already
         if (group === 'login') break;
         const valueExpr = resolveEnvToken((step as any).value);
-        if (optional) lines.push(optBegin);
-        lines.push(`    await fillSel(page, '${group}', '${key}', ${valueExpr});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await fillSel(page, '${group}', '${key}', ${valueExpr});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'click': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await click(page, '${group}', '${key}');`);
-        if (optional) lines.push(optEnd);
+        const guarded = sawGotoByEnvId && group === 'inbox';
+        if (optional) body.push(optBegin);
+        if (guarded) body.push(`    if (!env.KAYAKO_CONVERSATION_ID) { await click(page, '${group}', '${key}'); }`);
+        else body.push(`    await click(page, '${group}', '${key}');`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'dispatch-click': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await dispatchClickCss(page, '${group}', '${key}');`);
-        if (optional) lines.push(optEnd);
+        const guarded = sawGotoByEnvId && group === 'inbox';
+        if (optional) body.push(optBegin);
+        if (guarded) body.push(`    if (!env.KAYAKO_CONVERSATION_ID) { await dispatchClickCss(page, '${group}', '${key}'); }`);
+        else body.push(`    await dispatchClickCss(page, '${group}', '${key}');`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'dispatch-click-text': {
         const value = (step as any).value as string;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await dispatchClickText(page, ${JSON.stringify(value)});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await dispatchClickText(page, ${JSON.stringify(value)});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'expect-visible': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await expectVisible(page, '${group}', '${key}');`);
-        if (optional) lines.push(optEnd);
+        const guarded = sawGotoByEnvId && group === 'inbox';
+        if (optional) body.push(optBegin);
+        if (guarded) body.push(`    if (!env.KAYAKO_CONVERSATION_ID) { await expectVisible(page, '${group}', '${key}'); }`);
+        else body.push(`    await expectVisible(page, '${group}', '${key}');`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'wait-hidden': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
-        if (optional) lines.push(optBegin);
-        lines.push(
+        if (optional) body.push(optBegin);
+        body.push(
           `    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.waitFor({ state: 'hidden' }); }`,
         );
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'wait-loadstate': {
         const s = (step as any).state as string | undefined;
         const state = ['load','domcontentloaded','networkidle'].includes(String(s)) ? s : 'networkidle';
-        if (optional) lines.push(optBegin);
-        lines.push(`    await page.waitForLoadState(${JSON.stringify(state)}, { timeout: 3000 }).catch(() => {});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await page.waitForLoadState(${JSON.stringify(state)}, { timeout: 3000 }).catch(() => {});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'expect-url-contains': {
         const value = (step as any).value as string;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await expect(page).toHaveURL(new RegExp(${JSON.stringify(value)}));`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await expect(page).toHaveURL(new RegExp(${JSON.stringify(value)}));`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'wait': {
         const ms = parseInt((step as any).value, 10) || 0;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await page.waitForTimeout(${ms});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await page.waitForTimeout(${ms});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'press': {
@@ -174,55 +242,73 @@ function generateTest(flow: Flow): string {
         if (s.selectorKey) {
           const { group, key } = selectorGroupAndKey(s.selectorKey);
           if (group === 'login') break;
-          if (optional) lines.push(optBegin);
-          lines.push(`    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.press(${JSON.stringify(s.key)}); }`);
-          if (optional) lines.push(optEnd);
+          if (optional) body.push(optBegin);
+          body.push(`    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.press(${JSON.stringify(s.key)}); }`);
+          if (optional) body.push(optEnd);
         } else {
-          if (optional) lines.push(optBegin);
-          lines.push(`    await page.keyboard.press(${JSON.stringify(s.key)});`);
-          if (optional) lines.push(optEnd);
+          if (optional) body.push(optBegin);
+          body.push(`    await page.keyboard.press(${JSON.stringify(s.key)});`);
+          if (optional) body.push(optEnd);
         }
         break;
       }
       case 'switch-assignee-and-save': {
         const order = (step as any).order as string[] | undefined;
         const orderExpr = Array.isArray(order) && order.length > 0 ? `[${order.map((s) => JSON.stringify(s)).join(', ')}]` : `['VIP Account Team','General']`;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await (await import('../../selectors')).switchAssigneeTeamAndSave(page, ${orderExpr});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await (await import('../../selectors')).switchAssigneeTeamAndSave(page, ${orderExpr});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'log-assignee': {
-        if (optional) lines.push(optBegin);
-        lines.push(`    await (await import('../../selectors')).logAssigneeValues(page);`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await (await import('../../selectors')).logAssigneeValues(page);`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'add-tags': {
         const values = (step as any).values as string[];
-        if (optional) lines.push(optBegin);
-        lines.push(`    await addTags(page, ${JSON.stringify(values || [])});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await addTags(page, ${JSON.stringify(values || [])});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'insert-reply-text': {
         const value = (step as any).value as string;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await insertReplyText(page, ${JSON.stringify(value || '')});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await insertReplyText(page, ${JSON.stringify(value || '')});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'switch-to-reply': {
-        if (optional) lines.push(optBegin);
-        lines.push('    await switchToReplyMode(page);');
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push('    await switchToReplyMode(page);');
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'switch-to-internal-note': {
+        if (optional) body.push(optBegin);
+        body.push('    await switchToInternalNoteMode(page);');
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'click-send-button': {
+        if (optional) body.push(optBegin);
+        body.push('    await clickSendButton(page);');
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'apply-macro-send-to-customer': {
+        if (optional) body.push(optBegin);
+        body.push('    await applyMacroSendToCustomer(page);');
+        if (optional) body.push(optEnd);
         break;
       }
       case 'set-status': {
         const value = (step as any).value as string;
-        if (optional) lines.push(optBegin);
-        lines.push(`    await setStatus(page, ${JSON.stringify(value || '')});`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await setStatus(page, ${JSON.stringify(value || '')});`);
+        if (optional) body.push(optEnd);
         break;
       }
       case 'set-custom-field': {
@@ -233,15 +319,88 @@ function generateTest(flow: Flow): string {
           value: s.value,
           path: s.path,
         };
-        if (optional) lines.push(optBegin);
-        lines.push(`    await setCustomField(page, ${JSON.stringify(obj)} as any);`);
-        if (optional) lines.push(optEnd);
+        if (optional) body.push(optBegin);
+        body.push(`    await setCustomField(page, ${JSON.stringify(obj)} as any);`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'set-custom-fields': {
+        const s = step as any;
+        const arr = Array.isArray(s.fields) ? s.fields : [];
+        if (optional) body.push(optBegin);
+        body.push(`    await setMultipleCustomFields(page, ${JSON.stringify(arr)} as any);`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'assert-field-value': {
+        const s = step as any;
+        if (optional) body.push(optBegin);
+        body.push(`    await expectFieldValue(page, ${JSON.stringify(s.label)}, ${JSON.stringify(s.expected)} as any);`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'assert-tags-contain': {
+        const s = step as any;
+        const values = Array.isArray(s.values) ? s.values : [];
+        if (optional) body.push(optBegin);
+        body.push(`    await expectTagsContain(page, ${JSON.stringify(values)});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'assert-status': {
+        const s = step as any;
+        if (optional) body.push(optBegin);
+        body.push(`    await expectStatusLabel(page, ${JSON.stringify(s.value || '')});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'expect-screenshot': {
+        const s = step as any;
+        const selectorKey = s.selectorKey as string | undefined;
+        const name = (s.name as string | undefined) || (flow.name + '.png');
+        if (optional) body.push(optBegin);
+        if (selectorKey) {
+          const { group, key } = selectorGroupAndKey(selectorKey);
+          body.push(`    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await expect(r.locator).toHaveScreenshot(${JSON.stringify(name)}); }`);
+        } else {
+          body.push(`    await expect(page).toHaveScreenshot(${JSON.stringify(name)});`);
+        }
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'expect-request': {
+        const s = step as any;
+        const obj = {
+          urlPattern: s.urlPattern,
+          method: s.method,
+          bodyIncludes: s.bodyIncludes,
+          status: s.status,
+          timeoutMs: s.timeoutMs,
+        };
+        if (optional) body.push(optBegin);
+        body.push(`    await expectRequest(page, ${JSON.stringify(obj)} as any);`);
+        if (optional) body.push(optEnd);
         break;
       }
     }
   }
+  lines.push('export async function runFlow(page: Page): Promise<void> {');
+  if (body.length === 0) {
+    lines.push('  // No steps defined.');
+  } else {
+    for (const ln of body) {
+      lines.push(ln);
+    }
+  }
+  lines.push('}');
+  lines.push('');
+  lines.push('if (!queueMode) {');
+  lines.push(`  test.describe(${JSON.stringify(flow.description ?? flow.name)}, () => {`);
+  lines.push(`    test('${flow.name}', async ({ authenticatedPage: page }) => {`);
+  lines.push('      await runFlow(page);');
+  lines.push('    });');
   lines.push('  });');
-  lines.push('});');
+  lines.push('}');
   return lines.join('\n');
 }
 

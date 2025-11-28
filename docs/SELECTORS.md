@@ -1,3 +1,137 @@
+Selectors catalog (initial)
+
+This document tracks the selector groups and keys defined in selectors/selectors.jsonc. Prefer the first candidates in each list; they are the most resilient. Update this file when adding new selectors.
+
+- login
+  - emailInput
+  - passwordInput
+  - submitButton
+  - rememberMeCheckbox
+  - forgotPasswordLink
+  - errorInvalidCombo
+- nav
+  - conversationsLink
+- conversations
+  - heading
+  - container
+- inbox
+  - sidebar
+  - sidebarItem
+  - sidebarActiveItem
+  - sidebarSuspendedLink
+  - sidebarCounter
+  - firstItem
+  - conversationSubject
+  - mergeAction
+  - rowStatus
+  - rowRequester
+  - rowAgo
+  - rowPreview
+  - filterAll
+  - table
+  - tableHeaderRow
+  - bulkSelectCheckbox
+  - rowContainer
+  - rowCheckbox
+  - firstTicketRow
+  - pagination
+  - paginationItem
+  - paginationActiveItem
+- conversation
+  - subjectHeading
+  - sideConversationsToggle
+  - completeCaseButton
+  - trashCaseButton
+  - requester
+  - statusPill
+  - timelineEntry
+  - timelineJumpBar
+  - timelineLoadMore
+  - updatePropertiesCancel
+  - noteText
+- composer
+  - editor
+  - sendAndSetTrigger
+  - ccTrigger
+  - ccContainer
+  - ccSearchInput
+  - ccSelectedPill
+  - ccRemovePill
+  - replyToggle
+  - internalNoteToggle
+  - sendButton
+  - notePlaceholder
+  - addNoteButton
+- assign
+  - openAssigneeMenu
+  - assignToMeTrigger
+  - assignToMeOptions
+  - teamGeneral
+  - teamVip
+  - assigneeFieldTrigger
+  - selfOption
+  - confirmation
+  - assigneeValueContainer
+  - assigneeTeamValue
+  - assigneeAgentValue
+  - assigneeUnassigned
+  - updatePropertiesButton
+  - updatePropertiesSpan
+  - updatePropertiesContainer
+- search
+  - input
+  - resultItem
+- macro
+  - macroSelectorTrigger
+  - macroOptionSendToCustomer
+  - macroDropdownContainer
+- status
+  - statusFieldTrigger
+  - statusOptionPending
+- tags
+  - tagsFieldTrigger
+  - tagsInput
+  - tagsOption
+  - tagPill
+- info (right-side properties)
+  - panel
+  - fieldContainer
+  - fieldHeader
+  - selectTrigger
+  - dateFocus
+  - dateDropdown
+  - dateContainer
+  - dateIcon
+  - dateHeader
+  - datePrev
+  - dateNext
+  - dateMonth
+  - dateYear
+  - dateDayCurrentMonth
+  - dateDayAny
+  - dateDayToday
+  - dateActionsContainer
+  - dateAction
+  - dateContainerActive
+  - dropdownOption
+  - checkbox
+  - checkboxGroup
+  - checkboxLabel
+  - checkboxHeader
+  - textInput
+  - textarea
+  - dateInput
+  - radio
+- shell
+  - newButton
+  - trialBanner
+  - notificationBell
+  - profileMenuTrigger
+  - headerSearch
+
+Notes
+- Always add new selectors to selectors/selectors.jsonc using stable class-prefixes (e.g., [class*=ko-...]).
+- Avoid duplicate candidates; place the most robust CSS first, then role=, then text= fallbacks.
 ## Selectors Governance
 
 - Single source of truth: `selectors/selectors.jsonc`.
