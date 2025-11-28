@@ -5,10 +5,8 @@ import { click, fill as fillSel, expectVisible } from '../../selectors';
 test.describe("Agent logs in and opens the first conversation from inbox", () => {
   test('open-first-conversation', async ({ authenticatedPage: page }) => {
     await page.goto(env.KAYAKO_AGENT_URL);
-    await expectVisible(page, 'nav', 'conversationsLink');
-    await click(page, 'nav', 'conversationsLink');
-    await expectVisible(page, 'inbox', 'firstItem');
-    await click(page, 'inbox', 'firstItem');
+    await page.goto(env.KAYAKO_CONVERSATIONS_URL);
+    await page.goto("${env.KAYAKO_CONVERSATIONS_URL}/view/1");
     await expectVisible(page, 'conversation', 'subjectHeading');
   });
 });

@@ -1,0 +1,102 @@
+// Reply box (composer) area on the conversation view
+// Includes editor container, header mode selector (Reply/Notes), toolbar, contents, footer and Assign to me
+{
+  "replyBox": {
+    "mainContainer": "[class*=ko-agent-content_layout__reply-area_]",
+    "textEditor": {
+      "root": "[class*=ko-text-editor__root_]",
+      "container": "[class*=ko-text-editor__container_]",
+      "containerFocusState": "[class*=ko-text-editor__has-focus_]",
+      "infoPanel": "[class*=ko-text-editor__info-panel_]",
+      "header": {
+        "self": "[class*=ko-text-editor__header_]",
+        "section": "[class*=ko-text-editor__section_]",
+        "channelSelector": {
+          "container": "[class*=ko-channel-selector__channel-selector_]",
+          "trigger": "[class*=ko-channel-selector__trigger_]",
+          "triggerActiveState": "[class*=ko-channel-selector__trigger--active_]",
+          "selectedChannelContainer": "[class*=ko-channel-selector_selected-channel__container_]",
+          "selectedChannelText": "[class*=ko-channel-selector_selected-channel__text_]"
+        },
+        "modeSelector": {
+          "root": "[class*=ko-text-editor_mode-selector__root_]",
+          "caseMode": "[class*=ko-text-editor_mode-selector__case-mode_]"
+        }
+      },
+      "toolbar": {
+        "group": "[class*=ko-text-editor__group_]",
+        "groupCollapsedState": "[class*=ko-text-editor__groupCollapsed_]",
+        "groupSeparator": "[class*=ko-text-editor__groupSeparator_]",
+        "item": "[class*=ko-text-editor__item_]",
+        "itemWrap": "[class*=ko-text-editor__itemWrap_]",
+        "moreControlsDropdownTrigger": "[class*=ko-text-editor__itemControlsDropdown_]",
+        "secondaryControlsItem": "[class*=ko-text-editor_secondary-controls__item_]",
+        "secondaryControlsItemWrap": "[class*=ko-text-editor_secondary-controls__itemWrap_]",
+        "secondaryControlsItemDisabledState": "[class*=ko-text-editor_secondary-controls__item-disabled_]",
+        "macroSelector": {
+          "container": "[class*=ko-case_macro-selector__container_]",
+          "trigger": "[class*=ko-case_macro-selector__trigger_]",
+          "triggerInner": "[class*=ko-case_macro-selector_trigger__trigger_]"
+        },
+        "buttons": {
+          "bold": "[data-name=\"bold\"]",
+          "italic": "[data-name=\"italic\"]",
+          "link": "[data-name=\"link\"]",
+          "paragraph": "[data-name=\"paragraph\"]",
+          "quote": "[data-name=\"quote\"]",
+          "bulletList": "[data-name=\"bulletList\"]",
+          "numberList": "[data-name=\"numberList\"]",
+          "outdent": "[data-name=\"outdent\"]",
+          "indent": "[data-name=\"indent\"]",
+          "moreControlsTriggerIcon": "[data-name=\"chevronDownLarge\"]",
+          "imageUploadInput": "[class*=ko-text-editor__fileField_]"
+        }
+      },
+      "contentArea": {
+        "container": "[class*=ko-text-editor__contents-container_]",
+        "dropzone": "[class*=ko-text-editor_draggable-dropzone__dropzone_]",
+        "contents": "[class*=ko-text-editor__contents_]",
+        // Froala WYSIWYG inner structure
+        "froala": {
+          "textAreaContainer": "[class*=ko-text-editor__froalaTextArea_]",
+          "editorBox": ".fr-box",
+          "editorWrapper": ".fr-wrapper",
+          "editableArea": ".fr-element.fr-view",
+          "placeholderText": ".fr-placeholder"
+        }
+      },
+      "footer": {
+        "self": "[class*=ko-text-editor__footer_]",
+        "footerLeft": "[class*=ko-case-content__editor-footer-left_]",
+        "footerRight": "[class*=ko-case-content__editor-footer-right_]",
+        "cc": {
+          "component": "[class*=ko-case-content__cc-component_]",
+          "button": "[class*=ko-case-content_cc__cc_]",
+          "listAndInput": "[class*=ko-case-content_cc__cc-list-and-input_]"
+        },
+        "assign": {
+          "container": "[class*=ko-case-content__assign-to-me-container_]",
+          "trigger": "[class*=ko-case-content__assign-to-me-trigger_]"
+        },
+        "buttons": {
+          "attachmentIcon": "[class*=ko-text-editor__clip-icon_]",
+          "attachmentIconSvg": "[data-name=\"clip\"]",
+          "attachmentInput": "input[class*=ko-text-editor__fileField_]"
+        }
+      }
+    }
+  },
+  "common": {
+    "icon": "[class*=ko-icon__icon_]"
+  },
+  // Grammarly extension hooks (present in some environments)
+  "grammarlyExtension": {
+    "shadowRoot": "[data-grammarly-shadow-root=\"true\"]",
+    "buttonContainer": "[data-grammarly-part=\"button\"]",
+    "ideateButton": "[data-grammarly-part=\"cheetah-ideate-button\"]",
+    "gButton": "[data-grammarly-part=\"gbutton\"]",
+    "gButtonBadge": "[data-grammarly-part=\"gbuttonBadge\"]",
+    "highlights": "[data-grammarly-part=\"highlights\"]"
+  }
+}
+

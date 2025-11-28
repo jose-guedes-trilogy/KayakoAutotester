@@ -35,7 +35,13 @@ if (!parsed.success) {
   );
 }
 
-export const env = parsed.data;
-export type Env = z.infer<typeof EnvSchema>;
+const base = parsed.data;
+export const env = {
+  ...base,
+  KAYAKO_CONVERSATIONS_URL: `${base.KAYAKO_AGENT_URL.replace(/\/$/, '')}/conversations`,
+} as const;
+export type Env = z.infer<typeof EnvSchema> & {
+  KAYAKO_CONVERSATIONS_URL: string;
+};
 
 

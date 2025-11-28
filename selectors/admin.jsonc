@@ -1,0 +1,221 @@
+// Admin area selectors (Home, Triggers index, Triggers > New)
+// Conventions:
+// - Prefer resilient selectors using [class*=...] and stable hrefs
+// - Keys are grouped by screen/feature to keep context clear
+// - Validate in headed browser when possible; refine comments as we learn edge cases
+{
+  // Common admin layout and buttons
+  "common": {
+    "contentContainer": "[class*=\"session_admin__content-container_\"]",
+    "content": "[class*=\"session_admin__content_\"]",
+    "pageHeader": "[class*=\"ko-admin_page__header_\"]",
+    "pageTitle": "[class*=\"ko-admin_page__title_\"]",
+    "pageCaption": "[class*=\"ko-admin_page__caption_\"]",
+    "pageSpacer": "[class*=\"ko-admin_page__spacer_\"]",
+    "pageFooter": "[class*=\"ko-admin_page__footer_\"]",
+    "formButtons": "div[class*=ko-form_buttons__buttons_]",
+    "buttonPrimary": "button[class*=ko-button__primary_][class*=ko-button__chrome_][class*=ko-button__shared_], a[class*=ko-button__primary_][class*=ko-button__chrome_][class*=ko-button__shared_]",
+    "buttonCancel": "button[data-purpose=cancel]",
+    "buttonSubmit": "button[data-purpose=submit]",
+    "messengerSpacer": "[class*=\"ko-messenger_spacer__messenger-spacer_\"]",
+    "primaryButton": "a[class*=\"ko-button__primary_\"], button[class*=\"ko-button__primary_\"]",
+    "chromeButton": "[class*=\"ko-button__chrome_\"]",
+    "nakedButton": "button[class*=\"ko-button__naked_\"]",
+    "buttonGroup": "[class*=\"ko-form_buttons__buttons_\"]"
+  },
+  // Left admin navigation
+  "sidebar": {
+    "group": "[class*=\"ko-sidebar_group__group_\"]",
+    "groupHeader": "[class*=\"ko-sidebar_group__header_\"]",
+    "item": "a[class*=\"ko-sidebar_item__item_\"]",
+    // Stable navigation via hrefs for deep links
+    "itemByHref": {
+      "home": "a[href='/admin']",
+      "channelsEmail": "a[href*='/admin/channels/email']",
+      "channelsFacebook": "a[href*='/admin/channels/facebook']",
+      "channelsTwitter": "a[href*='/admin/channels/twitter']",
+      "messengerConfigure": "a[href*='/admin/messenger/configure']",
+      "messengerEngagements": "a[href*='/admin/messenger/engagements']",
+      "messengerIdentityVerification": "a[href*='/admin/messenger/identity-verification']",
+      "conversationsViews": "a[href*='/admin/conversations/views']",
+      "conversationsForms": "a[href*='/admin/conversations/forms']",
+      "conversationsTimeTracking": "a[href*='/admin/conversations/time-tracking']",
+      "customizationsBrands": "a[href*='/admin/customizations/brands']",
+      "customizationsEmailTemplates": "a[href*='/admin/customizations/email-templates']",
+      "customizationsConversationFields": "a[href*='/admin/customizations/conversation-fields']",
+      "customizationsLocalization": "a[href*='/admin/customizations/localization']",
+      "customizationsPrivacy": "a[href*='/admin/customizations/privacy']",
+      "teamTeams": "a[href*='/admin/team-settings/teams']",
+      "teamDirectory": "a[href*='/admin/team-settings/agent-directory']",
+      "teamBusinessHours": "a[href*='/admin/team-settings/businesshours']",
+      "teamRoles": "a[href*='/admin/team-settings/roles']",
+      "automationMacros": "a[href*='/admin/automation/macros']",
+      "automationTriggers": "a[href*='/admin/automation/triggers']",
+      "automationMonitors": "a[href*='/admin/automation/monitors']",
+      "automationSLAs": "a[href*='/admin/automation/sla']",
+      "integrationsZapier": "a[href*='/admin/integrations/zapier']",
+      "integrationsSalesforce": "a[href*='/admin/integrations/salesforce']",
+      "integrationsEndpoints": "a[href*='/admin/integrations/endpoints']",
+      "integrationsWebhooks": "a[href*='/admin/integrations/webhooks']",
+      "integrationsAPI": "a[href*='/admin/integrations/api']",
+      "securityAuthentication": "a[href*='/admin/security/authentication']",
+      "securityPolicies": "a[href*='/admin/security/policy/help-center']",
+      "securityUserRegistration": "a[href*='/admin/security/settings']"
+    },
+    "automationTriggersLink": "a[href=\"/admin/automation/triggers\"]",
+    "automationMacrosLink": "a[href=\"/admin/automation/macros\"]",
+    "automationMonitorsLink": "a[href=\"/admin/automation/monitors\"]",
+    "automationSlasLink": "a[href=\"/admin/automation/sla\"]"
+  },
+  // Admin Home tiles
+  "home": {
+    "pageTitle": "h3[class*=session_admin_index__page-title_]",
+    "homeIcon": "span[class*=session_admin_index__home-icon_]",
+    "category": "[class*=\"session_admin_index__category_\"]",
+    "categoryTitle": "[class*=\"session_admin_index__category-title_\"]",
+    "categoryDescription": "[class*=\"session_admin_index__category-description_\"]",
+    "items": "div[class*=session_admin_index__items_]",
+    "itemLink": "a[class*=session_admin_index__item_]",
+    "itemIconContainer": "div[class*=session_admin_index__item-icon-container_]",
+    "itemIcon": "svg[class*=session_admin_index__item-icon_]",
+    "itemIconHover": "svg[class*=session_admin_index__item-icon--hover_]",
+    "itemTitle": "div[class*=session_admin_index__item-title_]",
+    "categoryItems": "[class*=\"session_admin_index__items_\"]",
+    "tile": "a[class*=\"session_admin_index__item_\"]",
+    "tileTitle": "[class*=\"session_admin_index__item-title_\"]",
+    "tileIconContainer": "[class*=\"session_admin_index__item-icon-container_\"]",
+    "tileIcon": "[class*=\"session_admin_index__item-icon_\"]",
+    "tileIconHover": "[class*=\"session_admin_index__item-icon--hover_\"]",
+    "tileTriggers": "a.session_admin_index__item_jf9dek[href=\"/admin/automation/triggers\"], a[class*=\"session_admin_index__item_\"][href=\"/admin/automation/triggers\"]"
+  },
+  // Triggers list (index)
+  "triggersIndex": {
+    "header": "div[class*=ko-admin_page__header_]",
+    "title": "h3[class*=ko-admin_page__title_]",
+    "newTriggerButton": "a[href*='/admin/automation/triggers/new'][class*=ko-button__primary_]",
+    "description": "p[class*=ko-admin_forms_description__description_]",
+    "listContainer": "div[class*=ko-simple-list__list_]",
+    "listHeader": "div[class*=ko-simple-list__header_]",
+    "row": "div[class*=ko-simple-list_row__row_]",
+    "rowActionable": "div[class*=ko-simple-list_row__row--actionable_]",
+    "cell": "div[class*=ko-simple-list_cell__cell_]",
+    "cellDisabled": "div[class*=ko-simple-list_cell__disabled_]",
+    "triggerTitle": "span[class*=ko-admin_triggers_index__title_]",
+    "triggerCaption": "span[class*=ko-admin_triggers_index__caption_]",
+    "rowActions": "div[class*=ko-simple-list_actions__actions_]",
+    "rowActionsHidden": "span[class*=ko-simple-list_actions__hidden_]",
+    "rowActionEdit": "div[class*=ko-simple-list_actions__actions_] a[href*='/admin/automation/triggers/']",
+    "sections": {
+      "enabled": "div[class*=ko-simple-list__list_] .ko-simple-list__header_:has-text('Enabled')",
+      "disabled": "div[class*=ko-simple-list__list_] .ko-simple-list__header_:has-text('Disabled')"
+    }
+  },
+  // Triggers > New (rule details and actions)
+  "triggersNew": {
+    "header": "div[class*=ko-admin_page__header_]",
+    "title": "h3[class*=ko-admin_page__title_]",
+    "captionBreadcrumb": "span[class*=ko-admin_page__caption_]",
+    "ruleDetailsGroup": "div[class*=ko-admin_forms_group__group_][class*=--with-legend_]:has(legend[class*=ko-admin_forms_group__legend_]:has-text('Rule details'))",
+    "ruleSettingsGroup": "div[class*=ko-admin_forms_group__group_][class*=--with-legend_]:has(legend[class*=ko-admin_forms_group__legend_]:has-text('Rule settings'))",
+    "groupLegend": "legend[class*=ko-admin_forms_group__legend_]",
+    "groupContents": "div[class*=ko-admin_forms_group__contents_]",
+    "formFieldContainer": "div[class*=ko-form_field__container_]",
+    "formFieldGap": "div[class*=ko-form_field__gap_]",
+    "formFieldLabel": "p[class*=ko-form_field_label__container_]",
+    "formFieldHelp": "p[class*=ko-form_field_help__help_]",
+    "textInput": "input[class*=ko-input__input_]",
+    "channelsLayout": "div[class*=ko-admin_triggers_form__channel-layout_]",
+    "channelsWrap": "div[class*=ko-admin_triggers_form__channels_]"
+  },
+  // Predicate builder (conditions)
+  "predicateBuilder": {
+    "container": "div[id^='ko-predicate-builder'][class*=ko-admin_predicate-builder__container_]",
+    "propositionContainer": "div[class*=ko-admin_predicate-builder_proposition__container_]",
+    "propositionLabel": "div[class*=ko-admin_predicate-builder_proposition__label_]",
+    "propositionLayout": "div[class*=ko-admin_predicate-builder_proposition__layout_]",
+    "propositionItem": "div[class*=ko-admin_predicate-builder_proposition__item_]",
+    "propositionActions": "div[class*=ko-admin_predicate-builder_proposition__actions_]",
+    "addCondition": "div[class*=ko-admin_predicate-builder__add_]",
+    "andDivider": "div[class*=ko-admin_predicate-builder__new_]"
+  },
+  // Actions builder (then actions)
+  "actionsBuilder": {
+    "root": "div[class*=ko-automation-actions-builder]",
+    "actionArticle": "article[class*=ko-admin_automation-actions-builder_action__automation-action_]",
+    "smallSlot": "div[class*=ko-admin_automation-actions-builder_action__small-slot_]",
+    "addActionButton": "div[class*=ko-admin_automation-actions-builder__add-action-btn_]"
+  },
+  // Ember Power-Select (used broadly across admin)
+  "powerSelect": {
+    "trigger": "div.ember-power-select-trigger[class*=ko-select__trigger_], div.ember-power-select-trigger[class*=ko-select__select_]",
+    "triggerInner": "div[class*=ko-select_trigger__trigger_]",
+    "placeholder": "span.ember-power-select-placeholder",
+    "statusIcon": "span.ember-power-select-status-icon",
+    "dropdownWormhole": "div#ember-basic-dropdown-wormhole",
+    "dropdownContent": "div[id^='ember-basic-dropdown-content-'].ember-basic-dropdown-content.ember-power-select-dropdown[class*=ko-select__dropdown_]",
+    "optionsList": "ul.ember-power-select-options",
+    "option": "li.ember-power-select-option",
+    "group": "li.ember-power-select-group",
+    "groupName": "span.ember-power-select-group-name"
+  },
+  // Alternate naming used in some references (kept for completeness)
+  "triggers_index": {
+    "headerBar": "[class*=\"ko-admin_page__header_\"][class*=\"--bar_\"]",
+    "title": "[class*=\"ko-admin_page__header_\"] [class*=\"ko-admin_page__title_\"]",
+    "newTriggerButton": "a[href$=\"/admin/automation/triggers/new\"]",
+    "introDescription": "[class*=\"ko-admin_forms_description__description_\"]",
+    "listWrapper": "[class*=\"ko-simple-list__list_\"]",
+    "listHeader": "[class*=\"ko-simple-list__header_\"]",
+    "sortableContainer": "[class*=\"ko-sortable-list__container_\"]",
+    "sortableList": "ul[class*=\"ko-sortable-list__list_\"]",
+    "sortableItem": "[class*=\"ko-sortable-list__item_\"]",
+    "dragHandle": "[class*=\"ko-sortable-list__handle_\"]",
+    "row": "[class*=\"ko-simple-list_row__row_\"]",
+    "rowActionable": "[class*=\"ko-simple-list_row__row--actionable_\"]",
+    "cell": "[class*=\"ko-simple-list_cell__cell_\"]",
+    "cellDisabled": "[class*=\"ko-simple-list_cell__disabled_\"]",
+    "triggerTitle": "[class*=\"ko-admin_triggers_index__title_\"]",
+    "triggerCaption": "[class*=\"ko-admin_triggers_index__caption_\"]",
+    "actions": "[class*=\"ko-simple-list_actions__actions_\"]",
+    "actionsHidden": "[class*=\"ko-simple-list_actions__hidden_\"]",
+    "actionEdit": "[class*=\"ko-simple-list_actions__actions_\"] a[href^=\"/admin/automation/triggers/\"]",
+    "actionClone": "[class*=\"ko-simple-list_actions__actions_\"] a[href=\"#\"]:nth-of-type(1)",
+    "actionEnableOrDisable": "[class*=\"ko-simple-list_actions__actions_\"] a[href=\"#\"]:nth-of-type(3)",
+    "actionDelete": "[class*=\"ko-simple-list_actions__actions_\"] a[href=\"#\"]:nth-of-type(4)"
+  },
+  "triggers_new": {
+    "headerBar": "[class*=\"ko-admin_page__header_\"][class*=\"--bar_\"]",
+    "title": "[class*=\"ko-admin_page__title_\"]",
+    "breadcrumbCaption": "[class*=\"ko-admin_page__caption_\"]",
+    "cancelButton": "button[data-purpose=\"cancel\"]",
+    "saveButton": "button[data-purpose=\"submit\"]",
+    "formGroup": "[class*=\"ko-admin_forms_group__group_\"]",
+    "formGroupLegend": "[class*=\"ko-admin_forms_group__legend_\"]",
+    "formGroupContents": "[class*=\"ko-admin_forms_group__contents_\"]",
+    "fieldContainer": "[class*=\"ko-form_field__container_\"]",
+    "fieldGap": "[class*=\"ko-form_field__gap_\"]",
+    "fieldLabel": "[class*=\"ko-form_field_label__container_\"]",
+    "ruleTitleInput": "input[name=\"title\"]",
+    "channelsLayout": "[class*=\"ko-admin_triggers_form__channel-layout_\"]",
+    "channelsBlock": "[class*=\"ko-admin_triggers_form__channels_\"]",
+    "selectTrigger": "[class*=\"ember-power-select-trigger\"], [role=\"button\"][data-ebd-id$=\"-trigger\"]",
+    "selectTriggerInner": "#ko-select-trigger-ember*, [id^=\"ko-select-trigger-ember\"]",
+    "dropdownWormhole": "#ember-basic-dropdown-wormhole",
+    "dropdownContent": "[id^=\"ember-basic-dropdown-content-\"]",
+    "dropdown": "[class*=\"ember-power-select-dropdown\"], [class*=\"ko-select__dropdown_\"]",
+    "dropdownOptions": "ul.ember-power-select-options",
+    "dropdownOption": "li.ember-power-select-option",
+    "conditionsBuilderContainer": "[class*=\"ko-admin_predicate-builder__container_\"]",
+    "conditionsPropositionContainer": "[class*=\"ko-admin_predicate-builder_proposition__container_\"]",
+    "conditionsPropositionLabel": "[class*=\"ko-admin_predicate-builder_proposition__label_\"]",
+    "conditionsPropositionLayout": "[class*=\"ko-admin_predicate-builder_proposition__layout_\"]",
+    "conditionsPropositionItem": "[class*=\"ko-admin_predicate-builder_proposition__item_\"]",
+    "conditionsAddButton": "[class*=\"ko-admin_predicate-builder__add_\"]",
+    "actionsBuilder": ".ko-automation-actions-builder, [class*=\"ko-admin_automation-actions-builder_\"]",
+    "actionsBuilderAction": "[class*=\"ko-admin_automation-actions-builder_action__automation-action_\"]",
+    "actionsBuilderSmallSlot": "[class*=\"ko-admin_automation-actions-builder_action__small-slot_\"]",
+    "actionsAddButton": "[class*=\"ko-admin_automation-actions-builder__add-action-btn_\"]",
+    "footerButtons": "[class*=\"ko-admin_page__footer_\"] [class*=\"ko-form_buttons__buttons_\"]"
+  }
+}
+

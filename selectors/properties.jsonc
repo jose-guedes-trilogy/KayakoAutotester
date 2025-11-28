@@ -1,0 +1,154 @@
+// Agent conversation right-side Properties panel (info bar/fields)
+// Includes requester card, identities, per-field selectors, and shared dropdown structures
+{
+  "layout": {
+    "sidebar": "div[class*=\"ko-agent-content_layout__sidebar_\"]",
+    "fieldsPane": "div[class*=\"ko-agent-content_layout__fields_\"]",
+    "spacer": "div[class*=\"ko-agent-content_layout__spacer_\"]",
+    "submitButtonRegion": "div[class*=\"ko-agent-content_layout__submit-button_\"]"
+  },
+  "requesterCard": {
+    "blockContainer": "div[class*=\"ko-case-content_info-block__container_\"]",
+    "infoCard": "div[class*=\"ko-agent-content_sidebar_requester-info-card__info-card_\"]",
+    "avatarLink": "a[href*=\"/agent/conversations/\"][href$=\"/user\"]",
+    "avatarContainer": "div[class*=\"ko-user-avatar__avatar-container_\"]",
+    "avatarImageMedium": "img[class*=\"ko-user-avatar_image__image_\"][class*=\"ko-user-avatar_image__sizeMedium_\"]",
+    "overview": "div[class*=\"ko-agent-content_sidebar_requester-info-card__requester-overview_\"]",
+    "nameRow": "div[class*=\"ko-agent-content_sidebar_requester-info-card__requester-name_\"]",
+    "nameEditableContainer": "div[class*=\"ko-editable-text__container_\"]",
+    "nameText": "div[class*=\"ko-editable-text__text_\"]",
+    "nameEmphasized": "span[class*=\"ko-editable-text__emphasizedText_\"]",
+    "namePencilIcon": "span[class*=\"ko-editable-text__pencil_\"] svg",
+    "organizationRow": "div[class*=\"ko-agent-content_sidebar_requester-info-card__organization-row_\"]",
+    "organizationLogo": "img[class*=\"ko-org-logo__org-logo_\"]",
+    "organizationLink": "a[class*=\"ko-agent-content_sidebar_requester-info-card__requester-organization_\"]",
+    "organizationRemoveIcon": "div[class*=\"ko-agent-content_sidebar_requester-info-card__cancel-icon_\"] .tooltipstered svg"
+  },
+  "identities": {
+    "container": "div[class*=\"ko-identities__container_\"]",
+    "list": "ul[class*=\"ko-identities__list_\"]",
+    "identityTrigger": "div.ember-power-select-trigger[class*=\"ko-identities_identity__trigger_\"]",
+    "identityEmail": "div[class*=\"ko-identities_identity_trigger__name_\"]",
+    "identityCautionIcon": "div.tooltipstered svg[data-name=\"caution\"]",
+    "identityChevron": "div[class*=\"ko-identities_identity_trigger__chevron_\"] svg",
+    "dropdownPlaceholder": "div[id^=\"ember-basic-dropdown-content-\"][class*=\"ember-basic-dropdown-content-placeholder\"]"
+  },
+  "userCasesDropdown": {
+    "container": "div[class*=\"ko-user-cases__active-cases-dropdown_\"]",
+    "trigger": "div[class*=\"ko-user-cases__sandbox-trigger_\"]",
+    "triggerInner": "div[class*=\"ko-user-cases__active-cases-trigger_\"]",
+    "countIcon": "div[class*=\"ko-user-cases__conversations-count_\"] svg",
+    "triggerText": "div[class*=\"ko-user-cases__trigger-text_\"]",
+    "triggerChevron": "div[class*=\"ko-user-cases__chevron_\"] svg",
+    "dropdown": "div[class*=\"ko-user-cases__sandbox-dropdown_\"]",
+    "root": "div[class*=\"ko-user-cases_dropdown__root_\"]",
+    "caseItem": "a[class*=\"ko-user-cases_dropdown__case-item_\"]",
+    "caseItemInner": "div[class*=\"ko-user-cases_dropdown__case-item-inner_\"]",
+    "titleRow": "div[class*=\"ko-user-cases_dropdown__title_\"]",
+    "involvedUsers": "div[class*=\"ko-user-cases_dropdown__involved-users_\"]",
+    "caseMeta": "div[class*=\"ko-user-cases_dropdown__case-meta_\"]",
+    "requesterAvatarContainer": "div[class*=\"ko-user-cases_dropdown__avatar_\"][class*=\"ko-user-cases_dropdown__requester_\"] div[class*=\"ko-user-avatar__avatar-container_\"]",
+    "requesterAvatarImage": "div[class*=\"ko-user-cases_dropdown__avatar_\"][class*=\"ko-user-cases_dropdown__requester_\"] img[class*=\"ko-user-avatar_image__image_\"][class*=\"ko-user-avatar_image__sizeMicro_\"]",
+    "requesterName": "div[class*=\"ko-user-cases_dropdown__name_\"]:not([class*=\"__unassigned_\"])",
+    "assigneeUnassigned": "div[class*=\"ko-user-cases_dropdown__name_\"][class*=\"__unassigned_\"]",
+    "statusRow": "div[class*=\"ko-user-cases_dropdown__status_\"]",
+    "statusPillNew": "div[class*=\"ko-user-cases_dropdown__case-status_\"][class*=\"__case-status-NEW_\"]",
+    "statusPillOpen": "div[class*=\"ko-user-cases_dropdown__case-status_\"][class*=\"__case-status-OPEN_\"]",
+    "middot": "div[class*=\"ko-user-cases_dropdown__middot_\"]",
+    "lastUpdatedTooltip": "div[class*=\"ko-user-cases_dropdown__last-updated_\"] .tooltipstered",
+    "subject": "div[class*=\"ko-user-cases_dropdown__subject_\"] .truncate-multiline--truncation-target",
+    "viewAllLink": "div[class*=\"ko-user-cases_dropdown__view-all-cases_\"] a"
+  },
+  // Right-side field components (Assignee, Status, etc.)
+  "infoBarCommon": {
+    "powerSelectContainer": "div[class*=\"ko-info-bar_field_select__power-select_\"]",
+    "selectTrigger": "div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"], div.ember-power-select-trigger[class*=\"ko-info-bar_field_drill-down__trigger_\"]",
+    "triggerCard": "div[class*=\"ko-info-bar_field_select_trigger__trigger_\"][class*=\"ko-info-bar_item__container_\"]",
+    "triggerHeader": "span[class*=\"ko-info-bar_field_select_trigger__header_\"]",
+    "triggerInput": "input[class*=\"ko-info-bar_field_select_trigger__input_\"]",
+    "triggerPlaceholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+    "middleEllipsisSpan": "span[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]",
+    "dropdownContent": "div[id^=\"ember-basic-dropdown-content-\"][class*=\"ember-basic-dropdown-content\"]",
+    "optionsList": "ul[id^=\"ember-power-select-options-\"]",
+    "option": "li.ember-power-select-option"
+  },
+  "fields": {
+    "assignee": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_drill-down__trigger_\"]",
+      "triggerCard": "div[id^=\"ko-info-bar-select-trigger-ember\"][class*=\"ko-info-bar_field_select_trigger__trigger_\"]",
+      "valueUnassigned": "div[class*=\"ko-case-content_field_assignee_trigger-value__trigger_\"]"
+    },
+    "status": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "swatchContainer": "div[class*=\"ko-case-content_field_status_swatch-with-label__container_\"]",
+      "swatchOuter": "div[class*=\"ko-case-content_field_status_swatch-with-label__swatch_\"] div[class*=\"ko-status-swatch__outer_\"]",
+      "label": "div[class*=\"ko-case-content_field_status_swatch-with-label__label_\"]"
+    },
+    "type": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+      "middleEllipsis": "span[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]"
+    },
+    "priority": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+      "middleEllipsis": "span[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]"
+    },
+    "tags": {
+      "multiTrigger": "div.ember-power-select-multiple-trigger[class*=\"ko-info-bar_field_select-multiple__trigger_\"]",
+      "triggerCard": "div[class*=\"ko-info-bar_field_select-multiple_trigger__trigger_\"][class*=\"ko-info-bar_item__container_\"]",
+      "input": "input[class*=\"ko-info-bar_field_select-multiple_trigger__input_\"]",
+      "statusIcon": "span.ember-power-select-status-icon"
+    },
+    "form": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"]",
+      "arrowInset": "div[class*=\"ko-info-bar_field_select_arrow__arrow-inset_\"]",
+      "arrow": "div[class*=\"ko-info-bar_field_select_arrow__arrow_\"]",
+      "triggerCard": "div[id^=\"ko-info-bar-select-trigger-ember\"][class*=\"ko-info-bar_field_select_trigger__trigger_\"]",
+      "middleEllipsis": "span[class*=\"ko-info-bar_field_select_trigger__middle-ellipsis-span_\"]"
+    },
+    "markAsSolvedByCustomer": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]"
+    },
+    "equipmentType": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_drill-down__trigger_\"]",
+      "triggerCard": "div[id^=\"ko-info-bar-select-trigger-ember\"][class*=\"ko-info-bar_field_select_trigger__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]"
+    },
+    "dateOfPurchase": {
+      "container": "div[class*=\"ko-info-bar_field_date__date_\"][class*=\"ko-info-bar_item__container_\"]",
+      "icon": "i[class*=\"ko-info-bar_field_date__icon_\"]",
+      "focus": "span[class*=\"ko-info-bar_field_date__focus_\"]",
+      "header": "span[class*=\"ko-info-bar_field_date__header_\"]",
+      "value": "div[class*=\"ko-info-bar_field_date__date_\"] > span:not([class])"
+    },
+    "radioTest": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]"
+    },
+    "testDropdown": {
+      "container": "div[id^=\"ember\"][class*=\"ko-info-bar_field_select__power-select_\"] >> div.ember-power-select-trigger[class*=\"ko-info-bar_field_select__trigger_\"]",
+      "placeholder": "span[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]"
+    },
+    "warrantyClaimsReason": {
+      "container": "div[class*=\"ko-info-bar_field_text__text_\"][class*=\"ko-info-bar_item__container_\"]",
+      "header": "span[class*=\"ko-info-bar_field_text__header_\"]",
+      "input": "input[class*=\"ko-info-bar_field_text__input_\"]"
+    }
+  },
+  // Shared dropdown scaffolding
+  "dropdownCommons": {
+    "content": "div[id^=\"ember-basic-dropdown-content-\"][class*=\"ember-basic-dropdown-content\"]",
+    "placeholderContent": "div[id^=\"ember-basic-dropdown-content-\"][class*=\"ember-basic-dropdown-content-placeholder\"]",
+    "optionsList": "ul[id^=\"ember-power-select-options-\"]",
+    "option": "li.ember-power-select-option",
+    "group": "li.ember-power-select-group",
+    "groupName": "span.ember-power-select-group-name"
+  },
+  "misc": {
+    "genericIcon": "svg[class*=\"ko-icon__icon_\"]",
+    "tooltipHost": ".tooltipstered"
+  }
+}
+

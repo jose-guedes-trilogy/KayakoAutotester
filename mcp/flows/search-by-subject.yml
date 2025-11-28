@@ -17,7 +17,7 @@ steps:
     selectorKey: search.input
   - type: fill
     selectorKey: search.input
-    value: "[AUTOTEST]"  # replace with a stable subject prefix present in your data
+    value: "[TEST PREFIX]"
   - type: press
     key: "Enter"
   - type: expect-visible

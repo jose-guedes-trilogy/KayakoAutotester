@@ -32,7 +32,7 @@
     "forgotPasswordLink": [
       "role=link[name='Forgot password?']",
       "role=button[name='Forgot password?']",
-      "text=/Forgot\\s*password\\??/i",
+      "text=/Forgot\\s*password\??/i",
       "text=Forgot password?",
       "form[class*='login-agent__login-form'] a[href*='forgot']"
     ],
@@ -50,6 +50,20 @@
       "nav a:has-text('Conversations')"
     ]
   },
+  // Conversations page readiness selectors
+  "conversations": {
+    // Page heading visible on the conversations screen
+    "heading": [
+      "role=heading[name=/Conversations/i]",
+      "text=/Conversations/i"
+    ],
+    // Main list/container region for conversations
+    "container": [
+      "[class*='conversation'][class*='list']",
+      "[class*='content'] [class*='conversation']",
+      "[class*='list']"
+    ]
+  },
   // Agent inbox selectors
   "inbox": {
     // First conversation item in the list (clicking opens the conversation)
@@ -61,6 +75,12 @@
       "role=listitem",
       "role=row",
       "[class*='row']"
+    ],
+    // Subject element within a conversation row
+    "conversationSubject": [
+      "[class*='cases-list'] [class*='subject']",
+      "[class*='conversation'] [class*='subject']",
+      "[class*='subject']"
     ],
     // 'All' filter chip in the inbox (fallback to text)
     "filterAll": [
@@ -99,15 +119,26 @@
   "composer": {
     // Rich text editor area (prefers contenteditable; falls back to textarea)
     "editor": [
+      "[class*='fr-element'][class*='fr-view']",
+      "[class*='composer'] [contenteditable]",
       "[class*='composer'] [contenteditable='true']",
+      "[class*='editor'][contenteditable]",
       "[class*='editor'][contenteditable='true']",
+      "div[contenteditable]",
+      "div[contenteditable='true']",
+      "[contenteditable='plaintext-only']",
       "textarea"
     ],
     // Toggle to switch to Internal note (or similar)
     "internalNoteToggle": [
-      "role=button[name=/Internal note|Note/i]",
-      "[class*='composer'] button:has-text('Internal note')",
-      "text=/Internal note/i"
+      "role=button[name='Internal note']",
+      "role=tab[name='Note']",
+      "[role='tab']:has-text('Note')",
+      "[class*='ko-text-editor_mode-selector__root_'] div:has-text('Notes')",
+      "[class*='ko-text-editor_mode-selector__case-mode_']",
+      "[class*='text-editor_mode-selector'] div:has-text('Notes')",
+      "[class*='mode-selector'] div:has-text('Notes')",
+      "text=Notes"
     ],
     // Send/Update button for replies
     "sendButton": [
@@ -127,8 +158,18 @@
     // Button or control to open assignee menu
     "openAssigneeMenu": [
       "role=button[name=/Assign|Assignee/i]",
+      "role=tab[name=/Assign/i]",
       "[class*='assignee'] button",
-      "[class*='assignment'] button"
+      "[class*='assignment'] button",
+      "text=/Assign/i",
+      "[data-testid*='assignee'], [data-test*='assignee']"
+    ],
+    // Direct footer button to quickly assign the case to the current agent
+    "assignToMeTrigger": [
+      "[class*='ko-case-content__assign-to-me-trigger_']",
+      "[class*='assign-to-me-trigger']:has-text('Assign to me')",
+      "role=button[name='Assign to me']",
+      "text=Assign to me"
     ],
     // 'Assign to me' or 'Me' option within the menu
     "selfOption": [

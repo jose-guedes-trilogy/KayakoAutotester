@@ -1,0 +1,115 @@
+// Conversation timeline (messages, notes, activities, separators) and reply editor shortcuts
+// Note: older references to ".message-or-note" map approximately to post items here
+{
+  "layout": {
+    "agentContentLayout": "[class*=\"ko-agent-content_layout__content_\"]",
+    "timelineLayoutContainer": "[class*=\"ko-agent-content_layout__timeline_\"]",
+    "replyAreaLayout": "[class*=\"ko-agent-content_layout__reply-area_\"]"
+  },
+  "tabs": {
+    "tabsList": "[class*=\"ko-tabs__list_\"]",
+    "addressTabLink": "[href*=\"/agent/conversations/\"][href*=\"/organization\"]",
+    "userTabLink": "[href*=\"/agent/conversations/\"][href*=\"/user\"]",
+    "activeTabLink": "[class*=\"ko-tabs_tab__link_\"][class*=\"active\"]",
+    "activeTabSubject": "[class*=\"ko-tabs_case__subject_\"]"
+  },
+  "headerControls": {
+    "headerControlsContainer": "[class*=\"ko-case-content__header-controls_\"]",
+    "caseId": "[class*=\"ko-case-content__id_d\"]",
+    "brandSelectTrigger": "[class*=\"ko-info-bar_field_select__trigger_\"]",
+    "brandSelectHeader": "[class*=\"ko-info-bar_field_select_trigger__header_\"]",
+    "brandSelectPlaceholder": "[class*=\"ko-info-bar_field_select_trigger__placeholder_\"]",
+    "completeButton": "[title=\"Complete\"][class*=\"ko-case-content__complete_\"]",
+    "completeButtonIcon": "[data-name=\"check\"]",
+    "trashButton": "[title=\"Trash\"][class*=\"ko-case-content__trash_\"]",
+    "trashButtonIcon": "[data-name=\"trash\"]",
+    "headerActionMenuTrigger": "[class*=\"ko-agent-content_hierarchical-action-menu__trigger_\"]"
+  },
+  "timelineHeader": {
+    "timelineHeader": "[class*=\"ko-case-content__timeline-header_\"]",
+    "timelineHeaderAvatar": "[class*=\"ko-case-content__timeline-header-image_\"] [class*=\"ko-user-avatar_image__image_\"]",
+    "timelineHeaderBody": "[class*=\"ko-case-content__timeline-header-body_\"]",
+    "timelineHeaderTitle": "[class*=\"ko-case-content__timeline-header-title_\"]",
+    "editableSubjectContainer": "[class*=\"ko-editable-text__container_\"]",
+    "editableSubjectText": "[class*=\"ko-editable-text__emphasizedText_\"]",
+    "editableSubjectPencilIcon": "[class*=\"ko-editable-text__pencil_\"]",
+    "timelineHeaderSubtitle": "[class*=\"ko-case-content__timeline-header-subtitle_\"]"
+  },
+  // Posts (messages and notes)
+  "timelinePosts": {
+    "postContainer": "[class*=\"ko-timeline-2_list_post__post_\"]",
+    "postItem": "[class*=\"ko-timeline-2_list_item__post_\"]",
+    "noteItem": "[class*=\"qa-feed_item--note\"]",
+    "postSideColumn": "[class*=\"ko-timeline-2_list_item__side-column_\"]",
+    "postAvatar": "[class*=\"ko-timeline-2_list_item__side-column_\"] [class*=\"ko-user-avatar_image__image_\"]",
+    "postBody": "[class*=\"ko-timeline-2_list_item__body_\"]",
+    "postHeader": "[class*=\"ko-timeline-2_list_item__header_\"]",
+    "postTitle": "[class*=\"ko-timeline-2_list_item__title_\"]",
+    "postCreatorLink": "[class*=\"ko-timeline-2_list_item__creator_\"]",
+    "postRolePill": "[class*=\"ko-role-pill__role-pill_\"]",
+    "postSubtitle": "[class*=\"ko-timeline-2_list_item__subtitle_\"]",
+    "postTimestamp": "[class*=\"ko-timeline-2_list_item_created-at__title_\"]",
+    "postExtendedInfo": "[class*=\"ko-timeline-2_list_item__extended-info_\"]",
+    "postEmailToText": "[class*=\"ko-timeline-2_list_item_email-info-inline__to-text_\"]",
+    "postEmailRecipient": "[class*=\"ko-timeline-2_list_item_email-info-inline__email-item_\"]",
+    "emailCopyButton": "[class*=\"copy-action-icon__copy-action-button_\"]",
+    "emailDetailsChevron": "[class*=\"ko-timeline-2_list_item_email-info-inline__details-chevron_\"]",
+    "postMenuWrapper": "[class*=\"ko-timeline-2_list_item__menu-wrapper_\"]",
+    "postMenu": "[class*=\"ko-feed_item_menu\"]",
+    "postReplyButton": "[class*=\"ko-timeline-2_list_item__menu-item_\"] > svg[width=\"14\"]",
+    "postQuoteButton": "[class*=\"ko-timeline-2_list_item__quote-icon_\"]",
+    "postShareLinkButton": "[aria-label=\"Share a link to this post\"]",
+    "postMoreActionsMenuTrigger": "[class*=\"ko-timeline-2_list_item_menu__trigger_\"]",
+    "postStatusContainer": "[class*=\"ko-timeline-2_list_item__status_\"]",
+    "postStatusDropdownTrigger": "[class*=\"ko-timeline-2_list_item_status__dropdown-trigger_\"]",
+    "postStatusLabel": "[class*=\"ko-timeline-2_list_item_status__label_\"]",
+    "postContent": "[class*=\"ko-timeline-2_list_item__content_\"]",
+    "postMessageBody": "[class*=\"ko-timeline-2_list_item__content_\"] > div > div"
+  },
+  "timelineActivity": {
+    "activityItem": "[class*=\"ko-timeline-2_list_activity_standard__activity_\"]",
+    "activityLine": "[class*=\"ko-timeline-2_list_activity_standard__activity-line-major_\"]",
+    "activityText": "[class*=\"ko-timeline-2_list_activity_standard__activity-text_\"]",
+    "activityUserLink": "[class*=\"ko-timeline-2_list_activity_standard__activity-text_\"] a[href*=\"/agent/users/\"]",
+    "activityCaseLink": "[class*=\"ko-timeline-2_list_activity_standard__activity-text_\"] a[href*=\"/agent/cases/\"]",
+    "activityTime": "[class*=\"ko-timeline-2_list_activity_standard__activity-time_\"]",
+    "activitySummaryText": "[class*=\"ko-timeline-2_list_activity_standard_actions-summary-text__summary-line-actions_\"]",
+    "activityShowMoreToggle": "[class*=\"ko-text-wrapper-for-button__toggle_\"]"
+  },
+  "daySeparator": {
+    "separator": "[class*=\"ko-timeline-2_list_days__day-separator_\"]",
+    "relativeTerm": "[class*=\"ko-timeline-2_list_days__day-separator__relative-term_\"]"
+  },
+  // Reply editor quick hooks
+  "replyEditor": {
+    "textEditorRoot": "[class*=\"ko-text-editor__root_\"]",
+    "textEditorHeader": "[class*=\"ko-text-editor__header_\"]",
+    "channelSelector": "[class*=\"ko-channel-selector__channel-selector_\"]",
+    "channelSelectorTrigger": "[class*=\"ko-channel-selector__trigger_\"]",
+    "channelSelectorSelectedText": "[class*=\"ko-channel-selector_selected-channel__text_\"]",
+    "editorModeSelector": "[class*=\"ko-text-editor_mode-selector__root_\"]",
+    "toolbarBoldButton": "[data-name=\"bold\"]",
+    "toolbarItalicButton": "[data-name=\"italic\"]",
+    "toolbarLinkButton": "[data-name=\"link\"]",
+    "toolbarParagraphButton": "[data-name=\"paragraph\"]",
+    "toolbarQuoteButton": "[data-name=\"quote\"]",
+    "toolbarBulletListButton": "[data-name=\"bulletList\"]",
+    "toolbarNumberListButton": "[data-name=\"numberList\"]",
+    "toolbarOutdentButton": "[data-name=\"outdent\"]",
+    "toolbarIndentButton": "[data-name=\"indent\"]",
+    "toolbarMoreStylesDropdown": "[class*=\"ko-text-editor__itemControlsDropdown_\"]",
+    "toolbarImageUploadButton": "[class*=\"ko-text-editor__itemWrap_\"] > svg[width=\"14\"][height=\"14\"]",
+    "toolbarImageUploadInput": "[class*=\"ko-text-editor__fileField_\"][type=\"file\"]",
+    "macroSelectorContainer": "[class*=\"ko-case_macro-selector__container_\"]",
+    "macroSelectorTrigger": "[class*=\"ko-case_macro-selector__trigger_\"]",
+    "editorContentArea": "[class*=\"ko-text-editor__contents_\"]",
+    // Most robust selector seen for Froala editable region
+    "wysiwygEditor": "[class*=\"fr-element\"][class*=\"fr-view\"]",
+    "editorPlaceholder": "[class*=\"fr-placeholder\"]",
+    "textEditorFooter": "[class*=\"ko-text-editor__footer_\"]",
+    "footerAttachmentClipIcon": "[class*=\"ko-text-editor__clip-icon_\"]",
+    "footerCcButton": "[class*=\"ko-case-content_cc__cc_\"]",
+    "footerAssignToMeButton": "[class*=\"ko-case-content__assign-to-me-trigger_\"]"
+  }
+}
+

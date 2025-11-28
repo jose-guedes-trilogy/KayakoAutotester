@@ -1,0 +1,132 @@
+// Agent Conversations list page (cases list)
+// Structure:
+// - page: top-level containers and title area
+// - table: ko-table wrappers for header/body rows
+// - columns / cells: stable per-column hooks
+// - sidebar: views navigation on the left
+// - viewsShortcuts: canonical links to default views
+{
+  "page": {
+    "container": "div[class*=\"ko-cases-list__container_\"]",
+    "titleBar": "div[class*=\"ko-cases-list__title_\"]",
+    "heading": "h4[class*=\"ko-cases-list__heading_\"]",
+    "bulkActions": "div[class*=\"ko-cases-list__bulk-actions_\"]"
+  },
+  "table": {
+    "container": "div[class*=\"ko-table__container_\"]",
+    "table": "table[class*=\"ko-table__table_\"]",
+    "thead": "thead[class*=\"ko-table_header__container_\"]",
+    "headerRow": "tr[class*=\"ko-table_header__row_\"]",
+    "headerCell": "th[class*=\"ko-table_column__container_\"]",
+    "headerCellSortable": "th[class*=\"ko-table_column__container_\"][class*=\"ko-table_column__sortable_\"]",
+    "headerCellInner": "th[class*=\"ko-table_column__container_\"] div[class*=\"ko-table_column__ellipsis_\"]",
+    "tbody": "tbody[class*=\"ko-table_body__tbody_\"]",
+    "row": "tr[class*=\"ko-table_row__container_\"]",
+    "rowCasesList": "tr[class*=\"ko-cases-list__row_\"]",
+    "cell": "td[class*=\"ko-table_cell__container_\"]",
+    "cellInner": "td[class*=\"ko-table_cell__container_\"] div[class*=\"ko-table_cell__ellipsis_\"]",
+    "columnEllipsis": "div[class*=\"ko-table_column__ellipsis_\"]"
+  },
+  "checkboxes": {
+    "wrap": "div[class*=\"ko-checkbox__checkboxWrap_\"]",
+    "checkbox": "div[class*=\"ko-checkbox__checkbox_\"][role=\"checkbox\"]",
+    "checkboxUnchecked": "div[role=\"checkbox\"][aria-checked=\"false\"]",
+    "checkboxChecked": "div[role=\"checkbox\"][aria-checked=\"true\"]"
+  },
+  // Header column anchors
+  "columns": {
+    "conversationHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Conversation\")",
+    "statusHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Status\")",
+    "assigneeHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Assignee\")",
+    "latestAgentReplyHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Latest agent reply\")",
+    "createdHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Created\")",
+    "teamHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Team\")",
+    "sourceHeader": "th[class*=\"ko-table_column__container_\"]:has-text(\"Source channel\")"
+  },
+  // Conversation cell anatomy
+  "conversationCell": {
+    "container": "td div[class*=\"ko-cases-list_column_conversation__conversation_\"]",
+    "avatarSlot": "div[class*=\"ko-cases-list_column_conversation__avatar_\"]",
+    "avatarContainer": "div[class*=\"ko-user-avatar__avatar-container_\"]",
+    "avatarImage": "img[class*=\"ko-user-avatar_image__image_\"]",
+    "avatarSizeMedium": "img[class*=\"ko-user-avatar_image__sizeMedium_\"]",
+    "avatarSizeMicro": "img[class*=\"ko-user-avatar_image__sizeMicro_\"]",
+    "onlineDot": "span[class*=\"ko-user-avatar_online-indicator__online-indicator_\"]",
+    "onlineDotMedium": "span[class*=\"ko-user-avatar_online-indicator__online-indicator--medium_\"]",
+    "onlineDotMicro": "span[class*=\"ko-user-avatar_online-indicator__online-indicator--micro_\"]",
+    "text": "div[class*=\"ko-cases-list_column_conversation__text_\"]",
+    "firstRow": "div[class*=\"ko-cases-list_column_conversation__firstRow_\"]",
+    "requester": "div[class*=\"ko-cases-list_column_conversation__requester_\"]",
+    "attachmentsIcon": "div[class*=\"ko-cases-list_column_conversation__attachments_\"] svg",
+    "ago": "div[class*=\"ko-cases-list_column_conversation__ago_\"] span",
+    "secondRow": "div[class*=\"ko-cases-list_column_conversation__secondRow_\"]",
+    "subject": "span[class*=\"ko-cases-list_column_conversation__subject_\"]",
+    "bullet": "span[class*=\"ko-cases-list_column_conversation__bullet_\"]",
+    "statusIconWrapper": "span[class*=\"ko-cases-list_column_conversation__status-icon_\"]",
+    "statusIconSvg": "span[class*=\"ko-cases-list_column_conversation__status-icon_\"] svg",
+    "preview": "span[class*=\"ko-cases-list_column_conversation__preview_\"]"
+  },
+  "statusCell": {
+    "container": "td div[class*=\"ko-cases-list_column_casestatusid__status_\"]",
+    "pill": "div[class*=\"ko-status-pill__status_\"]",
+    "pillNew": "div[class*=\"ko-status-pill__status-new_\"]",
+    "pillOpen": "div[class*=\"ko-status-pill__status-open_\"]",
+    "label": "div[class*=\"ko-status-pill__label_\"]"
+  },
+  "assigneeCell": {
+    "wrapper": "td div[class*=\"ko-cases-list_column_user__wrapper_\"]",
+    "avatar": "div[class*=\"ko-cases-list_column_user__avatar_\"] img[class*=\"ko-user-avatar_image__image_\"]",
+    "name": "div[class*=\"ko-cases-list_column_user__name_\"]"
+  },
+  "timestampCells": {
+    "genericTooltipTime": "td span.ember-view.tooltipstered",
+    "latestAgentReply": "td:nth-of-type(5) span.ember-view.tooltipstered",
+    "created": "td:nth-of-type(6) span.ember-view.tooltipstered"
+  },
+  "teamCell": {
+    "container": "td:nth-of-type(7)",
+    "text": "td:nth-of-type(7)"
+  },
+  "sourceChannelCell": {
+    "container": "td:nth-of-type(8)",
+    "text": "td:nth-of-type(8)"
+  },
+  // Pagination controls
+  "pagination": {
+    "wrapper": "div[class*=\"ko-pagination__pagination-wapper_\"]",
+    "link": "div[class*=\"ko-pagination__pagination-wapper_\"] a[href]",
+    "itemContainer": "div[class*=\"ko-pagination_item__container_\"]",
+    "item": "div[class*=\"ko-pagination_item__item_\"]",
+    "activeItemContainer": "div[class*=\"ko-pagination_item__container_\"][class*=\"ko-pagination_item__active_\"]",
+    "activeLink": "div[class*=\"ko-pagination_item__active_\"] >> xpath=ancestor::a"
+  },
+  // Left-hand filters/views
+  "sidebar": {
+    "container": "div[class*=\"session_agent_cases_index__sidebar_\"]",
+    "sidebarInner": "div[class*=\"ko-cases-list_sidebar__sidebar_\"]",
+    "item": "a[class*=\"ko-cases-list_sidebar_item__item_\"]",
+    "itemActive": "a[class*=\"ko-cases-list_sidebar_item__item_\"][class*=\"active\"]",
+    "itemDisabled": "a[class*=\"ko-cases-list_sidebar_item__disabled_\"]",
+    "itemIcon": "div[class*=\"ko-cases-list_sidebar_item__icon_\"] svg",
+    "itemText": "div[class*=\"ko-cases-list_sidebar_item__text_\"]",
+    "itemCounter": "span[class*=\"ko-cases-list_sidebar_item__counter_\"]",
+    "reloadIcon": "div[class*=\"ko-cases-list_sidebar_item_reload-icon__reload-icon_\"]",
+    "hr": "hr[class*=\"ko-cases-list_sidebar__hr_\"]",
+    "suspendedLink": "a[href=\"/agent/conversations/suspended-messages\"][class*=\"ko-cases-list_sidebar__item_\"]",
+    "suspendedCounter": "a[href=\"/agent/conversations/suspended-messages\"] span[class*=\"ko-cases-list_sidebar__counter_\"]",
+    "manageViewsLink": "a[href=\"/admin/conversations/views\"][class*=\"ko-cases-list_sidebar__item_\"]"
+  },
+  "viewsShortcuts": {
+    "inbox": "a[href=\"/agent/conversations/view/1\"][class*=\"ko-cases-list_sidebar_item__item_\"]",
+    "inboxCounter": "a[href=\"/agent/conversations/view/1\"] span[class*=\"ko-cases-list_sidebar_item__counter_\"]",
+    "allOpenInTeams": "a[href=\"/agent/conversations/view/2\"][class*=\"ko-cases-list_sidebar_item__item_\"]",
+    "myActive": "a[href=\"/agent/conversations/view/3\"][class*=\"ko-cases-list_sidebar_item__item_\"]",
+    "recentlyUpdatedInTeams": "a[href=\"/agent/conversations/view/4\"][class*=\"ko-cases-list_sidebar_item__item_\"]",
+    "trash": "a[href=\"/agent/conversations/view/5\"][class*=\"ko-cases-list_sidebar_item__item_\"]"
+  },
+  "icons": {
+    "genericIcon": "svg[class*=\"ko-icon__icon_\"]",
+    "attachmentClip": "div[class*=\"ko-cases-list_column_conversation__attachments_\"] svg[class*=\"ko-icon__icon_\"]"
+  }
+}
+
