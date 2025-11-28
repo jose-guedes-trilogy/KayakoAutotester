@@ -56,7 +56,11 @@
     "firstItem": [
       "[class*='conversation-list'] [class*='item'] a",
       "[class*='conversation-list'] [class*='item']",
-      "[class*='list'] a[href*='/agent/conversations/']"
+      "[class*='list'] a[href*='/agent/conversations/']",
+      "a[href^='/agent/conversations/']",
+      "role=listitem",
+      "role=row",
+      "[class*='row']"
     ],
     // 'All' filter chip in the inbox (fallback to text)
     "filterAll": [
