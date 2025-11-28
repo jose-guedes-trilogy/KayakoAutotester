@@ -326,10 +326,10 @@
     ],
     // Editor input area (Froala contenteditable surface)
     "editorInput": [
-      // Exact Froala surface selector (preferred for reliability)
-      "div.fr-element.fr-view",
-      // Resilient fallback using class contains
-      "[class*='fr-element'][class*='fr-view']"
+      // Exact Froala surface selector (preferred for reliability; scoped to contenteditable surface)
+      "div.fr-element.fr-view[contenteditable]",
+      // Resilient fallback using class contains on the contenteditable surface
+      "[class*='fr-element'][class*='fr-view'][contenteditable]"
     ],
     // Rich text editor area (primary target for typing and fill; includes robust fallbacks)
     "editor": [
@@ -348,19 +348,23 @@
       "[contenteditable='plaintext-only']",
       "textarea"
     ],
-    // Editor toolbar controls
+    // Editor toolbar controls (bold formatting button)
     "toolbarBoldButton": [
       "svg[data-name='bold']"
     ],
+    // Editor toolbar controls (italic formatting button)
     "toolbarItalicButton": [
       "svg[data-name='italic']"
     ],
+    // Editor toolbar controls (insert/edit link button)
     "toolbarLinkInsert": [
       "svg[data-name='link']"
     ],
+    // Editor toolbar controls (bulleted list button)
     "toolbarBulletedList": [
       "svg[data-name='bulletList']"
     ],
+    // Editor toolbar controls (numbered list button)
     "toolbarNumberedList": [
       "svg[data-name='numberList']"
     ],
@@ -384,6 +388,7 @@
     "ccTrigger": [
       "[class*='ko-case-content_cc__trigger_']"
     ],
+    // Container for the expanded CC chip/input region
     "ccContainer": [
       "[class*='ko-case-content_cc__cc_']",
       "[class*='ko-case-content__cc-component_']"
@@ -396,6 +401,7 @@
     "ccSelectedPill": [
       "[class*='ko-case-content_cc__option-item_']"
     ],
+    // Remove/close pill/button for a selected CC recipient
     "ccRemovePill": [
       "[class*='ko-case-content_cc__option-item-close_']"
     ],
@@ -412,7 +418,6 @@
     ],
     // Toggle to switch to Internal note (or similar)
     "internalNoteToggle": [
-      "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']",
       "[class*='ko-text-editor_mode-selector__root_'][aria-selected='false']:has-text('Notes')",
       "[class*='ko-text-editor_mode-selector__case-mode_']:has-text('Notes')",
       "role=button[name='Internal note']",
@@ -498,7 +503,6 @@
       "button:has-text('Assignee')",
       "div.ember-power-select-trigger[class*='ko-info-bar_field_select__trigger_']",
       "div[id^='ko-info-bar-select-trigger-ember'][class*='ko-info-bar_field_select_trigger__trigger_']",
-      "div[class*='ko-info-bar_field_drill-down__trigger_']",
       "text=Assignee"
     ],
     // 'Assign to me' or 'Me' option within the menu
@@ -634,7 +638,6 @@
     // Input inside the tags multi-select (ember-power-select-multiple)
     "tagsInput": [
       "input[class*='ko-info-bar_field_select-multiple_trigger__input_']",
-      "[id^='ember-basic-dropdown-content-'] .ember-power-select-search-input",
       ".ember-power-select-multiple-input",
       "input.ember-power-select-search-input"
     ],
@@ -693,10 +696,12 @@
       "div[class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_']",
       "div[class*='ko-info-bar_field_date__date_']"
     ],
+    // Calendar icon element inside date field container
     "dateIcon": [
       "i[class*='ko-info-bar_field_date__icon_']",
       "i.i-select"
     ],
+    // Visible header/label span for date fields (e.g., \"Date of purchase\")
     "dateHeader": [
       "span[class*='ko-info-bar_field_date__header_']"
     ],
@@ -704,12 +709,15 @@
     "datePrev": [
       "span[class*='ko-datepicker__previous_']"
     ],
+    // \"Next month\" navigation control in datepicker header
     "dateNext": [
       "span[class*='ko-datepicker__next_']"
     ],
+    // Month label text inside the datepicker header
     "dateMonth": [
       "span[class*='ko-datepicker__month_']"
     ],
+    // Year label text inside the datepicker header
     "dateYear": [
       "span[class*='ko-datepicker__year_']"
     ],
@@ -717,6 +725,7 @@
     "dateDayCurrentMonth": [
       "span[class*='ko-datepicker__dateCurrentMonth_']"
     ],
+    // Any selectable day cell inside datepicker grid
     "dateDayAny": [
       "span[class*='ko-datepicker__date_']"
     ],
@@ -728,6 +737,7 @@
     "dateActionsContainer": [
       "div[class*='ko-datepicker__actions_']"
     ],
+    // Footer action buttons in datepicker (Today, Clear, Close)
     "dateAction": [
       "div[class*='ko-datepicker__action_']"
     ],
@@ -737,8 +747,8 @@
     ],
     // Generic dropdown option (use with :has-text())
     "dropdownOption": [
-      "ul[role='listbox'] li[role='option']",
-      ".ember-power-select-option"
+      "#ember-basic-dropdown-wormhole ul[role='listbox'] li[role='option']",
+      "#ember-basic-dropdown-wormhole .ember-power-select-option"
     ],
     // Generic checkbox or switch within a field container
     "checkbox": [
@@ -769,7 +779,7 @@
     // Generic textarea within a field container
     "textarea": [
       "textarea[class*='ko-info-bar_field_multiline-text__textarea_']",
-      "textarea"
+      "[class*='ko-info-bar_item__container_'] textarea"
     ],
     // Generic date input within a field container
     "dateInput": [
@@ -850,28 +860,35 @@
   },
   // Quick switcher for other active conversations of the same user
   "userCases": {
+    // Trigger that opens the user cases dropdown for active conversations
     "trigger": [
       "div[class*='ko-user-cases__active-cases-trigger_']",
       "div[class*='ko-user-cases__sandbox-trigger_']"
     ],
+    // Dropdown panel listing other active conversations for the same user
     "dropdown": [
       "div[class*='ko-user-cases__sandbox-dropdown_']"
     ],
+    // Individual case item/link inside the user cases dropdown
     "caseItem": [
       "a[class*='ko-user-cases_dropdown__case-item_']"
     ],
+    // Status label element within a case item (e.g., Open, Pending)
     "caseStatus": [
       "div[class*='ko-user-cases_dropdown__case-status_']"
     ],
+    // Subject/title element within a case item
     "caseSubject": [
       "div[class*='ko-user-cases_dropdown__subject_']"
     ]
   },
   // Requester identities (sidebar) controls
   "identities": {
+    // Trigger control to expand/collapse requester identities list
     "trigger": [
       "div[class*='ko-identities_identity__trigger_']"
     ],
+    // Displayed identity name/value in the identities trigger
     "name": [
       "div[class*='ko-identities_identity_trigger__name_']"
     ]
