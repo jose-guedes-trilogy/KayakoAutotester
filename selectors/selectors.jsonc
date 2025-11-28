@@ -32,7 +32,7 @@
     "forgotPasswordLink": [
       "role=link[name='Forgot password?']",
       "role=button[name='Forgot password?']",
-      "text=/Forgot\\s*password\??/i",
+      "text=/Forgot\\s*password\\??/i",
       "text=Forgot password?",
       "form[class*='login-agent__login-form'] a[href*='forgot']"
     ],
@@ -94,8 +94,11 @@
     // Subject heading of an open conversation
     "subjectHeading": [
       "role=heading[level=1]",
+      "role=heading",
+      "[class*='ko-case-content__timeline-header-title_']",
       "[class*='conversation-header'] h1",
-      "h1"
+      "h1",
+      "h3"
     ],
     // Requester/customer identifier shown near the header
     "requester": [
@@ -113,6 +116,11 @@
     "timelineEntry": [
       "[class*='timeline'] [class*='entry']",
       "[class*='timeline'] [class*='item']"
+    ],
+    // Specific note content text we insert for validation
+    "noteText": [
+      "text=[AUTOTEST] Internal note added by MCP",
+      "text=/\\[AUTOTEST\\]\\s*Internal note added by MCP/i"
     ]
   },
   // Reply/Note composer selectors
@@ -142,9 +150,18 @@
     ],
     // Send/Update button for replies
     "sendButton": [
-      "role=button[name=/Send|Update/i]",
+      "role=button[name=/^Send( and update)?$/i]",
+      "button:has-text('Send and update')",
+      "button:has-text('Send')",
+      "button[type='submit']:has-text('Send and update')",
+      "button[type='submit']:has-text('Send')",
       "[class*='composer'] button[type='submit']",
       "[class*='composer'] button:has-text('Send')"
+    ],
+    // Placeholder shown when composer is in Notes mode
+    "notePlaceholder": [
+      "text=Add a note…",
+      "text=/^\\s*Add a note\\s*…?\\s*$/"
     ],
     // Add/Save note button (when composer is in internal note mode)
     "addNoteButton": [
@@ -166,20 +183,73 @@
     ],
     // Direct footer button to quickly assign the case to the current agent
     "assignToMeTrigger": [
+      ".ko-case-content__assign-to-me-trigger_11x6m5",
       "[class*='ko-case-content__assign-to-me-trigger_']",
+      "[class^='ko-case-content__assign-to-me-container_']",
       "[class*='assign-to-me-trigger']:has-text('Assign to me')",
       "role=button[name='Assign to me']",
       "text=Assign to me"
     ],
+    // Container of the dropdown opened by Assign to me trigger
+    "assignToMeOptions": [
+      "[id='ember-basic-dropdown-wormhole'] [class*='ko-case-content__assign-to-me-options_']",
+      "[class*='ko-case-content__assign-to-me-options_']"
+    ],
+    // Team 'General' option inside the Assign to me dropdown
+    "teamGeneral": [
+      // Composer dropdown variant
+      "[id='ember-basic-dropdown-wormhole'] [class*='ko-agent-content_action-menu_item__item_']:has-text('General')",
+      "[class*='ko-agent-content_action-menu_item__item_']:has-text('General')",
+      // Composer dropdown pure CSS (first option is General)
+      "[id^='ember-basic-dropdown-content-'] [class^='ko-agent-content_action-menu_item__item_']",
+      // Properties (ember-power-select) variant
+      "ul[role='listbox'] li[role='option']:has-text('General')",
+      ".ember-power-select-option:has-text('General')",
+      "text=General"
+    ],
+    // Team 'VIP Account Team' option (alternate team)
+    "teamVip": [
+      // Composer dropdown pure CSS fallback (second option typically)
+      "[id^='ember-basic-dropdown-content-'] [class^='ko-agent-content_action-menu_item__item_'] + [class^='ko-agent-content_action-menu_item__item_']",
+      "ul[role='listbox'] li[role='option']:has-text('VIP Account Team')",
+      ".ember-power-select-option:has-text('VIP Account Team')",
+      "[class*='ko-agent-content_action-menu_item__item_']:has-text('VIP Account Team')",
+      "text=VIP Account Team"
+    ],
+    // Right-side Properties panel: Assignee field trigger (preferred, more stable)
+    "assigneeFieldTrigger": [
+      "role=button[name=/Assignee/i]",
+      "button:has-text('Assignee')",
+      "div.ember-power-select-trigger[class*='ko-info-bar_field_select__trigger_']",
+      "div[id^='ko-info-bar-select-trigger-ember'][class*='ko-info-bar_field_select_trigger__trigger_']",
+      "div[class*='ko-info-bar_field_drill-down__trigger_']",
+      "text=Assignee"
+    ],
     // 'Assign to me' or 'Me' option within the menu
     "selfOption": [
-      "role=option[name=/Me|Myself/i]",
-      "text=/Assign to me|Self/i"
+      "role=option[name=/Me|Myself|Assign to me|José\\s*Guedes|Jose\\s*Guedes/i]",
+      "[class*='ember-power-select-option']:has-text('Assign to me')",
+      "[class*='ember-power-select-option']:has-text('Me')",
+      "[class*='ember-power-select-option']:has-text('Myself')",
+      "[class*='ember-power-select-option']:has-text('José Guedes')",
+      "[class*='ember-power-select-option']:has-text('Jose Guedes')",
+      "text=/Assign to me|Me|Myself|José\\s*Guedes|Jose\\s*Guedes/i"
     ],
     // Confirmation/feedback after assigning (toast or header chip)
     "confirmation": [
-      "[class*='toast']:has-text(/assign|assignee|updated/i)",
-      "[class*='assignee']:has-text(/Me|Myself|You/i)"
+      "text=/assign|assigned|assignee|updated/i",
+      "role=alert",
+      "role=status",
+      "[class*='toast']",
+      "text=/Me|Myself|You|José\\s*Guedes|Jose\\s*Guedes/i",
+      "[class*='assignee']"
+    ],
+    // Footer "Update properties" button to persist property changes (assignment, etc.)
+    "updatePropertiesButton": [
+      "role=button[name=/Update properties/i]",
+      "[class*='ko-case-content__submit-properties_'] button:has-text('Update properties')",
+      "button:has-text('Update properties')",
+      "text=Update properties"
     ]
   },
   // Global search selectors

@@ -11,6 +11,8 @@ type Step =
   | { type: 'goto'; url: string }
   | { type: 'fill'; selectorKey: string; value: string }
   | { type: 'click'; selectorKey: string }
+  | { type: 'dispatch-click'; selectorKey: string }
+  | { type: 'dispatch-click-text'; value: string }
   | { type: 'expect-visible'; selectorKey: string }
   | { type: 'expect-url-contains'; value: string }
   | { type: 'wait'; value: string }
@@ -24,8 +26,13 @@ type Flow = {
 
 function resolveEnvToken(value: string): string {
   if (!value.startsWith('env.')) return JSON.stringify(value);
-  const varName = value.slice(4);
-  return `env.${varName}`;
+  // Support suffixes like env.VAR/something by concatenation
+  const m = value.match(/^env\.([A-Z0-9_]+)(.*)$/i);
+  if (!m) return JSON.stringify(value);
+  const varName = m[1];
+  const suffix = m[2] ?? '';
+  if (!suffix) return `env.${varName}`;
+  return `env.${varName} + ${JSON.stringify(suffix)}`;
 }
 
 function selectorGroupAndKey(selectorKey: string): { group: string; key: string } {
@@ -38,14 +45,19 @@ function generateTest(flow: Flow): string {
   const lines: string[] = [];
   lines.push("import { test, expect } from '../../fixtures/auth.fixture';");
   lines.push("import { env } from '../../config/env';");
-  lines.push("import { click, fill as fillSel, expectVisible } from '../../selectors';");
+  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText } from '../../selectors';");
   lines.push('');
   lines.push(`test.describe(${JSON.stringify(flow.description ?? flow.name)}, () => {`);
   lines.push(`  test('${flow.name}', async ({ authenticatedPage: page }) => {`);
   for (const step of flow.steps) {
+    const optional = (step as any).optional === true;
+    const optBegin = optional ? `    try {` : '';
+    const optEnd = optional ? `    } catch (e) { console.warn('Optional step failed (${(step as any).type})', e); }` : '';
     switch (step.type) {
       case 'goto': {
+        if (optional) lines.push(optBegin);
         lines.push(`    await page.goto(${resolveEnvToken((step as any).url)});`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'fill': {
@@ -53,29 +65,54 @@ function generateTest(flow: Flow): string {
         // Skip login.* interactions because fixture authenticates already
         if (group === 'login') break;
         const valueExpr = resolveEnvToken((step as any).value);
+        if (optional) lines.push(optBegin);
         lines.push(`    await fillSel(page, '${group}', '${key}', ${valueExpr});`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'click': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
+        if (optional) lines.push(optBegin);
         lines.push(`    await click(page, '${group}', '${key}');`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'dispatch-click': {
+        const { group, key } = selectorGroupAndKey((step as any).selectorKey);
+        if (group === 'login') break;
+        if (optional) lines.push(optBegin);
+        lines.push(`    await dispatchClickCss(page, '${group}', '${key}');`);
+        if (optional) lines.push(optEnd);
+        break;
+      }
+      case 'dispatch-click-text': {
+        const value = (step as any).value as string;
+        if (optional) lines.push(optBegin);
+        lines.push(`    await dispatchClickText(page, ${JSON.stringify(value)});`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'expect-visible': {
         const { group, key } = selectorGroupAndKey((step as any).selectorKey);
         if (group === 'login') break;
+        if (optional) lines.push(optBegin);
         lines.push(`    await expectVisible(page, '${group}', '${key}');`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'expect-url-contains': {
         const value = (step as any).value as string;
+        if (optional) lines.push(optBegin);
         lines.push(`    await expect(page).toHaveURL(new RegExp(${JSON.stringify(value)}));`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'wait': {
         const ms = parseInt((step as any).value, 10) || 0;
+        if (optional) lines.push(optBegin);
         lines.push(`    await page.waitForTimeout(${ms});`);
+        if (optional) lines.push(optEnd);
         break;
       }
       case 'press': {
@@ -83,9 +120,13 @@ function generateTest(flow: Flow): string {
         if (s.selectorKey) {
           const { group, key } = selectorGroupAndKey(s.selectorKey);
           if (group === 'login') break;
+          if (optional) lines.push(optBegin);
           lines.push(`    { const r = await (await import('../../selectors')).firstAvailableLocator(page, '${group}', '${key}'); await r.locator.press(${JSON.stringify(s.key)}); }`);
+          if (optional) lines.push(optEnd);
         } else {
+          if (optional) lines.push(optBegin);
           lines.push(`    await page.keyboard.press(${JSON.stringify(s.key)});`);
+          if (optional) lines.push(optEnd);
         }
         break;
       }

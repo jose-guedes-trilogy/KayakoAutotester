@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/auth.fixture';
 import { env } from '../../config/env';
-import { click, fill as fillSel, expectVisible } from '../../selectors';
+import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText } from '../../selectors';
 
 test.describe("Agent searches for a conversation by subject and opens it", () => {
   test('search-by-subject', async ({ authenticatedPage: page }) => {

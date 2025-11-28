@@ -20,11 +20,46 @@ steps:
   - type: click
     selectorKey: inbox.conversationSubject
   - type: expect-visible
-    selectorKey: conversation.subjectHeading
-  - type: wait
-    value: "1500"
+    selectorKey: composer.editor
   - type: click
+    selectorKey: composer.editor
+  - type: wait
+    value: "250"
+  # Try composer footer "Assign to me" path first (optional attempts)
+  - type: dispatch-click
     selectorKey: assign.assignToMeTrigger
+    optional: true
+  - type: wait
+    value: "200"
+    optional: true
+  - type: dispatch-click-text
+    value: "General"
+    optional: true
+  - type: wait
+    value: "200"
+    optional: true
+  - type: click
+    selectorKey: assign.selfOption
+    optional: true
+  - type: wait
+    value: "200"
+    optional: true
+  # Fallback path via Properties → Assignee
+  - type: click
+    selectorKey: assign.assigneeFieldTrigger
+  - type: wait
+    value: "250"
+  - type: dispatch-click-text
+    value: "General"
+  - type: wait
+    value: "250"
+  - type: click
+    selectorKey: assign.selfOption
+  - type: wait
+    value: "200"
+  - type: click
+    selectorKey: assign.updatePropertiesButton
+    optional: true
   - type: expect-visible
     selectorKey: assign.confirmation
 

@@ -23,16 +23,24 @@ steps:
     selectorKey: conversation.subjectHeading
   - type: wait
     value: "1500"
-  - type: click
+  - type: expect-visible
     selectorKey: composer.editor
   - type: click
-    selectorKey: composer.internalNoteToggle
+    selectorKey: composer.editor
+  - type: wait
+    value: "400"
+  - type: dispatch-click-text
+    value: "Notes"
+  - type: wait
+    value: "400"
+  - type: expect-visible
+    selectorKey: composer.notePlaceholder
   - type: fill
     selectorKey: composer.editor
     value: "[AUTOTEST] Internal note added by MCP"
   - type: click
-    selectorKey: composer.addNoteButton
+    selectorKey: composer.sendButton
   - type: expect-visible
-    selectorKey: conversation.timelineEntry
+    selectorKey: conversation.noteText
 
 
