@@ -244,12 +244,34 @@
       "text=/Me|Myself|You|José\\s*Guedes|Jose\\s*Guedes/i",
       "[class*='assignee']"
     ],
+    // Current Assignee value (team/agent) shown in the Properties panel trigger
+    "assigneeValueContainer": [
+      "[class*='ko-case-content_field_assignee_trigger-value__trigger_']"
+    ],
+    // Current team shown in the Assignee trigger (e.g., General)
+    "assigneeTeamValue": [
+      "[class*='ko-case-content_field_assignee_trigger-value__team_']"
+    ],
+    // Current agent name shown in the Assignee trigger (e.g., José Guedes)
+    "assigneeAgentValue": [
+      "[class*='ko-case-content_field_assignee_trigger-value__agent-name_']"
+    ],
+    // Unassigned marker text (appears in select content when unassigned)
+    "assigneeUnassigned": [
+      "text=/\\(Unassigned\\)/"
+    ],
     // Footer "Update properties" button to persist property changes (assignment, etc.)
     "updatePropertiesButton": [
       "role=button[name=/Update properties/i]",
       "[class*='ko-case-content__submit-properties_'] button:has-text('Update properties')",
       "button:has-text('Update properties')",
       "text=Update properties"
+    ],
+    // Span inside the Update properties button (fallback for manual event dispatch)
+    "updatePropertiesSpan": [
+      "[class*='ko-case-content__submit-properties_'] .ko-button__span_ka3fcv",
+      ".ko-case-content__submit-properties_11x6m5 .ko-button__span_ka3fcv",
+      "[class*='ko-button__span_']"
     ]
   },
   // Global search selectors

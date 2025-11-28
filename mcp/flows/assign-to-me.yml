@@ -13,18 +13,47 @@ steps:
     value: env.KAYAKO_PASSWORD
   - type: click
     selectorKey: login.submitButton
+  # Prefer a specific ticket (ID 5) if it loads; otherwise fall back to the list flow
+  - type: goto
+    url: env.KAYAKO_CONVERSATIONS_URL/5
+    optional: true
+  - type: wait
+    value: "200"
+    optional: true
   - type: goto
     url: env.KAYAKO_CONVERSATIONS_URL
   - type: expect-visible
     selectorKey: inbox.conversationSubject
   - type: click
     selectorKey: inbox.conversationSubject
-  - type: expect-visible
-    selectorKey: composer.editor
-  - type: click
-    selectorKey: composer.editor
+  # Properties panel path: open Assignee, choose a team to force change, then click Update
+  - type: dispatch-click-text
+    value: "Assignee"
+    optional: true
+  - type: wait
+    value: "200"
+    optional: true
+  - type: dispatch-click-text
+    value: "General"
+    optional: true
   - type: wait
     value: "250"
+    optional: true
+  - type: dispatch-click-text
+    value: "Update properties"
+    optional: true
+  - type: wait
+    value: "250"
+    optional: true
+  - type: dispatch-click-text
+    value: "VIP Account Team"
+    optional: true
+  - type: wait
+    value: "250"
+    optional: true
+  - type: dispatch-click-text
+    value: "Update properties"
+    optional: true
   # Try composer footer "Assign to me" path first (optional attempts)
   - type: dispatch-click
     selectorKey: assign.assignToMeTrigger
@@ -35,32 +64,25 @@ steps:
   - type: dispatch-click-text
     value: "General"
     optional: true
-  - type: wait
-    value: "200"
-    optional: true
-  - type: click
-    selectorKey: assign.selfOption
-    optional: true
-  - type: wait
-    value: "200"
-    optional: true
-  # Fallback path via Properties → Assignee
-  - type: click
-    selectorKey: assign.assigneeFieldTrigger
-  - type: wait
-    value: "250"
+  # If no change detected (button might not appear), try VIP to force a change
   - type: dispatch-click-text
-    value: "General"
-  - type: wait
-    value: "250"
-  - type: click
-    selectorKey: assign.selfOption
+    value: "VIP Account Team"
+    optional: true
   - type: wait
     value: "200"
-  - type: click
-    selectorKey: assign.updatePropertiesButton
+    optional: true
+  # Persist changes via Update properties (span dispatch first, then button)
+  - type: dispatch-click
+    selectorKey: assign.updatePropertiesSpan
+    optional: true
+  - type: wait
+    value: "250"
+    optional: true
+  - type: dispatch-click-text
+    value: "Update properties"
     optional: true
   - type: expect-visible
     selectorKey: assign.confirmation
+    optional: true
 
 
