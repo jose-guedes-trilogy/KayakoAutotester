@@ -1,0 +1,51 @@
+{
+  "currentCaptureId": "capture-test-two",
+  "previousCaptureId": "capture-2025-11-27t14-07-41-070z",
+  "generatedAt": "2025-11-27T14:12:30.097Z",
+  "summary": {
+    "totalCompared": 1,
+    "added": 0,
+    "removed": 0,
+    "changedStructural": 1,
+    "changedCosmetic": 0,
+    "unchanged": 0
+  },
+  "entries": [
+    {
+      "type": "changed",
+      "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+      "severity": "structural",
+      "htmlChanged": true,
+      "screenshotChanged": false,
+      "sectionChanges": [],
+      "previous": {
+        "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+        "htmlPath": "artifacts/structure/capture-2025-11-27t14-07-41-070z/trilogy-joseguedes.kayako.com_agent_conversations.html",
+        "htmlHash": "1ebbb89d7482606b5dca0bb474e8aabdb236cc825550163b27734abc5d7edee1",
+        "sections": [
+          {
+            "id": "1-class-ko-checkbox-checkboxwrap",
+            "selector": "[class*='ko-checkbox__checkboxWrap_']",
+            "path": "artifacts/structure/capture-2025-11-27t14-07-41-070z/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+            "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce"
+          }
+        ],
+        "capturedAt": "2025-11-27T14:12:22.127Z"
+      },
+      "current": {
+        "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+        "htmlPath": "artifacts/structure/capture-test-two/trilogy-joseguedes.kayako.com_agent_conversations.html",
+        "htmlHash": "ff15539b27ef740f6050297edba30ddeb9de6993d3db40220f88910abc6c068d",
+        "sections": [
+          {
+            "id": "1-class-ko-checkbox-checkboxwrap",
+            "selector": "[class*='ko-checkbox__checkboxWrap_']",
+            "path": "artifacts/structure/capture-test-two/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+            "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce"
+          }
+        ],
+        "capturedAt": "2025-11-27T14:11:55.743Z"
+      }
+    }
+  ]
+}

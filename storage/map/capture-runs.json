@@ -1,0 +1,15 @@
+{
+  "runs": {
+    "capture-observe-test": {
+      "captureId": "capture-observe-test",
+      "crawlId": "crawl-plan-test",
+      "startedAt": "2025-11-27T14:14:14.500Z",
+      "success": 1,
+      "failures": 0,
+      "outputDir": "artifacts/structure/capture-observe-test",
+      "artifactRegistry": "storage/map/artifacts.json",
+      "completedAt": "2025-11-27T14:14:28.841Z"
+    }
+  },
+  "latest": "capture-observe-test"
+}

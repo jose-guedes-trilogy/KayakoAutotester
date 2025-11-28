@@ -2,12 +2,56 @@ import fs from 'fs/promises';
 import path from 'path';
 import fg from 'fast-glob';
 import { parse } from 'jsonc-parser';
+import { createHash } from 'crypto';
 import { createLogger } from '../lib/logger';
 
+type SuggestionSample = {
+  file: string;
+  captureId?: string;
+  crawlId?: string;
+  url?: string;
+  type: 'html' | 'section' | 'unknown';
+  hash?: string;
+  sectionId?: string;
+};
+
 type Suggestion = {
+  id: string;
   selector: string;
   occurrences: number;
-  sampleFiles: string[];
+  sampleFiles: SuggestionSample[];
+  status: 'pending' | 'approved' | 'rejected' | 'snoozed';
+};
+
+type ArtifactRegistry = {
+  captures: Record<
+    string,
+    {
+      captureId: string;
+      crawlId: string;
+      urls: Record<string, ArtifactEntry>;
+    }
+  >;
+};
+
+type ArtifactEntry = {
+  url: string;
+  htmlPath: string;
+  htmlHash: string;
+  sections?: Array<{
+    id?: string;
+    path: string;
+    hash: string;
+  }>;
+};
+
+type ArtifactIndexEntry = {
+  type: 'html' | 'section';
+  captureId: string;
+  crawlId: string;
+  url: string;
+  hash: string;
+  sectionId?: string;
 };
 
 const log = createLogger('suggest');
@@ -15,11 +59,15 @@ const STRUCTURE_ROOT = path.join(process.cwd(), 'artifacts', 'structure');
 const SELECTORS_JSONC = path.join(process.cwd(), 'selectors', 'selectors.jsonc');
 const OUTPUT_DIR = path.join(process.cwd(), 'selectors', 'extracted');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'pending.json');
+const ARTIFACTS_REGISTRY = path.join(process.cwd(), 'storage', 'map', 'artifacts.json');
 
 function ensureArray<T>(value?: T | T[]): T[] {
   if (!value) return [];
   return Array.isArray(value) ? value : [value];
 }
+
+const normalizePath = (filePath: string): string =>
+  path.normalize(filePath).replace(/\\/g, '/');
 
 async function readExistingSelectors(): Promise<Set<string>> {
   try {
@@ -38,6 +86,44 @@ async function readExistingSelectors(): Promise<Set<string>> {
     log.warn(`Failed to read selectors.jsonc: ${(err as Error)?.message || err}`);
     return new Set();
   }
+}
+
+async function buildArtifactIndex(): Promise<Map<string, ArtifactIndexEntry>> {
+  const index = new Map<string, ArtifactIndexEntry>();
+  try {
+    const raw = await fs.readFile(ARTIFACTS_REGISTRY, 'utf8');
+    const registry = JSON.parse(raw) as ArtifactRegistry;
+    for (const capture of Object.values(registry.captures || {})) {
+      if (!capture?.urls) continue;
+      for (const entry of Object.values(capture.urls)) {
+        if (!entry) continue;
+        const htmlPath = normalizePath(entry.htmlPath);
+        index.set(htmlPath, {
+          type: 'html',
+          captureId: capture.captureId,
+          crawlId: capture.crawlId,
+          url: entry.url,
+          hash: entry.htmlHash,
+        });
+        for (const section of entry.sections || []) {
+          const sectionPath = normalizePath(section.path);
+          index.set(sectionPath, {
+            type: 'section',
+            captureId: capture.captureId,
+            crawlId: capture.crawlId,
+            url: entry.url,
+            hash: section.hash,
+            sectionId: section.id,
+          });
+        }
+      }
+    }
+  } catch (err) {
+    log.warn(
+      `Artifact registry unavailable (${ARTIFACTS_REGISTRY}): ${(err as Error)?.message || err}`,
+    );
+  }
+  return index;
 }
 
 async function resolveStructureDir(crawlId?: string): Promise<{ crawlId: string; dir: string }> {
@@ -92,9 +178,35 @@ function extractClassBases(html: string): string[] {
   return Array.from(bases);
 }
 
+const makeSuggestionId = (selector: string): string =>
+  createHash('sha1').update(selector).digest('hex').slice(0, 10);
+
+function buildSampleEntries(
+  baseDir: string,
+  files: string[],
+  artifactIndex: Map<string, ArtifactIndexEntry>,
+): SuggestionSample[] {
+  return files.slice(0, 5).map((relative) => {
+    const repoRelative = normalizePath(
+      path.relative(process.cwd(), path.join(baseDir, relative)),
+    );
+    const artifact = artifactIndex.get(repoRelative);
+    return {
+      file: repoRelative,
+      captureId: artifact?.captureId,
+      crawlId: artifact?.crawlId,
+      url: artifact?.url,
+      type: artifact?.type ?? 'unknown',
+      hash: artifact?.hash,
+      sectionId: artifact?.sectionId,
+    };
+  });
+}
+
 async function analyseStructureDir(
   dir: string,
   existingSelectors: Set<string>,
+  artifactIndex: Map<string, ArtifactIndexEntry>,
 ): Promise<{ suggestions: Suggestion[]; totalFiles: number }> {
   const files = await fg('**/*.html', { cwd: dir, onlyFiles: true });
   if (files.length === 0) {
@@ -123,11 +235,16 @@ async function analyseStructureDir(
   }
 
   const suggestions = Array.from(stats.entries())
-    .map(([base, info]) => ({
-      selector: `[class*='${base}']`,
-      occurrences: info.count,
-      sampleFiles: Array.from(info.files).slice(0, 5),
-    }))
+    .map(([base, info]) => {
+      const selector = `[class*='${base}']`;
+      return {
+        id: makeSuggestionId(selector),
+        selector,
+        occurrences: info.count,
+        sampleFiles: buildSampleEntries(dir, Array.from(info.files), artifactIndex),
+        status: 'pending' as const,
+      };
+    })
     .sort((a, b) => b.occurrences - a.occurrences);
 
   return { suggestions, totalFiles: files.length };
@@ -150,7 +267,12 @@ async function main(): Promise<void> {
   log.info(`Scanning structure captures for crawl ${resolvedCrawlId} (${dir})`);
 
   const existingSelectors = await readExistingSelectors();
-  const { suggestions, totalFiles } = await analyseStructureDir(dir, existingSelectors);
+  const artifactIndex = await buildArtifactIndex();
+  const { suggestions, totalFiles } = await analyseStructureDir(
+    dir,
+    existingSelectors,
+    artifactIndex,
+  );
 
   if (suggestions.length === 0) {
     log.info('No new selector suggestions found.');
@@ -159,8 +281,10 @@ async function main(): Promise<void> {
 
   await fs.mkdir(OUTPUT_DIR, { recursive: true });
   const payload = {
+    metadataVersion: 2,
     generatedAt: new Date().toISOString(),
     crawlId: resolvedCrawlId,
+    captureId: path.basename(dir),
     sourceDir: path.relative(process.cwd(), dir),
     totalFiles,
     totalSuggestions: suggestions.length,

@@ -48,7 +48,9 @@ async function main() {
       if (process.platform === 'win32') {
         child.kill('SIGTERM');
       } else {
-        process.kill(-child.pid, 'SIGTERM'); // try group
+        if (typeof child.pid === 'number') {
+          process.kill(-child.pid, 'SIGTERM'); // try group
+        }
         child.kill('SIGTERM');
       }
     } catch {}

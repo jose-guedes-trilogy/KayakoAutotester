@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { parse } from 'jsonc-parser';
 import { createLogger } from '../lib/logger';
 import YAML from 'yaml';
 
@@ -29,6 +30,54 @@ type FlowDefinition = {
   tags?: string[];
   steps: Array<Record<string, unknown>>;
 };
+
+type SelectorMap = Record<string, Record<string, string | string[]>>;
+
+const SELECTORS_JSONC = path.join(process.cwd(), 'selectors', 'selectors.jsonc');
+function extractSelectorKeysFromStep(step: Record<string, unknown>): string[] {
+  const keys: string[] = [];
+  if (typeof step.selectorKey === 'string') {
+    keys.push(step.selectorKey);
+  }
+  if (Array.isArray(step.selectors)) {
+    for (const maybeKey of step.selectors) {
+      if (typeof maybeKey === 'string') {
+        keys.push(maybeKey);
+      }
+    }
+  }
+  return keys;
+}
+
+async function readSelectorKeySet(): Promise<Set<string>> {
+  const keySet = new Set<string>();
+  try {
+    const raw = await fs.readFile(SELECTORS_JSONC, 'utf8');
+    const data = parse(raw) as SelectorMap;
+    for (const [group, entries] of Object.entries(data || {})) {
+      for (const key of Object.keys(entries || {})) {
+        keySet.add(`${group}.${key}`);
+      }
+    }
+  } catch (error) {
+    log.warn(`Unable to read selectors.jsonc for flow validation: ${(error as Error).message}`);
+  }
+  return keySet;
+}
+
+function validateFlows(flows: FlowDefinition[], selectorKeys: Set<string>): void {
+  for (const flow of flows) {
+    for (const step of flow.steps || []) {
+      for (const selectorKey of extractSelectorKeysFromStep(step as Record<string, unknown>)) {
+        if (!selectorKeys.has(selectorKey)) {
+          log.warn(
+            `Template "${flow.name}" references missing selector ${selectorKey}. Add it to selectors/selectors.jsonc or fix the template.`,
+          );
+        }
+      }
+    }
+  }
+}
 
 type GeneratorConfig = {
   crawlId: string;
@@ -247,7 +296,16 @@ async function main(): Promise<void> {
 
   const flowDir = path.join(process.cwd(), 'mcp', 'flows', 'autogen');
   await fs.mkdir(flowDir, { recursive: true });
-  const baseFlows = await readFlowDefinitions(path.join(process.cwd(), 'mcp', 'flows'));
+  const templatesDir = path.join(process.cwd(), 'mcp', 'flows', 'templates');
+  const templateFlows = await readFlowDefinitions(templatesDir);
+  const manualFlows = await readFlowDefinitions(path.join(process.cwd(), 'mcp', 'flows'));
+  const templateNames = new Set(templateFlows.map((flow) => flow.name));
+  const baseFlows = [
+    ...templateFlows,
+    ...manualFlows.filter((flow) => flow.urlPattern && !templateNames.has(flow.name)),
+  ];
+  const selectorKeys = await readSelectorKeySet();
+  validateFlows(baseFlows, selectorKeys);
   const compositeDir = path.join(process.cwd(), 'mcp', 'flows', 'composites');
   const compositeFlows = await readFlowDefinitions(compositeDir);
   const composites =

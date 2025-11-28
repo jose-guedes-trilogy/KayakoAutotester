@@ -1,3 +1,4 @@
+import type { Dirent } from 'fs';
 import express from 'express';
 import cors from 'cors';
 import compression from 'compression';
@@ -7,6 +8,7 @@ import fs from 'fs-extra';
 import { createLogger } from './logger';
 import { CreateRunSchema, CreateRunRequest, TestSchema } from './types';
 import { RunManager } from './runManager';
+import { PipelineManager } from './pipeline';
 import { artifactsDirForRun, readRuns, readTests, repoRoot, upsertRun, writeTests } from './storage';
 import { spawnNpm, spawnNpx } from './utils/spawn';
 import YAML from 'yaml';
@@ -41,9 +43,16 @@ type StructureSummary = {
   mtimeMs: number;
 };
 
+type SpecGroup = {
+  id: string;
+  label: string;
+  specs: string[];
+};
+
 const structureRoot = path.join(repoRoot(), 'artifacts', 'structure');
 const selectorSuggestionsFile = path.join(repoRoot(), 'selectors', 'extracted', 'pending.json');
 const crawlGraphPath = path.join(repoRoot(), 'storage', 'map', 'graph.json');
+const specGroupsPath = path.join(repoRoot(), 'storage', 'spec-groups.json');
 
 async function readCrawlSummaries(): Promise<CrawlSummary[]> {
   try {
@@ -68,7 +77,7 @@ async function readCrawlSummaries(): Promise<CrawlSummary[]> {
 async function readStructureSummaries(): Promise<StructureSummary[]> {
   try {
     const entries = await fs.readdir(structureRoot, { withFileTypes: true });
-    const dirs = entries.filter((entry) => entry.isDirectory());
+    const dirs = entries.filter((entry: Dirent) => entry.isDirectory());
     const summaries: StructureSummary[] = [];
     for (const entry of dirs) {
       const dir = path.join(structureRoot, entry.name);
@@ -407,11 +416,24 @@ app.get('/api/specs', async (_req, res) => {
     file: path.join('tests', 'generated', f),
   }));
   items.sort((a, b) => a.name.localeCompare(b.name));
-  res.json({ specs: items });
+  let specGroups: SpecGroup[] = [];
+  try {
+    const raw = await fs.readFile(specGroupsPath, 'utf8');
+    const data = JSON.parse(raw) as { groups?: SpecGroup[] };
+    const set = new Set(items.map((i) => i.name));
+    specGroups = (data.groups || []).map((g) => ({
+      ...g,
+      specs: (g.specs || []).filter((name) => set.has(name)),
+    }));
+  } catch {
+    specGroups = [];
+  }
+  res.json({ specs: items, specGroups });
 });
 
 // Run engine
 const runs = new RunManager();
+const pipeline = new PipelineManager();
 
 app.get('/api/runs', async (_req, res) => {
   const list = await readRuns();
@@ -482,10 +504,11 @@ app.get('/api/crawls', async (_req, res) => {
 });
 
 app.get('/api/reporting', async (_req, res) => {
-  const [crawls, structures, selectorSuggestions] = await Promise.all([
+  const [crawls, structures, selectorSuggestions, pipelineData] = await Promise.all([
     readCrawlSummaries(),
     readStructureSummaries(),
     readSelectorSuggestionSummary(),
+    pipeline.getPipelines(),
   ]);
   const runsList = await readRuns();
   const runsSummary = runsList.reduce(
@@ -509,7 +532,22 @@ app.get('/api/reporting', async (_req, res) => {
     runsSummary,
     specsCount: specFiles.length,
     compositeSpecsCount,
+    pipeline: pipelineData,
   });
+});
+
+app.get('/api/pipeline', async (_req, res) => {
+  const data = await pipeline.getPipelines();
+  res.json(data);
+});
+
+app.post('/api/pipeline/start', async (req, res) => {
+  try {
+    const record = await pipeline.startPipeline(req.body || {});
+    res.json({ pipelineId: record.id });
+  } catch (error: any) {
+    res.status(400).json({ error: error?.message || 'Failed to start pipeline' });
+  }
 });
 // Receive direct log lines from test processes and broadcast to SSE
 app.post('/api/runs/:id/log', async (req, res) => {

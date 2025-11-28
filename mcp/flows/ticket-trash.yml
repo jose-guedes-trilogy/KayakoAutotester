@@ -1,0 +1,11 @@
+name: ticket-trash
+description: Create a brand new ticket and move it to Trash via the header button
+steps:
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] Ticket to trash"
+    body: "[AUTOTEST] Ticket trash body"
+    mode: "reply"
+  - type: trash-conversation
+
+

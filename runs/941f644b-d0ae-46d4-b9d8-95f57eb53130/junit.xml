@@ -1,0 +1,162 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="93.87103900000001">
+<testsuite name="generated\demo-basic-capabilities.spec.ts" timestamp="2025-11-27T20:39:53.446Z" hostname="chromium" tests="1" failures="1" skipped="0" time="90" errors="0">
+<testcase name="Demonstrate basic reusable actions (reply text, tags, status) › demo-basic-capabilities" classname="generated\demo-basic-capabilities.spec.ts" time="90">
+<failure message="demo-basic-capabilities.spec.ts:20:9 demo-basic-capabilities" type="FAILURE">
+<![CDATA[  [chromium] › generated\demo-basic-capabilities.spec.ts:20:9 › Demonstrate basic reusable actions (reply text, tags, status) › demo-basic-capabilities 
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\941f644b-d0ae-46d4-b9d8-95f57eb53130\artifacts\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\941f644b-d0ae-46d4-b9d8-95f57eb53130\artifacts\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-27T20:39:55.831Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Starting login flow for authenticatedPage
+[2025-11-27T20:39:55.842Z] [INFO] [LoginPage run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-27T20:39:59.203Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Loaded selectors.jsonc (mtime %d) [33m1764274557609.1096[39m
+[2025-11-27T20:39:59.456Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-27T20:39:59.473Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-27T20:39:59.611Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-27T20:39:59.631Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-27T20:39:59.778Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-27T20:39:59.789Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-27T20:40:03.442Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-27T20:40:03.467Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-27T20:40:03.472Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Login successful
+[2025-11-27T20:40:03.483Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-27T20:40:03.485Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-27T20:40:03.487Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] No conversation ID provided and not on a conversation; opening first conversation from inbox
+[2025-11-27T20:40:06.358Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child
+[2025-11-27T20:40:06.408Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Inbox first row resolved via selector %s (fallbackIndex=%d) [class*='ko-table_body__tbody_'] > *:first-child [33m0[39m
+[2025-11-27T20:40:10.439Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-27T20:40:10.455Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Expect visible %s.%s (selector=%s, fallbackIndex=%d) composer editor div.fr-element.fr-view [33m0[39m
+[2025-11-27T20:40:10.460Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Switching composer to Reply mode
+[2025-11-27T20:40:10.465Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-27T20:40:10.496Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-27T20:40:10.669Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Inserting reply text (%d chars) [33m26[39m
+[2025-11-27T20:40:10.690Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-27T20:40:11.828Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Adding tags: %o [ [32m'demo'[39m, [32m'automation'[39m ]
+[2025-11-27T20:40:11.855Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')
+[2025-11-27T20:40:11.872Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') [33m0[39m
+[2025-11-27T20:40:12.200Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']
+[2025-11-27T20:40:12.874Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag “demo”
+[2025-11-27T20:40:12.882Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag “demo”'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:12.883Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag "demo"
+[2025-11-27T20:40:12.892Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag "demo"'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:12.892Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s demo
+[2025-11-27T20:40:12.902Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'demo'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:13.249Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-27T20:40:13.289Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']
+[2025-11-27T20:40:14.131Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag “automation”
+[2025-11-27T20:40:14.139Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag “automation”'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:14.140Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag "automation"
+[2025-11-27T20:40:14.149Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag "automation"'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:14.150Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s automation
+[2025-11-27T20:40:14.157Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {
+  needle: [32m'automation'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:40:14.506Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-27T20:40:14.526Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Setting status: %s Pending
+[2025-11-27T20:40:20.097Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Pending
+[2025-11-27T20:40:20.142Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']
+[2025-11-27T20:40:20.164Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Update properties container visible after status change
+[2025-11-27T20:40:25.180Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Holding browser open for %dms after test "%s" [33m600000[39m demo-basic-capabilities
+
+[[ATTACHMENT|artifacts\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-27T20:40:14.525Z] [WARN] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Tag not confirmed by pills after add attempt: %s (pills=%o) automation [ [32m'demo'[39m ]
+[2025-11-27T20:41:25.401Z] [WARN] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,96 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="13.464967999999999">
+<testsuite name="generated\settings-create-trigger.spec.ts" timestamp="2025-11-27T18:50:27.764Z" hostname="chromium" tests="1" failures="1" skipped="0" time="11.758" errors="0">
+<testcase name="Create a simple trigger that fires when status is New and changes status (UI-only smoke) › settings-create-trigger" classname="generated\settings-create-trigger.spec.ts" time="11.758">
+<failure message="settings-create-trigger.spec.ts:30:9 settings-create-trigger" type="FAILURE">
+<![CDATA[  [chromium] › generated\settings-create-trigger.spec.ts:30:9 › Create a simple trigger that fires when status is New and changes status (UI-only smoke) › settings-create-trigger 
+
+    Error: Dispatch-click by text failed: Status
+
+       at ..\selectors\index.ts:249
+
+      247 |     logger.error('Dispatch-click by text failed: %s', text);
+      248 |     try { await hudPush(page, `Dispatch by text failed: ${text}`); } catch {}
+    > 249 |     throw new Error(`Dispatch-click by text failed: ${text}`);
+          |           ^
+      250 |   }
+      251 |   logger.info('Dispatch-click by text succeeded: %s', text);
+      252 |   try { await hudPush(page, `Clicked by text: ${text}`); await hudSet(page, ``); } catch {}
+        at dispatchClickText (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\selectors\index.ts:249:11)
+        at runFlow (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\settings-create-trigger.spec.ts:13:5)
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\settings-create-trigger.spec.ts:31:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\c22f096d-ff2d-4b7f-8641-7989008e637e\artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\runs\c22f096d-ff2d-4b7f-8641-7989008e637e\artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\c22f096d-ff2d-4b7f-8641-7989008e637e\artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-27T18:50:29.667Z] [INFO] [auth.fixture run=c22f096d-ff2d-4b7f-8641-7989008e637e] Starting login flow for authenticatedPage
+[2025-11-27T18:50:29.675Z] [INFO] [LoginPage run=c22f096d-ff2d-4b7f-8641-7989008e637e] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-27T18:50:32.949Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Loaded selectors.jsonc (mtime %d) [33m1764269348553.2468[39m
+[2025-11-27T18:50:33.208Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-27T18:50:33.226Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-27T18:50:33.375Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-27T18:50:33.390Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-27T18:50:33.528Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-27T18:50:33.546Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-27T18:50:37.597Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-27T18:50:37.610Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-27T18:50:37.616Z] [INFO] [auth.fixture run=c22f096d-ff2d-4b7f-8641-7989008e637e] Login successful
+[2025-11-27T18:50:37.625Z] [INFO] [auth.fixture run=c22f096d-ff2d-4b7f-8641-7989008e637e] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-27T18:50:40.422Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']
+[2025-11-27T18:50:40.439Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Expect visible %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] [33m0[39m
+[2025-11-27T18:50:40.474Z] [DEBUG] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']
+[2025-11-27T18:50:40.491Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Filling %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] [33m0[39m
+[2025-11-27T18:50:40.611Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Dispatch-click by text: %s Select a condition
+[2025-11-27T18:50:40.628Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Dispatch-click by text succeeded: %s Select a condition
+[2025-11-27T18:50:40.648Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Dispatch-click by text: %s Status
+[2025-11-27T18:50:40.673Z] [INFO] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Dispatch-click by text diagnostics: %o {
+  needle: [32m'Status'[39m,
+  exactCount: [33m0[39m,
+  containsCount: [33m3[39m,
+  samples: [
+    {
+      tag: [32m'HTML'[39m,
+      cls: [32m''[39m,
+      text: [32m"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTa"[39m,
+      rect: [36m[Object][39m
+    },
+    {
+      tag: [32m'DIV'[39m,
+      cls: [32m''[39m,
+      text: [32m'Kayako Test HUDdragDispatch click by text: Status[15:50:40] Found settings.triggerTitleInput via index 0[15:50:40] Found'[39m,
+      rect: [36m[Object][39m
+    },
+    {
+      tag: [32m'DIV'[39m,
+      cls: [32m''[39m,
+      text: [32m'Dispatch click by text: Status'[39m,
+      rect: [36m[Object][39m
+    }
+  ],
+  wormholeChildren: [33m0[39m,
+  openDropdowns: [33m0[39m,
+  dropdownOptions: [33m0[39m
+}
+
+[[ATTACHMENT|artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\video.webm]]
+
+[[ATTACHMENT|artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-27T18:50:40.675Z] [ERROR] [selectors run=c22f096d-ff2d-4b7f-8641-7989008e637e] Dispatch-click by text failed: %s Status
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

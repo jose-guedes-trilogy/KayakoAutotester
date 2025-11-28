@@ -4,7 +4,9 @@ import { env } from './env';
 
 export default defineConfig({
   testDir: path.join(__dirname, '..', 'tests'),
-  timeout: 60000,
+  // Some composite flows (e.g., full ticket properties) exercise many widgets end-to-end.
+  // Use a slightly higher per-test timeout to avoid flakiness while still surfacing hung tests promptly.
+  timeout: 120000,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

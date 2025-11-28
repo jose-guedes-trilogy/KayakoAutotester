@@ -1,0 +1,11 @@
+name: ticket-complete
+description: Create a brand new ticket and mark it as Completed via the header button
+steps:
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] Ticket to complete"
+    body: "[AUTOTEST] Ticket completion body"
+    mode: "reply"
+  - type: complete-conversation
+
+

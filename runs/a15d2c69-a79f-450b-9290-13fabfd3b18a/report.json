@@ -1,0 +1,347 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a15d2c69-a79f-450b-9290-13fabfd3b18a\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a15d2c69-a79f-450b-9290-13fabfd3b18a\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a15d2c69-a79f-450b-9290-13fabfd3b18a\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a15d2c69-a79f-450b-9290-13fabfd3b18a/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a15d2c69-a79f-450b-9290-13fabfd3b18a/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a15d2c69-a79f-450b-9290-13fabfd3b18a/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\settings-create-trigger.spec.ts",
+      "file": "generated/settings-create-trigger.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Create a simple trigger that fires when status is New and changes status (UI-only smoke)",
+          "file": "generated/settings-create-trigger.spec.ts",
+          "line": 19,
+          "column": 8,
+          "specs": [
+            {
+              "title": "settings-create-trigger",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 72440,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                          "column": 6,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                            "column": 6,
+                            "line": 37
+                          },
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T20:05:07.072Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:07.084Z] [INFO] [LoginPage run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:10.345Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Loaded selectors.jsonc (mtime %d) \u001b[33m1764270533899.6196\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:10.699Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:10.717Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:10.872Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:10.888Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:11.033Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:11.049Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:14.119Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:14.145Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:14.152Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:14.163Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:16.971Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:16.986Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Expect visible %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.020Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.034Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.150Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Setting trigger CONDITION status to \"%s\" New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.176Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings conditionFieldButton role=button[name=/Select a condition/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.195Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings conditionFieldButton role=button[name=/Select a condition/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.344Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.375Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.433Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.448Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.592Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s equal to\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.608Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s equal to\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.629Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Attempting to open CONDITION status value dropdown via icon button\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.962Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click in dropdown by text: %s New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.968Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'New'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m8\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.969Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Setting trigger ACTION status to \"%s\" Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:17.994Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings actionFieldButton role=button[name=/Select an action/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.005Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings actionFieldButton role=button[name=/Select an action/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.193Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.212Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.254Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.268Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.423Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s change\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.438Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s change\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.457Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Selecting \"%s\" from dropdown %s.%s Pending settings statusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.485Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings statusValueButton role=button[name=/Select a status/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.498Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings statusValueButton role=button[name=/Select a status/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.746Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click in dropdown by text: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.753Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Selected \"%s\" from dropdown %s.%s Pending settings statusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.787Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings saveTriggerButton role=button[name='Save']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.802Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings saveTriggerButton role=button[name='Save'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:05:18.986Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Holding browser open for %dms after test \"%s\" \u001b[33m600000\u001b[39m settings-create-trigger\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-27T20:05:17.969Z] [WARN] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dropdown-scoped selection for CONDITION status \"%s\" failed; leaving default New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:06:19.158Z] [WARN] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Hold-open wait interrupted page.waitForTimeout: Test ended.\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mfixtures\\auth.fixture.ts:45:29\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-27T20:05:06.221Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a15d2c69-a79f-450b-9290-13fabfd3b18a\\artifacts\\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a15d2c69-a79f-450b-9290-13fabfd3b18a\\artifacts\\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                        "column": 6,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "7869f72eed3a7d2b58fc-2ca00c5d5895c63c63f1",
+              "file": "generated/settings-create-trigger.spec.ts",
+              "line": 20,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T20:05:05.115Z",
+    "duration": 74359.974,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

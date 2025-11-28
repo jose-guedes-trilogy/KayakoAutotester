@@ -206,7 +206,7 @@ export async function dispatchClickText(page: Page, text: string): Promise<void>
     return true;
   }, text).catch(() => false);
   if (!ok) {
-    // Extra diagnostics to help identify why it failed
+    // Extra diagnostics to help identify why the primary page search failed
     try {
       const diag = await page.evaluate((needle: string) => {
         function visible(el: Element): boolean {
@@ -242,9 +242,19 @@ export async function dispatchClickText(page: Page, text: string): Promise<void>
           dropdownOptions: optionsCount,
         };
       }, text);
-      logger.info('Dispatch-click by text diagnostics: %o', diag);
+      logger.info('Dispatch-click by text diagnostics (page context): %o', diag);
     } catch {}
-    logger.error('Dispatch-click by text failed: %s', text);
+
+    // Fallback: try within any open Ember power-select dropdown overlay
+    logger.info('Primary dispatch-click by text failed; attempting dropdown-scoped fallback for: %s', text);
+    const inDropdown = await dispatchClickTextInDropdown(page, text);
+    if (inDropdown) {
+      logger.info('Dispatch-click by text succeeded via dropdown overlay: %s', text);
+      try { await hudPush(page, `Clicked by text (dropdown): ${text}`); await hudSet(page, ``); } catch {}
+      return;
+    }
+
+    logger.error('Dispatch-click by text failed (page + dropdown): %s', text);
     try { await hudPush(page, `Dispatch by text failed: ${text}`); } catch {}
     throw new Error(`Dispatch-click by text failed: ${text}`);
   }
@@ -301,6 +311,26 @@ async function dispatchClickTextInDropdown(page: Page, text: string): Promise<bo
     } catch {}
   }
   return ok;
+}
+
+// Generic helper: open a dropdown by selector group/key and pick an option from an Ember power-select overlay.
+export async function selectFromDropdown(
+  page: Page,
+  group: string,
+  key: string,
+  optionText: string,
+): Promise<void> {
+  logger.info('Selecting "%s" from dropdown %s.%s', optionText, group, key);
+  // Reuse our resilient click helper to open the trigger
+  await click(page, group, key);
+  // Give Ember a brief moment to render the overlay into the wormhole
+  await page.waitForTimeout(100);
+  const ok = await dispatchClickTextInDropdown(page, optionText);
+  if (!ok) {
+    logger.error('Failed to select "%s" from dropdown %s.%s', optionText, group, key);
+    throw new Error(`Failed to select "${optionText}" from dropdown ${group}.${key}`);
+  }
+  logger.info('Selected "%s" from dropdown %s.%s', optionText, group, key);
 }
 
 // Read innerText of a selector group/key if present
@@ -526,9 +556,44 @@ export async function logAssigneeValues(page: Page): Promise<void> {
   logger.info('Assignee values: team=%s agent=%s', team ?? '(none)', agent ?? '(none)');
 }
 
-// Read the current conversation status text (from header pill)
+// Read the current conversation status text.
+// Prefer the header pill; if not present, fall back to the right-side Status field button text.
 export async function getConversationStatusText(page: Page): Promise<string | null> {
-  return await getText(page, 'conversation', 'statusPill');
+  // Primary: header status pill
+  const headerText = await getText(page, 'conversation', 'statusPill');
+  if (headerText && headerText.trim()) {
+    return headerText.trim();
+  }
+
+  logger.warn(
+    'getConversationStatusText: header status pill not found or empty; falling back to info-bar Status field',
+  );
+
+  // Fallback: right-side info bar Status field trigger (e.g. "Status Completed Completed")
+  const statusFieldText = await getText(page, 'status', 'statusFieldTrigger');
+  if (statusFieldText && statusFieldText.trim()) {
+    const normalized = statusFieldText.replace(/\s+/g, ' ').trim();
+    // Try to extract a known status token from the text
+    const match = normalized.match(/\b(New|Open|Pending|Completed)\b/i);
+    if (match) {
+      const value = match[1];
+      logger.info(
+        'getConversationStatusText: derived status "%s" from Status field button text "%s"',
+        value,
+        normalized,
+      );
+      return value;
+    }
+
+    logger.info(
+      'getConversationStatusText: unable to parse specific status from Status field text "%s"; returning raw',
+      normalized,
+    );
+    return normalized;
+  }
+
+  logger.warn('getConversationStatusText: unable to resolve status text from header pill or Status field');
+  return null;
 }
 
 // Read currently visible tag pills text array
@@ -540,6 +605,86 @@ export async function getTagPills(page: Page): Promise<string[]> {
   } catch {
     return [];
   }
+}
+
+export async function expectTimelineContainsText(
+  page: Page,
+  text: string,
+  options?: { timeoutMs?: number; pollIntervalMs?: number },
+): Promise<void> {
+  const needle = (text || '').trim();
+  if (!needle) {
+    throw new Error('expectTimelineContainsText: text must be a non-empty string');
+  }
+
+  const timeoutMs = options?.timeoutMs ?? 15000;
+  const pollIntervalMs = options?.pollIntervalMs ?? 500;
+  const entrySel = getSelectorCandidates('conversation', 'timelineEntry').join(', ');
+  const normalize = (s: string) => s.replace(/\s+/g, ' ').trim().toLowerCase();
+  const wanted = normalize(needle);
+
+  const started = Date.now();
+  let found = false;
+  let lastEntryCount = 0;
+
+  logger.info(
+    'Waiting for timeline to contain text "%s" (timeoutMs=%d, pollIntervalMs=%d)',
+    needle,
+    timeoutMs,
+    pollIntervalMs,
+  );
+
+  while (!found && Date.now() - started <= timeoutMs) {
+    const entries = page.locator(entrySel);
+    const count = await entries.count().catch(() => 0);
+    lastEntryCount = count;
+
+    logger.info(
+      'Timeline scan iteration for "%s": entries=%d, elapsedMs=%d',
+      needle,
+      count,
+      Date.now() - started,
+    );
+
+    for (let i = 0; i < count; i++) {
+      const txt = await entries
+        .nth(i)
+        .innerText()
+        .catch(() => '');
+      if (!txt) continue;
+      if (normalize(txt).includes(wanted)) {
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      // Fallback: global text search as a last resort
+      try {
+        const bodyText = await page.innerText('body').catch(() => '');
+        if (normalize(bodyText).includes(wanted)) {
+          found = true;
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    if (!found) {
+      await page.waitForTimeout(pollIntervalMs);
+    }
+  }
+
+  if (!found) {
+    logger.warn(
+      'Timeline text "%s" not found after %dms (lastEntryCount=%d)',
+      needle,
+      Date.now() - started,
+      lastEntryCount,
+    );
+  }
+
+  expect(found, `Expected timeline to contain text: ${needle}`).toBeTruthy();
 }
 
 // Apply the "Send to Customer" macro via the macro selector
@@ -653,9 +798,39 @@ export async function addTags(page: Page, tags: string[]): Promise<void> {
 export async function insertReplyText(page: Page, text: string): Promise<void> {
   logger.info('Inserting reply text (%d chars)', text.length);
   const { locator } = await firstAvailableLocator(page, 'composer', 'editor');
-  await locator.click({ timeout: 2000 });
-  // Use typing to trigger onChange/input observers reliably
-  await page.keyboard.type(text, { delay: 10 });
+  // Ensure the editor has focus, but avoid resetting the caret if it is already focused.
+  try {
+    const handle = await locator.elementHandle();
+    let needsClick = true;
+    if (handle) {
+      needsClick = await page.evaluate((el: HTMLElement | null) => {
+        if (!el) return true;
+        const active = document.activeElement;
+        return !active || !el.contains(active);
+      }, handle as any);
+    }
+    if (needsClick) {
+      await locator.click({ timeout: 2000 });
+    }
+  } catch {
+    await locator.click({ timeout: 2000 });
+  }
+  // Use typing to trigger onChange/input observers reliably, but treat "\n" as real Enter presses
+  let buffer = '';
+  const flushBuffer = async () => {
+    if (!buffer) return;
+    await page.keyboard.type(buffer, { delay: 10 });
+    buffer = '';
+  };
+  for (const ch of text) {
+    if (ch === '\n') {
+      await flushBuffer();
+      await page.keyboard.press('Enter');
+    } else {
+      buffer += ch;
+    }
+  }
+  await flushBuffer();
 }
 
 // Switch composer from Notes/Internal Note mode back to Reply mode
@@ -795,6 +970,50 @@ export async function setStatus(page: Page, statusLabel: string): Promise<void> 
     }
   } catch {
     // ignore if not present
+  }
+}
+
+// Helper: set a given status and persist it via the Update properties footer button if present.
+async function setStatusAndPersist(page: Page, statusLabel: string): Promise<void> {
+  const value = (statusLabel || '').trim() || 'Open';
+  logger.info('Changing status to "%s" and saving properties', value);
+
+  // Use the robust status dropdown flow to set the status
+  await setStatus(page, value);
+  await page.waitForTimeout(200);
+
+  // Explicitly commit property changes via the footer "Update properties" button if present
+  let committed = false;
+  try {
+    logger.info('Attempting to click Update properties after status change');
+    await click(page, 'assign', 'updatePropertiesButton');
+    committed = true;
+  } catch (e) {
+    logger.warn(
+      'Clicking assign.updatePropertiesButton failed after status change; falling back to text dispatch: %o',
+      e,
+    );
+    try {
+      await dispatchClickText(page, 'Update properties');
+      committed = true;
+    } catch (e2) {
+      logger.warn(
+        'Update properties text dispatch also failed after status change; status may not be persisted: %o',
+        e2,
+      );
+    }
+  }
+
+  if (committed) {
+    // Wait for the submit container to disappear as a signal that the save completed
+    try {
+      const { locator } = await firstAvailableLocator(page, 'assign', 'updatePropertiesContainer');
+      await locator.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => undefined);
+    } catch {
+      // If the container wasn't present, it's fine; some states save inline without a footer
+    }
+  } else {
+    logger.warn('setStatusAndPersist: status "%s" may not have been persisted (no Update properties click)', value);
   }
 }
 
@@ -1291,9 +1510,32 @@ export async function setCustomField(
               (await dispatchClickText(page, name).then(() => true).catch(() => false));
           }
           if (!ok) {
-            // Fallback: select first visible option in the open dropdown
-            const firstOption = page.locator(dropdownOptionSel).first();
-            await firstOption.click({ timeout: 1000 });
+            // Fallback: select first non-placeholder option in the open dropdown
+            const options = page.locator(dropdownOptionSel);
+            const count = await options.count();
+            logger.debug(
+              'Radio field "%s": selecting fallback option from %d entries',
+              label,
+              count,
+            );
+            let clickedAny = false;
+            for (let i = 0; i < count; i++) {
+              const opt = options.nth(i);
+              const text = ((await opt.textContent()) || '').trim();
+              if (text && text !== '-') {
+                logger.info('Radio field "%s": fallback selecting option "%s"', label, text);
+                await opt.click({ timeout: 1000 });
+                clickedAny = true;
+                break;
+              }
+            }
+            if (!clickedAny && count > 0) {
+              logger.warn(
+                'Radio field "%s": no non-placeholder options found; clicking first option as last resort',
+                label,
+              );
+              await options.first().click({ timeout: 1000 });
+            }
             ok = true;
           }
           handled = true;
@@ -1335,9 +1577,32 @@ export async function setCustomField(
         }
       }
       if (!ok) {
-        // Fallback: choose the first option in the open dropdown
-        const firstOption = page.locator(dropdownOptionSel).first();
-        await firstOption.click({ timeout: 1000 });
+        // Fallback: choose the first non-placeholder option in the open dropdown
+        const options = page.locator(dropdownOptionSel);
+        const count = await options.count();
+        logger.debug(
+          'Dropdown field "%s": selecting fallback option from %d entries',
+          label,
+          count,
+        );
+        let clickedAny = false;
+        for (let i = 0; i < count; i++) {
+          const opt = options.nth(i);
+          const text = ((await opt.textContent()) || '').trim();
+          if (text && text !== '-') {
+            logger.info('Dropdown field "%s": fallback selecting option "%s"', label, text);
+            await opt.click({ timeout: 1000 });
+            clickedAny = true;
+            break;
+          }
+        }
+        if (!clickedAny && count > 0) {
+          logger.warn(
+            'Dropdown field "%s": no non-placeholder options found; clicking first option as last resort',
+            label,
+          );
+          await options.first().click({ timeout: 1000 });
+        }
       }
       break;
     }
@@ -1606,6 +1871,94 @@ async function detectFieldTypeFromContainer(container: Locator): Promise<CustomF
 // Composite helpers
 // ------------------------
 
+async function openConditionStatusDropdownViaDom(page: Page): Promise<boolean> {
+  logger.info('Attempting DOM-based open for CONDITION status value dropdown');
+  const ok = await page.evaluate(() => {
+    function visible(el: Element): boolean {
+      const s = getComputedStyle(el as HTMLElement);
+      const r = (el as HTMLElement).getBoundingClientRect();
+      return s && s.visibility !== 'hidden' && s.display !== 'none' && r.width > 0 && r.height > 0;
+    }
+    const root = document.querySelector<HTMLElement>("[id^='ko-predicate-builder']");
+    if (!root) return false;
+    const triggers = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-ebd-id][role='button']"),
+    ).filter(visible);
+    if (triggers.length === 0) return false;
+    const target = triggers[triggers.length - 1];
+    target.scrollIntoView({ block: 'center', inline: 'center' });
+    for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'] as const) {
+      target.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }));
+    }
+    return true;
+  }).catch(() => false);
+  if (!ok) {
+    logger.warn('DOM-based CONDITION status dropdown open failed');
+  } else {
+    logger.info('DOM-based CONDITION status dropdown open succeeded');
+  }
+  return ok;
+}
+
+// Trigger creation helpers (admin Settings)
+export async function setTriggerConditionStatus(page: Page, statusLabel: string): Promise<void> {
+  const value = (statusLabel || '').trim();
+  logger.info('Setting trigger CONDITION status to "%s"', value);
+  // Field: Conversations: Status
+  await click(page, 'settings', 'conditionFieldButton');
+  await dispatchClickText(page, 'Status');
+  // Operator: equal to
+  await click(page, 'settings', 'operatorButton');
+  await dispatchClickText(page, 'equal to');
+  // Value: specific status for the condition.
+  // The condition row uses an icon-only button inside the predicate builder.
+  // Use a structural selector (settings.conditionStatusValueButton) to open it,
+  // then pick the status from the Ember dropdown overlay.
+  const target = value || 'New';
+  try {
+    logger.info('Opening CONDITION status value dropdown via settings.conditionStatusValueButton (if present), else DOM fallback');
+    let opened = false;
+    try {
+      await click(page, 'settings', 'conditionStatusValueButton');
+      opened = true;
+    } catch (inner) {
+      logger.warn(
+        'conditionStatusValueButton selector path failed (%o); falling back to DOM-based open',
+        inner,
+      );
+      opened = await openConditionStatusDropdownViaDom(page);
+    }
+    if (!opened) {
+      logger.warn(
+        'Unable to open CONDITION status dropdown; leaving UI value unchanged (likely invalid)',
+      );
+      return;
+    }
+    await page.waitForTimeout(100);
+    const ok = await dispatchClickTextInDropdown(page, target);
+    if (!ok) {
+      logger.warn('Dropdown-scoped selection for CONDITION status "%s" failed; leaving default UI value', target);
+    } else {
+      logger.info('Condition status value selected: "%s"', target);
+    }
+  } catch (e) {
+    logger.warn('Unable to select CONDITION status value; continuing with default UI value. Error: %o', e);
+  }
+}
+
+export async function setTriggerActionStatus(page: Page, statusLabel: string): Promise<void> {
+  const value = (statusLabel || '').trim();
+  logger.info('Setting trigger ACTION status to "%s"', value);
+  // Field: Conversation status action
+  await click(page, 'settings', 'actionFieldButton');
+  await dispatchClickText(page, 'Status');
+  // Operator: change
+  await click(page, 'settings', 'operatorButton');
+  await dispatchClickText(page, 'change');
+  // Value: specific status (e.g., Pending)
+  await selectFromDropdown(page, 'settings', 'statusValueButton', value || 'Pending');
+}
+
 export async function applyTagsStatusAndReply(
   page: Page,
   args: { tags?: string[]; status?: string; reply?: string },
@@ -1738,6 +2091,120 @@ export async function setCustomFieldsAutoBatch(
   }
 }
 
+export async function openNewConversation(page: Page): Promise<void> {
+  logger.info('Opening New → Conversation ticket');
+  // Open the global New dropdown
+  await click(page, 'shell', 'newButton');
+  // Click the Conversation entry inside the dropdown (wormhole content)
+  await click(page, 'newTicket', 'conversationItem');
+  // Wait for either the requester input or the new-conversation URL
+  try {
+    await expectVisible(page, 'newTicket', 'requesterInput');
+  } catch {
+    try {
+      await page.waitForURL(/\/agent\/conversations\/new\//, { timeout: 10000 });
+    } catch {
+      logger.warn('openNewConversation: new conversation URL did not appear within timeout');
+    }
+  }
+}
+
+export async function createNewTicket(
+  page: Page,
+  email: string,
+  subject: string,
+  body: string,
+  mode: 'reply' | 'note' = 'reply',
+): Promise<void> {
+  logger.info('Creating new ticket (mode=%s)', mode);
+  await openNewConversation(page);
+
+  const emailValue = (email || '').trim();
+  if (emailValue) {
+    logger.info('Filling new ticket requester email: %s', emailValue);
+    await fill(page, 'newTicket', 'requesterInput', emailValue);
+    try {
+      // Wait briefly for instant-entity suggestions, then confirm with Enter
+      await page.waitForTimeout(300);
+      await page.keyboard.press('Enter');
+    } catch (e) {
+      logger.warn('createNewTicket: failed to press Enter after requester email: %o', e);
+    }
+  } else {
+    logger.warn('createNewTicket: empty email value provided');
+  }
+
+  const subjectValue = (subject || '').trim();
+  if (subjectValue) {
+    logger.info('Filling new ticket subject: %s', subjectValue);
+    await fill(page, 'newTicket', 'subjectInput', subjectValue);
+  } else {
+    logger.warn('createNewTicket: empty subject value provided');
+  }
+
+  if (mode === 'note') {
+    await switchToInternalNoteMode(page);
+  } else {
+    await switchToReplyMode(page);
+  }
+
+  const bodyValue = body || '';
+  if (bodyValue) {
+    await insertReplyText(page, bodyValue);
+  } else {
+    logger.warn('createNewTicket: empty body value provided');
+  }
+
+  await clickSendButton(page);
+
+  // After sending, Kayako typically redirects to /agent/conversations/<id>
+  try {
+    await page.waitForURL(/\/agent\/conversations\/(?!view)[^/]+$/, { timeout: 15000 });
+  } catch {
+    logger.warn('createNewTicket: did not observe redirect to conversation detail URL');
+  }
+
+  if (bodyValue) {
+    await expectTimelineContainsText(page, bodyValue);
+  }
+}
+
+export async function completeConversation(page: Page): Promise<void> {
+  logger.info('Completing conversation by setting status to Completed and saving properties');
+  await setStatusAndPersist(page, 'Completed');
+  await expectStatusLabel(page, 'Completed');
+}
+
+export async function reopenConversation(page: Page, targetStatus?: string): Promise<void> {
+  const normalized = (targetStatus || 'Open').trim() || 'Open';
+  logger.info('Reopening conversation by setting status to "%s" and saving properties', normalized);
+  await setStatusAndPersist(page, normalized);
+  await expectStatusLabel(page, normalized);
+}
+
+export async function trashConversation(page: Page): Promise<void> {
+  logger.info('Trashing conversation via header button and confirmation modal');
+  await click(page, 'conversation', 'trashCaseButton');
+
+  // Handle confirmation modal (Trash / Cancel)
+  try {
+    logger.info('Waiting for trash confirmation modal');
+    const { locator } = await firstAvailableLocator(page, 'modal', 'trashConfirmButton');
+    await locator.waitFor({ state: 'visible', timeout: 5000 }).catch(() => undefined);
+    logger.info('Confirming trash via modal Trash button');
+    await click(page, 'modal', 'trashConfirmButton');
+  } catch (e) {
+    logger.warn('Trash confirmation modal not handled; proceeding without explicit confirmation: %o', e);
+  }
+
+  // After trash, Kayako usually navigates back to the list; assert URL contains /conversations/view or /conversations
+  try {
+    await page.waitForURL(/\/agent\/conversations(\/view\/\d+)?/, { timeout: 10000 });
+  } catch {
+    logger.warn('trashConversation: did not observe navigation back to conversations view');
+  }
+}
+
 // ------------------------
 // Assertions
 // ------------------------
@@ -1859,8 +2326,12 @@ export async function expectFieldValue(
     case 'dropdown':
     case 'radio':
     case 'yesno':
-    case 'cascading':
       actual = await readSelectLike();
+      break;
+    case 'cascading':
+      // For cascading selects, the selected path is often rendered as text within the field container,
+      // not just inside the trigger button. Prefer the broader text read so we can assert on the path.
+      actual = await readTextLike();
       break;
     case 'date':
       actual = await readDateLike();

@@ -1,0 +1,13 @@
+name: ticket-reopen
+description: Complete a ticket and then reopen it to Open status via the Status field
+steps:
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] Ticket to reopen"
+    body: "[AUTOTEST] Ticket reopen body"
+    mode: "reply"
+  - type: complete-conversation
+  - type: reopen-conversation
+    value: "Open"
+
+

@@ -1,0 +1,18 @@
+name: users-toggle-first-attribute
+description: Toggle the Name attribute and type a filter value
+steps:
+  - type: goto
+    url: env.KAYAKO_AGENT_URL/users
+  - type: expect-visible
+    selectorKey: users.sidebar
+  - type: click
+    selectorKey: users.definitionCheckbox
+  - type: expect-visible
+    selectorKey: users.definitionTextInput
+  - type: fill
+    selectorKey: users.definitionTextInput
+    value: "José Guedes"
+  - type: wait
+    value: "1500"
+
+

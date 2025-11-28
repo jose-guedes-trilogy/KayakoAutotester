@@ -1,0 +1,15 @@
+tickets:
+  - id: seed-conversation-1
+    subject: "Automation Seed Ticket #1"
+    status: "Open"
+    tags:
+      - "seed"
+      - "automation"
+    macro: "Send to customer"
+
+macros:
+  - name: "Send to customer"
+    actions:
+      - "insert response"
+      - "set status Pending"
+

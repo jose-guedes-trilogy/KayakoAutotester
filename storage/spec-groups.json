@@ -1,0 +1,56 @@
+{
+  "groups": [
+    {
+      "id": "inbox",
+      "label": "Inbox (conversation list)",
+      "specs": [
+        "login-and-open-inbox",
+        "open-first-conversation",
+        "open-tab-by-subject",
+        "search-by-subject",
+        "select-user-case-by-subject",
+        "demo-smoke",
+        "crawl-default"
+      ]
+    },
+    {
+      "id": "ticket",
+      "label": "Ticket (conversation detail)",
+      "specs": [
+        "ticket-create",
+        "ticket-complete",
+        "ticket-trash",
+        "ticket-reopen",
+        "ticket-status-new-to-open",
+        "ticket-status-new-to-pending",
+        "ticket-properties-complete",
+        "add-internal-note",
+        "add-tags-and-status",
+        "apply-send-to-customer",
+        "assign-to-me",
+        "switch-assignee-and-save",
+        "demo-basic-capabilities",
+        "demo-custom-fields",
+        "demo-new-fields"
+      ]
+    },
+    {
+      "id": "users",
+      "label": "Users directory",
+      "specs": [
+        "users-open-directory",
+        "users-results-visible",
+        "users-toggle-first-attribute"
+      ]
+    },
+    {
+      "id": "settings",
+      "label": "Settings / Administration",
+      "specs": [
+        "settings-create-trigger"
+      ]
+    }
+  ]
+}
+
+

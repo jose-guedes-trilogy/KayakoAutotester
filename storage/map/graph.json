@@ -1869,7 +1869,497 @@
           "to": "https://trilogy-joseguedes.kayako.com/en-us/article/add?section_id=2"
         }
       ]
+    },
+    "crawl-plan-test": {
+      "crawlId": "crawl-plan-test",
+      "startedAt": "2025-11-27T13:20:57.120Z",
+      "updatedAt": "2025-11-27T13:37:26.669Z",
+      "baseUrl": "https://trilogy-joseguedes.kayako.com/agent",
+      "nodes": {
+        "https://trilogy-joseguedes.kayako.com/agent/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "depth": 0,
+          "status": "success",
+          "discoveredAt": "2025-11-27T13:21:11.029Z",
+          "children": [
+            "https://trilogy-joseguedes.kayako.com/agent/conversations",
+            "https://trilogy-joseguedes.kayako.com/agent/users",
+            "https://trilogy-joseguedes.kayako.com/agent/organizations",
+            "https://trilogy-joseguedes.kayako.com/agent/insights",
+            "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+            "https://trilogy-joseguedes.kayako.com/",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+            "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2"
+          ],
+          "statusCode": 200,
+          "lastVisitedAt": "2025-11-27T13:37:26.379Z",
+          "domHash": "dc7cc267ee161dd2c74c7e2c1db2d0326df9672fb8aaca6f1a80c5a28edbcd05",
+          "linkText": "30",
+          "metrics": {
+            "durationMs": 8286,
+            "attempts": 1
+          },
+          "responseHeaders": [
+            {
+              "name": "content-encoding",
+              "value": "gzip"
+            },
+            {
+              "name": "content-type",
+              "value": "text/html; charset=UTF-8"
+            },
+            {
+              "name": "date",
+              "value": "Thu, 27 Nov 2025 13:37:17 GMT"
+            },
+            {
+              "name": "server",
+              "value": "nginx"
+            },
+            {
+              "name": "strict-transport-security",
+              "value": "max-age=31536000; includeSubDomains preload"
+            },
+            {
+              "name": "x-lightning-server-version",
+              "value": "1.4.1"
+            }
+          ],
+          "frameTree": {
+            "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+            "childCount": 1,
+            "children": [
+              {
+                "url": "about:blank",
+                "name": "kayako-messenger-frame",
+                "childCount": 0,
+                "children": []
+              }
+            ]
+          },
+          "authContext": {
+            "cookies": [
+              {
+                "name": "novo_sessionid",
+                "domain": ".trilogy-joseguedes.kayako.com",
+                "path": "/",
+                "expires": -1,
+                "secure": true,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "a939c20e50"
+              },
+              {
+                "name": "ajs_anonymous_id",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1795786640,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "7d6c689ae3"
+              },
+              {
+                "name": "ajs_user_id",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1795786639,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "cecc9c6f3a"
+              },
+              {
+                "name": "ajs_group_id",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1795786639,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "ac15afbeea"
+              },
+              {
+                "name": "_ga",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1798810639.230993,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "b25b5e9503"
+              },
+              {
+                "name": "_gid",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1764337039,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "004246dc20"
+              },
+              {
+                "name": "_gat",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1764250696,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "356a192b79"
+              },
+              {
+                "name": "mp_579b34232c0f05a689695b45692796d1_mixpanel",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1795786640,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "6227828688"
+              },
+              {
+                "name": "_ga_6FK24FDMG6",
+                "domain": ".kayako.com",
+                "path": "/",
+                "expires": 1798810640.216265,
+                "secure": false,
+                "httpOnly": false,
+                "sameSite": "Lax",
+                "valueDigest": "b8454fb059"
+              }
+            ],
+            "origins": [
+              {
+                "origin": "https://trilogy-joseguedes.kayako.com",
+                "localStorageKeys": [
+                  "segmentio.e2fe28c7-3c61-4f35-b7f2-838a2047b442.reclaimStart",
+                  "ko:device:fingerprint",
+                  "ajs_group_id",
+                  "ko:push:uuid",
+                  "segmentio.f855e6d8-3585-427b-b68d-24e3dfab14c0.inProgress",
+                  "ajs_group_properties",
+                  "loglevel",
+                  "propositions",
+                  "__mpq_579b34232c0f05a689695b45692796d1_pp",
+                  "segmentio.e2fe28c7-3c61-4f35-b7f2-838a2047b442.queue",
+                  "segmentio.f855e6d8-3585-427b-b68d-24e3dfab14c0.reclaimStart",
+                  "ko:locale:user-locale-v2",
+                  "ajs_anonymous_id",
+                  "ajs_user_traits",
+                  "segmentio.e2fe28c7-3c61-4f35-b7f2-838a2047b442.ack",
+                  "segmentio.f855e6d8-3585-427b-b68d-24e3dfab14c0.queue",
+                  "ko:app-version-notifier:v1",
+                  "kayako:messenger:https://support.kayako.com/api/v1:settings/current",
+                  "__mpq_579b34232c0f05a689695b45692796d1_ev",
+                  "ko:core:csrf",
+                  "segmentio.f855e6d8-3585-427b-b68d-24e3dfab14c0.reclaimEnd",
+                  "segmentio.f855e6d8-3585-427b-b68d-24e3dfab14c0.ack",
+                  "segmentio.e2fe28c7-3c61-4f35-b7f2-838a2047b442.inProgress",
+                  "fingerprint_id",
+                  "debug",
+                  "ajs_user_id",
+                  "segmentio.e2fe28c7-3c61-4f35-b7f2-838a2047b442.reclaimEnd"
+                ]
+              }
+            ]
+          },
+          "previousDomHash": "f0fdcb8869120badb311440aa4bc0bf028a1b71379d5cbe994ffd18657753e29",
+          "diffStatus": "changed",
+          "lastDiffAt": "2025-11-27T13:37:26.379Z",
+          "discoveredLinks": [
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a aria-label=\"Home\" href=\"/agent/conversations\" id=\"ember1271\" class=\"session__logo_1xlirl active ember-view\"><!----></a>"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+              "text": "30",
+              "title": "30 conversations in your inbox",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a title=\"30 conversations in your inbox\" href=\"/agent/conversations\" id=\"ember1274\" class=\"session__left-navigation-item_1xlirl active ember-view\">        <svg width=\"20\" height=\"18\" viewBox=\"0 0 20 "
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/users",
+              "title": "Users",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a title=\"Users\" href=\"/agent/users\" id=\"ember1275\" class=\"session__left-navigation-item_1xlirl ember-view\">      <svg width=\"20\" height=\"16\" viewBox=\"0 0 20 16\" xmlns=\"http://www.w3.org/2000/svg\"><g "
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+              "title": "Organizations",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a title=\"Organizations\" href=\"/agent/organizations\" id=\"ember1287\" class=\"session__left-navigation-item_1xlirl ember-view\">      <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.o"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/insights",
+              "title": "Insights",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a title=\"Insights\" href=\"/agent/insights\" id=\"ember1303\" class=\"session__left-navigation-item_1xlirl ember-view\">        <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+              "title": "Knowledge Base Manager",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a title=\"Knowledge Base Manager\" href=\"/agent/knowledgebase\" id=\"ember1315\" class=\"session__left-navigation-item_1xlirl ember-view\">      <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\""
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/",
+              "title": "Helpcenter",
+              "rel": "noopener noreferrer",
+              "target": "_blank",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/\" data-href-to-ignore=\"true\" title=\"Helpcenter\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"session__left-navigation-item_1xlirl\">\n      <svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" "
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "text": "Inbox\n  \n  \n  \n\n\n\n\n      \n        30",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/1\" id=\"ember1452\" class=\" ko-cases-list_sidebar_item__item_1km4cn active ember-view\">    <div class=\"ko-cases-list_sidebar_item__icon_1km4cn\">\n      <svg version=\"1."
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+              "text": "All open conversations in my teams\n  \n  \n  \n\n\n\n\n      \n        1",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/2\" id=\"ember1466\" class=\" ko-cases-list_sidebar_item__item_1km4cn ember-view\"><!---->\n  <div title=\"All open conversations in my teams\" class=\"ko-cases-list_sidebar_"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+              "text": "My active conversations\n  \n  \n  \n\n\n\n\n      \n        3",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/3\" id=\"ember1471\" class=\" ko-cases-list_sidebar_item__item_1km4cn ember-view\"><!---->\n  <div title=\"My active conversations\" class=\"ko-cases-list_sidebar_item__text_"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+              "text": "Recently updated conversations in my teams",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/4\" id=\"ember1476\" class=\" ko-cases-list_sidebar_item__item_1km4cn ko-cases-list_sidebar_item__disabled_1km4cn ember-view\"><!---->\n  <div title=\"Recently updated conv"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+              "text": "Suspended",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/suspended-messages\" id=\"ember1479\" class=\" ko-cases-list_sidebar__item_1uky7l ember-view\">      <div class=\"ko-cases-list_sidebar__suspended-mails_1uky7l\">Suspended</div>"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+              "text": "Trash",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/5\" id=\"ember1492\" class=\" ko-cases-list_sidebar_item__item_1km4cn ember-view\"><!---->\n  <div title=\"Trash\" class=\"ko-cases-list_sidebar_item__text_1km4cn\">Trash</div"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "text": "1",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/1\" id=\"ember2537\" class=\"active ember-view\">  <div class=\"ko-pagination_item__container_1gps67 ko-pagination_item__active_1gps67\">\n    <div class=\"  ko-pagination_it"
+            },
+            {
+              "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+              "text": "2",
+              "frameUrl": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+              "discoveredAt": "2025-11-27T13:37:26.401Z",
+              "outerHtmlSnippet": "<a href=\"/agent/conversations/view/1?page=2\" id=\"ember2539\" class=\"ember-view\">  <div class=\"ko-pagination_item__container_1gps67\">\n    <div class=\"  ko-pagination_item__item_1gps67\">\n      2\n    </di"
+            }
+          ]
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/users": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": ""
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/organizations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": ""
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/insights": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": ""
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/knowledgebase": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": ""
+        },
+        "https://trilogy-joseguedes.kayako.com/": {
+          "url": "https://trilogy-joseguedes.kayako.com/",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": ""
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "Inbox\n  \n  \n  \n\n\n\n\n      \n        30"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "All open conversations in my teams\n  \n  \n  \n\n\n\n\n      \n        1"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "My active conversations\n  \n  \n  \n\n\n\n\n      \n        3"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "Recently updated conversations in my teams"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "Suspended"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "Trash"
+        },
+        "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "depth": 1,
+          "status": "skipped",
+          "discoveredAt": "2025-11-27T13:21:19.382Z",
+          "parent": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "children": [],
+          "linkText": "2"
+        }
+      },
+      "edges": [
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/users",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/organizations",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/insights",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/knowledgebase",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/2",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/3",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/4",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/suspended-messages",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/5",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        },
+        {
+          "from": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "to": "https://trilogy-joseguedes.kayako.com/agent/conversations/view/1?page=2",
+          "discoveredAt": "2025-11-27T13:20:57.120Z"
+        }
+      ]
     }
   },
-  "lastCrawlId": "crawl-2025-11-26t15-01-56-077z"
+  "lastCrawlId": "crawl-plan-test"
 }

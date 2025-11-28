@@ -1,0 +1,333 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\391603fd-4781-49fe-acd2-05b017c377c1\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\391603fd-4781-49fe-acd2-05b017c377c1\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\391603fd-4781-49fe-acd2-05b017c377c1\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/391603fd-4781-49fe-acd2-05b017c377c1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/391603fd-4781-49fe-acd2-05b017c377c1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/391603fd-4781-49fe-acd2-05b017c377c1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "runtime\\queue-runner.spec.ts",
+      "file": "runtime/queue-runner.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Queued flows",
+          "file": "runtime/queue-runner.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "run queued flows serially",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 31118,
+                      "error": {
+                        "message": "Error: No selector candidates matched for inbox.firstTicketRow",
+                        "stack": "Error: No selector candidates matched for inbox.firstTicketRow\n    at firstAvailableLocator (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:94:9)\n    at accessConversation (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1692:33)\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:22:9\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:15:7",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                          "column": 9,
+                          "line": 94
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\selectors\\index.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   logger\u001b[33m.\u001b[39merror(\u001b[32m'No selector candidates matched for %s.%s'\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m,\u001b[39m key)\u001b[33m;\u001b[39m\n \u001b[90m 93 |\u001b[39m   \u001b[36mtry\u001b[39m { \u001b[36mawait\u001b[39m hudPush(page\u001b[33m,\u001b[39m \u001b[32m`No candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m } \u001b[36mcatch\u001b[39m {}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`No selector candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m click(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m key\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                            "column": 9,
+                            "line": 94
+                          },
+                          "message": "Error: No selector candidates matched for inbox.firstTicketRow\n\n\u001b[90m   at \u001b[39m..\\selectors\\index.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   logger\u001b[33m.\u001b[39merror(\u001b[32m'No selector candidates matched for %s.%s'\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m,\u001b[39m key)\u001b[33m;\u001b[39m\n \u001b[90m 93 |\u001b[39m   \u001b[36mtry\u001b[39m { \u001b[36mawait\u001b[39m hudPush(page\u001b[33m,\u001b[39m \u001b[32m`No candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m } \u001b[36mcatch\u001b[39m {}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`No selector candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m click(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m key\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m\n\u001b[2m    at firstAvailableLocator (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:94:9)\u001b[22m\n\u001b[2m    at accessConversation (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1692:33)\u001b[22m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:22:9\u001b[22m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:15:7\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T17:42:08.493Z] [INFO] [auth.fixture run=391603fd-4781-49fe-acd2-05b017c377c1] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:08.500Z] [INFO] [LoginPage run=391603fd-4781-49fe-acd2-05b017c377c1] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:11.791Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Loaded selectors.jsonc (mtime %d) \u001b[33m1764260827551.927\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:12.674Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:12.690Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:12.845Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:12.869Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:13.019Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:13.035Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:16.700Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:16.719Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:16.730Z] [INFO] [auth.fixture run=391603fd-4781-49fe-acd2-05b017c377c1] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:16.742Z] [INFO] [auth.fixture run=391603fd-4781-49fe-acd2-05b017c377c1] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:17.009Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:17.015Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] No conversation ID provided and not on a conversation; opening first conversation from inbox\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:19.773Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:19.796Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Inbox first row resolved via selector %s (fallbackIndex=%d) [class*='ko-table_body__tbody_'] > *:first-child \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:28.131Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s users container [class*='ko-user-list__container_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:28.157Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users container [class*='ko-user-list__container_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:28.200Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s users sidebar [class*='ko-user-list__sidebar_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:28.221Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebar [class*='ko-user-list__sidebar_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:29.089Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s users resultsHeading [class*='ko-user-list__heading_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:29.105Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users resultsHeading [class*='ko-user-list__heading_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:29.129Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:29.131Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] No conversation ID provided and not on a conversation; opening first conversation from inbox\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:31.529Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:31.696Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Inbox first row resolved via selector %s (fallbackIndex=%d) [class*='ko-table_body__tbody_'] > *:first-child \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.688Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s users results [class*='ko-user-list__results_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.710Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users results [class*='ko-user-list__results_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.755Z] [DEBUG] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Primary selector used for %s.%s: %s users firstRow [class*='ko-user-list_results__row-styles_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.778Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users firstRow [class*='ko-user-list_results__row-styles_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.816Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:37.819Z] [INFO] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] No conversation ID provided and not on a conversation; opening first conversation from inbox\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-27T17:42:38.952Z] [WARN] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Error probing selector for %s.%s in %s: %s (%o) inbox firstTicketRow main [class*='ko-table_body__tbody_'] > *:first-child locator.waitFor: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('[class*=\\'ko-table_body__tbody_\\'] > *:first-child').first()\u001b[22m\n\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at accessConversation \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1692:33\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:22:9\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:15:7 {\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-table_body__tbody_'] > *:first-child >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@242'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@242'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n      _parentStep: \u001b[36m[TestStepInfoImpl]\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764265358951\u001b[39m,\n    error: {\n      message: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at accessConversation (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1692:33)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:22:9\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:15:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:38.961Z] [WARN] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Error probing selector for %s.%s in %s: %s (%o) inbox firstTicketRow frame [class*='ko-table_body__tbody_'] > *:first-child locator.waitFor: Target page, context or browser has been closed\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at accessConversation \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1692:33\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:22:9\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:15:7 {\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-table_body__tbody_'] > *:first-child >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@244'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@244'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n      _parentStep: \u001b[36m[TestStepInfoImpl]\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764265358961\u001b[39m,\n    error: {\n      message: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed'\u001b[39m,\n      stack: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at accessConversation (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1692:33)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:22:9\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:15:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:38.969Z] [WARN] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] Error probing selector for %s.%s in %s: %s (%o) inbox firstTicketRow frame [class*='ko-table_body__tbody_'] > *:first-child locator.waitFor: Target page, context or browser has been closed\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at accessConversation \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1692:33\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:22:9\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\runtime\\queue-runner.spec.ts:15:7 {\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-table_body__tbody_'] > *:first-child >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@246'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@246'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-table_body__tbody_\\\\'] > *:first-child').first()\"\u001b[39m,\n      _parentStep: \u001b[36m[TestStepInfoImpl]\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764265358969\u001b[39m,\n    error: {\n      message: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed'\u001b[39m,\n      stack: \u001b[32m'Error: locator.waitFor: Target page, context or browser has been closed\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at accessConversation (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1692:33)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:22:9\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\runtime\\\\queue-runner.spec.ts:15:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T17:42:38.970Z] [ERROR] [selectors run=391603fd-4781-49fe-acd2-05b017c377c1] No selector candidates matched for %s.%s inbox firstTicketRow\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Flow: users-open-directory",
+                          "duration": 12368
+                        },
+                        {
+                          "title": "Flow: users-results-visible",
+                          "duration": 8675
+                        },
+                        {
+                          "title": "Flow: users-toggle-first-attribute",
+                          "duration": 1191,
+                          "error": {
+                            "message": "Error: No selector candidates matched for inbox.firstTicketRow",
+                            "stack": "Error: No selector candidates matched for inbox.firstTicketRow\n    at firstAvailableLocator (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:94:9)\n    at accessConversation (C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts:1692:33)\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:22:9\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\tests\\runtime\\queue-runner.spec.ts:15:7",
+                            "location": {
+                              "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                              "column": 9,
+                              "line": 94
+                            },
+                            "snippet": "\u001b[90m   at \u001b[39m..\\selectors\\index.ts:94\n\n\u001b[0m \u001b[90m 92 |\u001b[39m   logger\u001b[33m.\u001b[39merror(\u001b[32m'No selector candidates matched for %s.%s'\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m,\u001b[39m key)\u001b[33m;\u001b[39m\n \u001b[90m 93 |\u001b[39m   \u001b[36mtry\u001b[39m { \u001b[36mawait\u001b[39m hudPush(page\u001b[33m,\u001b[39m \u001b[32m`No candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m } \u001b[36mcatch\u001b[39m {}\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 94 |\u001b[39m   \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`No selector candidates matched for ${group}.${key}`\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 95 |\u001b[39m }\n \u001b[90m 96 |\u001b[39m\n \u001b[90m 97 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m click(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m\u001b[33m,\u001b[39m group\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m key\u001b[33m:\u001b[39m string)\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[36mvoid\u001b[39m\u001b[33m>\u001b[39m {\u001b[0m"
+                          }
+                        }
+                      ],
+                      "startTime": "2025-11-27T17:42:07.644Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\391603fd-4781-49fe-acd2-05b017c377c1\\artifacts\\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\\video.webm"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\selectors\\index.ts",
+                        "column": 9,
+                        "line": 94
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a65a2d6c7118bb094f51-2c1e72ee0ae48d2f21cf",
+              "file": "runtime/queue-runner.spec.ts",
+              "line": 8,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T17:42:06.479Z",
+    "duration": 32849.136,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -8,9 +8,13 @@ steps:
       - "autotest-tag-2"
   - type: set-status
     value: "Pending"
-  - type: wait
-    value: "200"
+  - type: assert-tags-contain
+    values:
+      - "autotest-tag"
+      - "autotest-tag-2"
   - type: assert-status
     value: "Pending"
+  - type: wait
+    value: "200"
 
 

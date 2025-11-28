@@ -1,0 +1,14 @@
+name: template-conversation-internal-note
+description: Open a conversation and add an internal note via composer primitives
+urlPattern: "/agent/conversations/(?!view)"
+tags:
+  - conversation
+steps:
+  - type: access-conversation
+  - type: wait-loadstate
+    state: networkidle
+  - type: switch-to-internal-note
+  - type: insert-reply-text
+    value: env.INTERNAL_NOTE_TEXT
+  - type: click-send-button
+

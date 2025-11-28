@@ -1,0 +1,95 @@
+{
+  "captures": {
+    "capture-2025-11-27t14-07-41-070z": {
+      "captureId": "capture-2025-11-27t14-07-41-070z",
+      "crawlId": "crawl-plan-test",
+      "startedAt": "2025-11-27T14:07:41.072Z",
+      "outputDir": "artifacts/structure/capture-2025-11-27t14-07-41-070z",
+      "headless": true,
+      "screenshot": false,
+      "sections": [
+        "[class*='ko-info-bar_item__container_']",
+        "[class*='ko-checkbox__checkboxWrap_']"
+      ],
+      "clicks": [],
+      "urls": {
+        "https://trilogy-joseguedes.kayako.com/agent/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "htmlPath": "artifacts/structure/capture-2025-11-27t14-07-41-070z/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "htmlHash": "1ebbb89d7482606b5dca0bb474e8aabdb236cc825550163b27734abc5d7edee1",
+          "sections": [
+            {
+              "id": "1-class-ko-checkbox-checkboxwrap",
+              "selector": "[class*='ko-checkbox__checkboxWrap_']",
+              "path": "artifacts/structure/capture-2025-11-27t14-07-41-070z/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+              "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce"
+            }
+          ],
+          "capturedAt": "2025-11-27T14:12:22.127Z"
+        }
+      },
+      "completedAt": "2025-11-27T14:12:22.128Z"
+    },
+    "capture-test-two": {
+      "captureId": "capture-test-two",
+      "crawlId": "crawl-plan-test",
+      "startedAt": "2025-11-27T14:09:57.404Z",
+      "outputDir": "artifacts/structure/capture-test-two",
+      "headless": true,
+      "screenshot": false,
+      "sections": [
+        "[class*='ko-info-bar_item__container_']",
+        "[class*='ko-checkbox__checkboxWrap_']"
+      ],
+      "clicks": [],
+      "urls": {
+        "https://trilogy-joseguedes.kayako.com/agent/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "htmlPath": "artifacts/structure/capture-test-two/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "htmlHash": "ff15539b27ef740f6050297edba30ddeb9de6993d3db40220f88910abc6c068d",
+          "sections": [
+            {
+              "id": "1-class-ko-checkbox-checkboxwrap",
+              "selector": "[class*='ko-checkbox__checkboxWrap_']",
+              "path": "artifacts/structure/capture-test-two/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+              "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce"
+            }
+          ],
+          "capturedAt": "2025-11-27T14:11:55.743Z"
+        }
+      },
+      "completedAt": "2025-11-27T14:11:55.744Z"
+    },
+    "capture-observe-test": {
+      "captureId": "capture-observe-test",
+      "crawlId": "crawl-plan-test",
+      "startedAt": "2025-11-27T14:14:14.500Z",
+      "outputDir": "artifacts/structure/capture-observe-test",
+      "headless": true,
+      "screenshot": false,
+      "sections": [
+        "[class*='ko-info-bar_item__container_']",
+        "[class*='ko-checkbox__checkboxWrap_']"
+      ],
+      "clicks": [],
+      "urls": {
+        "https://trilogy-joseguedes.kayako.com/agent/conversations": {
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "htmlPath": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "htmlHash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5",
+          "sections": [
+            {
+              "id": "1-class-ko-checkbox-checkboxwrap",
+              "selector": "[class*='ko-checkbox__checkboxWrap_']",
+              "path": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+              "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce"
+            }
+          ],
+          "capturedAt": "2025-11-27T14:14:28.839Z"
+        }
+      },
+      "completedAt": "2025-11-27T14:14:28.841Z"
+    }
+  },
+  "lastCaptureId": "capture-observe-test"
+}

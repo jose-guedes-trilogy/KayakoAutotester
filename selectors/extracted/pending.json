@@ -1,0 +1,884 @@
+{
+  "metadataVersion": 2,
+  "generatedAt": "2025-11-27T15:25:51.349Z",
+  "crawlId": "capture-observe-test",
+  "captureId": "capture-observe-test",
+  "sourceDir": "artifacts\\structure\\capture-observe-test",
+  "totalFiles": 2,
+  "totalSuggestions": 54,
+  "suggestions": [
+    {
+      "id": "65b29737b9",
+      "selector": "[class*='ko-checkbox__checkbox_']",
+      "occurrences": 2,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        },
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.section-1-class-ko-checkbox-checkboxwrap.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "section",
+          "hash": "5cd7bfa16b96a34c46f6a295a31ee4421096e375d1ed604ac77c0521aed698ce",
+          "sectionId": "1-class-ko-checkbox-checkboxwrap"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "5e311426a4",
+      "selector": "[class*='ko-tab-strip__tabs_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c93a604e8e",
+      "selector": "[class*='ko-agent-dropdown__iconSquare_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "2758111e34",
+      "selector": "[class*='ko-agent-dropdown__icon_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "3fd44de314",
+      "selector": "[class*='ko-agent-dropdown__dropdown-trigger-label_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c1ddb3d6cb",
+      "selector": "[class*='ko-trial-notification__upgrade_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "7d8e453176",
+      "selector": "[class*='ko-notification-center-new__wrapper_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "fe9783673f",
+      "selector": "[class*='ko-user-avatar__avatar-container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "0594ec2ceb",
+      "selector": "[class*='ko-user-avatar_image__image_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c22c89ba5c",
+      "selector": "[class*='ko-user-avatar_image__sizeSubmedium_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "04959126f4",
+      "selector": "[class*='ko-user-avatar_online-indicator__online-indicator_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "b63c6a8245",
+      "selector": "[class*='ko-user-avatar_online-indicator__online-indicator--submedium_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "39930ca042",
+      "selector": "[class*='ko-cases-list_sidebar_item__icon_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "7cb94db6de",
+      "selector": "[class*='ko-cases-list_sidebar_item__text_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "970d00d581",
+      "selector": "[class*='ko-cases-list_sidebar_item_reload-icon__reload-icon_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "6978e01f9f",
+      "selector": "[class*='ko-cases-list_sidebar_item__inbox_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ad6c70ae19",
+      "selector": "[class*='ko-cases-list_sidebar__hr_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "01647dc627",
+      "selector": "[class*='ko-cases-list_sidebar_item__disabled_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "270e2e3501",
+      "selector": "[class*='ko-cases-list_sidebar__item_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "6548730a6e",
+      "selector": "[class*='ko-cases-list_sidebar__suspended-mails_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "f2ad858f53",
+      "selector": "[class*='ko-cases-list__heading_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "d0f5dcf75a",
+      "selector": "[class*='ko-cases-list__bulk-actions_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "1fd5b7ecb5",
+      "selector": "[class*='ko-table__container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c9985d7434",
+      "selector": "[class*='ko-table_header__container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "11e39e4d09",
+      "selector": "[class*='ko-table_column__container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "582965b624",
+      "selector": "[class*='ko-table_column__ellipsis_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c1a063e461",
+      "selector": "[class*='ko-table_column__sortable_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "3e10c33820",
+      "selector": "[class*='ko-table_body__tbody_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "ea0b7e100c",
+      "selector": "[class*='ko-table_cell__container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "273195c66e",
+      "selector": "[class*='ko-table_cell__ellipsis_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "1d118c4b73",
+      "selector": "[class*='ko-cases-list_column_conversation__conversation_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "c5523adfc4",
+      "selector": "[class*='ko-cases-list_column_conversation__avatar_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "acd1d69362",
+      "selector": "[class*='ko-user-avatar_image__sizeMedium_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "3b7a9c6835",
+      "selector": "[class*='ko-user-avatar_online-indicator__tooltip_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "60aca304ab",
+      "selector": "[class*='ko-user-avatar_online-indicator__online-indicator--medium_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "cbb0a4b6a1",
+      "selector": "[class*='ko-cases-list_column_conversation__text_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "04add6d8be",
+      "selector": "[class*='ko-cases-list_column_conversation__firstRow_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "71734a5fe5",
+      "selector": "[class*='ko-cases-list_column_conversation__attachments_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "9f92739dd4",
+      "selector": "[class*='ko-cases-list_column_conversation__ago_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "74af16f846",
+      "selector": "[class*='ko-cases-list_column_conversation__secondRow_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "1889c4e1f2",
+      "selector": "[class*='ko-cases-list_column_conversation__subject_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "a20e407e95",
+      "selector": "[class*='ko-cases-list_column_conversation__bullet_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "57f7a08dc8",
+      "selector": "[class*='ko-status-pill__status-new_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "0a5688f823",
+      "selector": "[class*='ko-status-pill__label_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "9d830db005",
+      "selector": "[class*='ko-cases-list_column_user__wrapper_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "32fc7645f2",
+      "selector": "[class*='ko-cases-list_column_user__avatar_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "1d2a41fbba",
+      "selector": "[class*='ko-user-avatar_image__sizeMicro_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "6f9a8a36f9",
+      "selector": "[class*='ko-user-avatar_online-indicator__online-indicator--micro_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "a09ddcb110",
+      "selector": "[class*='ko-cases-list_column_user__name_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "b8eaa8b35c",
+      "selector": "[class*='ko-cases-list_column_conversation__status-icon_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "cf2a1f7393",
+      "selector": "[class*='ko-status-pill__status-open_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "bec4f85fbf",
+      "selector": "[class*='ko-cases-list_column_conversation__unreadDot_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "04aa3ddc72",
+      "selector": "[class*='ko-pagination_item__container_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "f75215189a",
+      "selector": "[class*='ko-pagination_item__active_']",
+      "occurrences": 1,
+      "sampleFiles": [
+        {
+          "file": "artifacts/structure/capture-observe-test/trilogy-joseguedes.kayako.com_agent_conversations.html",
+          "captureId": "capture-observe-test",
+          "crawlId": "crawl-plan-test",
+          "url": "https://trilogy-joseguedes.kayako.com/agent/conversations",
+          "type": "html",
+          "hash": "aa72d80b9959a73c38e064d09e7b32b3fa3bd8e28f145b56fc47aa4b183e85b5"
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}

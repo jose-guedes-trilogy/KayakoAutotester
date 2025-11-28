@@ -28,12 +28,12 @@ Key npm scripts are defined in `package.json` (e.g., `npm run test`, `npm run va
 
 ## Automation Pipeline Overview
 
-1. **Crawl & Map (upcoming `scripts/crawl-kayako.ts`)** – traverse the agent UI, resolve nav graph, and capture metadata for each URL.
+1. **Crawl & Map (`scripts/crawl-kayako.ts`)** – traverse the agent UI, resolve the nav graph, capture HTTP/frame/auth metadata (plus screenshots), and persist a resumeable frontier for follow-up jobs.
 2. **Capture Structure (`scripts/capture-structure.ts` + `scripts/dump-page-html.ts`)** – log in once, sanitize DOM, emit full-page HTML, targeted sections, screenshots, and diff-friendly artifacts across the crawl set.
 3. **Selector Expansion (`scripts/extract-selectors.ts` + `scripts/suggest-selectors.ts`)** – mine source & captured HTML for resilient selectors and stage proposals in `selectors/extracted/`.
 4. **Test Generation (`scripts/generate-tests.ts` + `scripts/flow-to-pw.ts`)** – map crawl URLs to flows (or fallback templates) and generate Playwright specs under `tests/generated/`.
 5. **Execution & Reporting (`orchestrator/`, `ui/`)** – run tests headless or headed, stream HUD/logs with crawl/test IDs, persist run metadata in `storage/runs.json`, and surface results in the dashboard.
-6. **Governance** – docs (`docs/SELECTORS.md`, `docs/OBSERVATIONS.md`) describe selector coverage, SPA quirks, and next actions. CI will eventually chain crawl → capture → selectors → tests → execution.
+6. **Governance & Scheduling** – docs (`docs/SELECTORS.md`, `docs/OBSERVATIONS.md`) describe selector coverage, SPA quirks, and next actions. The orchestrator exposes a `/api/pipeline/start` endpoint (and UI button) that chains crawl → capture → selectors → tests; longer-term CI simply calls that pipeline.
 
 ## Execution Flow
 
@@ -41,6 +41,7 @@ Key npm scripts are defined in `package.json` (e.g., `npm run test`, `npm run va
    - Populate `.env.local` with the Kayako credentials/URLs (see `config/env.ts` for required vars).  
      - Required: `KAYAKO_BASE_URL`, `KAYAKO_AGENT_URL`, `KAYAKO_USERNAME`, `KAYAKO_PASSWORD`.  
      - Optional: `KAYAKO_CONVERSATION_ID` (forces tests to open a specific ticket), `KAYAKO_PREFERRED_TEAM`, and `KAYAKO_INBOX_VIEW_ID` (defaults to `1`, drives which inbox view URL the tests open via the derived `KAYAKO_INBOX_VIEW_URL`).
+   - Secrets can be stored in `secrets/kayako.json` and encrypted via `npm run secrets:encrypt` (see `secrets/README.md`). Team members decrypt with `npm run secrets:decrypt` before running the pipeline.  
    - Install dependencies with `npm install`.
 
 2. **Selectors as Source of Truth**  
@@ -67,8 +68,14 @@ Key npm scripts are defined in `package.json` (e.g., `npm run test`, `npm run va
 - **`scripts/suggest-selectors.ts`**  
   Parses sanitized HTML produced by the structure capture runner, identifies hashed CSS-module class bases (e.g., `ko-info-bar_field_select__trigger_`), filters out selectors already present in `selectors/selectors.jsonc`, and writes review-ready suggestions to `selectors/extracted/pending.json` (sorted by occurrence count, including sample files for context). Run via `npm run selectors:suggest`.
 
+- **`scripts/selectors-triage.ts`**  
+  Provides an interactive CLI (`npm run selectors:triage`) to approve/reject/snooze pending selectors, logging decisions to `selectors/extracted/history.json` and capturing target selector groups/keys for follow-up.
+
 - **`scripts/generate-tests.ts`**  
   Reads the crawl graph (`storage/map/graph.json`), matches URLs against existing flow YAML definitions (or a default fallback), emits per-URL flow files under `mcp/flows/autogen/`, and invokes `scripts/flow-to-pw.ts` to produce Playwright specs. Supports filters (`--crawl-id`, `--include`, `--tags`) and is exposed via `npm run generate:tests`.
+
+- **`scripts/seed-test-data.ts`**  
+  Reads YAML fixtures under `storage/seeds/`, logs deterministic ticket/macro edits into `storage/changes.log`, and (eventually) drives the Kayako UI/API so generated tests always have a clean sandbox. Run via `npm run seed:data`.
 
 - **`selectors/index.ts`**  
   Runtime selector utilities: lazy loading, HUD integration, resilient fallbacks (frame-aware), and helper flows for interacting with complex controls (assignments, tags, macros, etc.).
@@ -113,11 +120,12 @@ Because scripts/styles/meta/link/svg nodes are stripped in-page, Git diffs stay 
 
 ## Crawl & Mapping Service
 
-Use `scripts/crawl-kayako.ts` (or `npm run crawl:kayako`) to build and persist a navigation graph of the Kayako agent UI. The crawler:
+Use `scripts/crawl-kayako.ts` (or `npm run crawl:kayako`) to build and persist a navigation graph of the Kayako agent UI. The crawler now:
 
-- Logs in via `LoginPage`, then breadth-first visits URLs that match the origin and optional include/exclude patterns.
-- Records node metadata (status, depth, parent, children) and adjacency edges.
-- Writes results to `storage/map/graph.json`, maintaining multiple crawl sessions keyed by `crawlId`.
+- Logs in via `LoginPage`, then breadth-first visits URLs that match the origin and optional include/exclude patterns (with throttling + retries).
+- Records rich node metadata: HTTP status/headers, redirect target, DOM hash + `diffStatus`, frame tree snapshot, hashed auth context (cookie metadata + localStorage keys), discovered link inventory (text, frame origin, data attributes), and optional per-node screenshots.
+- Tracks adjacency edges with the text/frame that discovered them so we can diff the sitemap between runs.
+- Writes results to `storage/map/graph.json`, maintains screenshots under `storage/map/screenshots/<crawlId>/`, and persists a resumeable frontier (`storage/map/frontier.json`) that remembers the queue/enqueued/visited sets.
 - Accepts `--crawl-id` to resume/update an existing crawl, otherwise generates a timestamped ID (e.g., `crawl-2025-11-26t13-50-00-000z`).
 
 ### CLI Flags
@@ -128,7 +136,10 @@ Use `scripts/crawl-kayako.ts` (or `npm run crawl:kayako`) to build and persist a
 | `--max-depth=2` | Limit traversal depth (root seed = depth 0). |
 | `--include=<regex>` / `--exclude=<regex>` | Repeatable regex filters applied to canonical URLs. |
 | `--headless=false` | Run headed (defaults to true). |
-| `--delay=250` | Delay (ms) between visits. |
+| `--delay=250` | Delay (ms) after each processed node. |
+| `--throttle-ms=250` | Minimum milliseconds between navigations (applies even when retries occur). |
+| `--retry=3` | How many times to retry a navigation before marking the node as error. |
+| `--screenshots=false` | Skip per-node screenshots (defaults to true; saved under `storage/map/screenshots/<crawlId>`). |
 | `--crawl-id=my-crawl` | Override generated crawl ID; reuse to resume. |
 
 Example:
@@ -138,6 +149,14 @@ npm run crawl:kayako -- --seeds=/agent/conversations --max-depth=1 --include="/a
 ```
 
 After the crawl, inspect `storage/map/graph.json` to see the discovered nodes and use the IDs elsewhere (e.g., set `KAYAKO_CRAWL_ID` before running HTML capture or tests so logs/artifacts align with the crawl).
+
+Each node entry now captures:
+
+- `responseHeaders`, `statusCode`, `redirectedTo`, and `metrics` (duration/attempts).
+- `domHash`, `previousDomHash`, and `diffStatus` so sitemap diffs are cheap.
+- `frameTree` + hashed `authContext` for debugging iframe/auth issues without storing sensitive cookie values.
+- `discoveredLinks` (text, frame, data-testid, HTML snippet) plus `edges` annotated with the discovery source.
+- Optional `screenshotPath` for visual diffing of every visited node.
 
 ## Structure Capture Runner
 
@@ -167,6 +186,19 @@ Example:
 npm run capture:structure -- --crawl-id=crawl-conversations --section="[class*='ko-tabs__list_']"
 ```
 
+## Capture Pipeline & Artifact Registry
+
+- `scripts/pipeline-capture.ts` (or `npm run capture:pipeline`) logs in once, filters crawl URLs (via `--include`/`--exclude`/`--limit`), sanitizes DOMs, saves full HTML + section snippets + optional screenshots, and records per-URL hashes in `storage/map/artifacts.json`. Each run is tagged with a `captureId` so downstream steps can diff or re-run idempotently.
+- Artifacts are written under `artifacts/structure/<captureId>/` (matching the classic capture runner’s layout) while the registry tracks the capture flags, hashes, and relative file paths.
+- `storage/map/capture-runs.json` keeps a running ledger (success/failure counts, timestamps, artifact locations) for every capture execution so dashboards/orchestrator jobs can summarize progress without parsing logs.
+- `scripts/capture-diff.ts` (or `npm run capture:diff`) compares two capture IDs (defaults to the latest pair), classifies URLs as added/removed/changed, labels severity (structural vs cosmetic), and emits JSON reports under `storage/map/capture-diffs/`.
+- Use the registry to feed selector governance: every diff entry references the exact HTML/section files so reviewers can jump straight to the sanitized snippets that changed.
+
+## Pipeline Scheduler
+
+- `POST /api/pipeline/start` kicks off crawl → capture → selectors → generate → tests with consistent IDs (`pipeline-crawl-*`, `pipeline-capture-*`). Each stage runs the corresponding npm script, logs output, and persists state in `storage/pipelines.json`.
+- `GET /api/pipeline` returns the active pipeline (if any) plus historical entries. The UI surfaces this inside the Automation Status card and provides a “Start pipeline” button that maps to the same API.
+
 ## Autogenerated Tests
 
 Run `scripts/generate-tests.ts` (or `npx ts-node scripts/generate-tests.ts`) to convert crawl metadata + composites into Playwright specs:
@@ -190,9 +222,17 @@ npx ts-node scripts/generate-tests.ts \
 
 The command writes YAML under `mcp/flows/autogen/` plus specs inside `tests/generated/`, one per URL and per composite (e.g., `composite-add-internal-note-<slug>.spec.ts`). Conversation list specs always navigate to `env.KAYAKO_INBOX_VIEW_URL`, which is computed from `KAYAKO_AGENT_URL` + `KAYAKO_INBOX_VIEW_ID` (default `1`). Override that env var at runtime to exercise another view without regenerating specs.
 
+Reusable surface templates live in `mcp/flows/templates/` (e.g., `template-inbox-default-view`, `template-conversation-internal-note`, `template-conversation-apply-macro`). Drop new YAML files there with a `urlPattern`, and the generator will automatically match crawl URLs to those flows.
+
+## Data & State Seeding
+
+- Populate deterministic fixtures under `storage/seeds/*.yml` (tickets, macros, future users/orgs). `npm run seed:data` reads these files, logs intended mutations to `storage/changes.log`, and will eventually call the Kayako API/UX flows to hydrate/reset the sandbox.
+- Use the ledger to audit what the tests changed and to drive future teardown hooks that revert the environment when the pipeline finishes.
+
 ## Reporting & Dashboard
 
 - Orchestrator endpoints now expose aggregated crawl/test metadata (`GET /api/reporting`, `GET /api/crawls`). The React dashboard (`ui/`) surfaces these metrics via an “Automation Status” card that shows crawl counts, latest structure capture, pending selector suggestions, generated spec count, and run pass/fail totals.
+- The dashboard also reflects pipeline status/history (powered by `/api/pipeline`) and exposes a one-click “Start pipeline” CTA that maps to `/api/pipeline/start`.
 - Use `npm --prefix ui run dev` (or the combined `npm run control:dev`) to launch the dashboard; it fetches `/api/reporting` on load, and you can refresh manually to watch crawl/capture/test pipelines progress.
 - CI hooks (planned) will chain: crawl (`npm run crawl:kayako`) → capture (`npm run capture:structure`) → selector suggestion review (`npm run selectors:suggest`) → test generation (`npm run generate:tests`) → execution. Each step tags artifacts with `KAYAKO_CRAWL_ID` so the dashboard and orchestrator APIs can present consistent reporting.
 
@@ -219,6 +259,7 @@ When tests forward logs to the orchestrator (enabled automatically when `RUN_ID`
 - **Section-aware HTML capture:** targeted snapshots enable before/after diffs for dropdowns, drawers, and nested components without storing the entire DOM twice.
 - **Checkbox field selectors:** `info.checkboxGroup`, `info.checkboxLabel`, and `info.checkboxHeader` were added to `selectors/selectors.jsonc`, ensuring the Playwright helpers can reliably interact with multi-checkbox custom fields on the right-side info bar.
 - **Context-aware logging:** `lib/logger.ts` now emits optional run/crawl/flow IDs (populated via env vars or orchestrator context) so artifacts can be correlated across the crawl → selectors → tests pipeline.
+- **Crawler metadata rollout:** `scripts/crawl-kayako.ts` now captures HTTP headers, frame trees, hashed auth context, link discovery metadata, sitemap diff hashes, optional per-node screenshots, and keeps a resumeable frontier (queue/enqueued/visited) for long-running crawls.
 
 ---
 

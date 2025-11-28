@@ -1,0 +1,100 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="74.35997400000001">
+<testsuite name="generated\settings-create-trigger.spec.ts" timestamp="2025-11-27T20:05:05.155Z" hostname="chromium" tests="1" failures="1" skipped="0" time="72.44" errors="0">
+<testcase name="Create a simple trigger that fires when status is New and changes status (UI-only smoke) › settings-create-trigger" classname="generated\settings-create-trigger.spec.ts" time="72.44">
+<failure message="settings-create-trigger.spec.ts:20:9 settings-create-trigger" type="FAILURE">
+<![CDATA[  [chromium] › generated\settings-create-trigger.spec.ts:20:9 › Create a simple trigger that fires when status is New and changes status (UI-only smoke) › settings-create-trigger 
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\a15d2c69-a79f-450b-9290-13fabfd3b18a\artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\a15d2c69-a79f-450b-9290-13fabfd3b18a\artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-27T20:05:07.072Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Starting login flow for authenticatedPage
+[2025-11-27T20:05:07.084Z] [INFO] [LoginPage run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-27T20:05:10.345Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Loaded selectors.jsonc (mtime %d) [33m1764270533899.6196[39m
+[2025-11-27T20:05:10.699Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-27T20:05:10.717Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-27T20:05:10.872Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-27T20:05:10.888Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-27T20:05:11.033Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-27T20:05:11.049Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-27T20:05:14.119Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-27T20:05:14.145Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-27T20:05:14.152Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Login successful
+[2025-11-27T20:05:14.163Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-27T20:05:16.971Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']
+[2025-11-27T20:05:16.986Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Expect visible %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] [33m0[39m
+[2025-11-27T20:05:17.020Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']
+[2025-11-27T20:05:17.034Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Filling %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] [33m0[39m
+[2025-11-27T20:05:17.150Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Setting trigger CONDITION status to "%s" New
+[2025-11-27T20:05:17.176Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings conditionFieldButton role=button[name=/Select a condition/]
+[2025-11-27T20:05:17.195Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings conditionFieldButton role=button[name=/Select a condition/] [33m0[39m
+[2025-11-27T20:05:17.344Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s Status
+[2025-11-27T20:05:17.375Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s Status
+[2025-11-27T20:05:17.433Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]
+[2025-11-27T20:05:17.448Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] [33m0[39m
+[2025-11-27T20:05:17.592Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s equal to
+[2025-11-27T20:05:17.608Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s equal to
+[2025-11-27T20:05:17.629Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Attempting to open CONDITION status value dropdown via icon button
+[2025-11-27T20:05:17.962Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click in dropdown by text: %s New
+[2025-11-27T20:05:17.968Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dropdown dispatch diagnostics: %o {
+  needle: [32m'New'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m8[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-27T20:05:17.969Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Setting trigger ACTION status to "%s" Pending
+[2025-11-27T20:05:17.994Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings actionFieldButton role=button[name=/Select an action/]
+[2025-11-27T20:05:18.005Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings actionFieldButton role=button[name=/Select an action/] [33m0[39m
+[2025-11-27T20:05:18.193Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s Status
+[2025-11-27T20:05:18.212Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s Status
+[2025-11-27T20:05:18.254Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]
+[2025-11-27T20:05:18.268Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] [33m0[39m
+[2025-11-27T20:05:18.423Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text: %s change
+[2025-11-27T20:05:18.438Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click by text succeeded: %s change
+[2025-11-27T20:05:18.457Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Selecting "%s" from dropdown %s.%s Pending settings statusValueButton
+[2025-11-27T20:05:18.485Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings statusValueButton role=button[name=/Select a status/]
+[2025-11-27T20:05:18.498Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings statusValueButton role=button[name=/Select a status/] [33m0[39m
+[2025-11-27T20:05:18.746Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dispatch-click in dropdown by text: %s Pending
+[2025-11-27T20:05:18.753Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Selected "%s" from dropdown %s.%s Pending settings statusValueButton
+[2025-11-27T20:05:18.787Z] [DEBUG] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Primary selector used for %s.%s: %s settings saveTriggerButton role=button[name='Save']
+[2025-11-27T20:05:18.802Z] [INFO] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings saveTriggerButton role=button[name='Save'] [33m0[39m
+[2025-11-27T20:05:18.986Z] [INFO] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Holding browser open for %dms after test "%s" [33m600000[39m settings-create-trigger
+
+[[ATTACHMENT|artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-27T20:05:17.969Z] [WARN] [selectors run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Dropdown-scoped selection for CONDITION status "%s" failed; leaving default New
+[2025-11-27T20:06:19.158Z] [WARN] [auth.fixture run=a15d2c69-a79f-450b-9290-13fabfd3b18a] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

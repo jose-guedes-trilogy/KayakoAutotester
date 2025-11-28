@@ -2031,6 +2031,810 @@
         "skipped": 0
       },
       "htmlReportUrl": "/runs/2f8e3eb5-77d0-40b7-99f1-a1bb2b66a81e/html/index.html"
+    },
+    {
+      "id": "391603fd-4781-49fe-acd2-05b017c377c1",
+      "status": "stopped",
+      "startedAt": "2025-11-27T17:42:05.225Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\391603fd-4781-49fe-acd2-05b017c377c1",
+      "context": {},
+      "endedAt": "2025-11-27T17:42:44.614Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/391603fd-4781-49fe-acd2-05b017c377c1/html/index.html"
+    },
+    {
+      "id": "ebe0f57e-bc1c-411f-aceb-9ad5f17137f3",
+      "status": "stopped",
+      "startedAt": "2025-11-27T17:52:55.839Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\ebe0f57e-bc1c-411f-aceb-9ad5f17137f3",
+      "context": {},
+      "endedAt": "2025-11-27T17:53:22.238Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/ebe0f57e-bc1c-411f-aceb-9ad5f17137f3/html/index.html"
+    },
+    {
+      "id": "524a5a3e-913c-4820-a003-7d6a80d3784f",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:11:57.098Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\524a5a3e-913c-4820-a003-7d6a80d3784f",
+      "context": {},
+      "endedAt": "2025-11-27T18:12:11.424Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/524a5a3e-913c-4820-a003-7d6a80d3784f/html/index.html"
+    },
+    {
+      "id": "991eb0cd-e00d-4567-b1fc-030d02b1ca70",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:12:16.106Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\991eb0cd-e00d-4567-b1fc-030d02b1ca70",
+      "context": {},
+      "endedAt": "2025-11-27T18:12:30.847Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/991eb0cd-e00d-4567-b1fc-030d02b1ca70/html/index.html"
+    },
+    {
+      "id": "1ae9510a-61d6-46fb-8c87-d2d33e9783e7",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:14:55.736Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\1ae9510a-61d6-46fb-8c87-d2d33e9783e7",
+      "context": {},
+      "endedAt": "2025-11-27T18:15:12.762Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/1ae9510a-61d6-46fb-8c87-d2d33e9783e7/html/index.html"
+    },
+    {
+      "id": "53a9422c-0c84-4e6f-abb1-edba8f36d3b9",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:15:14.774Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\53a9422c-0c84-4e6f-abb1-edba8f36d3b9",
+      "context": {},
+      "endedAt": "2025-11-27T18:15:33.123Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/53a9422c-0c84-4e6f-abb1-edba8f36d3b9/html/index.html"
+    },
+    {
+      "id": "2a45a8b3-55b7-497f-a5ce-c53f9aeced65",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:25:51.575Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\2a45a8b3-55b7-497f-a5ce-c53f9aeced65",
+      "context": {},
+      "endedAt": "2025-11-27T18:26:08.655Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/2a45a8b3-55b7-497f-a5ce-c53f9aeced65/html/index.html"
+    },
+    {
+      "id": "25ed338b-d67e-4899-8d95-52b04efbd999",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:26:10.601Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\25ed338b-d67e-4899-8d95-52b04efbd999",
+      "context": {},
+      "endedAt": "2025-11-27T18:26:26.555Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/25ed338b-d67e-4899-8d95-52b04efbd999/html/index.html"
+    },
+    {
+      "id": "997801b8-23cf-44f5-b6d4-1c20495930d7",
+      "status": "passed",
+      "startedAt": "2025-11-27T18:30:17.453Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\997801b8-23cf-44f5-b6d4-1c20495930d7",
+      "context": {},
+      "endedAt": "2025-11-27T18:30:33.969Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/997801b8-23cf-44f5-b6d4-1c20495930d7/html/index.html"
+    },
+    {
+      "id": "c22f096d-ff2d-4b7f-8641-7989008e637e",
+      "status": "stopped",
+      "startedAt": "2025-11-27T18:50:26.334Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\c22f096d-ff2d-4b7f-8641-7989008e637e",
+      "context": {},
+      "endedAt": "2025-11-27T19:02:54.073Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/c22f096d-ff2d-4b7f-8641-7989008e637e/html/index.html"
+    },
+    {
+      "id": "8bad18e5-3236-4b85-a220-7ff61d273abf",
+      "status": "stopped",
+      "startedAt": "2025-11-27T18:57:24.402Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\8bad18e5-3236-4b85-a220-7ff61d273abf",
+      "context": {},
+      "endedAt": "2025-11-27T19:02:56.092Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/8bad18e5-3236-4b85-a220-7ff61d273abf/html/index.html"
+    },
+    {
+      "id": "93c8e48d-1904-4767-ab85-6ba1eb34e8a1",
+      "status": "stopped",
+      "startedAt": "2025-11-27T19:01:37.424Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\93c8e48d-1904-4767-ab85-6ba1eb34e8a1",
+      "context": {},
+      "endedAt": "2025-11-27T19:02:56.095Z",
+      "htmlReportUrl": "/runs/93c8e48d-1904-4767-ab85-6ba1eb34e8a1/html/index.html"
+    },
+    {
+      "id": "c7862770-cb7e-42dc-85a1-b69c2d01cbfd",
+      "status": "failed",
+      "startedAt": "2025-11-27T19:05:21.783Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\c7862770-cb7e-42dc-85a1-b69c2d01cbfd",
+      "context": {},
+      "endedAt": "2025-11-27T19:06:38.506Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/c7862770-cb7e-42dc-85a1-b69c2d01cbfd/html/index.html"
+    },
+    {
+      "id": "7ba9b7a9-5768-4ab3-b992-23f2f4d291f7",
+      "status": "failed",
+      "startedAt": "2025-11-27T19:09:03.224Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\7ba9b7a9-5768-4ab3-b992-23f2f4d291f7",
+      "context": {},
+      "endedAt": "2025-11-27T19:10:51.469Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/7ba9b7a9-5768-4ab3-b992-23f2f4d291f7/html/index.html"
+    },
+    {
+      "id": "ba72b4c2-d210-4712-830e-7c9a8fa0c42a",
+      "status": "failed",
+      "startedAt": "2025-11-27T19:44:41.321Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\ba72b4c2-d210-4712-830e-7c9a8fa0c42a",
+      "context": {},
+      "endedAt": "2025-11-27T19:46:31.006Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/ba72b4c2-d210-4712-830e-7c9a8fa0c42a/html/index.html"
+    },
+    {
+      "id": "ee58223f-987e-43b0-a65b-7fcda80c5f48",
+      "status": "failed",
+      "startedAt": "2025-11-27T19:51:19.740Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\ee58223f-987e-43b0-a65b-7fcda80c5f48",
+      "context": {},
+      "endedAt": "2025-11-27T19:53:08.928Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/ee58223f-987e-43b0-a65b-7fcda80c5f48/html/index.html"
+    },
+    {
+      "id": "a15d2c69-a79f-450b-9290-13fabfd3b18a",
+      "status": "failed",
+      "startedAt": "2025-11-27T20:05:03.767Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\a15d2c69-a79f-450b-9290-13fabfd3b18a",
+      "context": {},
+      "endedAt": "2025-11-27T20:06:19.556Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/a15d2c69-a79f-450b-9290-13fabfd3b18a/html/index.html"
+    },
+    {
+      "id": "a8d5ba42-9eea-40fc-9de8-5cc321ae6492",
+      "status": "failed",
+      "startedAt": "2025-11-27T20:24:48.151Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/settings-create-trigger.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492",
+      "context": {},
+      "endedAt": "2025-11-27T20:26:38.902Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/a8d5ba42-9eea-40fc-9de8-5cc321ae6492/html/index.html"
+    },
+    {
+      "id": "941f644b-d0ae-46d4-b9d8-95f57eb53130",
+      "status": "failed",
+      "startedAt": "2025-11-27T20:39:51.860Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-basic-capabilities.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\941f644b-d0ae-46d4-b9d8-95f57eb53130",
+      "context": {},
+      "endedAt": "2025-11-27T20:41:27.244Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/941f644b-d0ae-46d4-b9d8-95f57eb53130/html/index.html"
+    },
+    {
+      "id": "131ba8b5-44ad-4d87-9966-349e3424f048",
+      "status": "failed",
+      "startedAt": "2025-11-28T13:33:47.041Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-composer-formatting.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\131ba8b5-44ad-4d87-9966-349e3424f048",
+      "context": {},
+      "endedAt": "2025-11-28T13:35:04.440Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/131ba8b5-44ad-4d87-9966-349e3424f048/html/index.html"
+    },
+    {
+      "id": "0e495ea0-3e72-426b-80f8-965a9b7b64eb",
+      "status": "failed",
+      "startedAt": "2025-11-28T13:39:59.924Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-composer-formatting.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\0e495ea0-3e72-426b-80f8-965a9b7b64eb",
+      "context": {},
+      "endedAt": "2025-11-28T13:41:33.236Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/0e495ea0-3e72-426b-80f8-965a9b7b64eb/html/index.html"
+    },
+    {
+      "id": "94a018a5-bf57-4b99-af0e-457158ee04ab",
+      "status": "failed",
+      "startedAt": "2025-11-28T13:44:48.243Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-composer-formatting.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\94a018a5-bf57-4b99-af0e-457158ee04ab",
+      "context": {},
+      "endedAt": "2025-11-28T13:46:10.889Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/94a018a5-bf57-4b99-af0e-457158ee04ab/html/index.html"
+    },
+    {
+      "id": "ebcef7d6-8d87-4884-83f0-5b0b258da009",
+      "status": "failed",
+      "startedAt": "2025-11-28T13:52:37.285Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-composer-formatting.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\ebcef7d6-8d87-4884-83f0-5b0b258da009",
+      "context": {},
+      "endedAt": "2025-11-28T13:54:07.618Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/ebcef7d6-8d87-4884-83f0-5b0b258da009/html/index.html"
+    },
+    {
+      "id": "4f59c8d6-a961-4c21-8d64-1a7d8a8ea56b",
+      "status": "failed",
+      "startedAt": "2025-11-28T13:59:34.955Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/demo-composer-formatting.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\4f59c8d6-a961-4c21-8d64-1a7d8a8ea56b",
+      "context": {},
+      "endedAt": "2025-11-28T14:01:07.654Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/4f59c8d6-a961-4c21-8d64-1a7d8a8ea56b/html/index.html"
+    },
+    {
+      "id": "45136291-15ac-45e8-b200-eeb748fafb5b",
+      "status": "failed",
+      "startedAt": "2025-11-28T15:35:27.976Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/ticket-create.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\45136291-15ac-45e8-b200-eeb748fafb5b",
+      "context": {},
+      "endedAt": "2025-11-28T15:36:50.724Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/45136291-15ac-45e8-b200-eeb748fafb5b/html/index.html"
+    },
+    {
+      "id": "084d6337-c97e-47b4-b193-377247e9b9e6",
+      "status": "failed",
+      "startedAt": "2025-11-28T16:04:24.658Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\084d6337-c97e-47b4-b193-377247e9b9e6",
+      "context": {},
+      "endedAt": "2025-11-28T16:05:39.082Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/084d6337-c97e-47b4-b193-377247e9b9e6/html/index.html"
+    },
+    {
+      "id": "d245914d-1131-4d6f-94cd-41eb5e618d08",
+      "status": "passed",
+      "startedAt": "2025-11-28T18:01:23.741Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\d245914d-1131-4d6f-94cd-41eb5e618d08",
+      "context": {},
+      "endedAt": "2025-11-28T18:02:06.214Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/d245914d-1131-4d6f-94cd-41eb5e618d08/html/index.html"
+    },
+    {
+      "id": "ecd82df2-8309-4241-9d92-d91e6007f61d",
+      "status": "failed",
+      "startedAt": "2025-11-28T18:02:14.074Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/runtime/queue-runner.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\ecd82df2-8309-4241-9d92-d91e6007f61d",
+      "context": {},
+      "endedAt": "2025-11-28T18:03:38.336Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/ecd82df2-8309-4241-9d92-d91e6007f61d/html/index.html"
+    },
+    {
+      "id": "8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac",
+      "status": "failed",
+      "startedAt": "2025-11-28T20:08:09.481Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/ticket-properties-complete.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac",
+      "context": {},
+      "endedAt": "2025-11-28T20:11:49.574Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac/html/index.html"
+    },
+    {
+      "id": "97b527db-c695-4372-938f-2f26113952ea",
+      "status": "failed",
+      "startedAt": "2025-11-28T20:22:47.732Z",
+      "args": [
+        "playwright",
+        "test",
+        "-c",
+        "config/playwright.config.ts",
+        "tests/generated/ticket-properties-complete.spec.ts",
+        "--project",
+        "chromium",
+        "--workers",
+        "1",
+        "--headed"
+      ],
+      "artifactsDir": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\artifacts\\97b527db-c695-4372-938f-2f26113952ea",
+      "context": {},
+      "endedAt": "2025-11-28T20:26:28.091Z",
+      "summary": {
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0
+      },
+      "htmlReportUrl": "/runs/97b527db-c695-4372-938f-2f26113952ea/html/index.html"
     }
   ]
 }

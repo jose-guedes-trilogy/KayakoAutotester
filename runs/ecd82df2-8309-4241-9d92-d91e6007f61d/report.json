@@ -1,0 +1,417 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\ecd82df2-8309-4241-9d92-d91e6007f61d\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\ecd82df2-8309-4241-9d92-d91e6007f61d\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\ecd82df2-8309-4241-9d92-d91e6007f61d\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/ecd82df2-8309-4241-9d92-d91e6007f61d/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/ecd82df2-8309-4241-9d92-d91e6007f61d/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/ecd82df2-8309-4241-9d92-d91e6007f61d/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "runtime\\queue-runner.spec.ts",
+      "file": "runtime/queue-runner.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Queued flows",
+          "file": "runtime/queue-runner.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "run queued flows serially",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 80924,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                          "column": 6,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                            "column": 6,
+                            "line": 37
+                          },
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-28T18:02:17.382Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:17.392Z] [INFO] [LoginPage run=ecd82df2-8309-4241-9d92-d91e6007f61d] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.257Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Loaded selectors.jsonc (mtime %d) \u001b[33m1764343949518.818\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.613Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.632Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.784Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.804Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.953Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:20.966Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.166Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.190Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.199Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.212Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.218Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Creating new ticket (mode=%s) reply\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.218Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Opening New → Conversation ticket\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.258Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.286Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.491Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:25.507Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.163Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.179Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.184Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket requester email: %s jose.guedes.translation@gmail.com\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.206Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.223Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.820Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket subject: %s [AUTOTEST] New ticket for completion/deletion flows\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.870Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:26.971Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:27.114Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Switching composer to Reply mode\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:27.118Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle \u001b[33m1\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:27.146Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:27.331Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Inserting reply text (%d chars) \u001b[33m31\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:27.361Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:28.455Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking composer Send button\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:28.493Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:28.507Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.186Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Waiting for timeline to contain text \"%s\" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Initial message body \u001b[33m15000\u001b[39m \u001b[33m500\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.370Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Initial message body \u001b[33m3\u001b[39m \u001b[33m184\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.948Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Initial message body \u001b[33m18\u001b[39m \u001b[33m762\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.961Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Creating new ticket (mode=%s) reply\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.961Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Opening New → Conversation ticket\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:32.989Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.005Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.168Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.188Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.562Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.583Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.592Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket requester email: %s jose.guedes.translation@gmail.com\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.617Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:33.638Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.267Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket subject: %s [AUTOTEST] Ticket to trash\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.294Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.307Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.437Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Switching composer to Reply mode\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.441Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle \u001b[33m1\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.464Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.637Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Inserting reply text (%d chars) \u001b[33m28\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:34.657Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:35.626Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking composer Send button\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:35.650Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:35.663Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:36.941Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Waiting for timeline to contain text \"%s\" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Ticket trash body \u001b[33m15000\u001b[39m \u001b[33m500\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.099Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Ticket trash body \u001b[33m3\u001b[39m \u001b[33m158\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.668Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Ticket trash body \u001b[33m18\u001b[39m \u001b[33m727\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.675Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Trashing conversation via header button\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.695Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s conversation trashCaseButton [class*='ko-case-content__trash_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.708Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) conversation trashCaseButton [class*='ko-case-content__trash_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T18:02:37.849Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Holding browser open for %dms after test \"%s\" \u001b[33m600000\u001b[39m run queued flows serially\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-28T18:03:38.047Z] [WARN] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Hold-open wait interrupted page.waitForTimeout: Test ended.\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mfixtures\\auth.fixture.ts:45:29\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Flow: ticket-create",
+                          "duration": 7742
+                        },
+                        {
+                          "title": "Flow: ticket-trash",
+                          "duration": 4889
+                        }
+                      ],
+                      "startTime": "2025-11-28T18:02:16.638Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\ecd82df2-8309-4241-9d92-d91e6007f61d\\artifacts\\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\ecd82df2-8309-4241-9d92-d91e6007f61d\\artifacts\\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                        "column": 6,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "a65a2d6c7118bb094f51-2c1e72ee0ae48d2f21cf",
+              "file": "runtime/queue-runner.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-28T18:02:15.481Z",
+    "duration": 82767.158,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

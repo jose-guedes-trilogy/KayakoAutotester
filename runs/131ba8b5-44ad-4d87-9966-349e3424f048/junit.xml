@@ -1,0 +1,74 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="75.552784">
+<testsuite name="generated\demo-composer-formatting.spec.ts" timestamp="2025-11-28T13:33:48.844Z" hostname="chromium" tests="1" failures="1" skipped="0" time="73.635" errors="0">
+<testcase name="Toggle basic formatting controls in the reply composer and send a formatted message › demo-composer-formatting" classname="generated\demo-composer-formatting.spec.ts" time="73.635">
+<failure message="demo-composer-formatting.spec.ts:22:9 demo-composer-formatting" type="FAILURE">
+<![CDATA[  [chromium] › generated\demo-composer-formatting.spec.ts:22:9 › Toggle basic formatting controls in the reply composer and send a formatted message › demo-composer-formatting 
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\131ba8b5-44ad-4d87-9966-349e3424f048\artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\131ba8b5-44ad-4d87-9966-349e3424f048\artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-28T13:33:51.021Z] [INFO] [auth.fixture run=131ba8b5-44ad-4d87-9966-349e3424f048] Starting login flow for authenticatedPage
+[2025-11-28T13:33:51.034Z] [INFO] [LoginPage run=131ba8b5-44ad-4d87-9966-349e3424f048] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-28T13:33:52.740Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Loaded selectors.jsonc (mtime %d) [33m1764336151970.448[39m
+[2025-11-28T13:33:52.853Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-28T13:33:52.870Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-28T13:33:53.012Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-28T13:33:53.023Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-28T13:33:53.198Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-28T13:33:53.212Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-28T13:33:56.392Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']
+[2025-11-28T13:33:56.430Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] [33m0[39m
+[2025-11-28T13:33:56.439Z] [INFO] [auth.fixture run=131ba8b5-44ad-4d87-9966-349e3424f048] Login successful
+[2025-11-28T13:33:56.450Z] [INFO] [auth.fixture run=131ba8b5-44ad-4d87-9966-349e3424f048] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-28T13:33:56.453Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-28T13:33:56.457Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Navigating to target conversation by ID: %s https://trilogy-joseguedes.kayako.com/agent/conversations/35
+[2025-11-28T13:34:00.003Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Switching composer to Reply mode
+[2025-11-28T13:34:00.011Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T13:34:00.060Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T13:34:00.293Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer toolbarBoldButton svg[data-name='bold']
+[2025-11-28T13:34:00.326Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBoldButton svg[data-name='bold'] [33m0[39m
+[2025-11-28T13:34:00.541Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer toolbarItalicButton svg[data-name='italic']
+[2025-11-28T13:34:00.559Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarItalicButton svg[data-name='italic'] [33m0[39m
+[2025-11-28T13:34:00.747Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer toolbarBulletedList svg[data-name='bulletList']
+[2025-11-28T13:34:00.769Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBulletedList svg[data-name='bulletList'] [33m0[39m
+[2025-11-28T13:34:00.947Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer toolbarNumberedList svg[data-name='numberList']
+[2025-11-28T13:34:00.968Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarNumberedList svg[data-name='numberList'] [33m0[39m
+[2025-11-28T13:34:01.123Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Inserting reply text (%d chars) [33m37[39m
+[2025-11-28T13:34:01.144Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:34:02.604Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking composer Send button
+[2025-11-28T13:34:02.640Z] [DEBUG] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T13:34:02.652Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T13:34:02.871Z] [INFO] [selectors run=131ba8b5-44ad-4d87-9966-349e3424f048] Asserting timeline contains text "%s" (entries=%d) [AUTOTEST] formatted reply with lists [33m226[39m
+[2025-11-28T13:34:03.962Z] [INFO] [auth.fixture run=131ba8b5-44ad-4d87-9966-349e3424f048] Holding browser open for %dms after test "%s" [33m600000[39m demo-composer-formatting
+
+[[ATTACHMENT|artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-28T13:35:04.151Z] [WARN] [auth.fixture run=131ba8b5-44ad-4d87-9966-349e3424f048] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

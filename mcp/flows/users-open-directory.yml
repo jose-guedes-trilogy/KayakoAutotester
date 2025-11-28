@@ -1,0 +1,13 @@
+name: users-open-directory
+description: Open the Users directory and verify core layout
+steps:
+  - type: goto
+    url: env.KAYAKO_AGENT_URL/users
+  - type: expect-visible
+    selectorKey: users.container
+  - type: expect-visible
+    selectorKey: users.sidebar
+  - type: expect-visible
+    selectorKey: users.resultsHeading
+
+

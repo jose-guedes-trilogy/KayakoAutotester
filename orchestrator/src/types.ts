@@ -58,6 +58,9 @@ export const RunOptionsSchema = z.object({
 export const RunContextSchema = z.object({
   crawlId: z.string().optional(),
   flowId: z.string().optional(),
+  pipelineStage: z
+    .enum(['crawl', 'capture', 'selectors', 'generate', 'tests'])
+    .optional(),
 }).optional();
 
 export const CreateRunSchema = z.object({
@@ -88,7 +91,35 @@ export interface RunRecord {
     skipped: number;
     durationMs?: number;
   };
+  pipelineStage?: 'crawl' | 'capture' | 'selectors' | 'generate' | 'tests';
+  apiEndpoint?: string;
 }
 
+export type PipelineStageName = 'crawl' | 'capture' | 'selectors' | 'generate' | 'tests';
 
+export type PipelineStageStatus = 'pending' | 'running' | 'success' | 'failed';
+
+export interface PipelineStageRecord {
+  name: PipelineStageName;
+  status: PipelineStageStatus;
+  startedAt?: string;
+  endedAt?: string;
+  logs: string[];
+  details?: Record<string, unknown>;
+}
+
+export interface PipelineRecord {
+  id: string;
+  status: 'pending' | 'running' | 'success' | 'failed';
+  startedAt: string;
+  endedAt?: string;
+  crawlId: string;
+  captureId: string;
+  stages: PipelineStageRecord[];
+}
+
+export interface PipelineRequest {
+  crawlId?: string;
+  captureId?: string;
+}
 

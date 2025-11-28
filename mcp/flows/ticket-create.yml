@@ -1,0 +1,10 @@
+name: ticket-create
+description: Create a brand new ticket via New → Conversation and send a first public reply
+steps:
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] New ticket for completion/deletion flows"
+    body: "[AUTOTEST] Initial message body"
+    mode: "reply"
+
+

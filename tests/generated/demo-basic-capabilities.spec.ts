@@ -1,7 +1,7 @@
 import type { Page } from '@playwright/test';
 import { test, expect } from '../../fixtures/auth.fixture';
 import { env } from '../../config/env';
-import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, setStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectRequest, accessConversation } from '../../selectors';
+import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, selectFromDropdown, addTags, insertReplyText, switchToReplyMode, switchToInternalNoteMode, clickSendButton, setStatus, setTriggerConditionStatus, setTriggerActionStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectTimelineContainsText, expectRequest, accessConversation, applyMacroSendToCustomer, createNewTicket, completeConversation, trashConversation, reopenConversation } from '../../selectors';
 
 const queueMode = process.env.KAYAKO_RUN_MODE === 'queue';
 
@@ -12,7 +12,10 @@ export async function runFlow(page: Page): Promise<void> {
     await insertReplyText(page, "[AUTOTEST] Demo reply text");
     await addTags(page, ["demo","automation"]);
     await setStatus(page, "Pending");
-    await page.waitForTimeout(5000);
+    await expectStatusLabel(page, "Pending");
+    await expectTagsContain(page, ["demo","automation"]);
+    await expectTimelineContainsText(page, "[AUTOTEST] Demo reply text");
+    await page.waitForTimeout(2000);
 }
 
 if (!queueMode) {

@@ -1,0 +1,374 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a8d5ba42-9eea-40fc-9de8-5cc321ae6492/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a8d5ba42-9eea-40fc-9de8-5cc321ae6492/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/a8d5ba42-9eea-40fc-9de8-5cc321ae6492/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\settings-create-trigger.spec.ts",
+      "file": "generated/settings-create-trigger.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Create a simple trigger that fires when status is New and changes status (UI-only smoke)",
+          "file": "generated/settings-create-trigger.spec.ts",
+          "line": 19,
+          "column": 8,
+          "specs": [
+            {
+              "title": "settings-create-trigger",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 105974,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                          "column": 6,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                            "column": 6,
+                            "line": 37
+                          },
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T20:24:51.237Z] [INFO] [auth.fixture run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:51.245Z] [INFO] [LoginPage run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:54.699Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Loaded selectors.jsonc (mtime %d) \u001b[33m1764274557609.1096\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.044Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.081Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.246Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.269Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.417Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:55.430Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:59.491Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:59.502Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:59.507Z] [INFO] [auth.fixture run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:24:59.517Z] [INFO] [auth.fixture run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.307Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.322Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Expect visible %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.351Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.363Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Filling %s.%s (selector=%s, fallbackIndex=%d) settings triggerTitleInput role=textbox[name='e.g. Notify assignee of update'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.476Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Setting trigger CONDITION status to \"%s\" New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.501Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings conditionFieldButton role=button[name=/Select a condition/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.516Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings conditionFieldButton role=button[name=/Select a condition/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.655Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.680Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text succeeded: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.732Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.747Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.888Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text: %s equal to\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.907Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text succeeded: %s equal to\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:02.927Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Opening CONDITION status value dropdown via settings.conditionStatusValueButton (if present), else DOM fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.111Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Attempting DOM-based open for CONDITION status value dropdown\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.128Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] DOM-based CONDITION status dropdown open succeeded\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.234Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click in dropdown by text: %s New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.256Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Condition status value selected: \"%s\" New\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.257Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Setting trigger ACTION status to \"%s\" Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.326Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings actionFieldButton role=button[name=/Select an action/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.359Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings actionFieldButton role=button[name=/Select an action/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.566Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.614Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text succeeded: %s Status\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.727Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings operatorButton role=button[name=/Select an operator/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.762Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings operatorButton role=button[name=/Select an operator/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.930Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text: %s change\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.963Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click by text succeeded: %s change\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.990Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Selecting \"%s\" from dropdown %s.%s Pending settings statusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.099Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings statusValueButton role=button[name=/Select a status/]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.180Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings statusValueButton role=button[name=/Select a status/] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.499Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Dispatch-click in dropdown by text: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.509Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Selected \"%s\" from dropdown %s.%s Pending settings statusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.574Z] [DEBUG] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Primary selector used for %s.%s: %s settings saveTriggerButton role=button[name='Save']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.598Z] [INFO] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Clicking %s.%s (selector=%s, fallbackIndex=%d) settings saveTriggerButton role=button[name='Save'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:36.804Z] [INFO] [auth.fixture run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Holding browser open for %dms after test \"%s\" \u001b[33m600000\u001b[39m settings-create-trigger\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-27T20:25:10.950Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Error probing selector for %s.%s in %s: %s (%o) settings conditionStatusValueButton main [class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\\'ko-admin_predicate-builder_proposition__container_\\'] div[role=\\'button\\'][data-ebd-id]:last-of-type').first()\u001b[22m\n\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7 {\n  name: \u001b[32m'TimeoutError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@190'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@190'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764275110949\u001b[39m,\n    error: {\n      message: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at click (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:100:52)\\n'\u001b[39m +\n        \u001b[32m'    at setTriggerConditionStatus (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1687:7)\\n'\u001b[39m +\n        \u001b[32m'    at runFlow (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:12:5)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:21:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:18.969Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Error probing selector for %s.%s in %s: %s (%o) settings conditionStatusValueButton frame [class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\\'ko-admin_predicate-builder_proposition__container_\\'] div[role=\\'button\\'][data-ebd-id]:last-of-type').first()\u001b[22m\n\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7 {\n  name: \u001b[32m'TimeoutError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@194'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@194'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764275118968\u001b[39m,\n    error: {\n      message: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at click (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:100:52)\\n'\u001b[39m +\n        \u001b[32m'    at setTriggerConditionStatus (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1687:7)\\n'\u001b[39m +\n        \u001b[32m'    at runFlow (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:12:5)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:21:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:26.993Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Error probing selector for %s.%s in %s: %s (%o) settings conditionStatusValueButton frame [class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\\'ko-admin_predicate-builder_proposition__container_\\'] div[role=\\'button\\'][data-ebd-id]:last-of-type').first()\u001b[22m\n\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7 {\n  name: \u001b[32m'TimeoutError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@198'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@198'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764275126993\u001b[39m,\n    error: {\n      message: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at click (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:100:52)\\n'\u001b[39m +\n        \u001b[32m'    at setTriggerConditionStatus (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1687:7)\\n'\u001b[39m +\n        \u001b[32m'    at runFlow (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:12:5)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:21:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.022Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Error probing selector for %s.%s in %s: %s (%o) settings conditionStatusValueButton frame [class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type locator.waitFor: Timeout 8000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[class*=\\'ko-admin_predicate-builder_proposition__container_\\'] div[role=\\'button\\'][data-ebd-id]:last-of-type').first()\u001b[22m\n\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:63:23\u001b[90m)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7 {\n  name: \u001b[32m'TimeoutError'\u001b[39m,\n  [\u001b[32mSymbol(step)\u001b[39m]: {\n    location: {\n      file: \u001b[32m'C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts'\u001b[39m,\n      line: \u001b[33m63\u001b[39m,\n      column: \u001b[33m23\u001b[39m,\n      function: \u001b[32m'firstAvailableLocator'\u001b[39m\n    },\n    category: \u001b[32m'pw:api'\u001b[39m,\n    title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n    apiName: \u001b[32m'locator.waitFor'\u001b[39m,\n    params: {\n      selector: \u001b[32m\"[class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type >> nth=0\"\u001b[39m,\n      strict: \u001b[33mtrue\u001b[39m,\n      omitReturnValue: \u001b[33mtrue\u001b[39m,\n      state: \u001b[32m'attached'\u001b[39m,\n      timeout: \u001b[33m8000\u001b[39m\n    },\n    group: \u001b[90mundefined\u001b[39m,\n    stepId: \u001b[32m'pw:api@202'\u001b[39m,\n    boxedStack: \u001b[90mundefined\u001b[39m,\n    steps: [],\n    attachmentIndices: [],\n    info: TestStepInfoImpl {\n      annotations: [],\n      _testInfo: \u001b[36m[TestInfoImpl]\u001b[39m,\n      _stepId: \u001b[32m'pw:api@202'\u001b[39m,\n      _title: \u001b[32m\"Wait for selector locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\"\u001b[39m,\n      _parentStep: \u001b[90mundefined\u001b[39m,\n      skip: \u001b[36m[Function (anonymous)]\u001b[39m\n    },\n    complete: \u001b[36m[Function: complete]\u001b[39m,\n    endWallTime: \u001b[33m1764275135022\u001b[39m,\n    error: {\n      message: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m,\n      stack: \u001b[32m'TimeoutError: locator.waitFor: Timeout 8000ms exceeded.\\n'\u001b[39m +\n        \u001b[32m'Call log:\\n'\u001b[39m +\n        \u001b[32m\"\\x1B[2m  - waiting for locator('[class*=\\\\'ko-admin_predicate-builder_proposition__container_\\\\'] div[role=\\\\'button\\\\'][data-ebd-id]:last-of-type').first()\\x1B[22m\\n\"\u001b[39m +\n        \u001b[32m'\\n'\u001b[39m +\n        \u001b[32m'    at firstAvailableLocator (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:63:23)\\n'\u001b[39m +\n        \u001b[32m'    at click (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:100:52)\\n'\u001b[39m +\n        \u001b[32m'    at setTriggerConditionStatus (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\selectors\\\\index.ts:1687:7)\\n'\u001b[39m +\n        \u001b[32m'    at runFlow (C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:12:5)\\n'\u001b[39m +\n        \u001b[32m'    at C:\\\\Users\\\\Zé\\\\Documents\\\\Trilogy\\\\Kayako Autotester\\\\tests\\\\generated\\\\settings-create-trigger.spec.ts:21:7'\u001b[39m,\n      cause: \u001b[90mundefined\u001b[39m\n    }\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.025Z] [ERROR] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] No selector candidates matched for %s.%s settings conditionStatusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.095Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Locator path failed for %s.%s; trying direct CSS query fallback. Error: %o settings conditionStatusValueButton Error: No selector candidates matched for settings.conditionStatusValueButton\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:94:9\u001b[90m)\u001b[39m\n\u001b[90m    at runNextTicks (node:internal/process/task_queues:65:5)\u001b[39m\n\u001b[90m    at processImmediate (node:internal/timers:453:9)\u001b[39m\n\u001b[90m    at process.callbackTrampoline (node:internal/async_hooks:130:17)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:310:9\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:305:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:303:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:308:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:283:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:198:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\process.js:65:22\u001b[90m)\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.110Z] [ERROR] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] All click fallbacks failed for %s.%s settings conditionStatusValueButton\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:25:35.110Z] [WARN] [selectors run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] conditionStatusValueButton selector path failed (%o); falling back to DOM-based open Error: No selector candidates matched for settings.conditionStatusValueButton\n    at firstAvailableLocator \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:94:9\u001b[90m)\u001b[39m\n\u001b[90m    at runNextTicks (node:internal/process/task_queues:65:5)\u001b[39m\n\u001b[90m    at processImmediate (node:internal/timers:453:9)\u001b[39m\n\u001b[90m    at process.callbackTrampoline (node:internal/async_hooks:130:17)\u001b[39m\n    at click \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:100:52\u001b[90m)\u001b[39m\n    at setTriggerConditionStatus \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mselectors\\index.ts:1687:7\u001b[90m)\u001b[39m\n    at runFlow \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:12:5\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mtests\\generated\\settings-create-trigger.spec.ts:21:7\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:310:9\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:305:11\n    at TimeoutManager.withRunnable \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\timeoutManager.js:67:14\u001b[90m)\u001b[39m\n    at TestInfoImpl._runWithTimeout \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\testInfo.js:303:7\u001b[90m)\u001b[39m\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:308:7\n    at WorkerMain._runTest \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:283:5\u001b[90m)\u001b[39m\n    at WorkerMain.runTestGroup \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\worker\\workerMain.js:198:11\u001b[90m)\u001b[39m\n    at process.<anonymous> \u001b[90m(C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mnode_modules\\\u001b[4mplaywright\u001b[24m\\lib\\common\\process.js:65:22\u001b[90m)\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:26:37.016Z] [WARN] [auth.fixture run=a8d5ba42-9eea-40fc-9de8-5cc321ae6492] Hold-open wait interrupted page.waitForTimeout: Test ended.\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mfixtures\\auth.fixture.ts:45:29\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-27T20:24:50.569Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492\\artifacts\\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\a8d5ba42-9eea-40fc-9de8-5cc321ae6492\\artifacts\\generated-settings-create--2cdb1-oke-settings-create-trigger-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                        "column": 6,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "7869f72eed3a7d2b58fc-2ca00c5d5895c63c63f1",
+              "file": "generated/settings-create-trigger.spec.ts",
+              "line": 20,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T20:24:49.445Z",
+    "duration": 109370.712,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

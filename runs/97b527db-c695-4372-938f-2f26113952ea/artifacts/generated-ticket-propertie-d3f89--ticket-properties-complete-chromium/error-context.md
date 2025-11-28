@@ -1,0 +1,453 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: Kayako has been updated. Reload to use the latest version.
+      - generic [ref=e8] [cursor=pointer]: Reload
+    - generic [ref=e9]:
+      - navigation [ref=e10]:
+        - generic [ref=e11]:
+          - link "Home" [ref=e12] [cursor=pointer]:
+            - /url: /agent/conversations
+          - link "50" [ref=e13] [cursor=pointer]:
+            - /url: /agent/conversations/view/1
+            - img [ref=e14]
+            - generic [ref=e18]: "50"
+          - link "Users" [ref=e19] [cursor=pointer]:
+            - /url: /agent/users
+            - img [ref=e20]
+          - link "Organizations" [ref=e24] [cursor=pointer]:
+            - /url: /agent/organizations
+            - img [ref=e25]
+          - link "Insights" [ref=e31] [cursor=pointer]:
+            - /url: /agent/insights
+            - img [ref=e32]
+          - link "Knowledge Base Manager" [ref=e36] [cursor=pointer]:
+            - /url: /agent/knowledgebase
+            - img [ref=e37]
+          - link "Helpcenter" [ref=e40] [cursor=pointer]:
+            - /url: /
+            - img [ref=e41]
+        - link "Administration" [ref=e46] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=e47]
+      - generic [ref=e51]:
+        - banner [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e55]:
+              - link "[AUTOTEST] Ticket full properties" [ref=e56] [cursor=pointer]:
+                - /url: /agent/conversations/77
+                - generic [ref=e60]: "[AUTOTEST] Ticket full properties"
+              - img [ref=e62] [cursor=pointer]
+            - button "New" [ref=e64] [cursor=pointer]:
+              - generic [ref=e66]:
+                - img [ref=e67]
+                - generic [ref=e69]: New
+          - generic [ref=e70]:
+            - generic [ref=e72]:
+              - strong [ref=e73]: 26 days
+              - text: left in trial.
+            - img [ref=e76] [cursor=pointer]
+            - button [ref=e79]:
+              - img [ref=e81] [cursor=pointer]
+            - button [ref=e83] [cursor=pointer]
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e91]:
+              - list [ref=e92]:
+                - listitem [ref=e93]:
+                  - link "Set Organization" [ref=e95] [cursor=pointer]:
+                    - /url: "#"
+                    - generic [ref=e96]: Set Organization
+                - listitem [ref=e97]:
+                  - link "Example Customer" [ref=e99] [cursor=pointer]:
+                    - /url: /agent/conversations/77/user
+                - listitem [ref=e100]:
+                  - link "[AUTOTEST] Ticket full properties" [ref=e102] [cursor=pointer]:
+                    - /url: /agent/conversations/77
+                    - generic [ref=e103]: "[AUTOTEST] Ticket full properties"
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - generic [ref=e106]: "# 77"
+                  - button " Change Brand Trilogy Tril ogy" [ref=e108]:
+                    - generic [ref=e109] [cursor=pointer]:
+                      - generic: 
+                      - generic [ref=e110]: Change Brand
+                      - textbox [ref=e111]: Trilogy
+                      - generic "Trilogy" [ref=e112]:
+                        - generic [ref=e113]: Tril ogy
+                - generic "Complete" [ref=e114] [cursor=pointer]:
+                  - img [ref=e115]
+                - generic "Trash" [ref=e117] [cursor=pointer]:
+                  - img [ref=e118]
+                - button [ref=e122] [cursor=pointer]:
+                  - img [ref=e124]
+            - generic [ref=e128]:
+              - generic [ref=e129]:
+                - generic [ref=e137]:
+                  - generic [ref=e139]:
+                    - link "Example Customer" [ref=e140] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e142]: at 14:46
+                - generic [ref=e150]:
+                  - generic [ref=e152]:
+                    - link "Example Customer" [ref=e153] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e155]: an hour ago
+                - generic [ref=e163]:
+                  - generic [ref=e165]:
+                    - link "Example Customer" [ref=e166] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e168]: an hour ago
+                - generic [ref=e176]:
+                  - generic [ref=e178]:
+                    - link "Example Customer" [ref=e179] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e181]: an hour ago
+                - generic [ref=e189]:
+                  - generic [ref=e191]:
+                    - link "Example Customer" [ref=e192] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e194]: an hour ago
+                - generic [ref=e202]:
+                  - generic [ref=e204]:
+                    - link "Example Customer" [ref=e205] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e207]: an hour ago
+                - generic [ref=e215]:
+                  - generic [ref=e217]:
+                    - link "Example Customer" [ref=e218] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e220]: an hour ago
+                - generic [ref=e228]:
+                  - generic [ref=e230]:
+                    - link "Example Customer" [ref=e231] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e233]: 18 minutes ago
+                - generic [ref=e241]:
+                  - generic [ref=e243]:
+                    - link "Example Customer" [ref=e244] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e246]: 6 minutes ago
+                - generic [ref=e254]:
+                  - generic [ref=e256]:
+                    - link "Example Customer" [ref=e257] [cursor=pointer]:
+                      - /url: /agent/users/11
+                    - text: logged in
+                  - generic [ref=e259]: 4 minutes ago
+                - generic [ref=e261]: ↑ 10+ past activities
+              - generic [ref=e265]:
+                - heading "[AUTOTEST] Ticket full properties" [level=3] [ref=e266]:
+                  - generic [ref=e269] [cursor=pointer]:
+                    - generic [ref=e270]: "[AUTOTEST] Ticket full properties"
+                    - img [ref=e272]
+                - paragraph [ref=e275]: This is the beginning of the conversation started over Note by Example Customer on Nov 28, 2025, 16:23
+              - generic [ref=e281]:
+                - generic [ref=e284]:
+                  - link "Example Customer" [ref=e286] [cursor=pointer]:
+                    - /url: /agent/users/11
+                  - generic [ref=e289]: 3 minutes ago
+                - generic [ref=e292]: "[AUTOTEST] Ticket full properties body"
+              - generic [ref=e300]:
+                - generic [ref=e301]:
+                  - generic [ref=e302]:
+                    - text: assigned to General /
+                    - link "Example Customer" [ref=e306] [cursor=pointer]:
+                      - /url: /agent/users/11
+                  - generic [ref=e307]: ", set the tags to autotest-props"
+                  - text: and 13 other items
+                - generic [ref=e309]: 2 minutes ago
+                - img [ref=e311] [cursor=pointer]
+            - generic [ref=e318]:
+              - generic [ref=e319]:
+                - generic [ref=e321]:
+                  - button "support@trilogy-joseguedes.kayako.com" [ref=e323] [cursor=pointer]:
+                    - generic "support@trilogy-joseguedes.kayako.com" [ref=e324]:
+                      - img [ref=e325]
+                      - generic [ref=e327]: support@trilogy-joseguedes.kayako.com
+                      - img [ref=e328]
+                  - generic [ref=e331] [cursor=pointer]: Notes
+                - generic [ref=e332]:
+                  - generic [ref=e333]:
+                    - img [ref=e335] [cursor=pointer]
+                    - img [ref=e338] [cursor=pointer]
+                  - generic [ref=e341]:
+                    - button [ref=e342] [cursor=pointer]:
+                      - img [ref=e344]
+                    - button [ref=e346] [cursor=pointer]:
+                      - img [ref=e348]
+                    - button [ref=e350] [cursor=pointer]:
+                      - img [ref=e352]
+                    - img [ref=e355] [cursor=pointer]
+                    - img [ref=e358] [cursor=pointer]
+                    - img [ref=e361]
+                    - img [ref=e364] [cursor=pointer]
+                  - generic [ref=e369] [cursor=pointer]:
+                    - img [ref=e370]
+                    - button "Choose File" [ref=e374]
+                  - button "Macro " [ref=e379]:
+                    - generic [ref=e380] [cursor=pointer]:
+                      - text: Macro
+                      - generic [ref=e381]: 
+              - generic [ref=e383]:
+                - application [ref=e386]:
+                  - generic [ref=e390]: Enter your reply here…
+                - generic [ref=e391]:
+                  - generic [ref=e392]:
+                    - img [ref=e393]
+                    - button "Choose File" [ref=e395] [cursor=pointer]
+                  - generic [ref=e398] [cursor=pointer]: CC
+          - generic [ref=e401]:
+            - generic [ref=e402]:
+              - generic [ref=e404]:
+                - link [ref=e405] [cursor=pointer]:
+                  - /url: /agent/conversations/77/user
+                - generic [ref=e412] [cursor=pointer]:
+                  - generic [ref=e413]: Example Customer
+                  - generic [ref=e415]: you
+                  - img [ref=e417]
+              - listitem "16:22" [ref=e420]:
+                - img [ref=e421]
+                - generic [ref=e425]: Online now
+              - listitem "(GMT-04:00) Atlantic Time - Halifax" [ref=e427]:
+                - img [ref=e428]
+                - generic [ref=e432]: Currently 16:26
+            - list [ref=e434]:
+              - listitem [ref=e435]:
+                - button "jose.guedes.translation@gmail.com" [ref=e436] [cursor=pointer]:
+                  - img [ref=e437]
+                  - generic "jose.guedes.translation@gmail.com" [ref=e442]
+            - generic [ref=e443]:
+              - button "8+ other active conversations" [ref=e444] [cursor=pointer]:
+                - generic [ref=e445]:
+                  - img [ref=e447]
+                  - generic [ref=e453]: 8+ other active conversations
+                  - img [ref=e455]
+              - generic [ref=e459] [cursor=pointer]:
+                - generic [ref=e461]:
+                  - generic [ref=e462]:
+                    - generic [ref=e464]:
+                      - generic [ref=e471]: Example
+                      - generic [ref=e472]: "& Example"
+                    - generic [ref=e473]:
+                      - generic [ref=e474]: Open
+                      - generic [ref=e475]: ·
+                      - generic [ref=e477]: 5m
+                  - generic [ref=e483]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e485]:
+                  - generic [ref=e486]:
+                    - generic [ref=e488]:
+                      - generic [ref=e492]: Example
+                      - generic [ref=e493]: (Unassigned)
+                    - generic [ref=e494]:
+                      - generic [ref=e495]: Open
+                      - generic [ref=e496]: ·
+                      - generic [ref=e498]: 18m
+                  - generic [ref=e504]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e506]:
+                  - generic [ref=e507]:
+                    - generic [ref=e509]:
+                      - generic [ref=e513]: Example
+                      - generic [ref=e514]: (Unassigned)
+                    - generic [ref=e515]:
+                      - generic [ref=e516]: Open
+                      - generic [ref=e517]: ·
+                      - generic [ref=e519]: 46m
+                  - generic [ref=e525]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e527]:
+                  - generic [ref=e528]:
+                    - generic [ref=e530]:
+                      - generic [ref=e534]: Example
+                      - generic [ref=e535]: (Unassigned)
+                    - generic [ref=e536]:
+                      - generic [ref=e537]: Open
+                      - generic [ref=e538]: ·
+                      - generic [ref=e540]: 50m
+                  - generic [ref=e546]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e548]:
+                  - generic [ref=e549]:
+                    - generic [ref=e551]:
+                      - generic [ref=e555]: Example
+                      - generic [ref=e556]: (Unassigned)
+                    - generic [ref=e557]:
+                      - generic [ref=e558]: Open
+                      - generic [ref=e559]: ·
+                      - generic [ref=e561]: 52m
+                  - generic [ref=e567]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e569]:
+                  - generic [ref=e570]:
+                    - generic [ref=e572]:
+                      - generic [ref=e576]: Example
+                      - generic [ref=e577]: (Unassigned)
+                    - generic [ref=e578]:
+                      - generic [ref=e579]: Open
+                      - generic [ref=e580]: ·
+                      - generic [ref=e582]: 55m
+                  - generic [ref=e588]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e590]:
+                  - generic [ref=e591]:
+                    - generic [ref=e593]:
+                      - generic [ref=e597]: Example
+                      - generic [ref=e598]: (Unassigned)
+                    - generic [ref=e599]:
+                      - generic [ref=e600]: Open
+                      - generic [ref=e601]: ·
+                      - generic [ref=e603]: 59m
+                  - generic [ref=e609]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e611]:
+                  - generic [ref=e612]:
+                    - generic [ref=e614]:
+                      - generic [ref=e618]: Example
+                      - generic [ref=e619]: (Unassigned)
+                    - generic [ref=e620]:
+                      - generic [ref=e621]: Open
+                      - generic [ref=e622]: ·
+                      - generic [ref=e624]: 1h
+                  - generic [ref=e630]: "[AUTOTEST] Ticket full properties"
+                - generic [ref=e633]:
+                  - text: Find all
+                  - strong [ref=e634]: "27"
+                  - text: conversations
+            - button " Assignee General / Example Customer General / Example Customer" [ref=e636]:
+              - generic [ref=e637] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e638]: Assignee
+                - textbox [ref=e639]: General / Example Customer
+                - generic "General / Example Customer" [ref=e640]:
+                  - generic [ref=e641]:
+                    - generic [ref=e642]: General
+                    - generic [ref=e643]: /
+                    - generic [ref=e648]: Example Customer
+            - button " Status Open Open" [ref=e650]:
+              - generic [ref=e651] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e652]: Status
+                - textbox [ref=e653]: Open
+                - generic "Open" [ref=e654]:
+                  - generic [ref=e659]: Open
+            - button " Type Question Ques tion" [ref=e661]:
+              - generic [ref=e662] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e663]: Type
+                - textbox [ref=e664]: Question
+                - generic "Question" [ref=e665]:
+                  - generic [ref=e666]: Ques tion
+            - button " Priority Low Lo w" [ref=e668]:
+              - generic [ref=e669] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e670]: Priority
+                - textbox [ref=e671]: Low
+                - generic "Low" [ref=e672]:
+                  - generic [ref=e673]: Lo w
+            - button "Tags autotest-props remove element tag1 123 option-a-tag option-b-tag Add a tag..." [ref=e677]:
+              - generic [ref=e678] [cursor=pointer]:
+                - generic [ref=e679]: Tags
+                - list [ref=e680]:
+                  - generic [ref=e681]:
+                    - generic [ref=e682]: autotest-props
+                    - button "remove element" [ref=e683]:
+                      - img [ref=e685]
+                  - generic [ref=e688]: tag1
+                  - generic [ref=e690]: "123"
+                  - generic [ref=e692]: option-a-tag
+                  - generic [ref=e694]: option-b-tag
+                  - searchbox "Add a tag..." [ref=e695]
+            - button " Form Default Defa ult" [ref=e697]:
+              - generic [ref=e700] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e701]: Form
+                - textbox [ref=e702]: Default
+                - generic "Default" [ref=e703]:
+                  - generic [ref=e704]: Defa ult
+            - button " Yes/no toggle Yes Ye s" [ref=e706]:
+              - generic [ref=e707] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e708]: Yes/no toggle
+                - textbox [ref=e709]: "Yes"
+                - generic "Yes" [ref=e710]:
+                  - generic [ref=e711]: Ye s
+            - button " Cascading select Category-A / Subcategory-A / Item-1 Category-A / Subca tegory-A / Item-1" [ref=e713]:
+              - generic [ref=e714] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e715]: Cascading select
+                - textbox [ref=e716]: Category-A / Subcategory-A / Item-1
+                - generic "Category-A / Subcategory-A / Item-1" [ref=e717]:
+                  - generic [ref=e718]: Category-A / Subca tegory-A / Item-1
+            - generic [ref=e719] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e720]: Date of purchase
+              - generic [ref=e721]: April 5, 2025
+            - button " Radio 123 12 3" [ref=e723]:
+              - generic [ref=e724] [cursor=pointer]:
+                - generic: 
+                - generic [ref=e725]: Radio
+                - textbox [ref=e726]: "123"
+                - generic "123" [ref=e727]:
+                  - generic [ref=e728]: 12 3
+            - generic [ref=e729] [cursor=pointer]:
+              - generic [ref=e730]: Text
+              - textbox [ref=e732]: Sample single-line text
+            - generic [ref=e733] [cursor=pointer]:
+              - generic [ref=e734]: Regex
+              - textbox [ref=e736]: ABC-123
+            - generic [ref=e737]:
+              - generic [ref=e738]: Checkboxes
+              - generic [ref=e739]:
+                - checkbox "" [checked] [ref=e740] [cursor=pointer]:
+                  - generic [ref=e741]: 
+                - generic [ref=e742] [cursor=pointer]: Option-A-Title
+              - generic [ref=e743]:
+                - checkbox "" [checked] [ref=e744] [cursor=pointer]:
+                  - generic [ref=e745]: 
+                - generic [ref=e746] [cursor=pointer]: Option-B-Title
+              - generic [ref=e747]:
+                - checkbox [ref=e748] [cursor=pointer]
+                - generic [ref=e749] [cursor=pointer]: Option-C-Title
+            - generic [ref=e750] [cursor=pointer]:
+              - generic [ref=e751]: Multiline text
+              - textbox [ref=e753]: Line 1 Line 2 Line 3
+            - generic [ref=e754] [cursor=pointer]:
+              - generic [ref=e755]: Integers
+              - textbox [ref=e757]: "42"
+            - generic [ref=e758] [cursor=pointer]:
+              - generic [ref=e759]: Decimals
+              - textbox [ref=e761]: "123.45"
+```

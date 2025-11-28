@@ -1,0 +1,218 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e6]:
+    - navigation [ref=e7]:
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /agent/conversations
+        - link "NaN conversations in your inbox" [ref=e10] [cursor=pointer]:
+          - /url: /agent/conversations
+          - img [ref=e11]
+        - link "Users" [ref=e15] [cursor=pointer]:
+          - /url: /agent/users
+          - img [ref=e16]
+        - link "Organizations" [ref=e20] [cursor=pointer]:
+          - /url: /agent/organizations
+          - img [ref=e21]
+        - link "Insights" [ref=e27] [cursor=pointer]:
+          - /url: /agent/insights
+          - img [ref=e28]
+        - link "Knowledge Base Manager" [ref=e32] [cursor=pointer]:
+          - /url: /agent/knowledgebase
+          - img [ref=e33]
+        - link "Helpcenter" [ref=e36] [cursor=pointer]:
+          - /url: /
+          - img [ref=e37]
+      - link "Administration" [ref=e42] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=e43]
+    - generic [ref=e47]:
+      - banner [ref=e48]:
+        - button "New" [ref=e50] [cursor=pointer]:
+          - generic [ref=e52]:
+            - img [ref=e53]
+            - generic [ref=e55]: New
+        - generic [ref=e56]:
+          - generic [ref=e58]:
+            - strong [ref=e59]: 27 days
+            - text: left in trial.
+          - img [ref=e62] [cursor=pointer]
+          - button [ref=e65]:
+            - img [ref=e67] [cursor=pointer]
+          - button [ref=e69] [cursor=pointer]
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]
+            - link "Home" [ref=e77] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=e78]:
+                - img [ref=e80]
+                - text: Home
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: Channels
+            - link "Email" [ref=e92] [cursor=pointer]:
+              - /url: /admin/channels/email
+            - link "Facebook" [ref=e93] [cursor=pointer]:
+              - /url: /admin/channels/facebook
+            - link "X" [ref=e94] [cursor=pointer]:
+              - /url: /admin/channels/twitter
+          - generic [ref=e95]:
+            - paragraph [ref=e96]: Messenger
+            - link "Configure" [ref=e97] [cursor=pointer]:
+              - /url: /admin/messenger/configure
+            - link "Engagement rules" [ref=e98] [cursor=pointer]:
+              - /url: /admin/messenger/engagements
+            - link "Identity verification" [ref=e99] [cursor=pointer]:
+              - /url: /admin/messenger/identity-verification
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: Conversations
+            - link "Views" [ref=e102] [cursor=pointer]:
+              - /url: /admin/conversations/views
+            - link "Forms" [ref=e103] [cursor=pointer]:
+              - /url: /admin/conversations/forms
+            - link "Time tracking" [ref=e104] [cursor=pointer]:
+              - /url: /admin/conversations/time-tracking
+          - generic [ref=e105]:
+            - paragraph [ref=e106]: Customizations
+            - link "Brands" [ref=e107] [cursor=pointer]:
+              - /url: /admin/customizations/brands
+            - link "Email templates" [ref=e108] [cursor=pointer]:
+              - /url: /admin/customizations/email-templates
+            - link "Custom fields" [ref=e109] [cursor=pointer]:
+              - /url: /admin/customizations/conversation-fields
+            - link "Localization" [ref=e110] [cursor=pointer]:
+              - /url: /admin/customizations/localization
+            - link "Privacy Policy Links" [ref=e111] [cursor=pointer]:
+              - /url: /admin/customizations/privacy
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: Team settings
+            - link "Teams" [ref=e114] [cursor=pointer]:
+              - /url: /admin/team-settings/teams
+            - link "Agent directory" [ref=e115] [cursor=pointer]:
+              - /url: /admin/team-settings/agent-directory
+            - link "Business hours" [ref=e116] [cursor=pointer]:
+              - /url: /admin/team-settings/businesshours
+            - link "Roles and permissions" [ref=e117] [cursor=pointer]:
+              - /url: /admin/team-settings/roles
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Automation
+            - link "Macros" [ref=e120] [cursor=pointer]:
+              - /url: /admin/automation/macros
+            - link "Triggers" [ref=e121] [cursor=pointer]:
+              - /url: /admin/automation/triggers
+            - link "Monitors" [ref=e122] [cursor=pointer]:
+              - /url: /admin/automation/monitors
+            - link "SLAs" [ref=e123] [cursor=pointer]:
+              - /url: /admin/automation/sla
+          - generic [ref=e124]:
+            - paragraph [ref=e125]: Integrations
+            - link "Zapier" [ref=e126] [cursor=pointer]:
+              - /url: /admin/integrations/zapier
+            - link "Salesforce" [ref=e127] [cursor=pointer]:
+              - /url: /admin/integrations/salesforce
+            - link "Endpoints" [ref=e128] [cursor=pointer]:
+              - /url: /admin/integrations/endpoints
+            - link "Webhooks" [ref=e129] [cursor=pointer]:
+              - /url: /admin/integrations/webhooks
+            - link "API" [ref=e130] [cursor=pointer]:
+              - /url: /admin/integrations/api
+          - generic [ref=e131]:
+            - paragraph [ref=e132]: Security
+            - link "Authentication" [ref=e133] [cursor=pointer]:
+              - /url: /admin/security/authentication
+            - link "Security policies" [ref=e134] [cursor=pointer]:
+              - /url: /admin/security/policy/help-center
+            - link "User registration" [ref=e135] [cursor=pointer]:
+              - /url: /admin/security/settings
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - heading "Triggers" [level=3] [ref=e141]
+            - link "New trigger" [ref=e142] [cursor=pointer]:
+              - /url: /admin/automation/triggers/new
+          - paragraph [ref=e144]:
+            - paragraph [ref=e145]: Execute advanced workflows with Kayako, without having to make your team remember tricky processes for making sure conversations are dealt with properly. Configure rules to perform actions on conversations based on specific criteria, such as marking high priority to conversations based on a tag.
+            - paragraph [ref=e146]:
+              - strong [ref=e147]:
+                - text: Set up your triggers or
+                - link "learn more about them" [ref=e148] [cursor=pointer]:
+                  - /url: https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1
+                - text: .
+          - generic [ref=e149]:
+            - generic [ref=e150]: Enabled
+            - list [ref=e153]:
+              - listitem [ref=e154]:
+                - generic [ref=e157] [cursor=pointer]:
+                  - generic [ref=e159]: Assignment notification with attachment
+                  - generic [ref=e161]: last triggered 15 days ago
+              - listitem [ref=e163]:
+                - generic [ref=e166] [cursor=pointer]:
+                  - generic [ref=e168]: Test trigger
+                  - generic [ref=e170]: last triggered 5 months ago
+              - listitem [ref=e172]:
+                - generic [ref=e177] [cursor=pointer]: Trash gam
+              - listitem [ref=e180]:
+                - generic [ref=e185] [cursor=pointer]: "[AUTOTEST] MCP Trigger"
+              - listitem [ref=e188]:
+                - generic [ref=e193] [cursor=pointer]: "[AUTOTEST] MCP Trigger"
+          - generic [ref=e196]:
+            - generic [ref=e197]: Disabled
+            - list [ref=e198]:
+              - generic [ref=e200] [cursor=pointer]:
+                - generic [ref=e202]: "123"
+                - generic [ref=e204]: last triggered 6 months ago
+              - generic [ref=e207] [cursor=pointer]:
+                - generic [ref=e209]: Acknowledgement trigger
+                - generic [ref=e211]: last triggered 6 months ago
+              - generic [ref=e214] [cursor=pointer]:
+                - generic [ref=e216]: Add VIP tag
+                - generic [ref=e218]: last triggered 6 months ago
+              - generic [ref=e221] [cursor=pointer]:
+                - generic [ref=e223]: Auto Reply
+                - generic [ref=e225]: last triggered 6 months ago
+              - generic [ref=e228] [cursor=pointer]:
+                - generic [ref=e230]: MS app autoresponder trigger
+                - generic [ref=e232]: last triggered 6 months ago
+              - generic [ref=e237] [cursor=pointer]: Notify assignee about a conversation satisfaction survey rating
+              - generic [ref=e241] [cursor=pointer]:
+                - generic [ref=e243]: Notify assignee of assignment
+                - generic [ref=e245]: last triggered 6 months ago
+              - generic [ref=e248] [cursor=pointer]:
+                - generic [ref=e250]: Send acknowledgement email to requester
+                - generic [ref=e252]: last triggered 6 months ago
+              - generic [ref=e255] [cursor=pointer]:
+                - generic [ref=e257]: SLA breached
+                - generic [ref=e259]: last triggered 6 months ago
+              - generic [ref=e262] [cursor=pointer]:
+                - generic [ref=e264]: Trash promotions
+                - generic [ref=e266]: last triggered 6 months ago
+```

@@ -1,0 +1,353 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\941f644b-d0ae-46d4-b9d8-95f57eb53130\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\941f644b-d0ae-46d4-b9d8-95f57eb53130\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\941f644b-d0ae-46d4-b9d8-95f57eb53130\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/941f644b-d0ae-46d4-b9d8-95f57eb53130/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/941f644b-d0ae-46d4-b9d8-95f57eb53130/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/941f644b-d0ae-46d4-b9d8-95f57eb53130/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\demo-basic-capabilities.spec.ts",
+      "file": "generated/demo-basic-capabilities.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Demonstrate basic reusable actions (reply text, tags, status)",
+          "file": "generated/demo-basic-capabilities.spec.ts",
+          "line": 19,
+          "column": 8,
+          "specs": [
+            {
+              "title": "demo-basic-capabilities",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 90000,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                          "column": 6,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                            "column": 6,
+                            "line": 37
+                          },
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T20:39:55.831Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:55.842Z] [INFO] [LoginPage run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.203Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Loaded selectors.jsonc (mtime %d) \u001b[33m1764274557609.1096\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.456Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.473Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.611Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.631Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.778Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:39:59.789Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.442Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.467Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.472Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.483Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.485Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Accessing conversation: using env ID if available, otherwise inbox fallback\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:03.487Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] No conversation ID provided and not on a conversation; opening first conversation from inbox\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:06.358Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s inbox firstTicketRow [class*='ko-table_body__tbody_'] > *:first-child\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:06.408Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Inbox first row resolved via selector %s (fallbackIndex=%d) [class*='ko-table_body__tbody_'] > *:first-child \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.439Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.455Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Expect visible %s.%s (selector=%s, fallbackIndex=%d) composer editor div.fr-element.fr-view \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.460Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Switching composer to Reply mode\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.465Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle \u001b[33m1\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.496Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.669Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Inserting reply text (%d chars) \u001b[33m26\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:10.690Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:11.828Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Adding tags: %o [ \u001b[32m'demo'\u001b[39m, \u001b[32m'automation'\u001b[39m ]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:11.855Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:11.872Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.200Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.874Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag “demo”\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.882Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag “demo”'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.883Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag \"demo\"\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.892Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag \"demo\"'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.892Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s demo\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:12.902Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'demo'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:13.249Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:13.289Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.131Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag “automation”\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.139Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag “automation”'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.140Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Add tag \"automation\"\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.149Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag \"automation\"'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.150Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s automation\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.157Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'automation'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.506Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:14.526Z] [INFO] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Setting status: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:20.097Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Dispatch-click in dropdown by text: %s Pending\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:20.142Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:20.164Z] [DEBUG] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Update properties container visible after status change\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:40:25.180Z] [INFO] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Holding browser open for %dms after test \"%s\" \u001b[33m600000\u001b[39m demo-basic-capabilities\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-27T20:40:14.525Z] [WARN] [selectors run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Tag not confirmed by pills after add attempt: %s (pills=%o) automation [ \u001b[32m'demo'\u001b[39m ]\n"
+                        },
+                        {
+                          "text": "[2025-11-27T20:41:25.401Z] [WARN] [auth.fixture run=941f644b-d0ae-46d4-b9d8-95f57eb53130] Hold-open wait interrupted page.waitForTimeout: Test ended.\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mfixtures\\auth.fixture.ts:45:29\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-27T20:39:54.806Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\941f644b-d0ae-46d4-b9d8-95f57eb53130\\artifacts\\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\941f644b-d0ae-46d4-b9d8-95f57eb53130\\artifacts\\generated-demo-basic-capab-9319b-tus-demo-basic-capabilities-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                        "column": 6,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "23ac0393449735a7095c-ec847ead5aa833c9b49b",
+              "file": "generated/demo-basic-capabilities.spec.ts",
+              "line": 20,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T20:39:53.312Z",
+    "duration": 93871.039,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,70 @@
+name: demo-composer-formatting
+description: Toggle basic formatting controls in the reply composer and send a formatted message
+steps:
+  - type: access-conversation
+
+  - type: switch-to-reply
+
+  # Start a bulleted list and create several items with different formatting
+  - type: click
+    selectorKey: composer.toolbarBulletedList
+
+  # Bullet 1: completely normal text
+  - type: insert-reply-text
+    value: "Bullet 1 normal"
+  - type: press
+    key: "Enter"
+
+  # Bullet 2: only the word BOLD is bolded
+  - type: insert-reply-text
+    value: "Bullet 2 "
+  - type: click
+    selectorKey: composer.toolbarBoldButton
+  - type: insert-reply-text
+    value: "BOLD"
+  - type: click
+    selectorKey: composer.toolbarBoldButton
+  - type: insert-reply-text
+    value: " not bold"
+  - type: press
+    key: "Enter"
+
+  # Bullet 3: only the word italics is italicized
+  - type: click
+    selectorKey: composer.toolbarItalicButton
+  - type: insert-reply-text
+    value: "Bullet 3 "
+  - type: insert-reply-text
+    value: "italics"
+  - type: click
+    selectorKey: composer.toolbarItalicButton
+  - type: insert-reply-text
+    value: " not italic"
+  # End bullet 3 and then exit the bullet list by pressing Enter twice.
+  - type: press
+    key: "Enter"
+  - type: press
+    key: "Enter"
+
+  # Switch to numbered list and add a couple of items
+  - type: click
+    selectorKey: composer.toolbarNumberedList
+  - type: insert-reply-text
+    value: "Numbered 1"
+  - type: press
+    key: "Enter"
+  - type: insert-reply-text
+    value: "Numbered 2"
+  - type: press
+    key: "Enter"
+  - type: insert-reply-text
+    value: "[AUTOTEST] formatted reply with lists"
+
+  # Send the message
+  - type: click-send-button
+
+  # Assert that the text we sent appears in the timeline
+  - type: assert-timeline-text
+    value: "[AUTOTEST] formatted reply with lists"
+
+

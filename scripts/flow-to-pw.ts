@@ -31,6 +31,8 @@ type Step =
   | { type: 'click-send-button' }
   | { type: 'apply-macro-send-to-customer' }
   | { type: 'set-status'; value: string }
+  | { type: 'set-trigger-condition-status'; value: string }
+  | { type: 'set-trigger-action-status'; value: string }
   | {
       type: 'set-custom-field';
       fieldType:
@@ -75,6 +77,10 @@ type Step =
       label: string;
       expected: string | number | boolean | string[];
     }
+  | {
+      type: 'assert-timeline-text';
+      value: string;
+    }
   | { type: 'assert-tags-contain'; values: string[] }
   | { type: 'assert-status'; value: string }
   | {
@@ -89,6 +95,23 @@ type Step =
       type: 'expect-screenshot';
       name?: string;
       selectorKey?: string; // optional: if present, snapshot the locator instead of the whole page
+    }
+  | {
+      type: 'create-ticket';
+      email: string;
+      subject: string;
+      body: string;
+      mode?: 'reply' | 'note';
+    }
+  | {
+      type: 'complete-conversation';
+    }
+  | {
+      type: 'trash-conversation';
+    }
+  | {
+      type: 'reopen-conversation';
+      value?: string;
     };
 
 type Flow = {
@@ -119,7 +142,7 @@ function generateTest(flow: Flow): string {
   lines.push("import type { Page } from '@playwright/test';");
   lines.push("import { test, expect } from '../../fixtures/auth.fixture';");
   lines.push("import { env } from '../../config/env';");
-  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, addTags, insertReplyText, switchToReplyMode, switchToInternalNoteMode, clickSendButton, setStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectRequest, accessConversation, applyMacroSendToCustomer } from '../../selectors';");
+  lines.push("import { click, fill as fillSel, expectVisible, dispatchClickCss, dispatchClickText, selectFromDropdown, addTags, insertReplyText, switchToReplyMode, switchToInternalNoteMode, clickSendButton, setStatus, setTriggerConditionStatus, setTriggerActionStatus, setCustomField, setMultipleCustomFields, applyTagsStatusAndReply, expectStatusLabel, expectTagsContain, expectFieldValue, expectTimelineContainsText, expectRequest, accessConversation, applyMacroSendToCustomer, createNewTicket, completeConversation, trashConversation, reopenConversation } from '../../selectors';");
   lines.push('');
   lines.push("const queueMode = process.env.KAYAKO_RUN_MODE === 'queue';");
   lines.push('');
@@ -139,7 +162,14 @@ function generateTest(flow: Flow): string {
       case 'goto': {
         const rawUrl = (step as any).url as string;
         const expr = resolveEnvToken(rawUrl);
-        if (sawGotoByEnvId && rawUrl === 'env.KAYAKO_CONVERSATIONS_URL') {
+        // Special-case Users directory: avoid reloading if we're already on /agent/users
+        if (rawUrl === 'env.KAYAKO_AGENT_URL/users') {
+          if (optional) body.push(optBegin);
+          body.push(
+            `    { const current = page.url(); if (!current.includes('/agent/users')) { await page.goto(${expr}); } }`,
+          );
+          if (optional) body.push(optEnd);
+        } else if (sawGotoByEnvId && rawUrl === 'env.KAYAKO_CONVERSATIONS_URL') {
           if (optional) body.push(optBegin);
           body.push(`    if (!env.KAYAKO_CONVERSATION_ID) { await page.goto(${expr}); }`);
           if (optional) body.push(optEnd);
@@ -252,6 +282,37 @@ function generateTest(flow: Flow): string {
         }
         break;
       }
+      case 'create-ticket': {
+        const s = step as any;
+        const emailExpr = resolveEnvToken(String(s.email ?? ''));
+        const subjectExpr = resolveEnvToken(String(s.subject ?? ''));
+        const bodyExpr = resolveEnvToken(String(s.body ?? ''));
+        const mode = s.mode === 'note' ? "'note'" : "'reply'";
+        if (optional) body.push(optBegin);
+        body.push(`    await createNewTicket(page, ${emailExpr}, ${subjectExpr}, ${bodyExpr}, ${mode});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'complete-conversation': {
+        if (optional) body.push(optBegin);
+        body.push('    await completeConversation(page);');
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'trash-conversation': {
+        if (optional) body.push(optBegin);
+        body.push('    await trashConversation(page);');
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'reopen-conversation': {
+        const s = step as any;
+        const value = (s.value as string | undefined) || 'Open';
+        if (optional) body.push(optBegin);
+        body.push(`    await reopenConversation(page, ${JSON.stringify(value)});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
       case 'switch-assignee-and-save': {
         const order = (step as any).order as string[] | undefined;
         const orderExpr = Array.isArray(order) && order.length > 0 ? `[${order.map((s) => JSON.stringify(s)).join(', ')}]` : `['VIP Account Team','General']`;
@@ -311,16 +372,38 @@ function generateTest(flow: Flow): string {
         if (optional) body.push(optEnd);
         break;
       }
+      case 'set-trigger-condition-status': {
+        const value = (step as any).value as string;
+        if (optional) body.push(optBegin);
+        body.push(`    await setTriggerConditionStatus(page, ${JSON.stringify(value || '')});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'set-trigger-action-status': {
+        const value = (step as any).value as string;
+        if (optional) body.push(optBegin);
+        body.push(`    await setTriggerActionStatus(page, ${JSON.stringify(value || '')});`);
+        if (optional) body.push(optEnd);
+        break;
+      }
       case 'set-custom-field': {
         const s = step as any;
-        const obj = {
-          type: s.fieldType,
-          label: s.label,
-          value: s.value,
-          path: s.path,
-        };
+        const valueRaw = s.value;
+        let valueExpr = 'undefined';
+        if (typeof valueRaw === 'string') {
+          // Allow env tokens like env.MY_FIELD_VALUE to be resolved at runtime via config/env.
+          valueExpr = resolveEnvToken(valueRaw);
+        } else if (valueRaw !== undefined) {
+          valueExpr = JSON.stringify(valueRaw);
+        }
+        const pathExpr =
+          Array.isArray(s.path) && s.path.length > 0 ? JSON.stringify(s.path) : 'undefined';
         if (optional) body.push(optBegin);
-        body.push(`    await setCustomField(page, ${JSON.stringify(obj)} as any);`);
+        body.push(
+          `    await setCustomField(page, { type: ${JSON.stringify(
+            s.fieldType,
+          )}, label: ${JSON.stringify(s.label)}, value: ${valueExpr}, path: ${pathExpr} } as any);`,
+        );
         if (optional) body.push(optEnd);
         break;
       }
@@ -336,6 +419,14 @@ function generateTest(flow: Flow): string {
         const s = step as any;
         if (optional) body.push(optBegin);
         body.push(`    await expectFieldValue(page, ${JSON.stringify(s.label)}, ${JSON.stringify(s.expected)} as any);`);
+        if (optional) body.push(optEnd);
+        break;
+      }
+      case 'assert-timeline-text': {
+        const s = step as any;
+        const valueExpr = resolveEnvToken(String(s.value ?? ''));
+        if (optional) body.push(optBegin);
+        body.push(`    await expectTimelineContainsText(page, ${valueExpr});`);
         if (optional) body.push(optEnd);
         break;
       }

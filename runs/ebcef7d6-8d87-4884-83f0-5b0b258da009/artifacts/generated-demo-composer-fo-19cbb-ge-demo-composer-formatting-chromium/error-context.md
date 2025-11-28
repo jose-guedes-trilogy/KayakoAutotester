@@ -1,0 +1,459 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e6]:
+    - navigation [ref=e7]:
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /agent/conversations
+        - link "NaN conversations in your inbox" [ref=e10] [cursor=pointer]:
+          - /url: /agent/conversations
+          - img [ref=e11]
+        - link "Users" [ref=e15] [cursor=pointer]:
+          - /url: /agent/users
+          - img [ref=e16]
+        - link "Organizations" [ref=e20] [cursor=pointer]:
+          - /url: /agent/organizations
+          - img [ref=e21]
+        - link "Insights" [ref=e27] [cursor=pointer]:
+          - /url: /agent/insights
+          - img [ref=e28]
+        - link "Knowledge Base Manager" [ref=e32] [cursor=pointer]:
+          - /url: /agent/knowledgebase
+          - img [ref=e33]
+        - link "Helpcenter" [ref=e36] [cursor=pointer]:
+          - /url: /
+          - img [ref=e37]
+      - link "Administration" [ref=e42] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=e43]
+    - generic [ref=e47]:
+      - banner [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e51]:
+            - link "Test conv" [ref=e52] [cursor=pointer]:
+              - /url: /agent/conversations/35
+              - generic [ref=e56]: Test conv
+            - img [ref=e58] [cursor=pointer]
+          - button "New" [ref=e60] [cursor=pointer]:
+            - generic [ref=e62]:
+              - img [ref=e63]
+              - generic [ref=e65]: New
+        - generic [ref=e66]:
+          - generic [ref=e68]:
+            - strong [ref=e69]: 27 days
+            - text: left in trial.
+          - img [ref=e72] [cursor=pointer]
+          - button [ref=e75]:
+            - img [ref=e77] [cursor=pointer]
+          - button [ref=e79] [cursor=pointer]
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e87]:
+            - list [ref=e88]:
+              - listitem [ref=e89]:
+                - link "Set Organization" [ref=e91] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e92]: Set Organization
+              - listitem [ref=e93]:
+                - link "Example Customer" [ref=e95] [cursor=pointer]:
+                  - /url: /agent/conversations/35/user
+              - listitem [ref=e96]:
+                - link "Test conv" [ref=e98] [cursor=pointer]:
+                  - /url: /agent/conversations/35
+                  - generic [ref=e99]: Test conv
+            - generic [ref=e100]:
+              - generic [ref=e101]:
+                - generic [ref=e102]: "# 35"
+                - button " Change Brand Trilogy Tril ogy" [ref=e104]:
+                  - generic [ref=e105] [cursor=pointer]:
+                    - generic: 
+                    - generic [ref=e106]: Change Brand
+                    - textbox [ref=e107]: Trilogy
+                    - generic "Trilogy" [ref=e108]:
+                      - generic [ref=e109]: Tril ogy
+              - generic "Complete" [ref=e110] [cursor=pointer]:
+                - img [ref=e111]
+              - generic "Trash" [ref=e113] [cursor=pointer]:
+                - img [ref=e114]
+              - button [ref=e118] [cursor=pointer]:
+                - img [ref=e120]
+          - generic [ref=e124]:
+            - list [ref=e126]:
+              - listitem [ref=e127]
+              - listitem [ref=e128]
+              - listitem [ref=e129]
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]: assigned to VIP Account Team
+                - generic [ref=e140]:
+                  - text: ", assigned to"
+                  - link "Example Customer" [ref=e145] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e147]: on Nov 24
+              - img [ref=e149] [cursor=pointer]
+            - generic [ref=e161]:
+              - generic [ref=e162]:
+                - generic [ref=e163]: assigned to General
+                - generic [ref=e164]: ", unassigned the agent from the conversation"
+              - generic [ref=e166]: on Nov 24
+              - img [ref=e168] [cursor=pointer]
+            - generic [ref=e178]:
+              - generic [ref=e181]:
+                - link "Example Customer" [ref=e183] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e186]: on Nov 24
+              - generic [ref=e189]: "[AUTOTEST] Internal note added by MCP"
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]: assigned to VIP Account Team
+                - generic [ref=e200]:
+                  - text: ", assigned to"
+                  - link "Example Customer" [ref=e205] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e207]: on Nov 24
+              - img [ref=e209] [cursor=pointer]
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - generic [ref=e223]: unassigned the team from the conversation
+                - generic [ref=e224]: ", unassigned the agent from the conversation"
+              - generic [ref=e226]: on Nov 24
+              - img [ref=e228] [cursor=pointer]
+            - generic [ref=e238]:
+              - generic [ref=e241]:
+                - link "Example Customer" [ref=e243] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e246]: on Nov 24
+              - generic [ref=e249]: "[AUTOTEST] Internal note added by MCP"
+            - generic [ref=e257]:
+              - generic [ref=e258]:
+                - generic [ref=e259]: assigned to VIP Account Team
+                - generic [ref=e260]:
+                  - text: ", assigned to"
+                  - link "Example Customer" [ref=e265] [cursor=pointer]:
+                    - /url: "#"
+              - generic [ref=e267]: on Nov 24
+              - img [ref=e269] [cursor=pointer]
+            - time [ref=e276]: Tuesday, November 25, 2025
+            - generic [ref=e282]:
+              - generic [ref=e285]:
+                - link "Example Customer" [ref=e287] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e290]: on Nov 25
+              - generic [ref=e293]: "[AUTOTEST] Internal note added by MCP"
+            - time [ref=e296]: Wednesday, November 26, 2025
+            - generic [ref=e302]:
+              - generic [ref=e305]:
+                - link "Example Customer" [ref=e307] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e310]: on Nov 26
+              - generic [ref=e313]: env.INTERNAL_NOTE_TEXT
+            - generic [ref=e319]:
+              - generic [ref=e322]:
+                - link "Example Customer" [ref=e324] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e327]: on Nov 26
+              - generic [ref=e330]: env.INTERNAL_NOTE_TEXT
+            - strong [ref=e333]: Yesterday
+            - generic [ref=e341]:
+              - generic [ref=e342]:
+                - generic [ref=e343]: changed the conversation tags to abc
+                - generic [ref=e344]: ", changed Yes/no toggle to"
+                - text: and 7 other items
+              - generic [ref=e346]: on Nov 27
+              - img [ref=e348] [cursor=pointer]
+            - strong [ref=e355]: Today
+            - generic [ref=e361]:
+              - generic [ref=e364]:
+                - link "Example Customer" [ref=e366] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e369]: 32 minutes ago
+              - strong [ref=e373]: "[AUTOTEST] formatted reply"
+            - generic [ref=e379]:
+              - generic [ref=e382]:
+                - link "Example Customer" [ref=e384] [cursor=pointer]:
+                  - /url: /agent/users/11
+                - generic [ref=e387]: 22 minutes ago
+              - list [ref=e390]:
+                - listitem [ref=e391]:
+                  - strong [ref=e392]: "[AUTOTEST] formatted reply with lists"
+            - generic [ref=e395]:
+              - generic [ref=e397]: 09:34
+              - list [ref=e401]:
+                - listitem [ref=e402]:
+                  - strong [ref=e403]: "[AUTOTEST] formatted reply with lists"
+            - generic [ref=e406]:
+              - generic [ref=e408]: 09:37
+              - list [ref=e412]:
+                - listitem [ref=e413]: Bullet 1 normal
+                - listitem [ref=e414]:
+                  - strong [ref=e415]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - listitem [ref=e416]:
+                  - strong [ref=e417]:
+                    - emphasis [ref=e418]: Numbered 1
+                - listitem [ref=e419]:
+                  - strong [ref=e420]:
+                    - emphasis [ref=e421]: Numbered 2
+                - listitem [ref=e422]: "[AUTOTEST] formatted reply with lists"
+                - listitem [ref=e423]
+            - generic [ref=e426]:
+              - generic [ref=e428]: 09:40
+              - list [ref=e432]:
+                - listitem [ref=e433]: Bullet 1 normal
+                - listitem [ref=e434]:
+                  - strong [ref=e435]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - listitem [ref=e436]:
+                  - strong [ref=e437]:
+                    - emphasis [ref=e438]: Numbered 1
+                - listitem [ref=e439]:
+                  - strong [ref=e440]:
+                    - emphasis [ref=e441]: Numbered 2
+                - listitem [ref=e442]: "[AUTOTEST] formatted reply with lists"
+                - listitem [ref=e443]
+            - generic [ref=e446]:
+              - generic [ref=e448]: 09:44
+              - list [ref=e452]:
+                - listitem [ref=e453]: Bullet 1 normal
+                - listitem [ref=e454]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - listitem [ref=e455]:
+                  - emphasis [ref=e456]: Numbered 1
+                - listitem [ref=e457]: Numbered 2
+                - listitem [ref=e458]: "[AUTOTEST] formatted reply with lists"
+                - listitem [ref=e459]
+            - generic [ref=e462]:
+              - generic [ref=e464]: 09:45
+              - list [ref=e468]:
+                - listitem [ref=e469]: Bullet 1 normal
+                - listitem [ref=e470]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - listitem [ref=e471]:
+                  - emphasis [ref=e472]: Numbered 1
+                - listitem [ref=e473]: Numbered 2
+                - listitem [ref=e474]: "[AUTOTEST] formatted reply with lists"
+                - listitem [ref=e475]
+            - generic [ref=e478]:
+              - generic [ref=e480]: 09:49
+              - generic [ref=e483]:
+                - list [ref=e484]:
+                  - listitem [ref=e485]: Bullet 1 normal
+                  - listitem [ref=e486]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - list [ref=e487]:
+                  - listitem [ref=e488]: Numbered 1Numbered 2
+                  - listitem [ref=e489]: "[AUTOTEST] formatted reply with lists"
+                  - listitem [ref=e490]
+                - list [ref=e491]:
+                  - listitem [ref=e492]
+            - generic [ref=e495]:
+              - generic [ref=e497]: 09:53
+              - generic [ref=e500]:
+                - list [ref=e501]:
+                  - listitem [ref=e502]: Bullet 1 normal
+                  - listitem [ref=e503]: Bullet 2 BOLD not boldBullet 3 italics not italic
+                - list [ref=e504]:
+                  - listitem [ref=e505]: Numbered 1Numbered 2
+                  - listitem [ref=e506]: "[AUTOTEST] formatted reply with lists"
+                  - listitem [ref=e507]
+                - list [ref=e508]:
+                  - listitem [ref=e509]
+          - generic [ref=e511]:
+            - generic [ref=e512]:
+              - generic [ref=e513]:
+                - generic [ref=e515]:
+                  - button "support@trilogy-joseguedes.kayako.com" [disabled] [ref=e517] [cursor=pointer]:
+                    - generic "support@trilogy-joseguedes.kayako.com" [ref=e518]:
+                      - img [ref=e519]
+                      - generic [ref=e521]: support@trilogy-joseguedes.kayako.com
+                      - img [ref=e522]
+                  - generic [ref=e525] [cursor=pointer]: Notes
+                - generic [ref=e526]:
+                  - generic [ref=e527]:
+                    - img [ref=e529] [cursor=pointer]
+                    - img [ref=e532] [cursor=pointer]
+                  - generic [ref=e535]:
+                    - button [ref=e536] [cursor=pointer]:
+                      - img [ref=e538]
+                    - button [ref=e540] [cursor=pointer]:
+                      - img [ref=e542]
+                    - button [ref=e544] [cursor=pointer]:
+                      - img [ref=e546]
+                    - img [ref=e549] [cursor=pointer]
+                    - img [ref=e552] [cursor=pointer]
+                    - img [ref=e555]
+                    - img [ref=e558] [cursor=pointer]
+                  - generic [ref=e563] [cursor=pointer]:
+                    - img [ref=e564]
+                    - button "Choose File" [ref=e568]
+                  - button "Macro " [ref=e573]:
+                    - generic [ref=e574] [cursor=pointer]:
+                      - text: Macro
+                      - generic [ref=e575]: 
+              - generic [ref=e577]:
+                - application [ref=e580]:
+                  - generic [ref=e584]: Add a note…
+                - generic [ref=e585]:
+                  - generic [ref=e586]:
+                    - img [ref=e587]
+                    - button "Choose File" [ref=e589] [cursor=pointer]
+                  - generic [ref=e592]:
+                    - generic [ref=e594] [cursor=pointer]:
+                      - radio [checked] [ref=e595]
+                      - generic [ref=e597]: Conversation
+                    - generic [ref=e599] [cursor=pointer]:
+                      - radio [ref=e600]
+                      - generic [ref=e601]: User
+            - generic [ref=e603]: This private conversation note will only be seen by agents
+        - generic [ref=e605]:
+          - generic [ref=e606]:
+            - generic [ref=e608]:
+              - link [ref=e609] [cursor=pointer]:
+                - /url: /agent/conversations/35/user
+              - generic [ref=e616] [cursor=pointer]:
+                - generic [ref=e617]: Example Customer
+                - generic [ref=e619]: you
+                - img [ref=e621]
+            - listitem "09:52" [ref=e624]:
+              - img [ref=e625]
+              - generic [ref=e629]: Online now
+            - listitem "(GMT-04:00) Atlantic Time - Halifax" [ref=e631]:
+              - img [ref=e632]
+              - generic [ref=e636]: Currently 09:53
+          - list [ref=e638]:
+            - listitem [ref=e639]:
+              - button "jose.guedes.translation@gmail.com" [ref=e640] [cursor=pointer]:
+                - img [ref=e641]
+                - generic "jose.guedes.translation@gmail.com" [ref=e646]
+          - generic [ref=e647]:
+            - button "1 other active conversation" [ref=e648] [cursor=pointer]:
+              - generic [ref=e649]:
+                - img [ref=e651]
+                - generic [ref=e657]: 1 other active conversation
+                - img [ref=e659]
+            - generic [ref=e665] [cursor=pointer]:
+              - generic [ref=e666]:
+                - generic [ref=e668]:
+                  - generic [ref=e672]: Example
+                  - generic [ref=e673]: (Unassigned)
+                - generic [ref=e674]:
+                  - generic [ref=e675]: New
+                  - generic [ref=e676]: ·
+                  - generic [ref=e678]: 3d
+              - generic [ref=e684]: "[TEST PREFIX] Test"
+          - button " Assignee (Unassigned) (Unassigned)" [ref=e686]:
+            - generic [ref=e687] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e688]: Assignee
+              - textbox [ref=e689]: (Unassigned)
+              - generic "(Unassigned)" [ref=e690]:
+                - generic [ref=e691]: (Unassigned)
+          - button " Status New New" [ref=e693]:
+            - generic [ref=e694] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e695]: Status
+              - textbox [ref=e696]: New
+              - generic "New" [ref=e697]:
+                - generic [ref=e702]: New
+          - button " Type - -" [ref=e704]:
+            - generic [ref=e705] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e706]: Type
+              - textbox [ref=e707]: "-"
+              - generic "-" [ref=e708]:
+                - generic [ref=e709]: "-"
+          - button " Priority - -" [ref=e711]:
+            - generic [ref=e712] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e713]: Priority
+              - textbox [ref=e714]: "-"
+              - generic "-" [ref=e715]:
+                - generic [ref=e716]: "-"
+          - button "Tags Add a tag..." [ref=e720]:
+            - generic [ref=e721] [cursor=pointer]:
+              - generic [ref=e722]: Tags
+              - list [ref=e723]:
+                - searchbox "Add a tag..." [ref=e724]
+          - button " Form - -" [ref=e726]:
+            - generic [ref=e729] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e730]: Form
+              - textbox [ref=e731]: "-"
+              - generic "-" [ref=e732]:
+                - generic [ref=e733]: "-"
+          - button " Yes/no toggle - -" [ref=e735]:
+            - generic [ref=e736] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e737]: Yes/no toggle
+              - textbox [ref=e738]: "-"
+              - generic "-" [ref=e739]:
+                - generic [ref=e740]: "-"
+          - button " Cascading select - -" [ref=e742]:
+            - generic [ref=e743] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e744]: Cascading select
+              - textbox [ref=e745]: "-"
+              - generic "-" [ref=e746]:
+                - generic [ref=e747]: "-"
+          - generic [ref=e748] [cursor=pointer]:
+            - generic: 
+            - generic [ref=e749]: Date of purchase
+            - generic [ref=e750]: "-"
+          - button " Radio - -" [ref=e752]:
+            - generic [ref=e753] [cursor=pointer]:
+              - generic: 
+              - generic [ref=e754]: Radio
+              - textbox [ref=e755]: "-"
+              - generic "-" [ref=e756]:
+                - generic [ref=e757]: "-"
+          - generic [ref=e758] [cursor=pointer]:
+            - generic [ref=e759]: Text
+            - textbox [ref=e761]
+          - generic [ref=e762] [cursor=pointer]:
+            - generic [ref=e763]: Regex
+            - textbox [ref=e765]
+          - generic [ref=e766]:
+            - generic [ref=e767]: Checkboxes
+            - generic [ref=e768]:
+              - checkbox [ref=e769] [cursor=pointer]
+              - generic [ref=e770] [cursor=pointer]: Option-A-Title
+            - generic [ref=e771]:
+              - checkbox [ref=e772] [cursor=pointer]
+              - generic [ref=e773] [cursor=pointer]: Option-B-Title
+            - generic [ref=e774]:
+              - checkbox [ref=e775] [cursor=pointer]
+              - generic [ref=e776] [cursor=pointer]: Option-C-Title
+          - generic [ref=e777] [cursor=pointer]:
+            - generic [ref=e778]: Multiline text
+            - textbox [ref=e780]
+          - generic [ref=e781] [cursor=pointer]:
+            - generic [ref=e782]: Integers
+            - textbox [ref=e784]
+          - generic [ref=e785] [cursor=pointer]:
+            - generic [ref=e786]: Decimals
+            - textbox [ref=e788]
+```

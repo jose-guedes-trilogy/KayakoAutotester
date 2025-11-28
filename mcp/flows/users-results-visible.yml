@@ -1,0 +1,11 @@
+name: users-results-visible
+description: Ensure users results table renders with at least one row
+steps:
+  - type: goto
+    url: env.KAYAKO_AGENT_URL/users
+  - type: expect-visible
+    selectorKey: users.results
+  - type: expect-visible
+    selectorKey: users.firstRow
+
+

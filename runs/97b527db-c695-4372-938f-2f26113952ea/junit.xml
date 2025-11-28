@@ -1,0 +1,189 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="218.909289">
+<testsuite name="generated\ticket-properties-complete.spec.ts" timestamp="2025-11-28T20:22:49.137Z" hostname="chromium" tests="1" failures="1" skipped="0" time="217.146" errors="0">
+<testcase name="Create a brand new ticket and fill all ticket properties (status, tags, and custom fields), then verify them › ticket-properties-complete" classname="generated\ticket-properties-complete.spec.ts" time="217.146">
+<failure message="ticket-properties-complete.spec.ts:34:9 ticket-properties-complete" type="FAILURE">
+<![CDATA[  [chromium] › generated\ticket-properties-complete.spec.ts:34:9 › Create a brand new ticket and fill all ticket properties (status, tags, and custom fields), then verify them › ticket-properties-complete 
+
+    Test timeout of 120000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\97b527db-c695-4372-938f-2f26113952ea\artifacts\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\97b527db-c695-4372-938f-2f26113952ea\artifacts\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-28T20:22:50.890Z] [INFO] [auth.fixture run=97b527db-c695-4372-938f-2f26113952ea] Starting login flow for authenticatedPage
+[2025-11-28T20:22:50.898Z] [INFO] [LoginPage run=97b527db-c695-4372-938f-2f26113952ea] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-28T20:22:54.019Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Loaded selectors.jsonc (mtime %d) [33m1764353217441.892[39m
+[2025-11-28T20:22:54.413Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-28T20:22:54.432Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-28T20:22:54.579Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-28T20:22:54.594Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-28T20:22:54.737Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-28T20:22:54.752Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-28T20:22:58.418Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']
+[2025-11-28T20:22:58.444Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] [33m0[39m
+[2025-11-28T20:22:58.451Z] [INFO] [auth.fixture run=97b527db-c695-4372-938f-2f26113952ea] Login successful
+[2025-11-28T20:22:58.461Z] [INFO] [auth.fixture run=97b527db-c695-4372-938f-2f26113952ea] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-28T20:22:58.462Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Creating new ticket (mode=%s) reply
+[2025-11-28T20:22:58.463Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Opening New → Conversation ticket
+[2025-11-28T20:22:58.493Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']
+[2025-11-28T20:22:58.511Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] [33m0[39m
+[2025-11-28T20:22:58.684Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')
+[2025-11-28T20:22:58.697Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') [33m0[39m
+[2025-11-28T20:22:59.419Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T20:22:59.439Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T20:22:59.446Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling new ticket requester email: %s jose.guedes.translation@gmail.com
+[2025-11-28T20:22:59.483Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T20:22:59.496Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T20:23:00.106Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling new ticket subject: %s [AUTOTEST] Ticket full properties
+[2025-11-28T20:23:00.308Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']
+[2025-11-28T20:23:00.335Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] [33m0[39m
+[2025-11-28T20:23:00.464Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Switching composer to Reply mode
+[2025-11-28T20:23:00.471Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T20:23:00.506Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T20:23:00.680Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Inserting reply text (%d chars) [33m38[39m
+[2025-11-28T20:23:00.716Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T20:23:02.114Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking composer Send button
+[2025-11-28T20:23:02.144Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T20:23:02.158Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T20:23:03.627Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Waiting for timeline to contain text "%s" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Ticket full properties body [33m15000[39m [33m500[39m
+[2025-11-28T20:23:03.800Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Ticket full properties body [33m3[39m [33m173[39m
+[2025-11-28T20:23:04.361Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Ticket full properties body [33m18[39m [33m734[39m
+[2025-11-28T20:23:04.372Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting status: %s Open
+[2025-11-28T20:23:09.963Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Open
+[2025-11-28T20:23:10.045Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']
+[2025-11-28T20:23:10.066Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Update properties container visible after status change
+[2025-11-28T20:23:10.068Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s dropdown Priority
+[2025-11-28T20:23:15.292Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": selecting fallback option from %d entries Priority [33m5[39m
+[2025-11-28T20:23:15.301Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": fallback selecting option "%s" Priority Low
+[2025-11-28T20:23:15.951Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s dropdown Type
+[2025-11-28T20:23:21.118Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": selecting fallback option from %d entries Type [33m5[39m
+[2025-11-28T20:23:21.130Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": fallback selecting option "%s" Type Question
+[2025-11-28T20:23:21.459Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s dropdown Form
+[2025-11-28T20:23:26.644Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": selecting fallback option from %d entries Form [33m4[39m
+[2025-11-28T20:23:26.651Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown field "%s": fallback selecting option "%s" Form Default
+[2025-11-28T20:23:26.995Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Adding tags: %o [ [32m'autotest-props'[39m ]
+[2025-11-28T20:23:27.017Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')
+[2025-11-28T20:23:27.031Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') [33m0[39m
+[2025-11-28T20:23:27.340Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']
+[2025-11-28T20:23:28.340Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Add tag “autotest-props”
+[2025-11-28T20:23:28.346Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag “autotest-props”'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-28T20:23:28.347Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Add tag "autotest-props"
+[2025-11-28T20:23:28.355Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown dispatch diagnostics: %o {
+  needle: [32m'Add tag "autotest-props"'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-28T20:23:28.357Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s autotest-props
+[2025-11-28T20:23:28.364Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dropdown dispatch diagnostics: %o {
+  needle: [32m'autotest-props'[39m,
+  openDropdowns: [33m1[39m,
+  wormholeChildren: [33m1[39m,
+  rootSummaries: [
+    {
+      optionsCount: [33m1[39m,
+      exactHits: [33m0[39m,
+      containsHits: [33m0[39m,
+      sampleOptions: [36m[Array][39m
+    }
+  ]
+}
+[2025-11-28T20:23:28.711Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-28T20:23:28.743Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']
+[2025-11-28T20:23:28.758Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s yesno Yes/no toggle
+[2025-11-28T20:23:33.917Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Yes
+[2025-11-28T20:23:34.087Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s cascading Cascading select
+[2025-11-28T20:23:39.258Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Category-A
+[2025-11-28T20:23:39.425Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Subcategory-A
+[2025-11-28T20:23:39.595Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s Item-1
+[2025-11-28T20:23:39.919Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s date Date of purchase
+[2025-11-28T20:23:44.947Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting date value: %s 2025-04-05
+[2025-11-28T20:23:44.947Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Date open: starting root-scoped dispatch attempt for label "%s" Date of purchase
+[2025-11-28T20:23:44.953Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Date open (root): candidates found=%d via selector "%s" [33m0[39m [class*='ko-agent-content_layout__fields_'] [class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_'], div[class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_'], div[class*='ko-info-bar_field_date__date_']
+[2025-11-28T20:23:44.969Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Date open (root): container diagnostics: %o {
+  className: [32m'ko-info-bar_field_date__date_1mc80n  ko-info-bar_item__container_1k1nl0'[39m,
+  id: [32m''[39m,
+  rect: { x: [33m961[39m, y: [33m460[39m, w: [33m304[39m, h: [33m55[39m },
+  style: {
+    display: [32m'block'[39m,
+    visibility: [32m'visible'[39m,
+    opacity: [32m'1'[39m,
+    pointerEvents: [32m'auto'[39m,
+    zIndex: [32m'auto'[39m
+  },
+  elementFromPoint: {
+    cls: [32m'ko-info-bar_field_date__date_1mc80n  ko-info-bar_item__container_1k1nl0'[39m,
+    id: [32m''[39m
+  }
+}
+[2025-11-28T20:23:45.006Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Date open debug: focus candidates=%d, container candidates=%d [33m1[39m [33m0[39m
+[2025-11-28T20:23:47.261Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s radio Radio
+[2025-11-28T20:23:52.438Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Radio field "%s": selecting fallback option from %d entries Radio [33m4[39m
+[2025-11-28T20:23:52.447Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Radio field "%s": fallback selecting option "%s" Radio 123
+[2025-11-28T20:23:52.775Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s text Text
+[2025-11-28T20:23:58.098Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s textarea Multiline text
+[2025-11-28T20:24:03.426Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s regex Regex
+[2025-11-28T20:24:08.746Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s integer Integers
+[2025-11-28T20:24:14.070Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s decimal Decimals
+[2025-11-28T20:24:19.415Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Setting custom field (%s): %s checkbox Checkboxes
+[2025-11-28T20:24:24.941Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Switching assignee team and saving (preferredOrder=%o) [ [32m'General'[39m, [32m'VIP Account Team'[39m ]
+[2025-11-28T20:24:24.941Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click CSS for %s.%s with %d candidate(s) assign assignToMeTrigger [33m3[39m
+[2025-11-28T20:24:24.958Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click CSS succeeded for %s.%s using %s assign assignToMeTrigger .ko-case-content__assign-to-me-trigger_11x6m5
+[2025-11-28T20:24:25.024Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s assign assignToMeOptions [id='ember-basic-dropdown-wormhole'] [class*='ko-case-content__assign-to-me-options_']
+[2025-11-28T20:24:25.040Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Dispatch-click in dropdown by text: %s General
+[2025-11-28T20:24:25.311Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Assignment completed via composer quick path
+[2025-11-28T20:24:25.337Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s assign updatePropertiesButton role=button[name=/Update properties/i]
+[2025-11-28T20:24:25.348Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Clicking %s.%s (selector=%s, fallbackIndex=%d) assign updatePropertiesButton role=button[name=/Update properties/i] [33m0[39m
+[2025-11-28T20:24:25.546Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s conversation statusPill [class*='ko-case-content_field_status_swatch-with-label__swatch_']
+[2025-11-28T20:24:25.587Z] [DEBUG] [selectors run=97b527db-c695-4372-938f-2f26113952ea] Primary selector used for %s.%s: %s status statusFieldTrigger div[class*='ko-info-bar_field_select__trigger_']:has-text('Status')
+[2025-11-28T20:24:25.603Z] [INFO] [selectors run=97b527db-c695-4372-938f-2f26113952ea] getConversationStatusText: derived status "%s" from Status field button text "%s" Open Status Open
+[2025-11-28T20:24:27.622Z] [INFO] [auth.fixture run=97b527db-c695-4372-938f-2f26113952ea] Holding browser open for %dms after test "%s" [33m600000[39m ticket-properties-complete
+
+[[ATTACHMENT|artifacts\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-28T20:24:25.564Z] [WARN] [selectors run=97b527db-c695-4372-938f-2f26113952ea] getConversationStatusText: header status pill not found or empty; falling back to info-bar Status field
+[2025-11-28T20:26:27.800Z] [WARN] [auth.fixture run=97b527db-c695-4372-938f-2f26113952ea] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

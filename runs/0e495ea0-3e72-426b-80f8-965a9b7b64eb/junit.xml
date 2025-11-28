@@ -1,0 +1,96 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="91.92759699999999">
+<testsuite name="generated\demo-composer-formatting.spec.ts" timestamp="2025-11-28T13:40:01.270Z" hostname="chromium" tests="1" failures="1" skipped="0" time="90.138" errors="0">
+<testcase name="Toggle basic formatting controls in the reply composer and send a formatted message › demo-composer-formatting" classname="generated\demo-composer-formatting.spec.ts" time="90.138">
+<failure message="demo-composer-formatting.spec.ts:33:9 demo-composer-formatting" type="FAILURE">
+<![CDATA[  [chromium] › generated\demo-composer-formatting.spec.ts:33:9 › Toggle basic formatting controls in the reply composer and send a formatted message › demo-composer-formatting 
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\0e495ea0-3e72-426b-80f8-965a9b7b64eb\artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\0e495ea0-3e72-426b-80f8-965a9b7b64eb\artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-28T13:40:03.064Z] [INFO] [auth.fixture run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Starting login flow for authenticatedPage
+[2025-11-28T13:40:03.072Z] [INFO] [LoginPage run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-28T13:40:15.933Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Loaded selectors.jsonc (mtime %d) [33m1764336151970.448[39m
+[2025-11-28T13:40:16.022Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-28T13:40:16.092Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-28T13:40:16.236Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-28T13:40:16.252Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-28T13:40:16.440Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-28T13:40:16.454Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-28T13:40:19.542Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']
+[2025-11-28T13:40:19.583Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] [33m0[39m
+[2025-11-28T13:40:19.594Z] [INFO] [auth.fixture run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Login successful
+[2025-11-28T13:40:19.610Z] [INFO] [auth.fixture run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-28T13:40:19.611Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Accessing conversation: using env ID if available, otherwise inbox fallback
+[2025-11-28T13:40:19.618Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Navigating to target conversation by ID: %s https://trilogy-joseguedes.kayako.com/agent/conversations/35
+[2025-11-28T13:40:23.509Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Switching composer to Reply mode
+[2025-11-28T13:40:23.517Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T13:40:23.560Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T13:40:23.783Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarBulletedList svg[data-name='bulletList']
+[2025-11-28T13:40:23.801Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBulletedList svg[data-name='bulletList'] [33m0[39m
+[2025-11-28T13:40:23.981Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m16[39m
+[2025-11-28T13:40:24.004Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:24.816Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarBoldButton svg[data-name='bold']
+[2025-11-28T13:40:24.837Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBoldButton svg[data-name='bold'] [33m0[39m
+[2025-11-28T13:40:25.030Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarItalicButton svg[data-name='italic']
+[2025-11-28T13:40:25.042Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarItalicButton svg[data-name='italic'] [33m0[39m
+[2025-11-28T13:40:25.210Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m9[39m
+[2025-11-28T13:40:25.229Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:25.812Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarBoldButton svg[data-name='bold']
+[2025-11-28T13:40:25.826Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBoldButton svg[data-name='bold'] [33m0[39m
+[2025-11-28T13:40:25.998Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m4[39m
+[2025-11-28T13:40:26.019Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:26.433Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarBoldButton svg[data-name='bold']
+[2025-11-28T13:40:26.443Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarBoldButton svg[data-name='bold'] [33m0[39m
+[2025-11-28T13:40:26.618Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m10[39m
+[2025-11-28T13:40:26.635Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:27.238Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarItalicButton svg[data-name='italic']
+[2025-11-28T13:40:27.252Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarItalicButton svg[data-name='italic'] [33m0[39m
+[2025-11-28T13:40:27.405Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m9[39m
+[2025-11-28T13:40:27.424Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:27.960Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m7[39m
+[2025-11-28T13:40:27.979Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:28.489Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarItalicButton svg[data-name='italic']
+[2025-11-28T13:40:28.505Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarItalicButton svg[data-name='italic'] [33m0[39m
+[2025-11-28T13:40:28.658Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m12[39m
+[2025-11-28T13:40:28.681Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:29.337Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer toolbarNumberedList svg[data-name='numberList']
+[2025-11-28T13:40:29.351Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer toolbarNumberedList svg[data-name='numberList'] [33m0[39m
+[2025-11-28T13:40:29.522Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Inserting reply text (%d chars) [33m59[39m
+[2025-11-28T13:40:29.543Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T13:40:31.623Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking composer Send button
+[2025-11-28T13:40:31.653Z] [DEBUG] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T13:40:31.671Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T13:40:31.887Z] [INFO] [selectors run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Asserting timeline contains text "%s" (entries=%d) [AUTOTEST] formatted reply with lists [33m220[39m
+[2025-11-28T13:40:32.807Z] [INFO] [auth.fixture run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Holding browser open for %dms after test "%s" [33m600000[39m demo-composer-formatting
+
+[[ATTACHMENT|artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-demo-composer-fo-19cbb-ge-demo-composer-formatting-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-28T13:41:32.976Z] [WARN] [auth.fixture run=0e495ea0-3e72-426b-80f8-965a9b7b64eb] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

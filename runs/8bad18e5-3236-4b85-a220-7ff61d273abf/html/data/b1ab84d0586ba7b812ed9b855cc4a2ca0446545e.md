@@ -1,0 +1,209 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - generic [ref=e6]:
+    - navigation [ref=e7]:
+      - generic [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /agent/conversations
+        - link "NaN conversations in your inbox" [ref=e10] [cursor=pointer]:
+          - /url: /agent/conversations
+          - img [ref=e11]
+        - link "Users" [ref=e15] [cursor=pointer]:
+          - /url: /agent/users
+          - img [ref=e16]
+        - link "Organizations" [ref=e20] [cursor=pointer]:
+          - /url: /agent/organizations
+          - img [ref=e21]
+        - link "Insights" [ref=e27] [cursor=pointer]:
+          - /url: /agent/insights
+          - img [ref=e28]
+        - link "Knowledge Base Manager" [ref=e32] [cursor=pointer]:
+          - /url: /agent/knowledgebase
+          - img [ref=e33]
+        - link "Helpcenter" [ref=e36] [cursor=pointer]:
+          - /url: /
+          - img [ref=e37]
+      - link "Administration" [ref=e42] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=e43]
+    - generic [ref=e47]:
+      - banner [ref=e48]:
+        - button "New" [ref=e50] [cursor=pointer]:
+          - generic [ref=e52]:
+            - img [ref=e53]
+            - generic [ref=e55]: New
+        - generic [ref=e56]:
+          - generic [ref=e58]:
+            - strong [ref=e59]: 27 days
+            - text: left in trial.
+          - img [ref=e62] [cursor=pointer]
+          - button [ref=e65]:
+            - img [ref=e67] [cursor=pointer]
+          - button [ref=e69] [cursor=pointer]
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]
+            - link "Home" [ref=e77] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=e78]:
+                - img [ref=e80]
+                - text: Home
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: Channels
+            - link "Email" [active] [ref=e92] [cursor=pointer]:
+              - /url: /admin/channels/email
+            - link "Facebook" [ref=e93] [cursor=pointer]:
+              - /url: /admin/channels/facebook
+            - link "X" [ref=e94] [cursor=pointer]:
+              - /url: /admin/channels/twitter
+          - generic [ref=e95]:
+            - paragraph [ref=e96]: Messenger
+            - link "Configure" [ref=e97] [cursor=pointer]:
+              - /url: /admin/messenger/configure
+            - link "Engagement rules" [ref=e98] [cursor=pointer]:
+              - /url: /admin/messenger/engagements
+            - link "Identity verification" [ref=e99] [cursor=pointer]:
+              - /url: /admin/messenger/identity-verification
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: Conversations
+            - link "Views" [ref=e102] [cursor=pointer]:
+              - /url: /admin/conversations/views
+            - link "Forms" [ref=e103] [cursor=pointer]:
+              - /url: /admin/conversations/forms
+            - link "Time tracking" [ref=e104] [cursor=pointer]:
+              - /url: /admin/conversations/time-tracking
+          - generic [ref=e105]:
+            - paragraph [ref=e106]: Customizations
+            - link "Brands" [ref=e107] [cursor=pointer]:
+              - /url: /admin/customizations/brands
+            - link "Email templates" [ref=e108] [cursor=pointer]:
+              - /url: /admin/customizations/email-templates
+            - link "Custom fields" [ref=e109] [cursor=pointer]:
+              - /url: /admin/customizations/conversation-fields
+            - link "Localization" [ref=e110] [cursor=pointer]:
+              - /url: /admin/customizations/localization
+            - link "Privacy Policy Links" [ref=e111] [cursor=pointer]:
+              - /url: /admin/customizations/privacy
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: Team settings
+            - link "Teams" [ref=e114] [cursor=pointer]:
+              - /url: /admin/team-settings/teams
+            - link "Agent directory" [ref=e115] [cursor=pointer]:
+              - /url: /admin/team-settings/agent-directory
+            - link "Business hours" [ref=e116] [cursor=pointer]:
+              - /url: /admin/team-settings/businesshours
+            - link "Roles and permissions" [ref=e117] [cursor=pointer]:
+              - /url: /admin/team-settings/roles
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Automation
+            - link "Macros" [ref=e120] [cursor=pointer]:
+              - /url: /admin/automation/macros
+            - link "Triggers" [ref=e121] [cursor=pointer]:
+              - /url: /admin/automation/triggers
+            - link "Monitors" [ref=e122] [cursor=pointer]:
+              - /url: /admin/automation/monitors
+            - link "SLAs" [ref=e123] [cursor=pointer]:
+              - /url: /admin/automation/sla
+          - generic [ref=e124]:
+            - paragraph [ref=e125]: Integrations
+            - link "Zapier" [ref=e126] [cursor=pointer]:
+              - /url: /admin/integrations/zapier
+            - link "Salesforce" [ref=e127] [cursor=pointer]:
+              - /url: /admin/integrations/salesforce
+            - link "Endpoints" [ref=e128] [cursor=pointer]:
+              - /url: /admin/integrations/endpoints
+            - link "Webhooks" [ref=e129] [cursor=pointer]:
+              - /url: /admin/integrations/webhooks
+            - link "API" [ref=e130] [cursor=pointer]:
+              - /url: /admin/integrations/api
+          - generic [ref=e131]:
+            - paragraph [ref=e132]: Security
+            - link "Authentication" [ref=e133] [cursor=pointer]:
+              - /url: /admin/security/authentication
+            - link "Security policies" [ref=e134] [cursor=pointer]:
+              - /url: /admin/security/policy/help-center
+            - link "User registration" [ref=e135] [cursor=pointer]:
+              - /url: /admin/security/settings
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - heading "Triggers / New" [level=3] [ref=e142]
+            - generic [ref=e144]:
+              - button "Cancel" [ref=e145] [cursor=pointer]:
+                - generic [ref=e146]: Cancel
+              - button "Save" [ref=e147] [cursor=pointer]:
+                - generic [ref=e148]: Save
+          - generic [ref=e150]:
+            - generic [ref=e151]: Rule details
+            - generic [ref=e153]:
+              - paragraph [ref=e154]: Rule title
+              - textbox "e.g. Notify assignee of update" [ref=e155]: "[AUTOTEST] MCP Trigger"
+          - generic [ref=e156]:
+            - generic [ref=e157]: Rule settings
+            - generic [ref=e159]:
+              - paragraph [ref=e160]: Trigger this rule for conversation updates made via
+              - button "Any " [ref=e164] [cursor=pointer]:
+                - generic [ref=e165]:
+                  - generic [ref=e166]: Any
+                  - generic [ref=e167]: 
+              - paragraph [ref=e169]: Conversation updates can be triggered by events over a specific channel. If you restrict your rule to a specific channel or event, you’ll be able to build rules using advanced channel-specific criteria.
+          - generic [ref=e170]:
+            - heading "When these conditions are met" [level=5] [ref=e171]
+            - paragraph [ref=e172]:
+              - text: Rules are used to automatically perform actions when certain conditions are met. If the rule’s conditions match, the rule will fire and the actions further down in the page will be executed.
+              - link "Find out about trigger rules" [ref=e173] [cursor=pointer]:
+                - /url: https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1
+              - text: .
+            - generic [ref=e174]:
+              - generic [ref=e175]:
+                - button "Select a condition " [ref=e180] [cursor=pointer]:
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: Select a condition
+                    - generic [ref=e183]: 
+                - generic [ref=e184] [cursor=pointer]: + Add a new condition
+              - generic [ref=e185] [cursor=pointer]: +And
+          - generic [ref=e186]:
+            - heading "Perform the following actions" [level=5] [ref=e187]
+            - paragraph [ref=e188]: If the conditions match, the rule will fire and the actions will be executed. Note that any conversation update actions, such as changing the priority of a conversation, will take place before any notifications are sent out.
+            - generic [ref=e189]:
+              - article [ref=e190]:
+                - button "Select an action " [ref=e193] [cursor=pointer]:
+                  - generic [ref=e194]:
+                    - generic [ref=e195]: Select an action
+                    - generic [ref=e196]: 
+              - generic [ref=e197] [cursor=pointer]: + Add a new action
+          - generic [ref=e200]:
+            - button "Cancel" [ref=e201] [cursor=pointer]:
+              - generic [ref=e202]: Cancel
+            - button "Save" [ref=e203] [cursor=pointer]:
+              - generic [ref=e204]: Save
+```

@@ -1,0 +1,29 @@
+name: settings-create-trigger
+description: Create a simple trigger that fires when status is New and changes status (UI-only smoke)
+steps:
+  # Open the New Trigger form directly in the admin console
+  - type: goto
+    url: env.KAYAKO_BASE_URL/admin/automation/triggers/new
+
+  # Fill rule title
+  - type: expect-visible
+    selectorKey: settings.triggerTitleInput
+  - type: fill
+    selectorKey: settings.triggerTitleInput
+    value: "[AUTOTEST] MCP Trigger"
+
+  # Condition: Conversations: Status equal to New
+  - type: set-trigger-condition-status
+    value: "New"
+
+  # Action: Conversation status change to Pending
+  - type: set-trigger-action-status
+    value: "Pending"
+
+  # Save and return to Triggers list
+  - type: click
+    selectorKey: settings.saveTriggerButton
+  - type: expect-url-contains
+    value: "/admin/automation/triggers"
+
+

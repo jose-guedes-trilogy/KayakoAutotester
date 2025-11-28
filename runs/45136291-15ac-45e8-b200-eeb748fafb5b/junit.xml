@@ -1,0 +1,98 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="81.164632">
+<testsuite name="generated\ticket-create.spec.ts" timestamp="2025-11-28T15:35:29.530Z" hostname="chromium" tests="1" failures="1" skipped="0" time="79.378" errors="0">
+<testcase name="Create a brand new ticket via New → Conversation and send a first public reply › ticket-create" classname="generated\ticket-create.spec.ts" time="79.378">
+<failure message="ticket-create.spec.ts:14:9 ticket-create" type="FAILURE">
+<![CDATA[  [chromium] › generated\ticket-create.spec.ts:14:9 › Create a brand new ticket via New → Conversation and send a first public reply › ticket-create 
+
+    Error: Expected timeline to contain text: [AUTOTEST] Initial message body
+
+    expect(received).toBeTruthy()
+
+    Received: false
+
+       at ..\selectors\index.ts:609
+
+      607 |     }
+      608 |   }
+    > 609 |   expect(found, `Expected timeline to contain text: ${needle}`).toBeTruthy();
+          |                                                                 ^
+      610 | }
+      611 |
+      612 | // Apply the "Send to Customer" macro via the macro selector
+        at expectTimelineContainsText (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\selectors\index.ts:609:65)
+        at createNewTicket (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\selectors\index.ts:1998:5)
+        at runFlow (C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\ticket-create.spec.ts:9:5)
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\tests\generated\ticket-create.spec.ts:15:7
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\45136291-15ac-45e8-b200-eeb748fafb5b\artifacts\generated-ticket-create-Cr-96bdb--public-reply-ticket-create-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\45136291-15ac-45e8-b200-eeb748fafb5b\artifacts\generated-ticket-create-Cr-96bdb--public-reply-ticket-create-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-28T15:35:31.242Z] [INFO] [auth.fixture run=45136291-15ac-45e8-b200-eeb748fafb5b] Starting login flow for authenticatedPage
+[2025-11-28T15:35:31.250Z] [INFO] [LoginPage run=45136291-15ac-45e8-b200-eeb748fafb5b] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-28T15:35:32.817Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Loaded selectors.jsonc (mtime %d) [33m1764343949518.818[39m
+[2025-11-28T15:35:32.868Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-28T15:35:32.900Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-28T15:35:33.055Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-28T15:35:33.069Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-28T15:35:33.222Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-28T15:35:33.237Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-28T15:35:36.945Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']
+[2025-11-28T15:35:36.964Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] [33m0[39m
+[2025-11-28T15:35:36.974Z] [INFO] [auth.fixture run=45136291-15ac-45e8-b200-eeb748fafb5b] Login successful
+[2025-11-28T15:35:36.985Z] [INFO] [auth.fixture run=45136291-15ac-45e8-b200-eeb748fafb5b] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-28T15:35:36.987Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Creating new ticket (mode=%s) reply
+[2025-11-28T15:35:36.987Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Opening New → Conversation ticket
+[2025-11-28T15:35:37.019Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']
+[2025-11-28T15:35:37.039Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] [33m0[39m
+[2025-11-28T15:35:37.225Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')
+[2025-11-28T15:35:37.243Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') [33m0[39m
+[2025-11-28T15:35:38.715Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T15:35:38.729Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T15:35:38.736Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling new ticket requester email: %s jose.guedes.translation@gmail.com
+[2025-11-28T15:35:38.757Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T15:35:38.767Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T15:35:39.002Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling new ticket subject: %s [AUTOTEST] New ticket for completion/deletion flows
+[2025-11-28T15:35:46.996Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']
+[2025-11-28T15:35:47.014Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] [33m0[39m
+[2025-11-28T15:35:47.144Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Switching composer to Reply mode
+[2025-11-28T15:35:47.150Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T15:35:47.176Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T15:35:47.344Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Inserting reply text (%d chars) [33m31[39m
+[2025-11-28T15:35:47.384Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T15:35:48.486Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Clicking composer Send button
+[2025-11-28T15:35:48.512Z] [DEBUG] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T15:35:48.523Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T15:35:50.158Z] [INFO] [selectors run=45136291-15ac-45e8-b200-eeb748fafb5b] Asserting timeline contains text "%s" (entries=%d) [AUTOTEST] Initial message body [33m3[39m
+[2025-11-28T15:35:50.323Z] [INFO] [auth.fixture run=45136291-15ac-45e8-b200-eeb748fafb5b] Holding browser open for %dms after test "%s" [33m600000[39m ticket-create
+
+[[ATTACHMENT|artifacts\generated-ticket-create-Cr-96bdb--public-reply-ticket-create-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\generated-ticket-create-Cr-96bdb--public-reply-ticket-create-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-28T15:36:50.303Z] [WARN] [auth.fixture run=45136291-15ac-45e8-b200-eeb748fafb5b] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

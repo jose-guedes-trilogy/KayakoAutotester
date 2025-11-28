@@ -1,0 +1,120 @@
+name: ticket-properties-complete
+description: Create a brand new ticket and fill all ticket properties (status, tags, and custom fields), then verify them
+steps:
+  # 1) Create a fresh ticket via New → Conversation
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] Ticket full properties"
+    body: "[AUTOTEST] Ticket full properties body"
+    mode: "reply"
+
+  # 2) Prepare core status (do not persist yet)
+  - type: set-status
+    value: "Open"
+
+  # 3) Core properties: Priority, Type, Tags, Form
+  # Priority (dropdown) – rely on env.DEFAULT_PRIORITY or first non-placeholder option if not set
+  - type: set-custom-field
+    fieldType: dropdown
+    label: "Priority"
+    value: env.DEFAULT_PRIORITY
+
+  # Type (dropdown) – pick first non-placeholder option if no explicit value
+  - type: set-custom-field
+    fieldType: dropdown
+    label: "Type"
+
+  # Form (dropdown) – usually "Default"
+  - type: set-custom-field
+    fieldType: dropdown
+    label: "Form"
+
+  # Tags – add a distinctive autotest tag
+  - type: add-tags
+    values:
+      - "autotest-props"
+  - type: assert-tags-contain
+    values:
+      - "autotest-props"
+
+  # 4) Custom fields: yes/no, cascading, date, radio, text, multiline, regex, integer, decimal, checkboxes
+  # Yes/No toggle -> Yes
+  - type: set-custom-field
+    fieldType: yesno
+    label: "Yes/no toggle"
+    value: true
+
+  # Cascading select -> Category-A / Subcategory-A / Item-1
+  - type: set-custom-field
+    fieldType: cascading
+    label: "Cascading select"
+    path:
+      - "Category-A"
+      - "Subcategory-A"
+      - "Item-1"
+
+  # Date of purchase -> specific ISO date
+  - type: set-custom-field
+    fieldType: date
+    label: "Date of purchase"
+    value: "2025-04-05"
+
+  # Radio (dropdown-like) -> pick first available option if unspecified
+  - type: set-custom-field
+    fieldType: radio
+    label: "Radio"
+
+  # Text
+  - type: set-custom-field
+    fieldType: text
+    label: "Text"
+    value: "Sample single-line text"
+
+  # Multiline
+  - type: set-custom-field
+    fieldType: textarea
+    label: "Multiline text"
+    value: "Line 1\nLine 2\nLine 3"
+
+  # Regex (treat as text)
+  - type: set-custom-field
+    fieldType: regex
+    label: "Regex"
+    value: "ABC-123"
+
+  # Integers
+  - type: set-custom-field
+    fieldType: integer
+    label: "Integers"
+    value: 42
+
+  # Decimals
+  - type: set-custom-field
+    fieldType: decimal
+    label: "Decimals"
+    value: 123.45
+
+  # Checkboxes
+  - type: set-custom-field
+    fieldType: checkbox
+    label: "Checkboxes"
+    value:
+      - "Option-A-Title"
+      - "Option-B-Title"
+
+  # 5) Assign to me via the footer \"Assign to me\" helper (team order: General, then VIP)
+  - type: switch-assignee-and-save
+    order:
+      - "General"
+      - "VIP Account Team"
+
+  # 6) Persist all property changes via Update properties, then verify and pause briefly
+  - type: click
+    selectorKey: assign.updatePropertiesButton
+  - type: assert-status
+    value: "Open"
+  # Brief wait for manual visual inspection or MCP verification if needed
+  - type: wait
+    value: "2000"
+
+

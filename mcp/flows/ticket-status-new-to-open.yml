@@ -1,0 +1,16 @@
+name: ticket-status-new-to-open
+description: Create a new ticket and change its status from New to Open via the Status field
+steps:
+  - type: create-ticket
+    email: env.KAYAKO_USERNAME
+    subject: "[AUTOTEST] Ticket New→Open"
+    body: "[AUTOTEST] Ticket New to Open body"
+    mode: "reply"
+  - type: set-status
+    value: "Open"
+  - type: click
+    selectorKey: assign.updatePropertiesButton
+  - type: assert-status
+    value: "Open"
+
+

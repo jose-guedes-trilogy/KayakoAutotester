@@ -1,6 +1,7 @@
 name: open-tab-by-subject
 description: Activate an open tab by its subject text (env.KAYAKO_SUBJECT)
 steps:
+  - type: access-conversation
   - type: dispatch-click-text
     value: env.KAYAKO_SUBJECT
   - type: expect-visible

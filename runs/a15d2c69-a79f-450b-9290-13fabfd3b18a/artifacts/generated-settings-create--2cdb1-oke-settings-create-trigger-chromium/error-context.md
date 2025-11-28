@@ -1,0 +1,230 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - iframe [ref=e3]:
+    - generic [ref=f1e3]:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic:
+                    - generic:
+                      - heading "Online with Kayako" [level=1]
+                      - heading "Welcome to Kayako! Let's Chat... start your new conversation below. (For technical support, please visit support.kayako.com)" [level=3]
+                    - generic:
+                      - img
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - textbox "Type something..."
+                    - button
+                  - generic:
+                    - generic:
+                      - img
+      - img [ref=f1e5] [cursor=pointer]
+  - listbox [ref=e5]:
+    - option "Open" [ref=e6] [cursor=pointer]
+    - option "Pending" [selected] [ref=e7] [cursor=pointer]
+    - option "Completed" [ref=e8] [cursor=pointer]
+    - option "Closed" [ref=e9] [cursor=pointer]
+  - generic [ref=e12]:
+    - navigation [ref=e13]:
+      - generic [ref=e14]:
+        - link "Home" [ref=e15] [cursor=pointer]:
+          - /url: /agent/conversations
+        - link "NaN conversations in your inbox" [ref=e16] [cursor=pointer]:
+          - /url: /agent/conversations
+          - img [ref=e17]
+        - link "Users" [ref=e21] [cursor=pointer]:
+          - /url: /agent/users
+          - img [ref=e22]
+        - link "Organizations" [ref=e26] [cursor=pointer]:
+          - /url: /agent/organizations
+          - img [ref=e27]
+        - link "Insights" [ref=e33] [cursor=pointer]:
+          - /url: /agent/insights
+          - img [ref=e34]
+        - link "Knowledge Base Manager" [ref=e38] [cursor=pointer]:
+          - /url: /agent/knowledgebase
+          - img [ref=e39]
+        - link "Helpcenter" [ref=e42] [cursor=pointer]:
+          - /url: /
+          - img [ref=e43]
+      - link "Administration" [ref=e48] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=e49]
+    - generic [ref=e53]:
+      - banner [ref=e54]:
+        - button "New" [ref=e56] [cursor=pointer]:
+          - generic [ref=e58]:
+            - img [ref=e59]
+            - generic [ref=e61]: New
+        - generic [ref=e62]:
+          - generic [ref=e64]:
+            - strong [ref=e65]: 27 days
+            - text: left in trial.
+          - img [ref=e68] [cursor=pointer]
+          - button [ref=e71]:
+            - img [ref=e73] [cursor=pointer]
+          - button [ref=e75] [cursor=pointer]
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - paragraph [ref=e82]
+            - link "Home" [ref=e83] [cursor=pointer]:
+              - /url: /admin
+              - generic [ref=e84]:
+                - img [ref=e86]
+                - text: Home
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Channels
+            - link "Email" [ref=e98] [cursor=pointer]:
+              - /url: /admin/channels/email
+            - link "Facebook" [ref=e99] [cursor=pointer]:
+              - /url: /admin/channels/facebook
+            - link "X" [ref=e100] [cursor=pointer]:
+              - /url: /admin/channels/twitter
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: Messenger
+            - link "Configure" [ref=e103] [cursor=pointer]:
+              - /url: /admin/messenger/configure
+            - link "Engagement rules" [ref=e104] [cursor=pointer]:
+              - /url: /admin/messenger/engagements
+            - link "Identity verification" [ref=e105] [cursor=pointer]:
+              - /url: /admin/messenger/identity-verification
+          - generic [ref=e106]:
+            - paragraph [ref=e107]: Conversations
+            - link "Views" [ref=e108] [cursor=pointer]:
+              - /url: /admin/conversations/views
+            - link "Forms" [ref=e109] [cursor=pointer]:
+              - /url: /admin/conversations/forms
+            - link "Time tracking" [ref=e110] [cursor=pointer]:
+              - /url: /admin/conversations/time-tracking
+          - generic [ref=e111]:
+            - paragraph [ref=e112]: Customizations
+            - link "Brands" [ref=e113] [cursor=pointer]:
+              - /url: /admin/customizations/brands
+            - link "Email templates" [ref=e114] [cursor=pointer]:
+              - /url: /admin/customizations/email-templates
+            - link "Custom fields" [ref=e115] [cursor=pointer]:
+              - /url: /admin/customizations/conversation-fields
+            - link "Localization" [ref=e116] [cursor=pointer]:
+              - /url: /admin/customizations/localization
+            - link "Privacy Policy Links" [ref=e117] [cursor=pointer]:
+              - /url: /admin/customizations/privacy
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Team settings
+            - link "Teams" [ref=e120] [cursor=pointer]:
+              - /url: /admin/team-settings/teams
+            - link "Agent directory" [ref=e121] [cursor=pointer]:
+              - /url: /admin/team-settings/agent-directory
+            - link "Business hours" [ref=e122] [cursor=pointer]:
+              - /url: /admin/team-settings/businesshours
+            - link "Roles and permissions" [ref=e123] [cursor=pointer]:
+              - /url: /admin/team-settings/roles
+          - generic [ref=e124]:
+            - paragraph [ref=e125]: Automation
+            - link "Macros" [ref=e126] [cursor=pointer]:
+              - /url: /admin/automation/macros
+            - link "Triggers" [ref=e127] [cursor=pointer]:
+              - /url: /admin/automation/triggers
+            - link "Monitors" [ref=e128] [cursor=pointer]:
+              - /url: /admin/automation/monitors
+            - link "SLAs" [ref=e129] [cursor=pointer]:
+              - /url: /admin/automation/sla
+          - generic [ref=e130]:
+            - paragraph [ref=e131]: Integrations
+            - link "Zapier" [ref=e132] [cursor=pointer]:
+              - /url: /admin/integrations/zapier
+            - link "Salesforce" [ref=e133] [cursor=pointer]:
+              - /url: /admin/integrations/salesforce
+            - link "Endpoints" [ref=e134] [cursor=pointer]:
+              - /url: /admin/integrations/endpoints
+            - link "Webhooks" [ref=e135] [cursor=pointer]:
+              - /url: /admin/integrations/webhooks
+            - link "API" [ref=e136] [cursor=pointer]:
+              - /url: /admin/integrations/api
+          - generic [ref=e137]:
+            - paragraph [ref=e138]: Security
+            - link "Authentication" [ref=e139] [cursor=pointer]:
+              - /url: /admin/security/authentication
+            - link "Security policies" [ref=e140] [cursor=pointer]:
+              - /url: /admin/security/policy/help-center
+            - link "User registration" [ref=e141] [cursor=pointer]:
+              - /url: /admin/security/settings
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - heading "Triggers / New" [level=3] [ref=e148]
+            - generic [ref=e150]:
+              - button "Cancel" [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]: Cancel
+              - button "Save" [ref=e153] [cursor=pointer]:
+                - generic [ref=e154]: Save
+          - generic [ref=e156]:
+            - generic [ref=e157]: Rule details
+            - generic [ref=e159]:
+              - paragraph [ref=e160]: Rule title
+              - textbox "e.g. Notify assignee of update" [ref=e161]: "[AUTOTEST] MCP Trigger"
+          - generic [ref=e162]:
+            - generic [ref=e163]: Rule settings
+            - generic [ref=e165]:
+              - paragraph [ref=e166]: Trigger this rule for conversation updates made via
+              - button "Any " [ref=e170] [cursor=pointer]:
+                - generic [ref=e171]:
+                  - generic [ref=e172]: Any
+                  - generic [ref=e173]: 
+              - paragraph [ref=e175]: Conversation updates can be triggered by events over a specific channel. If you restrict your rule to a specific channel or event, you’ll be able to build rules using advanced channel-specific criteria.
+          - generic [ref=e176]:
+            - heading "When these conditions are met" [level=5] [ref=e177]
+            - paragraph [ref=e178]:
+              - text: Rules are used to automatically perform actions when certain conditions are met. If the rule’s conditions match, the rule will fire and the actions further down in the page will be executed.
+              - link "Find out about trigger rules" [ref=e179] [cursor=pointer]:
+                - /url: https://support.kayako.com/article/1159-creating-automations-with-triggers-and-monitors?utm_source=app&utm_campaign=in-product-help&utm_medium=adminarea&utm_content=triggers1
+              - text: .
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - generic [ref=e183]:
+                  - 'button "Conversations: Status " [ref=e186] [cursor=pointer]':
+                    - generic [ref=e187]:
+                      - generic [ref=e188]: "Conversations: Status"
+                      - generic [ref=e189]: 
+                  - button "equal to " [ref=e192] [cursor=pointer]:
+                    - generic [ref=e193]:
+                      - generic [ref=e194]: equal to
+                      - generic [ref=e195]: 
+                  - button "" [ref=e198] [cursor=pointer]:
+                    - generic [ref=e200]: 
+                - generic [ref=e201] [cursor=pointer]: + Add a new condition
+              - generic [ref=e202] [cursor=pointer]: +And
+            - paragraph [ref=e204]: The value of the field is invalid
+          - generic [ref=e205]:
+            - heading "Perform the following actions" [level=5] [ref=e206]
+            - paragraph [ref=e207]: If the conditions match, the rule will fire and the actions will be executed. Note that any conversation update actions, such as changing the priority of a conversation, will take place before any notifications are sent out.
+            - generic [ref=e208]:
+              - article [ref=e209]:
+                - 'button "Conversation: Status " [ref=e212] [cursor=pointer]':
+                  - generic [ref=e213]:
+                    - generic [ref=e214]: "Conversation: Status"
+                    - generic [ref=e215]: 
+                - button "change " [ref=e218] [cursor=pointer]:
+                  - generic [ref=e219]:
+                    - generic [ref=e220]: change
+                    - generic [ref=e221]: 
+                - button "Pending  Pending" [expanded] [active] [ref=e224] [cursor=pointer]:
+                  - generic [ref=e225]:
+                    - generic [ref=e226]: Pending
+                    - generic [ref=e227]: 
+              - generic [ref=e228] [cursor=pointer]: + Add a new action
+          - generic [ref=e231]:
+            - button "Cancel" [ref=e232] [cursor=pointer]:
+              - generic [ref=e233]: Cancel
+            - button "Save" [ref=e234] [cursor=pointer]:
+              - generic [ref=e235]: Save
+```

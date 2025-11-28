@@ -1,0 +1,108 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="82.767158">
+<testsuite name="runtime\queue-runner.spec.ts" timestamp="2025-11-28T18:02:15.519Z" hostname="chromium" tests="1" failures="1" skipped="0" time="80.924" errors="0">
+<testcase name="Queued flows › run queued flows serially" classname="runtime\queue-runner.spec.ts" time="80.924">
+<failure message="queue-runner.spec.ts:7:7 run queued flows serially" type="FAILURE">
+<![CDATA[  [chromium] › runtime\queue-runner.spec.ts:7:7 › Queued flows › run queued flows serially ─────────
+
+    Test timeout of 60000ms exceeded while running "afterEach" hook.
+
+       at ..\fixtures\auth.fixture.ts:37
+
+      35 | // Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+      36 | // Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+    > 37 | test.afterEach(async ({ authenticatedPage }, testInfo) => {
+         |      ^
+      38 |   const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+      39 |   const ms = raw ? parseInt(raw, 10) : 0;
+      40 |   if (!ms || Number.isNaN(ms) || ms <= 0) {
+        at C:\Users\Zé\Documents\Trilogy\Kayako Autotester\fixtures\auth.fixture.ts:37:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\runs\ecd82df2-8309-4241-9d92-d91e6007f61d\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\runs\ecd82df2-8309-4241-9d92-d91e6007f61d\artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[[2025-11-28T18:02:17.382Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Starting login flow for authenticatedPage
+[2025-11-28T18:02:17.392Z] [INFO] [LoginPage run=ecd82df2-8309-4241-9d92-d91e6007f61d] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-28T18:02:20.257Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Loaded selectors.jsonc (mtime %d) [33m1764343949518.818[39m
+[2025-11-28T18:02:20.613Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-28T18:02:20.632Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-28T18:02:20.784Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-28T18:02:20.804Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-28T18:02:20.953Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-28T18:02:20.966Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-28T18:02:25.166Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']
+[2025-11-28T18:02:25.190Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] [33m0[39m
+[2025-11-28T18:02:25.199Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Login successful
+[2025-11-28T18:02:25.212Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-28T18:02:25.218Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Creating new ticket (mode=%s) reply
+[2025-11-28T18:02:25.218Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Opening New → Conversation ticket
+[2025-11-28T18:02:25.258Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']
+[2025-11-28T18:02:25.286Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] [33m0[39m
+[2025-11-28T18:02:25.491Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')
+[2025-11-28T18:02:25.507Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') [33m0[39m
+[2025-11-28T18:02:26.163Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T18:02:26.179Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T18:02:26.184Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket requester email: %s jose.guedes.translation@gmail.com
+[2025-11-28T18:02:26.206Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T18:02:26.223Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T18:02:26.820Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket subject: %s [AUTOTEST] New ticket for completion/deletion flows
+[2025-11-28T18:02:26.870Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']
+[2025-11-28T18:02:26.971Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] [33m0[39m
+[2025-11-28T18:02:27.114Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Switching composer to Reply mode
+[2025-11-28T18:02:27.118Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T18:02:27.146Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T18:02:27.331Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Inserting reply text (%d chars) [33m31[39m
+[2025-11-28T18:02:27.361Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T18:02:28.455Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking composer Send button
+[2025-11-28T18:02:28.493Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T18:02:28.507Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T18:02:32.186Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Waiting for timeline to contain text "%s" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Initial message body [33m15000[39m [33m500[39m
+[2025-11-28T18:02:32.370Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Initial message body [33m3[39m [33m184[39m
+[2025-11-28T18:02:32.948Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Initial message body [33m18[39m [33m762[39m
+[2025-11-28T18:02:32.961Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Creating new ticket (mode=%s) reply
+[2025-11-28T18:02:32.961Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Opening New → Conversation ticket
+[2025-11-28T18:02:32.989Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']
+[2025-11-28T18:02:33.005Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] [33m0[39m
+[2025-11-28T18:02:33.168Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')
+[2025-11-28T18:02:33.188Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') [33m0[39m
+[2025-11-28T18:02:33.562Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T18:02:33.583Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T18:02:33.592Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket requester email: %s jose.guedes.translation@gmail.com
+[2025-11-28T18:02:33.617Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']
+[2025-11-28T18:02:33.638Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] [33m0[39m
+[2025-11-28T18:02:34.267Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling new ticket subject: %s [AUTOTEST] Ticket to trash
+[2025-11-28T18:02:34.294Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']
+[2025-11-28T18:02:34.307Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] [33m0[39m
+[2025-11-28T18:02:34.437Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Switching composer to Reply mode
+[2025-11-28T18:02:34.441Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle [33m1[39m
+[2025-11-28T18:02:34.464Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']
+[2025-11-28T18:02:34.637Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Inserting reply text (%d chars) [33m28[39m
+[2025-11-28T18:02:34.657Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view
+[2025-11-28T18:02:35.626Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking composer Send button
+[2025-11-28T18:02:35.650Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]
+[2025-11-28T18:02:35.663Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] [33m0[39m
+[2025-11-28T18:02:36.941Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Waiting for timeline to contain text "%s" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Ticket trash body [33m15000[39m [33m500[39m
+[2025-11-28T18:02:37.099Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Ticket trash body [33m3[39m [33m158[39m
+[2025-11-28T18:02:37.668Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Timeline scan iteration for "%s": entries=%d, elapsedMs=%d [AUTOTEST] Ticket trash body [33m18[39m [33m727[39m
+[2025-11-28T18:02:37.675Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Trashing conversation via header button
+[2025-11-28T18:02:37.695Z] [DEBUG] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Primary selector used for %s.%s: %s conversation trashCaseButton [class*='ko-case-content__trash_']
+[2025-11-28T18:02:37.708Z] [INFO] [selectors run=ecd82df2-8309-4241-9d92-d91e6007f61d] Clicking %s.%s (selector=%s, fallbackIndex=%d) conversation trashCaseButton [class*='ko-case-content__trash_'] [33m0[39m
+[2025-11-28T18:02:37.849Z] [INFO] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Holding browser open for %dms after test "%s" [33m600000[39m run queued flows serially
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\error-context.md]]
+]]>
+</system-out>
+<system-err>
+<![CDATA[[2025-11-28T18:03:38.047Z] [WARN] [auth.fixture run=ecd82df2-8309-4241-9d92-d91e6007f61d] Hold-open wait interrupted page.waitForTimeout: Test ended.
+    at [90mC:\Users\Zé\Documents\Trilogy\Kayako Autotester\[39mfixtures\auth.fixture.ts:45:29
+]]>
+</system-err>
+</testcase>
+</testsuite>
+</testsuites>

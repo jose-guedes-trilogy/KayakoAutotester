@@ -46,8 +46,25 @@
   "nav": {
     // Link to Conversations inbox
     "conversationsLink": [
-      "[class*='sidebar'] a[href*='conversations']",
-      "nav a:has-text('Conversations')"
+      "nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']",
+      "a[class*='session__left-navigation-item_'][href*='/agent/conversations']",
+      "a[class*='session__logo_'][href*='/agent/conversations']",
+      "a[href='/agent/conversations']"
+    ],
+    // Link to Users directory
+    "usersLink": [
+      "nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/users']",
+      "a[class*='session__left-navigation-item_'][href*='/agent/users']"
+    ],
+    // Link to Organizations directory
+    "organizationsLink": [
+      "nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/organizations']",
+      "a[class*='session__left-navigation-item_'][href*='/agent/organizations']"
+    ],
+    // Link to Administration / Settings
+    "adminLink": [
+      "nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href='/admin']",
+      "a[class*='session__left-navigation-item_'][href='/admin']"
     ]
   },
   // Conversations page readiness selectors
@@ -172,6 +189,66 @@
     // Active pagination button
     "paginationActiveItem": [
       "[class*='ko-pagination_item__container_'][class*='active'] [class*='ko-pagination_item__item_']"
+    ]
+  },
+  // Agent users list (user directory) selectors
+  "users": {
+    // Outer container for the users list page
+    "container": [
+      "[class*='ko-user-list__container_']"
+    ],
+    // Left-hand filter sidebar ("user attributes")
+    "sidebar": [
+      "[class*='ko-user-list__sidebar_']",
+      "[class*='ko-entity-list_sidebar__sidebar_']"
+    ],
+    // Heading text "user attributes"
+    "sidebarHeading": [
+      "[class*='ko-entity-list_sidebar__heading_']"
+    ],
+    // Match any / all logic operator trigger
+    "logicOperatorTrigger": [
+      "[class*='ko-entity-list_sidebar_collection-logic-operator__trigger_']"
+    ],
+    // UL that contains all attribute definitions
+    "definitionList": [
+      "[class*='ko-entity-list_sidebar__definitions_']"
+    ],
+    // Individual attribute definition list item
+    "definitionItem": [
+      "[class*='ko-entity-list_sidebar_definition__definition-item_']"
+    ],
+    // Checkbox wrapper for attribute rows
+    "definitionCheckboxWrap": [
+      "[class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkboxWrap_']"
+    ],
+    // The actual checkbox control in attribute rows
+    "definitionCheckbox": [
+      "[class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkbox_']"
+    ],
+    // Label text (Name, Organization, Email, etc.) for attribute rows
+    "definitionLabelText": [
+      "[class*='ko-entity-list_sidebar_definition__label-text_']"
+    ],
+    // Placeholder detail panel beneath the sidebar where condition controls render
+    "sidebarDetail": [
+      "[class*='ko-user-list__sidebar-detail_']"
+    ],
+    // Active text input inside an attribute filter (e.g., Name, Email, City)
+    "definitionTextInput": [
+      "[class*='ko-entity-list_sidebar_definition_operator__input_'] input[class*='ko-input__input_']"
+    ],
+    // Container for users results, including table and heading
+    "results": [
+      "[class*='ko-user-list__results_']"
+    ],
+    // Heading area "X total users"
+    "resultsHeading": [
+      "[class*='ko-user-list__heading_']"
+    ],
+    // First row in results table
+    "firstRow": [
+      "[class*='ko-user-list_results__row-styles_']"
     ]
   },
   // Open conversation view selectors
@@ -535,6 +612,17 @@
       "text=Pending"
     ]
   },
+  // Generic confirmation modals (e.g., trash conversation)
+  "modal": {
+    // Primary destructive action button in confirmation dialogs (e.g., Trash)
+    "trashConfirmButton": [
+      "div[class*='ko-modal__footer_'] button[class*='ko-button__primary_'][class*='ko-button__chrome_'] span:has-text('Trash')",
+      "div[class*='ko-modal__footer_'] button[class*='ko-button__primary_'][class*='ko-button__chrome_']:has-text('Trash')",
+      "role=button[name=/Trash/i]",
+      "button:has-text('Trash')",
+      "text=/^\\s*Trash\\s*$/i"
+    ]
+  },
   // Tags selectors
   "tags": {
     // Trigger to open the tags input/selection
@@ -786,6 +874,68 @@
     ],
     "name": [
       "div[class*='ko-identities_identity_trigger__name_']"
+    ]
+  },
+  // Administration / Settings area selectors (admin console)
+  "settings": {
+    // Link to Automation > Triggers in the admin area
+    "triggersLink": [
+      "a[href*='/admin/automation/triggers']"
+    ],
+    // Direct link to create a new trigger
+    "newTriggerLink": [
+      "a[href*='/admin/automation/triggers/new']"
+    ],
+    // Rule title input on the New Trigger form
+    "triggerTitleInput": [
+      "role=textbox[name='e.g. Notify assignee of update']",
+      "input[placeholder*='Notify assignee of update']"
+    ],
+    // Condition field dropdown trigger ("Select a condition")
+    "conditionFieldButton": [
+      "role=button[name=/Select a condition/]",
+      "button:has-text('Select a condition')"
+    ],
+    // Generic operator dropdown ("Select an operator") used for conditions and actions
+    "operatorButton": [
+      "role=button[name=/Select an operator/]",
+      "button:has-text('Select an operator')"
+    ],
+    // Generic status value dropdown ("Select a status") used for conditions and actions
+    "statusValueButton": [
+      "role=button[name=/Select a status/]"
+    ],
+    // Condition status value dropdown trigger (icon-only button after operator)
+    "conditionStatusValueButton": [
+      "[class*='ko-admin_predicate-builder_proposition__container_'] div[role='button'][data-ebd-id]:last-of-type"
+    ],
+    // Action field dropdown trigger ("Select an action")
+    "actionFieldButton": [
+      "role=button[name=/Select an action/]",
+      "button:has-text('Select an action')"
+    ],
+    // Primary Save button on the New Trigger form
+    "saveTriggerButton": [
+      "role=button[name='Save']"
+    ]
+  },
+  // New ticket creation (New → Conversation)
+  "newTicket": {
+    // "Conversation" option in the New dropdown (wormhole content)
+    "conversationItem": [
+      "#ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')",
+      "[class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')"
+    ],
+    // Requester email input on the new conversation page
+    "requesterInput": [
+      "input[placeholder*='Enter the email address of the requester']",
+      "input[class*='ko-instant-entity__search-add-user-input_']"
+    ],
+    // Subject input on the new conversation page
+    "subjectInput": [
+      "input[placeholder*='Click to set a subject']",
+      "input[class*='ko-editable-text__input--large_']",
+      "input[class*='ko-editable-text__input_']"
     ]
   },
   // Layout shell / session header controls shared across agent pages

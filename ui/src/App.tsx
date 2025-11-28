@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { api, stream } from './api';
 import './App.css';
 
@@ -10,6 +10,31 @@ type Run = {
   summary?: { total: number; passed: number; failed: number; skipped: number };
 };
 
+type PipelineStage = {
+  name: string;
+  status: string;
+  startedAt?: string;
+  endedAt?: string;
+  logs: string[];
+  details?: Record<string, unknown>;
+};
+
+type PipelineRecord = {
+  id: string;
+  status: string;
+  startedAt: string;
+  endedAt?: string;
+  crawlId: string;
+  captureId: string;
+  stages: PipelineStage[];
+};
+
+type SpecGroup = {
+  id: string;
+  label: string;
+  specs: string[];
+};
+
 type ReportingData = {
   crawls: Array<{ crawlId: string; totalNodes: number; successNodes: number; updatedAt?: string }>;
   structures: Array<{ crawlId: string; dir: string; fileCount: number; mtimeMs: number }>;
@@ -17,6 +42,7 @@ type ReportingData = {
   runsSummary: { total: number; running: number; passed: number; failed: number };
   specsCount: number;
   compositeSpecsCount?: number;
+  pipeline?: { pipelines: PipelineRecord[]; active?: PipelineRecord };
 };
 
 type TestDef = {
@@ -25,6 +51,126 @@ type TestDef = {
   description?: string;
   steps: any[];
 };
+
+type FlowCategory = 'individual' | 'composite' | 'test';
+
+const PRIMITIVE_ACTIONS: Array<{ id: string; label: string; description: string }> = [
+  {
+    id: 'goto',
+    label: 'Navigate to URL',
+    description: 'Open a Kayako page by absolute URL or env.* token (e.g., env.KAYAKO_AGENT_URL/users).',
+  },
+  {
+    id: 'access-conversation',
+    label: 'Access ticket',
+    description: 'Open the current ticket by env.KAYAKO_CONVERSATION_ID or the first ticket in the inbox.',
+  },
+  {
+    id: 'insert-reply-text',
+    label: 'Insert text into reply box',
+    description: 'Type the given text into the composer reply area.',
+  },
+  {
+    id: 'composer-toggle-bold',
+    label: 'Toggle bold formatting',
+    description: 'Click the Bold button in the reply toolbar (selectorKey composer.toolbarBoldButton).',
+  },
+  {
+    id: 'composer-toggle-italic',
+    label: 'Toggle italic formatting',
+    description: 'Click the Italic button in the reply toolbar (selectorKey composer.toolbarItalicButton).',
+  },
+  {
+    id: 'composer-toggle-bulleted-list',
+    label: 'Toggle bulleted list',
+    description: 'Click the Bulleted List button in the reply toolbar (selectorKey composer.toolbarBulletedList).',
+  },
+  {
+    id: 'composer-toggle-numbered-list',
+    label: 'Toggle numbered list',
+    description: 'Click the Numbered List button in the reply toolbar (selectorKey composer.toolbarNumberedList).',
+  },
+  {
+    id: 'switch-to-reply',
+    label: 'Switch to public reply mode',
+    description: 'Toggle the composer into Reply (public) mode.',
+  },
+  {
+    id: 'switch-to-internal-note',
+    label: 'Switch to internal note mode',
+    description: 'Toggle the composer into Notes (internal) mode.',
+  },
+  {
+    id: 'click-send-button',
+    label: 'Press Send',
+    description: 'Click the Send button in the composer.',
+  },
+  {
+    id: 'add-tags',
+    label: 'Add tags',
+    description: 'Open the Tags control, insert one or more tags, and commit them.',
+  },
+  {
+    id: 'set-status',
+    label: 'Set ticket status',
+    description: 'Open the Status dropdown and select a specific status (e.g., Open, Pending, Closed).',
+  },
+  {
+    id: 'set-custom-field',
+    label: 'Set right-side custom field',
+    description: 'Fill a Properties panel field by type (text, checkbox, dropdown, cascading, date, etc).',
+  },
+  {
+    id: 'apply-macro-send-to-customer',
+    label: 'Apply “Send to Customer” macro',
+    description: 'Open the Macro menu and apply the “Send to Customer” macro.',
+  },
+  {
+    id: 'dispatch-click',
+    label: 'Click by CSS (dispatch events)',
+    description: 'Find an element by selectorKey and fire low-level mouse events (for tricky Ember dropdowns).',
+  },
+  {
+    id: 'dispatch-click-text',
+    label: 'Click by exact text',
+    description: 'Find a visible element (or dropdown option) by text and click it via dispatch events.',
+  },
+  {
+    id: 'expect-visible',
+    label: 'Assert element is visible',
+    description: 'Wait until a selectorKey is visible on the page.',
+  },
+  {
+    id: 'wait',
+    label: 'Wait (ms)',
+    description: 'Pause the flow for a fixed number of milliseconds.',
+  },
+];
+
+const COMPOSITE_FLOW_NAMES = new Set<string>([
+  'add-internal-note',
+  'add-tags-and-status',
+  'apply-send-to-customer',
+  'assign-to-me',
+  'switch-assignee-and-save',
+  'change-brand-to-env',
+  'close-active-tab',
+  'open-first-conversation',
+  'open-tab-by-subject',
+  'search-by-subject',
+  'select-user-case-by-subject',
+  'users-open-directory',
+  'users-results-visible',
+  'users-toggle-first-attribute',
+]);
+
+const TEST_FLOW_NAMES = new Set<string>([
+  'login-and-open-inbox',
+  'demo-basic-capabilities',
+  'demo-custom-fields',
+  'demo-new-fields',
+  'settings-create-trigger',
+]);
 
 export default function App() {
   const [tests, setTests] = useState('');
@@ -43,11 +189,13 @@ export default function App() {
   const [flows, setFlows] = useState<Array<{ name: string; file: string; description?: string }>>([]);
   const [selectorGroups, setSelectorGroups] = useState<Array<{ group: string; items: Array<{ key: string; candidates: string[] }> }>>([]);
   const [specs, setSpecs] = useState<Array<{ name: string; file: string }>>([]);
+  const [specGroups, setSpecGroups] = useState<SpecGroup[]>([]);
   const [savedTests, setSavedTests] = useState<TestDef[]>([]);
   const [editingSel, setEditingSel] = useState<{ group: string; key: string } | null>(null);
   const [editingText, setEditingText] = useState<string>('');
   const [flowEditing, setFlowEditing] = useState<{ file: string; content: string } | null>(null);
   const [queueEditor, setQueueEditor] = useState<{ open: boolean; text: string }>({ open: false, text: '' });
+  const [selectedSpecGroup, setSelectedSpecGroup] = useState<string>('');
   const [builderId, setBuilderId] = useState('');
   const [builderName, setBuilderName] = useState('');
   const [builderDesc, setBuilderDesc] = useState('');
@@ -64,6 +212,30 @@ export default function App() {
   const [latestVideoUrl, setLatestVideoUrl] = useState<string | null>(null);
   const [reporting, setReporting] = useState<ReportingData | null>(null);
   const [reportLoading, setReportLoading] = useState(false);
+  const [startingPipeline, setStartingPipeline] = useState(false);
+  const [flowCategory, setFlowCategory] = useState<FlowCategory>('test');
+
+  // Flows filtered by selected Kayako page (spec group) – only meaningful for test flows
+  const visibleFlows = useMemo(() => {
+    if (!selectedSpecGroup) return flows;
+    const group = specGroups.find((g) => g.id === selectedSpecGroup);
+    if (!group || !group.specs || group.specs.length === 0) return flows;
+    const names = new Set(group.specs);
+    return flows.filter((f) => names.has(f.name));
+  }, [flows, specGroups, selectedSpecGroup]);
+
+  const filteredFlows = useMemo(() => {
+    if (flowCategory === 'composite') {
+      return flows.filter((f) => COMPOSITE_FLOW_NAMES.has(f.name));
+    }
+    if (flowCategory === 'test') {
+      // Prefer flows that already have generated specs, and fall back to known test-like flows.
+      const specNames = new Set(specs.map((s) => s.name));
+      return flows.filter((f) => (specNames.has(f.name) || TEST_FLOW_NAMES.has(f.name)) && !COMPOSITE_FLOW_NAMES.has(f.name));
+    }
+    // "individual" does not list YAML flows (it lists primitive actions instead)
+    return [];
+  }, [flowCategory, flows, specs]);
 
   const updateTestsField = (value: string | ((prev: string) => string)) => {
     setTests((prev) => {
@@ -112,8 +284,11 @@ export default function App() {
     api<{ groups: Array<{ group: string; items: Array<{ key: string; candidates: string[] }> }> }>('/api/selectors')
       .then((d) => setSelectorGroups(d.groups || []))
       .catch(() => {});
-    api<{ specs: Array<{ name: string; file: string }> }>('/api/specs')
-      .then((d) => setSpecs(d.specs || []))
+    api<{ specs: Array<{ name: string; file: string }>; specGroups?: SpecGroup[] }>('/api/specs')
+      .then((d) => {
+        setSpecs(d.specs || []);
+        setSpecGroups(d.specGroups || []);
+      })
       .catch(() => {});
     api<{ tests: TestDef[] }>('/api/tests')
       .then((d) => setSavedTests(d.tests || []))
@@ -121,6 +296,7 @@ export default function App() {
     void refreshReporting();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   async function refreshReporting() {
     setReportLoading(true);
     try {
@@ -130,6 +306,18 @@ export default function App() {
       setReporting(null);
     } finally {
       setReportLoading(false);
+    }
+  }
+
+  async function startPipelineRun() {
+    setStartingPipeline(true);
+    try {
+      await api('/api/pipeline/start', { method: 'POST', body: JSON.stringify({}) });
+      await refreshReporting();
+    } catch (e) {
+      appendLog(`[pipeline] Failed to start: ${(e as any)?.message || 'unknown error'}`);
+    } finally {
+      setStartingPipeline(false);
     }
   }
 
@@ -239,7 +427,12 @@ export default function App() {
     // Request Playwright to record videos when the user wants a link surfaced, via env override.
     if (showVideoLink) body.env.KAYAKO_VIDEO = 'on';
     // Default headed true in UI; still pass explicitly so orchestrator knows
-    if (headed) body.options.headed = true;
+    if (headed) {
+      body.options.headed = true;
+      // When headed, keep the browser open for a long time after tests so the user can inspect the final state.
+      // Tests respect this via the KAYAKO_HOLD_OPEN_MS hook in fixtures/auth.fixture.ts.
+      body.env.KAYAKO_HOLD_OPEN_MS = String(10 * 60 * 1000); // 10 minutes
+    }
     if (ticketId.trim()) {
       body.env.KAYAKO_CONVERSATION_ID = ticketId.trim();
     }
@@ -476,6 +669,39 @@ export default function App() {
                   <div style={{ fontSize: 12, color: '#666' }}>{reporting.structures[0].fileCount} files</div>
                 </div>
               )}
+              <div style={{ border: '1px solid #e3e8ef', borderRadius: 6, padding: 12 }}>
+                <div style={{ fontSize: 12, color: '#666', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>Pipeline</span>
+                  <button
+                    onClick={startPipelineRun}
+                    disabled={startingPipeline || !!reporting.pipeline?.active}
+                    style={{ fontSize: 11, padding: '2px 8px' }}
+                  >
+                    {startingPipeline ? 'Starting…' : 'Start'}
+                  </button>
+                </div>
+                {reporting.pipeline?.active ? (
+                  <>
+                    <div style={{ fontSize: 16, fontWeight: 600 }}>{reporting.pipeline.active.status}</div>
+                    <div style={{ fontSize: 11, color: '#666' }}>ID {reporting.pipeline.active.id.slice(0, 8)}</div>
+                    <ul style={{ marginTop: 6, paddingLeft: 16, fontSize: 12 }}>
+                      {reporting.pipeline.active.stages.map((stage) => (
+                        <li key={stage.name}>
+                          {stage.name}: {stage.status}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <div style={{ fontSize: 12, color: '#666' }}>
+                    {reporting.pipeline?.pipelines?.[0]
+                      ? `Last run ${reporting.pipeline.pipelines[0].status} (${new Date(
+                          reporting.pipeline.pipelines[0].startedAt,
+                        ).toLocaleString()})`
+                      : 'No pipeline runs yet'}
+                  </div>
+                )}
+              </div>
             </div>
             {reporting.crawls.length > 0 && (
               <div>
@@ -526,6 +752,32 @@ export default function App() {
               /> Headed
             </label>
           </div>
+          {specGroups.length > 0 && (
+            <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
+              <label style={{ whiteSpace: 'nowrap' }}>Test set</label>
+              <select
+                value={selectedSpecGroup}
+                onChange={(e) => {
+                  const id = e.target.value;
+                  setSelectedSpecGroup(id);
+                  const group = specGroups.find((g) => g.id === id);
+                  if (group) {
+                    updateTestsField(group.specs.join(', '));
+                  }
+                }}
+              >
+                <option value="">Custom</option>
+                {specGroups.map((g) => (
+                  <option key={g.id} value={g.id}>
+                    {g.label}
+                  </option>
+                ))}
+              </select>
+              <span style={{ fontSize: 12, color: '#666' }}>
+                Choose a Kayako page (e.g., Inbox, Ticket, Users) to prefill page-specific specs.
+              </span>
+            </div>
+          )}
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 8 }}>
             <label>Ticket ID</label>
             <input value={ticketId} onChange={(e) => { setTicketId(e.target.value); try { localStorage.setItem('ui.ticketId', e.target.value); } catch {} }} placeholder="e.g., 12345 (optional)" />
@@ -602,27 +854,123 @@ export default function App() {
 
         <section style={{ border: '1px solid #e3e8ef', padding: 12, borderRadius: 8, textAlign: 'left' }}>
           <h3>Flows (@flows)</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 1fr) auto auto auto', gap: 8, alignItems: 'center' }}>
-            {flows.map((f) => (
-              <div key={f.file} style={{ display: 'contents' }}>
-                <div>
-                  <strong>{f.name}</strong>
-                  {f.description ? <div style={{ color: '#666', fontSize: 12 }}>{f.description}</div> : null}
-                  <div style={{ color: '#999', fontSize: 11 }}>{f.file}</div>
-                </div>
-                <button onClick={() => convertFlow(f.file)}>Convert to spec</button>
-                <button
-                  onClick={() =>
-                    updateTestsField((prev) => (prev && prev.trim().length > 0 ? `${prev.replace(/\s*,\s*$/, '')}, ${f.name}` : f.name))
-                  }
-                >
-                  Queue in “Tests” field
-                </button>
-                <button onClick={() => openFlowEditor(f.file)}>Edit</button>
-              </div>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 12, color: '#666' }}>View:</span>
+            {(['individual', 'composite', 'test'] as FlowCategory[]).map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFlowCategory(cat)}
+                style={{
+                  border: flowCategory === cat ? '1px solid #4f46e5' : '1px solid #e3e8ef',
+                  borderRadius: 999,
+                  padding: '4px 10px',
+                  background: flowCategory === cat ? '#eef2ff' : '#f9fafb',
+                  fontSize: 12,
+                  cursor: 'pointer',
+                }}
+              >
+                {cat === 'individual' ? 'Individual actions' : cat === 'composite' ? 'Composite actions' : 'Tests'}
+              </button>
             ))}
-            {flows.length === 0 && <div>No flows found in mcp/flows</div>}
           </div>
+
+          {flowCategory === 'individual' && (
+            <div style={{ fontSize: 13 }}>
+              <div style={{ marginBottom: 8, color: '#666' }}>
+                Atomic actions you can use inside flows and saved tests. Each maps to a single Playwright helper.
+              </div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: 'left', borderBottom: '1px solid #e3e8ef', padding: 4 }}>Action</th>
+                    <th style={{ textAlign: 'left', borderBottom: '1px solid #e3e8ef', padding: 4 }}>Step type</th>
+                    <th style={{ textAlign: 'left', borderBottom: '1px solid #e3e8ef', padding: 4 }}>What it does</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {PRIMITIVE_ACTIONS.map((a) => (
+                    <tr key={a.id}>
+                      <td style={{ padding: 4, fontWeight: 600 }}>{a.label}</td>
+                      <td style={{ padding: 4 }}>
+                        <code>{a.id}</code>
+                      </td>
+                      <td style={{ padding: 4 }}>{a.description}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {flowCategory !== 'individual' && (
+            <>
+              {flowCategory === 'test' && specGroups.length > 0 && (
+                <div style={{ marginBottom: 8 }}>
+                  <div style={{ fontSize: 12, color: '#666', marginBottom: 4 }}>Tests grouped by Kayako page</div>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    {specGroups.map((g) => (
+                      <button
+                        key={g.id}
+                        style={{
+                          border: selectedSpecGroup === g.id ? '1px solid #4f46e5' : '1px solid #e3e8ef',
+                          borderRadius: 999,
+                          padding: '4px 10px',
+                          background: selectedSpecGroup === g.id ? '#eef2ff' : '#f9fafb',
+                          fontSize: 12,
+                          cursor: 'pointer',
+                        }}
+                        title={
+                          g.specs.length
+                            ? `Specs: ${g.specs.join(', ')}`
+                            : 'No specs assigned yet; update storage/spec-groups.json'
+                        }
+                        onClick={() => {
+                          if (g.specs.length === 0) return;
+                          setSelectedSpecGroup(g.id);
+                          updateTestsField(g.specs.join(', '));
+                        }}
+                      >
+                        {g.label} ({g.specs.length})
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div style={{ marginBottom: 6, fontSize: 12, color: '#666' }}>
+                {flowCategory === 'composite'
+                  ? 'Composite flows: sequences of individual actions such as “add internal note”, “change properties and send”, or “apply macro and close”.'
+                  : 'Test flows: higher-level scenarios built from composites and primitives (e.g., demos, settings flows, and page-level tests).'}
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(320px, 1fr) auto auto auto', gap: 8, alignItems: 'center' }}>
+                {filteredFlows.map((f) => (
+                  <div key={f.file} style={{ display: 'contents' }}>
+                    <div>
+                      <strong>{f.name}</strong>
+                      {f.description ? <div style={{ color: '#666', fontSize: 12 }}>{f.description}</div> : null}
+                      <div style={{ color: '#999', fontSize: 11 }}>{f.file}</div>
+                    </div>
+                    <button onClick={() => convertFlow(f.file)}>Convert to spec</button>
+                    <button
+                      onClick={() =>
+                        updateTestsField((prev) =>
+                          prev && prev.trim().length > 0 ? `${prev.replace(/\s*,\s*$/, '')}, ${f.name}` : f.name,
+                        )
+                      }
+                    >
+                      Queue in “Tests” field
+                    </button>
+                    <button onClick={() => openFlowEditor(f.file)}>Edit</button>
+                  </div>
+                ))}
+                {flows.length === 0 && <div>No flows found in mcp/flows</div>}
+                {flows.length > 0 && filteredFlows.length === 0 && flowCategory !== 'individual' && (
+                  <div>No flows matched this view. Adjust the category or add a new flow under mcp/flows/.</div>
+                )}
+              </div>
+            </>
+          )}
           {flowEditing && (
             <div style={{ marginTop: 10, border: '1px solid #eee', borderRadius: 4, padding: 8 }}>
               <div style={{ marginBottom: 6 }}>

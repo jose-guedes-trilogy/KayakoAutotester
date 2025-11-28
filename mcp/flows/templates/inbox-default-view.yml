@@ -1,0 +1,17 @@
+name: template-inbox-default-view
+description: Validate default inbox view (view 1) renders ticket rows and shell chrome
+urlPattern: "/agent/conversations/view/\\d+(?:\\?page=1)?$"
+tags:
+  - inbox
+steps:
+  - type: wait-loadstate
+    state: networkidle
+  - type: expect-visible
+    selectorKey: inbox.firstTicketRow
+  - type: expect-visible
+    selectorKey: inbox.paginationWrapper
+  - type: expect-visible
+    selectorKey: shell.profileMenu
+  - type: expect-visible
+    selectorKey: shell.notificationCenter
+

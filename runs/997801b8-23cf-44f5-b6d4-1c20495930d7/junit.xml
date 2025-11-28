@@ -1,0 +1,42 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="14.907549">
+<testsuite name="runtime\queue-runner.spec.ts" timestamp="2025-11-27T18:30:19.020Z" hostname="chromium" tests="1" failures="0" skipped="0" time="13.262" errors="0">
+<testcase name="Queued flows › run queued flows serially" classname="runtime\queue-runner.spec.ts" time="13.262">
+<system-out>
+<![CDATA[[2025-11-27T18:30:20.779Z] [INFO] [auth.fixture run=997801b8-23cf-44f5-b6d4-1c20495930d7] Starting login flow for authenticatedPage
+[2025-11-27T18:30:20.787Z] [INFO] [LoginPage run=997801b8-23cf-44f5-b6d4-1c20495930d7] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login
+[2025-11-27T18:30:24.068Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Loaded selectors.jsonc (mtime %d) [33m1764268181913.2957[39m
+[2025-11-27T18:30:24.427Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']
+[2025-11-27T18:30:24.444Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] [33m0[39m
+[2025-11-27T18:30:24.584Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']
+[2025-11-27T18:30:24.604Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] [33m0[39m
+[2025-11-27T18:30:24.749Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']
+[2025-11-27T18:30:24.761Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] [33m0[39m
+[2025-11-27T18:30:28.314Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']
+[2025-11-27T18:30:28.334Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] [33m0[39m
+[2025-11-27T18:30:28.340Z] [INFO] [auth.fixture run=997801b8-23cf-44f5-b6d4-1c20495930d7] Login successful
+[2025-11-27T18:30:28.350Z] [INFO] [auth.fixture run=997801b8-23cf-44f5-b6d4-1c20495930d7] Saved storageState to %s C:\Users\Zé\Documents\Trilogy\Kayako Autotester\storage\agent-auth.json
+[2025-11-27T18:30:30.759Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users container [class*='ko-user-list__container_']
+[2025-11-27T18:30:30.799Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users container [class*='ko-user-list__container_'] [33m0[39m
+[2025-11-27T18:30:30.836Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users sidebar [class*='ko-user-list__sidebar_']
+[2025-11-27T18:30:30.850Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebar [class*='ko-user-list__sidebar_'] [33m0[39m
+[2025-11-27T18:30:31.235Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users resultsHeading [class*='ko-user-list__heading_']
+[2025-11-27T18:30:31.253Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users resultsHeading [class*='ko-user-list__heading_'] [33m0[39m
+[2025-11-27T18:30:31.318Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users results [class*='ko-user-list__results_']
+[2025-11-27T18:30:31.340Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users results [class*='ko-user-list__results_'] [33m0[39m
+[2025-11-27T18:30:31.378Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users firstRow [class*='ko-user-list_results__row-styles_']
+[2025-11-27T18:30:31.398Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users firstRow [class*='ko-user-list_results__row-styles_'] [33m0[39m
+[2025-11-27T18:30:31.462Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users sidebar [class*='ko-user-list__sidebar_']
+[2025-11-27T18:30:31.474Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebar [class*='ko-user-list__sidebar_'] [33m0[39m
+[2025-11-27T18:30:31.504Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users definitionCheckbox [class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkbox_']
+[2025-11-27T18:30:31.523Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Clicking %s.%s (selector=%s, fallbackIndex=%d) users definitionCheckbox [class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkbox_'] [33m0[39m
+[2025-11-27T18:30:31.754Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users definitionTextInput [class*='ko-entity-list_sidebar_definition_operator__input_'] input[class*='ko-input__input_']
+[2025-11-27T18:30:31.775Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users definitionTextInput [class*='ko-entity-list_sidebar_definition_operator__input_'] input[class*='ko-input__input_'] [33m0[39m
+[2025-11-27T18:30:31.817Z] [DEBUG] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Primary selector used for %s.%s: %s users definitionTextInput [class*='ko-entity-list_sidebar_definition_operator__input_'] input[class*='ko-input__input_']
+[2025-11-27T18:30:31.841Z] [INFO] [selectors run=997801b8-23cf-44f5-b6d4-1c20495930d7] Filling %s.%s (selector=%s, fallbackIndex=%d) users definitionTextInput [class*='ko-entity-list_sidebar_definition_operator__input_'] input[class*='ko-input__input_'] [33m0[39m
+
+[[ATTACHMENT|artifacts\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

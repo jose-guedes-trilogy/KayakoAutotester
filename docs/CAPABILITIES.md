@@ -29,12 +29,26 @@ Composite definitions should reference primitives by name for traceability, and 
 
 - Supported steps: `goto`, `wait`, `press`, `click`, `dispatch-click`, `dispatch-click-text`, `goto-conversation-by-env-id`, composer primitives, tag/status/property setters, assertions (`assert-tags-contain`, `assert-status`, `assert-field-value`), `expect-screenshot`, network assertions.
 - Crawl-driven generation: `scripts/generate-tests.ts` reads `storage/map/graph.json`, applies regex/tag filters, emits YAML under `mcp/flows/autogen`, and runs the converter to produce specs. Composite actions will be referenced by name inside these flows as the generator evolves.
+- Surface templates live in `mcp/flows/templates/` and provide reusable flows keyed by URL patterns. Current catalog:
+
+| Surface | Template | urlPattern | Key selectors / primitives |
+|---------|----------|------------|-----------------------------|
+| Inbox View (View 1) | `template-inbox-default-view` | `/agent/conversations/view/\\d+` | `inbox.firstTicketRow`, `inbox.paginationWrapper`, `shell.profileMenu` |
+| Conversation – internal note | `template-conversation-internal-note` | `/agent/conversations/(?!view)` | `access-conversation`, `switch-to-internal-note`, `insert-reply-text`, `click-send-button` |
+| Conversation – apply macro | `template-conversation-apply-macro` | `/agent/conversations/(?!view)` | `apply-macro-send-to-customer`, `set-status`, `expect-request` |
+
+Add new surfaces by dropping YAML files in `mcp/flows/templates/`; the generator automatically merges them (names must be unique).
+
+### Pipeline Scheduler (orchestrator)
+
+- `POST /api/pipeline/start` chains crawl → capture → selector suggestion → test generation → Playwright smoke run. Each stage runs the corresponding npm script (e.g., `npm run crawl:kayako`) and records logs/status in `storage/pipelines.json`.
+- `GET /api/pipeline` returns the active pipeline plus history; the React dashboard consumes this to show the latest stage progress and exposes a “Start pipeline” button.
 
 ### Crawl → Capture → Suggest → Generate
 
 | Stage | Command | Output |
 |-------|---------|--------|
-| Crawl graph | `npm run crawl:kayako` | `storage/map/graph.json` |
+| Crawl graph | `npm run crawl:kayako` | `storage/map/graph.json` (+ screenshots + resumeable frontier with headers/frame/auth metadata) |
 | Structure capture | `npm run capture:structure` | `artifacts/structure/<crawlId>/*.html/*.png` |
 | Selector suggestions | `npm run selectors:suggest` | `selectors/extracted/pending.json` |
 | Test generation | `npm run generate:tests` | `mcp/flows/autogen/*.yml`, `tests/generated/*.spec.ts` |
@@ -59,6 +73,16 @@ Composite definitions should reference primitives by name for traceability, and 
   - Keep sensitive data out of selector files; document in `docs/OBSERVATIONS.md`.
 - **CI (planned)**
   - Nightly job chaining crawl → capture → suggest → generate → test, storing artifacts per crawl ID.
+
+### Data & State Toolbox
+
+- Seed YAML lives in `storage/seeds/*.yml` (tickets/macros for now). `npm run seed:data` (backed by `scripts/seed-test-data.ts`) reads those fixtures and logs intent into `storage/changes.log`; next iterations will drive the Kayako UI/API for idempotent resets.
+- The ledger (`storage/changes.log`) is the single source of truth for what the automation mutated, allowing easy review/replay/cleanup.
+
+### Secrets & Environment
+
+- Store plaintext credentials in `secrets/kayako.json` (see `.sample`). Encrypt with `npm run secrets:encrypt` after setting `KAYAKO_SECRETS_KEY`, and commit only the `.enc` artifact.
+- Consumers run `npm run secrets:decrypt` (same passphrase) to produce `.env.from-secrets` or pipe to stdout, then source the env vars before executing the pipeline.
 
 ### Run Controls (orchestrator + UI)
 

@@ -1,0 +1,18 @@
+name: template-conversation-apply-macro
+description: Apply default macro, set status, and verify request flow on conversation pages
+urlPattern: "/agent/conversations/(?!view)"
+tags:
+  - conversation
+  - macros
+steps:
+  - type: access-conversation
+  - type: wait-loadstate
+    state: networkidle
+  - type: apply-macro-send-to-customer
+  - type: set-status
+    value: Pending
+  - type: expect-request
+    urlPattern: "/agent/conversations/.+/macros"
+    method: POST
+    status: 200
+

@@ -32,4 +32,20 @@ export const test = base.extend<Fixtures>({
 
 export { expect };
 
+// Optional: keep the browser open for inspection after tests (primarily for headed debugging)
+// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.
+test.afterEach(async ({ authenticatedPage }, testInfo) => {
+  const raw = (process.env.KAYAKO_HOLD_OPEN_MS || '').trim();
+  const ms = raw ? parseInt(raw, 10) : 0;
+  if (!ms || Number.isNaN(ms) || ms <= 0) {
+    return;
+  }
+  log.info('Holding browser open for %dms after test "%s"', ms, testInfo.title);
+  try {
+    await authenticatedPage.waitForTimeout(ms);
+  } catch (e) {
+    log.warn('Hold-open wait interrupted', e);
+  }
+});
+
 

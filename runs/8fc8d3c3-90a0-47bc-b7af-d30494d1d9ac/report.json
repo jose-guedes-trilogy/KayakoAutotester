@@ -1,0 +1,485 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "generated\\ticket-properties-complete.spec.ts",
+      "file": "generated/ticket-properties-complete.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Create a brand new ticket and fill all ticket properties (status, tags, and custom fields), then verify them",
+          "file": "generated/ticket-properties-complete.spec.ts",
+          "line": 33,
+          "column": 8,
+          "specs": [
+            {
+              "title": "ticket-properties-complete",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 216847,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 120000ms exceeded while running \"afterEach\" hook.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 120000ms exceeded while running \"afterEach\" hook.\u001b[39m\n    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6",
+                        "location": {
+                          "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                          "column": 6,
+                          "line": 37
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                            "column": 6,
+                            "line": 37
+                          },
+                          "message": "\u001b[31mTest timeout of 120000ms exceeded while running \"afterEach\" hook.\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\fixtures\\auth.fixture.ts:37\n\n\u001b[0m \u001b[90m 35 |\u001b[39m \u001b[90m// Optional: keep the browser open for inspection after tests (primarily for headed debugging)\u001b[39m\n \u001b[90m 36 |\u001b[39m \u001b[90m// Controlled via env.KAYAKO_HOLD_OPEN_MS, which is injected by the Control Center UI for headed runs.\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 37 |\u001b[39m test\u001b[33m.\u001b[39mafterEach(\u001b[36masync\u001b[39m ({ authenticatedPage }\u001b[33m,\u001b[39m testInfo) \u001b[33m=>\u001b[39m {\n \u001b[90m    |\u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 38 |\u001b[39m   \u001b[36mconst\u001b[39m raw \u001b[33m=\u001b[39m (process\u001b[33m.\u001b[39menv\u001b[33m.\u001b[39m\u001b[33mKAYAKO_HOLD_OPEN_MS\u001b[39m \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m)\u001b[33m.\u001b[39mtrim()\u001b[33m;\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36mconst\u001b[39m ms \u001b[33m=\u001b[39m raw \u001b[33m?\u001b[39m parseInt(raw\u001b[33m,\u001b[39m \u001b[35m10\u001b[39m) \u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 40 |\u001b[39m   \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mms \u001b[33m||\u001b[39m \u001b[33mNumber\u001b[39m\u001b[33m.\u001b[39misNaN(ms) \u001b[33m||\u001b[39m ms \u001b[33m<=\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[2m    at C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts:37:6\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-28T20:08:12.551Z] [INFO] [auth.fixture run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:12.561Z] [INFO] [LoginPage run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:15.761Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Loaded selectors.jsonc (mtime %d) \u001b[33m1764353217441.892\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.113Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.130Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.287Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.302Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.444Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:16.455Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.064Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.081Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink nav[class*='session__left-navigation_'] a[class*='session__left-navigation-item_'][href*='/agent/conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.086Z] [INFO] [auth.fixture run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.140Z] [INFO] [auth.fixture run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.141Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Creating new ticket (mode=%s) reply\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.141Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Opening New → Conversation ticket\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.168Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s shell newButton [class*='ko-agent-dropdown__trigger_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.181Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) shell newButton [class*='ko-agent-dropdown__trigger_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.544Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation')\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:20.592Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) newTicket conversationItem #ember-basic-dropdown-wormhole [class*='ko-agent-dropdown__navItemText_']:has-text('Conversation') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.192Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.212Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Expect visible %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.218Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling new ticket requester email: %s jose.guedes.translation@gmail.com\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.246Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s newTicket requesterInput input[placeholder*='Enter the email address of the requester']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.261Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket requesterInput input[placeholder*='Enter the email address of the requester'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.849Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling new ticket subject: %s [AUTOTEST] Ticket full properties\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.871Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s newTicket subjectInput input[placeholder*='Click to set a subject']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:21.914Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Filling %s.%s (selector=%s, fallbackIndex=%d) newTicket subjectInput input[placeholder*='Click to set a subject'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:22.109Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Switching composer to Reply mode\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:22.113Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click CSS for %s.%s with %d candidate(s) composer replyToggle \u001b[33m1\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:22.141Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click CSS succeeded for %s.%s using %s composer replyToggle [class*='ko-text-editor_mode-selector__root_'][aria-selected='false']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:22.324Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Inserting reply text (%d chars) \u001b[33m38\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:22.352Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s composer editor div.fr-element.fr-view\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:23.751Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking composer Send button\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:23.786Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s composer sendButton role=button[name=/^Send( and update)?$/i]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:23.803Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) composer sendButton role=button[name=/^Send( and update)?$/i] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:25.260Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Waiting for timeline to contain text \"%s\" (timeoutMs=%d, pollIntervalMs=%d) [AUTOTEST] Ticket full properties body \u001b[33m15000\u001b[39m \u001b[33m500\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:25.422Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Ticket full properties body \u001b[33m3\u001b[39m \u001b[33m162\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:25.972Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Timeline scan iteration for \"%s\": entries=%d, elapsedMs=%d [AUTOTEST] Ticket full properties body \u001b[33m18\u001b[39m \u001b[33m712\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:25.981Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting status: %s Open\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:31.408Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Open\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:31.500Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s assign updatePropertiesContainer [class*='ko-case-content__submit-properties_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:31.550Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Update properties container visible after status change\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:31.602Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s assign updatePropertiesButton role=button[name=/Update properties/i]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:31.620Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) assign updatePropertiesButton role=button[name=/Update properties/i] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:32.045Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s conversation statusPill [class*='ko-case-content_field_status_swatch-with-label__swatch_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:32.089Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s status statusFieldTrigger div[class*='ko-info-bar_field_select__trigger_']:has-text('Status')\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:32.108Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] getConversationStatusText: derived status \"%s\" from Status field button text \"%s\" Open Status Open\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:32.110Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s dropdown Priority\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.265Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s env.DEFAULT_PRIORITY\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.274Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'env.DEFAULT_PRIORITY'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m5\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.275Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click by text: %s env.DEFAULT_PRIORITY\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.327Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click by text diagnostics (page context): %o {\n  needle: \u001b[32m'env.DEFAULT_PRIORITY'\u001b[39m,\n  exactCount: \u001b[33m0\u001b[39m,\n  containsCount: \u001b[33m0\u001b[39m,\n  samples: [],\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  dropdownOptions: \u001b[33m5\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.328Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary dispatch-click by text failed; attempting dropdown-scoped fallback for: %s env.DEFAULT_PRIORITY\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.328Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s env.DEFAULT_PRIORITY\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.338Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'env.DEFAULT_PRIORITY'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m5\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.731Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s dropdown Type\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:43.260Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s dropdown Form\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:48.757Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Adding tags: %o [ \u001b[32m'[autotest-props]'\u001b[39m ]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:48.777Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags')\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:48.787Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) tags tagsFieldTrigger div[class*='ko-info-bar_field_select-multiple__trigger_']:has-text('Tags') \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:49.103Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s tags tagsInput input[class*='ko-info-bar_field_select-multiple_trigger__input_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.133Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Add tag “[autotest-props]”\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.140Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag “[autotest-props]”'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.141Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Add tag \"[autotest-props]\"\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.148Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'Add tag \"[autotest-props]\"'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.149Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s [autotest-props]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.157Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dropdown dispatch diagnostics: %o {\n  needle: \u001b[32m'[autotest-props]'\u001b[39m,\n  openDropdowns: \u001b[33m1\u001b[39m,\n  wormholeChildren: \u001b[33m1\u001b[39m,\n  rootSummaries: [\n    {\n      optionsCount: \u001b[33m1\u001b[39m,\n      exactHits: \u001b[33m0\u001b[39m,\n      containsHits: \u001b[33m0\u001b[39m,\n      sampleOptions: \u001b[36m[Array]\u001b[39m\n    }\n  ]\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.532Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.566Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s tags tagPill [class*='ko-select_multiple_pill__pill_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:50.582Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s yesno Yes/no toggle\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:55.758Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Yes\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:55.929Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s cascading Cascading select\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:01.118Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Category-A\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:01.289Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Subcategory-A\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:01.458Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click in dropdown by text: %s Item-1\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:01.787Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s date Date of purchase\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:06.824Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting date value: %s 2025-04-05\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:06.824Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Date open: starting root-scoped dispatch attempt for label \"%s\" Date of purchase\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:06.833Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Date open (root): candidates found=%d via selector \"%s\" \u001b[33m0\u001b[39m [class*='ko-agent-content_layout__fields_'] [class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_'], div[class*='ko-info-bar_item__container_'][class*='ko-info-bar_field_date__date_'], div[class*='ko-info-bar_field_date__date_']\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:06.852Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Date open (root): container diagnostics: %o {\n  className: \u001b[32m'ko-info-bar_field_date__date_1mc80n  ko-info-bar_item__container_1k1nl0'\u001b[39m,\n  id: \u001b[32m''\u001b[39m,\n  rect: { x: \u001b[33m961\u001b[39m, y: \u001b[33m494\u001b[39m, w: \u001b[33m304\u001b[39m, h: \u001b[33m55\u001b[39m },\n  style: {\n    display: \u001b[32m'block'\u001b[39m,\n    visibility: \u001b[32m'visible'\u001b[39m,\n    opacity: \u001b[32m'1'\u001b[39m,\n    pointerEvents: \u001b[32m'auto'\u001b[39m,\n    zIndex: \u001b[32m'auto'\u001b[39m\n  },\n  elementFromPoint: {\n    cls: \u001b[32m'ko-info-bar_field_date__date_1mc80n  ko-info-bar_item__container_1k1nl0'\u001b[39m,\n    id: \u001b[32m''\u001b[39m\n  }\n}\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:06.912Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Date open debug: focus candidates=%d, container candidates=%d \u001b[33m1\u001b[39m \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:09.240Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s radio Radio\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:14.753Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s text Text\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:20.068Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s textarea Multiline text\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:25.379Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s regex Regex\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:30.693Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s integer Integers\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:36.010Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s decimal Decimals\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:41.328Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Setting custom field (%s): %s checkbox Checkboxes\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:46.819Z] [DEBUG] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Primary selector used for %s.%s: %s assign updatePropertiesButton role=button[name=/Update properties/i]\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:46.831Z] [INFO] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Clicking %s.%s (selector=%s, fallbackIndex=%d) assign updatePropertiesButton role=button[name=/Update properties/i] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:09:49.021Z] [INFO] [auth.fixture run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Holding browser open for %dms after test \"%s\" \u001b[33m600000\u001b[39m ticket-properties-complete\n"
+                        }
+                      ],
+                      "stderr": [
+                        {
+                          "text": "[2025-11-28T20:08:32.065Z] [WARN] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] getConversationStatusText: header status pill not found or empty; falling back to info-bar Status field\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:08:37.339Z] [ERROR] [selectors run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Dispatch-click by text failed (page + dropdown): %s env.DEFAULT_PRIORITY\n"
+                        },
+                        {
+                          "text": "[2025-11-28T20:11:49.247Z] [WARN] [auth.fixture run=8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac] Hold-open wait interrupted page.waitForTimeout: Test ended.\n    at \u001b[90mC:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\\u001b[39mfixtures\\auth.fixture.ts:45:29\n"
+                        }
+                      ],
+                      "retry": 0,
+                      "startTime": "2025-11-28T20:08:11.908Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac\\artifacts\\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\8fc8d3c3-90a0-47bc-b7af-d30494d1d9ac\\artifacts\\generated-ticket-propertie-d3f89--ticket-properties-complete-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\fixtures\\auth.fixture.ts",
+                        "column": 6,
+                        "line": 37
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2245b566d16fd8c01354-f55065f58dedb57692ec",
+              "file": "generated/ticket-properties-complete.spec.ts",
+              "line": 34,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-28T20:08:10.706Z",
+    "duration": 218785.15300000002,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\config\\playwright.config.ts",
+    "rootDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2a45a8b3-55b7-497f-a5ce-c53f9aeced65\\html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2a45a8b3-55b7-497f-a5ce-c53f9aeced65\\junit.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2a45a8b3-55b7-497f-a5ce-c53f9aeced65\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2a45a8b3-55b7-497f-a5ce-c53f9aeced65/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2a45a8b3-55b7-497f-a5ce-c53f9aeced65/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/runs/2a45a8b3-55b7-497f-a5ce-c53f9aeced65/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/Zé/Documents/Trilogy/Kayako Autotester/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "runtime\\queue-runner.spec.ts",
+      "file": "runtime/queue-runner.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Queued flows",
+          "file": "runtime/queue-runner.spec.ts",
+          "line": 6,
+          "column": 6,
+          "specs": [
+            {
+              "title": "run queued flows serially",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 13842,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "[2025-11-27T18:25:55.036Z] [INFO] [auth.fixture run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Starting login flow for authenticatedPage\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:55.047Z] [INFO] [LoginPage run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Navigating to login page https://trilogy-joseguedes.kayako.com/agent/login\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:58.343Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Loaded selectors.jsonc (mtime %d) \u001b[33m1764260827551.927\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:58.697Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s login emailInput role=textbox[name='Email address']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:58.732Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Filling %s.%s (selector=%s, fallbackIndex=%d) login emailInput role=textbox[name='Email address'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:58.917Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s login passwordInput role=textbox[name='Password']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:58.940Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Filling %s.%s (selector=%s, fallbackIndex=%d) login passwordInput role=textbox[name='Password'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:59.126Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s login submitButton role=button[name='Login']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:25:59.151Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Clicking %s.%s (selector=%s, fallbackIndex=%d) login submitButton role=button[name='Login'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:02.721Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s nav conversationsLink [class*='sidebar'] a[href*='conversations']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:02.737Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) nav conversationsLink [class*='sidebar'] a[href*='conversations'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:02.741Z] [INFO] [auth.fixture run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Login successful\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:02.750Z] [INFO] [auth.fixture run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Saved storageState to %s C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\storage\\agent-auth.json\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.126Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users container [class*='ko-user-list__container_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.155Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users container [class*='ko-user-list__container_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.204Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users sidebar [class*='ko-user-list__sidebar_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.220Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebar [class*='ko-user-list__sidebar_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.623Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users resultsHeading [class*='ko-user-list__heading_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.637Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users resultsHeading [class*='ko-user-list__heading_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.696Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users results [class*='ko-user-list__results_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.711Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users results [class*='ko-user-list__results_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.740Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users firstRow [class*='ko-user-list_results__row-styles_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.757Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users firstRow [class*='ko-user-list_results__row-styles_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.829Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users sidebar [class*='ko-user-list__sidebar_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.845Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebar [class*='ko-user-list__sidebar_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.886Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users definitionCheckbox [class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkbox_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:05.906Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Clicking %s.%s (selector=%s, fallbackIndex=%d) users definitionCheckbox [class*='ko-entity-list_sidebar_definition__heading_'] [class*='ko-checkbox__checkbox_'] \u001b[33m0\u001b[39m\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:06.145Z] [DEBUG] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Primary selector used for %s.%s: %s users sidebarDetail [class*='ko-user-list__sidebar-detail_']\n"
+                        },
+                        {
+                          "text": "[2025-11-27T18:26:06.160Z] [INFO] [selectors run=2a45a8b3-55b7-497f-a5ce-c53f9aeced65] Expect visible %s.%s (selector=%s, fallbackIndex=%d) users sidebarDetail [class*='ko-user-list__sidebar-detail_'] \u001b[33m0\u001b[39m\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "Flow: users-open-directory",
+                          "duration": 2890
+                        },
+                        {
+                          "title": "Flow: users-results-visible",
+                          "duration": 118
+                        },
+                        {
+                          "title": "Flow: users-toggle-first-attribute",
+                          "duration": 2427
+                        }
+                      ],
+                      "startTime": "2025-11-27T18:25:54.051Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\Zé\\Documents\\Trilogy\\Kayako Autotester\\runs\\2a45a8b3-55b7-497f-a5ce-c53f9aeced65\\artifacts\\runtime-queue-runner-Queued-flows-run-queued-flows-serially-chromium\\video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "a65a2d6c7118bb094f51-2c1e72ee0ae48d2f21cf",
+              "file": "runtime/queue-runner.spec.ts",
+              "line": 7,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-11-27T18:25:52.851Z",
+    "duration": 15723.668000000001,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

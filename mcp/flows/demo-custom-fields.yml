@@ -56,6 +56,33 @@ steps:
     value:
       - "Option-A-Title"
       - "Option-B-Title"
+  # Assert values were applied
+  - type: assert-field-value
+    label: "Yes/no toggle"
+    expected: "Yes"
+  - type: assert-field-value
+    label: "Cascading select"
+    expected: "Category-A / Subcategory-A / Item-1"
+  - type: assert-field-value
+    label: "Text"
+    expected: "Sample single-line text"
+  - type: assert-field-value
+    label: "Multiline text"
+    expected: "Line 1\nLine 2\nLine 3"
+  - type: assert-field-value
+    label: "Regex"
+    expected: "ABC-123"
+  - type: assert-field-value
+    label: "Integers"
+    expected: 42
+  - type: assert-field-value
+    label: "Decimals"
+    expected: 123.45
+  - type: assert-field-value
+    label: "Checkboxes"
+    expected:
+      - "Option-A-Title"
+      - "Option-B-Title"
   - type: wait
     value: "3000"
 

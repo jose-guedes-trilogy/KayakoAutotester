@@ -10,6 +10,9 @@ steps:
 
   - type: click-send-button
 
+  - type: assert-timeline-text
+    value: env.INTERNAL_NOTE_TEXT
+
   - type: wait
     value: "500"
 
