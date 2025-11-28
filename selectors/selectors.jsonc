@@ -1,0 +1,55 @@
+{
+  // Login page selectors
+  "login": {
+    // Email input in the agent login form (prefers form-scoped resilient class)
+    "emailInput": [
+      "role=textbox[name='Email address']",
+      "form[class*='login-agent__login-form'] input[type='email']",
+      "[class*='login-agent__login-form'] input[type='email']",
+      "[class*='ko-login_password__email'] input[type='email']",
+      "input[placeholder='Email address']"
+    ],
+    // Password input in the agent login form (prefers form-scoped resilient class)
+    "passwordInput": [
+      "role=textbox[name='Password']",
+      "form[class*='login-agent__login-form'] input[type='password']",
+      "[class*='login-agent__login-form'] input[type='password']",
+      "input[type='password'][placeholder='Password']"
+    ],
+    // Login submit button in the agent login form
+    "submitButton": [
+      "role=button[name='Login']",
+      "form[class*='login-agent__login-form'] button[type='submit']",
+      "[class*='login-agent__button'] button[type='submit']",
+      "button:has-text('Login')"
+    ],
+    // "Remember me" checkbox on the login form
+    "rememberMeCheckbox": [
+      "form[class*='login-agent__login-form'] input[type='checkbox']",
+      "[class*='login-agent__login-form'] input[type='checkbox']"
+    ],
+    // "Forgot password?" link on the login form
+    "forgotPasswordLink": [
+      "role=link[name='Forgot password?']",
+      "role=button[name='Forgot password?']",
+      "text=/Forgot\\s*password\\??/i",
+      "text=Forgot password?",
+      "form[class*='login-agent__login-form'] a[href*='forgot']"
+    ],
+    // Inline error shown when credentials are invalid
+    "errorInvalidCombo": [
+      "role=heading[name='Email and password combination is incorrect']",
+      "text=Email and password combination is incorrect"
+    ]
+  },
+  // Navigation selectors (sidebar / top nav)
+  "nav": {
+    // Link to Conversations inbox
+    "conversationsLink": [
+      "[class*='sidebar'] a[href*='conversations']",
+      "nav a:has-text('Conversations')"
+    ]
+  }
+}
+
+

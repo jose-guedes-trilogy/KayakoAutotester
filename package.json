@@ -1,0 +1,39 @@
+{
+  "name": "kayako-autotester",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test -c config/playwright.config.ts",
+    "test:smoke": "playwright test -c config/playwright.config.ts --project=chromium",
+    "format": "prettier --write .",
+    "lint": "eslint --ext .ts .",
+    "validate:selectors": "ts-node scripts/validate-selectors.ts",
+    "convert:flows": "ts-node scripts/flow-to-pw.ts mcp/flows/*.yml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-playwright": "^2.3.0",
+    "fast-glob": "^3.3.3",
+    "jsonc-parser": "^3.3.1",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "yaml": "^2.8.1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "zod": "^4.1.12"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env.local
+
+# Playwright artifacts
+playwright-report/
+test-results/
+blob-report/
+trace.zip
+
+# Logs
+*.log
+
+

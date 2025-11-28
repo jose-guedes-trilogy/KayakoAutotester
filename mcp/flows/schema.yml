@@ -1,0 +1,35 @@
+# Lightweight schema for MCP-captured flows
+# name: string
+# description: string
+# steps: ordered array of actions
+#   - type: one of [goto, fill, click, expect-visible, expect-url-contains, wait, press]
+#   - selectorKey: optional key like group.key (when applicable)
+#   - url/value/key: by action
+
+type: object
+required: [name, steps]
+properties:
+  name:
+    type: string
+  description:
+    type: string
+  steps:
+    type: array
+    items:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [goto, fill, click, expect-visible, expect-url-contains, wait, press]
+        selectorKey:
+          type: string
+          description: "format group.key matching selectors.jsonc"
+        url:
+          type: string
+        value:
+          type: string
+        key:
+          type: string
+
+
